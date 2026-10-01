@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Biology beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#B9382A; --watch:#2F6DB5; --listen:#7A4BB8; --read:#8A5A00; --do:#2E7D32; --apply:#0E7C6B;
+  --f-display:"Fraunces",system-ui,sans-serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#14402B; --hero-ink:#F3FBF5; --hero-muted:#A9CDB6;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Biology · 2026-27</div>
+      <h1>Biology beyond the classroom<span class="sub">34 things to watch, read, try and enter. Free unless the entry says otherwise.</span></h1>
+      <p>Biology is the most over-subscribed science at university, and medicine, veterinary science and biomedical courses all ask what you have done beyond the syllabus. The Olympiad, the essay prizes and the placements below are the things interviewers ask about; the lectures and reading are how you get something to say. Each time you do something, write one line in your field notebook: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="enter"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna"><span class="sym">Dd</span></a><div><div class="step">Watch · Doudna</div><p>Watch Jennifer Doudna's TED talk on CRISPR (16 min) and write down how Cas9 finds the right place in the DNA.</p></div></div><div class="pick" data-g="enter"><a href="https://ukbiologycompetitions.org/british-biology-olympiad/"><span class="sym">Bb</span></a><div><div class="step">Past papers · British Biology Olympiad</div><p>Try one British Biology Olympiad past paper. There are no mark schemes, so look up the questions you could not answer.</p></div></div><div class="pick" data-g="watch"><a href="https://podcasts.ox.ac.uk/series/biology-whole-story"><span class="sym">Bt</span></a><div><div class="step">Series · Biology: The Whole Story</div><p>Watch the chapter of Biology: The Whole Story that matches the topic you are studying now.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The specimen tray</h2>
+    <div class="key"><span>One specimen per thing. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">
+  <span class="fam">Enter</span>
+  <span class="sym">Bb</span>
+  <span class="nm">British Biology Olympiad</span>
+  <span class="row"><span>01</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>British Biology Olympiad (UK Biology Competitions)</b><i>Enter · Y12 and Y13 · paper</i><span>Two 45-minute online multiple-choice papers sat in school in January, going well beyond A level. Top scorers go on to selection rounds at Warwick for the UK team.</span><em>UKBC page ↗</em></span></a><a class="tile" data-g="enter" href="https://ukbiologycompetitions.org/intermediate-biology-olympiad/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ib</span>
+  <span class="nm">Intermediate Biology Olympiad</span>
+  <span class="row"><span>02</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Intermediate Biology Olympiad (UK Biology Competitions)</b><i>Enter · Y12 only · entry</i><span>The Y12 version of the Olympiad, sat in school in June. Good practice for the full Olympiad in Y13.</span><em>UKBC page ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Pk</span>
+  <span class="nm">Peterhouse Kelvin Sciences…</span>
+  <span class="row"><span>03</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Peterhouse Kelvin Sciences Essay Competition (Cambridge)</b><i>Enter · essay</i><span>An essay of up to 2,000 words on one of six science questions. In 2026 the biology options included species conservation, chirality in biology and why lifespan varies between species.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://www.homerton.cam.ac.uk/cambridge-biology-challenge">
+  <span class="fam">Enter</span>
+  <span class="sym">Cb</span>
+  <span class="nm">Cambridge Biology Challenge</span>
+  <span class="row"><span>04</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Biology Challenge (Homerton College)</b><i>Enter · essay</i><span>A team competition: a new Cambridge-style biology question every three weeks, answered as a poster, video, podcast or essay. Selected teams are invited to Homerton in August.</span><em>Homerton ↗</em></span></a><a class="tile" data-g="enter" href="https://www.rsb.org.uk/photo-competition.html">
+  <span class="fam">Enter</span>
+  <span class="sym">Rs</span>
+  <span class="nm">Royal Society of Biology…</span>
+  <span class="row"><span>05</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Royal Society of Biology Young Photographer of the Year</b><i>Enter · No fee listed · entry</i><span>Photograph living things in their habitat to a set theme (2026: Colours of Nature). The winner receives £500 and an invitation to the Biology Week awards in London.</span><em>RSB page ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna">
+  <span class="fam">Watch</span>
+  <span class="sym">Dd</span>
+  <span class="nm">Doudna</span>
+  <span class="row"><span>06</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Jennifer Doudna: How CRISPR lets us edit our DNA</b><i>Watch · talk · 16m</i><span>Explain how Cas9 finds its target sequence using what you know of complementary base pairing (AQA 3.8.4). Which of her ethical concerns do you think is the most serious, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">McKenna</span>
+  <span class="row"><span>07</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Maryn McKenna: What do we do when antibiotics don't work any more?</b><i>Watch · talk · 17m</i><span>Use the AQA account of natural selection (3.4.4) to explain how antibiotic resistance spreads through a bacterial population. Which of her proposed measures would slow it most?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/bonnie_bassler_how_bacteria_talk">
+  <span class="fam">Watch</span>
+  <span class="sym">Bs</span>
+  <span class="nm">Bassler</span>
+  <span class="row"><span>08</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Bonnie Bassler: How bacteria &quot;talk&quot;</b><i>Watch · talk · 18m</i><span>Quorum sensing switches genes on when a signal molecule reaches a threshold. Compare this with how oestrogen regulates transcription in AQA 3.8.2.2.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are">
+  <span class="fam">Watch</span>
+  <span class="sym">Kn</span>
+  <span class="nm">Knight</span>
+  <span class="row"><span>09</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Rob Knight: How our microbes make us who we are</b><i>Watch · talk · 17m</i><span>Pick one link he describes between gut microbes and a condition. How would you design a study to show the microbes cause it, rather than being correlated with it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other">
+  <span class="fam">Watch</span>
+  <span class="sym">Sm</span>
+  <span class="nm">Simard</span>
+  <span class="row"><span>10</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Suzanne Simard: How trees talk to each other</b><i>Watch · talk · 18m</i><span>Where do mycorrhizae appear in the AQA nutrient cycles (3.5.4)? Which of her claims about trees sharing carbon are supported by the evidence she shows, and which go further than it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">
+  <span class="fam">Watch</span>
+  <span class="sym">Wl</span>
+  <span class="nm">Walker</span>
+  <span class="row"><span>11</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Matt Walker: Sleep is your superpower</b><i>Watch · talk · 19m</i><span>Choose two of his statistics. For each, say whether it shows correlation or causation and what data you would need before accepting it.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/ed_yong_zombie_roaches_and_other_parasite_tales">
+  <span class="fam">Watch</span>
+  <span class="sym">Yn</span>
+  <span class="nm">Yong</span>
+  <span class="row"><span>12</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Ed Yong: Zombie roaches and other parasite tales</b><i>Watch · talk · 13m</i><span>Choose one parasite that changes its host's behaviour. Which parts of AQA 3.6 (receptors, nervous coordination, synapses) would the parasite have to act on?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood">
+  <span class="fam">Watch</span>
+  <span class="sym">Hu</span>
+  <span class="nm">Hui</span>
+  <span class="row"><span>13</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Edmond Hui: How the heart actually pumps blood</b><i>Watch · TED-Ed · 4m</i><span>Sketch the pressure changes in the left atrium, left ventricle and aorta through one cardiac cycle and mark when each valve opens and closes (AQA 3.3.4.1).</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">
+  <span class="fam">Watch</span>
+  <span class="sym">Ri</span>
+  <span class="nm">Royal Institution Christmas…</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution Christmas Lectures archive</b><i>Watch · lecture · 1h</i><span>Every series back to the 1960s. For biology, start with Who Am I? (2018) or Going Viral (2021).</span><em>Ri archive ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">
+  <span class="fam">Watch</span>
+  <span class="sym">Ry</span>
+  <span class="nm">Royal Institution YouTube…</span>
+  <span class="row"><span>15</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution YouTube channel</b><i>Watch · lecture · 1h</i><span>Full talks by working scientists. Subscribe and pick what interests you.</span><em>Ri YouTube ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/science">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College Science for…</span>
+  <span class="row"><span>16</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College Science for schools</b><i>Watch · lecture · 1h</i><span>Free hour-long university lectures. The immunology and evolution series match topics in the course.</span><em>Gresham Science ↗</em></span></a><a class="tile" data-g="watch" href="https://podcasts.ox.ac.uk/series/biology-whole-story">
+  <span class="fam">Watch</span>
+  <span class="sym">Bt</span>
+  <span class="nm">Biology: The Whole Story</span>
+  <span class="row"><span>17</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Biology: The Whole Story (University of Oxford)</b><i>Watch · lecture · 1h</i><span>Ten videos from an Oxford biologist, one per big idea in biology. Watch the one that matches the topic you are on.</span><em>Oxford podcasts ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/biology">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Biology</span>
+  <span class="row"><span>18</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Biology</b><i>Watch · lecture · 1h</i><span>University-style study units from Cambridge. Epigenetics and neuroscience follow on directly from the course.</span><em>HE+ Biology ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rsb.org.uk/a-to-z-biosciences.html">
+  <span class="fam">Watch</span>
+  <span class="sym">Rl</span>
+  <span class="nm">Royal Society of Biology: A…</span>
+  <span class="row"><span>19</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Society of Biology: A to Z of the Biosciences</b><i>Watch · lecture · 1h</i><span>Biologists explain what their job involves and how they got there.</span><em>RSB A to Z ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 7</span></div><a class="tile" data-g="read" href="https://www.nature.com/news">
+  <span class="fam">Read</span>
+  <span class="sym">Nn</span>
+  <span class="nm">Nature news</span>
+  <span class="row"><span>20</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Nature news</b><i>Read · 10m</i><span>Free news pages of the journal.</span><em>nature.com/news ↗</em></span></a><a class="tile" data-g="read" href="https://www.rsb.org.uk/join-bionet.html">
+  <span class="fam">Read</span>
+  <span class="sym">Tb</span>
+  <span class="nm">The Biologist and BioNet…</span>
+  <span class="row"><span>21</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>The Biologist (Royal Society of Biology) and BioNet membership</b><i>Read · 10m</i><span>The Royal Society of Biology's magazine. Some articles are free; the full magazine comes with £10 student membership.</span><em>RSB BioNet ↗</em></span></a><a class="tile" data-g="read" href="https://www.newscientist.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Ns</span>
+  <span class="nm">New Scientist</span>
+  <span class="row"><span>22</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>New Scientist</b><i>Read · 10m</i><span>Ask the library whether the school has a subscription.</span><em>newscientist.com ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ts</span>
+  <span class="nm">The Selfish Gene</span>
+  <span class="row"><span>23</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Selfish Gene, by Richard Dawkins</b><i>Read · book · book</i><span>The classic book on evolution from the gene's point of view.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ic</span>
+  <span class="nm">I Contain Multitudes</span>
+  <span class="row"><span>24</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>I Contain Multitudes, by Ed Yong</b><i>Read · book · book</i><span>How microbes shape every animal, including you. Pairs with the Ed Yong and Rob Knight talks.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">El</span>
+  <span class="nm">Entangled Life</span>
+  <span class="row"><span>25</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Entangled Life, by Merlin Sheldrake</b><i>Read · book · book</i><span>A book about fungi. Read it alongside the Suzanne Simard talk.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tg</span>
+  <span class="nm">The Gene: An Intimate History</span>
+  <span class="row"><span>26</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Gene: An Intimate History, by Siddhartha Mukherjee</b><i>Read · book · book</i><span>The history of genetics from Mendel to gene editing. Chapters can be read on their own.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 3</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>27</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for photosynthesis, the Krebs cycle, epigenetics, the immune system, Darwin, Mendel.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://www.rsb.org.uk/podcast.html">
+  <span class="fam">Listen</span>
+  <span class="sym">Bm</span>
+  <span class="nm">Bioscience Matters</span>
+  <span class="row"><span>28</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Bioscience Matters (Royal Society of Biology podcast)</b><i>Listen · 30m</i><span>The Royal Society of Biology's own podcast. Free.</span><em>RSB podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">
+  <span class="fam">Listen</span>
+  <span class="sym">Ti</span>
+  <span class="nm">The Infinite Monkey Cage</span>
+  <span class="row"><span>29</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Infinite Monkey Cage</b><i>Listen · 30m</i><span>Lighter science radio if you have not listened to anything before.</span><em>Infinite Monkey Cage ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 3</span></div><a class="tile" data-g="do" href="https://ukbiologycompetitions.org/british-biology-olympiad/">
+  <span class="fam">Do</span>
+  <span class="sym">Br</span>
+  <span class="nm">British Biology Olympiad…</span>
+  <span class="row"><span>30</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>British Biology Olympiad past papers</b><i>Do · 20m</i><span>Past Olympiad papers. There are no mark schemes, so look up anything you get stuck on.</span><em>UKBC past papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.rsb.org.uk/citizen-science.html">
+  <span class="fam">Do</span>
+  <span class="sym">So</span>
+  <span class="nm">Signs of Spring</span>
+  <span class="row"><span>31</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Signs of Spring (RSB and Field Studies Council)</b><i>Do · 20m</i><span>Record the first snowdrops, frogspawn and bumblebees you see between January and June and add them to a national map.</span><em>RSB citizen science ↗</em></span></a><a class="tile" data-g="do" href="https://www.zooniverse.org/projects?discipline=biology">
+  <span class="fam">Do</span>
+  <span class="sym">Zn</span>
+  <span class="nm">Zooniverse</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Zooniverse</b><i>Do · 20m</i><span>Classify real research data online, such as camera-trap photos of wildlife.</span><em>zooniverse.org ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 2</span></div><a class="tile" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>33</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements (delivered by STEM Learning)</b><i>Apply · Y12, STEM · apply</i><span>A summer placement in a real lab. Check the eligibility criteria first.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">
+  <span class="fam">Apply</span>
+  <span class="sym">Is</span>
+  <span class="nm">In2Science UK: In2STEM</span>
+  <span class="row"><span>34</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2Science UK: In2STEM</b><i>Apply · Y12, STEM · apply</i><span>A one to two week summer placement with researchers, with travel and lunch paid. Check the eligibility criteria.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">British Biology Olympiad (UK Biology Competitions)</a></h3>
+      <div class="meta"><span>01</span><span>paper</span><span>Y12 and Y13</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Two 45-minute online multiple-choice papers sat in school in January, going well beyond A level. Top scorers go on to selection rounds at Warwick for the UK team.</p>
+  <p class="when"><b>When:</b> 15–22 January 2027 (published). School registration opens 1 October 2026.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">UKBC page</a> &nbsp;<span class="dim">ukbiologycompetitions.org/british-biology-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ib</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukbiologycompetitions.org/intermediate-biology-olympiad/">Intermediate Biology Olympiad (UK Biology Competitions)</a></h3>
+      <div class="meta"><span>02</span><span>entry</span><span>Y12 only</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">The Y12 version of the Olympiad, sat in school in June. Good practice for the full Olympiad in Y13.</p>
+  <p class="when"><b>When:</b> 4–18 June 2027 (published). Registration opens 17 April 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukbiologycompetitions.org/intermediate-biology-olympiad/">UKBC page</a> &nbsp;<span class="dim">ukbiologycompetitions.org/intermediate-biology-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Pk</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Peterhouse Kelvin Sciences Essay Competition (Cambridge)</a></h3>
+      <div class="meta"><span>03</span><span>essay</span><span>Y12 (penultimate year), UK and Ireland</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An essay of up to 2,000 words on one of six science questions. In 2026 the biology options included species conservation, chirality in biology and why lifespan varies between species.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 20 April, teacher verification by 4 May. Confirm 2027 questions and deadline on the Peterhouse site in the spring.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Cb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.homerton.cam.ac.uk/cambridge-biology-challenge">Cambridge Biology Challenge (Homerton College)</a></h3>
+      <div class="meta"><span>04</span><span>essay</span><span>Y10–Y13, UK schools</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A team competition: a new Cambridge-style biology question every three weeks, answered as a poster, video, podcast or essay. Selected teams are invited to Homerton in August.</p>
+  <p class="when"><b>When:</b> Runs through the year; in 2025-26 the first question was released on 20 October 2025, with a new question every three weeks. Confirm 2026-27 start on the Homerton page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.homerton.cam.ac.uk/cambridge-biology-challenge">Homerton</a> &nbsp;<span class="dim">homerton.cam.ac.uk/cambridge-biology-challenge</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Rs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.rsb.org.uk/photo-competition.html">Royal Society of Biology Young Photographer of the Year</a></h3>
+      <div class="meta"><span>05</span><span>entry</span><span>18 and under; RSB membership not needed</span><span>enter yourself</span><span>No fee listed</span></div>
+    </div>
+  </div>
+  <p class="what">Photograph living things in their habitat to a set theme (2026: Colours of Nature). The winner receives £500 and an invitation to the Biology Week awards in London.</p>
+  <p class="when"><b>When:</b> 2026 competition ran 10 March–5 May. Confirm 2027 theme and dates on the RSB site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.rsb.org.uk/photo-competition.html">RSB page</a> &nbsp;<span class="dim">rsb.org.uk/photo-competition.html</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Dd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna">Jennifer Doudna: How CRISPR lets us edit our DNA</a></h3>
+      <div class="meta"><span>06</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Explain how Cas9 finds its target sequence using what you know of complementary base pairing (AQA 3.8.4). Which of her ethical concerns do you think is the most serious, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more">Maryn McKenna: What do we do when antibiotics don't work any more?</a></h3>
+      <div class="meta"><span>07</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Use the AQA account of natural selection (3.4.4) to explain how antibiotic resistance spreads through a bacterial population. Which of her proposed measures would slow it most?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/bonnie_bassler_how_bacteria_talk">Bonnie Bassler: How bacteria &quot;talk&quot;</a></h3>
+      <div class="meta"><span>08</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Quorum sensing switches genes on when a signal molecule reaches a threshold. Compare this with how oestrogen regulates transcription in AQA 3.8.2.2.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/bonnie_bassler_how_bacteria_talk">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/bonnie_bassler_how_bacteria_talk</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Kn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are">Rob Knight: How our microbes make us who we are</a></h3>
+      <div class="meta"><span>09</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Pick one link he describes between gut microbes and a condition. How would you design a study to show the microbes cause it, rather than being correlated with it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other">Suzanne Simard: How trees talk to each other</a></h3>
+      <div class="meta"><span>10</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Where do mycorrhizae appear in the AQA nutrient cycles (3.5.4)? Which of her claims about trees sharing carbon are supported by the evidence she shows, and which go further than it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/suzanne_simard_how_trees_talk_to_each_other</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">Matt Walker: Sleep is your superpower</a></h3>
+      <div class="meta"><span>11</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose two of his statistics. For each, say whether it shows correlation or causation and what data you would need before accepting it.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/matt_walker_sleep_is_your_superpower</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Yn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/ed_yong_zombie_roaches_and_other_parasite_tales">Ed Yong: Zombie roaches and other parasite tales</a></h3>
+      <div class="meta"><span>12</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one parasite that changes its host's behaviour. Which parts of AQA 3.6 (receptors, nervous coordination, synapses) would the parasite have to act on?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/ed_yong_zombie_roaches_and_other_parasite_tales">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/ed_yong_zombie_roaches_and_other_parasite_tales</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hu</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood">Edmond Hui: How the heart actually pumps blood</a></h3>
+      <div class="meta"><span>13</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Sketch the pressure changes in the left atrium, left ventricle and aorta through one cardiac cycle and mark when each valve opens and closes (AQA 3.3.4.1).</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ri</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Royal Institution Christmas Lectures archive</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Every series back to the 1960s. For biology, start with Who Am I? (2018) or Going Viral (2021).</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Ri archive</a> &nbsp;<span class="dim">rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ry</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Royal Institution YouTube channel</a></h3>
+      <div class="meta"><span>15</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Full talks by working scientists. Subscribe and pick what interests you.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Ri YouTube</a> &nbsp;<span class="dim">youtube.com/user/TheRoyalInstitution</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/science">Gresham College Science for schools</a></h3>
+      <div class="meta"><span>16</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free hour-long university lectures. The immunology and evolution series match topics in the course.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/science">Gresham Science</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/science</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/biology-whole-story">Biology: The Whole Story (University of Oxford)</a></h3>
+      <div class="meta"><span>17</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Ten videos from an Oxford biologist, one per big idea in biology. Watch the one that matches the topic you are on.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/biology-whole-story">Oxford podcasts</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/biology-whole-story</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/biology">Cambridge HE+ Biology</a></h3>
+      <div class="meta"><span>18</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">University-style study units from Cambridge. Epigenetics and neuroscience follow on directly from the course.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/biology">HE+ Biology</a> &nbsp;<span class="dim">myheplus.com/subject/biology</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rsb.org.uk/a-to-z-biosciences.html">Royal Society of Biology: A to Z of the Biosciences</a></h3>
+      <div class="meta"><span>19</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Biologists explain what their job involves and how they got there.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rsb.org.uk/a-to-z-biosciences.html">RSB A to Z</a> &nbsp;<span class="dim">rsb.org.uk/a-to-z-biosciences.html</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 7 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Nn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.nature.com/news">Nature news</a></h3>
+      <div class="meta"><span>20</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free news pages of the journal.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.nature.com/news">nature.com/news</a> &nbsp;<span class="dim">nature.com/news</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.rsb.org.uk/join-bionet.html">The Biologist (Royal Society of Biology) and BioNet membership</a></h3>
+      <div class="meta"><span>21</span><span>10m</span><span>£10 a year for full access</span></div>
+    </div>
+  </div>
+  <p class="what">The Royal Society of Biology's magazine. Some articles are free; the full magazine comes with £10 student membership.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.rsb.org.uk/join-bionet.html">RSB BioNet</a> &nbsp;<span class="dim">rsb.org.uk/join-bionet.html</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ns</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.newscientist.com/">New Scientist</a></h3>
+      <div class="meta"><span>22</span><span>10m</span><span>paid; check library</span></div>
+    </div>
+  </div>
+  <p class="what">Ask the library whether the school has a subscription.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.newscientist.com/">newscientist.com</a> &nbsp;<span class="dim">newscientist.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ts</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Selfish Gene, by Richard Dawkins</span></h3>
+      <div class="meta"><span>23</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The classic book on evolution from the gene's point of view.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ic</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">I Contain Multitudes, by Ed Yong</span></h3>
+      <div class="meta"><span>24</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How microbes shape every animal, including you. Pairs with the Ed Yong and Rob Knight talks.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">El</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Entangled Life, by Merlin Sheldrake</span></h3>
+      <div class="meta"><span>25</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A book about fungi. Read it alongside the Suzanne Simard talk.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tg</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Gene: An Intimate History, by Siddhartha Mukherjee</span></h3>
+      <div class="meta"><span>26</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The history of genetics from Mendel to gene editing. Chapters can be read on their own.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 3 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>27</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for photosynthesis, the Krebs cycle, epigenetics, the immune system, Darwin, Mendel.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.rsb.org.uk/podcast.html">Bioscience Matters (Royal Society of Biology podcast)</a></h3>
+      <div class="meta"><span>28</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The Royal Society of Biology's own podcast. Free.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.rsb.org.uk/podcast.html">RSB podcast</a> &nbsp;<span class="dim">rsb.org.uk/podcast.html</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ti</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">The Infinite Monkey Cage</a></h3>
+      <div class="meta"><span>29</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Lighter science radio if you have not listened to anything before.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">Infinite Monkey Cage</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b00snr0w</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 3 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://ukbiologycompetitions.org/british-biology-olympiad/">British Biology Olympiad past papers</a></h3>
+      <div class="meta"><span>30</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past Olympiad papers. There are no mark schemes, so look up anything you get stuck on.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://ukbiologycompetitions.org/british-biology-olympiad/">UKBC past papers</a> &nbsp;<span class="dim">ukbiologycompetitions.org/british-biology-olympiad</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">So</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.rsb.org.uk/citizen-science.html">Signs of Spring (RSB and Field Studies Council)</a></h3>
+      <div class="meta"><span>31</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Record the first snowdrops, frogspawn and bumblebees you see between January and June and add them to a national map.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.rsb.org.uk/citizen-science.html">RSB citizen science</a> &nbsp;<span class="dim">rsb.org.uk/citizen-science.html</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Zn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.zooniverse.org/projects?discipline=biology">Zooniverse</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Classify real research data online, such as camera-trap photos of wildlife.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.zooniverse.org/projects?discipline=biology">zooniverse.org</a> &nbsp;<span class="dim">zooniverse.org/projects?discipline=biology</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 2 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Nuffield Research Placements (delivered by STEM Learning)</a></h3>
+      <div class="meta"><span>33</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A summer placement in a real lab. Check the eligibility criteria first.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm on the STEM Learning site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Details</a> &nbsp;<span class="dim">nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">In2Science UK: In2STEM</a></h3>
+      <div class="meta"><span>34</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A one to two week summer placement with researchers, with travel and lunch paid. Check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications opened December 2025 and closed April 2026; confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/our-programmes/in2stem</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your biology year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">1 October 2026</div><span class="sym dot">1</span><div><b>British Biology Olympiad registration opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">8–18 October 2026</div><span class="sym dot">2</span><div><b>RSB Biology Week</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">3</span><div><b>Cambridge Biology Challenge starts</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">4</span><div><b>Nuffield Research Placements applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026</div><span class="sym dot">5</span><div><b>In2STEM applications open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late December 2026</div><span class="sym dot">6</span><div><b>Ri Christmas Lectures on BBC / iPlayer (2026 series is physics)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">15–22 January 2027</div><span class="sym dot">7</span><div><b>British Biology Olympiad papers</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">8</span><div><b>RSB Young Photographer of the Year opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">9</span><div><b>Peterhouse Kelvin Sciences Essay questions</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">17 April 2027; papers 4–18 June 2027</div><span class="sym dot">10</span><div><b>Intermediate Biology Olympiad registration and papers</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Field notebook</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Biology Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

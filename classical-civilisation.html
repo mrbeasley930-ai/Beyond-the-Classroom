@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Classical Civilisation beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#A12A2A; --watch:#1F4E8C; --listen:#5E3C8F; --read:#8C5A1E; --do:#2E6B45; --apply:#1C6E6B;
+  --f-display:"Marcellus",system-ui,sans-serif;
+  --f-body:"Crimson Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1F3550; --hero-ink:#FBF7EE; --hero-muted:#B8C6D6;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:19pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Classical Civilisation · 2026-27</div>
+      <h1>Classical Civilisation beyond the classroom<span class="sub">36 things to read, hear, watch and enter. Free unless the entry says otherwise.</span></h1>
+      <p>Classics and Ancient History courses expect you to have read beyond the set texts and to know something of the scholarship. The podcasts and lectures below are where that is; the essay prizes are where you use it. Visit a museum with a Greek or Roman gallery and write down one object. Each time you do something, write one line in your commentary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="read"></span><span data-g="listen"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey"><span class="sym">Ds</span></a><div><div class="step">Watch · Dash</div><p>Watch Jill Dash on the Odyssey (5 min), then reread the Cyclops episode in Book 9 and decide whether Odysseus' boast is heroic.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/sounds/brand/b077x8pc"><span class="sym">Nh</span></a><div><div class="step">Listen · Natalie Haynes Stands Up for…</div><p>Listen to one episode of Natalie Haynes Stands Up for the Classics on a writer or figure from your course.</p></div></div><div class="pick" data-g="watch"><a href="https://www.gresham.ac.uk/schools-and-colleges/classics"><span class="sym">Gc</span></a><div><div class="step">Gresham · Gresham College: Classics…</div><p>Watch one Gresham lecture from the Classics for schools page and write down one claim you could test against a text you study.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The mosaic</h2>
+    <div class="key"><span>One tessera per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 6</span></div><a class="tile" data-g="read" href="https://classicalassociation.org/product/omnibus-92/">
+  <span class="fam">Read</span>
+  <span class="sym">Om</span>
+  <span class="nm">Omnibus</span>
+  <span class="row"><span>01</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Omnibus (Classical Association)</b><i>Read · paid per issue · 10m</i><span>Short articles by university classicists, written for sixth formers. Ask for the department copy.</span><em>Omnibus 92 ↗</em></span></a><a class="tile" data-g="read" href="https://www.poetryintranslation.com/">
+  <span class="fam">Read</span>
+  <span class="sym">As</span>
+  <span class="nm">A.S. Kline translations</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>A.S. Kline translations (Poetry in Translation)</b><i>Read · 10m</i><span>Free translations of Homer, Virgil and Ovid. Use them to read the books outside the prescription.</span><em>Poetry in Translation ↗</em></span></a><a class="tile" data-g="read" href="https://classicsforall.org.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Cl</span>
+  <span class="nm">Classics for All: reading…</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Classics for All: reading room and Classics Matters</b><i>Read · 10m</i><span>Reviews of new Classics books; a good way to choose what to read next.</span><em>Classics for All ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">To</span>
+  <span class="nm">The Odyssey</span>
+  <span class="row"><span>04</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Odyssey (translation and introduction), by Emily Wilson</b><i>Read · book · book</i><span>A modern translation; read the introduction and compare a passage with the Rieu you study.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ps</span>
+  <span class="nm">Pandora's Jar</span>
+  <span class="row"><span>05</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Pandora's Jar, by Natalie Haynes</b><i>Read · book · book</i><span>Short chapters on women in Greek myth, including Penelope.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Sp</span>
+  <span class="nm">SPQR</span>
+  <span class="row"><span>06</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>SPQR, by Mary Beard</b><i>Read · book · book</i><span>A readable history of Rome; read the chapters on Augustus alongside the Aeneid.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 5</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time archive</span>
+  <span class="row"><span>07</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time archive</b><i>Listen · 30m</i><span>Search the archive for your set text or topic. Three academics, 45 minutes.</span><em>In Our Time ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/sounds/brand/b077x8pc">
+  <span class="fam">Listen</span>
+  <span class="sym">Nh</span>
+  <span class="nm">Natalie Haynes Stands Up for…</span>
+  <span class="row"><span>08</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Natalie Haynes Stands Up for the Classics (BBC Radio 4)</b><i>Listen · 30m</i><span>Half-hour comedy-lectures on one ancient writer or figure at a time, with an expert guest.</span><em>BBC Sounds ↗</em></span></a><a class="tile" data-g="listen" href="https://classicalassociation.org/podcast/">
+  <span class="fam">Listen</span>
+  <span class="sym">Tc</span>
+  <span class="nm">The Classics Podcast</span>
+  <span class="row"><span>09</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Classics Podcast (Classical Association)</b><i>Listen · 30m</i><span>Free series on the Aeneid, Roman coins and inscriptions.</span><em>Classics Podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.ox.ac.uk/units/faculty-classics">
+  <span class="fam">Listen</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Oxford…</span>
+  <span class="row"><span>10</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>University of Oxford: Faculty of Classics podcasts</b><i>Listen · 30m</i><span>Oxford recordings, including Emily Wilson on translating the Odyssey.</span><em>Oxford podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://partialhistorians.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Tp</span>
+  <span class="nm">The Partial Historians</span>
+  <span class="row"><span>11</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Partial Historians</b><i>Listen · 30m</i><span>Roman history in order, from the founding of the city.</span><em>Partial Historians ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey">
+  <span class="fam">Watch</span>
+  <span class="sym">Ds</span>
+  <span class="nm">Dash</span>
+  <span class="row"><span>12</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Jill Dash: Everything you need to know to read Homer's &quot;Odyssey&quot;</b><i>Watch · TED-Ed · 5m</i><span>The talk dwells on the Cyclops. Using Odyssey 9, argue whether Odysseus' boast to Polyphemus shows heroic kleos or the lack of restraint that costs him his crew.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid">
+  <span class="fam">Watch</span>
+  <span class="sym">Rb</span>
+  <span class="nm">Robinson</span>
+  <span class="row"><span>13</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Mark Robinson: Why should you read Virgil's &quot;Aeneid&quot;?</b><i>Watch · TED-Ed · 5m</i><span>Why might Augustus have wanted the Aeneid published against Virgil's wishes? Find one passage that supports your answer (for example the Parade of Heroes or the Shield) and one that complicates it.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/matthew_winkler_what_makes_a_hero">
+  <span class="fam">Watch</span>
+  <span class="sym">Wn</span>
+  <span class="nm">Winkler</span>
+  <span class="row"><span>14</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Matthew Winkler: What makes a hero?</b><i>Watch · TED-Ed · 4m</i><span>Test Campbell's hero's journey against Odysseus or Aeneas. Where does the pattern break, and what does the break tell you about Homer's or Virgil's idea of a hero? This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/iseult_gillespie_the_tragedy_of_cassandra_the_princess_who_predicted_the_fall_of_troy">
+  <span class="fam">Watch</span>
+  <span class="sym">Gl</span>
+  <span class="nm">Gillespie</span>
+  <span class="row"><span>15</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Iseult Gillespie: The tragedy of Cassandra, the princess who predicted the fall of Troy</b><i>Watch · TED-Ed · 4m</i><span>Compare this retelling with the fall of Troy in Aeneid 2. Why does Virgil give the story to a Trojan narrator, and what does that do to the Greeks?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">MacGregor</span>
+  <span class="row"><span>16</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Neil MacGregor: 2600 years of history in one object</b><i>Watch · talk · 19m</i><span>Does the Cyrus Cylinder support or undercut the Greek picture of Persian kingship in Herodotus or Aeschylus' Persians? Give one point each way.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history">
+  <span class="fam">Watch</span>
+  <span class="sym">Rn</span>
+  <span class="nm">Robinson</span>
+  <span class="row"><span>17</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Mark Robinson: Why is Herodotus called &quot;The Father of History&quot;?</b><i>Watch · TED-Ed · 5m</i><span>Herodotus often reports stories without vouching for them. Take one story you know from him and decide what it tells us about Greek views of non-Greeks rather than about the non-Greeks themselves.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/stephen_esposito_the_greek_tragedy_of_oedipus_daughter">
+  <span class="fam">Watch</span>
+  <span class="sym">Es</span>
+  <span class="nm">Esposito</span>
+  <span class="row"><span>18</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Stephen Esposito: The Greek tragedy of Oedipus' daughter</b><i>Watch · TED-Ed · 5m</i><span>Antigone sets divine law against the city's law. How would an Athenian audience have judged her? Compare how the gods' authority works in Oedipus the King.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment">
+  <span class="fam">Watch</span>
+  <span class="sym">Vz</span>
+  <span class="nm">Vazquez</span>
+  <span class="row"><span>19</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Michael Vazquez: Plato's infamous Ship of State thought experiment</b><i>Watch · TED-Ed · 5m</i><span>Is Plato's ship a fair picture of Athenian democracy? Name one institution he leaves out. For Love and Relationships, say how this Plato compares with the Plato of the Symposium.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/classics">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Classics…</span>
+  <span class="row"><span>20</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Classics for schools</b><i>Watch · lecture · 1h</i><span>Free university lectures, about 45 minutes each. Melissa Lane on Greek politics is a good place to start.</span><em>Gresham Classics ↗</em></span></a><a class="tile" data-g="watch" href="https://clasoutreach.web.ox.ac.uk/classical-conversations">
+  <span class="fam">Watch</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford Classics: Classical…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Classics: Classical Conversations and school talks</b><i>Watch · lecture · 1h</i><span>Oxford classicists can run a session for your class. Ask your teacher.</span><em>Oxford outreach ↗</em></span></a><a class="tile" data-g="watch" href="https://www.classics.cam.ac.uk/prospective/schools">
+  <span class="fam">Watch</span>
+  <span class="sym">Cf</span>
+  <span class="nm">Cambridge Faculty of…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Faculty of Classics: school sessions and Oxbridge Classics Open Day</b><i>Watch · lecture · 1h</i><span>Watch the recorded Oxbridge Classics Open Day for sample university lectures.</span><em>Cambridge Classics ↗</em></span></a><a class="tile" data-g="watch" href="https://www.theclassicslibrary.com/bmca-a-level-classics-conference-2026-2/">
+  <span class="fam">Watch</span>
+  <span class="sym">Ba</span>
+  <span class="nm">BMCA A Level Texts and…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>BMCA A Level Texts and Topics Conference (King Edward's School, Birmingham)</b><i>Watch · lecture · 1h</i><span>A day of Classics workshops at King Edward's School, Birmingham. Ask your teacher about places.</span><em>BMCA conference ↗</em></span></a><a class="tile" data-g="watch" href="https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/">
+  <span class="fam">Watch</span>
+  <span class="sym">Cg</span>
+  <span class="nm">Cambridge Greek Play 2026…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Greek Play 2026: Euripides' Ion</b><i>Watch · lecture · 1h</i><span>A Greek tragedy performed in ancient Greek, with English surtitles, in Cambridge this October.</span><em>Arts Theatre ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ca</span>
+  <span class="nm">Classics and Ancient History…</span>
+  <span class="row"><span>25</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Classics and Ancient History Essay Competition (St John's College, Oxford)</b><i>Enter · essay</i><span>Up to 2,000 words on one question from four strands: literature, history, art and archaeology, philosophy. £100 book token for each strand winner, and a separate prize for the best essay from someone new to Classics.</span><em>St John's ↗</em></span></a><a class="tile" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">
+  <span class="fam">Enter</span>
+  <span class="sym">Aw</span>
+  <span class="nm">Ancient World and Classics…</span>
+  <span class="row"><span>26</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Ancient World and Classics Essay Competition (Fitzwilliam College, Cambridge)</b><i>Enter · entry</i><span>2,000–2,500 words on one of six questions, with a research log. 2026 questions included women in ancient Greece and judging ancient figures by modern standards. £200 first prize. No generative AI.</span><em>Fitzwilliam ↗</em></span></a><a class="tile" data-g="enter" href="https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/">
+  <span class="fam">Enter</span>
+  <span class="sym">Mr</span>
+  <span class="nm">Mary Renault Classical…</span>
+  <span class="row"><span>27</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Mary Renault Classical Reception Essay Competition (St Hugh's College, Oxford)</b><i>Enter · Y12 and Y13 · entry</i><span>2,000–4,000 words on how a classical text has been reworked in later literature, film or theatre. You choose the topic. 2026 winners wrote on Sartre's Aeschylus and modern musicals. No generative AI.</span><em>St Hugh's ↗</em></span></a><a class="tile" data-g="enter" href="https://classicalassociation.org/competition/omnibus-competitions/">
+  <span class="fam">Enter</span>
+  <span class="sym">Oc</span>
+  <span class="nm">Omnibus competitions…</span>
+  <span class="row"><span>28</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Omnibus competitions: Gladstone Memorial Essay Prize and Sam Hood Translation Prize (Classical Association)</b><i>Enter · essay</i><span>Essay: up to 2,000 words on one of eight topics (2027 includes gods in Homer and Virgil, and dramatic choruses); £200 first, £100 second. Translation: one passage of Latin or Greek (Livy, Virgil, Juvenal, Sophocles, Aristophanes, Lucian); £75 and a book. No AI and no tutors.</span><em>CA page ↗</em></span></a><a class="tile" data-g="enter" href="https://www.girton.cam.ac.uk/humanities-writing-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Hw</span>
+  <span class="nm">Humanities Writing Competition</span>
+  <span class="row"><span>29</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Humanities Writing Competition (Girton College, Cambridge)</b><i>Enter · essay</i><span>Write about objects from Girton's Lawrence Room museum, which holds Egyptian, Greek and Roman material. An essay or a creative piece (monologue, story, poem) is accepted.</span><em>Girton ↗</em></span></a><a class="tile" data-g="enter" href="https://clasoutreach.web.ox.ac.uk/competitions">
+  <span class="fam">Enter</span>
+  <span class="sym">Of</span>
+  <span class="nm">Oxford Faculty of Classics…</span>
+  <span class="row"><span>30</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Faculty of Classics outreach competitions</b><i>Enter · entry</i><span>Creative and written competitions run by the Oxford Classics Faculty. Check the page in the spring.</span><em>Oxford Classics ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 4</span></div><a class="tile" data-g="do" href="https://myheplus.com/subject/classics">
+  <span class="fam">Do</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Classics</span>
+  <span class="row"><span>31</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Classics</b><i>Do · 20m</i><span>Two short modules with questions, written by Cambridge academics.</span><em>HE+ Classics ↗</em></span></a><a class="tile" data-g="do" href="https://clasoutreach.web.ox.ac.uk/learning-resources">
+  <span class="fam">Do</span>
+  <span class="sym">Or</span>
+  <span class="nm">Oxford Classics learning…</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Classics learning resources</b><i>Do · 20m</i><span>Short animated guides to the Aeneid and Iliad, and other free resources.</span><em>Oxford resources ↗</em></span></a><a class="tile" data-g="do" href="https://research.ncl.ac.uk/classicsepq/">
+  <span class="fam">Do</span>
+  <span class="sym">Ce</span>
+  <span class="nm">Classics EPQ</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Classics EPQ (Newcastle University)</b><i>Do · 20m</i><span>Ideas and how-to guides if you want to do an EPQ on the ancient world.</span><em>Classics EPQ ↗</em></span></a><a class="tile" data-g="do" href="https://classicsforall.org.uk/get-involved/chorus">
+  <span class="fam">Do</span>
+  <span class="sym">Th</span>
+  <span class="nm">The Chorus</span>
+  <span class="row"><span>34</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>The Chorus (Classics for All)</b><i>Do · 20m</i><span>A free network of young classicists. You can write for its blog and attend online talks. You need a parent's consent.</span><em>The Chorus ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 2</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/courses">
+  <span class="fam">Apply</span>
+  <span class="sym">Un</span>
+  <span class="nm">UNIQ</span>
+  <span class="row"><span>35</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford)</b><i>Apply · apply</i><span>A free week in Oxford studying Classics, with support for applying. Applications open in December.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">
+  <span class="fam">Apply</span>
+  <span class="sym">St</span>
+  <span class="nm">Sutton Trust UK Summer Schools</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust UK Summer Schools</b><i>Apply · apply</i><span>A free university summer school. Check whether Classics or Ancient History is on offer this year.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 6 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Om</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://classicalassociation.org/product/omnibus-92/">Omnibus (Classical Association)</a></h3>
+      <div class="meta"><span>01</span><span>10m</span><span>paid per issue</span></div>
+    </div>
+  </div>
+  <p class="what">Short articles by university classicists, written for sixth formers. Ask for the department copy.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://classicalassociation.org/product/omnibus-92/">Omnibus 92</a> &nbsp;<span class="dim">classicalassociation.org/product/omnibus-92</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">As</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.poetryintranslation.com/">A.S. Kline translations (Poetry in Translation)</a></h3>
+      <div class="meta"><span>02</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free translations of Homer, Virgil and Ovid. Use them to read the books outside the prescription.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.poetryintranslation.com/">Poetry in Translation</a> &nbsp;<span class="dim">poetryintranslation.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://classicsforall.org.uk/">Classics for All: reading room and Classics Matters</a></h3>
+      <div class="meta"><span>03</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Reviews of new Classics books; a good way to choose what to read next.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://classicsforall.org.uk/">Classics for All</a> &nbsp;<span class="dim">classicsforall.org.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">To</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Odyssey (translation and introduction), by Emily Wilson</span></h3>
+      <div class="meta"><span>04</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A modern translation; read the introduction and compare a passage with the Rieu you study.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ps</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Pandora's Jar, by Natalie Haynes</span></h3>
+      <div class="meta"><span>05</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Short chapters on women in Greek myth, including Penelope.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Sp</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">SPQR, by Mary Beard</span></h3>
+      <div class="meta"><span>06</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A readable history of Rome; read the chapters on Augustus alongside the Aeneid.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 5 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">BBC In Our Time archive</a></h3>
+      <div class="meta"><span>07</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for your set text or topic. Three academics, 45 minutes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">In Our Time</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qykl</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Nh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/sounds/brand/b077x8pc">Natalie Haynes Stands Up for the Classics (BBC Radio 4)</a></h3>
+      <div class="meta"><span>08</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Half-hour comedy-lectures on one ancient writer or figure at a time, with an expert guest.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/sounds/brand/b077x8pc">BBC Sounds</a> &nbsp;<span class="dim">bbc.co.uk/sounds/brand/b077x8pc</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://classicalassociation.org/podcast/">The Classics Podcast (Classical Association)</a></h3>
+      <div class="meta"><span>09</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Free series on the Aeneid, Roman coins and inscriptions.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://classicalassociation.org/podcast/">Classics Podcast</a> &nbsp;<span class="dim">classicalassociation.org/podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/units/faculty-classics">University of Oxford: Faculty of Classics podcasts</a></h3>
+      <div class="meta"><span>10</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford recordings, including Emily Wilson on translating the Odyssey.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/units/faculty-classics">Oxford podcasts</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/units/faculty-classics</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://partialhistorians.com/">The Partial Historians</a></h3>
+      <div class="meta"><span>11</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Roman history in order, from the founding of the city.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://partialhistorians.com/">Partial Historians</a> &nbsp;<span class="dim">partialhistorians.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ds</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey">Jill Dash: Everything you need to know to read Homer's &quot;Odyssey&quot;</a></h3>
+      <div class="meta"><span>12</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> The talk dwells on the Cyclops. Using Odyssey 9, argue whether Odysseus' boast to Polyphemus shows heroic kleos or the lack of restraint that costs him his crew.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid">Mark Robinson: Why should you read Virgil's &quot;Aeneid&quot;?</a></h3>
+      <div class="meta"><span>13</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Why might Augustus have wanted the Aeneid published against Virgil's wishes? Find one passage that supports your answer (for example the Parade of Heroes or the Shield) and one that complicates it.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/matthew_winkler_what_makes_a_hero">Matthew Winkler: What makes a hero?</a></h3>
+      <div class="meta"><span>14</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Test Campbell's hero's journey against Odysseus or Aeneas. Where does the pattern break, and what does the break tell you about Homer's or Virgil's idea of a hero? This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/matthew_winkler_what_makes_a_hero">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/matthew_winkler_what_makes_a_hero</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/iseult_gillespie_the_tragedy_of_cassandra_the_princess_who_predicted_the_fall_of_troy">Iseult Gillespie: The tragedy of Cassandra, the princess who predicted the fall of Troy</a></h3>
+      <div class="meta"><span>15</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Compare this retelling with the fall of Troy in Aeneid 2. Why does Virgil give the story to a Trojan narrator, and what does that do to the Greeks?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/iseult_gillespie_the_tragedy_of_cassandra_the_princess_who_predicted_the_fall_of_troy">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/iseult_gillespie_the_tragedy_of_cassandra_the_princess_who_predicted_the_fall_of_troy</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object">Neil MacGregor: 2600 years of history in one object</a></h3>
+      <div class="meta"><span>16</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Does the Cyrus Cylinder support or undercut the Greek picture of Persian kingship in Herodotus or Aeschylus' Persians? Give one point each way.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history">Mark Robinson: Why is Herodotus called &quot;The Father of History&quot;?</a></h3>
+      <div class="meta"><span>17</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Herodotus often reports stories without vouching for them. Take one story you know from him and decide what it tells us about Greek views of non-Greeks rather than about the non-Greeks themselves.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Es</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/stephen_esposito_the_greek_tragedy_of_oedipus_daughter">Stephen Esposito: The Greek tragedy of Oedipus' daughter</a></h3>
+      <div class="meta"><span>18</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Antigone sets divine law against the city's law. How would an Athenian audience have judged her? Compare how the gods' authority works in Oedipus the King.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/stephen_esposito_the_greek_tragedy_of_oedipus_daughter">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/stephen_esposito_the_greek_tragedy_of_oedipus_daughter</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Vz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment">Michael Vazquez: Plato's infamous Ship of State thought experiment</a></h3>
+      <div class="meta"><span>19</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Is Plato's ship a fair picture of Athenian democracy? Name one institution he leaves out. For Love and Relationships, say how this Plato compares with the Plato of the Symposium.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/classics">Gresham College: Classics for schools</a></h3>
+      <div class="meta"><span>20</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures, about 45 minutes each. Melissa Lane on Greek politics is a good place to start.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/classics">Gresham Classics</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/classics</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://clasoutreach.web.ox.ac.uk/classical-conversations">Oxford Classics: Classical Conversations and school talks</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford classicists can run a session for your class. Ask your teacher.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://clasoutreach.web.ox.ac.uk/classical-conversations">Oxford outreach</a> &nbsp;<span class="dim">clasoutreach.web.ox.ac.uk/classical-conversations</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.classics.cam.ac.uk/prospective/schools">Cambridge Faculty of Classics: school sessions and Oxbridge Classics Open Day</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Watch the recorded Oxbridge Classics Open Day for sample university lectures.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.classics.cam.ac.uk/prospective/schools">Cambridge Classics</a> &nbsp;<span class="dim">classics.cam.ac.uk/prospective/schools</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ba</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.theclassicslibrary.com/bmca-a-level-classics-conference-2026-2/">BMCA A Level Texts and Topics Conference (King Edward's School, Birmingham)</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A day of Classics workshops at King Edward's School, Birmingham. Ask your teacher about places.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.theclassicslibrary.com/bmca-a-level-classics-conference-2026-2/">BMCA conference</a> &nbsp;<span class="dim">theclassicslibrary.com/bmca-a-level-classics-conference-2026-2</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/">Cambridge Greek Play 2026: Euripides' Ion</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A Greek tragedy performed in ancient Greek, with English surtitles, in Cambridge this October.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/">Arts Theatre</a> &nbsp;<span class="dim">artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ca</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/">Classics and Ancient History Essay Competition (St John's College, Oxford)</a></h3>
+      <div class="meta"><span>25</span><span>essay</span><span>Y12 in any UK school; no prior study of classical subjects needed</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 2,000 words on one question from four strands: literature, history, art and archaeology, philosophy. £100 book token for each strand winner, and a separate prize for the best essay from someone new to Classics.</p>
+  <p class="when"><b>When:</b> Deadline late February 2027 (2026 was 22 February, 4pm); subject exploration day in April (2026 was 22 April). Confirm on the St John's page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/">St John's</a> &nbsp;<span class="dim">sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Aw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">Ancient World and Classics Essay Competition (Fitzwilliam College, Cambridge)</a></h3>
+      <div class="meta"><span>26</span><span>entry</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">2,000–2,500 words on one of six questions, with a research log. 2026 questions included women in ancient Greece and judging ancient figures by modern standards. £200 first prize. No generative AI.</p>
+  <p class="when"><b>When:</b> Questions usually published in October; deadline late February 2027 (2026 was 27 February, 6pm). Confirm on the Fitzwilliam page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">Fitzwilliam</a> &nbsp;<span class="dim">fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Mr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/">Mary Renault Classical Reception Essay Competition (St Hugh's College, Oxford)</a></h3>
+      <div class="meta"><span>27</span><span>entry</span><span>Y12 and Y13</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">2,000–4,000 words on how a classical text has been reworked in later literature, film or theatre. You choose the topic. 2026 winners wrote on Sartre's Aeschylus and modern musicals. No generative AI.</p>
+  <p class="when"><b>When:</b> Deadline in July (2026 was 22 July, 2pm); winners announced in August. 2027 details not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/">St Hugh's</a> &nbsp;<span class="dim">st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Oc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://classicalassociation.org/competition/omnibus-competitions/">Omnibus competitions: Gladstone Memorial Essay Prize and Sam Hood Translation Prize (Classical Association)</a></h3>
+      <div class="meta"><span>28</span><span>essay</span><span>Under 19 and in full-time pre-university education</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Essay: up to 2,000 words on one of eight topics (2027 includes gods in Homer and Virgil, and dramatic choruses); £200 first, £100 second. Translation: one passage of Latin or Greek (Livy, Virgil, Juvenal, Sophocles, Aristophanes, Lucian); £75 and a book. No AI and no tutors.</p>
+  <p class="when"><b>When:</b> Deadline 2pm, Wednesday 7 July 2027. Full instructions appear in Omnibus 93.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://classicalassociation.org/competition/omnibus-competitions/">CA page</a> &nbsp;<span class="dim">classicalassociation.org/competition/omnibus-competitions</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Hw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.girton.cam.ac.uk/humanities-writing-competition">Humanities Writing Competition (Girton College, Cambridge)</a></h3>
+      <div class="meta"><span>29</span><span>essay</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Write about objects from Girton's Lawrence Room museum, which holds Egyptian, Greek and Roman material. An essay or a creative piece (monologue, story, poem) is accepted.</p>
+  <p class="when"><b>When:</b> 2026-27 round launches in the autumn term. Confirm on the Girton page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.girton.cam.ac.uk/humanities-writing-competition">Girton</a> &nbsp;<span class="dim">girton.cam.ac.uk/humanities-writing-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Of</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://clasoutreach.web.ox.ac.uk/competitions">Oxford Faculty of Classics outreach competitions</a></h3>
+      <div class="meta"><span>30</span><span>entry</span><span>School pupils; categories vary by year</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Creative and written competitions run by the Oxford Classics Faculty. Check the page in the spring.</p>
+  <p class="when"><b>When:</b> 2026 entries closed; new competitions to be announced in spring 2027. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://clasoutreach.web.ox.ac.uk/competitions">Oxford Classics</a> &nbsp;<span class="dim">clasoutreach.web.ox.ac.uk/competitions</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 4 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://myheplus.com/subject/classics">Cambridge HE+ Classics</a></h3>
+      <div class="meta"><span>31</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Two short modules with questions, written by Cambridge academics.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://myheplus.com/subject/classics">HE+ Classics</a> &nbsp;<span class="dim">myheplus.com/subject/classics</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Or</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://clasoutreach.web.ox.ac.uk/learning-resources">Oxford Classics learning resources</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Short animated guides to the Aeneid and Iliad, and other free resources.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://clasoutreach.web.ox.ac.uk/learning-resources">Oxford resources</a> &nbsp;<span class="dim">clasoutreach.web.ox.ac.uk/learning-resources</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ce</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://research.ncl.ac.uk/classicsepq/">Classics EPQ (Newcastle University)</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Ideas and how-to guides if you want to do an EPQ on the ancient world.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://research.ncl.ac.uk/classicsepq/">Classics EPQ</a> &nbsp;<span class="dim">research.ncl.ac.uk/classicsepq</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Th</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://classicsforall.org.uk/get-involved/chorus">The Chorus (Classics for All)</a></h3>
+      <div class="meta"><span>34</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A free network of young classicists. You can write for its blog and attend online talks. You need a parent's consent.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://classicsforall.org.uk/get-involved/chorus">The Chorus</a> &nbsp;<span class="dim">classicsforall.org.uk/get-involved/chorus</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 2 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/courses">UNIQ (University of Oxford)</a></h3>
+      <div class="meta"><span>35</span><span>apply</span><span>Y12 in UK state schools; priority to under-represented groups</span></div>
+    </div>
+  </div>
+  <p class="what">A free week in Oxford studying Classics, with support for applying. Applications open in December.</p>
+  <p class="when"><b>When:</b> 2026 applications ran 15 December 2025 to 13 January 2026; residential late June–July. 2027 dates not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/courses">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk/courses</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Sutton Trust UK Summer Schools</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>Y12 in state schools with at least five GCSEs at 9–6; priority criteria apply</span></div>
+    </div>
+  </div>
+  <p class="what">A free university summer school. Check whether Classics or Ancient History is on offer this year.</p>
+  <p class="when"><b>When:</b> 2027 window not yet published; confirm on the portal.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Details</a> &nbsp;<span class="dim">suttontrust.com/our-programmes/uk-summer-schools</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your classical civilisation year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">1</span><div><b>Fitzwilliam 2027 Ancient World and Classics questions</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">14–17 October 2026</div><span class="sym dot">2</span><div><b>Cambridge Greek Play: Euripides' Ion, Arts Theatre</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">3</span><div><b>Girton Humanities Writing Competition launches</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">2026-27, date to confirm</div><span class="sym dot">4</span><div><b>BMCA Texts and Topics Conference, King Edward's School, Birmingham</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Mid-December 2026 to mid-January 2027</div><span class="sym dot">5</span><div><b>UNIQ 2027 applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Early 2027</div><span class="sym dot">6</span><div><b>Sutton Trust summer school applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late February 2027</div><span class="sym dot">7</span><div><b>St John's Oxford and Fitzwilliam essay deadlines</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">8</span><div><b>Oxford Classics outreach competitions and St Hugh's Mary Renault details</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">7 July 2027, 2pm</div><span class="sym dot">9</span><div><b>Omnibus Gladstone Essay and Sam Hood Translation deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late July 2027</div><span class="sym dot">10</span><div><b>Mary Renault Prize deadline</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your commentary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Classical Civilisation Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

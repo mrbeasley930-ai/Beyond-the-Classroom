@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Geography beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Nunito:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#C2410C; --watch:#0369A1; --listen:#6D28D9; --read:#854D0E; --do:#166534; --apply:#0F766E;
+  --f-display:"Outfit",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#0C4A6E; --hero-ink:#F0F9FF; --hero-muted:#A5CDE3;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Geography · 2026-27</div>
+      <h1>Geography beyond the classroom<span class="sub">39 things to watch, read, go to and enter. All free.</span></h1>
+      <p>Geography stretches from glaciers to housing policy, and universities want to see which end you have followed and how far. The RGS lectures, the podcasts and the essay prizes below cover both. Fieldwork counts: note what you see on any trip, and what you would measure if you went back. Each time you do something, write one line in your field notebook: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="enter"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="enter"><a href="https://www.rgs.org/join-us/student-membership"><span class="sym">Yg</span></a><div><div class="step">Join · Young Geographer of the Year…</div><p>Join the Royal Geographical Society as a student member. It is free for A level students and gives you Geographical magazine and the members-only talks.</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/peter_haas_haiti_s_disaster_of_engineering"><span class="sym">Hs</span></a><div><div class="step">Watch · Haas</div><p>Watch Peter Haas on the Haiti earthquake (8 min) and write down three reasons buildings failed.</p></div></div><div class="pick" data-g="listen"><a href="https://podcasts.apple.com/gb/podcast/ask-the-geographer/id1196746426"><span class="sym">At</span></a><div><div class="step">Listen · Ask the Geographer</div><p>Listen to one Ask the Geographer episode on a topic in your current unit.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The map key</h2>
+    <div class="key"><span>One symbol per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://www.rgs.org/schools/competitions/young-geographer-of-the-year">
+  <span class="fam">Enter</span>
+  <span class="sym">Yg</span>
+  <span class="nm">Young Geographer of the Year…</span>
+  <span class="row"><span>01</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Young Geographer of the Year 2026 (Royal Geographical Society)</b><i>Enter · entry</i><span>Theme: &quot;From Source to Sea&quot;. KS5 entrants make a poster or an Esri StoryMap on a river system: processes, landforms, and how people and nature use it. Links to Topic 2 (Landscape Systems) and Topic 5 (Water Cycle and Water Insecurity).</span><em>RGS YGOTY ↗</em></span></a><a class="tile" data-g="enter" href="https://www.rgs.org/schools/competitions/school-essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Rs</span>
+  <span class="nm">RGS School Essay Competition…</span>
+  <span class="row"><span>02</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>RGS School Essay Competition 2026</b><i>Enter · essay</i><span>Up to 1,000 words (or an ArcGIS StoryMap) on: &quot;What factors drive migration, how are patterns shifting and what are the consequences?&quot; You must cover climatic factors and post-2020 geopolitics and reference sources, including Financial Times articles (free through school). Fits Topic 8B (Migration, Identity and Sovereignty) and Topic 3 (Globalisation). Winner gets a £50 voucher and publication on the RGS site.</span><em>RGS essay ↗</em></span></a><a class="tile" data-g="enter" href="https://geography.org.uk/uk-national-geography-olympiad/">
+  <span class="fam">Enter</span>
+  <span class="sym">Un</span>
+  <span class="nm">UK National Geography Olympiad</span>
+  <span class="row"><span>03</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>UK National Geography Olympiad (Geographical Association)</b><i>Enter · entry</i><span>An online subject-knowledge quiz sat in school. The highest scores nationally are passed to the contact for the International Geography Olympiad (iGeo 2027 is in Jelgava, Latvia, 2–9 August 2027).</span><em>GA Olympiad ↗</em></span></a><a class="tile" data-g="enter" href="https://www.chch.ox.ac.uk/college/outreach/geography-study-day">
+  <span class="fam">Enter</span>
+  <span class="sym">Cc</span>
+  <span class="nm">Christ Church Geography…</span>
+  <span class="row"><span>04</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Christ Church Geography Essay Competition and Study Day (Oxford)</b><i>Enter · essay</i><span>An 800-word reflective essay that shows you thinking geographically (2026 theme: &quot;The Age of Humans&quot;). Selected entrants spend a free day at Christ Church with taster lectures and skills workshops.</span><em>Christ Church ↗</em></span></a><a class="tile" data-g="enter" href="https://www.rgs.org/schools/competitions/ron-cooke-award">
+  <span class="fam">Enter</span>
+  <span class="sym">Rc</span>
+  <span class="nm">Ron Cooke Award</span>
+  <span class="row"><span>05</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Ron Cooke Award (Royal Geographical Society)</b><i>Enter · entry</i><span>An award for an outstanding independent investigation (9GE0/04). If your NEA is strong, your teacher may nominate it.</span><em>Ron Cooke ↗</em></span></a><a class="tile" data-g="enter" href="https://www.oriel.ox.ac.uk/study-with-us/outreach-and-schools-liaison/what-we-do/events-and-prizes/rex-nettleford-prize-for-year-12-students/">
+  <span class="fam">Enter</span>
+  <span class="sym">Rn</span>
+  <span class="nm">Rex Nettleford Essay Prize…</span>
+  <span class="row"><span>06</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Rex Nettleford Essay Prize: Colonialism and its Legacies (Oriel College, Oxford)</b><i>Enter · entry</i><span>Up to 2,500 words on one of four questions about the legacies of colonialism, from any discipline. A geographer can answer through development, inequality or global governance (Topics 7, 8A and 8B). Two prizes of £250.</span><em>Oriel ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/peter_haas_haiti_s_disaster_of_engineering">
+  <span class="fam">Watch</span>
+  <span class="sym">Hs</span>
+  <span class="nm">Haas</span>
+  <span class="row"><span>07</span><span>8m</span></span>
+  <span class="pop" role="tooltip"><b>Peter Haas: When bad engineering makes a natural disaster even worse</b><i>Watch · talk · 8m</i><span>Topic 1: using Haiti 2010, explain how vulnerability as well as magnitude decided the death toll.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/jean_baptiste_p_koehl_why_are_earthquakes_so_hard_to_predict">
+  <span class="fam">Watch</span>
+  <span class="sym">Kh</span>
+  <span class="nm">Koehl</span>
+  <span class="row"><span>08</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Jean-Baptiste P. Koehl: Why are earthquakes so hard to predict?</b><i>Watch · TED-Ed · 5m</i><span>Topic 1: if earthquakes cannot be predicted, which parts of the hazard management cycle matter most, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/james_balog_time_lapse_proof_of_extreme_ice_loss">
+  <span class="fam">Watch</span>
+  <span class="sym">Bl</span>
+  <span class="nm">Balog</span>
+  <span class="row"><span>09</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>James Balog: Time-lapse proof of extreme ice loss</b><i>Watch · talk · 19m</i><span>Topic 2A: what does time-lapse photography show about glacier mass balance that a single field visit could not?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/johan_rockstrom_let_the_environment_guide_our_development">
+  <span class="fam">Watch</span>
+  <span class="sym">Rk</span>
+  <span class="nm">Rockstrm</span>
+  <span class="row"><span>10</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Johan Rockström: Let the environment guide our development</b><i>Watch · talk · 18m</i><span>Topic 6: which planetary boundaries connect to the carbon cycle, and how would you measure whether one had been crossed?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/hans_rosling_global_population_growth_box_by_box">
+  <span class="fam">Watch</span>
+  <span class="sym">Rl</span>
+  <span class="nm">Rosling</span>
+  <span class="row"><span>11</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Hans Rosling: Global population growth, box by box</b><i>Watch · talk · 10m</i><span>Topics 3 and 8A: what links falling child mortality to smaller families, and what does Rosling leave out about inequality within countries?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/alexander_betts_our_refugee_system_is_failing_here_s_how_we_can_fix_it">
+  <span class="fam">Watch</span>
+  <span class="sym">Bt</span>
+  <span class="nm">Betts</span>
+  <span class="row"><span>12</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Alexander Betts: Our refugee system is failing. Here's how we can fix it</b><i>Watch · talk · 18m</i><span>Topic 8B: which of his proposals would a sovereign state be most likely to refuse, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/alejandro_aravena_my_architectural_philosophy_bring_the_community_into_the_process">
+  <span class="fam">Watch</span>
+  <span class="sym">Ar</span>
+  <span class="nm">Aravena</span>
+  <span class="row"><span>13</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Alejandro Aravena: My architectural philosophy? Bring the community into the process</b><i>Watch · talk · 16m</i><span>Topic 4A: which players decide what a regeneration scheme looks like, and what changes when residents are one of them?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_is_china_the_new_idol_for_emerging_economies">
+  <span class="fam">Watch</span>
+  <span class="sym">My</span>
+  <span class="nm">Moyo</span>
+  <span class="row"><span>14</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Dambisa Moyo: Is China the new idol for emerging economies?</b><i>Watch · talk · 16m</i><span>Topic 7: does China's model threaten the United States' position as a superpower? Argue against her. This talk is there to be disagreed with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/paul_collier_the_bottom_billion">
+  <span class="fam">Watch</span>
+  <span class="sym">Cl</span>
+  <span class="nm">Collier</span>
+  <span class="row"><span>15</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Paul Collier: The &quot;bottom billion&quot;</b><i>Watch · talk · 17m</i><span>Topic 8A: pick one of his proposed interventions and set out who it would benefit and who it would not. This talk is there to be disagreed with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/geography-and-environment">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Geography…</span>
+  <span class="row"><span>16</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Geography and Environment</b><i>Watch · lecture · 1h</i><span>Free university lectures. Start with a Myles Allen lecture on net zero or a Carolyn Roberts lecture on flooding.</span><em>Gresham Geography ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rgs.org/events/talks-on-demand">
+  <span class="fam">Watch</span>
+  <span class="sym">Rt</span>
+  <span class="nm">RGS Talks on Demand and 21st…</span>
+  <span class="row"><span>17</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>RGS Talks on Demand and 21st Century Challenges</b><i>Watch · lecture · 1h</i><span>Recorded talks from the Royal Geographical Society. Free, and your free student membership unlocks the members-only ones.</span><em>RGS talks ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rgs.org/schools/careers-and-progression/ambassadors-and-speakers/university-ambassador-schemes-and-outreach/university-of-birmingham">
+  <span class="fam">Watch</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Birmingham…</span>
+  <span class="row"><span>18</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>University of Birmingham Geography outreach</b><i>Watch · lecture · 1h</i><span>Talks and masterclasses from geographers at the University of Birmingham.</span><em>UoB outreach ↗</em></span></a><a class="tile" data-g="watch" href="https://www.geog.ox.ac.uk/study/for-teachers/schools-outreach.html">
+  <span class="fam">Watch</span>
+  <span class="sym">Os</span>
+  <span class="nm">Oxford School of Geography…</span>
+  <span class="row"><span>19</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford School of Geography and the Environment: schools outreach</b><i>Watch · lecture · 1h</i><span>Oxford geographers can run an online talk for your class. Ask your teacher.</span><em>Oxford SoGE ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/geography">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Geography</span>
+  <span class="row"><span>20</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Geography</b><i>Watch · lecture · 1h</i><span>Short modules from Cambridge with reading, videos and questions.</span><em>HE+ Geography ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 10</span></div><a class="tile" data-g="read" href="https://geographical.co.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Gr</span>
+  <span class="nm">Geographical</span>
+  <span class="row"><span>21</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Geographical (RGS magazine)</b><i>Read · 10m</i><span>Join the RGS free as a student and you get the digital magazine each month.</span><em>geographical.co.uk ↗</em></span></a><a class="tile" data-g="read" href="https://routesjournal.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Rh</span>
+  <span class="nm">Routes: The Journal for…</span>
+  <span class="row"><span>22</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Routes: The Journal for Student Geographers</b><i>Read · 10m</i><span>Essays and fieldwork projects by students your age. Read a few before you plan your NEA.</span><em>Routes ↗</em></span></a><a class="tile" data-g="read" href="https://geography.org.uk/student-guidance/">
+  <span class="fam">Read</span>
+  <span class="sym">Ga</span>
+  <span class="nm">Geographical Association…</span>
+  <span class="row"><span>23</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Geographical Association student guidance and reading lists</b><i>Read · 10m</i><span>Two free reading lists from the GA, one human and one physical.</span><em>GA student guidance ↗</em></span></a><a class="tile" data-g="read" href="https://www.geog.ox.ac.uk/study/undergraduate/reading-list.html">
+  <span class="fam">Read</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford SoGE: suggested…</span>
+  <span class="row"><span>24</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford SoGE: suggested resources for further reading</b><i>Read · 10m</i><span>What Oxford geographers suggest you read and listen to.</span><em>Oxford reading ↗</em></span></a><a class="tile" data-g="read" href="https://www.carbonbrief.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Cb</span>
+  <span class="nm">Carbon Brief</span>
+  <span class="row"><span>25</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Carbon Brief</b><i>Read · 10m</i><span>Explainers on climate science and policy. Free.</span><em>carbonbrief.org ↗</em></span></a><a class="tile" data-g="read" href="https://www.hoddereducation.co.uk/magazines/magazines-extras/geography-review-extras">
+  <span class="fam">Read</span>
+  <span class="sym">Gp</span>
+  <span class="nm">Geography Review</span>
+  <span class="row"><span>26</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Geography Review (Hodder)</b><i>Read · 10m</i><span>A magazine for A level geographers. Ask the library.</span><em>Geography Review ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Gi</span>
+  <span class="nm">Geography: Ideas in Profile</span>
+  <span class="row"><span>27</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Geography: Ideas in Profile, by Danny Dorling and Carl Lee</b><i>Read · book · book</i><span>A short book on what geography is. A good first read.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Et</span>
+  <span class="nm">Eruptions that Shook the World</span>
+  <span class="row"><span>28</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Eruptions that Shook the World, by Clive Oppenheimer</b><i>Read · book · book</i><span>How big eruptions changed human history. Goes with the tectonics unit.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tg</span>
+  <span class="nm">The Great Flood: Travels…</span>
+  <span class="row"><span>29</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Great Flood: Travels through a Sodden Landscape, by Edward Platt</b><i>Read · book · book</i><span>Travel writing about flooded places in England.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Fs</span>
+  <span class="nm">For Space</span>
+  <span class="row"><span>30</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>For Space, by Doreen Massey</b><i>Read · book · book</i><span>A harder book about what 'place' means. For Year 13.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://podcasts.apple.com/gb/podcast/ask-the-geographer/id1196746426">
+  <span class="fam">Listen</span>
+  <span class="sym">At</span>
+  <span class="nm">Ask the Geographer</span>
+  <span class="row"><span>31</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Ask the Geographer (Royal Geographical Society)</b><i>Listen · 30m</i><span>Short RGS interviews with geographers. Pick one on a topic from your current unit.</span><em>Ask the Geographer ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>32</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for Plate Tectonics, Oceanography and Climate Change.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://www.rgs.org/schools/resources-for-schools/21st-century-challenges-with-professor-mark-maslin">
+  <span class="fam">Listen</span>
+  <span class="sym">Rg</span>
+  <span class="nm">RGS 21st Century Challenges…</span>
+  <span class="row"><span>33</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>RGS 21st Century Challenges with Professor Mark Maslin</b><i>Listen · 30m</i><span>A podcast with a leading climate scientist on the big challenges of this century.</span><em>RGS podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://geography.org.uk/resources/geogpod-the-gas-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Gg</span>
+  <span class="nm">GeogPod</span>
+  <span class="row"><span>34</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>GeogPod (Geographical Association)</b><i>Listen · 30m</i><span>The GA's podcast. Mostly for teachers, but the episodes on fieldwork help with the NEA.</span><em>GeogPod ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://www.gapminder.org/tools/">
+  <span class="fam">Do</span>
+  <span class="sym">Gt</span>
+  <span class="nm">Gapminder Tools</span>
+  <span class="row"><span>35</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Gapminder Tools</b><i>Do · 20m</i><span>Plot countries' health and wealth over time and see what changes.</span><em>Gapminder ↗</em></span></a><a class="tile" data-g="do" href="https://earthquake.usgs.gov/earthquakes/map/">
+  <span class="fam">Do</span>
+  <span class="sym">Ul</span>
+  <span class="nm">USGS Latest Earthquakes map</span>
+  <span class="row"><span>36</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>USGS Latest Earthquakes map</b><i>Do · 20m</i><span>A live map of the world's earthquakes. Find three and name the plate boundary.</span><em>USGS map ↗</em></span></a><a class="tile" data-g="do" href="https://www.ons.gov.uk/census/maps/">
+  <span class="fam">Do</span>
+  <span class="sym">Oc</span>
+  <span class="nm">ONS Census Maps</span>
+  <span class="row"><span>37</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>ONS Census Maps</b><i>Do · 20m</i><span>Map census data for any area of Birmingham. Useful for your NEA.</span><em>Census maps ↗</em></span></a><a class="tile" data-g="do" href="https://ourworldindata.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ow</span>
+  <span class="nm">Our World in Data</span>
+  <span class="row"><span>38</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Our World in Data</b><i>Do · 20m</i><span>Charts on energy, climate, health and migration you can cite.</span><em>Our World in Data ↗</em></span></a><a class="tile" data-g="do" href="https://routesjournal.org/submitting/guidelines/">
+  <span class="fam">Do</span>
+  <span class="sym">St</span>
+  <span class="nm">Submit to Routes</span>
+  <span class="row"><span>39</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Submit to Routes</b><i>Do · 20m</i><span>Write up an essay or fieldwork project for a real peer-reviewed journal.</span><em>Routes guidelines ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Yg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/young-geographer-of-the-year">Young Geographer of the Year 2026 (Royal Geographical Society)</a></h3>
+      <div class="meta"><span>01</span><span>entry</span><span>KS5 category (ages 16–18); separate judging for state and independent schools</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Theme: &quot;From Source to Sea&quot;. KS5 entrants make a poster or an Esri StoryMap on a river system: processes, landforms, and how people and nature use it. Links to Topic 2 (Landscape Systems) and Topic 5 (Water Cycle and Water Insecurity).</p>
+  <p class="when"><b>When:</b> Deadline Friday 2 October 2026, 5pm. Awards ceremony in London, 27 November 2026.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/young-geographer-of-the-year">RGS YGOTY</a> &nbsp;<span class="dim">rgs.org/schools/competitions/young-geographer-of-the-year</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Rs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/school-essay-competition">RGS School Essay Competition 2026</a></h3>
+      <div class="meta"><span>02</span><span>essay</span><span>Y12 and Y13 studying A level Geography; one entry per student</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,000 words (or an ArcGIS StoryMap) on: &quot;What factors drive migration, how are patterns shifting and what are the consequences?&quot; You must cover climatic factors and post-2020 geopolitics and reference sources, including Financial Times articles (free through school). Fits Topic 8B (Migration, Identity and Sovereignty) and Topic 3 (Globalisation). Winner gets a £50 voucher and publication on the RGS site.</p>
+  <p class="when"><b>When:</b> Deadline Monday 9 November 2026, 5pm. Results by 12 February 2027; awards in July 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/school-essay-competition">RGS essay</a> &nbsp;<span class="dim">rgs.org/schools/competitions/school-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://geography.org.uk/uk-national-geography-olympiad/">UK National Geography Olympiad (Geographical Association)</a></h3>
+      <div class="meta"><span>03</span><span>entry</span><span>Post-16 geographers</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">An online subject-knowledge quiz sat in school. The highest scores nationally are passed to the contact for the International Geography Olympiad (iGeo 2027 is in Jelgava, Latvia, 2–9 August 2027).</p>
+  <p class="when"><b>When:</b> First run: two-week window, Monday 9 – Friday 20 November 2026. Full instructions due from the GA this autumn.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://geography.org.uk/uk-national-geography-olympiad/">GA Olympiad</a> &nbsp;<span class="dim">geography.org.uk/uk-national-geography-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Cc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.chch.ox.ac.uk/college/outreach/geography-study-day">Christ Church Geography Essay Competition and Study Day (Oxford)</a></h3>
+      <div class="meta"><span>04</span><span>essay</span><span>Y12 at UK state-maintained schools, studying A level Geography</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An 800-word reflective essay that shows you thinking geographically (2026 theme: &quot;The Age of Humans&quot;). Selected entrants spend a free day at Christ Church with taster lectures and skills workshops.</p>
+  <p class="when"><b>When:</b> 2026 deadline was Friday 17 April; study day was 27 May 2026. 2027 dates not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.chch.ox.ac.uk/college/outreach/geography-study-day">Christ Church</a> &nbsp;<span class="dim">chch.ox.ac.uk/college/outreach/geography-study-day</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Rc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/ron-cooke-award">Ron Cooke Award (Royal Geographical Society)</a></h3>
+      <div class="meta"><span>05</span><span>entry</span><span>A level students whose independent investigation (NEA) is nominated by their teacher</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An award for an outstanding independent investigation (9GE0/04). If your NEA is strong, your teacher may nominate it.</p>
+  <p class="when"><b>When:</b> 2027 award open now; deadline Friday 12 March 2027, 5pm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.rgs.org/schools/competitions/ron-cooke-award">Ron Cooke</a> &nbsp;<span class="dim">rgs.org/schools/competitions/ron-cooke-award</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Rn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.oriel.ox.ac.uk/study-with-us/outreach-and-schools-liaison/what-we-do/events-and-prizes/rex-nettleford-prize-for-year-12-students/">Rex Nettleford Essay Prize: Colonialism and its Legacies (Oriel College, Oxford)</a></h3>
+      <div class="meta"><span>06</span><span>entry</span><span>Y12 at a UK school or college</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 2,500 words on one of four questions about the legacies of colonialism, from any discipline. A geographer can answer through development, inequality or global governance (Topics 7, 8A and 8B). Two prizes of £250.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 12pm, 23 February 2026, with three webinars in January. 2027 dates not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.oriel.ox.ac.uk/study-with-us/outreach-and-schools-liaison/what-we-do/events-and-prizes/rex-nettleford-prize-for-year-12-students/">Oriel</a> &nbsp;<span class="dim">oriel.ox.ac.uk/study-with-us/outreach-and-schools-liaison/what-we-do/events-and-prizes/rex-nettleford-prize-for-year-12-students</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/peter_haas_haiti_s_disaster_of_engineering">Peter Haas: When bad engineering makes a natural disaster even worse</a></h3>
+      <div class="meta"><span>07</span><span>8m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 8 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 1: using Haiti 2010, explain how vulnerability as well as magnitude decided the death toll.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/peter_haas_haiti_s_disaster_of_engineering">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/peter_haas_haiti_s_disaster_of_engineering</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Kh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jean_baptiste_p_koehl_why_are_earthquakes_so_hard_to_predict">Jean-Baptiste P. Koehl: Why are earthquakes so hard to predict?</a></h3>
+      <div class="meta"><span>08</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Topic 1: if earthquakes cannot be predicted, which parts of the hazard management cycle matter most, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jean_baptiste_p_koehl_why_are_earthquakes_so_hard_to_predict">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jean_baptiste_p_koehl_why_are_earthquakes_so_hard_to_predict</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/james_balog_time_lapse_proof_of_extreme_ice_loss">James Balog: Time-lapse proof of extreme ice loss</a></h3>
+      <div class="meta"><span>09</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 2A: what does time-lapse photography show about glacier mass balance that a single field visit could not?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/james_balog_time_lapse_proof_of_extreme_ice_loss">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/james_balog_time_lapse_proof_of_extreme_ice_loss</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rk</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/johan_rockstrom_let_the_environment_guide_our_development">Johan Rockström: Let the environment guide our development</a></h3>
+      <div class="meta"><span>10</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 6: which planetary boundaries connect to the carbon cycle, and how would you measure whether one had been crossed?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/johan_rockstrom_let_the_environment_guide_our_development">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/johan_rockstrom_let_the_environment_guide_our_development</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/hans_rosling_global_population_growth_box_by_box">Hans Rosling: Global population growth, box by box</a></h3>
+      <div class="meta"><span>11</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topics 3 and 8A: what links falling child mortality to smaller families, and what does Rosling leave out about inequality within countries?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/hans_rosling_global_population_growth_box_by_box">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/hans_rosling_global_population_growth_box_by_box</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/alexander_betts_our_refugee_system_is_failing_here_s_how_we_can_fix_it">Alexander Betts: Our refugee system is failing. Here's how we can fix it</a></h3>
+      <div class="meta"><span>12</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 8B: which of his proposals would a sovereign state be most likely to refuse, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/alexander_betts_our_refugee_system_is_failing_here_s_how_we_can_fix_it">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/alexander_betts_our_refugee_system_is_failing_here_s_how_we_can_fix_it</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ar</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/alejandro_aravena_my_architectural_philosophy_bring_the_community_into_the_process">Alejandro Aravena: My architectural philosophy? Bring the community into the process</a></h3>
+      <div class="meta"><span>13</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 4A: which players decide what a regeneration scheme looks like, and what changes when residents are one of them?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/alejandro_aravena_my_architectural_philosophy_bring_the_community_into_the_process">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/alejandro_aravena_my_architectural_philosophy_bring_the_community_into_the_process</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">My</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_is_china_the_new_idol_for_emerging_economies">Dambisa Moyo: Is China the new idol for emerging economies?</a></h3>
+      <div class="meta"><span>14</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 7: does China's model threaten the United States' position as a superpower? Argue against her. This talk is there to be disagreed with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_is_china_the_new_idol_for_emerging_economies">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/dambisa_moyo_is_china_the_new_idol_for_emerging_economies</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/paul_collier_the_bottom_billion">Paul Collier: The &quot;bottom billion&quot;</a></h3>
+      <div class="meta"><span>15</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Topic 8A: pick one of his proposed interventions and set out who it would benefit and who it would not. This talk is there to be disagreed with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/paul_collier_the_bottom_billion">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/paul_collier_the_bottom_billion</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/geography-and-environment">Gresham College: Geography and Environment</a></h3>
+      <div class="meta"><span>16</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures. Start with a Myles Allen lecture on net zero or a Carolyn Roberts lecture on flooding.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/geography-and-environment">Gresham Geography</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/geography-and-environment</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rgs.org/events/talks-on-demand">RGS Talks on Demand and 21st Century Challenges</a></h3>
+      <div class="meta"><span>17</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Recorded talks from the Royal Geographical Society. Free, and your free student membership unlocks the members-only ones.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rgs.org/events/talks-on-demand">RGS talks</a> &nbsp;<span class="dim">rgs.org/events/talks-on-demand</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rgs.org/schools/careers-and-progression/ambassadors-and-speakers/university-ambassador-schemes-and-outreach/university-of-birmingham">University of Birmingham Geography outreach</a></h3>
+      <div class="meta"><span>18</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Talks and masterclasses from geographers at the University of Birmingham.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rgs.org/schools/careers-and-progression/ambassadors-and-speakers/university-ambassador-schemes-and-outreach/university-of-birmingham">UoB outreach</a> &nbsp;<span class="dim">rgs.org/schools/careers-and-progression/ambassadors-and-speakers/university-ambassador-schemes-and-outreach/university-of-birmingham</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Os</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.geog.ox.ac.uk/study/for-teachers/schools-outreach.html">Oxford School of Geography and the Environment: schools outreach</a></h3>
+      <div class="meta"><span>19</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford geographers can run an online talk for your class. Ask your teacher.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.geog.ox.ac.uk/study/for-teachers/schools-outreach.html">Oxford SoGE</a> &nbsp;<span class="dim">geog.ox.ac.uk/study/for-teachers/schools-outreach.html</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/geography">Cambridge HE+ Geography</a></h3>
+      <div class="meta"><span>20</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short modules from Cambridge with reading, videos and questions.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/geography">HE+ Geography</a> &nbsp;<span class="dim">myheplus.com/subject/geography</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 10 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://geographical.co.uk/">Geographical (RGS magazine)</a></h3>
+      <div class="meta"><span>21</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Join the RGS free as a student and you get the digital magazine each month.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://geographical.co.uk/">geographical.co.uk</a> &nbsp;<span class="dim">geographical.co.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Rh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://routesjournal.org/">Routes: The Journal for Student Geographers</a></h3>
+      <div class="meta"><span>22</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Essays and fieldwork projects by students your age. Read a few before you plan your NEA.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://routesjournal.org/">Routes</a> &nbsp;<span class="dim">routesjournal.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ga</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://geography.org.uk/student-guidance/">Geographical Association student guidance and reading lists</a></h3>
+      <div class="meta"><span>23</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Two free reading lists from the GA, one human and one physical.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://geography.org.uk/student-guidance/">GA student guidance</a> &nbsp;<span class="dim">geography.org.uk/student-guidance</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.geog.ox.ac.uk/study/undergraduate/reading-list.html">Oxford SoGE: suggested resources for further reading</a></h3>
+      <div class="meta"><span>24</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">What Oxford geographers suggest you read and listen to.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.geog.ox.ac.uk/study/undergraduate/reading-list.html">Oxford reading</a> &nbsp;<span class="dim">geog.ox.ac.uk/study/undergraduate/reading-list.html</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.carbonbrief.org/">Carbon Brief</a></h3>
+      <div class="meta"><span>25</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Explainers on climate science and policy. Free.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.carbonbrief.org/">carbonbrief.org</a> &nbsp;<span class="dim">carbonbrief.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Gp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.hoddereducation.co.uk/magazines/magazines-extras/geography-review-extras">Geography Review (Hodder)</a></h3>
+      <div class="meta"><span>26</span><span>10m</span><span>school subscription</span></div>
+    </div>
+  </div>
+  <p class="what">A magazine for A level geographers. Ask the library.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.hoddereducation.co.uk/magazines/magazines-extras/geography-review-extras">Geography Review</a> &nbsp;<span class="dim">hoddereducation.co.uk/magazines/magazines-extras/geography-review-extras</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Gi</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Geography: Ideas in Profile, by Danny Dorling and Carl Lee</span></h3>
+      <div class="meta"><span>27</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A short book on what geography is. A good first read.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Et</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Eruptions that Shook the World, by Clive Oppenheimer</span></h3>
+      <div class="meta"><span>28</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How big eruptions changed human history. Goes with the tectonics unit.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tg</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Great Flood: Travels through a Sodden Landscape, by Edward Platt</span></h3>
+      <div class="meta"><span>29</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Travel writing about flooded places in England.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Fs</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">For Space, by Doreen Massey</span></h3>
+      <div class="meta"><span>30</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A harder book about what 'place' means. For Year 13.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">At</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.apple.com/gb/podcast/ask-the-geographer/id1196746426">Ask the Geographer (Royal Geographical Society)</a></h3>
+      <div class="meta"><span>31</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Short RGS interviews with geographers. Pick one on a topic from your current unit.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.apple.com/gb/podcast/ask-the-geographer/id1196746426">Ask the Geographer</a> &nbsp;<span class="dim">podcasts.apple.com/gb/podcast/ask-the-geographer/id1196746426</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>32</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for Plate Tectonics, Oceanography and Climate Change.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Rg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.rgs.org/schools/resources-for-schools/21st-century-challenges-with-professor-mark-maslin">RGS 21st Century Challenges with Professor Mark Maslin</a></h3>
+      <div class="meta"><span>33</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A podcast with a leading climate scientist on the big challenges of this century.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.rgs.org/schools/resources-for-schools/21st-century-challenges-with-professor-mark-maslin">RGS podcast</a> &nbsp;<span class="dim">rgs.org/schools/resources-for-schools/21st-century-challenges-with-professor-mark-maslin</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Gg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://geography.org.uk/resources/geogpod-the-gas-podcast">GeogPod (Geographical Association)</a></h3>
+      <div class="meta"><span>34</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The GA's podcast. Mostly for teachers, but the episodes on fieldwork help with the NEA.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://geography.org.uk/resources/geogpod-the-gas-podcast">GeogPod</a> &nbsp;<span class="dim">geography.org.uk/resources/geogpod-the-gas-podcast</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Gt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.gapminder.org/tools/">Gapminder Tools</a></h3>
+      <div class="meta"><span>35</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Plot countries' health and wealth over time and see what changes.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.gapminder.org/tools/">Gapminder</a> &nbsp;<span class="dim">gapminder.org/tools</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ul</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://earthquake.usgs.gov/earthquakes/map/">USGS Latest Earthquakes map</a></h3>
+      <div class="meta"><span>36</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A live map of the world's earthquakes. Find three and name the plate boundary.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://earthquake.usgs.gov/earthquakes/map/">USGS map</a> &nbsp;<span class="dim">earthquake.usgs.gov/earthquakes/map</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Oc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.ons.gov.uk/census/maps/">ONS Census Maps</a></h3>
+      <div class="meta"><span>37</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Map census data for any area of Birmingham. Useful for your NEA.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.ons.gov.uk/census/maps/">Census maps</a> &nbsp;<span class="dim">ons.gov.uk/census/maps</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ow</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://ourworldindata.org/">Our World in Data</a></h3>
+      <div class="meta"><span>38</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Charts on energy, climate, health and migration you can cite.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://ourworldindata.org/">Our World in Data</a> &nbsp;<span class="dim">ourworldindata.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://routesjournal.org/submitting/guidelines/">Submit to Routes</a></h3>
+      <div class="meta"><span>39</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Write up an essay or fieldwork project for a real peer-reviewed journal.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://routesjournal.org/submitting/guidelines/">Routes guidelines</a> &nbsp;<span class="dim">routesjournal.org/submitting/guidelines</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your geography year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">1 October 2026</div><span class="sym dot">1</span><div><b>RGS free teacher webinar: supporting candidates for interviews and Oxbridge</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">2 October 2026, 5pm</div><span class="sym dot">2</span><div><b>Young Geographer of the Year deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Termly</div><span class="sym dot">3</span><div><b>University of Birmingham and Oxford SoGE talks</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">9 November 2026, 5pm</div><span class="sym dot">4</span><div><b>RGS School Essay Competition deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">9–20 November 2026</div><span class="sym dot">5</span><div><b>UK National Geography Olympiad (first run)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">27 November 2026</div><span class="sym dot">6</span><div><b>Young Geographer of the Year awards ceremony, London</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January–February 2027</div><span class="sym dot">7</span><div><b>Oriel Rex Nettleford Prize: webinars and deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">12 March 2027, 5pm</div><span class="sym dot">8</span><div><b>Ron Cooke Award nominations close</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">April–May 2027</div><span class="sym dot">9</span><div><b>Christ Church Geography Essay Competition and study day</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">2–9 August 2027</div><span class="sym dot">10</span><div><b>International Geography Olympiad, Jelgava, Latvia</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Field notebook</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Geography Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

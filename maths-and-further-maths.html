@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Maths beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#C62828; --watch:#1E56C9; --listen:#6A3FC2; --read:#9A5F00; --do:#1B6F49; --apply:#0E7490;
+  --f-display:"STIX Two Text",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1A1A2E; --hero-ink:#F5F5FA; --hero-muted:#B3B3CC;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Maths and Further Maths · 2026-27</div>
+      <h1>Maths beyond the classroom<span class="sub">39 problems to try, talks to watch, things to read and enter. Free unless the entry says otherwise.</span></h1>
+      <p>Maths beyond the classroom means solving problems that take longer than ten minutes. Most of what is here is problems: the UKMT challenges and their past papers, the STEP and MAT questions that the top universities set, and sites that mark you instantly. The talks and reading show where the subject goes after A level. Each time you do something, write one line in your rough book: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="do"></span><span data-g="enter"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="do"><a href="https://ukmt.org.uk/competition-papers"><span class="sym">Up</span></a><div><div class="step">UKMT papers · UKMT past papers</div><p>Do the most recent Senior Mathematical Challenge paper before 7 October, then check your answers against the solutions.</p></div></div><div class="pick" data-g="do"><a href="https://step.maths.org/"><span class="sym">Ss</span></a><div><div class="step">STEP Support · STEP Support Programme</div><p>Y12: start Foundation module 1 of the STEP Support Programme. Y13: start the STEP 2 modules.</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever"><span class="sym">Cb</span></a><div><div class="step">Watch · Cabezn</div><p>Watch Eduardo Sáenz de Cabezón's TED talk 'Math is forever' (10 min) and write out one proof you know by heart.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The problem board</h2>
+    <div class="key"><span>One problem per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://step.maths.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ss</span>
+  <span class="nm">STEP Support Programme</span>
+  <span class="row"><span>01</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>STEP Support Programme (University of Cambridge)</b><i>Do · 20m</i><span>Free modules with hints and solutions. Y12: start the Foundation modules now.</span><em>step.maths.org ↗</em></span></a><a class="tile" data-g="do" href="https://esat-tmua.ac.uk/about-the-tests/tmua-test/">
+  <span class="fam">Do</span>
+  <span class="sym">Tp</span>
+  <span class="nm">TMUA practice papers and…</span>
+  <span class="row"><span>02</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>TMUA practice papers and specification (UAT-UK)</b><i>Do · 20m</i><span>Official practice papers for the TMUA. Do them timed, with no calculator.</span><em>UAT-UK TMUA ↗</em></span></a><a class="tile" data-g="do" href="https://ukmt.org.uk/competition-papers">
+  <span class="fam">Do</span>
+  <span class="sym">Up</span>
+  <span class="nm">UKMT past papers</span>
+  <span class="row"><span>03</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UKMT past papers</b><i>Do · 20m</i><span>Free past papers with solutions. Do the most recent SMC before 7 October.</span><em>UKMT papers ↗</em></span></a><a class="tile" data-g="do" href="https://undergroundmathematics.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Un</span>
+  <span class="nm">Underground Mathematics</span>
+  <span class="row"><span>04</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Underground Mathematics (Cambridge Mathematics)</b><i>Do · 20m</i><span>Rich problems for each A-level topic. Pick the station you are studying.</span><em>undergroundmathematics.org ↗</em></span></a><a class="tile" data-g="do" href="https://nrich.maths.org/students/post-16">
+  <span class="fam">Do</span>
+  <span class="sym">Nr</span>
+  <span class="nm">NRICH post-16</span>
+  <span class="row"><span>05</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>NRICH post-16</b><i>Do · 20m</i><span>Problems sorted by A-level topic.</span><em>NRICH post-16 ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://ukmt.org.uk/senior-challenges/senior-mathematical-challenge">
+  <span class="fam">Enter</span>
+  <span class="sym">Us</span>
+  <span class="nm">UKMT Senior Mathematical…</span>
+  <span class="row"><span>06</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UKMT Senior Mathematical Challenge (SMC)</b><i>Enter · paper</i><span>90 minutes: 22 multiple-choice questions and three questions with a three-digit answer (new format for 2026). High scorers are invited to the Senior Kangaroo or the British Mathematical Olympiad.</span><em>UKMT SMC ↗</em></span></a><a class="tile" data-g="enter" href="https://ukmt.org.uk/senior-challenges/british-maths-olympiad-round-1">
+  <span class="fam">Enter</span>
+  <span class="sym">Bm</span>
+  <span class="nm">British Mathematical…</span>
+  <span class="row"><span>07</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>British Mathematical Olympiad Round 1 and Round 2 (UKMT), with the Senior Kangaroo</b><i>Enter · entry</i><span>BMO1 is three and a half hours on six problems, with full written proofs. The Kangaroo is 60 minutes, 20 questions with whole-number answers. Top BMO1 scorers go on to BMO2.</span><em>UKMT BMO1 ↗</em></span></a><a class="tile" data-g="enter" href="https://ukmt.org.uk/team-challenges/senior-team-mathematical-challenge">
+  <span class="fam">Enter</span>
+  <span class="sym">Uk</span>
+  <span class="nm">UKMT Senior Team…</span>
+  <span class="row"><span>08</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UKMT Senior Team Mathematical Challenge</b><i>Enter · £50 per team · paper</i><span>A team competition in rounds. Four of you represent the school at a regional final.</span><em>UKMT STMC ↗</em></span></a><a class="tile" data-g="enter" href="https://ukmt.org.uk/senior-challenges">
+  <span class="fam">Enter</span>
+  <span class="sym">Um</span>
+  <span class="nm">UKMT Mathematical Olympiad…</span>
+  <span class="row"><span>09</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UKMT Mathematical Olympiad for Girls (MOG)</b><i>Enter · paper</i><span>Five hard problems needing written solutions. Use the past papers for practice now, ready for next September.</span><em>UKMT senior challenges ↗</em></span></a><a class="tile" data-g="enter" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">
+  <span class="fam">Enter</span>
+  <span class="sym">Tr</span>
+  <span class="nm">Tom Rocks Maths Essay…</span>
+  <span class="row"><span>10</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Tom Rocks Maths Essay Competition (Oxford Department for Continuing Education)</b><i>Enter · essay</i><span>An essay of up to 2,000 words on any maths topic you choose. The student winner gets £100 and entries are published online.</span><em>Oxford page ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 15</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever">
+  <span class="fam">Watch</span>
+  <span class="sym">Cb</span>
+  <span class="nm">Cabezn</span>
+  <span class="row"><span>11</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Eduardo Sáenz de Cabezón: Math is forever</b><i>Watch · talk · 10m</i><span>He says theorems last where scientific theories do not. Write out one proof from the Pure course (for example, the irrationality of root 2) and explain what makes it permanent.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/jeff_dekofsky_the_infinite_hotel_paradox">
+  <span class="fam">Watch</span>
+  <span class="sym">Dk</span>
+  <span class="nm">Dekofsky</span>
+  <span class="row"><span>12</span><span>6m</span></span>
+  <span class="pop" role="tooltip"><b>Jeff Dekofsky: The Infinite Hotel Paradox</b><i>Watch · TED-Ed · 6m</i><span>Write down the rule that moves every guest when one new guest arrives, then the rule for infinitely many. Why does the argument fail for the real numbers?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/marcus_du_sautoy_symmetry_reality_s_riddle">
+  <span class="fam">Watch</span>
+  <span class="sym">St</span>
+  <span class="nm">Sautoy</span>
+  <span class="row"><span>13</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Marcus du Sautoy: Symmetry, reality's riddle</b><i>Watch · talk · 18m</i><span>List the symmetries of an equilateral triangle as 2x2 matrices and check they are closed under multiplication. Which Core Pure topic does this use?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/jacqueline_doan_and_alex_kazachek_does_math_have_a_major_flaw">
+  <span class="fam">Watch</span>
+  <span class="sym">Kz</span>
+  <span class="nm">Kazachek</span>
+  <span class="row"><span>14</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Jacqueline Doan and Alex Kazachek: Does math have a major flaw?</b><i>Watch · TED-Ed · 5m</i><span>The Banach-Tarski result depends on an axiom. What is an axiom, and how is it different from an assumption you would test in a Statistics hypothesis test?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mona_chalabi_3_ways_to_spot_a_bad_statistic">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Chalabi</span>
+  <span class="row"><span>15</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Mona Chalabi: 3 ways to spot a bad statistic</b><i>Watch · talk · 12m</i><span>Apply her three questions to one claim you find in the news this week. Which sampling method from the Statistics course would have produced better data?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sharon_zicherman_what_you_miss_when_you_focus_on_the_average">
+  <span class="fam">Watch</span>
+  <span class="sym">Zc</span>
+  <span class="nm">Zicherman</span>
+  <span class="row"><span>16</span><span>6m</span></span>
+  <span class="pop" role="tooltip"><b>Sharon Zicherman: What you miss when you focus on the average</b><i>Watch · talk · 6m</i><span>Sketch two distributions with the same mean and very different spread. When would you report the standard deviation or a percentile instead of the mean?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">
+  <span class="fam">Watch</span>
+  <span class="sym">Sl</span>
+  <span class="nm">Slavin</span>
+  <span class="row"><span>17</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Kevin Slavin: How algorithms shape our world</b><i>Watch · talk · 15m</i><span>Choose one algorithm from Decision Maths (Dijkstra, Prim, Kruskal, a sorting algorithm) and describe a real system that uses it. What goes wrong if the input data are bad?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/arthur_benjamin_teach_statistics_before_calculus">
+  <span class="fam">Watch</span>
+  <span class="sym">Bn</span>
+  <span class="nm">Benjamin</span>
+  <span class="row"><span>18</span><span>3m</span></span>
+  <span class="pop" role="tooltip"><b>Arthur Benjamin: Teach statistics before calculus!</b><i>Watch · talk · 3m</i><span>He argues most people will never use calculus. Make the case for one calculus topic from the A-level course that you think everyone should learn.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/tudor_achim_the_path_to_mathematical_superintelligence">
+  <span class="fam">Watch</span>
+  <span class="sym">Ac</span>
+  <span class="nm">Achim</span>
+  <span class="row"><span>19</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Tudor Achim: The path to mathematical superintelligence</b><i>Watch · talk · 13m</i><span>He wants machines to check every step of a proof formally. Take a proof by induction from Core Pure and list every step a computer would need to check.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.maths.ox.ac.uk/study-here/undergraduate-study/tmua/mat-livestream">
+  <span class="fam">Watch</span>
+  <span class="sym">Om</span>
+  <span class="nm">Oxford Maths Admissions Test…</span>
+  <span class="row"><span>20</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Maths Admissions Test Livestream 2026</b><i>Watch · lecture · 1h</i><span>Free weekly problem-solving sessions from Oxford, with worksheets. Watch live or catch up on the recordings.</span><em>Oxford livestream ↗</em></span></a><a class="tile" data-g="watch" href="https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club">
+  <span class="fam">Watch</span>
+  <span class="sym">Oo</span>
+  <span class="nm">Oxford Online Maths Club</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Online Maths Club</b><i>Watch · lecture · 1h</i><span>A weekly maths club on YouTube for people thinking of a maths degree. No sign-up.</span><em>Oxford Online Maths Club ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@OxfordMathematics">
+  <span class="fam">Watch</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford Mathematics YouTube…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Mathematics YouTube channel</b><i>Watch · lecture · 1h</i><span>Public lectures plus real Oxford first-year lectures.</span><em>Oxford Maths YouTube ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/speakers/professor-sarah-hart">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Professor…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Professor Sarah Hart's maths lectures</b><i>Watch · lecture · 1h</i><span>Free hour-long lectures. Start with 'A Mathematician's View of Proof'.</span><em>Gresham: Sarah Hart ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@numberphile">
+  <span class="fam">Watch</span>
+  <span class="sym">Nm</span>
+  <span class="nm">Numberphile</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Numberphile</b><i>Watch · lecture · 1h</i><span>Short videos with real mathematicians. Search for whatever you are studying.</span><em>Numberphile ↗</em></span></a><a class="tile" data-g="watch" href="https://www.3blue1brown.com/">
+  <span class="fam">Watch</span>
+  <span class="sym">Bb</span>
+  <span class="nm">3Blue1Brown</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>3Blue1Brown (Grant Sanderson)</b><i>Watch · lecture · 1h</i><span>Animated explanations. Watch 'Essence of calculus' or 'Essence of linear algebra'.</span><em>3blue1brown.com ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://plus.maths.org/content/">
+  <span class="fam">Read</span>
+  <span class="sym">Pm</span>
+  <span class="nm">Plus magazine</span>
+  <span class="row"><span>26</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Plus magazine</b><i>Read · 10m</i><span>Free articles on maths in the real world and in current research.</span><em>plus.maths.org ↗</em></span></a><a class="tile" data-g="read" href="https://chalkdustmagazine.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Cl</span>
+  <span class="nm">Chalkdust</span>
+  <span class="row"><span>27</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Chalkdust</b><i>Read · 10m</i><span>Articles, puzzles and a crossnumber, free online.</span><em>chalkdustmagazine.com ↗</em></span></a><a class="tile" data-g="read" href="https://www.myheplus.com/subject/mathematics">
+  <span class="fam">Read</span>
+  <span class="sym">Cm</span>
+  <span class="nm">Cambridge HE+ Mathematics</span>
+  <span class="row"><span>28</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Mathematics</b><i>Read · 10m</i><span>Cambridge's page of starting points for anyone thinking about a maths degree.</span><em>HE+ Maths ↗</em></span></a><a class="tile" data-g="read" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">
+  <span class="fam">Read</span>
+  <span class="sym">Tm</span>
+  <span class="nm">Tom Rocks Maths essay archive</span>
+  <span class="row"><span>29</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Tom Rocks Maths essay archive</b><i>Read · 10m</i><span>Read past entries before you write your own essay.</span><em>Competition page ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ap</span>
+  <span class="nm">Advanced Problems in…</span>
+  <span class="row"><span>30</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Advanced Problems in Mathematics: Preparing for University, by Stephen Siklos</b><i>Read · book · book</i><span>Free to download. The standard book for STEP preparation.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ht</span>
+  <span class="nm">How to Think Like a…</span>
+  <span class="row"><span>31</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>How to Think Like a Mathematician, by Kevin Houston</b><i>Read · book · book</i><span>How to read, write and build proofs before university.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Th</span>
+  <span class="nm">The Maths of Life and Death</span>
+  <span class="row"><span>32</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Maths of Life and Death, by Kit Yates</b><i>Read · book · book</i><span>Maths in medicine, law and the news.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Hp</span>
+  <span class="nm">Humble Pi</span>
+  <span class="row"><span>33</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Humble Pi, by Matt Parker</b><i>Read · book · book</i><span>Real mistakes caused by bad maths. A good first book.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qshd">
+  <span class="fam">Listen</span>
+  <span class="sym">Mo</span>
+  <span class="nm">More or Less</span>
+  <span class="row"><span>34</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>More or Less (BBC Radio 4)</b><i>Listen · 30m</i><span>Checks the numbers behind news stories. Good for the Statistics half of the course.</span><em>More or Less ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>35</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for calculus, Fermat's Last Theorem, Euler, Gauss, prime numbers, infinity, probability.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://plus.maths.org/content/">
+  <span class="fam">Listen</span>
+  <span class="sym">Mt</span>
+  <span class="nm">Maths on the Move</span>
+  <span class="row"><span>36</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Maths on the Move (Plus magazine podcast)</b><i>Listen · 30m</i><span>Interviews with mathematicians about what they are working on.</span><em>Plus / Maths on the Move ↗</em></span></a><a class="tile" data-g="listen" href="https://www.numberphile.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Np</span>
+  <span class="nm">Numberphile podcast</span>
+  <span class="row"><span>37</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Numberphile podcast</b><i>Listen · 30m</i><span>Longer interviews from the Numberphile team.</span><em>numberphile.com ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 2</span></div><a class="tile" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nf</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements (now delivered by STEM Learning)</b><i>Apply · apply</i><span>A summer research project with a university or company.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/students/">
+  <span class="fam">Apply</span>
+  <span class="sym">Is</span>
+  <span class="nm">In2Science UK: In2STEM</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2Science UK: In2STEM</b><i>Apply · Y12, STEM · apply</i><span>Free summer work experience with researchers; check the eligibility criteria.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ss</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://step.maths.org/">STEP Support Programme (University of Cambridge)</a></h3>
+      <div class="meta"><span>01</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free modules with hints and solutions. Y12: start the Foundation modules now.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://step.maths.org/">step.maths.org</a> &nbsp;<span class="dim">step.maths.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://esat-tmua.ac.uk/about-the-tests/tmua-test/">TMUA practice papers and specification (UAT-UK)</a></h3>
+      <div class="meta"><span>02</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Official practice papers for the TMUA. Do them timed, with no calculator.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://esat-tmua.ac.uk/about-the-tests/tmua-test/">UAT-UK TMUA</a> &nbsp;<span class="dim">esat-tmua.ac.uk/about-the-tests/tmua-test</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Up</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://ukmt.org.uk/competition-papers">UKMT past papers</a></h3>
+      <div class="meta"><span>03</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free past papers with solutions. Do the most recent SMC before 7 October.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://ukmt.org.uk/competition-papers">UKMT papers</a> &nbsp;<span class="dim">ukmt.org.uk/competition-papers</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://undergroundmathematics.org/">Underground Mathematics (Cambridge Mathematics)</a></h3>
+      <div class="meta"><span>04</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Rich problems for each A-level topic. Pick the station you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://undergroundmathematics.org/">undergroundmathematics.org</a> &nbsp;<span class="dim">undergroundmathematics.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://nrich.maths.org/students/post-16">NRICH post-16</a></h3>
+      <div class="meta"><span>05</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Problems sorted by A-level topic.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://nrich.maths.org/students/post-16">NRICH post-16</a> &nbsp;<span class="dim">nrich.maths.org/students/post-16</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Us</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges/senior-mathematical-challenge">UKMT Senior Mathematical Challenge (SMC)</a></h3>
+      <div class="meta"><span>06</span><span>paper</span><span>Y13 and below; aimed at Y12 and Y13</span><span>enter yourself</span><span>£15 per 10 papers (download and print); £16 per 10 posted</span></div>
+    </div>
+  </div>
+  <p class="what">90 minutes: 22 multiple-choice questions and three questions with a three-digit answer (new format for 2026). High scorers are invited to the Senior Kangaroo or the British Mathematical Olympiad.</p>
+  <p class="when"><b>When:</b> Wednesday 7 October 2026. Deadline for downloadable papers is the same day; the posted-paper deadline (16 September) has passed.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges/senior-mathematical-challenge">UKMT SMC</a> &nbsp;<span class="dim">ukmt.org.uk/senior-challenges/senior-mathematical-challenge</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges/british-maths-olympiad-round-1">British Mathematical Olympiad Round 1 and Round 2 (UKMT), with the Senior Kangaroo</a></h3>
+      <div class="meta"><span>07</span><span>entry</span><span>Y13 and below. About 1,000 top SMC scorers qualify for BMO1; several thousand more for the Senior Kangaroo.</span><span>via school</span><span>BMO1 free to qualifiers; £40 per discretionary entry. Check the UKMT handbook for Kangaroo fees.</span></div>
+    </div>
+  </div>
+  <p class="what">BMO1 is three and a half hours on six problems, with full written proofs. The Kangaroo is 60 minutes, 20 questions with whole-number answers. Top BMO1 scorers go on to BMO2.</p>
+  <p class="when"><b>When:</b> BMO1 and Senior Kangaroo: Wednesday 18 November 2026. BMO2: Wednesday 20 January 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges/british-maths-olympiad-round-1">UKMT BMO1</a> &nbsp;<span class="dim">ukmt.org.uk/senior-challenges/british-maths-olympiad-round-1</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Uk</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukmt.org.uk/team-challenges/senior-team-mathematical-challenge">UKMT Senior Team Mathematical Challenge</a></h3>
+      <div class="meta"><span>08</span><span>paper</span><span>Y12 and Y13; team of four with no more than two Y13</span><span>via school</span><span>£50 per team</span></div>
+    </div>
+  </div>
+  <p class="what">A team competition in rounds. Four of you represent the school at a regional final.</p>
+  <p class="when"><b>When:</b> Regional finals across the UK between 3 and 30 November 2026; registration opened 10 September and closes three weeks before each event. National final March 2027 (confirm venue).</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukmt.org.uk/team-challenges/senior-team-mathematical-challenge">UKMT STMC</a> &nbsp;<span class="dim">ukmt.org.uk/team-challenges/senior-team-mathematical-challenge</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Um</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges">UKMT Mathematical Olympiad for Girls (MOG)</a></h3>
+      <div class="meta"><span>09</span><span>paper</span><span>Girls and young women in UK schools; schools may enter up to four on a discretionary basis</span><span>enter yourself</span><span>Check UKMT handbook</span></div>
+    </div>
+  </div>
+  <p class="what">Five hard problems needing written solutions. Use the past papers for practice now, ready for next September.</p>
+  <p class="when"><b>When:</b> 2026 paper was Tuesday 22 September 2026 (now past). Expect late September 2027; confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukmt.org.uk/senior-challenges">UKMT senior challenges</a> &nbsp;<span class="dim">ukmt.org.uk/senior-challenges</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Tr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">Tom Rocks Maths Essay Competition (Oxford Department for Continuing Education)</a></h3>
+      <div class="meta"><span>10</span><span>essay</span><span>Student category: 17 and under in full-time education</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An essay of up to 2,000 words on any maths topic you choose. The student winner gets £100 and entries are published online.</p>
+  <p class="when"><b>When:</b> Annual since 2020. 2026 deadline was 13 April 2026. Confirm 2027 date.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">Oxford page</a> &nbsp;<span class="dim">lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 15 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever">Eduardo Sáenz de Cabezón: Math is forever</a></h3>
+      <div class="meta"><span>11</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> He says theorems last where scientific theories do not. Write out one proof from the Pure course (for example, the irrationality of root 2) and explain what makes it permanent.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Dk</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jeff_dekofsky_the_infinite_hotel_paradox">Jeff Dekofsky: The Infinite Hotel Paradox</a></h3>
+      <div class="meta"><span>12</span><span>6m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 6 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Write down the rule that moves every guest when one new guest arrives, then the rule for infinitely many. Why does the argument fail for the real numbers?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jeff_dekofsky_the_infinite_hotel_paradox">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jeff_dekofsky_the_infinite_hotel_paradox</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/marcus_du_sautoy_symmetry_reality_s_riddle">Marcus du Sautoy: Symmetry, reality's riddle</a></h3>
+      <div class="meta"><span>13</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> List the symmetries of an equilateral triangle as 2x2 matrices and check they are closed under multiplication. Which Core Pure topic does this use?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/marcus_du_sautoy_symmetry_reality_s_riddle">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/marcus_du_sautoy_symmetry_reality_s_riddle</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Kz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jacqueline_doan_and_alex_kazachek_does_math_have_a_major_flaw">Jacqueline Doan and Alex Kazachek: Does math have a major flaw?</a></h3>
+      <div class="meta"><span>14</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> The Banach-Tarski result depends on an axiom. What is an axiom, and how is it different from an assumption you would test in a Statistics hypothesis test?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jacqueline_doan_and_alex_kazachek_does_math_have_a_major_flaw">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jacqueline_doan_and_alex_kazachek_does_math_have_a_major_flaw</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mona_chalabi_3_ways_to_spot_a_bad_statistic">Mona Chalabi: 3 ways to spot a bad statistic</a></h3>
+      <div class="meta"><span>15</span><span>12m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 12 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Apply her three questions to one claim you find in the news this week. Which sampling method from the Statistics course would have produced better data?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mona_chalabi_3_ways_to_spot_a_bad_statistic">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mona_chalabi_3_ways_to_spot_a_bad_statistic</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Zc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sharon_zicherman_what_you_miss_when_you_focus_on_the_average">Sharon Zicherman: What you miss when you focus on the average</a></h3>
+      <div class="meta"><span>16</span><span>6m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 6 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Sketch two distributions with the same mean and very different spread. When would you report the standard deviation or a percentile instead of the mean?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sharon_zicherman_what_you_miss_when_you_focus_on_the_average">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sharon_zicherman_what_you_miss_when_you_focus_on_the_average</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">Kevin Slavin: How algorithms shape our world</a></h3>
+      <div class="meta"><span>17</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one algorithm from Decision Maths (Dijkstra, Prim, Kruskal, a sorting algorithm) and describe a real system that uses it. What goes wrong if the input data are bad?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/kevin_slavin_how_algorithms_shape_our_world</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/arthur_benjamin_teach_statistics_before_calculus">Arthur Benjamin: Teach statistics before calculus!</a></h3>
+      <div class="meta"><span>18</span><span>3m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 3 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> He argues most people will never use calculus. Make the case for one calculus topic from the A-level course that you think everyone should learn.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/arthur_benjamin_teach_statistics_before_calculus">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/arthur_benjamin_teach_statistics_before_calculus</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ac</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/tudor_achim_the_path_to_mathematical_superintelligence">Tudor Achim: The path to mathematical superintelligence</a></h3>
+      <div class="meta"><span>19</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> He wants machines to check every step of a proof formally. Take a proof by induction from Core Pure and list every step a computer would need to check.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/tudor_achim_the_path_to_mathematical_superintelligence">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/tudor_achim_the_path_to_mathematical_superintelligence</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Om</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/study-here/undergraduate-study/tmua/mat-livestream">Oxford Maths Admissions Test Livestream 2026</a></h3>
+      <div class="meta"><span>20</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free weekly problem-solving sessions from Oxford, with worksheets. Watch live or catch up on the recordings.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/study-here/undergraduate-study/tmua/mat-livestream">Oxford livestream</a> &nbsp;<span class="dim">maths.ox.ac.uk/study-here/undergraduate-study/tmua/mat-livestream</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club">Oxford Online Maths Club</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A weekly maths club on YouTube for people thinking of a maths degree. No sign-up.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club">Oxford Online Maths Club</a> &nbsp;<span class="dim">maths.ox.ac.uk/outreach/oxford-online-maths-club</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@OxfordMathematics">Oxford Mathematics YouTube channel</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Public lectures plus real Oxford first-year lectures.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@OxfordMathematics">Oxford Maths YouTube</a> &nbsp;<span class="dim">youtube.com/@OxfordMathematics</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/speakers/professor-sarah-hart">Gresham College: Professor Sarah Hart's maths lectures</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free hour-long lectures. Start with 'A Mathematician's View of Proof'.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/speakers/professor-sarah-hart">Gresham: Sarah Hart</a> &nbsp;<span class="dim">gresham.ac.uk/speakers/professor-sarah-hart</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Nm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@numberphile">Numberphile</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos with real mathematicians. Search for whatever you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@numberphile">Numberphile</a> &nbsp;<span class="dim">youtube.com/@numberphile</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.3blue1brown.com/">3Blue1Brown (Grant Sanderson)</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Animated explanations. Watch 'Essence of calculus' or 'Essence of linear algebra'.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.3blue1brown.com/">3blue1brown.com</a> &nbsp;<span class="dim">3blue1brown.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://plus.maths.org/content/">Plus magazine</a></h3>
+      <div class="meta"><span>26</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free articles on maths in the real world and in current research.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://plus.maths.org/content/">plus.maths.org</a> &nbsp;<span class="dim">plus.maths.org/content</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://chalkdustmagazine.com/">Chalkdust</a></h3>
+      <div class="meta"><span>27</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Articles, puzzles and a crossnumber, free online.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://chalkdustmagazine.com/">chalkdustmagazine.com</a> &nbsp;<span class="dim">chalkdustmagazine.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.myheplus.com/subject/mathematics">Cambridge HE+ Mathematics</a></h3>
+      <div class="meta"><span>28</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge's page of starting points for anyone thinking about a maths degree.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.myheplus.com/subject/mathematics">HE+ Maths</a> &nbsp;<span class="dim">myheplus.com/subject/mathematics</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">Tom Rocks Maths essay archive</a></h3>
+      <div class="meta"><span>29</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Read past entries before you write your own essay.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition/">Competition page</a> &nbsp;<span class="dim">lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ap</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Advanced Problems in Mathematics: Preparing for University, by Stephen Siklos</span></h3>
+      <div class="meta"><span>30</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Free to download. The standard book for STEP preparation.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ht</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">How to Think Like a Mathematician, by Kevin Houston</span></h3>
+      <div class="meta"><span>31</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How to read, write and build proofs before university.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Th</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Maths of Life and Death, by Kit Yates</span></h3>
+      <div class="meta"><span>32</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Maths in medicine, law and the news.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hp</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Humble Pi, by Matt Parker</span></h3>
+      <div class="meta"><span>33</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Real mistakes caused by bad maths. A good first book.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Mo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qshd">More or Less (BBC Radio 4)</a></h3>
+      <div class="meta"><span>34</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Checks the numbers behind news stories. Good for the Statistics half of the course.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qshd">More or Less</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qshd</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>35</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for calculus, Fermat's Last Theorem, Euler, Gauss, prime numbers, infinity, probability.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Mt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://plus.maths.org/content/">Maths on the Move (Plus magazine podcast)</a></h3>
+      <div class="meta"><span>36</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Interviews with mathematicians about what they are working on.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://plus.maths.org/content/">Plus / Maths on the Move</a> &nbsp;<span class="dim">plus.maths.org/content</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Np</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.numberphile.com/">Numberphile podcast</a></h3>
+      <div class="meta"><span>37</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Longer interviews from the Numberphile team.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.numberphile.com/">numberphile.com</a> &nbsp;<span class="dim">numberphile.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 2 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">Nuffield Research Placements (now delivered by STEM Learning)</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>Y12, STEM including maths and data</span></div>
+    </div>
+  </div>
+  <p class="what">A summer research project with a university or company.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm on the STEM Learning site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">Details</a> &nbsp;<span class="dim">stem.org.uk/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/students/">In2Science UK: In2STEM</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">Free summer work experience with researchers; check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications ran December 2025 to April 2026; expect the same pattern for 2027 and confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/students/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/students</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your maths year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">Wednesday 7 October 2026</div><span class="sym dot">1</span><div><b>UKMT Senior Mathematical Challenge</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">15–16 October 2026</div><span class="sym dot">2</span><div><b>TMUA (October sitting) for Oxford and Cambridge applicants; Gresham live lecture 'A History of the World in Four Algorithms' on 15 October, 17:30</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3–30 November 2026</div><span class="sym dot">3</span><div><b>Senior Team Mathematical Challenge regional finals</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">5 and 26 November 2026</div><span class="sym dot">4</span><div><b>Oxford interview advice livestreams</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Wednesday 18 November 2026</div><span class="sym dot">5</span><div><b>BMO Round 1 and Senior Kangaroo</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">16 December 2026</div><span class="sym dot">6</span><div><b>Gresham live lecture 'The Maths of Christmas' (18:00); TMUA January booking closes 21 December</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Wednesday 20 January 2027</div><span class="sym dot">7</span><div><b>BMO Round 2</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March–May 2027</div><span class="sym dot">8</span><div><b>STEP registration through the school (exams officer)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">April 2027</div><span class="sym dot">9</span><div><b>Tom Rocks Maths essay competition deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">June 2027</div><span class="sym dot">10</span><div><b>STEP Papers 2 and 3</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Rough book</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Maths and Further Maths Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

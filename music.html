@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Music beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,800&family=Raleway:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#B91C1C; --watch:#1E40AF; --listen:#6D28D9; --read:#92400E; --do:#15803D; --apply:#0F766E;
+  --f-display:"Bodoni Moda",system-ui,sans-serif;
+  --f-body:"Raleway",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#2B2118; --hero-ink:#FFF8F0; --hero-muted:#CDB9A6;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Music · 2026-27</div>
+      <h1>Music beyond the classroom<span class="sub">39 things to hear, play, read and enter. All free.</span></h1>
+      <p>Conservatoires and music departments ask what you listen to and what you have performed or written outside school. The recordings, broadcasts and scores below are free; the youth ensembles and composition competitions are the ways to play and write. Keep a listening log: the piece, the performer, one thing you noticed. Each time you do something, write one line in your listening log: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="listen"></span><span data-g="do"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="read"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons"><span class="sym">Sc</span></a><div><div class="step">Watch · Schwarm</div><p>Watch Betsy Schwarm on Vivaldi's Four Seasons (4 min), then listen to the first movement of Il Gardellino and note where the ritornello returns.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/programmes/b006tnxf"><span class="sym">Bb</span></a><div><div class="step">Composer of the Week · BBC Radio 3: Composer of the…</div><p>Listen to one Composer of the Week programme on the composer of a set work you are studying.</p></div></div><div class="pick" data-g="watch"><a href="https://cbso.co.uk/take-part/young-people"><span class="sym">Cs</span></a><div><div class="step">CBSO · CBSO, Symphony Hall and Town…</div><p>Book a £5 student ticket for a CBSO concert at Symphony Hall this half term.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The set list</h2>
+    <div class="key"><span>One track per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 6</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tnxf">
+  <span class="fam">Listen</span>
+  <span class="sym">Bb</span>
+  <span class="nm">BBC Radio 3: Composer of the…</span>
+  <span class="row"><span>01</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC Radio 3: Composer of the Week</b><i>Listen · 30m</i><span>An hour a day on one composer. Start with the composer of a set work you are studying.</span><em>Composer of the Week ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tn49">
+  <span class="fam">Listen</span>
+  <span class="sym">Bd</span>
+  <span class="nm">BBC Radio 3: The Early Music…</span>
+  <span class="row"><span>02</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC Radio 3: The Early Music Show</b><i>Listen · 30m</i><span>Weekly programme on Baroque and earlier music. Useful for the solo concerto strand.</span><em>Early Music Show ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>03</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the Culture archive for music. Handel's Messiah and The Baroque Movement fit AoS1.</span><em>In Our Time Culture ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/proms">
+  <span class="fam">Listen</span>
+  <span class="sym">Bp</span>
+  <span class="nm">BBC Proms on Radio 3 and…</span>
+  <span class="row"><span>04</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC Proms on Radio 3 and iPlayer</b><i>Listen · 30m</i><span>Every Prom is free to listen to on Radio 3 over the summer.</span><em>BBC Proms ↗</em></span></a><a class="tile" data-g="listen" href="https://switchedonpop.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">So</span>
+  <span class="nm">Switched On Pop</span>
+  <span class="row"><span>05</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Switched On Pop</b><i>Listen · 30m</i><span>Two musicians take apart a pop song each episode. Look for episodes on Beyoncé or Daft Punk.</span><em>Switched On Pop ↗</em></span></a><a class="tile" data-g="listen" href="https://songexploder.net/">
+  <span class="fam">Listen</span>
+  <span class="sym">Se</span>
+  <span class="nm">Song Exploder</span>
+  <span class="row"><span>06</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Song Exploder</b><i>Listen · 30m</i><span>A songwriter explains how one of their songs was built, one layer at a time.</span><em>Song Exploder ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://musescore.org/en">
+  <span class="fam">Do</span>
+  <span class="sym">Ms</span>
+  <span class="nm">MuseScore Studio</span>
+  <span class="row"><span>07</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>MuseScore Studio</b><i>Do · 20m</i><span>Free notation software. Use it to write out your composition properly.</span><em>MuseScore ↗</em></span></a><a class="tile" data-g="do" href="https://www.bandlab.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Bn</span>
+  <span class="nm">BandLab</span>
+  <span class="row"><span>08</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>BandLab</b><i>Do · 20m</i><span>A free recording studio in your browser.</span><em>BandLab ↗</em></span></a><a class="tile" data-g="do" href="https://www.audacityteam.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ad</span>
+  <span class="nm">Audacity</span>
+  <span class="row"><span>09</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Audacity</b><i>Do · 20m</i><span>Record and edit your own performances.</span><em>Audacity ↗</em></span></a><a class="tile" data-g="do" href="https://www.musictheory.net/">
+  <span class="fam">Do</span>
+  <span class="sym">Mn</span>
+  <span class="nm">musictheory.net</span>
+  <span class="row"><span>10</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>musictheory.net</b><i>Do · 20m</i><span>Ten minutes a day of interval and chord recognition here helps with the listening paper.</span><em>musictheory.net ↗</em></span></a><a class="tile" data-g="do" href="https://www.bbc.co.uk/programmes/articles/4JgjWbK9Cbp92M7FxLNZ2kv/resources-for-composing-and-writing-your-own-music">
+  <span class="fam">Do</span>
+  <span class="sym">Bg</span>
+  <span class="nm">BBC Young Composer resources</span>
+  <span class="row"><span>11</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>BBC Young Composer resources</b><i>Do · 20m</i><span>Short videos from composers on how to start a piece and keep it going.</span><em>BBC resources ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 16</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons">
+  <span class="fam">Watch</span>
+  <span class="sym">Sc</span>
+  <span class="nm">Schwarm</span>
+  <span class="row"><span>12</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Betsy Schwarm: Why should you listen to Vivaldi's &quot;Four Seasons&quot;?</b><i>Watch · TED-Ed · 4m</i><span>Compare the ritornello structure she describes in Spring with the first movement of Il Gardellino. What does the soloist do that the tutti does not?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/david_byrne_how_architecture_helped_music_evolve">
+  <span class="fam">Watch</span>
+  <span class="sym">Br</span>
+  <span class="nm">Byrne</span>
+  <span class="row"><span>13</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>David Byrne: How architecture helped music evolve</b><i>Watch · talk · 16m</i><span>Byrne says the room shapes the music. Take one AoS1 set work: where was it first heard, and what in its scoring or texture suits that space?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/elizabeth_hellmuth_margulis_why_we_love_repetition_in_music">
+  <span class="fam">Watch</span>
+  <span class="sym">Mr</span>
+  <span class="nm">Margulis</span>
+  <span class="row"><span>14</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Elizabeth Hellmuth Margulis: Why we love repetition in music</b><i>Watch · TED-Ed · 4m</i><span>Find three different uses of repetition in a Chopin, Brahms or Grieg set work and say what each one does for the listener.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mark_ronson_how_sampling_transformed_music">
+  <span class="fam">Watch</span>
+  <span class="sym">Rn</span>
+  <span class="nm">Ronson</span>
+  <span class="row"><span>15</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Mark Ronson: How sampling transformed music</b><i>Watch · talk · 17m</i><span>Choose a track by Daft Punk or Beyoncé that uses a sample. What does the new track change about the original, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/kirby_ferguson_embrace_the_remix">
+  <span class="fam">Watch</span>
+  <span class="sym">Fr</span>
+  <span class="nm">Ferguson</span>
+  <span class="row"><span>16</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Kirby Ferguson: Embrace the remix</b><i>Watch · talk · 9m</i><span>Bach arranged Vivaldi concertos for keyboard. Is that a remix? Say where borrowing becomes copying. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/stefon_harris_there_are_no_mistakes_on_the_bandstand">
+  <span class="fam">Watch</span>
+  <span class="sym">Hr</span>
+  <span class="nm">Harris</span>
+  <span class="row"><span>17</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Stefon Harris: There are no mistakes on the bandstand</b><i>Watch · talk · 13m</i><span>Find a moment in a Miles Davis or Charlie Parker recording where the rhythm section responds to the soloist. Describe what changes.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/charles_limb_your_brain_on_improv">
+  <span class="fam">Watch</span>
+  <span class="sym">Lm</span>
+  <span class="nm">Limb</span>
+  <span class="row"><span>18</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Charles Limb: Your brain on improv</b><i>Watch · talk · 16m</i><span>What can a brain scan tell us about improvisation that an analysis of the notes cannot, and the other way round?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mark_applebaum_the_mad_scientist_of_music">
+  <span class="fam">Watch</span>
+  <span class="sym">Ap</span>
+  <span class="nm">Applebaum</span>
+  <span class="row"><span>19</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Mark Applebaum: The mad scientist of music</b><i>Watch · talk · 17m</i><span>Is what Applebaum makes music? Argue your answer with reference to Reich or Messiaen from Art music since 1910. Another talk to argue with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/eric_whitacre_a_virtual_choir_2_000_voices_strong">
+  <span class="fam">Watch</span>
+  <span class="sym">Wh</span>
+  <span class="nm">Whitacre</span>
+  <span class="row"><span>20</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Eric Whitacre: A virtual choir 2,000 voices strong</b><i>Watch · talk · 14m</i><span>Look at the harmony of the piece sung in the talk. Which chords would you borrow for your own composition, and how would you voice them?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/music">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College music…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College music lectures and schools programme</b><i>Watch · lecture · 1h</i><span>Free university lectures on music history, theory and film music. Pick one that overlaps with an area of study.</span><em>Gresham Music ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/music">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Music</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Music</b><i>Watch · lecture · 1h</i><span>Short modules from Cambridge. Try Analysing Musical Performances with two recordings of one of your set works.</span><em>HE+ Music ↗</em></span></a><a class="tile" data-g="watch" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students">
+  <span class="fam">Watch</span>
+  <span class="sym">Cf</span>
+  <span class="nm">Cambridge Faculty of Music…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Faculty of Music: Subject Masterclass and Taster Days</b><i>Watch · lecture · 1h</i><span>Free taster lectures from Cambridge's music faculty, online or in Cambridge. Ask your teacher about dates.</span><em>Cambridge Music ↗</em></span></a><a class="tile" data-g="watch" href="https://www.bcu.ac.uk/conservatoire/events-calendar">
+  <span class="fam">Watch</span>
+  <span class="sym">Rb</span>
+  <span class="nm">Royal Birmingham…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Birmingham Conservatoire: lunchtime concerts and public research seminars</b><i>Watch · lecture · 1h</i><span>Concerts by conservatoire students in the city centre, most weeks at lunchtime.</span><em>RBC events ↗</em></span></a><a class="tile" data-g="watch" href="https://www.bcmg.org.uk/events/creative-composing-lab-autumn-26">
+  <span class="fam">Watch</span>
+  <span class="sym">Bc</span>
+  <span class="nm">BCMG Creative Composing Lab</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>BCMG Creative Composing Lab</b><i>Watch · lecture · 1h</i><span>A free day writing music for professional players, ending with a performance. Book in advance.</span><em>BCMG lab ↗</em></span></a><a class="tile" data-g="watch" href="https://cbso.co.uk/take-part/young-people">
+  <span class="fam">Watch</span>
+  <span class="sym">Cs</span>
+  <span class="nm">CBSO, Symphony Hall and Town…</span>
+  <span class="row"><span>26</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>CBSO, Symphony Hall and Town Hall: cheap tickets</b><i>Watch · lecture · 1h</i><span>Student tickets for the CBSO are £5. Hearing a live orchestra is the best preparation for the listening paper.</span><em>CBSO young people ↗</em></span></a><a class="tile" data-g="watch" href="https://excathedra.co.uk/diary/">
+  <span class="fam">Watch</span>
+  <span class="sym">Ec</span>
+  <span class="nm">Ex Cathedra 2026-27 season</span>
+  <span class="row"><span>27</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Ex Cathedra 2026-27 season</b><i>Watch · lecture · 1h</i><span>A free lunchtime concert of Venetian Baroque music on 22 January 2027 at the University of Birmingham.</span><em>Ex Cathedra ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://www.bbc.co.uk/programmes/articles/4mY3MbSJ5G2LvSbzZPbc85G/bbc-young-composer">
+  <span class="fam">Enter</span>
+  <span class="sym">By</span>
+  <span class="nm">BBC Young Composer Competition</span>
+  <span class="row"><span>28</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>BBC Young Composer Competition (BBC Radio 3 / BBC Proms)</b><i>Enter · paper</i><span>Send in a piece you have written, in any style. Winners get a mentor composer and write a piece for the BBC Concert Orchestra. Your NEA composition could be the starting point.</span><em>BBC Young Composer ↗</em></span></a><a class="tile" data-g="enter" href="https://www.youngcomposersaward.co.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ny</span>
+  <span class="nm">NCEM Young Composers Award</span>
+  <span class="row"><span>29</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>NCEM Young Composers Award (National Centre for Early Music with BBC Radio 3)</b><i>Enter · paper</i><span>Write a 3–4 minute piece for a named early-music group. The 2026 brief was soprano, cornetto and harpsichord or organ. Winners are performed live and broadcast on Radio 3's Early Music Show.</span><em>NCEM award ↗</em></span></a><a class="tile" data-g="enter" href="https://www.nyo.org.uk/get-involved/the-nyo-orchestra">
+  <span class="fam">Enter</span>
+  <span class="sym">Nt</span>
+  <span class="nm">National Youth Orchestra of…</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>National Youth Orchestra of Great Britain: auditions</b><i>Enter · paper</i><span>Free to apply. If you get in, there is a fee, but bursaries cover it for families who need them.</span><em>NYO ↗</em></span></a><a class="tile" data-g="enter" href="https://www.nationalyouthchoir.org.uk/how-do-i-join-national-youth-choir">
+  <span class="fam">Enter</span>
+  <span class="sym">Nn</span>
+  <span class="nm">National Youth Choir…</span>
+  <span class="row"><span>31</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>National Youth Choir (15–18 choir): auditions</b><i>Enter · entry</i><span>A free 10–15 minute online audition. Your parent books it by 9am on 6 October 2026. Members go on residential courses in the holidays; there is a fee, with help for families on lower incomes.</span><em>NYC auditions ↗</em></span></a><a class="tile" data-g="enter" href="https://cbso.co.uk/take-part/young-people/project-remix">
+  <span class="fam">Enter</span>
+  <span class="sym">Cp</span>
+  <span class="nm">CBSO Project Remix 2027</span>
+  <span class="row"><span>32</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>CBSO Project Remix 2027</b><i>Enter · entry</i><span>A free CBSO ensemble playing new arrangements of dance-based music, coached by orchestra members, with a concert at Symphony Hall. Apply by 8 November.</span><em>Project Remix ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 4</span></div><a class="tile" data-g="read" href="https://myheplus.com/subject/music/musical-apologies">
+  <span class="fam">Read</span>
+  <span class="sym">Cm</span>
+  <span class="nm">Cambridge HE+: Musical…</span>
+  <span class="row"><span>33</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+: Musical Apologies</b><i>Read · 10m</i><span>A short read from Cambridge on the different ways of studying a piece of music.</span><em>Musical Apologies ↗</em></span></a><a class="tile" data-g="read" href="https://imslp.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Im</span>
+  <span class="nm">IMSLP</span>
+  <span class="row"><span>34</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>IMSLP (Petrucci Music Library)</b><i>Read · 10m</i><span>Free scores of the AoS1 set works. Download the one you are studying and annotate it.</span><em>imslp.org ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tr</span>
+  <span class="nm">The Rest Is Noise: Listening…</span>
+  <span class="row"><span>35</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Rest Is Noise: Listening to the Twentieth Century, by Alex Ross</b><i>Read · book · book</i><span>If you study Art music since 1910, read the chapters on Shostakovich and the minimalists.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Hm</span>
+  <span class="nm">How Music Works</span>
+  <span class="row"><span>36</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>How Music Works, by David Byrne</b><i>Read · book · book</i><span>The book behind the Byrne talk: how places, technology and money shape music.</span></span></span><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 3</span></div><a class="tile" data-g="apply" href="https://www.nyo.org.uk/get-involved/nyo-inspire">
+  <span class="fam">Apply</span>
+  <span class="sym">Ni</span>
+  <span class="nm">NYO Inspire</span>
+  <span class="row"><span>37</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>NYO Inspire</b><i>Apply · apply</i><span>Free orchestral days with the National Youth Orchestra. No audition.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students/sutton-trust-summer-school">
+  <span class="fam">Apply</span>
+  <span class="sym">St</span>
+  <span class="nm">Sutton Trust Summer School…</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust Summer School: Music at Cambridge</b><i>Apply · apply</i><span>A free week studying music at Cambridge in August, if you meet the criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.bcu.ac.uk/conservatoire/music/juniors">
+  <span class="fam">Apply</span>
+  <span class="sym">Jr</span>
+  <span class="nm">Junior Royal Birmingham…</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Junior Royal Birmingham Conservatoire</b><i>Apply · apply</i><span>Saturday training at the Conservatoire. Fees are charged, but bursaries are available based on family income.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 6 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tnxf">BBC Radio 3: Composer of the Week</a></h3>
+      <div class="meta"><span>01</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">An hour a day on one composer. Start with the composer of a set work you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tnxf">Composer of the Week</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006tnxf</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tn49">BBC Radio 3: The Early Music Show</a></h3>
+      <div class="meta"><span>02</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly programme on Baroque and earlier music. Useful for the solo concerto strand.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006tn49">Early Music Show</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006tn49</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>03</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the Culture archive for music. Handel's Messiah and The Baroque Movement fit AoS1.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">In Our Time Culture</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01drwny</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/proms">BBC Proms on Radio 3 and iPlayer</a></h3>
+      <div class="meta"><span>04</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Every Prom is free to listen to on Radio 3 over the summer.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/proms">BBC Proms</a> &nbsp;<span class="dim">bbc.co.uk/proms</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">So</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://switchedonpop.com/">Switched On Pop</a></h3>
+      <div class="meta"><span>05</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Two musicians take apart a pop song each episode. Look for episodes on Beyoncé or Daft Punk.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://switchedonpop.com/">Switched On Pop</a> &nbsp;<span class="dim">switchedonpop.com</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Se</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://songexploder.net/">Song Exploder</a></h3>
+      <div class="meta"><span>06</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A songwriter explains how one of their songs was built, one layer at a time.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://songexploder.net/">Song Exploder</a> &nbsp;<span class="dim">songexploder.net</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ms</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://musescore.org/en">MuseScore Studio</a></h3>
+      <div class="meta"><span>07</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free notation software. Use it to write out your composition properly.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://musescore.org/en">MuseScore</a> &nbsp;<span class="dim">musescore.org/en</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Bn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.bandlab.com/">BandLab</a></h3>
+      <div class="meta"><span>08</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A free recording studio in your browser.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.bandlab.com/">BandLab</a> &nbsp;<span class="dim">bandlab.com</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ad</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.audacityteam.org/">Audacity</a></h3>
+      <div class="meta"><span>09</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Record and edit your own performances.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.audacityteam.org/">Audacity</a> &nbsp;<span class="dim">audacityteam.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Mn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.musictheory.net/">musictheory.net</a></h3>
+      <div class="meta"><span>10</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Ten minutes a day of interval and chord recognition here helps with the listening paper.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.musictheory.net/">musictheory.net</a> &nbsp;<span class="dim">musictheory.net</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Bg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.bbc.co.uk/programmes/articles/4JgjWbK9Cbp92M7FxLNZ2kv/resources-for-composing-and-writing-your-own-music">BBC Young Composer resources</a></h3>
+      <div class="meta"><span>11</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos from composers on how to start a piece and keep it going.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.bbc.co.uk/programmes/articles/4JgjWbK9Cbp92M7FxLNZ2kv/resources-for-composing-and-writing-your-own-music">BBC resources</a> &nbsp;<span class="dim">bbc.co.uk/programmes/articles/4JgjWbK9Cbp92M7FxLNZ2kv/resources-for-composing-and-writing-your-own-music</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 16 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons">Betsy Schwarm: Why should you listen to Vivaldi's &quot;Four Seasons&quot;?</a></h3>
+      <div class="meta"><span>12</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Compare the ritornello structure she describes in Spring with the first movement of Il Gardellino. What does the soloist do that the tutti does not?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/david_byrne_how_architecture_helped_music_evolve">David Byrne: How architecture helped music evolve</a></h3>
+      <div class="meta"><span>13</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Byrne says the room shapes the music. Take one AoS1 set work: where was it first heard, and what in its scoring or texture suits that space?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/david_byrne_how_architecture_helped_music_evolve">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/david_byrne_how_architecture_helped_music_evolve</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/elizabeth_hellmuth_margulis_why_we_love_repetition_in_music">Elizabeth Hellmuth Margulis: Why we love repetition in music</a></h3>
+      <div class="meta"><span>14</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Find three different uses of repetition in a Chopin, Brahms or Grieg set work and say what each one does for the listener.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/elizabeth_hellmuth_margulis_why_we_love_repetition_in_music">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/elizabeth_hellmuth_margulis_why_we_love_repetition_in_music</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mark_ronson_how_sampling_transformed_music">Mark Ronson: How sampling transformed music</a></h3>
+      <div class="meta"><span>15</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose a track by Daft Punk or Beyoncé that uses a sample. What does the new track change about the original, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mark_ronson_how_sampling_transformed_music">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mark_ronson_how_sampling_transformed_music</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Fr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/kirby_ferguson_embrace_the_remix">Kirby Ferguson: Embrace the remix</a></h3>
+      <div class="meta"><span>16</span><span>9m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 9 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Bach arranged Vivaldi concertos for keyboard. Is that a remix? Say where borrowing becomes copying. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/kirby_ferguson_embrace_the_remix">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/kirby_ferguson_embrace_the_remix</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/stefon_harris_there_are_no_mistakes_on_the_bandstand">Stefon Harris: There are no mistakes on the bandstand</a></h3>
+      <div class="meta"><span>17</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Find a moment in a Miles Davis or Charlie Parker recording where the rhythm section responds to the soloist. Describe what changes.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/stefon_harris_there_are_no_mistakes_on_the_bandstand">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/stefon_harris_there_are_no_mistakes_on_the_bandstand</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Lm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/charles_limb_your_brain_on_improv">Charles Limb: Your brain on improv</a></h3>
+      <div class="meta"><span>18</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> What can a brain scan tell us about improvisation that an analysis of the notes cannot, and the other way round?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/charles_limb_your_brain_on_improv">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/charles_limb_your_brain_on_improv</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ap</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mark_applebaum_the_mad_scientist_of_music">Mark Applebaum: The mad scientist of music</a></h3>
+      <div class="meta"><span>19</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Is what Applebaum makes music? Argue your answer with reference to Reich or Messiaen from Art music since 1910. Another talk to argue with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mark_applebaum_the_mad_scientist_of_music">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mark_applebaum_the_mad_scientist_of_music</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/eric_whitacre_a_virtual_choir_2_000_voices_strong">Eric Whitacre: A virtual choir 2,000 voices strong</a></h3>
+      <div class="meta"><span>20</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Look at the harmony of the piece sung in the talk. Which chords would you borrow for your own composition, and how would you voice them?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/eric_whitacre_a_virtual_choir_2_000_voices_strong">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/eric_whitacre_a_virtual_choir_2_000_voices_strong</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/music">Gresham College music lectures and schools programme</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures on music history, theory and film music. Pick one that overlaps with an area of study.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/music">Gresham Music</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/music</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/music">Cambridge HE+ Music</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short modules from Cambridge. Try Analysing Musical Performances with two recordings of one of your set works.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/music">HE+ Music</a> &nbsp;<span class="dim">myheplus.com/subject/music</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students">Cambridge Faculty of Music: Subject Masterclass and Taster Days</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free taster lectures from Cambridge's music faculty, online or in Cambridge. Ask your teacher about dates.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students">Cambridge Music</a> &nbsp;<span class="dim">mus.cam.ac.uk/applicants/undergraduate/events-for-students</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.bcu.ac.uk/conservatoire/events-calendar">Royal Birmingham Conservatoire: lunchtime concerts and public research seminars</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Concerts by conservatoire students in the city centre, most weeks at lunchtime.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.bcu.ac.uk/conservatoire/events-calendar">RBC events</a> &nbsp;<span class="dim">bcu.ac.uk/conservatoire/events-calendar</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.bcmg.org.uk/events/creative-composing-lab-autumn-26">BCMG Creative Composing Lab</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free day writing music for professional players, ending with a performance. Book in advance.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.bcmg.org.uk/events/creative-composing-lab-autumn-26">BCMG lab</a> &nbsp;<span class="dim">bcmg.org.uk/events/creative-composing-lab-autumn-26</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://cbso.co.uk/take-part/young-people">CBSO, Symphony Hall and Town Hall: cheap tickets</a></h3>
+      <div class="meta"><span>26</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Student tickets for the CBSO are £5. Hearing a live orchestra is the best preparation for the listening paper.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://cbso.co.uk/take-part/young-people">CBSO young people</a> &nbsp;<span class="dim">cbso.co.uk/take-part/young-people</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ec</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://excathedra.co.uk/diary/">Ex Cathedra 2026-27 season</a></h3>
+      <div class="meta"><span>27</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free lunchtime concert of Venetian Baroque music on 22 January 2027 at the University of Birmingham.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://excathedra.co.uk/diary/">Ex Cathedra</a> &nbsp;<span class="dim">excathedra.co.uk/diary</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">By</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bbc.co.uk/programmes/articles/4mY3MbSJ5G2LvSbzZPbc85G/bbc-young-composer">BBC Young Composer Competition (BBC Radio 3 / BBC Proms)</a></h3>
+      <div class="meta"><span>28</span><span>paper</span><span>Ages 12–18, UK. Three categories: Lower Junior (12–14), Upper Junior (15–16), Senior (17–18).</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Send in a piece you have written, in any style. Winners get a mentor composer and write a piece for the BBC Concert Orchestra. Your NEA composition could be the starting point.</p>
+  <p class="when"><b>When:</b> Runs every other year. The 2025 round was open March to September 2025, with winners announced in December. The next round is expected in 2027; confirm dates on the BBC page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bbc.co.uk/programmes/articles/4mY3MbSJ5G2LvSbzZPbc85G/bbc-young-composer">BBC Young Composer</a> &nbsp;<span class="dim">bbc.co.uk/programmes/articles/4mY3MbSJ5G2LvSbzZPbc85G/bbc-young-composer</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ny</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.youngcomposersaward.co.uk/">NCEM Young Composers Award (National Centre for Early Music with BBC Radio 3)</a></h3>
+      <div class="meta"><span>29</span><span>paper</span><span>UK residents up to 25; judged in two categories, 18 and under, and 19–25.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Write a 3–4 minute piece for a named early-music group. The 2026 brief was soprano, cornetto and harpsichord or organ. Winners are performed live and broadcast on Radio 3's Early Music Show.</p>
+  <p class="when"><b>When:</b> The 2026 winners' pieces are premiered by The Gonzaga Band at Royal Birmingham Conservatoire, Tuesday 27 October 2026, lunchtime. The 2027 brief is not yet published; in the 2026 round registration closed on 2 February and the final was in York in April. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.youngcomposersaward.co.uk/">NCEM award</a> &nbsp;<span class="dim">youngcomposersaward.co.uk</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Nt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.nyo.org.uk/get-involved/the-nyo-orchestra">National Youth Orchestra of Great Britain: auditions</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>Ages 13–18 on 1 September of the application year; usually around Grade 8 standard, no exam certificates needed.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Free to apply. If you get in, there is a fee, but bursaries cover it for families who need them.</p>
+  <p class="when"><b>When:</b> For the Orchestra of 2027, applications closed 17 May 2026, video auditions were due 31 May, and live auditions ran 1–13 September 2026 in London, Birmingham and Manchester. The 2028 round is expected to follow the same pattern; confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.nyo.org.uk/get-involved/the-nyo-orchestra">NYO</a> &nbsp;<span class="dim">nyo.org.uk/get-involved/the-nyo-orchestra</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Nn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.nationalyouthchoir.org.uk/how-do-i-join-national-youth-choir">National Youth Choir (15–18 choir): auditions</a></h3>
+      <div class="meta"><span>31</span><span>entry</span><span>Singers in Y11–13 who were aged 15, 16 or 17 on 31 August 2026 (a separate choir takes 18–25). UK citizens or residents.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A free 10–15 minute online audition. Your parent books it by 9am on 6 October 2026. Members go on residential courses in the holidays; there is a fee, with help for families on lower incomes.</p>
+  <p class="when"><b>When:</b> Booking window closes 9am, Tuesday 6 October 2026. Online auditions over Zoom, 17 October to 1 November 2026. First course in spring 2027. Next booking window expected September 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.nationalyouthchoir.org.uk/how-do-i-join-national-youth-choir">NYC auditions</a> &nbsp;<span class="dim">nationalyouthchoir.org.uk/how-do-i-join-national-youth-choir</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Cp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://cbso.co.uk/take-part/young-people/project-remix">CBSO Project Remix 2027</a></h3>
+      <div class="meta"><span>32</span><span>entry</span><span>Instrumentalists aged 11–18 at around Grade 5 or above; no exam certificates needed.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A free CBSO ensemble playing new arrangements of dance-based music, coached by orchestra members, with a concert at Symphony Hall. Apply by 8 November.</p>
+  <p class="when"><b>When:</b> Apply by Sunday 8 November 2026. Rehearsals on weekday evenings (mostly Tuesdays) at the CBSO Centre from January 2027, a tutti day on Sunday 7 March, and a concert at Symphony Hall on Sunday 14 March 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://cbso.co.uk/take-part/young-people/project-remix">Project Remix</a> &nbsp;<span class="dim">cbso.co.uk/take-part/young-people/project-remix</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 4 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://myheplus.com/subject/music/musical-apologies">Cambridge HE+: Musical Apologies</a></h3>
+      <div class="meta"><span>33</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">A short read from Cambridge on the different ways of studying a piece of music.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://myheplus.com/subject/music/musical-apologies">Musical Apologies</a> &nbsp;<span class="dim">myheplus.com/subject/music/musical-apologies</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Im</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://imslp.org/">IMSLP (Petrucci Music Library)</a></h3>
+      <div class="meta"><span>34</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free scores of the AoS1 set works. Download the one you are studying and annotate it.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://imslp.org/">imslp.org</a> &nbsp;<span class="dim">imslp.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tr</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Rest Is Noise: Listening to the Twentieth Century, by Alex Ross</span></h3>
+      <div class="meta"><span>35</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">If you study Art music since 1910, read the chapters on Shostakovich and the minimalists.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hm</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">How Music Works, by David Byrne</span></h3>
+      <div class="meta"><span>36</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The book behind the Byrne talk: how places, technology and money shape music.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 3 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ni</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nyo.org.uk/get-involved/nyo-inspire">NYO Inspire</a></h3>
+      <div class="meta"><span>37</span><span>apply</span><span>Teenage musicians aged 13–18, primarily from state schools; no audition.</span></div>
+    </div>
+  </div>
+  <p class="what">Free orchestral days with the National Youth Orchestra. No audition.</p>
+  <p class="when"><b>When:</b> Apply each year through the NYO Musicians' Portal; check the page for the 2027 window.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.nyo.org.uk/get-involved/nyo-inspire">Details</a> &nbsp;<span class="dim">nyo.org.uk/get-involved/nyo-inspire</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students/sutton-trust-summer-school">Sutton Trust Summer School: Music at Cambridge</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>Y12 at UK state schools, meeting widening-participation criteria.</span></div>
+    </div>
+  </div>
+  <p class="what">A free week studying music at Cambridge in August, if you meet the criteria.</p>
+  <p class="when"><b>When:</b> Five days in Cambridge in August. 2026 applications have closed; the 2027 window usually opens in the new year. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students/sutton-trust-summer-school">Details</a> &nbsp;<span class="dim">mus.cam.ac.uk/applicants/undergraduate/events-for-students/sutton-trust-summer-school</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Jr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.bcu.ac.uk/conservatoire/music/juniors">Junior Royal Birmingham Conservatoire</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Ages 8–18 with strong potential; auditioned.</span></div>
+    </div>
+  </div>
+  <p class="what">Saturday training at the Conservatoire. Fees are charged, but bursaries are available based on family income.</p>
+  <p class="when"><b>When:</b> Main auditions in April and May; other auditions during the year if places are free.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.bcu.ac.uk/conservatoire/music/juniors">Details</a> &nbsp;<span class="dim">bcu.ac.uk/conservatoire/music/juniors</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your music year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">By 9am Tuesday 6 October 2026</div><span class="sym dot">1</span><div><b>National Youth Choir (15–18) audition booking closes; online auditions 17 October–1 November</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Tuesday 27 October 2026, lunchtime</div><span class="sym dot">2</span><div><b>NCEM Young Composers Award winners premiered by The Gonzaga Band, Royal Birmingham Conservatoire</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Sunday 8 November 2026</div><span class="sym dot">3</span><div><b>CBSO Project Remix application deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Sunday 15 November 2026</div><span class="sym dot">4</span><div><b>BCMG Creative Composing Lab, CBSO Centre</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Wednesday 6 January 2027</div><span class="sym dot">5</span><div><b>NYO: Tchaikovsky and Zimmer's Interstellar, Warwick Arts Centre</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Friday 22 January 2027, 1pm</div><span class="sym dot">6</span><div><b>Ex Cathedra Venetian Vespers, Elgar Concert Hall (free)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January–February 2027</div><span class="sym dot">7</span><div><b>NCEM Young Composers Award 2027 brief; registration closed 2 February in 2026</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March–September 2027 (expected)</div><span class="sym dot">8</span><div><b>BBC Young Composer Competition 2027 open for entries</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">9</span><div><b>NYO 2028 applications (2026 deadline 17 May); Junior RBC auditions (April–May); Cambridge Music Masterclass (May) and Taster Days</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Mid-July to mid-September 2027 (expected)</div><span class="sym dot">10</span><div><b>BBC Proms on Radio 3 and iPlayer</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Listening log</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Music Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

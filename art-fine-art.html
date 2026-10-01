@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Art beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#E11D48; --watch:#2563EB; --listen:#7C3AED; --read:#CA8A04; --do:#16A34A; --apply:#0891B2;
+  --f-display:"Syne",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#111111; --hero-ink:#FFFFFF; --hero-muted:#B8B8B8;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Art (Fine Art) · 2026-27</div>
+      <h1>Art beyond the classroom<span class="sub">36 things to make, see, read and enter. All free.</span></h1>
+      <p>Art schools and foundation courses interview from your sketchbook, so everything here should end up in it: a drawing from a gallery visit, a response to a talk, an entry for a competition. The Birmingham galleries, the Courtauld and National Gallery programmes and the talks below are free; the competition deadlines are real. Each time you do something, write one line in your sketchbook: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="do"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="do"><a href="https://www.ikon-gallery.org/"><span class="sym">Ig</span></a><div><div class="step">Ikon · Ikon Gallery</div><p>Visit Ikon's free Balraj Khanna exhibition before 21 February and fill two sketchbook pages with studies and notes.</p></div></div><div class="pick" data-g="watch"><a href="https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/"><span class="sym">Cy</span></a><div><div class="step">Book · Courtauld Young People's…</div><p>Book a free online Courtauld workshop in the October half term (26–28 October).</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/titus_kaphar_can_art_amend_history"><span class="sym">Kp</span></a><div><div class="step">Watch · Kaphar</div><p>Watch Titus Kaphar (13 min) and write down what you would need to know about a painting before changing it.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The contact sheet</h2>
+    <div class="key"><span>One frame per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://www.birminghammuseums.org.uk/birmingham-museum-and-art-gallery">
+  <span class="fam">Do</span>
+  <span class="sym">Bm</span>
+  <span class="nm">Birmingham Museum &amp; Art…</span>
+  <span class="row"><span>01</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Birmingham Museum &amp; Art Gallery</b><i>Do · 20m</i><span>Free, in the city centre. Spend an hour drawing from one painting in the Pre-Raphaelite galleries.</span><em>BMAG ↗</em></span></a><a class="tile" data-g="do" href="https://www.ikon-gallery.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ig</span>
+  <span class="nm">Ikon Gallery</span>
+  <span class="row"><span>02</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Ikon Gallery</b><i>Do · 20m</i><span>Free contemporary art in Brindleyplace. The Balraj Khanna show is on until 21 February.</span><em>Ikon ↗</em></span></a><a class="tile" data-g="do" href="https://artsandculture.google.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Ga</span>
+  <span class="nm">Google Arts &amp; Culture</span>
+  <span class="row"><span>03</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Google Arts &amp; Culture</b><i>Do · 20m</i><span>Zoom in to see brushstrokes and surfaces you cannot see in a book.</span><em>Arts &amp; Culture ↗</em></span></a><a class="tile" data-g="do" href="https://thebigdraw.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Tb</span>
+  <span class="nm">The Big Draw Festival</span>
+  <span class="row"><span>04</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>The Big Draw Festival</b><i>Do · 20m</i><span>Free drawing events in October; look for one near you.</span><em>The Big Draw ↗</em></span></a><a class="tile" data-g="do" href="https://www.arts.ac.uk/study-at-ual/apply/portfolio-advice">
+  <span class="fam">Do</span>
+  <span class="sym">Up</span>
+  <span class="nm">UAL portfolio advice</span>
+  <span class="row"><span>05</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UAL portfolio advice</b><i>Do · 20m</i><span>Free advice on building a portfolio for art school.</span><em>UAL portfolio ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/titus_kaphar_can_art_amend_history">
+  <span class="fam">Watch</span>
+  <span class="sym">Kp</span>
+  <span class="nm">Kaphar</span>
+  <span class="row"><span>06</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Titus Kaphar: Can art amend history?</b><i>Watch · talk · 13m</i><span>Kaphar paints over part of a copy of a Frans Hals. What would a related study need to say about the original's context (AO1) before an intervention like this makes sense?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/phil_hansen_embrace_the_shake">
+  <span class="fam">Watch</span>
+  <span class="sym">Hn</span>
+  <span class="nm">Hansen</span>
+  <span class="row"><span>07</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Phil Hansen: Embrace the shake</b><i>Watch · talk · 10m</i><span>Set yourself one limit (one colour, one tool, a time limit) for a week of sketchbook work. Record in your annotations what it changed (AO3).</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/olafur_eliasson_playing_with_space_and_light">
+  <span class="fam">Watch</span>
+  <span class="sym">El</span>
+  <span class="nm">Eliasson</span>
+  <span class="row"><span>08</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Olafur Eliasson: Playing with space and light</b><i>Watch · talk · 9m</i><span>Eliasson treats light and space as materials. Which of the AQA Fine Art areas does his work belong to, and how would you record an installation in a sketchbook?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings">
+  <span class="fam">Watch</span>
+  <span class="sym">Sr</span>
+  <span class="nm">Seracini</span>
+  <span class="row"><span>09</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Maurizio Seracini: The secret lives of paintings</b><i>Watch · talk · 12m</i><span>What do the scans reveal about how the paintings were made? Link your answer to the underpainting and glazing named in the specification.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty">
+  <span class="fam">Watch</span>
+  <span class="sym">Dt</span>
+  <span class="nm">Dutton</span>
+  <span class="row"><span>10</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Denis Dutton: A Darwinian theory of beauty</b><i>Watch · talk · 15m</i><span>Choose one artwork made not to be beautiful and use it to argue against Dutton. This talk is there to be disagreed with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art">
+  <span class="fam">Watch</span>
+  <span class="sym">Gt</span>
+  <span class="nm">Gates</span>
+  <span class="row"><span>11</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Theaster Gates: How to revive a neighborhood: with imagination, beauty and art</b><i>Watch · talk · 17m</i><span>Is Gates's rebuilding work art? Answer using the specification's phrase about how images and artefacts relate to 'social, environmental, cultural and/or ethical contexts'.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/amit_sood_every_piece_of_art_you_ve_ever_wanted_to_see_up_close_and_searchable">
+  <span class="fam">Watch</span>
+  <span class="sym">Sd</span>
+  <span class="nm">Sood</span>
+  <span class="row"><span>12</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Amit Sood: Every piece of art you've ever wanted to see -- up close and searchable</b><i>Watch · talk · 15m</i><span>Find a painting from your contextual research on Google Arts &amp; Culture and zoom in. Record three details you could not see in a book reproduction.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/chris_jordan_pictures_some_shocking_stats">
+  <span class="fam">Watch</span>
+  <span class="sym">Jr</span>
+  <span class="nm">Jordan</span>
+  <span class="row"><span>13</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Chris Jordan: Turning powerful stats into art</b><i>Watch · talk · 11m</i><span>Jordan uses scale and repetition to carry a number. How do scale and repetition carry meaning in one piece of your own work (AO4)?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/">
+  <span class="fam">Watch</span>
+  <span class="sym">Cy</span>
+  <span class="nm">Courtauld Young People's…</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Courtauld Young People's Workshops (16–18)</b><i>Watch · lecture · 1h</i><span>Free online sessions with Courtauld curators and artists, several in the October half term. Book early.</span><em>Courtauld workshops ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/art">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College art…</span>
+  <span class="row"><span>15</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College art collection and schools programme</b><i>Watch · lecture · 1h</i><span>Free university lectures on art. Pick one that matches the theme of your personal investigation.</span><em>Gresham Art ↗</em></span></a><a class="tile" data-g="watch" href="https://www.nationalgallery.org.uk/learning/secondary-schools">
+  <span class="fam">Watch</span>
+  <span class="sym">Ng</span>
+  <span class="nm">National Gallery secondary…</span>
+  <span class="row"><span>16</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>National Gallery secondary schools programme</b><i>Watch · lecture · 1h</i><span>Free online sessions from the National Gallery, booked through school.</span><em>National Gallery schools ↗</em></span></a><a class="tile" data-g="watch" href="https://barber.org.uk/whats-on/">
+  <span class="fam">Watch</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Birmingham Art…</span>
+  <span class="row"><span>17</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>University of Birmingham Art History research seminars (Barber Institute)</b><i>Watch · lecture · 1h</i><span>A free university research talk on the history of art materials, on campus in Birmingham or online.</span><em>Barber what's on ↗</em></span></a><a class="tile" data-g="watch" href="https://www.arthistorylinkup.org/programmes/art-history-a-level">
+  <span class="fam">Watch</span>
+  <span class="sym">Ah</span>
+  <span class="nm">Art History Link-Up: online…</span>
+  <span class="row"><span>18</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Art History Link-Up: online Art History A level</b><i>Watch · lecture · 1h</i><span>A free Saturday course in art history, online. It is a full extra A level, so talk to your teacher first.</span><em>Art History Link-Up ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 3</span></div><a class="tile" data-g="enter" href="https://youngartists.royalacademy.org.uk/get-involved">
+  <span class="fam">Enter</span>
+  <span class="sym">Ya</span>
+  <span class="nm">Young Artists' Summer Show</span>
+  <span class="row"><span>19</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Young Artists' Summer Show (Royal Academy of Arts)</b><i>Enter · entry</i><span>Submit one piece of your own work, from any year, to a free national exhibition at the Royal Academy in London. More than 25,000 students took part in 2026. Selected work is shown in the gallery and online.</span><em>RA Young Artists ↗</em></span></a><a class="tile" data-g="enter" href="https://www.nationalgallery.org.uk/learning/secondary-schools/articulation/articulation-prize">
+  <span class="fam">Enter</span>
+  <span class="sym">Ap</span>
+  <span class="nm">Articulation Prize</span>
+  <span class="row"><span>20</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Articulation Prize (National Gallery)</b><i>Enter · Ages 16–19 · entry</i><span>A 10-minute talk to an audience about one work of art, building or artefact. Good practice for the written related study: you research one work closely and argue a view about it.</span><em>Articulation Prize ↗</em></span></a><a class="tile" data-g="enter" href="https://www.arthistoryabroad.com/scholarships-awards/">
+  <span class="fam">Enter</span>
+  <span class="sym">St</span>
+  <span class="nm">Sir Trenchard Cox Scholarship</span>
+  <span class="row"><span>21</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Sir Trenchard Cox Scholarship (The Arts Society and Art History Abroad)</b><i>Enter · essay</i><span>Two 400-word essays, one on an artwork you love and one on an artwork you dislike, each with a photograph. First prize is a two-week art history course in Italy; flights, meals and insurance are not covered.</span><em>AHA scholarships ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://smarthistory.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Sm</span>
+  <span class="nm">Smarthistory</span>
+  <span class="row"><span>22</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Smarthistory</b><i>Read · 10m</i><span>Short articles and videos on thousands of artworks. Start here when you research an artist.</span><em>smarthistory.org ↗</em></span></a><a class="tile" data-g="read" href="https://www.khanacademy.org/humanities/art-history">
+  <span class="fam">Read</span>
+  <span class="sym">Ka</span>
+  <span class="nm">Khan Academy: Art history</span>
+  <span class="row"><span>23</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Khan Academy: Art history</b><i>Read · 10m</i><span>Free videos and articles on art history, arranged by period.</span><em>Khan Academy ↗</em></span></a><a class="tile" data-g="read" href="https://www.tate.org.uk/art/art-terms">
+  <span class="fam">Read</span>
+  <span class="sym">Tt</span>
+  <span class="nm">Tate: Art Terms and artist…</span>
+  <span class="row"><span>24</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Tate: Art Terms and artist pages</b><i>Read · 10m</i><span>Look up any art word you meet, and read about artists in the Tate collection.</span><em>Tate Art Terms ↗</em></span></a><a class="tile" data-g="read" href="https://artuk.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Au</span>
+  <span class="nm">Art UK</span>
+  <span class="row"><span>25</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Art UK</b><i>Read · 10m</i><span>Search the art in UK public collections, including what is on the walls in Birmingham.</span><em>artuk.org ↗</em></span></a><a class="tile" data-g="read" href="https://www.thebritishacademy.ac.uk/blog/how-can-art-history-be-decolonised/">
+  <span class="fam">Read</span>
+  <span class="sym">Ba</span>
+  <span class="nm">British Academy: How can art…</span>
+  <span class="row"><span>26</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>British Academy: How can art history be decolonised?</b><i>Read · 10m</i><span>A short article on who gets left out of art history.</span><em>British Academy ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Wo</span>
+  <span class="nm">Ways of Seeing</span>
+  <span class="row"><span>27</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Ways of Seeing, by John Berger</b><i>Read · book · book</i><span>A short book about how we look at pictures. Read one essay and decide whether you agree.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ts</span>
+  <span class="nm">The Story of Art Without Men</span>
+  <span class="row"><span>28</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Story of Art Without Men, by Katy Hessel</b><i>Read · book · book</i><span>Art history told through women artists. Use the index to find artists for your own theme.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Sv</span>
+  <span class="nm">Seven Days in the Art World</span>
+  <span class="row"><span>29</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Seven Days in the Art World, by Sarah Thornton</b><i>Read · book · book</i><span>What happens in art schools, galleries and auction houses. Good if you are thinking of applying to art school.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>30</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the archive for an artist or movement you are researching. Three academics, 45 minutes.</span><em>In Our Time Culture ↗</em></span></a><a class="tile" data-g="listen" href="https://www.thegreatwomenartists.com/katy-hessel-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Tg</span>
+  <span class="nm">The Great Women Artists…</span>
+  <span class="row"><span>31</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Great Women Artists podcast (Katy Hessel)</b><i>Listen · 30m</i><span>Artists talk about how they work. Good for finding contextual sources outside the usual list.</span><em>Great Women Artists ↗</em></span></a><a class="tile" data-g="listen" href="https://www.theartnewspaper.com/podcasts">
+  <span class="fam">Listen</span>
+  <span class="sym">Ta</span>
+  <span class="nm">The Art Newspaper podcasts</span>
+  <span class="row"><span>32</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Art Newspaper podcasts</b><i>Listen · 30m</i><span>A Brush with... has artists talking about what influenced them, which is what your annotations should do.</span><em>Art Newspaper podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://www.nationalgallery.org.uk/podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Nt</span>
+  <span class="nm">National Gallery: Stories in…</span>
+  <span class="row"><span>33</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>National Gallery: Stories in Colour</b><i>Listen · 30m</i><span>Short episodes on paintings in the National Gallery.</span><em>Stories in Colour ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 3</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/key-dates">
+  <span class="fam">Apply</span>
+  <span class="sym">Uh</span>
+  <span class="nm">UNIQ : History of Art</span>
+  <span class="row"><span>34</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (Oxford): History of Art</b><i>Apply · apply</i><span>A free week at Oxford studying History of Art, plus support with applying. Apply in December and January.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.hoart.cam.ac.uk/outreach/sutton-trust-summer-school">
+  <span class="fam">Apply</span>
+  <span class="sym">Sn</span>
+  <span class="nm">Sutton Trust summer school…</span>
+  <span class="row"><span>35</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust summer school: History of Art (Cambridge)</b><i>Apply · apply</i><span>A free week in Cambridge studying History of Art. Check whether you meet the criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://courtauld.ac.uk/take-part/schools/young-people/summer-university/">
+  <span class="fam">Apply</span>
+  <span class="sym">Cs</span>
+  <span class="nm">Courtauld Summer University…</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Courtauld Summer University and Seminar Sessions</b><i>Apply · apply</i><span>Free online summer seminars and a summer week in art history from the Courtauld.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Bm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.birminghammuseums.org.uk/birmingham-museum-and-art-gallery">Birmingham Museum &amp; Art Gallery</a></h3>
+      <div class="meta"><span>01</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free, in the city centre. Spend an hour drawing from one painting in the Pre-Raphaelite galleries.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.birminghammuseums.org.uk/birmingham-museum-and-art-gallery">BMAG</a> &nbsp;<span class="dim">birminghammuseums.org.uk/birmingham-museum-and-art-gallery</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ig</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.ikon-gallery.org/">Ikon Gallery</a></h3>
+      <div class="meta"><span>02</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free contemporary art in Brindleyplace. The Balraj Khanna show is on until 21 February.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.ikon-gallery.org/">Ikon</a> &nbsp;<span class="dim">ikon-gallery.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ga</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://artsandculture.google.com/">Google Arts &amp; Culture</a></h3>
+      <div class="meta"><span>03</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Zoom in to see brushstrokes and surfaces you cannot see in a book.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://artsandculture.google.com/">Arts &amp; Culture</a> &nbsp;<span class="dim">artsandculture.google.com</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Tb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://thebigdraw.org/">The Big Draw Festival</a></h3>
+      <div class="meta"><span>04</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free drawing events in October; look for one near you.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://thebigdraw.org/">The Big Draw</a> &nbsp;<span class="dim">thebigdraw.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Up</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.arts.ac.uk/study-at-ual/apply/portfolio-advice">UAL portfolio advice</a></h3>
+      <div class="meta"><span>05</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free advice on building a portfolio for art school.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.arts.ac.uk/study-at-ual/apply/portfolio-advice">UAL portfolio</a> &nbsp;<span class="dim">arts.ac.uk/study-at-ual/apply/portfolio-advice</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Kp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/titus_kaphar_can_art_amend_history">Titus Kaphar: Can art amend history?</a></h3>
+      <div class="meta"><span>06</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Kaphar paints over part of a copy of a Frans Hals. What would a related study need to say about the original's context (AO1) before an intervention like this makes sense?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/titus_kaphar_can_art_amend_history">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/titus_kaphar_can_art_amend_history</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/phil_hansen_embrace_the_shake">Phil Hansen: Embrace the shake</a></h3>
+      <div class="meta"><span>07</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Set yourself one limit (one colour, one tool, a time limit) for a week of sketchbook work. Record in your annotations what it changed (AO3).</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/phil_hansen_embrace_the_shake">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/phil_hansen_embrace_the_shake</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">El</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/olafur_eliasson_playing_with_space_and_light">Olafur Eliasson: Playing with space and light</a></h3>
+      <div class="meta"><span>08</span><span>9m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 9 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Eliasson treats light and space as materials. Which of the AQA Fine Art areas does his work belong to, and how would you record an installation in a sketchbook?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/olafur_eliasson_playing_with_space_and_light">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/olafur_eliasson_playing_with_space_and_light</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings">Maurizio Seracini: The secret lives of paintings</a></h3>
+      <div class="meta"><span>09</span><span>12m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 12 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> What do the scans reveal about how the paintings were made? Link your answer to the underpainting and glazing named in the specification.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Dt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty">Denis Dutton: A Darwinian theory of beauty</a></h3>
+      <div class="meta"><span>10</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one artwork made not to be beautiful and use it to argue against Dutton. This talk is there to be disagreed with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art">Theaster Gates: How to revive a neighborhood: with imagination, beauty and art</a></h3>
+      <div class="meta"><span>11</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Is Gates's rebuilding work art? Answer using the specification's phrase about how images and artefacts relate to 'social, environmental, cultural and/or ethical contexts'.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/amit_sood_every_piece_of_art_you_ve_ever_wanted_to_see_up_close_and_searchable">Amit Sood: Every piece of art you've ever wanted to see -- up close and searchable</a></h3>
+      <div class="meta"><span>12</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Find a painting from your contextual research on Google Arts &amp; Culture and zoom in. Record three details you could not see in a book reproduction.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/amit_sood_every_piece_of_art_you_ve_ever_wanted_to_see_up_close_and_searchable">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/amit_sood_every_piece_of_art_you_ve_ever_wanted_to_see_up_close_and_searchable</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Jr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/chris_jordan_pictures_some_shocking_stats">Chris Jordan: Turning powerful stats into art</a></h3>
+      <div class="meta"><span>13</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Jordan uses scale and repetition to carry a number. How do scale and repetition carry meaning in one piece of your own work (AO4)?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/chris_jordan_pictures_some_shocking_stats">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/chris_jordan_pictures_some_shocking_stats</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/">Courtauld Young People's Workshops (16–18)</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free online sessions with Courtauld curators and artists, several in the October half term. Book early.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/">Courtauld workshops</a> &nbsp;<span class="dim">courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/art">Gresham College art collection and schools programme</a></h3>
+      <div class="meta"><span>15</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures on art. Pick one that matches the theme of your personal investigation.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/art">Gresham Art</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/art</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ng</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.nationalgallery.org.uk/learning/secondary-schools">National Gallery secondary schools programme</a></h3>
+      <div class="meta"><span>16</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free online sessions from the National Gallery, booked through school.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.nationalgallery.org.uk/learning/secondary-schools">National Gallery schools</a> &nbsp;<span class="dim">nationalgallery.org.uk/learning/secondary-schools</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://barber.org.uk/whats-on/">University of Birmingham Art History research seminars (Barber Institute)</a></h3>
+      <div class="meta"><span>17</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free university research talk on the history of art materials, on campus in Birmingham or online.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://barber.org.uk/whats-on/">Barber what's on</a> &nbsp;<span class="dim">barber.org.uk/whats-on</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ah</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.arthistorylinkup.org/programmes/art-history-a-level">Art History Link-Up: online Art History A level</a></h3>
+      <div class="meta"><span>18</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free Saturday course in art history, online. It is a full extra A level, so talk to your teacher first.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.arthistorylinkup.org/programmes/art-history-a-level">Art History Link-Up</a> &nbsp;<span class="dim">arthistorylinkup.org/programmes/art-history-a-level</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 3 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ya</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://youngartists.royalacademy.org.uk/get-involved">Young Artists' Summer Show (Royal Academy of Arts)</a></h3>
+      <div class="meta"><span>19</span><span>entry</span><span>Ages 4–18 living and at school in the UK; one artwork per pupil</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Submit one piece of your own work, from any year, to a free national exhibition at the Royal Academy in London. More than 25,000 students took part in 2026. Selected work is shown in the gallery and online.</p>
+  <p class="when"><b>When:</b> 2026 pattern: school registration and submissions 5 January – 4 March; outcomes by end of May; exhibition at the RA 14 July – 30 August. 2027 dates not yet published; confirm in December.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://youngartists.royalacademy.org.uk/get-involved">RA Young Artists</a> &nbsp;<span class="dim">youngartists.royalacademy.org.uk/get-involved</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ap</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.nationalgallery.org.uk/learning/secondary-schools/articulation/articulation-prize">Articulation Prize (National Gallery)</a></h3>
+      <div class="meta"><span>20</span><span>entry</span><span>Ages 16–19</span><span>enter yourself</span><span>Not stated on the site; confirm</span></div>
+    </div>
+  </div>
+  <p class="what">A 10-minute talk to an audience about one work of art, building or artefact. Good practice for the written related study: you research one work closely and argue a view about it.</p>
+  <p class="when"><b>When:</b> School heats first, then regional heats and finals at partner museums; 2026-27 dates not on the site when checked. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.nationalgallery.org.uk/learning/secondary-schools/articulation/articulation-prize">Articulation Prize</a> &nbsp;<span class="dim">nationalgallery.org.uk/learning/secondary-schools/articulation/articulation-prize</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.arthistoryabroad.com/scholarships-awards/">Sir Trenchard Cox Scholarship (The Arts Society and Art History Abroad)</a></h3>
+      <div class="meta"><span>21</span><span>essay</span><span>Ages 17–18 (16–18 on the Arts Society page)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Two 400-word essays, one on an artwork you love and one on an artwork you dislike, each with a photograph. First prize is a two-week art history course in Italy; flights, meals and insurance are not covered.</p>
+  <p class="when"><b>When:</b> Entries open January 2027. 2026 deadline was 17.30 on 22 March, results 3 April; confirm the 2027 deadline.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.arthistoryabroad.com/scholarships-awards/">AHA scholarships</a> &nbsp;<span class="dim">arthistoryabroad.com/scholarships-awards</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Sm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://smarthistory.org/">Smarthistory</a></h3>
+      <div class="meta"><span>22</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short articles and videos on thousands of artworks. Start here when you research an artist.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://smarthistory.org/">smarthistory.org</a> &nbsp;<span class="dim">smarthistory.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ka</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.khanacademy.org/humanities/art-history">Khan Academy: Art history</a></h3>
+      <div class="meta"><span>23</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free videos and articles on art history, arranged by period.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.khanacademy.org/humanities/art-history">Khan Academy</a> &nbsp;<span class="dim">khanacademy.org/humanities/art-history</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.tate.org.uk/art/art-terms">Tate: Art Terms and artist pages</a></h3>
+      <div class="meta"><span>24</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Look up any art word you meet, and read about artists in the Tate collection.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.tate.org.uk/art/art-terms">Tate Art Terms</a> &nbsp;<span class="dim">tate.org.uk/art/art-terms</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Au</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://artuk.org/">Art UK</a></h3>
+      <div class="meta"><span>25</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the art in UK public collections, including what is on the walls in Birmingham.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://artuk.org/">artuk.org</a> &nbsp;<span class="dim">artuk.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ba</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.thebritishacademy.ac.uk/blog/how-can-art-history-be-decolonised/">British Academy: How can art history be decolonised?</a></h3>
+      <div class="meta"><span>26</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">A short article on who gets left out of art history.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.thebritishacademy.ac.uk/blog/how-can-art-history-be-decolonised/">British Academy</a> &nbsp;<span class="dim">thebritishacademy.ac.uk/blog/how-can-art-history-be-decolonised</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Wo</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Ways of Seeing, by John Berger</span></h3>
+      <div class="meta"><span>27</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A short book about how we look at pictures. Read one essay and decide whether you agree.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ts</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Story of Art Without Men, by Katy Hessel</span></h3>
+      <div class="meta"><span>28</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Art history told through women artists. Use the index to find artists for your own theme.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Sv</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Seven Days in the Art World, by Sarah Thornton</span></h3>
+      <div class="meta"><span>29</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">What happens in art schools, galleries and auction houses. Good if you are thinking of applying to art school.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>30</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for an artist or movement you are researching. Three academics, 45 minutes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">In Our Time Culture</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01drwny</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.thegreatwomenartists.com/katy-hessel-podcast">The Great Women Artists podcast (Katy Hessel)</a></h3>
+      <div class="meta"><span>31</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Artists talk about how they work. Good for finding contextual sources outside the usual list.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.thegreatwomenartists.com/katy-hessel-podcast">Great Women Artists</a> &nbsp;<span class="dim">thegreatwomenartists.com/katy-hessel-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ta</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.theartnewspaper.com/podcasts">The Art Newspaper podcasts</a></h3>
+      <div class="meta"><span>32</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A Brush with... has artists talking about what influenced them, which is what your annotations should do.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.theartnewspaper.com/podcasts">Art Newspaper podcasts</a> &nbsp;<span class="dim">theartnewspaper.com/podcasts</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Nt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.nationalgallery.org.uk/podcast">National Gallery: Stories in Colour</a></h3>
+      <div class="meta"><span>33</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Short episodes on paintings in the National Gallery.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.nationalgallery.org.uk/podcast">Stories in Colour</a> &nbsp;<span class="dim">nationalgallery.org.uk/podcast</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 3 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Uh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/key-dates">UNIQ (Oxford): History of Art</a></h3>
+      <div class="meta"><span>34</span><span>apply</span><span>Y12 at UK state schools; priority to under-represented backgrounds</span></div>
+    </div>
+  </div>
+  <p class="what">A free week at Oxford studying History of Art, plus support with applying. Apply in December and January.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications 15 December – 13 January (midday); residential late June/July. 2027 dates not yet published; confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/key-dates">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk/key-dates</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Sn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.hoart.cam.ac.uk/outreach/sutton-trust-summer-school">Sutton Trust summer school: History of Art (Cambridge)</a></h3>
+      <div class="meta"><span>35</span><span>apply</span><span>Y12 at state schools with at least five GCSEs at 9–6; priority criteria apply</span></div>
+    </div>
+  </div>
+  <p class="what">A free week in Cambridge studying History of Art. Check whether you meet the criteria.</p>
+  <p class="when"><b>When:</b> Applications usually open in the new year; 2027 dates not published. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.hoart.cam.ac.uk/outreach/sutton-trust-summer-school">Details</a> &nbsp;<span class="dim">hoart.cam.ac.uk/outreach/sutton-trust-summer-school</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Cs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://courtauld.ac.uk/take-part/schools/young-people/summer-university/">Courtauld Summer University and Seminar Sessions</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>Y12 at UK state schools; priority to under-represented groups</span></div>
+    </div>
+  </div>
+  <p class="what">Free online summer seminars and a summer week in art history from the Courtauld.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications opened 23 March; Seminar Sessions online 9–11 June; Summer University online 29 June – 3 July and in person 8–10 July. Confirm 2027.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://courtauld.ac.uk/take-part/schools/young-people/summer-university/">Details</a> &nbsp;<span class="dim">courtauld.ac.uk/take-part/schools/young-people/summer-university</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your art year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">7 October 2026, 4.15–5.30pm</div><span class="sym dot">1</span><div><b>UoB Art History seminar: Art Materials and Empire</b> </div></div><div class="ev" data-g="pick"><div class="when">8 October 2026, 4.30pm</div><span class="sym dot">2</span><div><b>Courtauld online workshop: Making Colour</b> </div></div><div class="ev" data-g="pick"><div class="when">26–29 October 2026 (half term)</div><span class="sym dot">3</span><div><b>Courtauld half-term workshops (three online, one in London)</b> </div></div><div class="ev" data-g="pick"><div class="when">By 1 November 2026</div><span class="sym dot">4</span><div><b>Barber paintings at Compton Verney close</b> </div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026 – 21 February 2027</div><span class="sym dot">5</span><div><b>Ikon: Balraj Khanna, Lines of Flight</b> </div></div><div class="ev" data-g="pick"><div class="when">December 2026 – January 2027</div><span class="sym dot">6</span><div><b>UNIQ applications (History of Art)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January 2027</div><span class="sym dot">7</span><div><b>RA Young Artists' Summer Show registration and submissions open; Trenchard Cox Scholarship opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Early February 2027</div><span class="sym dot">8</span><div><b>AQA releases the Component 2 externally set assignment</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">9</span><div><b>Sutton Trust and Courtauld Summer University applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">July – August 2027</div><span class="sym dot">10</span><div><b>RA Young Artists' Summer Show exhibition</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Sketchbook</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Art (Fine Art) Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

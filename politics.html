@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Politics beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#B91C1C; --watch:#1E40AF; --listen:#6D28D9; --read:#92400E; --do:#166534; --apply:#0E7490;
+  --f-display:"Libre Caslon Text",system-ui,sans-serif;
+  --f-body:"Libre Franklin",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1E3A1F; --hero-ink:#F5FBF4; --hero-muted:#B5CDB4;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Politics · 2026-27</div>
+      <h1>Politics beyond the classroom<span class="sub">39 things to read, listen to, watch and enter. Free unless the entry says otherwise.</span></h1>
+      <p>Politics applicants are judged on how well they follow events and how fairly they argue. Hansard, TheyWorkForYou, Pew and the podcasts here give you the material; the essay prizes, Debating Matters and the Schools’ Mace give you the practice. Read opinions you disagree with. Each time you do something, write one line in your diary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="read"></span><span data-g="listen"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"><span class="sym">Hd</span></a><div><div class="step">Watch · Haidt</div><p>Watch Jonathan Haidt on liberals and conservatives (18 min) and note which of his foundations fit the conservatism you are studying.</p></div></div><div class="pick" data-g="listen"><a href="https://www.hansardsociety.org.uk/news/parliament-matters-podcast"><span class="sym">Pm</span></a><div><div class="step">Listen · Parliament Matters</div><p>Listen to one episode of Parliament Matters and write down one thing Parliament did that week.</p></div></div><div class="pick" data-g="enter"><a href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/introduction/"><span class="sym">To</span></a><div><div class="step">Orwell prize · The Orwell Youth Prize 2027</div><p>Read the 2027 Orwell Youth Prize theme, 'Acts of Courage', and plan an entry to submit by 3 March for feedback.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The order paper</h2>
+    <div class="key"><span>One item of business per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 6</span></div><a class="tile" data-g="read" href="https://blogs.ucl.ac.uk/constitution-unit/">
+  <span class="fam">Read</span>
+  <span class="sym">Tc</span>
+  <span class="nm">The Constitution Unit blog</span>
+  <span class="row"><span>01</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>The Constitution Unit blog (UCL)</b><i>Read · 10m</i><span>Short, up-to-date articles on the constitution, Parliament and devolution.</span><em>Constitution Unit ↗</em></span></a><a class="tile" data-g="read" href="https://www.instituteforgovernment.org.uk/explainers">
+  <span class="fam">Read</span>
+  <span class="sym">In</span>
+  <span class="nm">Institute for Government…</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Institute for Government explainers</b><i>Read · 10m</i><span>Short explainers with the latest figures. Good for up-to-date examples.</span><em>IfG explainers ↗</em></span></a><a class="tile" data-g="read" href="https://commonslibrary.parliament.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Hs</span>
+  <span class="nm">House of Commons Library…</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>House of Commons Library briefings</b><i>Read · 10m</i><span>The briefings MPs read before a debate. Search for a bill in the news.</span><em>Commons Library ↗</em></span></a><a class="tile" data-g="read" href="https://ukandeu.ac.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Ui</span>
+  <span class="nm">UK in a Changing Europe</span>
+  <span class="row"><span>04</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>UK in a Changing Europe</b><i>Read · 10m</i><span>Explainers on the UK and the EU.</span><em>UK in a Changing Europe ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ww</span>
+  <span class="nm">Why We Get the Wrong…</span>
+  <span class="row"><span>05</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Why We Get the Wrong Politicians, by Isabel Hardman</b><i>Read · book · book</i><span>How MPs are chosen and what the job does to them.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Pa</span>
+  <span class="nm">Punch and Judy Politics: An…</span>
+  <span class="row"><span>06</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Punch and Judy Politics: An Insiders' Guide to Prime Minister's Questions, by Ayesha Hazarika and Tom Hamilton</b><i>Read · book · book</i><span>How PMQs is prepared, by two people who did it.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 6</span></div><a class="tile" data-g="listen" href="https://www.hansardsociety.org.uk/news/parliament-matters-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Pm</span>
+  <span class="nm">Parliament Matters</span>
+  <span class="row"><span>07</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Parliament Matters (Hansard Society)</b><i>Listen · 30m</i><span>A weekly podcast on what Parliament did that week and why it matters.</span><em>Parliament Matters ↗</em></span></a><a class="tile" data-g="listen" href="https://www.instituteforgovernment.org.uk/">
+  <span class="fam">Listen</span>
+  <span class="sym">If</span>
+  <span class="nm">Institute for Government…</span>
+  <span class="row"><span>08</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Institute for Government: Inside Briefing</b><i>Listen · 30m</i><span>A podcast on how government works from the inside.</span><em>IfG ↗</em></span></a><a class="tile" data-g="listen" href="https://www.talkingpoliticspodcast.com/history-of-ideas">
+  <span class="fam">Listen</span>
+  <span class="sym">Ho</span>
+  <span class="nm">History of Ideas</span>
+  <span class="row"><span>09</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>History of Ideas (David Runciman, Talking Politics)</b><i>Listen · 30m</i><span>One thinker per episode. Start with a thinker from liberalism, conservatism or socialism.</span><em>History of Ideas ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time</span>
+  <span class="row"><span>10</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time</b><i>Listen · 30m</i><span>Search the archive for a thinker you are studying.</span><em>In Our Time ↗</em></span></a><a class="tile" data-g="listen" href="https://therestispolitics.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Tr</span>
+  <span class="nm">The Rest Is Politics</span>
+  <span class="row"><span>11</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Rest Is Politics (Goalhanger)</b><i>Listen · 30m</i><span>Weekly politics discussion between a former Labour adviser and a former Conservative minister.</span><em>The Rest Is Politics ↗</em></span></a><a class="tile" data-g="listen" href="https://www.npr.org/podcasts/510310/npr-politics-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Np</span>
+  <span class="nm">NPR Politics Podcast</span>
+  <span class="row"><span>12</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>NPR Politics Podcast</b><i>Listen · 30m</i><span>Daily US politics news. Listen once a week for up-to-date US examples.</span><em>NPR Politics ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/eric_liu_why_ordinary_people_need_to_understand_power">
+  <span class="fam">Watch</span>
+  <span class="sym">Li</span>
+  <span class="nm">Liu</span>
+  <span class="row"><span>13</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Eric Liu: Why ordinary people need to understand power</b><i>Watch · talk · 17m</i><span>Paper 1 democracy and participation: take his definition of power and apply it to one UK pressure group. Where does that group's power come from?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives">
+  <span class="fam">Watch</span>
+  <span class="sym">Hd</span>
+  <span class="nm">Haidt</span>
+  <span class="row"><span>14</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Jonathan Haidt: The moral roots of liberals and conservatives</b><i>Watch · talk · 18m</i><span>Paper 3 core ideologies: which of his moral foundations fit traditional conservatism, and which fit the New Right? Where does his picture of liberals not match classical liberalism?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/alexander_betts_why_brexit_happened_and_what_to_do_next">
+  <span class="fam">Watch</span>
+  <span class="sym">Bt</span>
+  <span class="nm">Betts</span>
+  <span class="row"><span>15</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Alexander Betts: Why Brexit happened -- and what to do next</b><i>Watch · talk · 17m</i><span>Paper 1 elections and referendums, and voting behaviour: what social divisions does he say explain the 2016 result? Test one against the referendum data by age or education.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate">
+  <span class="fam">Watch</span>
+  <span class="sym">Sn</span>
+  <span class="nm">Sandel</span>
+  <span class="row"><span>16</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Michael Sandel: The lost art of democratic debate</b><i>Watch · talk · 19m</i><span>Paper 2 Supreme Court: he uses PGA Tour v. Martin. Was the Court interpreting the law or making it? Link your answer to judicial activism and restraint.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/lawrence_lessig_we_the_people_and_the_republic_we_must_reclaim">
+  <span class="fam">Watch</span>
+  <span class="sym">Ls</span>
+  <span class="nm">Lessig</span>
+  <span class="row"><span>17</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Lawrence Lessig: We the People, and the Republic we must reclaim</b><i>Watch · talk · 18m</i><span>Paper 2 US elections and campaign finance: set out his case, then give the Citizens United majority's reply. How does UK party funding law compare?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/belinda_stutzman_how_is_power_divided_in_the_united_states_government">
+  <span class="fam">Watch</span>
+  <span class="sym">St</span>
+  <span class="nm">Stutzman</span>
+  <span class="row"><span>18</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Belinda Stutzman: How is power divided in the United States government?</b><i>Watch · TED-Ed · 4m</i><span>Paper 2 constitutional framework: list the checks and balances shown, then name one the video leaves out and a recent example of it being used.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/carole_cadwalladr_facebook_s_role_in_brexit_and_the_threat_to_democracy">
+  <span class="fam">Watch</span>
+  <span class="sym">Cd</span>
+  <span class="nm">Cadwalladr</span>
+  <span class="row"><span>19</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Carole Cadwalladr: Facebook's role in Brexit — and the threat to democracy</b><i>Watch · talk · 15m</i><span>Paper 1 elections and the media: what evidence does she give that online adverts changed the result, and what would you need to see to accept the claim? This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/yuval_noah_harari_why_fascism_is_so_tempting_and_how_your_data_could_power_it">
+  <span class="fam">Watch</span>
+  <span class="sym">Hr</span>
+  <span class="nm">Harari</span>
+  <span class="row"><span>20</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Yuval Noah Harari: Why fascism is so tempting -- and how your data could power it</b><i>Watch · talk · 18m</i><span>Paper 3 nationalism: how does he separate nationalism from fascism? Compare his account with liberal nationalism. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/roxane_gay_confessions_of_a_bad_feminist">
+  <span class="fam">Watch</span>
+  <span class="sym">Gy</span>
+  <span class="nm">Gay</span>
+  <span class="row"><span>21</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Roxane Gay: Confessions of a bad feminist</b><i>Watch · talk · 11m</i><span>Paper 3 feminism: which strand of feminism is closest to her position, and how would a radical feminist respond to the idea that 'the personal is political' can be handled one choice at a time?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://learning.parliament.uk/en/session-workshop/tours-and-workshops/">
+  <span class="fam">Watch</span>
+  <span class="sym">Up</span>
+  <span class="nm">UK Parliament Education…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>UK Parliament Education: post-16 visits to Westminster</b><i>Watch · lecture · 1h</i><span>A free workshop and tour at Parliament. Your teacher books it.</span><em>Parliament visits ↗</em></span></a><a class="tile" data-g="watch" href="https://learning.parliament.uk/en/learn-with-the-lords-online/">
+  <span class="fam">Watch</span>
+  <span class="sym">Lw</span>
+  <span class="nm">Learn with the Lords Online</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Learn with the Lords Online</b><i>Watch · lecture · 1h</i><span>Question a member of the House of Lords live online. Prepare a question in advance.</span><em>Learn with the Lords ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/modern-british-politics-schools">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College politics…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College politics lectures and 'Modern British Politics for Schools'</b><i>Watch · lecture · 1h</i><span>Free hour-long lectures. Start with Bogdanor on the party you know least about.</span><em>Gresham playlist ↗</em></span></a><a class="tile" data-g="watch" href="https://www.lse.ac.uk/events">
+  <span class="fam">Watch</span>
+  <span class="sym">Lp</span>
+  <span class="nm">LSE public events</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>LSE public events</b><i>Watch · lecture · 1h</i><span>Free lectures from LSE, live or recorded. Look for one on US or UK politics.</span><em>LSE events ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/politics">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Politics</span>
+  <span class="row"><span>26</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Politics</b><i>Watch · lecture · 1h</i><span>Short Cambridge resources for sixth formers. Start with the one on education and voting.</span><em>HE+ Politics ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/politics/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ra</span>
+  <span class="nm">R.A. Butler Politics Prize</span>
+  <span class="row"><span>27</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>R.A. Butler Politics Prize (Trinity College and POLIS, Cambridge)</b><i>Enter · essay</i><span>Up to 3,000 words on one of about ten questions. 2026 questions covered strongmen and leadership, self-determination, climate displacement, war crimes, social media and globalisation. £600 first prize, split between you and the school. 1,040 entries in 2026.</span><em>Trinity ↗</em></span></a><a class="tile" data-g="enter" href="https://www.psa.ac.uk/news/new-a-level-essay-competition/">
+  <span class="fam">Enter</span>
+  <span class="sym">Fa</span>
+  <span class="nm">FT-APG A Level Essay…</span>
+  <span class="row"><span>28</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>FT-APG A Level Essay Competition (PSA American Politics Group with the FT Schools Programme)</b><i>Enter · essay</i><span>1,500 words (plus or minus 10%) on US politics from Paper 2: Congress, the presidency, the Supreme Court, civil rights. Best essay gets a £100 voucher, funded travel to the APG colloquium and possible publication on an FT blog; four further £50 prizes.</span><em>PSA ↗</em></span></a><a class="tile" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/introduction/">
+  <span class="fam">Enter</span>
+  <span class="sym">To</span>
+  <span class="nm">The Orwell Youth Prize 2027</span>
+  <span class="row"><span>29</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>The Orwell Youth Prize 2027 (The Orwell Foundation)</b><i>Enter · essay</i><span>Political writing in any form: essay, journalism, story, poem, play. Theme for 2027 is 'Acts of Courage'. Enter by 3 March to get personal feedback before the final deadline. Winners get £100 and Orwell's works for themselves and the school.</span><em>Orwell Foundation ↗</em></span></a><a class="tile" data-g="enter" href="https://debatingmatters.com/">
+  <span class="fam">Enter</span>
+  <span class="sym">Dm</span>
+  <span class="nm">Debating Matters</span>
+  <span class="row"><span>30</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Debating Matters (Academy of Ideas)</b><i>Enter · Sixth form · entry</i><span>Team debates on current issues, judged on substance, with judges who question you on your case. Each motion has a published topic guide to research beforehand.</span><em>Debating Matters ↗</em></span></a><a class="tile" data-g="enter" href="https://www.esu.org/competitions/schools-mace/">
+  <span class="fam">Enter</span>
+  <span class="sym">Es</span>
+  <span class="nm">ESU Schools' Mace</span>
+  <span class="row"><span>31</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>ESU Schools' Mace (English-Speaking Union)</b><i>Enter · entry</i><span>The long-running national schools debating competition, judged by ESU-trained judges. Ask your teacher about entering a team next year.</span><em>ESU ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://hansard.parliament.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Hn</span>
+  <span class="nm">Hansard</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Hansard</b><i>Do · 20m</i><span>Find a debate on a bill in the news and read what the minister said.</span><em>Hansard ↗</em></span></a><a class="tile" data-g="do" href="https://www.theyworkforyou.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Th</span>
+  <span class="nm">TheyWorkForYou</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>TheyWorkForYou</b><i>Do · 20m</i><span>Look up how your MP voted and set an alert for a topic you care about.</span><em>TheyWorkForYou ↗</em></span></a><a class="tile" data-g="do" href="https://constitutioncenter.org/the-constitution">
+  <span class="fam">Do</span>
+  <span class="sym">Ic</span>
+  <span class="nm">Interactive Constitution</span>
+  <span class="row"><span>34</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Interactive Constitution (National Constitution Center)</b><i>Do · 20m</i><span>Pick a clause and read the two scholars who disagree about it.</span><em>Interactive Constitution ↗</em></span></a><a class="tile" data-g="do" href="https://www.pewresearch.org/politics/">
+  <span class="fam">Do</span>
+  <span class="sym">Pr</span>
+  <span class="nm">Pew Research Center…</span>
+  <span class="row"><span>35</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Pew Research Center political typology</b><i>Do · 20m</i><span>Take the quiz, then read about the group you land in.</span><em>Pew ↗</em></span></a><a class="tile" data-g="do" href="https://debatingmatters.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Db</span>
+  <span class="nm">Debating Matters topic guides</span>
+  <span class="row"><span>36</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Debating Matters topic guides</b><i>Do · 20m</i><span>Use a guide to prepare both sides of a motion.</span><em>Debating Matters ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 3</span></div><a class="tile" data-g="apply" href="https://nya.org.uk/ukyp/">
+  <span class="fam">Apply</span>
+  <span class="sym">Uy</span>
+  <span class="nm">UK Youth Parliament</span>
+  <span class="row"><span>37</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UK Youth Parliament</b><i>Apply · Ages 11–18 · apply</i><span>Stand for election as a Member of Youth Parliament. Elections are run by the council.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/">
+  <span class="fam">Apply</span>
+  <span class="sym">Un</span>
+  <span class="nm">UNIQ</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford)</b><i>Apply · apply</i><span>A free Oxford summer programme for Year 12. PPE is one of the courses.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">
+  <span class="fam">Apply</span>
+  <span class="sym">Sr</span>
+  <span class="nm">Sutton Trust UK Summer Schools</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust UK Summer Schools</b><i>Apply · apply</i><span>Free university summer schools for Year 12 at state schools. Check the criteria.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 6 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://blogs.ucl.ac.uk/constitution-unit/">The Constitution Unit blog (UCL)</a></h3>
+      <div class="meta"><span>01</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short, up-to-date articles on the constitution, Parliament and devolution.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://blogs.ucl.ac.uk/constitution-unit/">Constitution Unit</a> &nbsp;<span class="dim">blogs.ucl.ac.uk/constitution-unit</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">In</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.instituteforgovernment.org.uk/explainers">Institute for Government explainers</a></h3>
+      <div class="meta"><span>02</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short explainers with the latest figures. Good for up-to-date examples.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.instituteforgovernment.org.uk/explainers">IfG explainers</a> &nbsp;<span class="dim">instituteforgovernment.org.uk/explainers</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://commonslibrary.parliament.uk/">House of Commons Library briefings</a></h3>
+      <div class="meta"><span>03</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">The briefings MPs read before a debate. Search for a bill in the news.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://commonslibrary.parliament.uk/">Commons Library</a> &nbsp;<span class="dim">commonslibrary.parliament.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ui</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://ukandeu.ac.uk/">UK in a Changing Europe</a></h3>
+      <div class="meta"><span>04</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Explainers on the UK and the EU.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://ukandeu.ac.uk/">UK in a Changing Europe</a> &nbsp;<span class="dim">ukandeu.ac.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ww</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Why We Get the Wrong Politicians, by Isabel Hardman</span></h3>
+      <div class="meta"><span>05</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How MPs are chosen and what the job does to them.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pa</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Punch and Judy Politics: An Insiders' Guide to Prime Minister's Questions, by Ayesha Hazarika and Tom Hamilton</span></h3>
+      <div class="meta"><span>06</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How PMQs is prepared, by two people who did it.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 6 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Pm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.hansardsociety.org.uk/news/parliament-matters-podcast">Parliament Matters (Hansard Society)</a></h3>
+      <div class="meta"><span>07</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A weekly podcast on what Parliament did that week and why it matters.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.hansardsociety.org.uk/news/parliament-matters-podcast">Parliament Matters</a> &nbsp;<span class="dim">hansardsociety.org.uk/news/parliament-matters-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">If</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.instituteforgovernment.org.uk/">Institute for Government: Inside Briefing</a></h3>
+      <div class="meta"><span>08</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A podcast on how government works from the inside.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.instituteforgovernment.org.uk/">IfG</a> &nbsp;<span class="dim">instituteforgovernment.org.uk</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ho</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.talkingpoliticspodcast.com/history-of-ideas">History of Ideas (David Runciman, Talking Politics)</a></h3>
+      <div class="meta"><span>09</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">One thinker per episode. Start with a thinker from liberalism, conservatism or socialism.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.talkingpoliticspodcast.com/history-of-ideas">History of Ideas</a> &nbsp;<span class="dim">talkingpoliticspodcast.com/history-of-ideas</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">BBC In Our Time</a></h3>
+      <div class="meta"><span>10</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for a thinker you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">In Our Time</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qykl</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://therestispolitics.com/">The Rest Is Politics (Goalhanger)</a></h3>
+      <div class="meta"><span>11</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly politics discussion between a former Labour adviser and a former Conservative minister.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://therestispolitics.com/">The Rest Is Politics</a> &nbsp;<span class="dim">therestispolitics.com</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Np</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.npr.org/podcasts/510310/npr-politics-podcast">NPR Politics Podcast</a></h3>
+      <div class="meta"><span>12</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Daily US politics news. Listen once a week for up-to-date US examples.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.npr.org/podcasts/510310/npr-politics-podcast">NPR Politics</a> &nbsp;<span class="dim">npr.org/podcasts/510310/npr-politics-podcast</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Li</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/eric_liu_why_ordinary_people_need_to_understand_power">Eric Liu: Why ordinary people need to understand power</a></h3>
+      <div class="meta"><span>13</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 1 democracy and participation: take his definition of power and apply it to one UK pressure group. Where does that group's power come from?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/eric_liu_why_ordinary_people_need_to_understand_power">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/eric_liu_why_ordinary_people_need_to_understand_power</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives">Jonathan Haidt: The moral roots of liberals and conservatives</a></h3>
+      <div class="meta"><span>14</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 3 core ideologies: which of his moral foundations fit traditional conservatism, and which fit the New Right? Where does his picture of liberals not match classical liberalism?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/alexander_betts_why_brexit_happened_and_what_to_do_next">Alexander Betts: Why Brexit happened -- and what to do next</a></h3>
+      <div class="meta"><span>15</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 1 elections and referendums, and voting behaviour: what social divisions does he say explain the 2016 result? Test one against the referendum data by age or education.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/alexander_betts_why_brexit_happened_and_what_to_do_next">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/alexander_betts_why_brexit_happened_and_what_to_do_next</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate">Michael Sandel: The lost art of democratic debate</a></h3>
+      <div class="meta"><span>16</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 2 Supreme Court: he uses PGA Tour v. Martin. Was the Court interpreting the law or making it? Link your answer to judicial activism and restraint.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ls</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/lawrence_lessig_we_the_people_and_the_republic_we_must_reclaim">Lawrence Lessig: We the People, and the Republic we must reclaim</a></h3>
+      <div class="meta"><span>17</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 2 US elections and campaign finance: set out his case, then give the Citizens United majority's reply. How does UK party funding law compare?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/lawrence_lessig_we_the_people_and_the_republic_we_must_reclaim">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/lawrence_lessig_we_the_people_and_the_republic_we_must_reclaim</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/belinda_stutzman_how_is_power_divided_in_the_united_states_government">Belinda Stutzman: How is power divided in the United States government?</a></h3>
+      <div class="meta"><span>18</span><span>4m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Paper 2 constitutional framework: list the checks and balances shown, then name one the video leaves out and a recent example of it being used.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/belinda_stutzman_how_is_power_divided_in_the_united_states_government">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/belinda_stutzman_how_is_power_divided_in_the_united_states_government</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/carole_cadwalladr_facebook_s_role_in_brexit_and_the_threat_to_democracy">Carole Cadwalladr: Facebook's role in Brexit — and the threat to democracy</a></h3>
+      <div class="meta"><span>19</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 1 elections and the media: what evidence does she give that online adverts changed the result, and what would you need to see to accept the claim? This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/carole_cadwalladr_facebook_s_role_in_brexit_and_the_threat_to_democracy">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/carole_cadwalladr_facebook_s_role_in_brexit_and_the_threat_to_democracy</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/yuval_noah_harari_why_fascism_is_so_tempting_and_how_your_data_could_power_it">Yuval Noah Harari: Why fascism is so tempting -- and how your data could power it</a></h3>
+      <div class="meta"><span>20</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 3 nationalism: how does he separate nationalism from fascism? Compare his account with liberal nationalism. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/yuval_noah_harari_why_fascism_is_so_tempting_and_how_your_data_could_power_it">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/yuval_noah_harari_why_fascism_is_so_tempting_and_how_your_data_could_power_it</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/roxane_gay_confessions_of_a_bad_feminist">Roxane Gay: Confessions of a bad feminist</a></h3>
+      <div class="meta"><span>21</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 3 feminism: which strand of feminism is closest to her position, and how would a radical feminist respond to the idea that 'the personal is political' can be handled one choice at a time?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/roxane_gay_confessions_of_a_bad_feminist">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/roxane_gay_confessions_of_a_bad_feminist</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Up</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://learning.parliament.uk/en/session-workshop/tours-and-workshops/">UK Parliament Education: post-16 visits to Westminster</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free workshop and tour at Parliament. Your teacher books it.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://learning.parliament.uk/en/session-workshop/tours-and-workshops/">Parliament visits</a> &nbsp;<span class="dim">learning.parliament.uk/en/session-workshop/tours-and-workshops</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Lw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://learning.parliament.uk/en/learn-with-the-lords-online/">Learn with the Lords Online</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Question a member of the House of Lords live online. Prepare a question in advance.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://learning.parliament.uk/en/learn-with-the-lords-online/">Learn with the Lords</a> &nbsp;<span class="dim">learning.parliament.uk/en/learn-with-the-lords-online</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/modern-british-politics-schools">Gresham College politics lectures and 'Modern British Politics for Schools'</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free hour-long lectures. Start with Bogdanor on the party you know least about.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/modern-british-politics-schools">Gresham playlist</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/playlists/modern-british-politics-schools</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Lp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.lse.ac.uk/events">LSE public events</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free lectures from LSE, live or recorded. Look for one on US or UK politics.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.lse.ac.uk/events">LSE events</a> &nbsp;<span class="dim">lse.ac.uk/events</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/politics">Cambridge HE+ Politics</a></h3>
+      <div class="meta"><span>26</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short Cambridge resources for sixth formers. Start with the one on education and voting.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/politics">HE+ Politics</a> &nbsp;<span class="dim">myheplus.com/subject/politics</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ra</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/politics/">R.A. Butler Politics Prize (Trinity College and POLIS, Cambridge)</a></h3>
+      <div class="meta"><span>27</span><span>essay</span><span>Y12 when questions are released (results expected Sept 2027–Aug 2028 for the 2027 round)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 3,000 words on one of about ten questions. 2026 questions covered strongmen and leadership, self-determination, climate displacement, war crimes, social media and globalisation. £600 first prize, split between you and the school. 1,040 entries in 2026.</p>
+  <p class="when"><b>When:</b> Questions released March 2027 (POLIS says so). 2026 deadline was 12 noon, 31 July; 2027 deadline: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/politics/">Trinity</a> &nbsp;<span class="dim">trin.cam.ac.uk/undergraduate/essay-prizes/politics</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Fa</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.psa.ac.uk/news/new-a-level-essay-competition/">FT-APG A Level Essay Competition (PSA American Politics Group with the FT Schools Programme)</a></h3>
+      <div class="meta"><span>28</span><span>essay</span><span>Ages 16–19 studying American politics at A level</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">1,500 words (plus or minus 10%) on US politics from Paper 2: Congress, the presidency, the Supreme Court, civil rights. Best essay gets a £100 voucher, funded travel to the APG colloquium and possible publication on an FT blog; four further £50 prizes.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 16 March, with a free preparatory online event on 25 February. 2027 round: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.psa.ac.uk/news/new-a-level-essay-competition/">PSA</a> &nbsp;<span class="dim">psa.ac.uk/news/new-a-level-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">To</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/introduction/">The Orwell Youth Prize 2027 (The Orwell Foundation)</a></h3>
+      <div class="meta"><span>29</span><span>essay</span><span>Years 7–13 in UK schools; Y12–13 up to 1,500 words</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Political writing in any form: essay, journalism, story, poem, play. Theme for 2027 is 'Acts of Courage'. Enter by 3 March to get personal feedback before the final deadline. Winners get £100 and Orwell's works for themselves and the school.</p>
+  <p class="when"><b>When:</b> Open now. Theme 'Acts of Courage'. Feedback deadline 3 March 2027; final deadline 28 April 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/introduction/">Orwell Foundation</a> &nbsp;<span class="dim">orwellfoundation.com/the-orwell-youth-prize/about/introduction</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Dm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://debatingmatters.com/">Debating Matters (Academy of Ideas)</a></h3>
+      <div class="meta"><span>30</span><span>entry</span><span>Sixth form</span><span>enter yourself</span><span>No fee stated on the site; confirm with the organiser.</span></div>
+    </div>
+  </div>
+  <p class="what">Team debates on current issues, judged on substance, with judges who question you on your case. Each motion has a published topic guide to research beforehand.</p>
+  <p class="when"><b>When:</b> Regional championships through the year; Transatlantic championship 14 November 2026 in London. No 2027 championships listed yet: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://debatingmatters.com/">Debating Matters</a> &nbsp;<span class="dim">debatingmatters.com</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Es</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.esu.org/competitions/schools-mace/">ESU Schools' Mace (English-Speaking Union)</a></h3>
+      <div class="meta"><span>31</span><span>entry</span><span>Years 7–13; one team of up to five per school</span><span>via school</span><span>£65–£75 per school; fee waivers for schools with high FSM or EAL numbers</span></div>
+    </div>
+  </div>
+  <p class="what">The long-running national schools debating competition, judged by ESU-trained judges. Ask your teacher about entering a team next year.</p>
+  <p class="when"><b>When:</b> Registration for 2026-27 has closed. Heats November and January, regional finals March, national final late April. 2027-28 registration: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.esu.org/competitions/schools-mace/">ESU</a> &nbsp;<span class="dim">esu.org/competitions/schools-mace</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Hn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://hansard.parliament.uk/">Hansard</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Find a debate on a bill in the news and read what the minister said.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://hansard.parliament.uk/">Hansard</a> &nbsp;<span class="dim">hansard.parliament.uk</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Th</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.theyworkforyou.com/">TheyWorkForYou</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Look up how your MP voted and set an alert for a topic you care about.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.theyworkforyou.com/">TheyWorkForYou</a> &nbsp;<span class="dim">theyworkforyou.com</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ic</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://constitutioncenter.org/the-constitution">Interactive Constitution (National Constitution Center)</a></h3>
+      <div class="meta"><span>34</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Pick a clause and read the two scholars who disagree about it.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://constitutioncenter.org/the-constitution">Interactive Constitution</a> &nbsp;<span class="dim">constitutioncenter.org/the-constitution</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Pr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.pewresearch.org/politics/">Pew Research Center political typology</a></h3>
+      <div class="meta"><span>35</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Take the quiz, then read about the group you land in.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.pewresearch.org/politics/">Pew</a> &nbsp;<span class="dim">pewresearch.org/politics</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Db</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://debatingmatters.com/">Debating Matters topic guides</a></h3>
+      <div class="meta"><span>36</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Use a guide to prepare both sides of a motion.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://debatingmatters.com/">Debating Matters</a> &nbsp;<span class="dim">debatingmatters.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 3 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Uy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://nya.org.uk/ukyp/">UK Youth Parliament</a></h3>
+      <div class="meta"><span>37</span><span>apply</span><span>Ages 11–18</span></div>
+    </div>
+  </div>
+  <p class="what">Stand for election as a Member of Youth Parliament. Elections are run by the council.</p>
+  <p class="when"><b>When:</b> Current members serve April 2026 to March 2027; elections are held locally every two years. Next election dates: confirm with Birmingham's youth services.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://nya.org.uk/ukyp/">Details</a> &nbsp;<span class="dim">nya.org.uk/ukyp</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">UNIQ (University of Oxford)</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>Y12 at UK state schools, prioritising under-represented backgrounds</span></div>
+    </div>
+  </div>
+  <p class="what">A free Oxford summer programme for Year 12. PPE is one of the courses.</p>
+  <p class="when"><b>When:</b> 2027 details 'coming soon'; applications usually open in the new year: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Sr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Sutton Trust UK Summer Schools</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Y12 who have always attended state schools; at least five GCSEs at 9–6</span></div>
+    </div>
+  </div>
+  <p class="what">Free university summer schools for Year 12 at state schools. Check the criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications closed; 2027 opening date not published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Details</a> &nbsp;<span class="dim">suttontrust.com/our-programmes/uk-summer-schools</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your politics year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">1</span><div><b>Orwell Youth Prize 2027 open; Learn with the Lords spring bookings open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">14 November 2026</div><span class="sym dot">2</span><div><b>Debating Matters Transatlantic championship, London</b> </div></div><div class="ev" data-g="pick"><div class="when">23–29 November 2026</div><span class="sym dot">3</span><div><b>UK Parliament Week</b> </div></div><div class="ev" data-g="pick"><div class="when">Early 2027</div><span class="sym dot">4</span><div><b>UK Youth Parliament elections for the next term; UNIQ and Sutton Trust applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3 February 2027, 10am</div><span class="sym dot">5</span><div><b>Parliament education visits bookings day (autumn term 2027 visits)</b> </div></div><div class="ev" data-g="pick"><div class="when">February–March 2027</div><span class="sym dot">6</span><div><b>FT-APG A Level Essay Competition (2026 deadline 16 March)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3 March 2027</div><span class="sym dot">7</span><div><b>Orwell Youth Prize feedback deadline</b> </div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">8</span><div><b>R.A. Butler Politics Prize questions released</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">28 April 2027</div><span class="sym dot">9</span><div><b>Orwell Youth Prize final deadline</b> </div></div><div class="ev" data-g="pick"><div class="when">Late July 2027 (expected)</div><span class="sym dot">10</span><div><b>R.A. Butler Prize deadline</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Diary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Politics Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

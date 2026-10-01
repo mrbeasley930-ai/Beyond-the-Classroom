@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>PE beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#DC2626; --watch:#1D4ED8; --listen:#6D28D9; --read:#A16207; --do:#15803D; --apply:#0E7490;
+  --f-display:"Anton",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#0F3D2E; --hero-ink:#F0FFF7; --hero-muted:#A8D5C0;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:30pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Physical Education · 2026-27</div>
+      <h1>PE beyond the classroom<span class="sub">32 things to do, watch, read and apply for. Free unless the entry says otherwise.</span></h1>
+      <p>Sport science, physiotherapy and PE teaching courses want evidence of the science behind performance as well as the performance itself. The Physiological Society, Loughborough and Birmingham lectures and the podcasts below are the science; the placements and the Young Ambassadors and Level 3 programmes are the practical evidence. Record your own training and what the data shows. Each time you do something, write one line in your training diary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="do"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="apply"></span><span data-g="enter"></span></div>
+      <div class="keyfams"><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger"><span class="sym">Ep</span></a><div><div class="step">Watch · Epstein</div><p>Watch David Epstein on whether athletes are really getting better (15 min) and write down which of his reasons belongs in the technology in sport unit.</p></div></div><div class="pick" data-g="listen"><a href="https://www.physoc.org/journals-and-media/podcast/"><span class="sym">Lt</span></a><div><div class="step">Listen · Let's Get Physiological</div><p>Listen to episode 1 of Let's Get Physiological, on sport and exercise science.</p></div></div><div class="pick" data-g="do"><a href="https://activelives.sportengland.org/"><span class="sym">Al</span></a><div><div class="step">Active Lives · Active Lives Online tool</div><p>Use the Active Lives tool to find how active 16–24 year olds are compared with another age group, and note one reason for the gap.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The training plan</h2>
+    <div class="key"><span>One session per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 3</span></div><a class="tile" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">
+  <span class="fam">Do</span>
+  <span class="sym">Ap</span>
+  <span class="nm">AQA past papers and mark…</span>
+  <span class="row"><span>01</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>AQA past papers and mark schemes (7582)</b><i>Do · 20m</i><span>Past papers with mark schemes. Read the examiner report too.</span><em>AQA past papers ↗</em></span></a><a class="tile" data-g="do" href="https://activelives.sportengland.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Al</span>
+  <span class="nm">Active Lives Online tool</span>
+  <span class="row"><span>02</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Active Lives Online tool (Sport England)</b><i>Do · 20m</i><span>Look up how active your own age group is in the West Midlands and compare it with another group.</span><em>Active Lives tool ↗</em></span></a><a class="tile" data-g="do" href="https://www.ukad.org.uk/education">
+  <span class="fam">Do</span>
+  <span class="sym">Ua</span>
+  <span class="nm">UK Anti-Doping: Clean Sport…</span>
+  <span class="row"><span>03</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UK Anti-Doping: Clean Sport Hub e-learning</b><i>Do · 20m</i><span>The same anti-doping course elite athletes take. Free to register.</span><em>UKAD education ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger">
+  <span class="fam">Watch</span>
+  <span class="sym">Ep</span>
+  <span class="nm">Epstein</span>
+  <span class="row"><span>04</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>David Epstein: Are athletes really getting faster, better, stronger?</b><i>Watch · talk · 15m</i><span>Epstein names technology, body type and training as reasons records fall. Which of these does the technology in sport unit cover, and which would you rank first?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/wendy_suzuki_the_brain_changing_benefits_of_exercise">
+  <span class="fam">Watch</span>
+  <span class="sym">Sz</span>
+  <span class="nm">Suzuki</span>
+  <span class="row"><span>05</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Wendy Suzuki: The brain-changing benefits of exercise</b><i>Watch · talk · 13m</i><span>Which of the claimed benefits could you test in a school study, and what would you measure?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance">
+  <span class="fam">Watch</span>
+  <span class="sym">Hr</span>
+  <span class="nm">Herr</span>
+  <span class="row"><span>06</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Hugh Herr: The new bionics that let us run, climb and dance</b><i>Watch · talk · 19m</i><span>Use the biomechanics you know (levers, forces at the ankle) to explain what the prosthesis has to do at each phase of a stride.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/aimee_mullins_my_12_pairs_of_legs">
+  <span class="fam">Watch</span>
+  <span class="sym">Ml</span>
+  <span class="nm">Mullins</span>
+  <span class="row"><span>07</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Aimee Mullins: My 12 pairs of legs</b><i>Watch · talk · 10m</i><span>Should a prosthesis that improves on the human limb be allowed in open competition? Use the ethics of technology in sport in your answer.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sian_leah_beilock_why_we_choke_under_pressure_and_how_to_avoid_it">
+  <span class="fam">Watch</span>
+  <span class="sym">Bl</span>
+  <span class="nm">Beilock</span>
+  <span class="row"><span>08</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Sian Leah Beilock: Why we choke under pressure -- and how to avoid it</b><i>Watch · talk · 15m</i><span>Link choking to arousal theories from sport psychology. Which theory explains her examples best: inverted U, drive theory or catastrophe theory?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/emily_balcetis_why_some_people_find_exercise_harder_than_others">
+  <span class="fam">Watch</span>
+  <span class="sym">Bc</span>
+  <span class="nm">Balcetis</span>
+  <span class="row"><span>09</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Emily Balcetis: Why some people find exercise harder than others</b><i>Watch · talk · 14m</i><span>Which barriers to participation from the sport and society unit does this research add to, and would her strategy work for a group the course names as under-represented?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/angela_lee_duckworth_grit_the_power_of_passion_and_perseverance">
+  <span class="fam">Watch</span>
+  <span class="sym">Dc</span>
+  <span class="nm">Duckworth</span>
+  <span class="row"><span>10</span><span>6m</span></span>
+  <span class="pop" role="tooltip"><b>Angela Lee Duckworth: Grit: The power of passion and perseverance</b><i>Watch · talk · 6m</i><span>Compare grit with achievement motivation and attribution theory from sport psychology. What evidence would you need before a coach used grit to select athletes?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/christopher_mcdougall_are_we_born_to_run">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">McDougall</span>
+  <span class="row"><span>11</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Christopher McDougall: Are we born to run?</b><i>Watch · TEDx · 16m</i><span>Which of his claims about running footwear and injury can you check against the biomechanics and injury prevention content in the course, and which are anecdote?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.lboro.ac.uk/sport/work-with-us/schoolvisits/sportsscienceexperienceday/">
+  <span class="fam">Watch</span>
+  <span class="sym">Ls</span>
+  <span class="nm">Loughborough Sport: Sport…</span>
+  <span class="row"><span>12</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Loughborough Sport: Sport Science Experience Days</b><i>Watch · lecture · 1h</i><span>A day in Loughborough's sport science labs. Ask your teacher about a trip.</span><em>Loughborough ↗</em></span></a><a class="tile" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-life-and-environmental-sciences/outreach/school-of-sport-exercise-and-rehabilitation-sciences">
+  <span class="fam">Watch</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Birmingham…</span>
+  <span class="row"><span>13</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>University of Birmingham SportExR Outreach Taster Day</b><i>Watch · lecture · 1h</i><span>Practical sessions with sport scientists at the University of Birmingham, a short trip from school.</span><em>Birmingham SportExR ↗</em></span></a><a class="tile" data-g="watch" href="https://www.physoc.org/physiologyweek/">
+  <span class="fam">Watch</span>
+  <span class="sym">Pw</span>
+  <span class="nm">Physiology Week 2026</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Physiology Week 2026 (The Physiological Society)</b><i>Watch · lecture · 1h</i><span>A national week of physiology events in November. Look out for what the department runs.</span><em>Physiology Week ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/rising-obesity">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College schools…</span>
+  <span class="row"><span>15</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College schools programme and Medicine collection</b><i>Watch · lecture · 1h</i><span>Free university lectures. Start with Chris Whitty on rising obesity.</span><em>Gresham: Whitty ↗</em></span></a><a class="tile" data-g="watch" href="https://www.physoc.org/careers/supporting-your-next-career-move/age-16-19/">
+  <span class="fam">Watch</span>
+  <span class="sym">Tp</span>
+  <span class="nm">The Physiological Society…</span>
+  <span class="row"><span>16</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>The Physiological Society: What is physiology? and YouTube channel</b><i>Watch · lecture · 1h</i><span>Short videos on how the body works, and a careers page for your age group.</span><em>Physoc 16–19 ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 5</span></div><a class="tile" data-g="read" href="https://www.physoc.org/magazine/">
+  <span class="fam">Read</span>
+  <span class="sym">Pn</span>
+  <span class="nm">Physiology News</span>
+  <span class="row"><span>17</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Physiology News (The Physiological Society)</b><i>Read · 10m</i><span>The Physiological Society's magazine, free online.</span><em>Physiology News ↗</em></span></a><a class="tile" data-g="read" href="https://blogs.bmj.com/bjsm/">
+  <span class="fam">Read</span>
+  <span class="sym">Bj</span>
+  <span class="nm">BJSM blog</span>
+  <span class="row"><span>18</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>BJSM blog</b><i>Read · 10m</i><span>Short posts on new sports medicine research.</span><em>BJSM blog ↗</em></span></a><a class="tile" data-g="read" href="https://www.sportengland.org/research-and-data/data/active-lives">
+  <span class="fam">Read</span>
+  <span class="sym">Se</span>
+  <span class="nm">Sport England Active Lives…</span>
+  <span class="row"><span>19</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Sport England Active Lives reports</b><i>Read · 10m</i><span>The official figures on who does sport in England, and who does not.</span><em>Active Lives ↗</em></span></a><a class="tile" data-g="read" href="https://www.gssiweb.org/sports-science-exchange">
+  <span class="fam">Read</span>
+  <span class="sym">Ss</span>
+  <span class="nm">Sports Science Exchange</span>
+  <span class="row"><span>20</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Sports Science Exchange (Gatorade Sports Science Institute)</b><i>Read · 10m</i><span>Research summaries on sports nutrition and recovery. It is run by a drinks company, so read it critically.</span><em>GSSI ↗</em></span></a><a class="tile" data-g="read" href="https://www.bases.org.uk/spage-students-studying_and_learning_resources.html">
+  <span class="fam">Read</span>
+  <span class="sym">Bs</span>
+  <span class="nm">BASES learning resources</span>
+  <span class="row"><span>21</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>BASES learning resources</b><i>Read · 10m</i><span>The professional body for sport scientists. Its student page links to free resources.</span><em>BASES ↗</em></span></a><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://www.physoc.org/journals-and-media/podcast/">
+  <span class="fam">Listen</span>
+  <span class="sym">Lt</span>
+  <span class="nm">Let's Get Physiological</span>
+  <span class="row"><span>22</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Let's Get Physiological (The Physiological Society)</b><i>Listen · 30m</i><span>Start with Series 1, episode 1 on sport and exercise science.</span><em>Physoc podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://blogs.bmj.com/bjsm/category/podcast/">
+  <span class="fam">Listen</span>
+  <span class="sym">Bp</span>
+  <span class="nm">BJSM podcast</span>
+  <span class="row"><span>23</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BJSM podcast (British Journal of Sports Medicine)</b><i>Listen · 30m</i><span>Sports medicine researchers on injuries and rehab. Pick an episode on an injury you know about.</span><em>BJSM podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.ox.ac.uk/life-and-death-no-much-more-important-how-sport-turned-big-business-and-global-obsession">
+  <span class="fam">Listen</span>
+  <span class="sym">Me</span>
+  <span class="nm">Matthew Engel, Sport and…</span>
+  <span class="row"><span>24</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Matthew Engel, Sport and Broadcast Media lectures (University of Oxford Podcasts)</b><i>Listen · 30m</i><span>Lectures on how sport became big business. Start with the fourth one.</span><em>Oxford podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.ox.ac.uk/sir-roger-bannister-athlete-and-neurologist-exeter-college-1946">
+  <span class="fam">Listen</span>
+  <span class="sym">Sr</span>
+  <span class="nm">Sir Roger Bannister, athlete…</span>
+  <span class="row"><span>25</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Sir Roger Bannister, athlete and neurologist (University of Oxford Podcasts)</b><i>Listen · 30m</i><span>Sixteen minutes on the four-minute mile and the start of drug testing in British sport.</span><em>Bannister ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 4</span></div><a class="tile" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>26</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements (delivered by STEM Learning)</b><i>Apply · Y12, STEM · apply</i><span>A summer placement with researchers. Check the eligibility criteria first.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">
+  <span class="fam">Apply</span>
+  <span class="sym">Is</span>
+  <span class="nm">In2Science UK: In2STEM</span>
+  <span class="row"><span>27</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2Science UK: In2STEM</b><i>Apply · Y12, STEM · apply</i><span>A free summer placement with researchers, travel and meals paid. Check the eligibility criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.sportsleaders.org/">
+  <span class="fam">Apply</span>
+  <span class="sym">Lh</span>
+  <span class="nm">Level 3 Higher Sports…</span>
+  <span class="row"><span>28</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Level 3 Higher Sports Leadership (Sports Leaders UK)</b><i>Apply · apply</i><span>A leadership qualification where you plan and lead sessions for other groups. There is a fee.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.youthsporttrust.org/young-ambassadors">
+  <span class="fam">Apply</span>
+  <span class="sym">Ya</span>
+  <span class="nm">Young Ambassadors England</span>
+  <span class="row"><span>29</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Young Ambassadors England (Youth Sport Trust)</b><i>Apply · apply</i><span>Lead sport and activity for younger pupils and the local community.</span><em>Details ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 3</span></div><a class="tile" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">
+  <span class="fam">Enter</span>
+  <span class="sym">Bb</span>
+  <span class="nm">British Biology Olympiad</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>British Biology Olympiad (UK Biology Competitions)</b><i>Enter · Y12 and Y13 · paper</i><span>Two 45-minute online papers in school in January. A strong fit for anyone who likes the applied anatomy and physiology and exercise physiology parts of the course.</span><em>UKBC page ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Ks</span>
+  <span class="nm">Kelvin Sciences Essay…</span>
+  <span class="row"><span>31</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Kelvin Sciences Essay Competition (Peterhouse, Cambridge)</b><i>Enter · essay</i><span>A 2,000-word science essay on one of six set questions. The 2026 questions were biology, chemistry and physics based, so check whether one suits a PE and sport science interest before starting. No AI-generated content.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">
+  <span class="fam">Enter</span>
+  <span class="sym">Hc</span>
+  <span class="nm">Hertford College…</span>
+  <span class="row"><span>32</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Hertford College Super-Curricular Challenge (Oxford)</b><i>Enter · entry</i><span>Pick a topic from the course, read, listen or watch beyond it, and write up what you found. There is no sport science page, so use the Physiology and Psychology resources.</span><em>Hertford ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 3 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ap</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">AQA past papers and mark schemes (7582)</a></h3>
+      <div class="meta"><span>01</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past papers with mark schemes. Read the examiner report too.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">AQA past papers</a> &nbsp;<span class="dim">aqa.org.uk/find-past-papers-and-mark-schemes</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Al</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://activelives.sportengland.org/">Active Lives Online tool (Sport England)</a></h3>
+      <div class="meta"><span>02</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Look up how active your own age group is in the West Midlands and compare it with another group.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://activelives.sportengland.org/">Active Lives tool</a> &nbsp;<span class="dim">activelives.sportengland.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ua</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.ukad.org.uk/education">UK Anti-Doping: Clean Sport Hub e-learning</a></h3>
+      <div class="meta"><span>03</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">The same anti-doping course elite athletes take. Free to register.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.ukad.org.uk/education">UKAD education</a> &nbsp;<span class="dim">ukad.org.uk/education</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ep</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger">David Epstein: Are athletes really getting faster, better, stronger?</a></h3>
+      <div class="meta"><span>04</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Epstein names technology, body type and training as reasons records fall. Which of these does the technology in sport unit cover, and which would you rank first?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/wendy_suzuki_the_brain_changing_benefits_of_exercise">Wendy Suzuki: The brain-changing benefits of exercise</a></h3>
+      <div class="meta"><span>05</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which of the claimed benefits could you test in a school study, and what would you measure?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/wendy_suzuki_the_brain_changing_benefits_of_exercise">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/wendy_suzuki_the_brain_changing_benefits_of_exercise</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance">Hugh Herr: The new bionics that let us run, climb and dance</a></h3>
+      <div class="meta"><span>06</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Use the biomechanics you know (levers, forces at the ankle) to explain what the prosthesis has to do at each phase of a stride.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ml</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/aimee_mullins_my_12_pairs_of_legs">Aimee Mullins: My 12 pairs of legs</a></h3>
+      <div class="meta"><span>07</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Should a prosthesis that improves on the human limb be allowed in open competition? Use the ethics of technology in sport in your answer.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/aimee_mullins_my_12_pairs_of_legs">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/aimee_mullins_my_12_pairs_of_legs</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sian_leah_beilock_why_we_choke_under_pressure_and_how_to_avoid_it">Sian Leah Beilock: Why we choke under pressure -- and how to avoid it</a></h3>
+      <div class="meta"><span>08</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Link choking to arousal theories from sport psychology. Which theory explains her examples best: inverted U, drive theory or catastrophe theory?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sian_leah_beilock_why_we_choke_under_pressure_and_how_to_avoid_it">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sian_leah_beilock_why_we_choke_under_pressure_and_how_to_avoid_it</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/emily_balcetis_why_some_people_find_exercise_harder_than_others">Emily Balcetis: Why some people find exercise harder than others</a></h3>
+      <div class="meta"><span>09</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which barriers to participation from the sport and society unit does this research add to, and would her strategy work for a group the course names as under-represented?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/emily_balcetis_why_some_people_find_exercise_harder_than_others">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/emily_balcetis_why_some_people_find_exercise_harder_than_others</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Dc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/angela_lee_duckworth_grit_the_power_of_passion_and_perseverance">Angela Lee Duckworth: Grit: The power of passion and perseverance</a></h3>
+      <div class="meta"><span>10</span><span>6m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 6 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Compare grit with achievement motivation and attribution theory from sport psychology. What evidence would you need before a coach used grit to select athletes?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/angela_lee_duckworth_grit_the_power_of_passion_and_perseverance">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/angela_lee_duckworth_grit_the_power_of_passion_and_perseverance</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/christopher_mcdougall_are_we_born_to_run">Christopher McDougall: Are we born to run?</a></h3>
+      <div class="meta"><span>11</span><span>16m</span><span>TEDx</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk (TEDx).</p>
+  
+  <p class="think"><b>Think about:</b> Which of his claims about running footwear and injury can you check against the biomechanics and injury prevention content in the course, and which are anecdote?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/christopher_mcdougall_are_we_born_to_run">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/christopher_mcdougall_are_we_born_to_run</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ls</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.lboro.ac.uk/sport/work-with-us/schoolvisits/sportsscienceexperienceday/">Loughborough Sport: Sport Science Experience Days</a></h3>
+      <div class="meta"><span>12</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A day in Loughborough's sport science labs. Ask your teacher about a trip.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.lboro.ac.uk/sport/work-with-us/schoolvisits/sportsscienceexperienceday/">Loughborough</a> &nbsp;<span class="dim">lboro.ac.uk/sport/work-with-us/schoolvisits/sportsscienceexperienceday</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-life-and-environmental-sciences/outreach/school-of-sport-exercise-and-rehabilitation-sciences">University of Birmingham SportExR Outreach Taster Day</a></h3>
+      <div class="meta"><span>13</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Practical sessions with sport scientists at the University of Birmingham, a short trip from school.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-life-and-environmental-sciences/outreach/school-of-sport-exercise-and-rehabilitation-sciences">Birmingham SportExR</a> &nbsp;<span class="dim">birmingham.ac.uk/about/college-of-life-and-environmental-sciences/outreach/school-of-sport-exercise-and-rehabilitation-sciences</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Pw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.physoc.org/physiologyweek/">Physiology Week 2026 (The Physiological Society)</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A national week of physiology events in November. Look out for what the department runs.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.physoc.org/physiologyweek/">Physiology Week</a> &nbsp;<span class="dim">physoc.org/physiologyweek</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/rising-obesity">Gresham College schools programme and Medicine collection</a></h3>
+      <div class="meta"><span>15</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures. Start with Chris Whitty on rising obesity.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/rising-obesity">Gresham: Whitty</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/rising-obesity</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.physoc.org/careers/supporting-your-next-career-move/age-16-19/">The Physiological Society: What is physiology? and YouTube channel</a></h3>
+      <div class="meta"><span>16</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos on how the body works, and a careers page for your age group.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.physoc.org/careers/supporting-your-next-career-move/age-16-19/">Physoc 16–19</a> &nbsp;<span class="dim">physoc.org/careers/supporting-your-next-career-move/age-16-19</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 5 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.physoc.org/magazine/">Physiology News (The Physiological Society)</a></h3>
+      <div class="meta"><span>17</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">The Physiological Society's magazine, free online.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.physoc.org/magazine/">Physiology News</a> &nbsp;<span class="dim">physoc.org/magazine</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bj</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://blogs.bmj.com/bjsm/">BJSM blog</a></h3>
+      <div class="meta"><span>18</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short posts on new sports medicine research.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://blogs.bmj.com/bjsm/">BJSM blog</a> &nbsp;<span class="dim">blogs.bmj.com/bjsm</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Se</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.sportengland.org/research-and-data/data/active-lives">Sport England Active Lives reports</a></h3>
+      <div class="meta"><span>19</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">The official figures on who does sport in England, and who does not.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.sportengland.org/research-and-data/data/active-lives">Active Lives</a> &nbsp;<span class="dim">sportengland.org/research-and-data/data/active-lives</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ss</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.gssiweb.org/sports-science-exchange">Sports Science Exchange (Gatorade Sports Science Institute)</a></h3>
+      <div class="meta"><span>20</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Research summaries on sports nutrition and recovery. It is run by a drinks company, so read it critically.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.gssiweb.org/sports-science-exchange">GSSI</a> &nbsp;<span class="dim">gssiweb.org/sports-science-exchange</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bases.org.uk/spage-students-studying_and_learning_resources.html">BASES learning resources</a></h3>
+      <div class="meta"><span>21</span><span>10m</span><span>resources free; membership £24</span></div>
+    </div>
+  </div>
+  <p class="what">The professional body for sport scientists. Its student page links to free resources.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bases.org.uk/spage-students-studying_and_learning_resources.html">BASES</a> &nbsp;<span class="dim">bases.org.uk/spage-students-studying_and_learning_resources.html</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Lt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.physoc.org/journals-and-media/podcast/">Let's Get Physiological (The Physiological Society)</a></h3>
+      <div class="meta"><span>22</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Start with Series 1, episode 1 on sport and exercise science.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.physoc.org/journals-and-media/podcast/">Physoc podcast</a> &nbsp;<span class="dim">physoc.org/journals-and-media/podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://blogs.bmj.com/bjsm/category/podcast/">BJSM podcast (British Journal of Sports Medicine)</a></h3>
+      <div class="meta"><span>23</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Sports medicine researchers on injuries and rehab. Pick an episode on an injury you know about.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://blogs.bmj.com/bjsm/category/podcast/">BJSM podcast</a> &nbsp;<span class="dim">blogs.bmj.com/bjsm/category/podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Me</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/life-and-death-no-much-more-important-how-sport-turned-big-business-and-global-obsession">Matthew Engel, Sport and Broadcast Media lectures (University of Oxford Podcasts)</a></h3>
+      <div class="meta"><span>24</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Lectures on how sport became big business. Start with the fourth one.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/life-and-death-no-much-more-important-how-sport-turned-big-business-and-global-obsession">Oxford podcasts</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/life-and-death-no-much-more-important-how-sport-turned-big-business-and-global-obsession</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Sr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/sir-roger-bannister-athlete-and-neurologist-exeter-college-1946">Sir Roger Bannister, athlete and neurologist (University of Oxford Podcasts)</a></h3>
+      <div class="meta"><span>25</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Sixteen minutes on the four-minute mile and the start of drug testing in British sport.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/sir-roger-bannister-athlete-and-neurologist-exeter-college-1946">Bannister</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/sir-roger-bannister-athlete-and-neurologist-exeter-college-1946</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 4 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Nuffield Research Placements (delivered by STEM Learning)</a></h3>
+      <div class="meta"><span>26</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A summer placement with researchers. Check the eligibility criteria first.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm on the STEM Learning site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Details</a> &nbsp;<span class="dim">nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">In2Science UK: In2STEM</a></h3>
+      <div class="meta"><span>27</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A free summer placement with researchers, travel and meals paid. Check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> 2026 programme ran 20 July – 21 August; applications for 2027 not yet announced. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/our-programmes/in2stem</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Lh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.sportsleaders.org/">Level 3 Higher Sports Leadership (Sports Leaders UK)</a></h3>
+      <div class="meta"><span>28</span><span>apply</span><span>16+, delivered by the school as a registered centre</span></div>
+    </div>
+  </div>
+  <p class="what">A leadership qualification where you plan and lead sessions for other groups. There is a fee.</p>
+  <p class="when"><b>When:</b> Usually one year, run in Y12.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.sportsleaders.org/">Details</a> &nbsp;<span class="dim">sportsleaders.org</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ya</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.youthsporttrust.org/young-ambassadors">Young Ambassadors England (Youth Sport Trust)</a></h3>
+      <div class="meta"><span>29</span><span>apply</span><span>Secondary pupils; sixth-formers can lead</span></div>
+    </div>
+  </div>
+  <p class="what">Lead sport and activity for younger pupils and the local community.</p>
+  <p class="when"><b>When:</b> Two routes launched September 2026. Open Access route free to all secondary schools; the Communities Fund route includes Birmingham.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.youthsporttrust.org/young-ambassadors">Details</a> &nbsp;<span class="dim">youthsporttrust.org/young-ambassadors</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 3 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">British Biology Olympiad (UK Biology Competitions)</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>Y12 and Y13</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Two 45-minute online papers in school in January. A strong fit for anyone who likes the applied anatomy and physiology and exercise physiology parts of the course.</p>
+  <p class="when"><b>When:</b> Online papers 15–22 January 2027. School registration opens 1 October 2026.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://ukbiologycompetitions.org/british-biology-olympiad/">UKBC page</a> &nbsp;<span class="dim">ukbiologycompetitions.org/british-biology-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ks</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Kelvin Sciences Essay Competition (Peterhouse, Cambridge)</a></h3>
+      <div class="meta"><span>31</span><span>essay</span><span>Y12 (penultimate year), UK and Ireland</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A 2,000-word science essay on one of six set questions. The 2026 questions were biology, chemistry and physics based, so check whether one suits a PE and sport science interest before starting. No AI-generated content.</p>
+  <p class="when"><b>When:</b> Questions released in the spring; 2026 deadline was 20 April, with teacher verification by 4 May. Confirm 2027 on the Peterhouse site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Hc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">Hertford College Super-Curricular Challenge (Oxford)</a></h3>
+      <div class="meta"><span>32</span><span>entry</span><span>Sixth-form pupils</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Pick a topic from the course, read, listen or watch beyond it, and write up what you found. There is no sport science page, so use the Physiology and Psychology resources.</p>
+  <p class="when"><b>When:</b> Open all year; no deadline published.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">Hertford</a> &nbsp;<span class="dim">hertford.ox.ac.uk/study-here/outreach/digital/challenge</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your PE year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">1 October 2026</div><span class="sym dot">1</span><div><b>British Biology Olympiad registration opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">2</span><div><b>Young Ambassadors England: register interest</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">3</span><div><b>Nuffield Research Placements applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">4</span><div><b>Loughborough and Birmingham visit enquiries</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">16–20 November 2026</div><span class="sym dot">5</span><div><b>Physiology Week</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026</div><span class="sym dot">6</span><div><b>In2STEM applications open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">15–22 January 2027</div><span class="sym dot">7</span><div><b>British Biology Olympiad papers</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">8</span><div><b>Kelvin Sciences Essay questions released</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Summer term 2027</div><span class="sym dot">9</span><div><b>Sports Leaders Level 3 for next year's Y12</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Term time, 2–3pm</div><span class="sym dot">10</span><div><b>Gresham schools-only live talks</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Training diary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Physical Education Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Languages beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Mulish:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#BE123C; --watch:#1D4ED8; --listen:#7E22CE; --read:#A16207; --do:#15803D; --apply:#0F766E;
+  --f-display:"Josefin Sans",system-ui,sans-serif;
+  --f-body:"Mulish",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1E3A8A; --hero-ink:#EFF6FF; --hero-muted:#B4C6F0;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Modern Foreign Languages · 2026-27</div>
+      <h1>Languages beyond the classroom<span class="sub">40 things to watch, listen to, read and enter. All free.</span></h1>
+      <p>Language degrees want to know what you watch, read and listen to in the language, and whether you have read anything written for native speakers. The institutes, news sites and podcasts below are free; the Anthea Bell translation prize, the Linguistics Olympiad and the essay competitions are where you prove it. Keep a diary in the language, even a line a day. Each time you do something, write one line in your language diary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="watch"></span><span data-g="listen"></span><span data-g="read"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="do"><a href="https://www.uklo.org/past-exam-papers/"><span class="sym">Up</span></a><div><div class="step">Past papers · UKLO past papers</div><p>Try one UKLO Advanced past paper with the solutions beside you, then ask to be entered for Round 1 before 2 November.</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think"><span class="sym">Br</span></a><div><div class="step">Watch · Boroditsky</div><p>Watch Lera Boroditsky's TED talk (14 min) and write down one claim you could test against the grammar of the language you study.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/programmes/p01drwny"><span class="sym">Bi</span></a><div><div class="step">Archive · BBC In Our Time: Culture…</div><p>Listen to one In Our Time Culture episode on a writer or film-maker from your language.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The phrasebook</h2>
+    <div class="key"><span>One entry per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">
+  <span class="fam">Watch</span>
+  <span class="sym">Br</span>
+  <span class="nm">Boroditsky</span>
+  <span class="row"><span>01</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Lera Boroditsky: How language shapes the way we think</b><i>Watch · talk · 14m</i><span>Test one of her claims (grammatical gender, time, space) against the language you study. Does grammar change how speakers think, or only how they talk? This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/patricia_ryan_don_t_insist_on_english">
+  <span class="fam">Watch</span>
+  <span class="sym">Ry</span>
+  <span class="nm">Ryan</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Patricia Ryan: Don't insist on English!</b><i>Watch · talk · 10m</i><span>Should English be the working language of science and business? Argue against her with one example from France, a German-speaking country or the Spanish-speaking world. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_4_reasons_to_learn_a_new_language">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">McWhorter</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>John McWhorter: 4 reasons to learn a new language</b><i>Watch · talk · 10m</i><span>Which of his four reasons is weakest? Replace it with a reason drawn from Theme 3 (immigration and multicultural society).</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/suzanne_talhouk_don_t_kill_your_language">
+  <span class="fam">Watch</span>
+  <span class="sym">Tl</span>
+  <span class="nm">Talhouk</span>
+  <span class="row"><span>04</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Suzanne Talhouk: Don't kill your language</b><i>Watch · talk · 14m</i><span>Compare her campaign for Arabic in Lebanon with the Académie française, the RAE or debates about English words in German. What does protecting a language achieve?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/adam_aleksic_are_we_cooked_how_social_media_shapes_your_language">
+  <span class="fam">Watch</span>
+  <span class="sym">Al</span>
+  <span class="nm">Aleksic</span>
+  <span class="row"><span>05</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Adam Aleksic: Are we cooked? How social media shapes your language</b><i>Watch · talk · 14m</i><span>Theme 2, the media: find three words that have entered French, German or Spanish through social media in the last five years. Who objects to them, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">
+  <span class="fam">Watch</span>
+  <span class="sym">Ad</span>
+  <span class="nm">Adichie</span>
+  <span class="row"><span>06</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Chimamanda Ngozi Adichie: The danger of a single story</b><i>Watch · talk · 19m</i><span>Theme 3: what single story do the media tell about immigrants in France, Germany or Spain? Find one piece of evidence that complicates it.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/ann_morgan_my_year_reading_a_book_from_every_country_in_the_world">
+  <span class="fam">Watch</span>
+  <span class="sym">Mr</span>
+  <span class="nm">Morgan</span>
+  <span class="row"><span>07</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Ann Morgan: My year reading a book from every country in the world</b><i>Watch · talk · 12m</i><span>Take one Paper 2 work that exists in English translation. Compare one paragraph of the original with the translation: what has the translator lost or added?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">
+  <span class="fam">Watch</span>
+  <span class="sym">Hl</span>
+  <span class="nm">Hoeller</span>
+  <span class="row"><span>08</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Magdalena Hoeller: Why love is harder in a second language</b><i>Watch · talk · 16m</i><span>Paper 3: does arguing a point in French, German or Spanish feel different from arguing it in English? Name one thing that changes and one thing you can do about it in the discussion.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/digital-resources">
+  <span class="fam">Watch</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford Modern Languages…</span>
+  <span class="row"><span>09</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Modern Languages: digital resources for schools</b><i>Watch · lecture · 1h</i><span>Short videos from Oxford tutors on how to read a literary text in French, German or Spanish, and a book club archive.</span><em>Oxford MML ↗</em></span></a><a class="tile" data-g="watch" href="https://www.mmll.cam.ac.uk/prospective-students/outreach-events-activities">
+  <span class="fam">Watch</span>
+  <span class="sym">Cm</span>
+  <span class="nm">Cambridge MMLL outreach and…</span>
+  <span class="row"><span>10</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge MMLL outreach and YouTube channel</b><i>Watch · lecture · 1h</i><span>Cambridge videos on A level texts and on studying languages at university.</span><em>Cambridge MMLL ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/modern-and-medieval-languages">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Modern and…</span>
+  <span class="row"><span>11</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Modern and Medieval Languages</b><i>Watch · lecture · 1h</i><span>Short online modules with reading and questions. Start with the one in your language.</span><em>HE+ MML ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College schools…</span>
+  <span class="row"><span>12</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College schools programme</b><i>Watch · lecture · 1h</i><span>Free university lectures. For French, try the lecture on Toussaint Louverture and the Haitian Revolution.</span><em>Gresham ↗</em></span></a><a class="tile" data-g="watch" href="https://www.institut-francais.org.uk/education-page/school-activities/">
+  <span class="fam">Watch</span>
+  <span class="sym">Fi</span>
+  <span class="nm">French: Institut français du…</span>
+  <span class="row"><span>13</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>French: Institut français du Royaume-Uni (London)</b><i>Watch · lecture · 1h</i><span>French cinema and talks in London. Check the programme for films on the A level list.</span><em>Institut français ↗</em></span></a><a class="tile" data-g="watch" href="https://www.goethe.de/ins/gb/en/kul/lue/onl.html">
+  <span class="fam">Watch</span>
+  <span class="sym">Gr</span>
+  <span class="nm">German: Goethe-Institut London</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>German: Goethe-Institut London</b><i>Watch · lecture · 1h</i><span>A free German library online: books, films and newspapers. Sign up with a free account.</span><em>Goethe Onleihe ↗</em></span></a><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 8</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>15</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the archive for an author or film-maker on your list. Three academics, 45 minutes.</span><em>In Our Time Culture ↗</em></span></a><a class="tile" data-g="listen" href="https://coffeebreaklanguages.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Cb</span>
+  <span class="nm">Coffee Break Languages</span>
+  <span class="row"><span>16</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Coffee Break Languages (free podcast tier)</b><i>Listen · 30m</i><span>Free podcasts in French, German and Spanish. Use the Magazine series; the paid courses are not needed.</span><em>Coffee Break ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.apple.com/us/podcast/innerfrench/id1231472946">
+  <span class="fam">Listen</span>
+  <span class="sym">Fr</span>
+  <span class="nm">French: InnerFrench</span>
+  <span class="row"><span>17</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>French: InnerFrench</b><i>Listen · 30m</i><span>A podcast in clear spoken French about French society and culture.</span><em>InnerFrench ↗</em></span></a><a class="tile" data-g="listen" href="https://learngerman.dw.com/de/fortgeschrittene/s-62079033">
+  <span class="fam">Listen</span>
+  <span class="sym">Gd</span>
+  <span class="nm">German: Deutsche Welle…</span>
+  <span class="row"><span>18</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>German: Deutsche Welle, Langsam gesprochene Nachrichten and Top-Thema</b><i>Listen · 30m</i><span>The news in German, read slowly, with the script. Do one a day for a fortnight.</span><em>DW Deutsch lernen ↗</em></span></a><a class="tile" data-g="listen" href="http://podcasts.ox.ac.uk/series/oxford-spanish-literature-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">So</span>
+  <span class="nm">Spanish: Oxford Spanish…</span>
+  <span class="row"><span>19</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Spanish: Oxford Spanish Literature Podcast</b><i>Listen · 30m</i><span>Oxford tutors talking about Spanish literature. Start with the Lorca or Laforet episode.</span><em>Oxford podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://www.arte.tv/fr/">
+  <span class="fam">Listen</span>
+  <span class="sym">Fa</span>
+  <span class="nm">French and German: ARTE</span>
+  <span class="row"><span>20</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>French and German: ARTE</b><i>Listen · 30m</i><span>Documentaries and films in French or German. Pick one on a topic from your themes.</span><em>arte.tv ↗</em></span></a><a class="tile" data-g="listen" href="https://www.rtve.es/play/">
+  <span class="fam">Listen</span>
+  <span class="sym">Sr</span>
+  <span class="nm">Spanish: RTVE Play</span>
+  <span class="row"><span>21</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Spanish: RTVE Play</b><i>Listen · 30m</i><span>Spanish TV online. Try a documentary on a topic from your themes.</span><em>RTVE Play ↗</em></span></a><a class="tile" data-g="listen" href="https://lingthusiasm.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Ln</span>
+  <span class="nm">Lingthusiasm</span>
+  <span class="row"><span>22</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Lingthusiasm</b><i>Listen · 30m</i><span>A podcast about how languages work. Transcripts on the website.</span><em>Lingthusiasm ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 5</span></div><a class="tile" data-g="read" href="https://bookshelf.mml.ox.ac.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Ao</span>
+  <span class="nm">Adventures on the Bookshelf</span>
+  <span class="row"><span>23</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Adventures on the Bookshelf (Oxford Modern Languages blog)</b><i>Read · 10m</i><span>Short posts from Oxford on languages and literature, and prize-winning 100-word stories by pupils.</span><em>Oxford blog ↗</em></span></a><a class="tile" data-g="read" href="https://cvc.cervantes.es/">
+  <span class="fam">Read</span>
+  <span class="sym">Sc</span>
+  <span class="nm">Spanish: Centro Virtual…</span>
+  <span class="row"><span>24</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Spanish: Centro Virtual Cervantes</b><i>Read · 10m</i><span>Short articles in Spanish on Hispanic culture and on translation.</span><em>CVC ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">It</span>
+  <span class="nm">Is That a Fish in Your Ear?…</span>
+  <span class="row"><span>25</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Is That a Fish in Your Ear? Translation and the Meaning of Everything, by David Bellos</b><i>Read · book · book</i><span>A readable book on how translation works, by a translator.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tt</span>
+  <span class="nm">Through the Language Glass</span>
+  <span class="row"><span>26</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Through the Language Glass, by Guy Deutscher</b><i>Read · book · book</i><span>Does your language change how you see the world? A careful answer.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tc</span>
+  <span class="nm">The Cambridge Encyclopedia…</span>
+  <span class="row"><span>27</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Cambridge Encyclopedia of Language, by David Crystal</b><i>Read · book · book</i><span>Dip into it for any question about how languages work.</span></span></span><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 7</span></div><a class="tile" data-g="enter" href="https://www.queens.ox.ac.uk/research-at-queens/translation-exchange/anthea-bell-prize/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ab</span>
+  <span class="nm">Anthea Bell Prize for Young…</span>
+  <span class="row"><span>28</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Anthea Bell Prize for Young Translators (Queen's College, Oxford)</b><i>Enter · entry</i><span>Translate a set passage from French, German or Spanish into English. Your teacher enters you. Winners receive book prizes.</span><em>Queen's ↗</em></span></a><a class="tile" data-g="enter" href="https://www.uklo.org/2027calendar/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ul</span>
+  <span class="nm">UK Linguistics Olympiad</span>
+  <span class="row"><span>29</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UK Linguistics Olympiad (UKLO)</b><i>Enter · paper</i><span>Puzzles in which you work out the grammar of a language you have never seen from a few examples. Good practice for the reasoning in translation.</span><em>UKLO calendar ↗</em></span></a><a class="tile" data-g="enter" href="https://www.ogn.ox.ac.uk/oxford-german-olympiad">
+  <span class="fam">Enter</span>
+  <span class="sym">Go</span>
+  <span class="nm">German: Oxford German Olympiad</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>German: Oxford German Olympiad (Oxford German Network)</b><i>Enter · paper</i><span>A creative task in German set around a theme (2026: travel and mobility). Y12–13 tasks included a screenplay abstract and a travel brochure. Prizes of £100 and £50.</span><em>OGN Olympiad ↗</em></span></a><a class="tile" data-g="enter" href="https://www.ogn.ox.ac.uk/content/german-classic-2026-erich-maria-remarque">
+  <span class="fam">Enter</span>
+  <span class="sym">Gg</span>
+  <span class="nm">German: German Classic essay…</span>
+  <span class="row"><span>31</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>German: German Classic essay prize (Oxford German Network)</b><i>Enter · Sixth form · essay</i><span>Read a German classic with the study pack over the summer and write an essay on it. £500, £300 and £100 prizes.</span><em>German Classic ↗</em></span></a><a class="tile" data-g="enter" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/language-competitions">
+  <span class="fam">Enter</span>
+  <span class="sym">Om</span>
+  <span class="nm">Oxford Modern Languages…</span>
+  <span class="row"><span>32</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Modern Languages Flash Fiction Competitions (French, German, Spanish)</b><i>Enter · entry</i><span>Write a complete story of no more than 100 words in French, German or Spanish. £100 first prize in each category; good entries are published on the Oxford languages blog.</span><em>Oxford MML ↗</em></span></a><a class="tile" data-g="enter" href="https://www.stephen-spender.org/stephen-spender-prize/individual-youth-entry/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ss</span>
+  <span class="nm">Stephen Spender Prize for…</span>
+  <span class="row"><span>33</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Stephen Spender Prize for poetry in translation (Stephen Spender Trust)</b><i>Enter · entry</i><span>Translate a published poem (up to 60 lines) from any language into English and write a commentary of up to 300 words on your choices. Winners are published.</span><em>Spender Trust ↗</em></span></a><a class="tile" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/languagesandcultures/">
+  <span class="fam">Enter</span>
+  <span class="sym">La</span>
+  <span class="nm">Languages and Cultures Essay…</span>
+  <span class="row"><span>34</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Languages and Cultures Essay Prize (Trinity College, Cambridge)</b><i>Enter · entry</i><span>Up to 3,000 words on any language or cultural form (literature, film, art). £600 first prize, split between you and the school.</span><em>Trinity ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 4</span></div><a class="tile" data-g="do" href="https://www.uklo.org/past-exam-papers/">
+  <span class="fam">Do</span>
+  <span class="sym">Up</span>
+  <span class="nm">UKLO past papers</span>
+  <span class="row"><span>35</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UKLO past papers</b><i>Do · 20m</i><span>Linguistics puzzles with answers. Start with an Intermediate paper, then try Advanced.</span><em>UKLO papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.queens.ox.ac.uk/news/anthea-bell-prize-2026-27-launches-with-new-resources-library/">
+  <span class="fam">Do</span>
+  <span class="sym">An</span>
+  <span class="nm">Anthea Bell Prize resource…</span>
+  <span class="row"><span>36</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Anthea Bell Prize resource library</b><i>Do · 20m</i><span>Translation practice from your teacher, the same style as the Anthea Bell Prize.</span><em>Resource library ↗</em></span></a><a class="tile" data-g="do" href="https://apprendre.tv5monde.com/fr">
+  <span class="fam">Do</span>
+  <span class="sym">Ft</span>
+  <span class="nm">French: TV5MONDE Apprendre…</span>
+  <span class="row"><span>37</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>French: TV5MONDE Apprendre le français</b><i>Do · 20m</i><span>Free listening exercises on real French news clips. Choose B2 or C1.</span><em>TV5MONDE ↗</em></span></a><a class="tile" data-g="do" href="https://www.goethe.de/prj/dfd/en/home.cfm">
+  <span class="fam">Do</span>
+  <span class="sym">Gm</span>
+  <span class="nm">German: Deutsch für dich</span>
+  <span class="row"><span>38</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>German: Deutsch für dich (Goethe-Institut)</b><i>Do · 20m</i><span>Free German grammar and listening exercises. Work at B2.</span><em>Deutsch für dich ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 2</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/french">
+  <span class="fam">Apply</span>
+  <span class="sym">Uf</span>
+  <span class="nm">UNIQ : French, German…</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford): French, German, Spanish, Linguistics</b><i>Apply · apply</i><span>A free week in Oxford studying your language. Check the selection criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">
+  <span class="fam">Apply</span>
+  <span class="sym">St</span>
+  <span class="nm">Sutton Trust UK Summer Schools</span>
+  <span class="row"><span>40</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust UK Summer Schools</b><i>Apply · apply</i><span>Free university summer schools for Year 12 at state schools. Check the criteria.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">Lera Boroditsky: How language shapes the way we think</a></h3>
+      <div class="meta"><span>01</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Test one of her claims (grammatical gender, time, space) against the language you study. Does grammar change how speakers think, or only how they talk? This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ry</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/patricia_ryan_don_t_insist_on_english">Patricia Ryan: Don't insist on English!</a></h3>
+      <div class="meta"><span>02</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Should English be the working language of science and business? Argue against her with one example from France, a German-speaking country or the Spanish-speaking world. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/patricia_ryan_don_t_insist_on_english">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/patricia_ryan_don_t_insist_on_english</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_4_reasons_to_learn_a_new_language">John McWhorter: 4 reasons to learn a new language</a></h3>
+      <div class="meta"><span>03</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which of his four reasons is weakest? Replace it with a reason drawn from Theme 3 (immigration and multicultural society).</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_4_reasons_to_learn_a_new_language">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/john_mcwhorter_4_reasons_to_learn_a_new_language</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Tl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/suzanne_talhouk_don_t_kill_your_language">Suzanne Talhouk: Don't kill your language</a></h3>
+      <div class="meta"><span>04</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Compare her campaign for Arabic in Lebanon with the Académie française, the RAE or debates about English words in German. What does protecting a language achieve?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/suzanne_talhouk_don_t_kill_your_language">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/suzanne_talhouk_don_t_kill_your_language</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Al</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/adam_aleksic_are_we_cooked_how_social_media_shapes_your_language">Adam Aleksic: Are we cooked? How social media shapes your language</a></h3>
+      <div class="meta"><span>05</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 2, the media: find three words that have entered French, German or Spanish through social media in the last five years. Who objects to them, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/adam_aleksic_are_we_cooked_how_social_media_shapes_your_language">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/adam_aleksic_are_we_cooked_how_social_media_shapes_your_language</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ad</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Chimamanda Ngozi Adichie: The danger of a single story</a></h3>
+      <div class="meta"><span>06</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 3: what single story do the media tell about immigrants in France, Germany or Spain? Find one piece of evidence that complicates it.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/ann_morgan_my_year_reading_a_book_from_every_country_in_the_world">Ann Morgan: My year reading a book from every country in the world</a></h3>
+      <div class="meta"><span>07</span><span>12m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 12 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Take one Paper 2 work that exists in English translation. Compare one paragraph of the original with the translation: what has the translator lost or added?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/ann_morgan_my_year_reading_a_book_from_every_country_in_the_world">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/ann_morgan_my_year_reading_a_book_from_every_country_in_the_world</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">Magdalena Hoeller: Why love is harder in a second language</a></h3>
+      <div class="meta"><span>08</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Paper 3: does arguing a point in French, German or Spanish feel different from arguing it in English? Name one thing that changes and one thing you can do about it in the discussion.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/digital-resources">Oxford Modern Languages: digital resources for schools</a></h3>
+      <div class="meta"><span>09</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos from Oxford tutors on how to read a literary text in French, German or Spanish, and a book club archive.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/digital-resources">Oxford MML</a> &nbsp;<span class="dim">mod-langs.ox.ac.uk/schools-liaison-and-outreach/digital-resources</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.mmll.cam.ac.uk/prospective-students/outreach-events-activities">Cambridge MMLL outreach and YouTube channel</a></h3>
+      <div class="meta"><span>10</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge videos on A level texts and on studying languages at university.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.mmll.cam.ac.uk/prospective-students/outreach-events-activities">Cambridge MMLL</a> &nbsp;<span class="dim">mmll.cam.ac.uk/prospective-students/outreach-events-activities</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/modern-and-medieval-languages">Cambridge HE+ Modern and Medieval Languages</a></h3>
+      <div class="meta"><span>11</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short online modules with reading and questions. Start with the one in your language.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/modern-and-medieval-languages">HE+ MML</a> &nbsp;<span class="dim">myheplus.com/subject/modern-and-medieval-languages</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges">Gresham College schools programme</a></h3>
+      <div class="meta"><span>12</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures. For French, try the lecture on Toussaint Louverture and the Haitian Revolution.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges">Gresham</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Fi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.institut-francais.org.uk/education-page/school-activities/">French: Institut français du Royaume-Uni (London)</a></h3>
+      <div class="meta"><span>13</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">French cinema and talks in London. Check the programme for films on the A level list.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.institut-francais.org.uk/education-page/school-activities/">Institut français</a> &nbsp;<span class="dim">institut-francais.org.uk/education-page/school-activities</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.goethe.de/ins/gb/en/kul/lue/onl.html">German: Goethe-Institut London</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A free German library online: books, films and newspapers. Sign up with a free account.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.goethe.de/ins/gb/en/kul/lue/onl.html">Goethe Onleihe</a> &nbsp;<span class="dim">goethe.de/ins/gb/en/kul/lue/onl.html</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 8 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>15</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for an author or film-maker on your list. Three academics, 45 minutes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">In Our Time Culture</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01drwny</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Cb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://coffeebreaklanguages.com/">Coffee Break Languages (free podcast tier)</a></h3>
+      <div class="meta"><span>16</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Free podcasts in French, German and Spanish. Use the Magazine series; the paid courses are not needed.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://coffeebreaklanguages.com/">Coffee Break</a> &nbsp;<span class="dim">coffeebreaklanguages.com</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Fr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.apple.com/us/podcast/innerfrench/id1231472946">French: InnerFrench</a></h3>
+      <div class="meta"><span>17</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A podcast in clear spoken French about French society and culture.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.apple.com/us/podcast/innerfrench/id1231472946">InnerFrench</a> &nbsp;<span class="dim">podcasts.apple.com/us/podcast/innerfrench/id1231472946</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Gd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://learngerman.dw.com/de/fortgeschrittene/s-62079033">German: Deutsche Welle, Langsam gesprochene Nachrichten and Top-Thema</a></h3>
+      <div class="meta"><span>18</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The news in German, read slowly, with the script. Do one a day for a fortnight.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://learngerman.dw.com/de/fortgeschrittene/s-62079033">DW Deutsch lernen</a> &nbsp;<span class="dim">learngerman.dw.com/de/fortgeschrittene/s-62079033</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">So</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="http://podcasts.ox.ac.uk/series/oxford-spanish-literature-podcast">Spanish: Oxford Spanish Literature Podcast</a></h3>
+      <div class="meta"><span>19</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford tutors talking about Spanish literature. Start with the Lorca or Laforet episode.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="http://podcasts.ox.ac.uk/series/oxford-spanish-literature-podcast">Oxford podcast</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/oxford-spanish-literature-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Fa</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.arte.tv/fr/">French and German: ARTE</a></h3>
+      <div class="meta"><span>20</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Documentaries and films in French or German. Pick one on a topic from your themes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.arte.tv/fr/">arte.tv</a> &nbsp;<span class="dim">arte.tv/fr</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Sr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.rtve.es/play/">Spanish: RTVE Play</a></h3>
+      <div class="meta"><span>21</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Spanish TV online. Try a documentary on a topic from your themes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.rtve.es/play/">RTVE Play</a> &nbsp;<span class="dim">rtve.es/play</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ln</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://lingthusiasm.com/">Lingthusiasm</a></h3>
+      <div class="meta"><span>22</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A podcast about how languages work. Transcripts on the website.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://lingthusiasm.com/">Lingthusiasm</a> &nbsp;<span class="dim">lingthusiasm.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 5 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ao</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://bookshelf.mml.ox.ac.uk/">Adventures on the Bookshelf (Oxford Modern Languages blog)</a></h3>
+      <div class="meta"><span>23</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short posts from Oxford on languages and literature, and prize-winning 100-word stories by pupils.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://bookshelf.mml.ox.ac.uk/">Oxford blog</a> &nbsp;<span class="dim">bookshelf.mml.ox.ac.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Sc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://cvc.cervantes.es/">Spanish: Centro Virtual Cervantes</a></h3>
+      <div class="meta"><span>24</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short articles in Spanish on Hispanic culture and on translation.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://cvc.cervantes.es/">CVC</a> &nbsp;<span class="dim">cvc.cervantes.es</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">It</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Is That a Fish in Your Ear? Translation and the Meaning of Everything, by David Bellos</span></h3>
+      <div class="meta"><span>25</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A readable book on how translation works, by a translator.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tt</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Through the Language Glass, by Guy Deutscher</span></h3>
+      <div class="meta"><span>26</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Does your language change how you see the world? A careful answer.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Cambridge Encyclopedia of Language, by David Crystal</span></h3>
+      <div class="meta"><span>27</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Dip into it for any question about how languages work.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 7 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ab</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.queens.ox.ac.uk/research-at-queens/translation-exchange/anthea-bell-prize/">Anthea Bell Prize for Young Translators (Queen's College, Oxford)</a></h3>
+      <div class="meta"><span>28</span><span>entry</span><span>Ages 11–18; Level 4 is for KS5. French, German, Spanish, Italian, Mandarin and Russian into English.</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Translate a set passage from French, German or Spanish into English. Your teacher enters you. Winners receive book prizes.</p>
+  <p class="when"><b>When:</b> 2026-27 prize launched 18 September 2026. Competition window Monday 25 January to Friday 19 March 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.queens.ox.ac.uk/research-at-queens/translation-exchange/anthea-bell-prize/">Queen's</a> &nbsp;<span class="dim">queens.ox.ac.uk/research-at-queens/translation-exchange/anthea-bell-prize</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ul</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.uklo.org/2027calendar/">UK Linguistics Olympiad (UKLO)</a></h3>
+      <div class="meta"><span>29</span><span>paper</span><span>All ages; Advanced level suits Y12–13. No knowledge of the languages in the problems is needed.</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Puzzles in which you work out the grammar of a language you have never seen from a few examples. Good practice for the reasoning in translation.</p>
+  <p class="when"><b>When:</b> Round 1 Advanced: entry deadline 2 November 2026, sitting 9–13 November 2026, results 7 December 2026. Round 2 on 3 February 2027 for those invited. Top scorers go on to training for the International Linguistics Olympiad.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.uklo.org/2027calendar/">UKLO calendar</a> &nbsp;<span class="dim">uklo.org/2027calendar</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Go</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.ogn.ox.ac.uk/oxford-german-olympiad">German: Oxford German Olympiad (Oxford German Network)</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>Years 5–13; separate Y12–13 tasks.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A creative task in German set around a theme (2026: travel and mobility). Y12–13 tasks included a screenplay abstract and a travel brochure. Prizes of £100 and £50.</p>
+  <p class="when"><b>When:</b> 2026 deadlines were 12 March (Round 1) and 26 March 2026 (Round 2), both at noon. 2027 theme and dates not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.ogn.ox.ac.uk/oxford-german-olympiad">OGN Olympiad</a> &nbsp;<span class="dim">ogn.ox.ac.uk/oxford-german-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Gg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.ogn.ox.ac.uk/content/german-classic-2026-erich-maria-remarque">German: German Classic essay prize (Oxford German Network)</a></h3>
+      <div class="meta"><span>31</span><span>essay</span><span>Sixth form</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Read a German classic with the study pack over the summer and write an essay on it. £500, £300 and £100 prizes.</p>
+  <p class="when"><b>When:</b> 2026 (Erich Maria Remarque): study pack requested by 1 July, essays in by 9 September 2026. The 2027 text and dates are not yet published: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.ogn.ox.ac.uk/content/german-classic-2026-erich-maria-remarque">German Classic</a> &nbsp;<span class="dim">ogn.ox.ac.uk/content/german-classic-2026-erich-maria-remarque</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Om</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/language-competitions">Oxford Modern Languages Flash Fiction Competitions (French, German, Spanish)</a></h3>
+      <div class="meta"><span>32</span><span>entry</span><span>Ages 11–18; Y12–13 is its own category.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Write a complete story of no more than 100 words in French, German or Spanish. £100 first prize in each category; good entries are published on the Oxford languages blog.</p>
+  <p class="when"><b>When:</b> 2026 competition opened 16 December 2025 and closed 31 March 2026, 12 noon. Expect a similar window for 2027: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.mod-langs.ox.ac.uk/schools-liaison-and-outreach/language-competitions">Oxford MML</a> &nbsp;<span class="dim">mod-langs.ox.ac.uk/schools-liaison-and-outreach/language-competitions</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ss</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.stephen-spender.org/stephen-spender-prize/individual-youth-entry/">Stephen Spender Prize for poetry in translation (Stephen Spender Trust)</a></h3>
+      <div class="meta"><span>33</span><span>entry</span><span>18-and-under and 14-and-under categories; UK or Irish residents or pupils of British schools overseas.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Translate a published poem (up to 60 lines) from any language into English and write a commentary of up to 300 words on your choices. Winners are published.</p>
+  <p class="when"><b>When:</b> 2026 prize open 1 May to 31 July; winners announced in December. 2027 dates: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.stephen-spender.org/stephen-spender-prize/individual-youth-entry/">Spender Trust</a> &nbsp;<span class="dim">stephen-spender.org/stephen-spender-prize/individual-youth-entry</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">La</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/languagesandcultures/">Languages and Cultures Essay Prize (Trinity College, Cambridge)</a></h3>
+      <div class="meta"><span>34</span><span>entry</span><span>Y12 when the questions are released in February</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 3,000 words on any language or cultural form (literature, film, art). £600 first prize, split between you and the school.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 31 July, 12 noon. 2027 questions due in February 2027: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/languagesandcultures/">Trinity</a> &nbsp;<span class="dim">trin.cam.ac.uk/undergraduate/essay-prizes/languagesandcultures</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 4 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Up</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.uklo.org/past-exam-papers/">UKLO past papers</a></h3>
+      <div class="meta"><span>35</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Linguistics puzzles with answers. Start with an Intermediate paper, then try Advanced.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.uklo.org/past-exam-papers/">UKLO papers</a> &nbsp;<span class="dim">uklo.org/past-exam-papers</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">An</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.queens.ox.ac.uk/news/anthea-bell-prize-2026-27-launches-with-new-resources-library/">Anthea Bell Prize resource library</a></h3>
+      <div class="meta"><span>36</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Translation practice from your teacher, the same style as the Anthea Bell Prize.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.queens.ox.ac.uk/news/anthea-bell-prize-2026-27-launches-with-new-resources-library/">Resource library</a> &nbsp;<span class="dim">queens.ox.ac.uk/news/anthea-bell-prize-2026-27-launches-with-new-resources-library</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ft</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://apprendre.tv5monde.com/fr">French: TV5MONDE Apprendre le français</a></h3>
+      <div class="meta"><span>37</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free listening exercises on real French news clips. Choose B2 or C1.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://apprendre.tv5monde.com/fr">TV5MONDE</a> &nbsp;<span class="dim">apprendre.tv5monde.com/fr</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Gm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.goethe.de/prj/dfd/en/home.cfm">German: Deutsch für dich (Goethe-Institut)</a></h3>
+      <div class="meta"><span>38</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free German grammar and listening exercises. Work at B2.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.goethe.de/prj/dfd/en/home.cfm">Deutsch für dich</a> &nbsp;<span class="dim">goethe.de/prj/dfd/en/home.cfm</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 2 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Uf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/french">UNIQ (University of Oxford): French, German, Spanish, Linguistics</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Y12 at state schools; selection criteria apply</span></div>
+    </div>
+  </div>
+  <p class="what">A free week in Oxford studying your language. Check the selection criteria.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications 15 December 2025 to midday 13 January 2026; French ran 6–10 or 13–17 July 2026. 2027 dates: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/french">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk/french</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Sutton Trust UK Summer Schools</a></h3>
+      <div class="meta"><span>40</span><span>apply</span><span>Y12 at state-funded schools; priority for first-generation, FSM-eligible and other widening-participation pupils</span></div>
+    </div>
+  </div>
+  <p class="what">Free university summer schools for Year 12 at state schools. Check the criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications closed; 2027 applications usually open in the new year: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Details</a> &nbsp;<span class="dim">suttontrust.com/our-programmes/uk-summer-schools</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your your language year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">1</span><div><b>Anthea Bell Prize 2026-27 (launched 18 September)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">By 2 November 2026</div><span class="sym dot">2</span><div><b>UKLO Round 1 Advanced entries</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026</div><span class="sym dot">3</span><div><b>Oxford flash fiction competitions open (2025 opening was 16 December)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Mid-December 2026 – January 2027</div><span class="sym dot">4</span><div><b>UNIQ applications (2026 pattern 15 December – 13 January); Sutton Trust applications usually open in the new year</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">25 January – 19 March 2027</div><span class="sym dot">5</span><div><b>Anthea Bell Prize competition window</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">February 2027</div><span class="sym dot">6</span><div><b>Trinity Languages and Cultures essay questions released</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">7</span><div><b>Oxford German Olympiad (2026 deadlines 12 and 26 March) and flash fiction deadline (2026: 31 March)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">May – July 2027</div><span class="sym dot">8</span><div><b>Stephen Spender Prize open (2026: 1 May – 31 July)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">July 2027</div><span class="sym dot">9</span><div><b>OGN German Classic study pack requests (2026: by 1 July; essays by 9 September)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Term time, 2–3pm</div><span class="sym dot">10</span><div><b>Gresham schools-only live talks</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Language diary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Modern Foreign Languages Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

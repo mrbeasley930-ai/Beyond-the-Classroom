@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Physics beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#D1341B; --watch:#1F4FD8; --listen:#5B3FC4; --read:#A85A00; --do:#0F7A4A; --apply:#0A6E8A;
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#0B1B3A; --hero-ink:#F2F6FF; --hero-muted:#A9B8D8;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Physics · 2026-27</div>
+      <h1>Physics beyond the classroom<span class="sub">41 things to watch, solve, read and enter. Free unless the entry says otherwise.</span></h1>
+      <p>Physics admissions tutors look for two things beyond the grade: problems you have tried that were harder than the exam, and ideas you have followed further than the specification. The Olympiad and Senior Physics Challenge papers cover the first; the lectures, podcasts and reading here cover the second. Each time you do something, write one line in your lab book: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="enter"></span><span data-g="do"></span><span data-g="watch"></span><span data-g="listen"></span><span data-g="read"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole"><span class="sym">Gz</span></a><div><div class="step">Watch · Ghez</div><p>Watch Andrea Ghez's TED talk on the supermassive black hole (16 min) and write down which equation from the gravitational fields topic she is using.</p></div></div><div class="pick" data-g="do"><a href="https://www.bpho.org.uk/Papers/SPC/"><span class="sym">Bt</span></a><div><div class="step">Past papers · BPhO past papers and Upgrade…</div><p>Do one past Senior Physics Challenge paper (Y12) or Physics Challenge paper (Y13) with the mark scheme beside you.</p></div></div><div class="pick" data-g="watch"><a href="https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series"><span class="sym">Uo</span></a><div><div class="step">Lecture list · University of Birmingham…</div><p>Go to a free University of Birmingham physics lecture: Tuesday 6 October or Tuesday 3 November, 7.30pm.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The control panel</h2>
+    <div class="key"><span>One switch per thing. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://www.bpho.org.uk/bpho/round-1.html">
+  <span class="fam">Enter</span>
+  <span class="sym">Bp</span>
+  <span class="nm">British Physics Olympiad…</span>
+  <span class="row"><span>01</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>British Physics Olympiad: Round 0, Round 1 and Round 2 (BPhO)</b><i>Enter · paper</i><span>The national physics olympiad. A multiple-choice first round in October decides who sits the two-hour problem paper in November. Round 0 uses Y12 topics such as circular motion, the photoelectric effect and capacitors.</span><em>BPhO Round 1 ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bpho.org.uk/bpho/as-challenge.html">
+  <span class="fam">Enter</span>
+  <span class="sym">Bs</span>
+  <span class="nm">BPhO Senior Physics Challenge</span>
+  <span class="row"><span>02</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>BPhO Senior Physics Challenge (Y12)</b><i>Enter · paper</i><span>A Y12 physics competition in two parts: a multiple-choice quiz in January and a one-hour problem paper in March. Certificates for all.</span><em>BPhO SPC ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bpho.org.uk/bpho/a2-challenge.html">
+  <span class="fam">Enter</span>
+  <span class="sym">Bh</span>
+  <span class="nm">BPhO Physics Challenge</span>
+  <span class="row"><span>03</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>BPhO Physics Challenge (Y13)</b><i>Enter · paper</i><span>A one-hour paper on Y13 physics, pushed into applications. Merit certificate at 20 out of 50.</span><em>BPhO Physics Challenge ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bpho.org.uk/baao/astro-challenge/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ba</span>
+  <span class="nm">British Astronomy and…</span>
+  <span class="row"><span>04</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>British Astronomy and Astrophysics Olympiad: Astro Challenge and Astro Round 1 (BAAO)</b><i>Enter · paper</i><span>The astronomy olympiad. The Astro Challenge is a one-hour paper mixing astronomy and A level physics; Round 1 is harder and includes an observational astronomy question.</span><em>BAAO Astro Challenge ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-sciences-essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Ks</span>
+  <span class="nm">Kelvin Sciences Essay…</span>
+  <span class="row"><span>05</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Kelvin Sciences Essay Competition (Peterhouse, Cambridge)</b><i>Enter · essay</i><span>An essay of up to 2,000 words on one of six science questions, some of them physics. Winners share a £750 prize pool and go to a prizegiving in Cambridge.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bpho.org.uk/bpho/computational-challenge/">
+  <span class="fam">Enter</span>
+  <span class="sym">Bc</span>
+  <span class="nm">BPhO Computational Challenge</span>
+  <span class="row"><span>06</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>BPhO Computational Challenge</b><i>Enter · entry</i><span>Learn to model physics in Excel or Python through weekly online talks, then submit a project. No coding experience needed.</span><em>Computational Challenge ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://isaacscience.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Is</span>
+  <span class="nm">Isaac Science</span>
+  <span class="row"><span>07</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Isaac Science (formerly Isaac Physics)</b><i>Do · 20m</i><span>Free physics problems marked instantly. Make an account so it records your progress.</span><em>isaacscience.org ↗</em></span></a><a class="tile" data-g="do" href="https://www.bpho.org.uk/Papers/SPC/">
+  <span class="fam">Do</span>
+  <span class="sym">Bt</span>
+  <span class="nm">BPhO past papers and Upgrade…</span>
+  <span class="row"><span>08</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>BPhO past papers and Upgrade Your Physics</b><i>Do · 20m</i><span>Past papers with mark schemes. Y12: start with the Senior Physics Challenge. Y13: start with the Physics Challenge.</span><em>BPhO past papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.physics.ox.ac.uk/study/undergraduates/how-apply/engineering-and-science-admissions-test-esat/pat-past-papers">
+  <span class="fam">Do</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford PAT past papers and…</span>
+  <span class="row"><span>09</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford PAT past papers and useful websites</b><i>Do · 20m</i><span>Old Oxford admissions test papers; good interview practice. Do not look at the solutions too soon.</span><em>PAT past papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13/preparing-oxford-physics">
+  <span class="fam">Do</span>
+  <span class="sym">Pf</span>
+  <span class="nm">Preparing for Oxford Physics…</span>
+  <span class="row"><span>10</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Preparing for Oxford Physics course</b><i>Do · 20m</i><span>A free online course for anyone thinking of applying for physics. Starts in the summer term of Y12.</span><em>Preparing for Oxford Physics ↗</em></span></a><a class="tile" data-g="do" href="https://compos.site.ox.ac.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Ca</span>
+  <span class="nm">COMPOS and its Follow-Along…</span>
+  <span class="row"><span>11</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>COMPOS (Oxford) and its Follow-Along Programme</b><i>Do · 20m</i><span>Weekly online tutorials in physics and maths from Oxford. If you missed registration, use the Follow-Along Programme.</span><em>COMPOS ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/brian_cox_cern_s_supercollider">
+  <span class="fam">Watch</span>
+  <span class="sym">Cx</span>
+  <span class="nm">Cox</span>
+  <span class="row"><span>12</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Brian Cox: CERN's supercollider</b><i>Watch · talk · 15m</i><span>Which particles and interactions from the AQA particles section does Cox mention, and why does a higher collision energy let the LHC make heavier particles?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object">
+  <span class="fam">Watch</span>
+  <span class="sym">Oc</span>
+  <span class="nm">O'Connell</span>
+  <span class="row"><span>13</span><span>8m</span></span>
+  <span class="pop" role="tooltip"><b>Aaron O'Connell: Making sense of a visible quantum object</b><i>Watch · talk · 8m</i><span>How does his result connect to energy levels and photon energy E = hf in the course, and why did the object have to be cooled so close to absolute zero?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">
+  <span class="fam">Watch</span>
+  <span class="sym">Gh</span>
+  <span class="nm">Ghose</span>
+  <span class="row"><span>14</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Shohini Ghose: A beginner's guide to quantum computing</b><i>Watch · talk · 10m</i><span>Where in the AQA course do you meet wave-particle duality, and what experimental evidence (electron diffraction, the photoelectric effect) supports it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means">
+  <span class="fam">Watch</span>
+  <span class="sym">Ad</span>
+  <span class="nm">Adams</span>
+  <span class="row"><span>15</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Allan Adams: What the discovery of gravitational waves means</b><i>Watch · talk · 11m</i><span>LIGO is an interferometer. Use superposition and path difference from the waves section to explain how it detects a change in length far smaller than a proton.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole">
+  <span class="fam">Watch</span>
+  <span class="sym">Gz</span>
+  <span class="nm">Ghez</span>
+  <span class="row"><span>16</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Andrea Ghez: The hunt for a supermassive black hole</b><i>Watch · talk · 16m</i><span>Using Newton's law of gravitation and Kepler's third law from the fields section, show how the orbit of one star gives the mass of the black hole.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future">
+  <span class="fam">Watch</span>
+  <span class="sym">Cw</span>
+  <span class="nm">Cowley</span>
+  <span class="row"><span>17</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Steven Cowley: Fusion is energy's future</b><i>Watch · talk · 10m</i><span>Use the binding energy per nucleon curve to explain why fusing light nuclei releases energy, and use the kinetic theory of gases to explain why the plasma must be so hot. The talk is from 2009: what has changed since?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sean_carroll_distant_time_and_the_hint_of_a_multiverse">
+  <span class="fam">Watch</span>
+  <span class="sym">Cr</span>
+  <span class="nm">Carroll</span>
+  <span class="row"><span>18</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Sean Carroll: Distant time and the hint of a multiverse</b><i>Watch · talk · 16m</i><span>Carroll links the direction of time to entropy. Which part of his argument is established physics, and at what point does he move beyond the evidence?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb">
+  <span class="fam">Watch</span>
+  <span class="sym">Hs</span>
+  <span class="nm">Haas</span>
+  <span class="row"><span>19</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Harald Haas: Wireless data from every light bulb</b><i>Watch · talk · 13m</i><span>This talk is from 2011. Using what you know about the electromagnetic spectrum and absorption, what limits visible-light data transmission, and why is it still not in every bulb?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life">
+  <span class="fam">Watch</span>
+  <span class="sym">Cz</span>
+  <span class="nm">Czerski</span>
+  <span class="row"><span>20</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Helen Czerski: The fascinating physics of everyday life</b><i>Watch · talk · 16m</i><span>Choose one everyday effect she describes and write out the A level physics behind it, naming the section of the AQA specification it comes from.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series">
+  <span class="fam">Watch</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Birmingham…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>University of Birmingham: Institute of Physics public lecture series</b><i>Watch · lecture · 1h</i><span>Free evening physics lectures at the University of Birmingham, one a month. Free parking on campus after 6pm.</span><em>Birmingham IOP lectures ↗</em></span></a><a class="tile" data-g="watch" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13">
+  <span class="fam">Watch</span>
+  <span class="sym">Op</span>
+  <span class="nm">Oxford Physics: Y12 taster…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Physics: Y12 taster mornings and masterclasses</b><i>Watch · lecture · 1h</i><span>Free online Saturday sessions run by Oxford Physics. Do one taster morning in Y12 (November or January) and one masterclass (March or May).</span><em>Oxford Physics Y12–13 ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rigb.org/2026-christmas-lectures">
+  <span class="fam">Watch</span>
+  <span class="sym">Ri</span>
+  <span class="nm">Royal Institution Christmas…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution Christmas Lectures (2026: Jim Al-Khalili on time) and archive</b><i>Watch · lecture · 1h</i><span>This year's series is Jim Al-Khalili on time. Watch it over Christmas; the archive goes back to 1966.</span><em>Ri 2026 lectures ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">
+  <span class="fam">Watch</span>
+  <span class="sym">Ry</span>
+  <span class="nm">Royal Institution YouTube…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution YouTube channel</b><i>Watch · lecture · 1h</i><span>Weekly lectures. Search for a topic you are studying.</span><em>Ri YouTube ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@sixtysymbols">
+  <span class="fam">Watch</span>
+  <span class="sym">Ss</span>
+  <span class="nm">Sixty Symbols</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Sixty Symbols (University of Nottingham)</b><i>Watch · lecture · 1h</i><span>Short films by Nottingham physicists. Find the one for what you are studying this week.</span><em>Sixty Symbols ↗</em></span></a><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 3</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>26</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for Faraday, Maxwell, entropy, the photon, dark matter, the speed of light.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://physicsworld.com/podcasts/">
+  <span class="fam">Listen</span>
+  <span class="sym">Pw</span>
+  <span class="nm">Physics World podcasts</span>
+  <span class="row"><span>27</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Physics World podcasts (Institute of Physics Publishing)</b><i>Listen · 30m</i><span>Free weekly physics news podcast from the IOP's magazine.</span><em>Physics World podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">
+  <span class="fam">Listen</span>
+  <span class="sym">Ti</span>
+  <span class="nm">The Infinite Monkey Cage</span>
+  <span class="row"><span>28</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Infinite Monkey Cage (BBC Radio 4)</b><i>Listen · 30m</i><span>Lighter science radio if you have not listened to anything before.</span><em>Infinite Monkey Cage ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 9</span></div><a class="tile" data-g="read" href="https://physicsworld.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Ph</span>
+  <span class="nm">Physics World</span>
+  <span class="row"><span>29</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Physics World</b><i>Read · 10m</i><span>News and features from the Institute of Physics magazine.</span><em>physicsworld.com ↗</em></span></a><a class="tile" data-g="read" href="https://www.quantamagazine.org/physics/">
+  <span class="fam">Read</span>
+  <span class="sym">Qm</span>
+  <span class="nm">Quanta Magazine: Physics</span>
+  <span class="row"><span>30</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Quanta Magazine: Physics</b><i>Read · 10m</i><span>Free articles on current research in particle physics, cosmology and quantum physics.</span><em>Quanta Physics ↗</em></span></a><a class="tile" data-g="read" href="https://www.myheplus.com/subject/physics">
+  <span class="fam">Read</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Physics</span>
+  <span class="row"><span>31</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Physics</b><i>Read · 10m</i><span>Cambridge material on special relativity, superconductivity and nanotechnology.</span><em>HE+ Physics ↗</em></span></a><a class="tile" data-g="read" href="https://www.iop.org/education/school-and-college-students">
+  <span class="fam">Read</span>
+  <span class="sym">Ir</span>
+  <span class="nm">IOP: resources for school…</span>
+  <span class="row"><span>32</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>IOP: resources for school and college students</b><i>Read · 10m</i><span>The Institute of Physics student pages, including a careers guide.</span><em>IOP students ↗</em></span></a><a class="tile" data-g="read" href="https://www.newscientist.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Ns</span>
+  <span class="nm">New Scientist</span>
+  <span class="row"><span>33</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>New Scientist</b><i>Read · 10m</i><span>Ask the library whether the school has a subscription.</span><em>newscientist.com ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Pp</span>
+  <span class="nm">Professor Povey's Perplexing…</span>
+  <span class="row"><span>34</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Professor Povey's Perplexing Problems, by Thomas Povey</b><i>Read · book · book</i><span>Interview-style physics puzzles with full solutions.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Wd</span>
+  <span class="nm">Why Does E=mc²?</span>
+  <span class="row"><span>35</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Why Does E=mc²?, by Brian Cox and Jeff Forshaw</b><i>Read · book · book</i><span>Special relativity explained step by step.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">To</span>
+  <span class="nm">The Order of Time</span>
+  <span class="row"><span>36</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Order of Time, by Carlo Rovelli</b><i>Read · book · book</i><span>A short book on what physics says about time. Read it alongside this year's Christmas Lectures.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Si</span>
+  <span class="nm">Storm in a Teacup</span>
+  <span class="row"><span>37</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Storm in a Teacup, by Helen Czerski</b><i>Read · book · book</i><span>Everyday physics; a good first book.</span></span></span><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 4</span></div><a class="tile" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements (STEM Learning)</b><i>Apply · Y12, STEM · apply</i><span>A summer placement working on a real research project.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/students/">
+  <span class="fam">Apply</span>
+  <span class="sym">In</span>
+  <span class="nm">In2Science UK</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2Science UK (In2STEM)</b><i>Apply · Y12, STEM · apply</i><span>Summer placements with researchers and a bursary for travel and lunch. Check the eligibility criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/">
+  <span class="fam">Apply</span>
+  <span class="sym">Un</span>
+  <span class="nm">UNIQ</span>
+  <span class="row"><span>40</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford)</b><i>Apply · apply</i><span>A free Oxford residential for state-school Y12s. Check the criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now">
+  <span class="fam">Apply</span>
+  <span class="sym">Lu</span>
+  <span class="nm">Levelling Up: Physics</span>
+  <span class="row"><span>41</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Levelling Up: Physics (IOP, hub at University of Birmingham)</b><i>Apply · apply</i><span>Free tutoring and mentoring from university physics students.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/round-1.html">British Physics Olympiad: Round 0, Round 1 and Round 2 (BPhO)</a></h3>
+      <div class="meta"><span>01</span><span>paper</span><span>Y13 and below; Y12 may enter Round 0 as a trial run</span><span>via school</span><span>Round 0: £14 per school. Round 1: £18 per pupil, four free papers for non-fee-paying UK schools. Round 2 free.</span></div>
+    </div>
+  </div>
+  <p class="what">The national physics olympiad. A multiple-choice first round in October decides who sits the two-hour problem paper in November. Round 0 uses Y12 topics such as circular motion, the photoelectric effect and capacitors.</p>
+  <p class="when"><b>When:</b> Round 0 (1 hour, multiple choice, non-calculator): Thursday 1 October 2026. Round 1 (2 hours): Thursday 12 November 2026, by invitation from Round 0 results. Round 2 (3 hours, team selection): Thursday 21 January 2027, by invitation.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/round-1.html">BPhO Round 1</a> &nbsp;<span class="dim">bpho.org.uk/bpho/round-1.html</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/as-challenge.html">BPhO Senior Physics Challenge (Y12)</a></h3>
+      <div class="meta"><span>02</span><span>paper</span><span>Y12</span><span>via school</span><span>Online quiz: £20 per school entry. Paper: free.</span></div>
+    </div>
+  </div>
+  <p class="what">A Y12 physics competition in two parts: a multiple-choice quiz in January and a one-hour problem paper in March. Certificates for all.</p>
+  <p class="when"><b>When:</b> Online quiz (2 x 30 min) any time Monday 18 to Friday 22 January 2027. Paper competition (1 hour) Friday 5 March 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/as-challenge.html">BPhO SPC</a> &nbsp;<span class="dim">bpho.org.uk/bpho/as-challenge.html</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/a2-challenge.html">BPhO Physics Challenge (Y13)</a></h3>
+      <div class="meta"><span>03</span><span>paper</span><span>Y13</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">A one-hour paper on Y13 physics, pushed into applications. Merit certificate at 20 out of 50.</p>
+  <p class="when"><b>When:</b> Sat in school at any time from September to the entry deadline, Saturday 12 December 2026.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/a2-challenge.html">BPhO Physics Challenge</a> &nbsp;<span class="dim">bpho.org.uk/bpho/a2-challenge.html</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ba</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bpho.org.uk/baao/astro-challenge/">British Astronomy and Astrophysics Olympiad: Astro Challenge and Astro Round 1 (BAAO)</a></h3>
+      <div class="meta"><span>04</span><span>paper</span><span>Y13 and below; suits pupils taking the AQA Astrophysics option</span><span>via school</span><span>Astro Challenge free. Astro Round 1: £15 per pupil, four free papers for non-fee-paying schools.</span></div>
+    </div>
+  </div>
+  <p class="what">The astronomy olympiad. The Astro Challenge is a one-hour paper mixing astronomy and A level physics; Round 1 is harder and includes an observational astronomy question.</p>
+  <p class="when"><b>When:</b> Astro Challenge (1 hour) any time up to Saturday 12 December 2026. Astro Round 1 (2 hours) Monday 23 to Friday 27 November 2026. Round 2 (by invitation) Tuesday 26 January 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bpho.org.uk/baao/astro-challenge/">BAAO Astro Challenge</a> &nbsp;<span class="dim">bpho.org.uk/baao/astro-challenge</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ks</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-sciences-essay-competition">Kelvin Sciences Essay Competition (Peterhouse, Cambridge)</a></h3>
+      <div class="meta"><span>05</span><span>essay</span><span>Y12 (penultimate year), UK and Ireland</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An essay of up to 2,000 words on one of six science questions, some of them physics. Winners share a £750 prize pool and go to a prizegiving in Cambridge.</p>
+  <p class="when"><b>When:</b> 2026 questions included quantum computing and biosignatures on exoplanets; 2026 deadline was 20 April, teacher verification by 4 May. Confirm 2027 dates on the Peterhouse site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-sciences-essay-competition">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/peterhouse-kelvin-sciences-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/computational-challenge/">BPhO Computational Challenge</a></h3>
+      <div class="meta"><span>06</span><span>entry</span><span>Y11, Y12 and Y13</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Learn to model physics in Excel or Python through weekly online talks, then submit a project. No coding experience needed.</p>
+  <p class="when"><b>When:</b> Project runs April to August 2027. In 2026 a ten-week online course (Thursday evenings, from 8 January) came first; confirm the 2027 course dates.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bpho.org.uk/bpho/computational-challenge/">Computational Challenge</a> &nbsp;<span class="dim">bpho.org.uk/bpho/computational-challenge</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://isaacscience.org/">Isaac Science (formerly Isaac Physics)</a></h3>
+      <div class="meta"><span>07</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free physics problems marked instantly. Make an account so it records your progress.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://isaacscience.org/">isaacscience.org</a> &nbsp;<span class="dim">isaacscience.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Bt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.bpho.org.uk/Papers/SPC/">BPhO past papers and Upgrade Your Physics</a></h3>
+      <div class="meta"><span>08</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past papers with mark schemes. Y12: start with the Senior Physics Challenge. Y13: start with the Physics Challenge.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.bpho.org.uk/Papers/SPC/">BPhO past papers</a> &nbsp;<span class="dim">bpho.org.uk/Papers/SPC</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.physics.ox.ac.uk/study/undergraduates/how-apply/engineering-and-science-admissions-test-esat/pat-past-papers">Oxford PAT past papers and useful websites</a></h3>
+      <div class="meta"><span>09</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Old Oxford admissions test papers; good interview practice. Do not look at the solutions too soon.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.physics.ox.ac.uk/study/undergraduates/how-apply/engineering-and-science-admissions-test-esat/pat-past-papers">PAT past papers</a> &nbsp;<span class="dim">physics.ox.ac.uk/study/undergraduates/how-apply/engineering-and-science-admissions-test-esat/pat-past-papers</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Pf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13/preparing-oxford-physics">Preparing for Oxford Physics course</a></h3>
+      <div class="meta"><span>10</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A free online course for anyone thinking of applying for physics. Starts in the summer term of Y12.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13/preparing-oxford-physics">Preparing for Oxford Physics</a> &nbsp;<span class="dim">physics.ox.ac.uk/engage/young-people/years-12-and-13/preparing-oxford-physics</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ca</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://compos.site.ox.ac.uk/">COMPOS (Oxford) and its Follow-Along Programme</a></h3>
+      <div class="meta"><span>11</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly online tutorials in physics and maths from Oxford. If you missed registration, use the Follow-Along Programme.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://compos.site.ox.ac.uk/">COMPOS</a> &nbsp;<span class="dim">compos.site.ox.ac.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cx</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/brian_cox_cern_s_supercollider">Brian Cox: CERN's supercollider</a></h3>
+      <div class="meta"><span>12</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which particles and interactions from the AQA particles section does Cox mention, and why does a higher collision energy let the LHC make heavier particles?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/brian_cox_cern_s_supercollider">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/brian_cox_cern_s_supercollider</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object">Aaron O'Connell: Making sense of a visible quantum object</a></h3>
+      <div class="meta"><span>13</span><span>8m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 8 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> How does his result connect to energy levels and photon energy E = hf in the course, and why did the object have to be cooled so close to absolute zero?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">Shohini Ghose: A beginner's guide to quantum computing</a></h3>
+      <div class="meta"><span>14</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Where in the AQA course do you meet wave-particle duality, and what experimental evidence (electron diffraction, the photoelectric effect) supports it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ad</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means">Allan Adams: What the discovery of gravitational waves means</a></h3>
+      <div class="meta"><span>15</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> LIGO is an interferometer. Use superposition and path difference from the waves section to explain how it detects a change in length far smaller than a proton.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole">Andrea Ghez: The hunt for a supermassive black hole</a></h3>
+      <div class="meta"><span>16</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Using Newton's law of gravitation and Kepler's third law from the fields section, show how the orbit of one star gives the mass of the black hole.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future">Steven Cowley: Fusion is energy's future</a></h3>
+      <div class="meta"><span>17</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Use the binding energy per nucleon curve to explain why fusing light nuclei releases energy, and use the kinetic theory of gases to explain why the plasma must be so hot. The talk is from 2009: what has changed since?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/steven_cowley_fusion_is_energy_s_future</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sean_carroll_distant_time_and_the_hint_of_a_multiverse">Sean Carroll: Distant time and the hint of a multiverse</a></h3>
+      <div class="meta"><span>18</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Carroll links the direction of time to entropy. Which part of his argument is established physics, and at what point does he move beyond the evidence?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sean_carroll_distant_time_and_the_hint_of_a_multiverse">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sean_carroll_distant_time_and_the_hint_of_a_multiverse</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb">Harald Haas: Wireless data from every light bulb</a></h3>
+      <div class="meta"><span>19</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> This talk is from 2011. Using what you know about the electromagnetic spectrum and absorption, what limits visible-light data transmission, and why is it still not in every bulb?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/harald_haas_wireless_data_from_every_light_bulb</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life">Helen Czerski: The fascinating physics of everyday life</a></h3>
+      <div class="meta"><span>20</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one everyday effect she describes and write out the A level physics behind it, naming the section of the AQA specification it comes from.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series">University of Birmingham: Institute of Physics public lecture series</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free evening physics lectures at the University of Birmingham, one a month. Free parking on campus after 6pm.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series">Birmingham IOP lectures</a> &nbsp;<span class="dim">birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Op</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13">Oxford Physics: Y12 taster mornings and masterclasses</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free online Saturday sessions run by Oxford Physics. Do one taster morning in Y12 (November or January) and one masterclass (March or May).</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13">Oxford Physics Y12–13</a> &nbsp;<span class="dim">physics.ox.ac.uk/engage/young-people/years-12-and-13</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ri</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rigb.org/2026-christmas-lectures">Royal Institution Christmas Lectures (2026: Jim Al-Khalili on time) and archive</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">This year's series is Jim Al-Khalili on time. Watch it over Christmas; the archive goes back to 1966.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rigb.org/2026-christmas-lectures">Ri 2026 lectures</a> &nbsp;<span class="dim">rigb.org/2026-christmas-lectures</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ry</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Royal Institution YouTube channel</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly lectures. Search for a topic you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Ri YouTube</a> &nbsp;<span class="dim">youtube.com/user/TheRoyalInstitution</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ss</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@sixtysymbols">Sixty Symbols (University of Nottingham)</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short films by Nottingham physicists. Find the one for what you are studying this week.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@sixtysymbols">Sixty Symbols</a> &nbsp;<span class="dim">youtube.com/@sixtysymbols</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 3 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>26</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for Faraday, Maxwell, entropy, the photon, dark matter, the speed of light.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Pw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://physicsworld.com/podcasts/">Physics World podcasts (Institute of Physics Publishing)</a></h3>
+      <div class="meta"><span>27</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Free weekly physics news podcast from the IOP's magazine.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://physicsworld.com/podcasts/">Physics World podcasts</a> &nbsp;<span class="dim">physicsworld.com/podcasts</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ti</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">The Infinite Monkey Cage (BBC Radio 4)</a></h3>
+      <div class="meta"><span>28</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Lighter science radio if you have not listened to anything before.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">Infinite Monkey Cage</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b00snr0w</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 9 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ph</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://physicsworld.com/">Physics World</a></h3>
+      <div class="meta"><span>29</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">News and features from the Institute of Physics magazine.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://physicsworld.com/">physicsworld.com</a> &nbsp;<span class="dim">physicsworld.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Qm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.quantamagazine.org/physics/">Quanta Magazine: Physics</a></h3>
+      <div class="meta"><span>30</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free articles on current research in particle physics, cosmology and quantum physics.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.quantamagazine.org/physics/">Quanta Physics</a> &nbsp;<span class="dim">quantamagazine.org/physics</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.myheplus.com/subject/physics">Cambridge HE+ Physics</a></h3>
+      <div class="meta"><span>31</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge material on special relativity, superconductivity and nanotechnology.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.myheplus.com/subject/physics">HE+ Physics</a> &nbsp;<span class="dim">myheplus.com/subject/physics</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ir</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.iop.org/education/school-and-college-students">IOP: resources for school and college students</a></h3>
+      <div class="meta"><span>32</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">The Institute of Physics student pages, including a careers guide.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.iop.org/education/school-and-college-students">IOP students</a> &nbsp;<span class="dim">iop.org/education/school-and-college-students</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ns</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.newscientist.com/">New Scientist</a></h3>
+      <div class="meta"><span>33</span><span>10m</span><span>paid; check library</span></div>
+    </div>
+  </div>
+  <p class="what">Ask the library whether the school has a subscription.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.newscientist.com/">newscientist.com</a> &nbsp;<span class="dim">newscientist.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pp</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Professor Povey's Perplexing Problems, by Thomas Povey</span></h3>
+      <div class="meta"><span>34</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Interview-style physics puzzles with full solutions.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Wd</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Why Does E=mc²?, by Brian Cox and Jeff Forshaw</span></h3>
+      <div class="meta"><span>35</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Special relativity explained step by step.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">To</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Order of Time, by Carlo Rovelli</span></h3>
+      <div class="meta"><span>36</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A short book on what physics says about time. Read it alongside this year's Christmas Lectures.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Si</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Storm in a Teacup, by Helen Czerski</span></h3>
+      <div class="meta"><span>37</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Everyday physics; a good first book.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 4 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">Nuffield Research Placements (STEM Learning)</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A summer placement working on a real research project.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm on the STEM Learning site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.stem.org.uk/nuffield-research-placements">Details</a> &nbsp;<span class="dim">stem.org.uk/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">In</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/students/">In2Science UK (In2STEM)</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">Summer placements with researchers and a bursary for travel and lunch. Check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications opened in December and closed in April; programme ran 20 July to 21 August. Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/students/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/students</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">UNIQ (University of Oxford)</a></h3>
+      <div class="meta"><span>40</span><span>apply</span><span>Y12, UK state schools</span></div>
+    </div>
+  </div>
+  <p class="what">A free Oxford residential for state-school Y12s. Check the criteria.</p>
+  <p class="when"><b>When:</b> Applications for UNIQ 2027 not yet open when this was compiled; confirm on the UNIQ site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Lu</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now">Levelling Up: Physics (IOP, hub at University of Birmingham)</a></h3>
+      <div class="meta"><span>41</span><span>apply</span><span>Y12–13 from backgrounds under-represented in physics</span></div>
+    </div>
+  </div>
+  <p class="what">Free tutoring and mentoring from university physics students.</p>
+  <p class="when"><b>When:</b> Long form runs from April of Y12 to December of Y13; short form in the summer term of Y12. Delivered through participating university departments; confirm whether a local department is running it.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now">Details</a> &nbsp;<span class="dim">iop.org/education/school-and-college-students/levelling-up-physics-apply-now</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your physics year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">Thursday 1 October 2026</div><span class="sym dot">1</span><div><b>BPhO Round 0 (multiple choice)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Tuesday 6 October 2026, 7.30pm</div><span class="sym dot">2</span><div><b>Birmingham IOP lecture: dark matter experiments</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">12–16 October 2026</div><span class="sym dot">3</span><div><b>ESAT (Oxford and Cambridge physics and natural sciences admissions test)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Thursday 12 November 2026</div><span class="sym dot">4</span><div><b>BPhO Round 1 (invited pupils only)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Saturday 14 November 2026</div><span class="sym dot">5</span><div><b>Oxford Physics Y12 taster morning (online)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">23 November to 12 December 2026</div><span class="sym dot">6</span><div><b>BAAO Astro Round 1 (23–27 Nov); Physics Challenge and Astro Challenge (deadline 12 Dec)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late December 2026</div><span class="sym dot">7</span><div><b>Ri Christmas Lectures: Jim Al-Khalili on time</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">18–22 January 2027</div><span class="sym dot">8</span><div><b>BPhO Senior Physics Challenge online quiz (Y12); BPhO Round 2 on 21 Jan (by invitation)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">9</span><div><b>Senior Physics Challenge paper (Fri 5 Mar); Oxford Y12 masterclass (Sat 13 Mar, repeat 22 May); Oxford Particle Physics Masterclass</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">10</span><div><b>Kelvin Sciences Essay questions; Nuffield and In2Science application windows</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Lab book</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Physics Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

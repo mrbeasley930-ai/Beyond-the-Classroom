@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Psychology beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#BE123C; --watch:#2563EB; --listen:#7C3AED; --read:#B45309; --do:#15803D; --apply:#0D9488;
+  --f-display:"DM Serif Display",system-ui,sans-serif;
+  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#2E1F4A; --hero-ink:#FAF5FF; --hero-muted:#C4B5E0;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:19pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Psychology · 2026-27</div>
+      <h1>Psychology beyond the classroom<span class="sub">36 things to listen to, read, watch and enter. All free.</span></h1>
+      <p>Psychology is a science degree, and admissions tutors want to see that you know it: research methods, statistics and the studies behind the headlines. The podcasts and reading here are chosen for that. Use the essay prizes to practise arguing from evidence. Each time you do something, write one line in your research diary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="listen"></span><span data-g="read"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/elizabeth_loftus_how_reliable_is_your_memory"><span class="sym">Lf</span></a><div><div class="step">Watch · Loftus</div><p>Watch Elizabeth Loftus's TED talk on memory (17 min) and write down which study from the Memory topic it supports and one limitation of that study.</p></div></div><div class="pick" data-g="read"><a href="https://www.bps.org.uk/research-digest"><span class="sym">Br</span></a><div><div class="step">Research Digest · BPS Research Digest</div><p>Read one BPS Research Digest article linked to the topic you are studying and write three sentences: what they did, what they found, one problem with the method.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/programmes/b006qxx9"><span class="sym">Ai</span></a><div><div class="step">Listen · All in the Mind</div><p>Listen to one episode of All in the Mind on the way to school.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The case file</h2>
+    <div class="key"><span>One entry per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 5</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qxx9">
+  <span class="fam">Listen</span>
+  <span class="sym">Ai</span>
+  <span class="nm">All in the Mind</span>
+  <span class="row"><span>01</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>All in the Mind (BBC Radio 4)</b><i>Listen · 30m</i><span>BBC Radio 4 psychology programme. Pick episodes on topics you are studying.</span><em>All in the Mind ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science and…</span>
+  <span class="row"><span>02</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science and Philosophy archives</b><i>Listen · 30m</i><span>Search the archive for Memory, Dreams, Intelligence, Evolutionary Psychology and Psychoanalysis.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bps.org.uk/collections/psychcrunch">
+  <span class="fam">Listen</span>
+  <span class="sym">Ps</span>
+  <span class="nm">PsychCrunch</span>
+  <span class="row"><span>03</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>PsychCrunch (BPS Research Digest podcast)</b><i>Listen · 30m</i><span>The British Psychological Society's own podcast. Free.</span><em>PsychCrunch ↗</em></span></a><a class="tile" data-g="listen" href="https://hiddenbrain.org/">
+  <span class="fam">Listen</span>
+  <span class="sym">Hb</span>
+  <span class="nm">Hidden Brain</span>
+  <span class="row"><span>04</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Hidden Brain</b><i>Listen · 30m</i><span>Long interviews with psychologists about why people behave as they do. The free episodes are all you need.</span><em>Hidden Brain ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qy05">
+  <span class="fam">Listen</span>
+  <span class="sym">Ta</span>
+  <span class="nm">Thinking Allowed</span>
+  <span class="row"><span>05</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Thinking Allowed (BBC Radio 4)</b><i>Listen · 30m</i><span>BBC programme on new social science research.</span><em>Thinking Allowed ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 9</span></div><a class="tile" data-g="read" href="https://www.bps.org.uk/research-digest">
+  <span class="fam">Read</span>
+  <span class="sym">Br</span>
+  <span class="nm">BPS Research Digest</span>
+  <span class="row"><span>06</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>BPS Research Digest</b><i>Read · 10m</i><span>Short summaries of new psychology studies. Read one a week linked to your current topic.</span><em>Research Digest ↗</em></span></a><a class="tile" data-g="read" href="https://www.bps.org.uk/psychologist">
+  <span class="fam">Read</span>
+  <span class="sym">Tp</span>
+  <span class="nm">The Psychologist</span>
+  <span class="row"><span>07</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>The Psychologist (British Psychological Society)</b><i>Read · 10m</i><span>The British Psychological Society's magazine, readable online.</span><em>The Psychologist ↗</em></span></a><a class="tile" data-g="read" href="https://psyche.co/">
+  <span class="fam">Read</span>
+  <span class="sym">Py</span>
+  <span class="nm">Psyche</span>
+  <span class="row"><span>08</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Psyche (Aeon)</b><i>Read · 10m</i><span>Long essays about the mind. Free.</span><em>psyche.co ↗</em></span></a><a class="tile" data-g="read" href="https://www.psychol.cam.ac.uk/study/psychology_a-z">
+  <span class="fam">Read</span>
+  <span class="sym">Cd</span>
+  <span class="nm">Cambridge Department of…</span>
+  <span class="row"><span>09</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Department of Psychology: Psychology A-Z</b><i>Read · 10m</i><span>A quick guide to the big topics in university psychology.</span><em>Psychology A-Z ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Pa</span>
+  <span class="nm">Psychology: A Very Short…</span>
+  <span class="row"><span>10</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Psychology: A Very Short Introduction, by Gillian Butler and Freda McManus</b><i>Read · book · book</i><span>A short overview of the whole subject.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tf</span>
+  <span class="nm">Thinking, Fast and Slow</span>
+  <span class="row"><span>11</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Thinking, Fast and Slow, by Daniel Kahneman</b><i>Read · book · book</i><span>How we make decisions and where we go wrong. Some studies in it have since failed to replicate; find out which.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tm</span>
+  <span class="nm">The Man Who Mistook His Wife…</span>
+  <span class="row"><span>12</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Man Who Mistook His Wife for a Hat, by Oliver Sacks</b><i>Read · book · book</i><span>Case studies of patients with brain damage. Read alongside Biopsychology.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ts</span>
+  <span class="nm">The Seven Sins of Memory</span>
+  <span class="row"><span>13</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Seven Sins of Memory, by Daniel Schacter</b><i>Read · book · book</i><span>How and why memory goes wrong.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Hm</span>
+  <span class="nm">Humankind</span>
+  <span class="row"><span>14</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Humankind, by Rutger Bregman</b><i>Read · book · book</i><span>Challenges some famous studies on your course. Decide whether his criticisms stand up.</span></span></span><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/elizabeth_loftus_how_reliable_is_your_memory">
+  <span class="fam">Watch</span>
+  <span class="sym">Lf</span>
+  <span class="nm">Loftus</span>
+  <span class="row"><span>15</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Elizabeth Loftus: How reliable is your memory?</b><i>Watch · talk · 17m</i><span>Which parts of the Memory topic (misleading information, leading questions, post-event discussion) does her evidence support, and how far do laboratory findings tell us about real eyewitnesses?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/gabriel_radvansky_ever_walk_into_a_room_and_forget_what_you_were_doing">
+  <span class="fam">Watch</span>
+  <span class="sym">Rd</span>
+  <span class="nm">Radvansky</span>
+  <span class="row"><span>16</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Gabriel Radvansky: Ever walk into a room and forget what you were doing?</b><i>Watch · TED-Ed · 5m</i><span>Is the doorway effect a case of retrieval failure due to absence of cues? Design a lab experiment to test it and name the IV, DV and one extraneous variable.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/nancy_kanwisher_a_neural_portrait_of_the_human_mind">
+  <span class="fam">Watch</span>
+  <span class="sym">Kn</span>
+  <span class="nm">Kanwisher</span>
+  <span class="row"><span>17</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Nancy Kanwisher: A neural portrait of the human mind</b><i>Watch · talk · 18m</i><span>Which of her findings support localisation of function, and what does evidence on plasticity and functional recovery say against a strict version of it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sarah_jayne_blakemore_the_mysterious_workings_of_the_adolescent_brain">
+  <span class="fam">Watch</span>
+  <span class="sym">Bl</span>
+  <span class="nm">Blakemore</span>
+  <span class="row"><span>18</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Sarah-Jayne Blakemore: The mysterious workings of the adolescent brain</b><i>Watch · talk · 14m</i><span>What does fMRI show her about the adolescent brain, and what are the strengths and limitations of fMRI as a way of studying the brain?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/molly_crockett_beware_neuro_bunk">
+  <span class="fam">Watch</span>
+  <span class="sym">Cr</span>
+  <span class="nm">Crockett</span>
+  <span class="row"><span>19</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Molly Crockett: Beware neuro-bunk</b><i>Watch · talk · 11m</i><span>Take one claim she criticises and explain what is wrong with it using the reductionism debate from Issues and debates.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/lisa_monteggia_why_depression_isn_t_what_you_think">
+  <span class="fam">Watch</span>
+  <span class="sym">Mn</span>
+  <span class="nm">Monteggia</span>
+  <span class="row"><span>20</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Lisa Monteggia: Why depression isn't what you think</b><i>Watch · talk · 13m</i><span>Compare her biological account of depression with Beck's and Ellis's cognitive explanations on the course. What evidence would decide between them?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/eleanor_longden_the_voices_in_my_head">
+  <span class="fam">Watch</span>
+  <span class="sym">Ln</span>
+  <span class="nm">Longden</span>
+  <span class="row"><span>21</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Eleanor Longden: The voices in my head</b><i>Watch · talk · 14m</i><span>How does her account fit the diathesis-stress model, and what does it suggest about the reliability and validity of diagnosing schizophrenia?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/kelly_mcgonigal_how_to_make_stress_your_friend">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">McGonigal</span>
+  <span class="row"><span>22</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Kelly McGonigal: How to make stress your friend</b><i>Watch · talk · 14m</i><span>Much of the talk rests on one survey study. Why can it not show cause and effect, and what study would you need to run to test her claim about stress and health?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">
+  <span class="fam">Watch</span>
+  <span class="sym">Wl</span>
+  <span class="nm">Walker</span>
+  <span class="row"><span>23</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Matt Walker: Sleep is your superpower</b><i>Watch · talk · 19m</i><span>Which of his claims are about circadian rhythms and endogenous pacemakers? Pick one claim and check it against a published source: does the evidence go as far as he says?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/psychology-mental-health-and-neurodiversity-schools">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Psychology…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Psychology, Mental Health and Neurodiversity for Schools</b><i>Watch · lecture · 1h</i><span>Free university lectures chosen for schools, on autism, ADHD, dyslexia, sleep and nature–nurture.</span><em>Gresham playlist ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/psychology">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Psychology</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Psychology</b><i>Watch · lecture · 1h</i><span>Short Cambridge modules on empathy, babies, visual illusions, persuasion and mental health.</span><em>HE+ Psychology ↗</em></span></a><a class="tile" data-g="watch" href="https://oyc.yale.edu/introduction-psychology/psyc-110">
+  <span class="fam">Watch</span>
+  <span class="sym">Oy</span>
+  <span class="nm">Open Yale Courses…</span>
+  <span class="row"><span>26</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Open Yale Courses: Introduction to Psychology (PSYC 110, Paul Bloom)</b><i>Watch · lecture · 1h</i><span>A whole first-year Yale course on video. Watch the lecture that matches what you are studying.</span><em>Open Yale ↗</em></span></a><a class="tile" data-g="watch" href="https://podcasts.ox.ac.uk/units/department-experimental-psychology">
+  <span class="fam">Watch</span>
+  <span class="sym">Uo</span>
+  <span class="nm">University of Oxford…</span>
+  <span class="row"><span>27</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>University of Oxford Podcasts: Department of Experimental Psychology</b><i>Watch · lecture · 1h</i><span>Oxford psychology recordings. Start with The New Psychology of Depression.</span><em>Oxford Podcasts ↗</em></span></a><a class="tile" data-g="watch" href="https://www.bps.org.uk/getting-started">
+  <span class="fam">Watch</span>
+  <span class="sym">Bc</span>
+  <span class="nm">BPS Careers series and Start…</span>
+  <span class="row"><span>28</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>BPS Careers series and Start your journey into psychology</b><i>Watch · lecture · 1h</i><span>What psychologists actually do, from the British Psychological Society.</span><em>BPS ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 2</span></div><a class="tile" data-g="enter" href="https://www.royalholloway.ac.uk/studying-here/schools-and-colleges/activities-by-subject/psychology/psychology-resources/national-psychology-competition/">
+  <span class="fam">Enter</span>
+  <span class="sym">Np</span>
+  <span class="nm">National Psychology Poster…</span>
+  <span class="row"><span>29</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>National Psychology Poster Competition (Royal Holloway, University of London)</b><i>Enter · entry</i><span>A team competition for Y12. You make a short video and an academic poster answering a set question (2026: &quot;How can psychology help us build a healthier and stronger community?&quot;) and present it to judges at Royal Holloway. Edgbaston High School won Best Video in 2026.</span><em>Royal Holloway ↗</em></span></a><a class="tile" data-g="enter" href="https://www.ukbrainbee.com/competition-ukbrainbee">
+  <span class="fam">Enter</span>
+  <span class="sym">Ub</span>
+  <span class="nm">UK Brain Bee</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UK Brain Bee (part of the International Brain Bee)</b><i>Enter · paper</i><span>A neuroscience quiz competition. Online first round in March; top scorers go to a final at Imperial College London. The study guide is free on the site and overlaps with Biopsychology.</span><em>UK Brain Bee ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 3</span></div><a class="tile" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">
+  <span class="fam">Do</span>
+  <span class="sym">Ap</span>
+  <span class="nm">AQA past papers and mark…</span>
+  <span class="row"><span>31</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>AQA past papers and mark schemes (7182)</b><i>Do · 20m</i><span>Past papers and mark schemes. Read the examiner report after you mark yourself.</span><em>AQA past papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.open.edu/openlearn/health-sports-psychology/psychology/starting-psychology/">
+  <span class="fam">Do</span>
+  <span class="sym">Os</span>
+  <span class="nm">OpenLearn: Starting with…</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>OpenLearn: Starting with psychology</b><i>Do · 20m</i><span>A free five-hour Open University course with a certificate of participation.</span><em>OpenLearn ↗</em></span></a><a class="tile" data-g="do" href="https://implicit.harvard.edu/implicit/takeatest.html">
+  <span class="fam">Do</span>
+  <span class="sym">Pi</span>
+  <span class="nm">Project Implicit</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Project Implicit (Harvard)</b><i>Do · 20m</i><span>Try an Implicit Association Test and then find out what critics say about its validity. Under-18s use the Youth version linked from the page.</span><em>Project Implicit ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 3</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/experimental-psychology">
+  <span class="fam">Apply</span>
+  <span class="sym">Ue</span>
+  <span class="nm">UNIQ : Experimental Psychology</span>
+  <span class="row"><span>34</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford): Experimental Psychology</b><i>Apply · apply</i><span>A free week in Oxford studying psychology, with support afterwards if you apply. Check the selection criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://summerschools.suttontrust.com/course/durham-university/psychology-3/">
+  <span class="fam">Apply</span>
+  <span class="sym">St</span>
+  <span class="nm">Sutton Trust UK Summer Schools</span>
+  <span class="row"><span>35</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust UK Summer Schools (psychology courses, e.g. Durham)</b><i>Apply · apply</i><span>A free week at a university studying psychology. Read the eligibility criteria first.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.stem.org.uk/placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements (STEM Learning)</b><i>Apply · apply</i><span>A summer placement on a real research project. Look for psychology projects near Birmingham.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 5 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ai</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qxx9">All in the Mind (BBC Radio 4)</a></h3>
+      <div class="meta"><span>01</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">BBC Radio 4 psychology programme. Pick episodes on topics you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qxx9">All in the Mind</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qxx9</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science and Philosophy archives</a></h3>
+      <div class="meta"><span>02</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for Memory, Dreams, Intelligence, Evolutionary Psychology and Psychoanalysis.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ps</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bps.org.uk/collections/psychcrunch">PsychCrunch (BPS Research Digest podcast)</a></h3>
+      <div class="meta"><span>03</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The British Psychological Society's own podcast. Free.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bps.org.uk/collections/psychcrunch">PsychCrunch</a> &nbsp;<span class="dim">bps.org.uk/collections/psychcrunch</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Hb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://hiddenbrain.org/">Hidden Brain</a></h3>
+      <div class="meta"><span>04</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Long interviews with psychologists about why people behave as they do. The free episodes are all you need.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://hiddenbrain.org/">Hidden Brain</a> &nbsp;<span class="dim">hiddenbrain.org</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ta</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qy05">Thinking Allowed (BBC Radio 4)</a></h3>
+      <div class="meta"><span>05</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">BBC programme on new social science research.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qy05">Thinking Allowed</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qy05</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 9 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bps.org.uk/research-digest">BPS Research Digest</a></h3>
+      <div class="meta"><span>06</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short summaries of new psychology studies. Read one a week linked to your current topic.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bps.org.uk/research-digest">Research Digest</a> &nbsp;<span class="dim">bps.org.uk/research-digest</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bps.org.uk/psychologist">The Psychologist (British Psychological Society)</a></h3>
+      <div class="meta"><span>07</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">The British Psychological Society's magazine, readable online.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bps.org.uk/psychologist">The Psychologist</a> &nbsp;<span class="dim">bps.org.uk/psychologist</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Py</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://psyche.co/">Psyche (Aeon)</a></h3>
+      <div class="meta"><span>08</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Long essays about the mind. Free.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://psyche.co/">psyche.co</a> &nbsp;<span class="dim">psyche.co</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.psychol.cam.ac.uk/study/psychology_a-z">Cambridge Department of Psychology: Psychology A-Z</a></h3>
+      <div class="meta"><span>09</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">A quick guide to the big topics in university psychology.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.psychol.cam.ac.uk/study/psychology_a-z">Psychology A-Z</a> &nbsp;<span class="dim">psychol.cam.ac.uk/study/psychology_a-z</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pa</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Psychology: A Very Short Introduction, by Gillian Butler and Freda McManus</span></h3>
+      <div class="meta"><span>10</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A short overview of the whole subject.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tf</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Thinking, Fast and Slow, by Daniel Kahneman</span></h3>
+      <div class="meta"><span>11</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How we make decisions and where we go wrong. Some studies in it have since failed to replicate; find out which.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tm</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Man Who Mistook His Wife for a Hat, by Oliver Sacks</span></h3>
+      <div class="meta"><span>12</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Case studies of patients with brain damage. Read alongside Biopsychology.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ts</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Seven Sins of Memory, by Daniel Schacter</span></h3>
+      <div class="meta"><span>13</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How and why memory goes wrong.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hm</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Humankind, by Rutger Bregman</span></h3>
+      <div class="meta"><span>14</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Challenges some famous studies on your course. Decide whether his criticisms stand up.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Lf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/elizabeth_loftus_how_reliable_is_your_memory">Elizabeth Loftus: How reliable is your memory?</a></h3>
+      <div class="meta"><span>15</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which parts of the Memory topic (misleading information, leading questions, post-event discussion) does her evidence support, and how far do laboratory findings tell us about real eyewitnesses?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/elizabeth_loftus_how_reliable_is_your_memory">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/elizabeth_loftus_how_reliable_is_your_memory</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/gabriel_radvansky_ever_walk_into_a_room_and_forget_what_you_were_doing">Gabriel Radvansky: Ever walk into a room and forget what you were doing?</a></h3>
+      <div class="meta"><span>16</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Is the doorway effect a case of retrieval failure due to absence of cues? Design a lab experiment to test it and name the IV, DV and one extraneous variable.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/gabriel_radvansky_ever_walk_into_a_room_and_forget_what_you_were_doing">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/gabriel_radvansky_ever_walk_into_a_room_and_forget_what_you_were_doing</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Kn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/nancy_kanwisher_a_neural_portrait_of_the_human_mind">Nancy Kanwisher: A neural portrait of the human mind</a></h3>
+      <div class="meta"><span>17</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which of her findings support localisation of function, and what does evidence on plasticity and functional recovery say against a strict version of it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/nancy_kanwisher_a_neural_portrait_of_the_human_mind">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/nancy_kanwisher_a_neural_portrait_of_the_human_mind</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sarah_jayne_blakemore_the_mysterious_workings_of_the_adolescent_brain">Sarah-Jayne Blakemore: The mysterious workings of the adolescent brain</a></h3>
+      <div class="meta"><span>18</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> What does fMRI show her about the adolescent brain, and what are the strengths and limitations of fMRI as a way of studying the brain?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sarah_jayne_blakemore_the_mysterious_workings_of_the_adolescent_brain">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sarah_jayne_blakemore_the_mysterious_workings_of_the_adolescent_brain</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/molly_crockett_beware_neuro_bunk">Molly Crockett: Beware neuro-bunk</a></h3>
+      <div class="meta"><span>19</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Take one claim she criticises and explain what is wrong with it using the reductionism debate from Issues and debates.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/molly_crockett_beware_neuro_bunk">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/molly_crockett_beware_neuro_bunk</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/lisa_monteggia_why_depression_isn_t_what_you_think">Lisa Monteggia: Why depression isn't what you think</a></h3>
+      <div class="meta"><span>20</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Compare her biological account of depression with Beck's and Ellis's cognitive explanations on the course. What evidence would decide between them?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/lisa_monteggia_why_depression_isn_t_what_you_think">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/lisa_monteggia_why_depression_isn_t_what_you_think</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ln</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/eleanor_longden_the_voices_in_my_head">Eleanor Longden: The voices in my head</a></h3>
+      <div class="meta"><span>21</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> How does her account fit the diathesis-stress model, and what does it suggest about the reliability and validity of diagnosing schizophrenia?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/eleanor_longden_the_voices_in_my_head">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/eleanor_longden_the_voices_in_my_head</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/kelly_mcgonigal_how_to_make_stress_your_friend">Kelly McGonigal: How to make stress your friend</a></h3>
+      <div class="meta"><span>22</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Much of the talk rests on one survey study. Why can it not show cause and effect, and what study would you need to run to test her claim about stress and health?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/kelly_mcgonigal_how_to_make_stress_your_friend">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/kelly_mcgonigal_how_to_make_stress_your_friend</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">Matt Walker: Sleep is your superpower</a></h3>
+      <div class="meta"><span>23</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which of his claims are about circadian rhythms and endogenous pacemakers? Pick one claim and check it against a published source: does the evidence go as far as he says?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/matt_walker_sleep_is_your_superpower">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/matt_walker_sleep_is_your_superpower</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/psychology-mental-health-and-neurodiversity-schools">Gresham College: Psychology, Mental Health and Neurodiversity for Schools</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures chosen for schools, on autism, ADHD, dyslexia, sleep and nature–nurture.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/playlists/psychology-mental-health-and-neurodiversity-schools">Gresham playlist</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/playlists/psychology-mental-health-and-neurodiversity-schools</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/psychology">Cambridge HE+ Psychology</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short Cambridge modules on empathy, babies, visual illusions, persuasion and mental health.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/psychology">HE+ Psychology</a> &nbsp;<span class="dim">myheplus.com/subject/psychology</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://oyc.yale.edu/introduction-psychology/psyc-110">Open Yale Courses: Introduction to Psychology (PSYC 110, Paul Bloom)</a></h3>
+      <div class="meta"><span>26</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A whole first-year Yale course on video. Watch the lecture that matches what you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://oyc.yale.edu/introduction-psychology/psyc-110">Open Yale</a> &nbsp;<span class="dim">oyc.yale.edu/introduction-psychology/psyc-110</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Uo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/units/department-experimental-psychology">University of Oxford Podcasts: Department of Experimental Psychology</a></h3>
+      <div class="meta"><span>27</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford psychology recordings. Start with The New Psychology of Depression.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/units/department-experimental-psychology">Oxford Podcasts</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/units/department-experimental-psychology</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.bps.org.uk/getting-started">BPS Careers series and Start your journey into psychology</a></h3>
+      <div class="meta"><span>28</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">What psychologists actually do, from the British Psychological Society.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.bps.org.uk/getting-started">BPS</a> &nbsp;<span class="dim">bps.org.uk/getting-started</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 2 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Np</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.royalholloway.ac.uk/studying-here/schools-and-colleges/activities-by-subject/psychology/psychology-resources/national-psychology-competition/">National Psychology Poster Competition (Royal Holloway, University of London)</a></h3>
+      <div class="meta"><span>29</span><span>entry</span><span>Y12, in teams of 2–5; up to three teams per school</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">A team competition for Y12. You make a short video and an academic poster answering a set question (2026: &quot;How can psychology help us build a healthier and stronger community?&quot;) and present it to judges at Royal Holloway. Edgbaston High School won Best Video in 2026.</p>
+  <p class="when"><b>When:</b> Registration has opened in January; the 2026 competition day was Monday 15 June at Royal Holloway (Egham). Confirm 2027 dates with the department.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.royalholloway.ac.uk/studying-here/schools-and-colleges/activities-by-subject/psychology/psychology-resources/national-psychology-competition/">Royal Holloway</a> &nbsp;<span class="dim">royalholloway.ac.uk/studying-here/schools-and-colleges/activities-by-subject/psychology/psychology-resources/national-psychology-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ub</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.ukbrainbee.com/competition-ukbrainbee">UK Brain Bee (part of the International Brain Bee)</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>UK secondary pupils aged 13–18 studying GCSE, A level or equivalent</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A neuroscience quiz competition. Online first round in March; top scorers go to a final at Imperial College London. The study guide is free on the site and overlaps with Biopsychology.</p>
+  <p class="when"><b>When:</b> 2026 pattern: online preliminary round in March, national final at Imperial College London in April, international final in November. Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.ukbrainbee.com/competition-ukbrainbee">UK Brain Bee</a> &nbsp;<span class="dim">ukbrainbee.com/competition-ukbrainbee</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 3 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ap</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">AQA past papers and mark schemes (7182)</a></h3>
+      <div class="meta"><span>31</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past papers and mark schemes. Read the examiner report after you mark yourself.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.aqa.org.uk/find-past-papers-and-mark-schemes">AQA past papers</a> &nbsp;<span class="dim">aqa.org.uk/find-past-papers-and-mark-schemes</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Os</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.open.edu/openlearn/health-sports-psychology/psychology/starting-psychology/">OpenLearn: Starting with psychology</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A free five-hour Open University course with a certificate of participation.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.open.edu/openlearn/health-sports-psychology/psychology/starting-psychology/">OpenLearn</a> &nbsp;<span class="dim">open.edu/openlearn/health-sports-psychology/psychology/starting-psychology</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Pi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://implicit.harvard.edu/implicit/takeatest.html">Project Implicit (Harvard)</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Try an Implicit Association Test and then find out what critics say about its validity. Under-18s use the Youth version linked from the page.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://implicit.harvard.edu/implicit/takeatest.html">Project Implicit</a> &nbsp;<span class="dim">implicit.harvard.edu/implicit/takeatest.html</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 3 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ue</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/experimental-psychology">UNIQ (University of Oxford): Experimental Psychology</a></h3>
+      <div class="meta"><span>34</span><span>apply</span><span>Y12 at state schools; priority for under-represented backgrounds</span></div>
+    </div>
+  </div>
+  <p class="what">A free week in Oxford studying psychology, with support afterwards if you apply. Check the selection criteria.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications opened 15 December 2025 and closed midday 13 January 2026. UNIQ 2027 residentials run between 28 June and 30 July 2027; the psychology week is to be confirmed.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/experimental-psychology">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk/experimental-psychology</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://summerschools.suttontrust.com/course/durham-university/psychology-3/">Sutton Trust UK Summer Schools (psychology courses, e.g. Durham)</a></h3>
+      <div class="meta"><span>35</span><span>apply</span><span>Y12 at state schools; criteria include first generation to university and free school meals</span></div>
+    </div>
+  </div>
+  <p class="what">A free week at a university studying psychology. Read the eligibility criteria first.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications opened 12 January and closed 5 March (Cambridge courses 12 February). Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://summerschools.suttontrust.com/course/durham-university/psychology-3/">Details</a> &nbsp;<span class="dim">summerschools.suttontrust.com/course/durham-university/psychology-3</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.stem.org.uk/placements">Nuffield Research Placements (STEM Learning)</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>Y12, STEM; some projects are in psychology departments</span></div>
+    </div>
+  </div>
+  <p class="what">A summer placement on a real research project. Look for psychology projects near Birmingham.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm on site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.stem.org.uk/placements">Details</a> &nbsp;<span class="dim">stem.org.uk/placements</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your psychology year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">1</span><div><b>Nuffield Research Placements applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Mid-December 2026</div><span class="sym dot">2</span><div><b>UNIQ applications open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January 2027</div><span class="sym dot">3</span><div><b>Royal Holloway competition registration; Sutton Trust applications open; UNIQ closes</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">4</span><div><b>UK Brain Bee online preliminary round; Sutton Trust applications close</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">April 2027</div><span class="sym dot">5</span><div><b>UK Brain Bee final, Imperial College London</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">June 2027</div><span class="sym dot">6</span><div><b>Royal Holloway National Psychology Poster Competition day</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">28 June–30 July 2027</div><span class="sym dot">7</span><div><b>UNIQ residentials</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Term time, Wednesdays 2–3pm</div><span class="sym dot">8</span><div><b>Gresham schools-only live talks</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Research diary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Psychology Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

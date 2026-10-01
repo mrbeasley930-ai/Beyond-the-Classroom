@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>English Literature beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#9F1239; --watch:#1E40AF; --listen:#6B21A8; --read:#854D0E; --do:#166534; --apply:#115E59;
+  --f-display:"Cormorant Garamond",system-ui,sans-serif;
+  --f-body:"EB Garamond",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#3B1D2A; --hero-ink:#FDF2F6; --hero-muted:#D4B3C0;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:19pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · English Literature · 2026-27</div>
+      <h1>English Literature beyond the classroom<span class="sub">35 things to read, hear, watch and enter. All free.</span></h1>
+      <p>English admissions turn on what you have read beyond the set texts and whether you can say something about it. Keep a commonplace book: a line you liked, where it came from, and what it does. The essay and poetry prizes below are where that reading goes. Each time you do something, write one line in your commonplace book: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="read"></span><span data-g="listen"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"><span class="sym">Ad</span></a><div><div class="step">Watch · Adichie</div><p>Watch Chimamanda Ngozi Adichie, The danger of a single story (18 min), and write down whose story one of your set texts leaves out.</p></div></div><div class="pick" data-g="listen"><a href="https://podcasts.ox.ac.uk/series/approaching-shakespeare"><span class="sym">As</span></a><div><div class="step">Listen · Approaching Shakespeare</div><p>Listen to Emma Smith's Approaching Shakespeare lecture on your Shakespeare play.</p></div></div><div class="pick" data-g="do"><a href="https://www.english.ox.ac.uk/ten-minute-book-club"><span class="sym">Ot</span></a><div><div class="step">Read · Oxford Ten-Minute Book Club</div><p>Read two extracts from the Oxford Ten-Minute Book Club and note one you would want to read in full.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The bookshelf</h2>
+    <div class="key"><span>One spine per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://war.web.ox.ac.uk/fwwpda">
+  <span class="fam">Read</span>
+  <span class="sym">Fw</span>
+  <span class="nm">First World War Poetry…</span>
+  <span class="row"><span>01</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>First World War Poetry Digital Archive (Oxford)</b><i>Read · 10m</i><span>Owen's and others' manuscripts and letters. See how the poems were drafted.</span><em>WW1 poetry archive ↗</em></span></a><a class="tile" data-g="read" href="https://www.bl.uk/discovering-literature">
+  <span class="fam">Read</span>
+  <span class="sym">Bl</span>
+  <span class="nm">British Library: Discovering…</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>British Library: Discovering Literature</b><i>Read · 10m</i><span>Short articles by experts on writers and their contexts, with images of original manuscripts.</span><em>Discovering Literature ↗</em></span></a><a class="tile" data-g="read" href="https://writersinspire.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Gw</span>
+  <span class="nm">Great Writers Inspire</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Great Writers Inspire (Oxford)</b><i>Read · 10m</i><span>Essays and lectures on major writers, by Oxford academics.</span><em>Great Writers Inspire ↗</em></span></a><a class="tile" data-g="read" href="https://writersmakeworlds.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Wm</span>
+  <span class="nm">Writers Make Worlds</span>
+  <span class="row"><span>04</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Writers Make Worlds (Oxford)</b><i>Read · 10m</i><span>Videos, extracts and essays on contemporary British writers.</span><em>Writers Make Worlds ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ht</span>
+  <span class="nm">How to Read Literature</span>
+  <span class="row"><span>05</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>How to Read Literature, by Terry Eagleton</b><i>Read · book · book</i><span>A readable introduction to what critics look for.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Hn</span>
+  <span class="nm">How Novels Work</span>
+  <span class="row"><span>06</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>How Novels Work, by John Mullan</b><i>Read · book · book</i><span>How novelists do what they do, one technique at a time.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Ti</span>
+  <span class="nm">This Is Shakespeare</span>
+  <span class="row"><span>07</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>This Is Shakespeare, by Emma Smith</b><i>Read · book · book</i><span>Read the chapter on your Shakespeare play.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tg</span>
+  <span class="nm">The Great War and Modern…</span>
+  <span class="row"><span>08</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Great War and Modern Memory, by Paul Fussell</b><i>Read · book · book</i><span>How the war changed the way people wrote. Read a chapter, not the whole book.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>09</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the archive for your set texts and authors. Three academics, 45 minutes.</span><em>In Our Time ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">
+  <span class="fam">Listen</span>
+  <span class="sym">As</span>
+  <span class="nm">Approaching Shakespeare</span>
+  <span class="row"><span>10</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Approaching Shakespeare (Emma Smith, Oxford)</b><i>Listen · 30m</i><span>An Oxford lecture on your Shakespeare play, with a question at its centre.</span><em>Approaching Shakespeare ↗</em></span></a><a class="tile" data-g="listen" href="https://podcasts.ox.ac.uk/series/poetry-ae-stallings">
+  <span class="fam">Listen</span>
+  <span class="sym">Op</span>
+  <span class="nm">Oxford Professor of Poetry…</span>
+  <span class="row"><span>11</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Professor of Poetry lectures (A. E. Stallings)</b><i>Listen · 30m</i><span>Lectures by Oxford's Professor of Poetry on how poems work.</span><em>Stallings lectures ↗</em></span></a><a class="tile" data-g="listen" href="https://poetryarchive.org/">
+  <span class="fam">Listen</span>
+  <span class="sym">Tp</span>
+  <span class="nm">The Poetry Archive</span>
+  <span class="row"><span>12</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Poetry Archive</b><i>Listen · 30m</i><span>Hear poets reading their own poems.</span><em>poetryarchive.org ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">
+  <span class="fam">Watch</span>
+  <span class="sym">Ad</span>
+  <span class="nm">Adichie</span>
+  <span class="row"><span>13</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Chimamanda Ngozi Adichie: The danger of a single story</b><i>Watch · talk · 18m</i><span>Choose one of your Texts in Shared Contexts texts. Whose story does it tell, and whose does it leave out?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mandy_len_catron_a_better_way_to_talk_about_love">
+  <span class="fam">Watch</span>
+  <span class="sym">Ct</span>
+  <span class="nm">Catron</span>
+  <span class="row"><span>14</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Mandy Len Catron: A better way to talk about love</b><i>Watch · talk · 15m</i><span>Catron says the metaphors we use for love shape how we feel it. Find three metaphors for love in the pre-1900 poetry anthology and say what each one assumes.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/helen_fisher_the_brain_in_love">
+  <span class="fam">Watch</span>
+  <span class="sym">Fs</span>
+  <span class="nm">Fisher</span>
+  <span class="row"><span>15</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Helen Fisher: The brain in love</b><i>Watch · talk · 16m</i><span>Test Fisher's brain-chemistry account against one Love through the ages text. What does the literature show that a scan cannot? This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">
+  <span class="fam">Watch</span>
+  <span class="sym">Hl</span>
+  <span class="nm">Hoeller</span>
+  <span class="row"><span>16</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Magdalena Hoeller: Why love is harder in a second language</b><i>Watch · talk · 16m</i><span>Where in Othello does a difference of language, culture or status make love harder to speak? Give two moments.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/george_butler_news_tells_you_what_happened_drawing_shows_you_how_it_felt">
+  <span class="fam">Watch</span>
+  <span class="sym">Bt</span>
+  <span class="nm">Butler</span>
+  <span class="row"><span>17</span><span>8m</span></span>
+  <span class="pop" role="tooltip"><b>George Butler: News tells you what happened. Drawing shows you how it felt</b><i>Watch · talk · 8m</i><span>Butler draws war as a witness. Compare his claim with a First World War poet's claim to tell the truth about the front. What does each form allow that reporting does not?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">
+  <span class="fam">Watch</span>
+  <span class="sym">Cl</span>
+  <span class="nm">Collins</span>
+  <span class="row"><span>18</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Billy Collins: Everyday moments, caught in time</b><i>Watch · talk · 15m</i><span>Pick one animated poem and explain how its line breaks control the timing. Then do the same for an unseen poem.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/karen_thompson_walker_what_fear_can_teach_us">
+  <span class="fam">Watch</span>
+  <span class="sym">Wl</span>
+  <span class="nm">Walker</span>
+  <span class="row"><span>19</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Karen Thompson Walker: What fear can teach us</b><i>Watch · talk · 11m</i><span>Walker reads fear as a kind of story. How does a Modern Times prose text use a character's fears to imagine a future?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/elif_shafak_the_politics_of_fiction">
+  <span class="fam">Watch</span>
+  <span class="sym">Sh</span>
+  <span class="nm">Shafak</span>
+  <span class="row"><span>20</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Elif Shafak: The politics of fiction</b><i>Watch · talk · 19m</i><span>Shafak says fiction can take us beyond identity politics. Argue for or against using one of your set texts. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.english.ox.ac.uk/shakespeare-webinar-series">
+  <span class="fam">Watch</span>
+  <span class="sym">Ow</span>
+  <span class="nm">Oxford World's Classics…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford World's Classics Shakespeare Webinar Series (Oxford English Faculty and OUP)</b><i>Watch · lecture · 1h</i><span>Monthly online talks on a Shakespeare play by an Oxford professor. Free; register online.</span><em>Oxford webinars ↗</em></span></a><a class="tile" data-g="watch" href="https://podcasts.ox.ac.uk/series/challenging-canon">
+  <span class="fam">Watch</span>
+  <span class="sym">Oe</span>
+  <span class="nm">Oxford English Faculty…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford English Faculty: Challenging the Canon</b><i>Watch · lecture · 1h</i><span>Oxford academics on why a writer is worth studying. Useful when you choose your coursework texts.</span><em>Challenging the Canon ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College English…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College English collection</b><i>Watch · lecture · 1h</i><span>Free university lectures on the novel, the Romantic poets and Shakespeare.</span><em>Gresham English ↗</em></span></a><a class="tile" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">
+  <span class="fam">Watch</span>
+  <span class="sym">Nt</span>
+  <span class="nm">National Theatre Collection</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>National Theatre Collection (via Drama Online)</b><i>Watch · lecture · 1h</i><span>Full National Theatre productions to stream at home, free through the school. Ask your teacher for the login route.</span><em>NT Collection ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/english">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ English</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ English</b><i>Watch · lecture · 1h</i><span>Short modules with videos and questions, written for sixth formers.</span><em>HE+ English ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">
+  <span class="fam">Enter</span>
+  <span class="sym">Gp</span>
+  <span class="nm">Gould Prize for Essays in…</span>
+  <span class="row"><span>26</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Gould Prize for Essays in English Literature (Trinity College, Cambridge)</b><i>Enter · essay</i><span>A critical essay of 1,500–2,500 words on one of a set of questions. £600 first prize and £400 second prize, each split between you and the school. It must be your own work: no help from school and no AI.</span><em>Trinity ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">
+  <span class="fam">Enter</span>
+  <span class="sym">Tc</span>
+  <span class="nm">Thomas Campion English Prize</span>
+  <span class="row"><span>27</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Thomas Campion English Prize (Peterhouse, Cambridge)</b><i>Enter · essay</i><span>An English essay on a set question. £500 first prize, £250 second. Winners and highly commended entrants are invited to lunch at Peterhouse with academics.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://newn.cam.ac.uk/study-here/access-and-outreach/events-and-programmes/woolf-essay-prize-2026">
+  <span class="fam">Enter</span>
+  <span class="sym">We</span>
+  <span class="nm">Woolf Essay Prize</span>
+  <span class="row"><span>28</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Woolf Essay Prize (Newnham College, Cambridge)</b><i>Enter · Women in Y12 · essay</i><span>An essay on literature, women's history and society, set in honour of Virginia Woolf's talk that became A Room of One's Own. Questions come out in February.</span><em>Newnham ↗</em></span></a><a class="tile" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">
+  <span class="fam">Enter</span>
+  <span class="sym">Oy</span>
+  <span class="nm">Orwell Youth Prize 2027…</span>
+  <span class="row"><span>29</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Orwell Youth Prize 2027: &quot;Acts of Courage&quot; (Orwell Foundation)</b><i>Enter · essay</i><span>Up to 1,500 words in any form (essay, poem, story, journalism) on the theme &quot;Acts of Courage&quot;. Send a draft by 3 March and you get written feedback before the final deadline.</span><em>Orwell Youth Prize ↗</em></span></a><a class="tile" data-g="enter" href="https://foyleyoungpoets.org/rules/">
+  <span class="fam">Enter</span>
+  <span class="sym">Fy</span>
+  <span class="nm">Foyle Young Poets of the…</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>Foyle Young Poets of the Year Award (Poetry Society)</b><i>Enter · paper</i><span>Send up to three original poems. 100 winners each year (15 top winners, 85 commended), with Poetry Society membership, publication and mentoring. AI-written poems are banned.</span><em>Foyle Young Poets ↗</em></span></a><a class="tile" data-g="enter" href="https://englishassociation.ac.uk/the-betty-haigh-shakespeare-prize/">
+  <span class="fam">Enter</span>
+  <span class="sym">Bh</span>
+  <span class="nm">Betty Haigh Shakespeare Prize</span>
+  <span class="row"><span>31</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Betty Haigh Shakespeare Prize (English Association)</b><i>Enter · essay</i><span>A 1,500-word essay comparing a scene from a Shakespeare tragedy with a film or TV adaptation of it. Othello works well.</span><em>English Association ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 3</span></div><a class="tile" data-g="do" href="https://www.english.ox.ac.uk/ten-minute-book-club">
+  <span class="fam">Do</span>
+  <span class="sym">Ot</span>
+  <span class="nm">Oxford Ten-Minute Book Club</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Ten-Minute Book Club</b><i>Do · 20m</i><span>Short extracts you can read in ten minutes. Use them to find a text for your coursework.</span><em>Ten-Minute Book Club ↗</em></span></a><a class="tile" data-g="do" href="https://poetrybyheart.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Pb</span>
+  <span class="nm">Poetry by Heart</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Poetry by Heart</b><i>Do · 20m</i><span>Learn a poem by heart and perform it. The school registers; the poem collections are free to read.</span><em>Poetry by Heart ↗</em></span></a><a class="tile" data-g="do" href="https://ypn.poetrysociety.org.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Yp</span>
+  <span class="nm">Young Poets Network</span>
+  <span class="row"><span>34</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Young Poets Network (Poetry Society)</b><i>Do · 20m</i><span>Short poetry challenges you can enter any time of year.</span><em>Young Poets Network ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 1</span></div><a class="tile" data-g="apply" href="https://www.english.ox.ac.uk/summer-schools">
+  <span class="fam">Apply</span>
+  <span class="sym">Ue</span>
+  <span class="nm">UNIQ English summer school</span>
+  <span class="row"><span>35</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ English summer school (Oxford)</b><i>Apply · apply</i><span>A free week at Oxford studying English. Apply in the winter of Y12.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Fw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://war.web.ox.ac.uk/fwwpda">First World War Poetry Digital Archive (Oxford)</a></h3>
+      <div class="meta"><span>01</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Owen's and others' manuscripts and letters. See how the poems were drafted.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://war.web.ox.ac.uk/fwwpda">WW1 poetry archive</a> &nbsp;<span class="dim">war.web.ox.ac.uk/fwwpda</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bl.uk/discovering-literature">British Library: Discovering Literature</a></h3>
+      <div class="meta"><span>02</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short articles by experts on writers and their contexts, with images of original manuscripts.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bl.uk/discovering-literature">Discovering Literature</a> &nbsp;<span class="dim">bl.uk/discovering-literature</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Gw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://writersinspire.org/">Great Writers Inspire (Oxford)</a></h3>
+      <div class="meta"><span>03</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Essays and lectures on major writers, by Oxford academics.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://writersinspire.org/">Great Writers Inspire</a> &nbsp;<span class="dim">writersinspire.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Wm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://writersmakeworlds.com/">Writers Make Worlds (Oxford)</a></h3>
+      <div class="meta"><span>04</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Videos, extracts and essays on contemporary British writers.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://writersmakeworlds.com/">Writers Make Worlds</a> &nbsp;<span class="dim">writersmakeworlds.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ht</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">How to Read Literature, by Terry Eagleton</span></h3>
+      <div class="meta"><span>05</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A readable introduction to what critics look for.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hn</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">How Novels Work, by John Mullan</span></h3>
+      <div class="meta"><span>06</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How novelists do what they do, one technique at a time.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ti</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">This Is Shakespeare, by Emma Smith</span></h3>
+      <div class="meta"><span>07</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Read the chapter on your Shakespeare play.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tg</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Great War and Modern Memory, by Paul Fussell</span></h3>
+      <div class="meta"><span>08</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How the war changed the way people wrote. Read a chapter, not the whole book.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>09</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for your set texts and authors. Three academics, 45 minutes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qykl">In Our Time</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qykl</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">As</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">Approaching Shakespeare (Emma Smith, Oxford)</a></h3>
+      <div class="meta"><span>10</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">An Oxford lecture on your Shakespeare play, with a question at its centre.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">Approaching Shakespeare</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/approaching-shakespeare</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Op</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/series/poetry-ae-stallings">Oxford Professor of Poetry lectures (A. E. Stallings)</a></h3>
+      <div class="meta"><span>11</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Lectures by Oxford's Professor of Poetry on how poems work.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://podcasts.ox.ac.uk/series/poetry-ae-stallings">Stallings lectures</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/poetry-ae-stallings</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://poetryarchive.org/">The Poetry Archive</a></h3>
+      <div class="meta"><span>12</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Hear poets reading their own poems.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://poetryarchive.org/">poetryarchive.org</a> &nbsp;<span class="dim">poetryarchive.org</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ad</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Chimamanda Ngozi Adichie: The danger of a single story</a></h3>
+      <div class="meta"><span>13</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one of your Texts in Shared Contexts texts. Whose story does it tell, and whose does it leave out?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ct</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mandy_len_catron_a_better_way_to_talk_about_love">Mandy Len Catron: A better way to talk about love</a></h3>
+      <div class="meta"><span>14</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Catron says the metaphors we use for love shape how we feel it. Find three metaphors for love in the pre-1900 poetry anthology and say what each one assumes.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mandy_len_catron_a_better_way_to_talk_about_love">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mandy_len_catron_a_better_way_to_talk_about_love</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Fs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/helen_fisher_the_brain_in_love">Helen Fisher: The brain in love</a></h3>
+      <div class="meta"><span>15</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Test Fisher's brain-chemistry account against one Love through the ages text. What does the literature show that a scan cannot? This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/helen_fisher_the_brain_in_love">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/helen_fisher_the_brain_in_love</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">Magdalena Hoeller: Why love is harder in a second language</a></h3>
+      <div class="meta"><span>16</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Where in Othello does a difference of language, culture or status make love harder to speak? Give two moments.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/george_butler_news_tells_you_what_happened_drawing_shows_you_how_it_felt">George Butler: News tells you what happened. Drawing shows you how it felt</a></h3>
+      <div class="meta"><span>17</span><span>8m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 8 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Butler draws war as a witness. Compare his claim with a First World War poet's claim to tell the truth about the front. What does each form allow that reporting does not?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/george_butler_news_tells_you_what_happened_drawing_shows_you_how_it_felt">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/george_butler_news_tells_you_what_happened_drawing_shows_you_how_it_felt</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">Billy Collins: Everyday moments, caught in time</a></h3>
+      <div class="meta"><span>18</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Pick one animated poem and explain how its line breaks control the timing. Then do the same for an unseen poem.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/billy_collins_everyday_moments_caught_in_time</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/karen_thompson_walker_what_fear_can_teach_us">Karen Thompson Walker: What fear can teach us</a></h3>
+      <div class="meta"><span>19</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Walker reads fear as a kind of story. How does a Modern Times prose text use a character's fears to imagine a future?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/karen_thompson_walker_what_fear_can_teach_us">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/karen_thompson_walker_what_fear_can_teach_us</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/elif_shafak_the_politics_of_fiction">Elif Shafak: The politics of fiction</a></h3>
+      <div class="meta"><span>20</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Shafak says fiction can take us beyond identity politics. Argue for or against using one of your set texts. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/elif_shafak_the_politics_of_fiction">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/elif_shafak_the_politics_of_fiction</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ow</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.english.ox.ac.uk/shakespeare-webinar-series">Oxford World's Classics Shakespeare Webinar Series (Oxford English Faculty and OUP)</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Monthly online talks on a Shakespeare play by an Oxford professor. Free; register online.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.english.ox.ac.uk/shakespeare-webinar-series">Oxford webinars</a> &nbsp;<span class="dim">english.ox.ac.uk/shakespeare-webinar-series</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oe</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/challenging-canon">Oxford English Faculty: Challenging the Canon</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Oxford academics on why a writer is worth studying. Useful when you choose your coursework texts.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/challenging-canon">Challenging the Canon</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/challenging-canon</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham College English collection</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures on the novel, the Romantic poets and Shakespeare.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham English</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/english</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Nt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">National Theatre Collection (via Drama Online)</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Full National Theatre productions to stream at home, free through the school. Ask your teacher for the login route.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">NT Collection</a> &nbsp;<span class="dim">nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/english">Cambridge HE+ English</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short modules with videos and questions, written for sixth formers.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/english">HE+ English</a> &nbsp;<span class="dim">myheplus.com/subject/english</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Gp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Gould Prize for Essays in English Literature (Trinity College, Cambridge)</a></h3>
+      <div class="meta"><span>26</span><span>essay</span><span>Y12 when questions are released</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A critical essay of 1,500–2,500 words on one of a set of questions. £600 first prize and £400 second prize, each split between you and the school. It must be your own work: no help from school and no AI.</p>
+  <p class="when"><b>When:</b> Questions released in the spring term 2027; deadline expected end of July 2027 (2026 deadline was 31 July, 12 noon). Confirm on the Trinity page.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Trinity</a> &nbsp;<span class="dim">trin.cam.ac.uk/undergraduate/essay-prizes/english-literature</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">Thomas Campion English Prize (Peterhouse, Cambridge)</a></h3>
+      <div class="meta"><span>27</span><span>essay</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An English essay on a set question. £500 first prize, £250 second. Winners and highly commended entrants are invited to lunch at Peterhouse with academics.</p>
+  <p class="when"><b>When:</b> Questions usually released in the new year; deadline in the spring (March–April in past rounds). Peterhouse had not published 2027 dates. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/essay-prizes</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">We</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://newn.cam.ac.uk/study-here/access-and-outreach/events-and-programmes/woolf-essay-prize-2026">Woolf Essay Prize (Newnham College, Cambridge)</a></h3>
+      <div class="meta"><span>28</span><span>essay</span><span>Women in Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An essay on literature, women's history and society, set in honour of Virginia Woolf's talk that became A Room of One's Own. Questions come out in February.</p>
+  <p class="when"><b>When:</b> 2027 round opens February 2027 and closes June 2027 (2026 deadline was 8 June, 9am). Confirm exact dates.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://newn.cam.ac.uk/study-here/access-and-outreach/events-and-programmes/woolf-essay-prize-2026">Newnham</a> &nbsp;<span class="dim">newn.cam.ac.uk/study-here/access-and-outreach/events-and-programmes/woolf-essay-prize-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Oy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">Orwell Youth Prize 2027: &quot;Acts of Courage&quot; (Orwell Foundation)</a></h3>
+      <div class="meta"><span>29</span><span>essay</span><span>Years 7–13 at UK schools; Years 12–13 are a separate category</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,500 words in any form (essay, poem, story, journalism) on the theme &quot;Acts of Courage&quot;. Send a draft by 3 March and you get written feedback before the final deadline.</p>
+  <p class="when"><b>When:</b> Open now. Optional feedback deadline Wednesday 3 March 2027; final deadline Wednesday 28 April 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">Orwell Youth Prize</a> &nbsp;<span class="dim">orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Fy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://foyleyoungpoets.org/rules/">Foyle Young Poets of the Year Award (Poetry Society)</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>Aged 11–17 on the closing date, so Y12 and younger Y13s only</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Send up to three original poems. 100 winners each year (15 top winners, 85 commended), with Poetry Society membership, publication and mentoring. AI-written poems are banned.</p>
+  <p class="when"><b>When:</b> 2026 round closed 31 July 2026; winners are announced in the autumn. 2027 round expected to open in the spring and close 31 July 2027. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://foyleyoungpoets.org/rules/">Foyle Young Poets</a> &nbsp;<span class="dim">foyleyoungpoets.org/rules</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://englishassociation.ac.uk/the-betty-haigh-shakespeare-prize/">Betty Haigh Shakespeare Prize (English Association)</a></h3>
+      <div class="meta"><span>31</span><span>essay</span><span>Ages 11–19 in school, college or sixth form</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A 1,500-word essay comparing a scene from a Shakespeare tragedy with a film or TV adaptation of it. Othello works well.</p>
+  <p class="when"><b>When:</b> The last round we could confirm opened in June 2025 and closed 30 September 2025. Check the English Association page now for a 2026 round; otherwise expect a summer 2027 opening. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://englishassociation.ac.uk/the-betty-haigh-shakespeare-prize/">English Association</a> &nbsp;<span class="dim">englishassociation.ac.uk/the-betty-haigh-shakespeare-prize</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 3 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ot</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.english.ox.ac.uk/ten-minute-book-club">Oxford Ten-Minute Book Club</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Short extracts you can read in ten minutes. Use them to find a text for your coursework.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.english.ox.ac.uk/ten-minute-book-club">Ten-Minute Book Club</a> &nbsp;<span class="dim">english.ox.ac.uk/ten-minute-book-club</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Pb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://poetrybyheart.com/">Poetry by Heart</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Learn a poem by heart and perform it. The school registers; the poem collections are free to read.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://poetrybyheart.com/">Poetry by Heart</a> &nbsp;<span class="dim">poetrybyheart.com</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Yp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://ypn.poetrysociety.org.uk/">Young Poets Network (Poetry Society)</a></h3>
+      <div class="meta"><span>34</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Short poetry challenges you can enter any time of year.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://ypn.poetrysociety.org.uk/">Young Poets Network</a> &nbsp;<span class="dim">ypn.poetrysociety.org.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 1 thing</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ue</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.english.ox.ac.uk/summer-schools">UNIQ English summer school (Oxford)</a></h3>
+      <div class="meta"><span>35</span><span>apply</span><span>Y12 at UK state schools; priority to pupils from under-represented backgrounds</span></div>
+    </div>
+  </div>
+  <p class="what">A free week at Oxford studying English. Apply in the winter of Y12.</p>
+  <p class="when"><b>When:</b> Applications usually mid-December to mid-January; residential in the summer. 2027 dates not yet published. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.english.ox.ac.uk/summer-schools">Details</a> &nbsp;<span class="dim">english.ox.ac.uk/summer-schools</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your English year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">30 September 2026</div><span class="sym dot">1</span><div><b>Betty Haigh Shakespeare Prize</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">5 October, 2 November, 7 December 2026</div><span class="sym dot">2</span><div><b>Oxford Shakespeare webinars (Richard III, Pericles, A Midsummer Night's Dream)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn 2026</div><span class="sym dot">3</span><div><b>Register for the NT Collection</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Mid-December 2026 to mid-January 2027</div><span class="sym dot">4</span><div><b>UNIQ applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Early 2027</div><span class="sym dot">5</span><div><b>Thomas Campion Prize questions released</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">February 2027</div><span class="sym dot">6</span><div><b>Woolf Essay Prize opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3 March 2027</div><span class="sym dot">7</span><div><b>Orwell Youth Prize feedback deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">8</span><div><b>Gould Prize questions released; Foyle Young Poets 2027 opens</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">28 April 2027</div><span class="sym dot">9</span><div><b>Orwell Youth Prize final deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">31 July 2027 (expected)</div><span class="sym dot">10</span><div><b>Gould Prize and Foyle Young Poets deadlines</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Commonplace book</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>English Literature Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Computer Science beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;800&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#D6336C; --watch:#2B6CB0; --listen:#6B46C1; --read:#B7791F; --do:#2F855A; --apply:#0E7C86;
+  --f-display:"JetBrains Mono",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#0F172A; --hero-ink:#E2F3FF; --hero-muted:#94A3B8;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:19pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Computer Science · 2026-27</div>
+      <h1>Computer Science beyond the classroom<span class="sub">41 things to build, solve, watch and enter. All free.</span></h1>
+      <p>Computer science courses want evidence that you program outside lessons and that you can reason about problems on paper. The Bebras and Olympiad rounds test the second; CS50x, Advent of Code and the Raspberry Pi competition are the first. Keep what you build somewhere you can show it. Each time you do something, write one line in your dev log: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="do"></span><span data-g="enter"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="enter"><a href="https://www.cipherchallenge.org/"><span class="sym">Nc</span></a><div><div class="step">Register · National Cipher Challenge</div><p>Register for the National Cipher Challenge and do the first challenge before half term.</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms"><span class="sym">Bl</span></a><div><div class="step">Watch · Buolamwini</div><p>Watch Joy Buolamwini's TED talk on bias in algorithms (9 min) and write down who you think should be accountable when a system is biased.</p></div></div><div class="pick" data-g="do"><a href="https://www.olympiad.org.uk/problems.html"><span class="sym">Bp</span></a><div><div class="step">Problems · BIO past papers and training…</div><p>Try three problems from the BIO beginner set in the language you use in class.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The repo</h2>
+    <div class="key"><span>One commit per thing. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://adacomputerscience.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ac</span>
+  <span class="nm">Ada Computer Science</span>
+  <span class="row"><span>01</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Ada Computer Science</b><i>Do · 20m</i><span>Free explanations and self-marking questions for every A level topic. Make an account.</span><em>adacomputerscience.org ↗</em></span></a><a class="tile" data-g="do" href="https://www.olympiad.org.uk/problems.html">
+  <span class="fam">Do</span>
+  <span class="sym">Bp</span>
+  <span class="nm">BIO past papers and training…</span>
+  <span class="row"><span>02</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>BIO past papers and training problems</b><i>Do · 20m</i><span>Past Olympiad problems sorted by difficulty. Start with the beginner set.</span><em>BIO problems ↗</em></span></a><a class="tile" data-g="do" href="https://www.chch.ox.ac.uk/college/outreach/python-challenges">
+  <span class="fam">Do</span>
+  <span class="sym">Cs</span>
+  <span class="nm">Christ Church, Oxford…</span>
+  <span class="row"><span>03</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Christ Church, Oxford: Python Challenges</b><i>Do · 20m</i><span>Five Python projects with hints and model solutions.</span><em>Python Challenges ↗</em></span></a><a class="tile" data-g="do" href="https://adventofcode.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Ao</span>
+  <span class="nm">Advent of Code</span>
+  <span class="row"><span>04</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Advent of Code</b><i>Do · 20m</i><span>A puzzle a day from 1 December, in any language.</span><em>adventofcode.com ↗</em></span></a><a class="tile" data-g="do" href="https://www.bebras.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Uk</span>
+  <span class="nm">UK Bebras past challenges</span>
+  <span class="row"><span>05</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UK Bebras past challenges</b><i>Do · 20m</i><span>Past Bebras questions, no login needed.</span><em>bebras.uk ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://www.olympiad.org.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Bi</span>
+  <span class="nm">British Informatics Olympiad</span>
+  <span class="row"><span>06</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>British Informatics Olympiad (BIO)</b><i>Enter · paper</i><span>A 3-hour paper of three problems, each solved by writing a program in any language. The best scorers go to a final in Cambridge, and the top four form the UK team for the International Olympiad in Informatics.</span><em>olympiad.org.uk ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bebras.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ub</span>
+  <span class="nm">UK Bebras Challenge</span>
+  <span class="row"><span>07</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>UK Bebras Challenge (Elite group)</b><i>Enter · entry</i><span>45 minutes of computational thinking problems online, marked automatically. Try the past challenges first; no login needed.</span><em>bebras.uk ↗</em></span></a><a class="tile" data-g="enter" href="https://www.bebras.uk/index.php?action=content&amp;id=132">
+  <span class="fam">Enter</span>
+  <span class="sym">Rp</span>
+  <span class="nm">Raspberry Pi Foundation…</span>
+  <span class="row"><span>08</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Raspberry Pi Foundation Coding Challenge (formerly the Oxford University Computing Challenge)</b><i>Enter · entry</i><span>A 45-minute coding challenge, block-based or text-based, at two difficulty levels. You can only enter if the school has done Bebras first.</span><em>Coding Challenge ↗</em></span></a><a class="tile" data-g="enter" href="https://www.cipherchallenge.org/">
+  <span class="fam">Enter</span>
+  <span class="sym">Nc</span>
+  <span class="nm">National Cipher Challenge</span>
+  <span class="row"><span>09</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>National Cipher Challenge (University of Southampton)</b><i>Enter · entry</i><span>A series of codes to break online over the autumn term, getting harder each week. Good practice for the encryption content of Component 01.</span><em>cipherchallenge.org ↗</em></span></a><a class="tile" data-g="enter" href="https://pctc.perse.co.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Pc</span>
+  <span class="nm">Perse Coding Team Challenge…</span>
+  <span class="row"><span>10</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>Perse Coding Team Challenge: Sixth Form Gold Rush</b><i>Enter · paper</i><span>50 minutes, on your own, on six questions taken from the Round 2 paper. Certificates only.</span><em>PCTC ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 15</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/david_j_malan_what_s_an_algorithm">
+  <span class="fam">Watch</span>
+  <span class="sym">Ml</span>
+  <span class="nm">Malan</span>
+  <span class="row"><span>11</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>David J. Malan: What's an algorithm?</b><i>Watch · TED-Ed · 5m</i><span>Write his phone-book method as pseudocode. Which searching algorithm from 2.3 is it, and what is its time complexity in Big O notation?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">
+  <span class="fam">Watch</span>
+  <span class="sym">Bl</span>
+  <span class="nm">Buolamwini</span>
+  <span class="row"><span>12</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Joy Buolamwini: How I'm fighting bias in algorithms</b><i>Watch · talk · 9m</i><span>Explain how a training set can produce a biased system, and say who should be accountable. Use the 1.5 moral and ethical issues topic.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/cathy_o_neil_the_era_of_blind_faith_in_big_data_must_end">
+  <span class="fam">Watch</span>
+  <span class="sym">On</span>
+  <span class="nm">O'Neil</span>
+  <span class="row"><span>13</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Cathy O'Neil: The era of blind faith in big data must end</b><i>Watch · talk · 13m</i><span>Pick one algorithm she describes. What data goes in, what is it optimising for, and how would you test it for bias?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">
+  <span class="fam">Watch</span>
+  <span class="sym">Sl</span>
+  <span class="nm">Slavin</span>
+  <span class="row"><span>14</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Kevin Slavin: How algorithms shape our world</b><i>Watch · talk · 15m</i><span>Choose one example from the talk. Which decisions are made by the algorithm and which by people? Who is responsible when it goes wrong?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think">
+  <span class="fam">Watch</span>
+  <span class="sym">Sh</span>
+  <span class="nm">Shane</span>
+  <span class="row"><span>15</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Janelle Shane: The danger of AI is weirder than you think</b><i>Watch · talk · 10m</i><span>Treat each of her examples as a badly specified problem. Using the 2.1 computational thinking ideas of abstraction and thinking ahead, rewrite one goal so the system does what was meant.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai">
+  <span class="fam">Watch</span>
+  <span class="sym">Rs</span>
+  <span class="nm">Russell</span>
+  <span class="row"><span>16</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Stuart Russell: 3 principles for creating safer AI</b><i>Watch · talk · 17m</i><span>Russell and Shane disagree about where the risk from AI lies. Which of them do you find more convincing, and what evidence would change your mind?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/lorrie_faith_cranor_what_s_wrong_with_your_pa_w0rd">
+  <span class="fam">Watch</span>
+  <span class="sym">Cr</span>
+  <span class="nm">Cranor</span>
+  <span class="row"><span>17</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Lorrie Faith Cranor: What's wrong with your pa$$w0rd?</b><i>Watch · talk · 17m</i><span>Why do sites store a hash of a password rather than the password itself (1.3 hashing)? Why does a password policy change what an attacker tries first?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/avi_rubin_all_your_devices_can_be_hacked">
+  <span class="fam">Watch</span>
+  <span class="sym">Rb</span>
+  <span class="nm">Rubin</span>
+  <span class="row"><span>18</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Avi Rubin: All your devices can be hacked</b><i>Watch · talk · 17m</i><span>Pick one attack he describes. Which layer of the TCP/IP stack does it use, and what defence from 1.3 Exchanging data would stop it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">
+  <span class="fam">Watch</span>
+  <span class="sym">Gh</span>
+  <span class="nm">Ghose</span>
+  <span class="row"><span>19</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Shohini Ghose: A beginner's guide to quantum computing</b><i>Watch · talk · 10m</i><span>Which of the encryption methods in 1.3 would a large quantum computer threaten, and why? Test her claim about 'unbreakable encryption'.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Information…</span>
+  <span class="row"><span>20</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Information Technology collection and schools-only talks</b><i>Watch · lecture · 1h</i><span>Free hour-long lectures on cybercrime, encryption, surveillance and the history of computing.</span><em>Gresham IT ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/great-ideas-computer-science">
+  <span class="fam">Watch</span>
+  <span class="sym">Gr</span>
+  <span class="nm">Gresham College: Great Ideas…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Great Ideas from Computer Science (Professor Richard Harvey)</b><i>Watch · lecture · 1h</i><span>Six lectures on the core ideas of the subject: algorithms, data, programs, networks and security.</span><em>Gresham series ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-2023-christmas-lectures">
+  <span class="fam">Watch</span>
+  <span class="sym">Ri</span>
+  <span class="nm">Royal Institution Christmas…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution Christmas Lectures 2023: The Truth about AI (Mike Wooldridge)</b><i>Watch · lecture · 1h</i><span>Three lectures on how AI actually works, from an Oxford professor. Free.</span><em>Ri 2023 lectures ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@Computerphile">
+  <span class="fam">Watch</span>
+  <span class="sym">Cm</span>
+  <span class="nm">Computerphile</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Computerphile (University of Nottingham academics)</b><i>Watch · lecture · 1h</i><span>Short videos where academics explain one idea each. Search for whatever you are studying that week.</span><em>Computerphile ↗</em></span></a><a class="tile" data-g="watch" href="https://cs50.harvard.edu/x/">
+  <span class="fam">Watch</span>
+  <span class="sym">Cx</span>
+  <span class="nm">CS50x</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>CS50x (Harvard)</b><i>Watch · lecture · 1h</i><span>Harvard's first-year course, free online. Do the lectures and problem sets; ignore the paid certificate.</span><em>CS50x ↗</em></span></a><a class="tile" data-g="watch" href="https://www.maths.ox.ac.uk/r/matlive">
+  <span class="fam">Watch</span>
+  <span class="sym">Om</span>
+  <span class="nm">Oxford Mathematics…</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Mathematics admissions test livestreams</b><i>Watch · lecture · 1h</i><span>Free weekly maths problem-solving sessions for university applicants. Check which admissions test your universities set.</span><em>Livestreams ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://www.quantamagazine.org/computer-science/">
+  <span class="fam">Read</span>
+  <span class="sym">Qm</span>
+  <span class="nm">Quanta Magazine: Computer…</span>
+  <span class="row"><span>26</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Quanta Magazine: Computer Science</b><i>Read · 10m</i><span>Free articles on current research in algorithms, complexity and AI.</span><em>Quanta CS ↗</em></span></a><a class="tile" data-g="read" href="https://www.cs4fn.blog/">
+  <span class="fam">Read</span>
+  <span class="sym">Cf</span>
+  <span class="nm">cs4fn</span>
+  <span class="row"><span>27</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>cs4fn (Queen Mary University of London)</b><i>Read · 10m</i><span>Short, readable articles and free magazines. A good place to start.</span><em>cs4fn ↗</em></span></a><a class="tile" data-g="read" href="https://www.cst.cam.ac.uk/admissions/undergraduate/super-curricular-activities">
+  <span class="fam">Read</span>
+  <span class="sym">Cc</span>
+  <span class="nm">Cambridge Computer Science…</span>
+  <span class="row"><span>28</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Computer Science: super-curricular activities</b><i>Read · 10m</i><span>Cambridge's own list of what to do if you want to apply for computer science.</span><em>Cambridge CST ↗</em></span></a><a class="tile" data-g="read" href="https://www.myheplus.com/subject/computer-science">
+  <span class="fam">Read</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Computer Science</span>
+  <span class="row"><span>29</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Computer Science</b><i>Read · 10m</i><span>Cambridge's subject pages for sixth formers.</span><em>HE+ CS ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tc</span>
+  <span class="nm">The Code Book</span>
+  <span class="row"><span>30</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Code Book, by Simon Singh</b><i>Read · book · book</i><span>The history of codes and codebreaking. Read it alongside the Cipher Challenge.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tn</span>
+  <span class="nm">The New Turing Omnibus</span>
+  <span class="row"><span>31</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The New Turing Omnibus, by A. K. Dewdney</b><i>Read · book · book</i><span>66 short chapters, one idea each. Dip in.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Aa</span>
+  <span class="nm">Algorithmic Adventures: From…</span>
+  <span class="row"><span>32</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Algorithmic Adventures: From Knowledge to Magic, by Juraj Hromkovič</b><i>Read · book · book</i><span>What computers can and cannot do. Harder; for Y13.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Cw</span>
+  <span class="nm">Computing with Quantum Cats</span>
+  <span class="row"><span>33</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Computing with Quantum Cats, by John Gribbin</b><i>Read · book · book</i><span>How quantum computers work. Pairs with the Ghose talk.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 2</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bb</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>34</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for Ada Lovelace, Cryptography and Artificial Intelligence.</span><em>In Our Time Science ↗</em></span></a><a class="tile" data-g="listen" href="https://www.turing.ac.uk/news/turing-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Tt</span>
+  <span class="nm">The Turing Podcast</span>
+  <span class="row"><span>35</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Turing Podcast (Alan Turing Institute)</b><i>Listen · 30m</i><span>Researchers talking about real AI and data science projects.</span><em>Turing Podcast ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 6</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/">
+  <span class="fam">Apply</span>
+  <span class="sym">Uc</span>
+  <span class="nm">UNIQ: Computer Science</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ: Computer Science (University of Oxford)</b><i>Apply · apply</i><span>A free Oxford summer school in computer science for state-school Y12s.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>37</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements</b><i>Apply · Y12, STEM · apply</i><span>A summer research placement. Check the eligibility criteria.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">
+  <span class="fam">Apply</span>
+  <span class="sym">Is</span>
+  <span class="nm">In2STEM</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2STEM (In2Science UK)</b><i>Apply · Y12, STEM · apply</i><span>Summer work experience with researchers, with travel costs paid. Check eligibility.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.qa.com/browse/courses/cyber-security/cyberfirst/">
+  <span class="fam">Apply</span>
+  <span class="sym">Cy</span>
+  <span class="nm">CyberFirst summer courses</span>
+  <span class="row"><span>39</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>CyberFirst summer courses (NCSC)</b><i>Apply · apply</i><span>A week-long cyber security course in the summer. Check it is still free before applying.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.gov.uk/guidance/techfirst">
+  <span class="fam">Apply</span>
+  <span class="sym">Tu</span>
+  <span class="nm">TechFirst Undergraduate…</span>
+  <span class="row"><span>40</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>TechFirst Undergraduate Scholarship (UK Government)</b><i>Apply · apply</i><span>£4,000 a year towards your degree if you are heading for a tech-related course. Y13 only.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Ey</span>
+  <span class="nm">EDT Year in Industry</span>
+  <span class="row"><span>41</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>EDT Year in Industry (Platinum Placements)</b><i>Apply · apply</i><span>A paid year working in industry before university.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ac</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://adacomputerscience.org/">Ada Computer Science</a></h3>
+      <div class="meta"><span>01</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free explanations and self-marking questions for every A level topic. Make an account.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://adacomputerscience.org/">adacomputerscience.org</a> &nbsp;<span class="dim">adacomputerscience.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Bp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.olympiad.org.uk/problems.html">BIO past papers and training problems</a></h3>
+      <div class="meta"><span>02</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past Olympiad problems sorted by difficulty. Start with the beginner set.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.olympiad.org.uk/problems.html">BIO problems</a> &nbsp;<span class="dim">olympiad.org.uk/problems.html</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Cs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.chch.ox.ac.uk/college/outreach/python-challenges">Christ Church, Oxford: Python Challenges</a></h3>
+      <div class="meta"><span>03</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Five Python projects with hints and model solutions.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.chch.ox.ac.uk/college/outreach/python-challenges">Python Challenges</a> &nbsp;<span class="dim">chch.ox.ac.uk/college/outreach/python-challenges</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ao</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://adventofcode.com/">Advent of Code</a></h3>
+      <div class="meta"><span>04</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A puzzle a day from 1 December, in any language.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://adventofcode.com/">adventofcode.com</a> &nbsp;<span class="dim">adventofcode.com</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Uk</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.bebras.uk/">UK Bebras past challenges</a></h3>
+      <div class="meta"><span>05</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Past Bebras questions, no login needed.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.bebras.uk/">bebras.uk</a> &nbsp;<span class="dim">bebras.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.olympiad.org.uk/">British Informatics Olympiad (BIO)</a></h3>
+      <div class="meta"><span>06</span><span>paper</span><span>Under 19, full-time pre-university education in mainland Britain; mainly Y12 and Y13</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">A 3-hour paper of three problems, each solved by writing a program in any language. The best scorers go to a final in Cambridge, and the top four form the UK team for the International Olympiad in Informatics.</p>
+  <p class="when"><b>When:</b> Round 1 set in school on any date in a winter window (2025-26: 8 December 2025 to 23 January 2026). Final in Cambridge at Easter (2026: 3–5 April). Confirm 2026-27 window on the BIO site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.olympiad.org.uk/">olympiad.org.uk</a> &nbsp;<span class="dim">olympiad.org.uk</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ub</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bebras.uk/">UK Bebras Challenge (Elite group)</a></h3>
+      <div class="meta"><span>07</span><span>entry</span><span>Elite group: Y12 and Y13 (ages 16–19)</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">45 minutes of computational thinking problems online, marked automatically. Try the past challenges first; no login needed.</p>
+  <p class="when"><b>When:</b> 9–20 November 2026 (published). 45 minutes, sat in school at any time in the window.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bebras.uk/">bebras.uk</a> &nbsp;<span class="dim">bebras.uk</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Rp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.bebras.uk/index.php?action=content&amp;id=132">Raspberry Pi Foundation Coding Challenge (formerly the Oxford University Computing Challenge)</a></h3>
+      <div class="meta"><span>08</span><span>entry</span><span>Pupils aged 10+ at schools that took part in the preceding UK Bebras Challenge</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">A 45-minute coding challenge, block-based or text-based, at two difficulty levels. You can only enter if the school has done Bebras first.</p>
+  <p class="when"><b>When:</b> Follows Bebras; the OUCC ran in January in earlier years. Date for 2027 not published; confirm through the Bebras teacher account.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.bebras.uk/index.php?action=content&amp;id=132">Coding Challenge</a> &nbsp;<span class="dim">bebras.uk/index.php?action=content&amp;id=132</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Nc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.cipherchallenge.org/">National Cipher Challenge (University of Southampton)</a></h3>
+      <div class="meta"><span>09</span><span>entry</span><span>UK school pupils, individually or in teams</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A series of codes to break online over the autumn term, getting harder each week. Good practice for the encryption content of Component 01.</p>
+  <p class="when"><b>When:</b> Registration opened 24 September 2026; challenges run to January 2027; prize-giving at Bletchley Park in March 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.cipherchallenge.org/">cipherchallenge.org</a> &nbsp;<span class="dim">cipherchallenge.org</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Pc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://pctc.perse.co.uk/">Perse Coding Team Challenge: Sixth Form Gold Rush</a></h3>
+      <div class="meta"><span>10</span><span>paper</span><span>Sixth form, solo. The main PCTC team rounds are for Y11 and below.</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">50 minutes, on your own, on six questions taken from the Round 2 paper. Certificates only.</p>
+  <p class="when"><b>When:</b> 15–19 March 2027 (published), straight after PCTC Round 2 (1–12 March 2027).</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://pctc.perse.co.uk/">PCTC</a> &nbsp;<span class="dim">pctc.perse.co.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 15 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ml</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/david_j_malan_what_s_an_algorithm">David J. Malan: What's an algorithm?</a></h3>
+      <div class="meta"><span>11</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A 5 min talk (TED-Ed).</p>
+  
+  <p class="think"><b>Think about:</b> Write his phone-book method as pseudocode. Which searching algorithm from 2.3 is it, and what is its time complexity in Big O notation?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/david_j_malan_what_s_an_algorithm">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/david_j_malan_what_s_an_algorithm</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">Joy Buolamwini: How I'm fighting bias in algorithms</a></h3>
+      <div class="meta"><span>12</span><span>9m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 9 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Explain how a training set can produce a biased system, and say who should be accountable. Use the 1.5 moral and ethical issues topic.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">On</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/cathy_o_neil_the_era_of_blind_faith_in_big_data_must_end">Cathy O'Neil: The era of blind faith in big data must end</a></h3>
+      <div class="meta"><span>13</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Pick one algorithm she describes. What data goes in, what is it optimising for, and how would you test it for bias?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/cathy_o_neil_the_era_of_blind_faith_in_big_data_must_end">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/cathy_o_neil_the_era_of_blind_faith_in_big_data_must_end</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">Kevin Slavin: How algorithms shape our world</a></h3>
+      <div class="meta"><span>14</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one example from the talk. Which decisions are made by the algorithm and which by people? Who is responsible when it goes wrong?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/kevin_slavin_how_algorithms_shape_our_world</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think">Janelle Shane: The danger of AI is weirder than you think</a></h3>
+      <div class="meta"><span>15</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Treat each of her examples as a badly specified problem. Using the 2.1 computational thinking ideas of abstraction and thinking ahead, rewrite one goal so the system does what was meant.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai">Stuart Russell: 3 principles for creating safer AI</a></h3>
+      <div class="meta"><span>16</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Russell and Shane disagree about where the risk from AI lies. Which of them do you find more convincing, and what evidence would change your mind?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/lorrie_faith_cranor_what_s_wrong_with_your_pa_w0rd">Lorrie Faith Cranor: What's wrong with your pa$$w0rd?</a></h3>
+      <div class="meta"><span>17</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Why do sites store a hash of a password rather than the password itself (1.3 hashing)? Why does a password policy change what an attacker tries first?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/lorrie_faith_cranor_what_s_wrong_with_your_pa_w0rd">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/lorrie_faith_cranor_what_s_wrong_with_your_pa_w0rd</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/avi_rubin_all_your_devices_can_be_hacked">Avi Rubin: All your devices can be hacked</a></h3>
+      <div class="meta"><span>18</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Pick one attack he describes. Which layer of the TCP/IP stack does it use, and what defence from 1.3 Exchanging data would stop it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/avi_rubin_all_your_devices_can_be_hacked">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/avi_rubin_all_your_devices_can_be_hacked</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gh</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">Shohini Ghose: A beginner's guide to quantum computing</a></h3>
+      <div class="meta"><span>19</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which of the encryption methods in 1.3 would a large quantum computer threaten, and why? Test her claim about 'unbreakable encryption'.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">Gresham College: Information Technology collection and schools-only talks</a></h3>
+      <div class="meta"><span>20</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free hour-long lectures on cybercrime, encryption, surveillance and the history of computing.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">Gresham IT</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/information-technology</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/great-ideas-computer-science">Gresham College: Great Ideas from Computer Science (Professor Richard Harvey)</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Six lectures on the core ideas of the subject: algorithms, data, programs, networks and security.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/great-ideas-computer-science">Gresham series</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/series/great-ideas-computer-science</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ri</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-2023-christmas-lectures">Royal Institution Christmas Lectures 2023: The Truth about AI (Mike Wooldridge)</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Three lectures on how AI actually works, from an Oxford professor. Free.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-2023-christmas-lectures">Ri 2023 lectures</a> &nbsp;<span class="dim">rigb.org/christmas-lectures/watch-2023-christmas-lectures</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@Computerphile">Computerphile (University of Nottingham academics)</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos where academics explain one idea each. Search for whatever you are studying that week.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@Computerphile">Computerphile</a> &nbsp;<span class="dim">youtube.com/@Computerphile</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cx</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://cs50.harvard.edu/x/">CS50x (Harvard)</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Harvard's first-year course, free online. Do the lectures and problem sets; ignore the paid certificate.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://cs50.harvard.edu/x/">CS50x</a> &nbsp;<span class="dim">cs50.harvard.edu/x</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Om</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/r/matlive">Oxford Mathematics admissions test livestreams</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free weekly maths problem-solving sessions for university applicants. Check which admissions test your universities set.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.maths.ox.ac.uk/r/matlive">Livestreams</a> &nbsp;<span class="dim">maths.ox.ac.uk/r/matlive</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Qm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.quantamagazine.org/computer-science/">Quanta Magazine: Computer Science</a></h3>
+      <div class="meta"><span>26</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free articles on current research in algorithms, complexity and AI.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.quantamagazine.org/computer-science/">Quanta CS</a> &nbsp;<span class="dim">quantamagazine.org/computer-science</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.cs4fn.blog/">cs4fn (Queen Mary University of London)</a></h3>
+      <div class="meta"><span>27</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short, readable articles and free magazines. A good place to start.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.cs4fn.blog/">cs4fn</a> &nbsp;<span class="dim">cs4fn.blog</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.cst.cam.ac.uk/admissions/undergraduate/super-curricular-activities">Cambridge Computer Science: super-curricular activities</a></h3>
+      <div class="meta"><span>28</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge's own list of what to do if you want to apply for computer science.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.cst.cam.ac.uk/admissions/undergraduate/super-curricular-activities">Cambridge CST</a> &nbsp;<span class="dim">cst.cam.ac.uk/admissions/undergraduate/super-curricular-activities</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.myheplus.com/subject/computer-science">Cambridge HE+ Computer Science</a></h3>
+      <div class="meta"><span>29</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge's subject pages for sixth formers.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.myheplus.com/subject/computer-science">HE+ CS</a> &nbsp;<span class="dim">myheplus.com/subject/computer-science</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Code Book, by Simon Singh</span></h3>
+      <div class="meta"><span>30</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The history of codes and codebreaking. Read it alongside the Cipher Challenge.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tn</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The New Turing Omnibus, by A. K. Dewdney</span></h3>
+      <div class="meta"><span>31</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">66 short chapters, one idea each. Dip in.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Aa</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Algorithmic Adventures: From Knowledge to Magic, by Juraj Hromkovič</span></h3>
+      <div class="meta"><span>32</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">What computers can and cannot do. Harder; for Y13.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cw</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Computing with Quantum Cats, by John Gribbin</span></h3>
+      <div class="meta"><span>33</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How quantum computers work. Pairs with the Ghose talk.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 2 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>34</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for Ada Lovelace, Cryptography and Artificial Intelligence.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.turing.ac.uk/news/turing-podcast">The Turing Podcast (Alan Turing Institute)</a></h3>
+      <div class="meta"><span>35</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Researchers talking about real AI and data science projects.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.turing.ac.uk/news/turing-podcast">Turing Podcast</a> &nbsp;<span class="dim">turing.ac.uk/news/turing-podcast</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 6 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Uc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">UNIQ: Computer Science (University of Oxford)</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>Y12 at UK state schools, with priority for under-represented backgrounds</span></div>
+    </div>
+  </div>
+  <p class="what">A free Oxford summer school in computer science for state-school Y12s.</p>
+  <p class="when"><b>When:</b> 2027 application dates not yet published; applications have usually opened in the winter. Confirm on the UNIQ site.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Nuffield Research Placements</a></h3>
+      <div class="meta"><span>37</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">A summer research placement. Check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm with STEM Learning.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Details</a> &nbsp;<span class="dim">nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">In2STEM (In2Science UK)</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>Y12, STEM</span></div>
+    </div>
+  </div>
+  <p class="what">Summer work experience with researchers, with travel costs paid. Check eligibility.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications opened in December and closed in April; programme ran 20 July to 21 August. Confirm for 2027.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/our-programmes/in2stem/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/our-programmes/in2stem</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Cy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.qa.com/browse/courses/cyber-security/cyberfirst/">CyberFirst summer courses (NCSC)</a></h3>
+      <div class="meta"><span>39</span><span>apply</span><span>Ages 16–17 (Y12) studying computer science or with an interest in computing</span></div>
+    </div>
+  </div>
+  <p class="what">A week-long cyber security course in the summer. Check it is still free before applying.</p>
+  <p class="when"><b>When:</b> 2026 pattern: week-long courses in late July; Welsh hubs closed applications on 26 June. Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.qa.com/browse/courses/cyber-security/cyberfirst/">Details</a> &nbsp;<span class="dim">qa.com/browse/courses/cyber-security/cyberfirst</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Tu</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.gov.uk/guidance/techfirst">TechFirst Undergraduate Scholarship (UK Government)</a></h3>
+      <div class="meta"><span>40</span><span>apply</span><span>Y13 planning to study at any UK university</span></div>
+    </div>
+  </div>
+  <p class="what">£4,000 a year towards your degree if you are heading for a tech-related course. Y13 only.</p>
+  <p class="when"><b>When:</b> Applications for 2027-28 entry open in autumn 2026; confirm the date on GOV.UK.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.gov.uk/guidance/techfirst">Details</a> &nbsp;<span class="dim">gov.uk/guidance/techfirst</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ey</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">EDT Year in Industry (Platinum Placements)</a></h3>
+      <div class="meta"><span>41</span><span>apply</span><span>Y13, for a gap year</span></div>
+    </div>
+  </div>
+  <p class="what">A paid year working in industry before university.</p>
+  <p class="when"><b>When:</b> Registration of interest for 2027-28 placements opens 1 October 2026.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">Details</a> &nbsp;<span class="dim">etrust.org.uk/programmes-platinum-placements</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your computer science year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">September 2026 – January 2027</div><span class="sym dot">1</span><div><b>National Cipher Challenge</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">2</span><div><b>Bebras coordinator registration; EDT registration of interest opens 1 October; TechFirst scholarship applications open in the autumn</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">9–20 November 2026</div><span class="sym dot">3</span><div><b>UK Bebras Challenge</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">18 November 2026, 2–3pm</div><span class="sym dot">4</span><div><b>Gresham schools-only talk: Victoria Baines, 'Masters of the Cyberverse'</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Early December 2026</div><span class="sym dot">5</span><div><b>BIO registration</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026 – January 2027</div><span class="sym dot">6</span><div><b>BIO Round 1 in school</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026 – June 2027</div><span class="sym dot">7</span><div><b>Summer placement and course applications: UNIQ, Nuffield, In2STEM, CyberFirst</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January 2027</div><span class="sym dot">8</span><div><b>Raspberry Pi Foundation Coding Challenge (formerly OUCC)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">15–19 March 2027</div><span class="sym dot">9</span><div><b>PCTC Sixth Form Gold Rush</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Easter 2027</div><span class="sym dot">10</span><div><b>BIO final, Cambridge</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Dev log</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Computer Science Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

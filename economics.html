@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Economics beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#B91C1C; --watch:#1D4ED8; --listen:#6D28D9; --read:#A16207; --do:#15803D; --apply:#0E7490;
+  --f-display:"Playfair Display",system-ui,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#F3E9D8; --hero-ink:#1F1A14; --hero-muted:#6B5E4E;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Economics · 2026-27</div>
+      <h1>Economics beyond the classroom<span class="sub">37 things to read, enter, listen to and watch. All free.</span></h1>
+      <p>Economics is read more than it is watched. The best applicants follow the news through the FT, the Economist and the Bank of England, and can argue about it. The essay prizes below reward exactly that, and the podcasts and lectures give you the arguments. Each time you do something, write one line in your ledger: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="read"></span><span data-g="enter"></span><span data-g="listen"></span><span data-g="watch"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions"><span class="sym">Ar</span></a><div><div class="step">Watch · Ariely</div><p>Watch Dan Ariely on decision-making (17 min) and write down one nudge a government could use.</p></div></div><div class="pick" data-g="listen"><a href="https://ifs.org.uk/level-post-16-resources/podcasts-level-questions"><span class="sym">Ip</span></a><div><div class="step">IFS podcasts · IFS podcasts with A-level…</div><p>Listen to one IFS podcast on a topic from your current theme and answer its questions.</p></div></div><div class="pick" data-g="watch"><a href="https://res.org.uk/committees/pd-education-committee/annual-public-lecture/"><span class="sym">Re</span></a><div><div class="step">RES lecture · Royal Economic Society…</div><p>Watch the Royal Economic Society lecture 'Is Economics broken?' live on 3 November, or a past lecture.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The dashboard</h2>
+    <div class="key"><span>One indicator per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://www.economicsobservatory.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Eo</span>
+  <span class="nm">Economics Observatory</span>
+  <span class="row"><span>01</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Economics Observatory</b><i>Read · 10m</i><span>Short answers to big economic questions, written by economists.</span><em>economicsobservatory.com ↗</em></span></a><a class="tile" data-g="read" href="https://ifs.org.uk/level-post-16-resources/economic-review">
+  <span class="fam">Read</span>
+  <span class="sym">Ia</span>
+  <span class="nm">IFS articles from Economic…</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>IFS articles from Economic Review</b><i>Read · 10m</i><span>Articles written for A-level students by IFS economists.</span><em>IFS Economic Review ↗</em></span></a><a class="tile" data-g="read" href="https://qualifications.pearson.com/en/news-policy/subject-updates/economics/FT-for-schools.html">
+  <span class="fam">Read</span>
+  <span class="sym">Ft</span>
+  <span class="nm">Financial Times for schools</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Financial Times for schools</b><i>Read · 10m</i><span>Free FT access through the school. Ask your teacher for a login.</span><em>FT for schools ↗</em></span></a><a class="tile" data-g="read" href="https://www.bankofengland.co.uk/explainers">
+  <span class="fam">Read</span>
+  <span class="sym">Bo</span>
+  <span class="nm">Bank of England explainers</span>
+  <span class="row"><span>04</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Bank of England explainers</b><i>Read · 10m</i><span>Short explanations of inflation, interest rates and money from the Bank of England.</span><em>BoE explainers ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tu</span>
+  <span class="nm">The Undercover Economist</span>
+  <span class="row"><span>05</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Undercover Economist, by Tim Harford</b><i>Read · book · book</i><span>Everyday prices explained with economics.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Th</span>
+  <span class="nm">23 Things They Don't Tell…</span>
+  <span class="row"><span>06</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>23 Things They Don't Tell You About Capitalism, by Ha-Joon Chang</b><i>Read · book · book</i><span>Short chapters that argue with what the textbook says about markets.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Pe</span>
+  <span class="nm">Poor Economics</span>
+  <span class="row"><span>07</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Poor Economics, by Abhijit Banerjee and Esther Duflo</b><i>Read · book · book</i><span>How poor households make decisions, from two Nobel winners.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">De</span>
+  <span class="nm">Doughnut Economics</span>
+  <span class="row"><span>08</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Doughnut Economics, by Kate Raworth</b><i>Read · book · book</i><span>An argument against growth as the goal. Read it and decide whether you agree.</span></span></span><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://www.discovereconomics.co.uk/young-economist-of-the-year-2026">
+  <span class="fam">Enter</span>
+  <span class="sym">Ye</span>
+  <span class="nm">Young Economist of the Year</span>
+  <span class="row"><span>09</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>Young Economist of the Year (Royal Economic Society, via Discover Economics; sponsored by KPMG)</b><i>Enter · paper</i><span>Answer one of five set questions as a blog (up to 1,000 words), a 5-minute video or podcast, or a short slide deck. 2026 questions included dynamic pricing, free trade and AI and growth. Winners have visited HM Treasury and 10 Downing Street.</span><em>Discover Economics ↗</em></span></a><a class="tile" data-g="enter" href="https://www.gov.uk/guidance/fcdo-next-generation-economics-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Fn</span>
+  <span class="nm">FCDO Next Generation…</span>
+  <span class="row"><span>10</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>FCDO Next Generation Economics Competition (Foreign, Commonwealth and Development Office with LSE)</b><i>Enter · paper</i><span>A letter of up to 1,000 words answering one of four questions on development and international economics (2026: protectionism, creative destruction, women's economic participation, sustainable development). Prizes up to £350; top eight visit the FCDO and LSE. Harvard referencing required; AI may not write the entry.</span><em>GOV.UK ↗</em></span></a><a class="tile" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">
+  <span class="fam">Enter</span>
+  <span class="sym">Go</span>
+  <span class="nm">Gerald O'Connell Essay…</span>
+  <span class="row"><span>11</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Gerald O'Connell Essay Competition in Economics (Fitzwilliam College, Cambridge)</b><i>Enter · entry</i><span>Up to 1,000 words, with a research log. 2026 asked you to describe a time market forces failed, estimate the losses and say what protected people. £200 first prize. No generative AI.</span><em>Fitzwilliam ↗</em></span></a><a class="tile" data-g="enter" href="https://marshallsoc.org/marshall-society-essay-competition-2026/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ms</span>
+  <span class="nm">Marshall Society Essay…</span>
+  <span class="row"><span>12</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Marshall Society Essay Competition (Cambridge University Economics Society)</b><i>Enter · entry</i><span>Up to 1,500 words on one of six questions (2026 included tariffs, central banks and energy shocks, and Britain leaving the gold standard in 1931). £100 first prize. AI may be used for research only and must be declared.</span><em>Marshall Society ↗</em></span></a><a class="tile" data-g="enter" href="https://oxfordeconsoc.org/essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Oe</span>
+  <span class="nm">Oxford Economics Society…</span>
+  <span class="row"><span>13</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Economics Society Sixth Form Essay Competition</b><i>Enter · Y12 and Y13 · entry</i><span>Up to 2,000 words on one of three questions (2026: oil shocks, whether the CMA should approve mergers more readily, lessons from 2008). £100 first prize.</span><em>Oxford Econ Soc ↗</em></span></a><a class="tile" data-g="enter" href="https://www.kingselab.org/essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Ee</span>
+  <span class="nm">Entrepreneurship Essay…</span>
+  <span class="row"><span>14</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Entrepreneurship Essay Competition (King's Entrepreneurship Lab, King's College, Cambridge)</b><i>Enter · UK Years 11–13 · entry</i><span>Up to 1,000 words on one of four questions about entrepreneurship. £1,500 first prize, two runners-up at £750. No generative AI.</span><em>King's E-Lab ↗</em></span></a><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 5</span></div><a class="tile" data-g="listen" href="https://ifs.org.uk/level-post-16-resources/podcasts-level-questions">
+  <span class="fam">Listen</span>
+  <span class="sym">Ip</span>
+  <span class="nm">IFS podcasts with A-level…</span>
+  <span class="row"><span>15</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>IFS podcasts with A-level questions (Institute for Fiscal Studies)</b><i>Listen · 30m</i><span>Short podcasts from the IFS with questions to answer. Pick one on a topic from your current theme.</span><em>IFS podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://timharford.com/etc/more-or-less/">
+  <span class="fam">Listen</span>
+  <span class="sym">Mo</span>
+  <span class="nm">More or Less</span>
+  <span class="row"><span>16</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>More or Less (BBC Radio 4, Tim Harford)</b><i>Listen · 30m</i><span>A programme that checks whether numbers in the news are right.</span><em>More or Less ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p04b1g3c">
+  <span class="fam">Listen</span>
+  <span class="sym">Tt</span>
+  <span class="nm">50 Things That Made the…</span>
+  <span class="row"><span>17</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>50 Things That Made the Modern Economy (BBC, Tim Harford)</b><i>Listen · 30m</i><span>Short episodes, each on one invention that changed the economy.</span><em>BBC ↗</em></span></a><a class="tile" data-g="listen" href="https://freakonomics.com/series/freakonomics-radio/">
+  <span class="fam">Listen</span>
+  <span class="sym">Fr</span>
+  <span class="nm">Freakonomics Radio</span>
+  <span class="row"><span>18</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Freakonomics Radio</b><i>Listen · 30m</i><span>Weekly episodes using economics to explain everyday behaviour.</span><em>Freakonomics ↗</em></span></a><a class="tile" data-g="listen" href="https://www.npr.org/podcasts/510289/planet-money">
+  <span class="fam">Listen</span>
+  <span class="sym">Pm</span>
+  <span class="nm">Planet Money</span>
+  <span class="row"><span>19</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Planet Money (NPR)</b><i>Listen · 30m</i><span>Stories that tie ordinary topics back to economics.</span><em>Planet Money ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/esther_duflo_social_experiments_to_fight_poverty">
+  <span class="fam">Watch</span>
+  <span class="sym">Df</span>
+  <span class="nm">Duflo</span>
+  <span class="row"><span>20</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Esther Duflo: Social experiments to fight poverty</b><i>Watch · talk · 16m</i><span>Theme 4.3 emerging and developing economies: pick one of her trials and say what it tells a government about where to spend. What would a critic say about scaling it up?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions">
+  <span class="fam">Watch</span>
+  <span class="sym">Ar</span>
+  <span class="nm">Ariely</span>
+  <span class="row"><span>21</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Dan Ariely: Are we in control of our own decisions?</b><i>Watch · talk · 17m</i><span>Theme 1 behavioural economics: which example shows the power of a default, and how could a government use it as a nudge?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/rory_sutherland_life_lessons_from_an_ad_man">
+  <span class="fam">Watch</span>
+  <span class="sym">St</span>
+  <span class="nm">Sutherland</span>
+  <span class="row"><span>22</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Rory Sutherland: Life lessons from an ad man</b><i>Watch · talk · 16m</i><span>Theme 3 non-price competition: how does advertising shift demand without changing the product? Draw the diagram.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/hans_rosling_the_magic_washing_machine">
+  <span class="fam">Watch</span>
+  <span class="sym">Rs</span>
+  <span class="nm">Rosling</span>
+  <span class="row"><span>23</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Hans Rosling: The magic washing machine</b><i>Watch · talk · 9m</i><span>Theme 2 economic growth: what does his argument say about the link between GDP, energy use and living standards?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/kate_raworth_a_healthy_economy_should_be_designed_to_thrive_not_grow">
+  <span class="fam">Watch</span>
+  <span class="sym">Rw</span>
+  <span class="nm">Raworth</span>
+  <span class="row"><span>24</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Kate Raworth: A healthy economy should be designed to thrive, not grow</b><i>Watch · talk · 16m</i><span>Theme 2 treats growth as a macroeconomic objective. Use her model to argue against it, then write the reply a mainstream economist would give. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/mariana_mazzucato_what_is_economic_value_and_who_creates_it">
+  <span class="fam">Watch</span>
+  <span class="sym">Mz</span>
+  <span class="nm">Mazzucato</span>
+  <span class="row"><span>25</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Mariana Mazzucato: What is economic value, and who creates it?</b><i>Watch · talk · 19m</i><span>Theme 4.4 financial sector: she says some activity extracts value rather than creating it. Choose one financial market activity and argue both sides. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/richard_wilkinson_how_economic_inequality_harms_societies">
+  <span class="fam">Watch</span>
+  <span class="sym">Wl</span>
+  <span class="nm">Wilkinson</span>
+  <span class="row"><span>26</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Richard Wilkinson: How economic inequality harms societies</b><i>Watch · talk · 17m</i><span>Theme 4.2 poverty and inequality: his charts show correlation. What else could explain the pattern, and what data would test it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_economic_growth_has_stalled_let_s_fix_it">
+  <span class="fam">Watch</span>
+  <span class="sym">My</span>
+  <span class="nm">Moyo</span>
+  <span class="row"><span>27</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Dambisa Moyo: Economic growth has stalled. Let's fix it</b><i>Watch · talk · 14m</i><span>Theme 4.5 role of the state: where does the UK sit on her spectrum between state and market, and would you move it?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/tim_harford_trial_error_and_the_god_complex">
+  <span class="fam">Watch</span>
+  <span class="sym">Hr</span>
+  <span class="nm">Harford</span>
+  <span class="row"><span>28</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Tim Harford: Trial, error and the God complex</b><i>Watch · talk · 18m</i><span>Theme 1 economic systems: why does he think planned solutions fail, and does the same argument apply to government intervention in Theme 3?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://res.org.uk/committees/pd-education-committee/annual-public-lecture/">
+  <span class="fam">Watch</span>
+  <span class="sym">Re</span>
+  <span class="nm">Royal Economic Society…</span>
+  <span class="row"><span>29</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Economic Society Annual Public Lecture</b><i>Watch · lecture · 1h</i><span>A lecture for sixth formers by a leading economist, streamed live on 3 November 2026. Past lectures are recorded.</span><em>RES lecture ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/economics">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College economics…</span>
+  <span class="row"><span>30</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College economics and finance collection</b><i>Watch · lecture · 1h</i><span>Free university lectures. Daunton on the modern British economy fits Theme 2; Rau on finance fits Theme 4.</span><em>Gresham Economics ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/economics">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Economics</span>
+  <span class="row"><span>31</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Economics</b><i>Watch · lecture · 1h</i><span>Short modules with questions: behavioural economics, rationality and indifference curves.</span><em>HE+ Economics ↗</em></span></a><a class="tile" data-g="watch" href="https://www.lse.ac.uk/lse-player">
+  <span class="fam">Watch</span>
+  <span class="sym">Lp</span>
+  <span class="nm">LSE Player: public lectures…</span>
+  <span class="row"><span>32</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>LSE Player: public lectures and podcasts</b><i>Watch · lecture · 1h</i><span>Recordings of LSE public lectures. Search for a topic you are studying.</span><em>LSE Player ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 4</span></div><a class="tile" data-g="do" href="https://www.tutor2u.net/free/economics">
+  <span class="fam">Do</span>
+  <span class="sym">Tr</span>
+  <span class="nm">tutor2u Economics free library</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>tutor2u Economics free library</b><i>Do · 20m</i><span>Free notes, videos and quizzes for every topic. Use it to check a topic before reading further.</span><em>tutor2u free ↗</em></span></a><a class="tile" data-g="do" href="https://ifs.org.uk/level-post-16-resources/be-chancellor-classroom-activity">
+  <span class="fam">Do</span>
+  <span class="sym">Ib</span>
+  <span class="nm">IFS Be the Chancellor</span>
+  <span class="row"><span>34</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>IFS Be the Chancellor</b><i>Do · 20m</i><span>Set your own budget and see what happens to borrowing.</span><em>Be the Chancellor ↗</em></span></a><a class="tile" data-g="do" href="https://nrich.maths.org/7321">
+  <span class="fam">Do</span>
+  <span class="sym">Nm</span>
+  <span class="nm">NRICH Maths for Economists</span>
+  <span class="row"><span>35</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>NRICH Maths for Economists</b><i>Do · 20m</i><span>Maths problems with an economics twist, for anyone thinking of economics at university.</span><em>NRICH ↗</em></span></a><a class="tile" data-g="do" href="https://www.core-econ.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Ce</span>
+  <span class="nm">CORE Econ: The Economy 2.0</span>
+  <span class="row"><span>36</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>CORE Econ: The Economy 2.0</b><i>Do · 20m</i><span>A free university textbook. Read the chapter that matches your current topic.</span><em>CORE Econ ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 1</span></div><a class="tile" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">
+  <span class="fam">Apply</span>
+  <span class="sym">Sn</span>
+  <span class="nm">Sutton Trust UK Summer Schools</span>
+  <span class="row"><span>37</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Sutton Trust UK Summer Schools</b><i>Apply · apply</i><span>Free university summer schools for Year 12 at state schools. Check the criteria.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Eo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.economicsobservatory.com/">Economics Observatory</a></h3>
+      <div class="meta"><span>01</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short answers to big economic questions, written by economists.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.economicsobservatory.com/">economicsobservatory.com</a> &nbsp;<span class="dim">economicsobservatory.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ia</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://ifs.org.uk/level-post-16-resources/economic-review">IFS articles from Economic Review</a></h3>
+      <div class="meta"><span>02</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Articles written for A-level students by IFS economists.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://ifs.org.uk/level-post-16-resources/economic-review">IFS Economic Review</a> &nbsp;<span class="dim">ifs.org.uk/level-post-16-resources/economic-review</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ft</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://qualifications.pearson.com/en/news-policy/subject-updates/economics/FT-for-schools.html">Financial Times for schools</a></h3>
+      <div class="meta"><span>03</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free FT access through the school. Ask your teacher for a login.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://qualifications.pearson.com/en/news-policy/subject-updates/economics/FT-for-schools.html">FT for schools</a> &nbsp;<span class="dim">qualifications.pearson.com/en/news-policy/subject-updates/economics/FT-for-schools.html</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bankofengland.co.uk/explainers">Bank of England explainers</a></h3>
+      <div class="meta"><span>04</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Short explanations of inflation, interest rates and money from the Bank of England.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bankofengland.co.uk/explainers">BoE explainers</a> &nbsp;<span class="dim">bankofengland.co.uk/explainers</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tu</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Undercover Economist, by Tim Harford</span></h3>
+      <div class="meta"><span>05</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Everyday prices explained with economics.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Th</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">23 Things They Don't Tell You About Capitalism, by Ha-Joon Chang</span></h3>
+      <div class="meta"><span>06</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Short chapters that argue with what the textbook says about markets.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Pe</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Poor Economics, by Abhijit Banerjee and Esther Duflo</span></h3>
+      <div class="meta"><span>07</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How poor households make decisions, from two Nobel winners.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">De</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Doughnut Economics, by Kate Raworth</span></h3>
+      <div class="meta"><span>08</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">An argument against growth as the goal. Read it and decide whether you agree.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ye</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.discovereconomics.co.uk/young-economist-of-the-year-2026">Young Economist of the Year (Royal Economic Society, via Discover Economics; sponsored by KPMG)</a></h3>
+      <div class="meta"><span>09</span><span>paper</span><span>Years 10–13; individuals or groups</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Answer one of five set questions as a blog (up to 1,000 words), a 5-minute video or podcast, or a short slide deck. 2026 questions included dynamic pricing, free trade and AI and growth. Winners have visited HM Treasury and 10 Downing Street.</p>
+  <p class="when"><b>When:</b> 2026 round launched 23 March and closed 29 June; shortlist September, final October 2026. Expect a similar pattern in 2027: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.discovereconomics.co.uk/young-economist-of-the-year-2026">Discover Economics</a> &nbsp;<span class="dim">discovereconomics.co.uk/young-economist-of-the-year-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Fn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.gov.uk/guidance/fcdo-next-generation-economics-competition">FCDO Next Generation Economics Competition (Foreign, Commonwealth and Development Office with LSE)</a></h3>
+      <div class="meta"><span>10</span><span>paper</span><span>Ages 14–18 at UK schools; Under 16 and Under 18 categories</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A letter of up to 1,000 words answering one of four questions on development and international economics (2026: protectionism, creative destruction, women's economic participation, sustainable development). Prizes up to £350; top eight visit the FCDO and LSE. Harvard referencing required; AI may not write the entry.</p>
+  <p class="when"><b>When:</b> 2026 round opened 21 May and closed 28 June; results by September. GOV.UK says it returns in 2027: confirm dates.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.gov.uk/guidance/fcdo-next-generation-economics-competition">GOV.UK</a> &nbsp;<span class="dim">gov.uk/guidance/fcdo-next-generation-economics-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Go</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">Gerald O'Connell Essay Competition in Economics (Fitzwilliam College, Cambridge)</a></h3>
+      <div class="meta"><span>11</span><span>entry</span><span>Y12 at UK state schools (home students)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,000 words, with a research log. 2026 asked you to describe a time market forces failed, estimate the losses and say what protected people. £200 first prize. No generative AI.</p>
+  <p class="when"><b>When:</b> Questions published in the autumn; 2026 deadline was 6pm, 27 February. 2027 deadline expected late February: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026">Fitzwilliam</a> &nbsp;<span class="dim">fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ms</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://marshallsoc.org/marshall-society-essay-competition-2026/">Marshall Society Essay Competition (Cambridge University Economics Society)</a></h3>
+      <div class="meta"><span>12</span><span>entry</span><span>Pre-university students; Y12 and Y13</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,500 words on one of six questions (2026 included tariffs, central banks and energy shocks, and Britain leaving the gold standard in 1931). £100 first prize. AI may be used for research only and must be declared.</p>
+  <p class="when"><b>When:</b> Runs over the summer; 2026 deadline was 30 August, results mid-September. 2027 dates: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://marshallsoc.org/marshall-society-essay-competition-2026/">Marshall Society</a> &nbsp;<span class="dim">marshallsoc.org/marshall-society-essay-competition-2026</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Oe</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://oxfordeconsoc.org/essay-competition">Oxford Economics Society Sixth Form Essay Competition</a></h3>
+      <div class="meta"><span>13</span><span>entry</span><span>Y12 and Y13</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 2,000 words on one of three questions (2026: oil shocks, whether the CMA should approve mergers more readily, lessons from 2008). £100 first prize.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 11.59pm, 14 August. 2027 dates: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://oxfordeconsoc.org/essay-competition">Oxford Econ Soc</a> &nbsp;<span class="dim">oxfordeconsoc.org/essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ee</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.kingselab.org/essay-competition">Entrepreneurship Essay Competition (King's Entrepreneurship Lab, King's College, Cambridge)</a></h3>
+      <div class="meta"><span>14</span><span>entry</span><span>UK Years 11–13</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,000 words on one of four questions about entrepreneurship. £1,500 first prize, two runners-up at £750. No generative AI.</p>
+  <p class="when"><b>When:</b> 2026 deadline was 9pm, 5 August; prize ceremony at King's in December 2026. 2027 dates: confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.kingselab.org/essay-competition">King's E-Lab</a> &nbsp;<span class="dim">kingselab.org/essay-competition</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 5 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ip</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://ifs.org.uk/level-post-16-resources/podcasts-level-questions">IFS podcasts with A-level questions (Institute for Fiscal Studies)</a></h3>
+      <div class="meta"><span>15</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Short podcasts from the IFS with questions to answer. Pick one on a topic from your current theme.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://ifs.org.uk/level-post-16-resources/podcasts-level-questions">IFS podcasts</a> &nbsp;<span class="dim">ifs.org.uk/level-post-16-resources/podcasts-level-questions</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Mo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://timharford.com/etc/more-or-less/">More or Less (BBC Radio 4, Tim Harford)</a></h3>
+      <div class="meta"><span>16</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">A programme that checks whether numbers in the news are right.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://timharford.com/etc/more-or-less/">More or Less</a> &nbsp;<span class="dim">timharford.com/etc/more-or-less</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p04b1g3c">50 Things That Made the Modern Economy (BBC, Tim Harford)</a></h3>
+      <div class="meta"><span>17</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Short episodes, each on one invention that changed the economy.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p04b1g3c">BBC</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p04b1g3c</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Fr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://freakonomics.com/series/freakonomics-radio/">Freakonomics Radio</a></h3>
+      <div class="meta"><span>18</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly episodes using economics to explain everyday behaviour.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://freakonomics.com/series/freakonomics-radio/">Freakonomics</a> &nbsp;<span class="dim">freakonomics.com/series/freakonomics-radio</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Pm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.npr.org/podcasts/510289/planet-money">Planet Money (NPR)</a></h3>
+      <div class="meta"><span>19</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Stories that tie ordinary topics back to economics.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.npr.org/podcasts/510289/planet-money">Planet Money</a> &nbsp;<span class="dim">npr.org/podcasts/510289/planet-money</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Df</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/esther_duflo_social_experiments_to_fight_poverty">Esther Duflo: Social experiments to fight poverty</a></h3>
+      <div class="meta"><span>20</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 4.3 emerging and developing economies: pick one of her trials and say what it tells a government about where to spend. What would a critic say about scaling it up?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/esther_duflo_social_experiments_to_fight_poverty">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/esther_duflo_social_experiments_to_fight_poverty</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ar</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions">Dan Ariely: Are we in control of our own decisions?</a></h3>
+      <div class="meta"><span>21</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 1 behavioural economics: which example shows the power of a default, and how could a government use it as a nudge?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/rory_sutherland_life_lessons_from_an_ad_man">Rory Sutherland: Life lessons from an ad man</a></h3>
+      <div class="meta"><span>22</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 3 non-price competition: how does advertising shift demand without changing the product? Draw the diagram.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/rory_sutherland_life_lessons_from_an_ad_man">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/rory_sutherland_life_lessons_from_an_ad_man</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rs</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/hans_rosling_the_magic_washing_machine">Hans Rosling: The magic washing machine</a></h3>
+      <div class="meta"><span>23</span><span>9m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 9 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 2 economic growth: what does his argument say about the link between GDP, energy use and living standards?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/hans_rosling_the_magic_washing_machine">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/hans_rosling_the_magic_washing_machine</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/kate_raworth_a_healthy_economy_should_be_designed_to_thrive_not_grow">Kate Raworth: A healthy economy should be designed to thrive, not grow</a></h3>
+      <div class="meta"><span>24</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 2 treats growth as a macroeconomic objective. Use her model to argue against it, then write the reply a mainstream economist would give. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/kate_raworth_a_healthy_economy_should_be_designed_to_thrive_not_grow">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/kate_raworth_a_healthy_economy_should_be_designed_to_thrive_not_grow</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/mariana_mazzucato_what_is_economic_value_and_who_creates_it">Mariana Mazzucato: What is economic value, and who creates it?</a></h3>
+      <div class="meta"><span>25</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 4.4 financial sector: she says some activity extracts value rather than creating it. Choose one financial market activity and argue both sides. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/mariana_mazzucato_what_is_economic_value_and_who_creates_it">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/mariana_mazzucato_what_is_economic_value_and_who_creates_it</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/richard_wilkinson_how_economic_inequality_harms_societies">Richard Wilkinson: How economic inequality harms societies</a></h3>
+      <div class="meta"><span>26</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 4.2 poverty and inequality: his charts show correlation. What else could explain the pattern, and what data would test it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/richard_wilkinson_how_economic_inequality_harms_societies">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/richard_wilkinson_how_economic_inequality_harms_societies</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">My</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_economic_growth_has_stalled_let_s_fix_it">Dambisa Moyo: Economic growth has stalled. Let's fix it</a></h3>
+      <div class="meta"><span>27</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 4.5 role of the state: where does the UK sit on her spectrum between state and market, and would you move it?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/dambisa_moyo_economic_growth_has_stalled_let_s_fix_it">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/dambisa_moyo_economic_growth_has_stalled_let_s_fix_it</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/tim_harford_trial_error_and_the_god_complex">Tim Harford: Trial, error and the God complex</a></h3>
+      <div class="meta"><span>28</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Theme 1 economic systems: why does he think planned solutions fail, and does the same argument apply to government intervention in Theme 3?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/tim_harford_trial_error_and_the_god_complex">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/tim_harford_trial_error_and_the_god_complex</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Re</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://res.org.uk/committees/pd-education-committee/annual-public-lecture/">Royal Economic Society Annual Public Lecture</a></h3>
+      <div class="meta"><span>29</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">A lecture for sixth formers by a leading economist, streamed live on 3 November 2026. Past lectures are recorded.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://res.org.uk/committees/pd-education-committee/annual-public-lecture/">RES lecture</a> &nbsp;<span class="dim">res.org.uk/committees/pd-education-committee/annual-public-lecture</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/economics">Gresham College economics and finance collection</a></h3>
+      <div class="meta"><span>30</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures. Daunton on the modern British economy fits Theme 2; Rau on finance fits Theme 4.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/economics">Gresham Economics</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/economics</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/economics">Cambridge HE+ Economics</a></h3>
+      <div class="meta"><span>31</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short modules with questions: behavioural economics, rationality and indifference curves.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/economics">HE+ Economics</a> &nbsp;<span class="dim">myheplus.com/subject/economics</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Lp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.lse.ac.uk/lse-player">LSE Player: public lectures and podcasts</a></h3>
+      <div class="meta"><span>32</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Recordings of LSE public lectures. Search for a topic you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.lse.ac.uk/lse-player">LSE Player</a> &nbsp;<span class="dim">lse.ac.uk/lse-player</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 4 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Tr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.tutor2u.net/free/economics">tutor2u Economics free library</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free notes, videos and quizzes for every topic. Use it to check a topic before reading further.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.tutor2u.net/free/economics">tutor2u free</a> &nbsp;<span class="dim">tutor2u.net/free/economics</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ib</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://ifs.org.uk/level-post-16-resources/be-chancellor-classroom-activity">IFS Be the Chancellor</a></h3>
+      <div class="meta"><span>34</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Set your own budget and see what happens to borrowing.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://ifs.org.uk/level-post-16-resources/be-chancellor-classroom-activity">Be the Chancellor</a> &nbsp;<span class="dim">ifs.org.uk/level-post-16-resources/be-chancellor-classroom-activity</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Nm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://nrich.maths.org/7321">NRICH Maths for Economists</a></h3>
+      <div class="meta"><span>35</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Maths problems with an economics twist, for anyone thinking of economics at university.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://nrich.maths.org/7321">NRICH</a> &nbsp;<span class="dim">nrich.maths.org/7321</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ce</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.core-econ.org/">CORE Econ: The Economy 2.0</a></h3>
+      <div class="meta"><span>36</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A free university textbook. Read the chapter that matches your current topic.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.core-econ.org/">CORE Econ</a> &nbsp;<span class="dim">core-econ.org</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 1 thing</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Sn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Sutton Trust UK Summer Schools</a></h3>
+      <div class="meta"><span>37</span><span>apply</span><span>Y12 at state schools, prioritising first-generation, FSM-eligible and other widening-participation pupils</span></div>
+    </div>
+  </div>
+  <p class="what">Free university summer schools for Year 12 at state schools. Check the criteria.</p>
+  <p class="when"><b>When:</b> 2026 applications closed; sign up for 2026-27 updates. Applications usually open in the new year: confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.suttontrust.com/our-programmes/uk-summer-schools/">Details</a> &nbsp;<span class="dim">suttontrust.com/our-programmes/uk-summer-schools</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your economics year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">1</span><div><b>Young Economist of the Year 2026 final</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">2</span><div><b>FT for schools registration; Bank Ambassador request</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Autumn term 2026</div><span class="sym dot">3</span><div><b>Fitzwilliam Gerald O'Connell questions published</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3 November 2026, 2–3.30pm</div><span class="sym dot">4</span><div><b>RES Annual Public Lecture: Dharshini David, 'Is Economics broken?'</b> </div></div><div class="ev" data-g="pick"><div class="when">Term time, 2–3pm</div><span class="sym dot">5</span><div><b>Gresham schools-only live talks</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late February 2027</div><span class="sym dot">6</span><div><b>Fitzwilliam economics essay deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late March 2027</div><span class="sym dot">7</span><div><b>Young Economist of the Year 2027 launch</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">May–June 2027</div><span class="sym dot">8</span><div><b>FCDO Next Generation Economics Competition</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">August 2027</div><span class="sym dot">9</span><div><b>Summer essay deadlines: King's E-Lab (2026: 5 Aug), Oxford Economics Society (2026: 14 Aug), Marshall Society (2026: 30 Aug)</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Ledger</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Economics Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

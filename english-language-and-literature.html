@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>English Language and Literature beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Work+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#BE123C; --watch:#1D4ED8; --listen:#7E22CE; --read:#A16207; --do:#15803D; --apply:#0F766E;
+  --f-display:"Lora",system-ui,sans-serif;
+  --f-body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#FFF4E0; --hero-ink:#1C1917; --hero-muted:#6B5F52;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:19pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · English Language and Literature · 2026-27</div>
+      <h1>English Language and Literature beyond the classroom<span class="sub">36 things to read, listen to, watch and enter. Free unless the entry says otherwise.</span></h1>
+      <p>This course sits between linguistics and literature, and universities for either will ask what you have read and what you noticed about how it was written. Listen to the language podcasts for the linguistics; read the magazines and anthologies for the rest. Write down how a text works, not only what it says. Each time you do something, write one line in your reading journal: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="read"></span><span data-g="listen"></span><span data-g="watch"></span><span data-g="enter"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/jamila_lyiscott_3_ways_to_speak_english"><span class="sym">Ly</span></a><div><div class="step">Watch · Lyiscott</div><p>Watch Jamila Lyiscott's '3 ways to speak English' (4 min) and mark each point where she switches variety.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/programmes/b006qtnz"><span class="sym">Wo</span></a><div><div class="step">Listen · Word of Mouth</div><p>Listen to one episode of Word of Mouth and note one claim about spoken language you could test against the anthology.</p></div></div><div class="pick" data-g="do"><a href="https://www.uklo.org/past-exam-papers/"><span class="sym">Up</span></a><div><div class="step">Papers · UKLO past papers</div><p>Try one problem from a UKLO Advanced past paper.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The reading pile</h2>
+    <div class="key"><span>One text per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 6</span></div><a class="tile" data-g="read" href="https://www.englishandmedia.co.uk/emagazine/">
+  <span class="fam">Read</span>
+  <span class="sym">Em</span>
+  <span class="nm">emagazine</span>
+  <span class="row"><span>01</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>emagazine (English and Media Centre)</b><i>Read · 10m</i><span>Articles written for A level English students. Ask the library for the school login.</span><em>emagazine ↗</em></span></a><a class="tile" data-g="read" href="https://www.bl.uk/discovering-literature">
+  <span class="fam">Read</span>
+  <span class="sym">Bl</span>
+  <span class="nm">British Library: Discovering…</span>
+  <span class="row"><span>02</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>British Library: Discovering Literature</b><i>Read · 10m</i><span>Articles and manuscript images for your set writers, free.</span><em>Discovering Literature ↗</em></span></a><a class="tile" data-g="read" href="https://www.english.ox.ac.uk/ten-minute-book-club">
+  <span class="fam">Read</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford English Faculty…</span>
+  <span class="row"><span>03</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford English Faculty: Ten-Minute Book Club</b><i>Read · 10m</i><span>A short extract and a short introduction. Read one a week.</span><em>Ten-Minute Book Club ↗</em></span></a><a class="tile" data-g="read" href="https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/">
+  <span class="fam">Read</span>
+  <span class="sym">Go</span>
+  <span class="nm">George Orwell, 'Politics and…</span>
+  <span class="row"><span>04</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>George Orwell, 'Politics and the English Language' (Orwell Foundation)</b><i>Read · 10m</i><span>Orwell's rules for plain writing. Test one of them against a speech in the anthology.</span><em>Orwell essay ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Hl</span>
+  <span class="nm">How Language Works</span>
+  <span class="row"><span>05</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>How Language Works, by David Crystal</b><i>Read · book · book</i><span>Short chapters on every part of language. Dip in when a term comes up in class.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tl</span>
+  <span class="nm">The Language Instinct</span>
+  <span class="row"><span>06</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Language Instinct, by Steven Pinker</b><i>Read · book · book</i><span>A readable argument that language is built into the brain. Read it against the Boroditsky talk.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 6</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qtnz">
+  <span class="fam">Listen</span>
+  <span class="sym">Wo</span>
+  <span class="nm">Word of Mouth</span>
+  <span class="row"><span>07</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Word of Mouth (BBC Radio 4, Michael Rosen)</b><i>Listen · 30m</i><span>Michael Rosen and a guest on one question about language. Pick any episode.</span><em>Word of Mouth ↗</em></span></a><a class="tile" data-g="listen" href="https://lingthusiasm.com/">
+  <span class="fam">Listen</span>
+  <span class="sym">Ln</span>
+  <span class="nm">Lingthusiasm</span>
+  <span class="row"><span>08</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Lingthusiasm</b><i>Listen · 30m</i><span>Two linguists explaining one idea per episode. Transcripts are on the site.</span><em>Lingthusiasm ↗</em></span></a><a class="tile" data-g="listen" href="https://lexiconvalley.supportingcast.fm/">
+  <span class="fam">Listen</span>
+  <span class="sym">Lv</span>
+  <span class="nm">Lexicon Valley</span>
+  <span class="row"><span>09</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Lexicon Valley (John McWhorter)</b><i>Listen · 30m</i><span>Short episodes on why English works the way it does.</span><em>Lexicon Valley ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>10</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the archive for your set writers.</span><em>In Our Time Culture ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qnmr">
+  <span class="fam">Listen</span>
+  <span class="sym">Di</span>
+  <span class="nm">Desert Island Discs archive</span>
+  <span class="row"><span>11</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Desert Island Discs archive (BBC Radio 4)</b><i>Listen · 30m</i><span>The anthology's Liz Carr interview comes from here. Listen to another and compare how the presenter steers the talk.</span><em>Desert Island Discs ↗</em></span></a><a class="tile" data-g="listen" href="https://www.thisamericanlife.org/">
+  <span class="fam">Listen</span>
+  <span class="sym">Ta</span>
+  <span class="nm">This American Life</span>
+  <span class="row"><span>12</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>This American Life</b><i>Listen · 30m</i><span>Where the anthology's 'Three miles' comes from. Try another episode and notice what is scripted and what is not.</span><em>This American Life ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 13</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/jamila_lyiscott_3_ways_to_speak_english">
+  <span class="fam">Watch</span>
+  <span class="sym">Ly</span>
+  <span class="nm">Lyiscott</span>
+  <span class="row"><span>13</span><span>4m</span></span>
+  <span class="pop" role="tooltip"><b>Jamila Lyiscott: 3 ways to speak English</b><i>Watch · talk · 4m</i><span>Mark each point where she switches variety of English and what signals it (lexis, grammar, pronunciation). Compare with how voice works in Jacob Sam-La Rose's Breaking Silence or Malika Booker's Pepper Seed.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_txtng_is_killing_language_jk">
+  <span class="fam">Watch</span>
+  <span class="sym">Mc</span>
+  <span class="nm">McWhorter</span>
+  <span class="row"><span>14</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>John McWhorter: Txtng is killing language. JK!!!</b><i>Watch · talk · 14m</i><span>McWhorter calls texting 'fingered speech'. List three features of spontaneous speech in the Paxman–Dizzee Rascal interview in the anthology. Which would appear in a text message, and which would not?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/anne_curzan_what_makes_a_word_real">
+  <span class="fam">Watch</span>
+  <span class="sym">Cr</span>
+  <span class="nm">Curzan</span>
+  <span class="row"><span>15</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Anne Curzan: What makes a word &quot;real&quot;?</b><i>Watch · talk · 17m</i><span>Who decides what counts as a word? Find one word in the Sophie Arthur blog or the Lucy Mangan review in the anthology that a 1990 dictionary would not have had, and explain how it came into use.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">
+  <span class="fam">Watch</span>
+  <span class="sym">Br</span>
+  <span class="nm">Boroditsky</span>
+  <span class="row"><span>16</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Lera Boroditsky: How language shapes the way we think</b><i>Watch · talk · 14m</i><span>How strong is her evidence that language shapes thought? Name one finding a sceptic would challenge and say why. This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/steven_pinker_what_our_language_habits_reveal">
+  <span class="fam">Watch</span>
+  <span class="sym">Pn</span>
+  <span class="nm">Pinker</span>
+  <span class="row"><span>17</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Steven Pinker: What our language habits reveal</b><i>Watch · talk · 17m</i><span>Use Pinker's account of indirect speech to explain two moments in your Component 02 play where a character says one thing and means another (Iago in Othello is the obvious case).</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">
+  <span class="fam">Watch</span>
+  <span class="sym">Ad</span>
+  <span class="nm">Adichie</span>
+  <span class="row"><span>18</span><span>19m</span></span>
+  <span class="pop" role="tooltip"><b>Chimamanda Ngozi Adichie: The danger of a single story</b><i>Watch · talk · 19m</i><span>Adichie credits Chinua Achebe with changing what she thought books could contain. Whose 'single story' does the narrative voice of your Component 03 novel challenge, and whose does it repeat?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sarah_kay_if_i_should_have_a_daughter">
+  <span class="fam">Watch</span>
+  <span class="sym">Ky</span>
+  <span class="nm">Kay</span>
+  <span class="row"><span>19</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Sarah Kay: If I should have a daughter ...</b><i>Watch · talk · 18m</i><span>Her poem is written to be heard. Which phonological and structural features make it work aloud, and would it work as well on the page? Use the Component 02 terms repetition, pattern-making and deviation.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">
+  <span class="fam">Watch</span>
+  <span class="sym">Cl</span>
+  <span class="nm">Collins</span>
+  <span class="row"><span>20</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Billy Collins: Everyday moments, caught in time</b><i>Watch · talk · 15m</i><span>Each poem is shown with an animation. Pick one and say what the animation adds and what it closes off. Then write 100 words on how one image works in a poem from your set collection.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/novel-powers">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: The Powers…</span>
+  <span class="row"><span>21</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: The Powers of the Novel (John Mullan)</b><i>Watch · lecture · 1h</i><span>Free lectures on how novels are built. Watch the one closest to your Component 03 novel.</span><em>Powers of the Novel ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">
+  <span class="fam">Watch</span>
+  <span class="sym">Gr</span>
+  <span class="nm">Gresham College: Belinda…</span>
+  <span class="row"><span>22</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Belinda Jack's lectures on rhetoric, poems and plays</b><i>Watch · lecture · 1h</i><span>Lectures that take one poem or play and one technique at a time.</span><em>Gresham English ↗</em></span></a><a class="tile" data-g="watch" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">
+  <span class="fam">Watch</span>
+  <span class="sym">Oa</span>
+  <span class="nm">Oxford: Approaching…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford: Approaching Shakespeare (Emma Smith)</b><i>Watch · lecture · 1h</i><span>An Oxford lecture on one Shakespeare play at a time. Start with Othello.</span><em>Approaching Shakespeare ↗</em></span></a><a class="tile" data-g="watch" href="https://podcasts.ox.ac.uk/units/faculty-english-language-and-literature">
+  <span class="fam">Watch</span>
+  <span class="sym">Oe</span>
+  <span class="nm">Oxford English Faculty…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Oxford English Faculty podcasts</b><i>Watch · lecture · 1h</i><span>Real Oxford lectures, including talks by the Professor of Poetry.</span><em>Oxford English podcasts ↗</em></span></a><a class="tile" data-g="watch" href="https://myheplus.com/subject/english">
+  <span class="fam">Watch</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ English</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ English</b><i>Watch · lecture · 1h</i><span>Short modules with questions, written for sixth formers.</span><em>HE+ English ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 5</span></div><a class="tile" data-g="enter" href="https://www.uklo.org/teachers-room/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ul</span>
+  <span class="nm">UK Linguistics Olympiad…</span>
+  <span class="row"><span>26</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>UK Linguistics Olympiad (UKLO), Advanced level</b><i>Enter · paper</i><span>Puzzles built from real languages you have never seen. No knowledge of linguistics is needed; you work out the patterns from the data. Try a past paper first.</span><em>UKLO teachers ↗</em></span></a><a class="tile" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">
+  <span class="fam">Enter</span>
+  <span class="sym">Gp</span>
+  <span class="nm">Gould Prize for Essays in…</span>
+  <span class="row"><span>27</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Gould Prize for Essays in English Literature (Trinity College, Cambridge)</b><i>Enter · entry</i><span>1,500–2,500 words on one of Trinity's questions. £600 first prize, split between you and the school. No help from school or AI.</span><em>Trinity ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">
+  <span class="fam">Enter</span>
+  <span class="sym">Tc</span>
+  <span class="nm">Thomas Campion English Prize</span>
+  <span class="row"><span>28</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Thomas Campion English Prize (Peterhouse, Cambridge)</b><i>Enter · essay</i><span>An English essay on a set question. First prize £500; winners and commended entrants are invited to Peterhouse.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">
+  <span class="fam">Enter</span>
+  <span class="sym">Oy</span>
+  <span class="nm">Orwell Youth Prize 2027…</span>
+  <span class="row"><span>29</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Orwell Youth Prize 2027: 'Acts of Courage'</b><i>Enter · essay</i><span>Up to 1,500 words in any form: essay, journalism, short story, poetry. Send a draft by 3 March and you get written feedback before the final deadline.</span><em>Orwell Youth Prize ↗</em></span></a><a class="tile" data-g="enter" href="https://foyleyoungpoets.org/rules/">
+  <span class="fam">Enter</span>
+  <span class="sym">Fy</span>
+  <span class="nm">Foyle Young Poets of the…</span>
+  <span class="row"><span>30</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>Foyle Young Poets of the Year Award (Poetry Society)</b><i>Enter · paper</i><span>Send up to three original poems. 100 winners each year, 15 of them top winners. Poems written with AI are not allowed.</span><em>Foyle rules ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 5</span></div><a class="tile" data-g="do" href="https://www.uklo.org/past-exam-papers/">
+  <span class="fam">Do</span>
+  <span class="sym">Up</span>
+  <span class="nm">UKLO past papers</span>
+  <span class="row"><span>31</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>UKLO past papers</b><i>Do · 20m</i><span>Real puzzles from past Olympiads. Start with an Advanced paper.</span><em>UKLO papers ↗</em></span></a><a class="tile" data-g="do" href="https://www.nottingham.ac.uk/stylisticstoolkit">
+  <span class="fam">Do</span>
+  <span class="sym">Tn</span>
+  <span class="nm">The Nottingham Stylistics…</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>The Nottingham Stylistics Toolkit</b><i>Do · 20m</i><span>Definitions and worked examples of the terms you use in stylistic analysis.</span><em>Stylistics Toolkit ↗</em></span></a><a class="tile" data-g="do" href="https://poetrystation.org.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Ep</span>
+  <span class="nm">EMC Poetry Station</span>
+  <span class="row"><span>33</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>EMC Poetry Station</b><i>Do · 20m</i><span>Watch poets read their own poems. Look for your set poet first.</span><em>Poetry Station ↗</em></span></a><a class="tile" data-g="do" href="https://www.englishandmedia.co.uk/publications-magazines/20710/new-directions-language-diversity-research-and-resource-pack-download-emc-free/">
+  <span class="fam">Do</span>
+  <span class="sym">Ef</span>
+  <span class="nm">EMC Free: New Directions</span>
+  <span class="row"><span>34</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>EMC Free: New Directions (language diversity research pack)</b><i>Do · 20m</i><span>Summaries of current research on how and why people speak differently.</span><em>New Directions ↗</em></span></a><a class="tile" data-g="do" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">
+  <span class="fam">Do</span>
+  <span class="sym">Hc</span>
+  <span class="nm">Hertford College…</span>
+  <span class="row"><span>35</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Hertford College Super-Curricular Challenge</b><i>Do · 20m</i><span>A challenge you can do on your own, with suggested reading and podcasts.</span><em>Hertford challenge ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 1</span></div><a class="tile" data-g="apply" href="https://www.uniq.ox.ac.uk/">
+  <span class="fam">Apply</span>
+  <span class="sym">Un</span>
+  <span class="nm">UNIQ</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>UNIQ (University of Oxford)</b><i>Apply · apply</i><span>A free week at Oxford studying English or Linguistics, plus support with applying. Check whether you are eligible.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 6 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Em</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.englishandmedia.co.uk/emagazine/">emagazine (English and Media Centre)</a></h3>
+      <div class="meta"><span>01</span><span>10m</span><span>paid school subscription</span></div>
+    </div>
+  </div>
+  <p class="what">Articles written for A level English students. Ask the library for the school login.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.englishandmedia.co.uk/emagazine/">emagazine</a> &nbsp;<span class="dim">englishandmedia.co.uk/emagazine</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.bl.uk/discovering-literature">British Library: Discovering Literature</a></h3>
+      <div class="meta"><span>02</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Articles and manuscript images for your set writers, free.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.bl.uk/discovering-literature">Discovering Literature</a> &nbsp;<span class="dim">bl.uk/discovering-literature</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.english.ox.ac.uk/ten-minute-book-club">Oxford English Faculty: Ten-Minute Book Club</a></h3>
+      <div class="meta"><span>03</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">A short extract and a short introduction. Read one a week.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.english.ox.ac.uk/ten-minute-book-club">Ten-Minute Book Club</a> &nbsp;<span class="dim">english.ox.ac.uk/ten-minute-book-club</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Go</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/">George Orwell, 'Politics and the English Language' (Orwell Foundation)</a></h3>
+      <div class="meta"><span>04</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Orwell's rules for plain writing. Test one of them against a speech in the anthology.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/">Orwell essay</a> &nbsp;<span class="dim">orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Hl</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">How Language Works, by David Crystal</span></h3>
+      <div class="meta"><span>05</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Short chapters on every part of language. Dip in when a term comes up in class.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tl</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Language Instinct, by Steven Pinker</span></h3>
+      <div class="meta"><span>06</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A readable argument that language is built into the brain. Read it against the Boroditsky talk.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 6 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Wo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qtnz">Word of Mouth (BBC Radio 4, Michael Rosen)</a></h3>
+      <div class="meta"><span>07</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Michael Rosen and a guest on one question about language. Pick any episode.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qtnz">Word of Mouth</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qtnz</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ln</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://lingthusiasm.com/">Lingthusiasm</a></h3>
+      <div class="meta"><span>08</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Two linguists explaining one idea per episode. Transcripts are on the site.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://lingthusiasm.com/">Lingthusiasm</a> &nbsp;<span class="dim">lingthusiasm.com</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Lv</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://lexiconvalley.supportingcast.fm/">Lexicon Valley (John McWhorter)</a></h3>
+      <div class="meta"><span>09</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Short episodes on why English works the way it does.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://lexiconvalley.supportingcast.fm/">Lexicon Valley</a> &nbsp;<span class="dim">lexiconvalley.supportingcast.fm</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>10</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for your set writers.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">In Our Time Culture</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01drwny</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Di</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qnmr">Desert Island Discs archive (BBC Radio 4)</a></h3>
+      <div class="meta"><span>11</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The anthology's Liz Carr interview comes from here. Listen to another and compare how the presenter steers the talk.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b006qnmr">Desert Island Discs</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b006qnmr</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ta</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.thisamericanlife.org/">This American Life</a></h3>
+      <div class="meta"><span>12</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Where the anthology's 'Three miles' comes from. Try another episode and notice what is scripted and what is not.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.thisamericanlife.org/">This American Life</a> &nbsp;<span class="dim">thisamericanlife.org</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 13 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ly</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jamila_lyiscott_3_ways_to_speak_english">Jamila Lyiscott: 3 ways to speak English</a></h3>
+      <div class="meta"><span>13</span><span>4m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 4 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Mark each point where she switches variety of English and what signals it (lexis, grammar, pronunciation). Compare with how voice works in Jacob Sam-La Rose's Breaking Silence or Malika Booker's Pepper Seed.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jamila_lyiscott_3_ways_to_speak_english">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jamila_lyiscott_3_ways_to_speak_english</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_txtng_is_killing_language_jk">John McWhorter: Txtng is killing language. JK!!!</a></h3>
+      <div class="meta"><span>14</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> McWhorter calls texting 'fingered speech'. List three features of spontaneous speech in the Paxman–Dizzee Rascal interview in the anthology. Which would appear in a text message, and which would not?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/john_mcwhorter_txtng_is_killing_language_jk">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/john_mcwhorter_txtng_is_killing_language_jk</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/anne_curzan_what_makes_a_word_real">Anne Curzan: What makes a word &quot;real&quot;?</a></h3>
+      <div class="meta"><span>15</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Who decides what counts as a word? Find one word in the Sophie Arthur blog or the Lucy Mangan review in the anthology that a 1990 dictionary would not have had, and explain how it came into use.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/anne_curzan_what_makes_a_word_real">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/anne_curzan_what_makes_a_word_real</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">Lera Boroditsky: How language shapes the way we think</a></h3>
+      <div class="meta"><span>16</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> How strong is her evidence that language shapes thought? Name one finding a sceptic would challenge and say why. This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Pn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/steven_pinker_what_our_language_habits_reveal">Steven Pinker: What our language habits reveal</a></h3>
+      <div class="meta"><span>17</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Use Pinker's account of indirect speech to explain two moments in your Component 02 play where a character says one thing and means another (Iago in Othello is the obvious case).</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/steven_pinker_what_our_language_habits_reveal">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/steven_pinker_what_our_language_habits_reveal</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ad</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Chimamanda Ngozi Adichie: The danger of a single story</a></h3>
+      <div class="meta"><span>18</span><span>19m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 19 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Adichie credits Chinua Achebe with changing what she thought books could contain. Whose 'single story' does the narrative voice of your Component 03 novel challenge, and whose does it repeat?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ky</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sarah_kay_if_i_should_have_a_daughter">Sarah Kay: If I should have a daughter ...</a></h3>
+      <div class="meta"><span>19</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Her poem is written to be heard. Which phonological and structural features make it work aloud, and would it work as well on the page? Use the Component 02 terms repetition, pattern-making and deviation.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sarah_kay_if_i_should_have_a_daughter">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sarah_kay_if_i_should_have_a_daughter</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">Billy Collins: Everyday moments, caught in time</a></h3>
+      <div class="meta"><span>20</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Each poem is shown with an animation. Pick one and say what the animation adds and what it closes off. Then write 100 words on how one image works in a poem from your set collection.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/billy_collins_everyday_moments_caught_in_time</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/novel-powers">Gresham College: The Powers of the Novel (John Mullan)</a></h3>
+      <div class="meta"><span>21</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free lectures on how novels are built. Watch the one closest to your Component 03 novel.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/series/novel-powers">Powers of the Novel</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/series/novel-powers</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham College: Belinda Jack's lectures on rhetoric, poems and plays</a></h3>
+      <div class="meta"><span>22</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Lectures that take one poem or play and one technique at a time.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham English</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/english</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oa</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">Oxford: Approaching Shakespeare (Emma Smith)</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">An Oxford lecture on one Shakespeare play at a time. Start with Othello.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/series/approaching-shakespeare">Approaching Shakespeare</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/series/approaching-shakespeare</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Oe</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/units/faculty-english-language-and-literature">Oxford English Faculty podcasts</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Real Oxford lectures, including talks by the Professor of Poetry.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://podcasts.ox.ac.uk/units/faculty-english-language-and-literature">Oxford English podcasts</a> &nbsp;<span class="dim">podcasts.ox.ac.uk/units/faculty-english-language-and-literature</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://myheplus.com/subject/english">Cambridge HE+ English</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short modules with questions, written for sixth formers.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://myheplus.com/subject/english">HE+ English</a> &nbsp;<span class="dim">myheplus.com/subject/english</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 5 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ul</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.uklo.org/teachers-room/">UK Linguistics Olympiad (UKLO), Advanced level</a></h3>
+      <div class="meta"><span>26</span><span>paper</span><span>Years 12–13 (Advanced); younger pupils may enter a higher level</span><span>via school</span></div>
+    </div>
+  </div>
+  <p class="what">Puzzles built from real languages you have never seen. No knowledge of linguistics is needed; you work out the patterns from the data. Try a past paper first.</p>
+  <p class="when"><b>When:</b> Advanced Round 1 is sat in school in the second week of February; gold medallists go on to Round 2 in March (3.5 hours, exam conditions). 2027 dates are on the UKLO noticeboard; confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.uklo.org/teachers-room/">UKLO teachers</a> &nbsp;<span class="dim">uklo.org/teachers-room</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Gp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Gould Prize for Essays in English Literature (Trinity College, Cambridge)</a></h3>
+      <div class="meta"><span>27</span><span>entry</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">1,500–2,500 words on one of Trinity's questions. £600 first prize, split between you and the school. No help from school or AI.</p>
+  <p class="when"><b>When:</b> Trinity posts 2027 information in February 2027. The 2026 deadline was 12 noon, 31 July; results early September. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Trinity</a> &nbsp;<span class="dim">trin.cam.ac.uk/undergraduate/essay-prizes/english-literature</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">Thomas Campion English Prize (Peterhouse, Cambridge)</a></h3>
+      <div class="meta"><span>28</span><span>essay</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An English essay on a set question. First prize £500; winners and commended entrants are invited to Peterhouse.</p>
+  <p class="when"><b>When:</b> Questions in the spring; deadline usually March or April, with a teacher verification step a few days later. Confirm on the Peterhouse site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/essay-prizes</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Oy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">Orwell Youth Prize 2027: 'Acts of Courage'</a></h3>
+      <div class="meta"><span>29</span><span>essay</span><span>Years 7–13; Y12–13 in the senior category</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Up to 1,500 words in any form: essay, journalism, short story, poetry. Send a draft by 3 March and you get written feedback before the final deadline.</p>
+  <p class="when"><b>When:</b> Open now. Draft for feedback by 3 March 2027; final entries by 29 April 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/">Orwell Youth Prize</a> &nbsp;<span class="dim">orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Fy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://foyleyoungpoets.org/rules/">Foyle Young Poets of the Year Award (Poetry Society)</a></h3>
+      <div class="meta"><span>30</span><span>paper</span><span>Aged 11–17 on 31 July (most Y12; few Y13)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Send up to three original poems. 100 winners each year, 15 of them top winners. Poems written with AI are not allowed.</p>
+  <p class="when"><b>When:</b> 2026 deadline was midnight, 31 July 2026; 2027 round expected to follow the same pattern. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://foyleyoungpoets.org/rules/">Foyle rules</a> &nbsp;<span class="dim">foyleyoungpoets.org/rules</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Up</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.uklo.org/past-exam-papers/">UKLO past papers</a></h3>
+      <div class="meta"><span>31</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Real puzzles from past Olympiads. Start with an Advanced paper.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.uklo.org/past-exam-papers/">UKLO papers</a> &nbsp;<span class="dim">uklo.org/past-exam-papers</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Tn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.nottingham.ac.uk/stylisticstoolkit">The Nottingham Stylistics Toolkit</a></h3>
+      <div class="meta"><span>32</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Definitions and worked examples of the terms you use in stylistic analysis.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.nottingham.ac.uk/stylisticstoolkit">Stylistics Toolkit</a> &nbsp;<span class="dim">nottingham.ac.uk/stylisticstoolkit</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ep</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://poetrystation.org.uk/">EMC Poetry Station</a></h3>
+      <div class="meta"><span>33</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Watch poets read their own poems. Look for your set poet first.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://poetrystation.org.uk/">Poetry Station</a> &nbsp;<span class="dim">poetrystation.org.uk</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ef</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.englishandmedia.co.uk/publications-magazines/20710/new-directions-language-diversity-research-and-resource-pack-download-emc-free/">EMC Free: New Directions (language diversity research pack)</a></h3>
+      <div class="meta"><span>34</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Summaries of current research on how and why people speak differently.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.englishandmedia.co.uk/publications-magazines/20710/new-directions-language-diversity-research-and-resource-pack-download-emc-free/">New Directions</a> &nbsp;<span class="dim">englishandmedia.co.uk/publications-magazines/20710/new-directions-language-diversity-research-and-resource-pack-download-emc-free</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Hc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">Hertford College Super-Curricular Challenge</a></h3>
+      <div class="meta"><span>35</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">A challenge you can do on your own, with suggested reading and podcasts.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/">Hertford challenge</a> &nbsp;<span class="dim">hertford.ox.ac.uk/study-here/outreach/digital/challenge</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 1 thing</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Un</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">UNIQ (University of Oxford)</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>UK state-school Y12, prioritising backgrounds under-represented at Oxford</span></div>
+    </div>
+  </div>
+  <p class="what">A free week at Oxford studying English or Linguistics, plus support with applying. Check whether you are eligible.</p>
+  <p class="when"><b>When:</b> 2027 application dates not yet posted; applications have usually opened in December. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.uniq.ox.ac.uk/">Details</a> &nbsp;<span class="dim">uniq.ox.ac.uk</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your English year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">1</span><div><b>Orwell Youth Prize 2027 ('Acts of Courage') open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Wednesday 4 November 2026, 4pm</div><span class="sym dot">2</span><div><b>British Library teacher CPD: Oscar Wilde in Context (online)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Friday 20 and Monday 23 November 2026</div><span class="sym dot">3</span><div><b>British Library Young Adult Crime Fiction Fest (online, Years 9–13)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">December 2026 – January 2027</div><span class="sym dot">4</span><div><b>UKLO school registration; UNIQ applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">February 2027</div><span class="sym dot">5</span><div><b>Trinity posts 2027 essay prize information (Gould Prize)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Second week of February 2027</div><span class="sym dot">6</span><div><b>UKLO Advanced Round 1, sat in school; Round 2 for gold medallists in March</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">3 March 2027</div><span class="sym dot">7</span><div><b>Orwell Youth Prize: deadline for feedback on drafts</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">8</span><div><b>Thomas Campion English Prize deadline (Peterhouse)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">29 April 2027</div><span class="sym dot">9</span><div><b>Orwell Youth Prize final deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">31 July 2027 (expected)</div><span class="sym dot">10</span><div><b>Foyle Young Poets and Gould Prize deadlines</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Reading journal</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>English Language and Literature Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

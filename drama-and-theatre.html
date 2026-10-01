@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Drama and Theatre beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Karla:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#DC2626; --watch:#2563EB; --listen:#7C3AED; --read:#B45309; --do:#16A34A; --apply:#0E7490;
+  --f-display:"Bebas Neue",system-ui,sans-serif;
+  --f-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1A0B0B; --hero-ink:#FFF5F0; --hero-muted:#D9B4A8;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25.650000000000002pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Drama and Theatre · 2026-27</div>
+      <h1>Drama and Theatre beyond the classroom<span class="sub">38 things to see, do, read and enter. All free.</span></h1>
+      <p>Drama schools audition and universities interview, and both ask what you have seen and what you have made. The National Theatre Collection, the RSC and Old Vic resources and the cheap-ticket schemes below are ways to see productions; the Rep, Old Vic and Frantic Assembly programmes and the playwriting prize are ways to make work. Write down what you saw and one choice the director made. Each time you do something, write one line in your rehearsal diary: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="watch"></span><span data-g="do"></span><span data-g="enter"></span><span data-g="read"></span><span data-g="listen"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/handspring_puppet_co_the_genius_puppetry_behind_war_horse"><span class="sym">Cm</span></a><div><div class="step">Watch · Company</div><p>Watch Handspring Puppet Company on War Horse (18 min) and note three things the puppeteers do to make Joey seem alive.</p></div></div><div class="pick" data-g="watch"><a href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/"><span class="sym">Nt</span></a><div><div class="step">NT Collection · National Theatre Collection</div><p>Ask your teacher for the National Theatre Collection login and watch a production of one of your set texts.</p></div></div><div class="pick" data-g="do"><a href="https://www.rsc.org.uk/support/rsc-10-tickets"><span class="sym">Rt</span></a><div><div class="step">RSC £10 · RSC £10 tickets</div><p>Register for RSC £10 tickets and book a show in Stratford this term.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The call sheet</h2>
+    <div class="key"><span>One call per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/handspring_puppet_co_the_genius_puppetry_behind_war_horse">
+  <span class="fam">Watch</span>
+  <span class="sym">Cm</span>
+  <span class="nm">Company</span>
+  <span class="row"><span>01</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Handspring Puppet Company: The genius puppetry behind War Horse</b><i>Watch · 18m</i><span>Handspring are an AQA prescribed practitioner. What do the puppeteers do to make Joey seem to breathe and think, and which of those techniques could you use in a devised piece?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/julie_taymor_spider_man_the_lion_king_and_life_on_the_creative_edge">
+  <span class="fam">Watch</span>
+  <span class="sym">Ty</span>
+  <span class="nm">Taymor</span>
+  <span class="row"><span>02</span><span>18m</span></span>
+  <span class="pop" role="tooltip"><b>Julie Taymor: Spider-Man, The Lion King and life on the creative edge</b><i>Watch · talk · 18m</i><span>Taymor is on the prescribed list. Pick one image from her work and explain how it turns an idea into something an audience can see.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/amir_nizar_zuabi_walk_with_little_amal_a_theatrical_journey_celebrating_the_refugee_experience">
+  <span class="fam">Watch</span>
+  <span class="sym">Zb</span>
+  <span class="nm">Zuabi</span>
+  <span class="row"><span>03</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Amir Nizar Zuabi: Walk with Little Amal, a theatrical journey celebrating the refugee experience</b><i>Watch · talk · 9m</i><span>Amal is a giant puppet walking through real towns. Where does the performance take place, who is the audience, and how does that change what the piece means?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/jo_michael_rezes_a_playful_exploration_of_gender_performance">
+  <span class="fam">Watch</span>
+  <span class="sym">Rz</span>
+  <span class="nm">Rezes</span>
+  <span class="row"><span>04</span><span>17m</span></span>
+  <span class="pop" role="tooltip"><b>Jo Michael Rezes: A playful exploration of gender performance</b><i>Watch · talk · 17m</i><span>Churchill cross-casts characters in Cloud Nine. Use the talk to explain what an audience notices when gender is performed rather than assumed.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/oskar_eustis_why_theater_is_essential_to_democracy">
+  <span class="fam">Watch</span>
+  <span class="sym">Es</span>
+  <span class="nm">Eustis</span>
+  <span class="row"><span>05</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Oskar Eustis: Why theater is essential to democracy</b><i>Watch · talk · 13m</i><span>Eustis traces theatre back to Athens. Test his claim against Antigone: does the play support a democratic reading? This talk is there to be argued with.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/ben_cameron_why_the_live_arts_matter">
+  <span class="fam">Watch</span>
+  <span class="sym">Cr</span>
+  <span class="nm">Cameron</span>
+  <span class="row"><span>06</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Ben Cameron: Why the live arts matter</b><i>Watch · talk · 12m</i><span>After watching a filmed production on the NT Collection, list what the recording could not give you that a live performance does. Do you agree with Cameron?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/margaret_hall_how_modern_audiences_can_talk_about_aging_art">
+  <span class="fam">Watch</span>
+  <span class="sym">Hl</span>
+  <span class="nm">Hall</span>
+  <span class="row"><span>07</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Margaret Hall: How modern audiences can talk about aging art</b><i>Watch · talk · 10m</i><span>Apply her categories to one List A play written before 1900. What must a director change, and what should be left alone?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/cara_greene_epstein_how_theater_weathers_wars_outlasts_empires_and_survives_pandemics">
+  <span class="fam">Watch</span>
+  <span class="sym">Ep</span>
+  <span class="nm">Epstein</span>
+  <span class="row"><span>08</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Cara Greene Epstein: How theater weathers wars, outlasts empires and survives pandemics</b><i>Watch · talk · 15m</i><span>Choose one set text and explain how its original social and historical context shaped the way it was first staged.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">
+  <span class="fam">Watch</span>
+  <span class="sym">Nt</span>
+  <span class="nm">National Theatre Collection</span>
+  <span class="row"><span>09</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>National Theatre Collection</b><i>Watch · lecture · 1h</i><span>Filmed NT productions, free through school. Ask your teacher for the login and watch a production of a set text you study.</span><em>NT Collection ↗</em></span></a><a class="tile" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/discover/greek-theatre-video-collection/">
+  <span class="fam">Watch</span>
+  <span class="sym">Nd</span>
+  <span class="nm">NT Discover: Greek Theatre…</span>
+  <span class="row"><span>10</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>NT Discover: Greek Theatre video collection and Life in Stages</b><i>Watch · lecture · 1h</i><span>Free NT videos on Greek theatre and on how leading directors and designers work.</span><em>NT Greek theatre ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rsc.org.uk/learn/schools-and-teachers/teacher-resources">
+  <span class="fam">Watch</span>
+  <span class="sym">Rl</span>
+  <span class="nm">RSC Learning</span>
+  <span class="row"><span>11</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>RSC Learning (Stratford-upon-Avon)</b><i>Watch · lecture · 1h</i><span>Free RSC videos and resource packs on Shakespeare in performance.</span><em>RSC resources ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Shakespeare…</span>
+  <span class="row"><span>12</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Shakespeare – From Page to Stage</b><i>Watch · lecture · 1h</i><span>Free university lectures on Shakespeare. Start with Shakespeare's Lovers if you study Much Ado.</span><em>Gresham English ↗</em></span></a><a class="tile" data-g="watch" href="https://www.oldvictheatre.com/discover/the-hub/">
+  <span class="fam">Watch</span>
+  <span class="sym">To</span>
+  <span class="nm">The Old Vic Hub</span>
+  <span class="row"><span>13</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>The Old Vic Hub</b><i>Watch · lecture · 1h</i><span>Free films and workshops from the Old Vic on how shows are designed and made.</span><em>Old Vic Hub ↗</em></span></a><a class="tile" data-g="watch" href="https://www.franticassembly.co.uk/frantic-digital">
+  <span class="fam">Watch</span>
+  <span class="sym">Fa</span>
+  <span class="nm">Frantic Assembly: Frantic…</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Frantic Assembly: Frantic Digital and free live evaluation resources</b><i>Watch · lecture · 1h</i><span>Short films showing how Frantic Assembly devise physical theatre. Watch TOUCH before a devising lesson.</span><em>Frantic Digital ↗</em></span></a><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 4</span></div><a class="tile" data-g="do" href="https://www.rsc.org.uk/support/rsc-10-tickets">
+  <span class="fam">Do</span>
+  <span class="sym">Rt</span>
+  <span class="nm">RSC £10 tickets</span>
+  <span class="row"><span>15</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>RSC £10 tickets (for Section C live theatre)</b><i>Do · 20m</i><span>Register for RSC £10 tickets and see a show in Stratford. Take notes on lighting, sound, set and costume straight afterwards.</span><em>RSC £10 tickets ↗</em></span></a><a class="tile" data-g="do" href="https://www.birmingham-rep.co.uk/take-part/young-people/">
+  <span class="fam">Do</span>
+  <span class="sym">Br</span>
+  <span class="nm">Birmingham Rep 16–25…</span>
+  <span class="row"><span>16</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Birmingham Rep 16–25 membership</b><i>Do · 20m</i><span>Join free for cheaper tickets at the Rep.</span><em>Rep young people ↗</em></span></a><a class="tile" data-g="do" href="https://www.franticassembly.co.uk/frantic-digital">
+  <span class="fam">Do</span>
+  <span class="sym">Fn</span>
+  <span class="nm">Frantic Assembly TOUCH films…</span>
+  <span class="row"><span>17</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Frantic Assembly TOUCH films and #FranticMirror</b><i>Do · 20m</i><span>Watch a TOUCH film, then try the exercise with a partner and film it.</span><em>Frantic Digital ↗</em></span></a><a class="tile" data-g="do" href="https://www.oldvictheatre.com/discover/the-hub/">
+  <span class="fam">Do</span>
+  <span class="sym">Ov</span>
+  <span class="nm">Old Vic interactive model box</span>
+  <span class="row"><span>18</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Old Vic interactive model box</b><i>Do · 20m</i><span>Design a set online for a scene you are studying.</span><em>Old Vic Hub ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 3</span></div><a class="tile" data-g="enter" href="https://royalcourttheatre.com/write-and-create/schools-young-people/young-playwrights-award">
+  <span class="fam">Enter</span>
+  <span class="sym">Yp</span>
+  <span class="nm">Young Playwrights Award</span>
+  <span class="row"><span>19</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Young Playwrights Award (Royal Court Theatre)</b><i>Enter · entry</i><span>Write a play on any subject and send it in. Winning plays are published by Nick Hern Books. The Royal Court runs free workshops and video masterclasses to help.</span><em>Royal Court ↗</em></span></a><a class="tile" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">
+  <span class="fam">Enter</span>
+  <span class="sym">Gp</span>
+  <span class="nm">Gould Prize for Essays in…</span>
+  <span class="row"><span>20</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Gould Prize for Essays in English Literature (Trinity College, Cambridge)</b><i>Enter · essay</i><span>A critical essay of 1,500–2,500 words. Plays written in English count, so a pupil could write on Churchill, Williams or Butterworth. £600 first prize, split between you and the school. No creative writing and no AI.</span><em>Trinity ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes-faqs">
+  <span class="fam">Enter</span>
+  <span class="sym">Tc</span>
+  <span class="nm">Thomas Campion English Prize</span>
+  <span class="row"><span>21</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Thomas Campion English Prize (Peterhouse, Cambridge)</b><i>Enter · essay</i><span>An English essay on a set question; check each year whether a question fits a play you study. Winners are invited to a lunch at Peterhouse with academics.</span><em>Peterhouse ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 8</span></div><a class="tile" data-g="read" href="https://www.nationaltheatre.org.uk/learn-explore/schools/teacher-resources/">
+  <span class="fam">Read</span>
+  <span class="sym">Nl</span>
+  <span class="nm">National Theatre teacher and…</span>
+  <span class="row"><span>22</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>National Theatre teacher and student resources</b><i>Read · 10m</i><span>Rehearsal diaries and interviews from real productions.</span><em>NT resources ↗</em></span></a><a class="tile" data-g="read" href="https://www.franticassembly.co.uk/resource-for-gcse-alevel-btec">
+  <span class="fam">Read</span>
+  <span class="sym">Fr</span>
+  <span class="nm">Frantic Assembly free live…</span>
+  <span class="row"><span>23</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Frantic Assembly free live evaluation documents</b><i>Read · 10m</i><span>How one company explains its design choices. Use it as a model for your own live theatre notes.</span><em>Frantic resources ↗</em></span></a><a class="tile" data-g="read" href="https://teach.shakespearesglobe.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Gt</span>
+  <span class="nm">Globe Teach Shakespeare</span>
+  <span class="row"><span>24</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Globe Teach Shakespeare</b><i>Read · 10m</i><span>Performance clips and activities from the Globe; your teacher can get access.</span><em>Teach Shakespeare ↗</em></span></a><a class="tile" data-g="read" href="https://www.thestage.co.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">Ts</span>
+  <span class="nm">The Stage</span>
+  <span class="row"><span>25</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>The Stage</b><i>Read · 10m</i><span>Theatre news and reviews. Read reviews of shows you have seen and compare them with your own notes.</span><em>thestage.co.uk ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Te</span>
+  <span class="nm">The Empty Space</span>
+  <span class="row"><span>26</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Empty Space, by Peter Brook</b><i>Read · book · book</i><span>A short classic by a director on the practitioner list. Read the first chapter.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tf</span>
+  <span class="nm">The Frantic Assembly Book of…</span>
+  <span class="row"><span>27</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Frantic Assembly Book of Devising Theatre, by Scott Graham and Steven Hoggett</b><i>Read · book · book</i><span>How Frantic Assembly build a show. Useful if your group is devising with their methods.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Bo</span>
+  <span class="nm">Brecht on Theatre</span>
+  <span class="row"><span>28</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Brecht on Theatre, by Bertolt Brecht, edited by John Willett</b><i>Read · book · book</i><span>Brecht explaining his ideas in his own words. Read one essay, not the whole book.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Tp</span>
+  <span class="nm">The Playmaker</span>
+  <span class="row"><span>29</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Playmaker, by Thomas Keneally</b><i>Read · book · book</i><span>The novel behind Our Country's Good.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 4</span></div><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Culture…</span>
+  <span class="row"><span>30</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Culture archive</b><i>Listen · 30m</i><span>Search the archive for the playwright you study. Three academics, 45 minutes.</span><em>In Our Time Culture ↗</em></span></a><a class="tile" data-g="listen" href="https://www.shakespearesglobe.com/discover/such-stuff-podcast/">
+  <span class="fam">Listen</span>
+  <span class="sym">Ss</span>
+  <span class="nm">Such Stuff</span>
+  <span class="row"><span>31</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Such Stuff (Shakespeare's Globe)</b><i>Listen · 30m</i><span>The Globe's own podcast about how their shows are made.</span><em>Such Stuff ↗</em></span></a><a class="tile" data-g="listen" href="https://www.blackplaysarchive.org.uk/that-black-theatre-podcast/">
+  <span class="fam">Listen</span>
+  <span class="sym">Tb</span>
+  <span class="nm">That Black Theatre Podcast</span>
+  <span class="row"><span>32</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>That Black Theatre Podcast (Black Plays Archive, National Theatre)</b><i>Listen · 30m</i><span>Thirteen episodes on Black British playwrights and their plays.</span><em>That Black Theatre Podcast ↗</em></span></a><a class="tile" data-g="listen" href="https://www.nationaltheatre.org.uk/learn-explore/talks/">
+  <span class="fam">Listen</span>
+  <span class="sym">Nn</span>
+  <span class="nm">National Theatre Talks</span>
+  <span class="row"><span>33</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>National Theatre Talks</b><i>Listen · 30m</i><span>Directors and designers talking about their productions.</span><em>NT Talks ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 5</span></div><a class="tile" data-g="apply" href="https://www.franticassembly.co.uk/ignition-2026">
+  <span class="fam">Apply</span>
+  <span class="sym">Ig</span>
+  <span class="nm">Ignition</span>
+  <span class="row"><span>34</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Ignition (Frantic Assembly)</b><i>Apply · apply</i><span>A free physical theatre programme. Sign up for the trial workshop at the Hippodrome next September.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.birminghamhippodrome.com/hippodrome-projects/young-people/young-advocates/">
+  <span class="fam">Apply</span>
+  <span class="sym">Ya</span>
+  <span class="nm">Young Advocates</span>
+  <span class="row"><span>35</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Young Advocates (Birmingham Hippodrome)</b><i>Apply · 16–25 · apply</i><span>A group of young people who advise the Hippodrome and get training and paid work in return.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.theatrecraft.org/">
+  <span class="fam">Apply</span>
+  <span class="sym">Th</span>
+  <span class="nm">TheatreCraft</span>
+  <span class="row"><span>36</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>TheatreCraft</b><i>Apply · apply</i><span>A free day in London on backstage careers: lighting, sound, stage management, costume.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.birmingham-rep.co.uk/take-part/rep-pathways/">
+  <span class="fam">Apply</span>
+  <span class="sym">Rp</span>
+  <span class="nm">Rep Pathways</span>
+  <span class="row"><span>37</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Rep Pathways (Birmingham Rep)</b><i>Apply · 18–30 · apply</i><span>Training and backstage experience at the Rep once you are 18.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.masterclass.org.uk/">
+  <span class="fam">Apply</span>
+  <span class="sym">Ms</span>
+  <span class="nm">Masterclass</span>
+  <span class="row"><span>38</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Masterclass (Theatre Royal Haymarket charity)</b><i>Apply · 16–30 · apply</i><span>Free membership for 16–30s: workshops with theatre professionals and £5 West End tickets.</span><em>Details ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/handspring_puppet_co_the_genius_puppetry_behind_war_horse">Handspring Puppet Company: The genius puppetry behind War Horse</a></h3>
+      <div class="meta"><span>01</span><span>18m</span><span>Adrian Kohler and Basil Jones</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk (Adrian Kohler and Basil Jones).</p>
+  
+  <p class="think"><b>Think about:</b> Handspring are an AQA prescribed practitioner. What do the puppeteers do to make Joey seem to breathe and think, and which of those techniques could you use in a devised piece?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/handspring_puppet_co_the_genius_puppetry_behind_war_horse">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/handspring_puppet_co_the_genius_puppetry_behind_war_horse</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ty</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/julie_taymor_spider_man_the_lion_king_and_life_on_the_creative_edge">Julie Taymor: Spider-Man, The Lion King and life on the creative edge</a></h3>
+      <div class="meta"><span>02</span><span>18m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 18 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Taymor is on the prescribed list. Pick one image from her work and explain how it turns an idea into something an audience can see.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/julie_taymor_spider_man_the_lion_king_and_life_on_the_creative_edge">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/julie_taymor_spider_man_the_lion_king_and_life_on_the_creative_edge</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Zb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/amir_nizar_zuabi_walk_with_little_amal_a_theatrical_journey_celebrating_the_refugee_experience">Amir Nizar Zuabi: Walk with Little Amal, a theatrical journey celebrating the refugee experience</a></h3>
+      <div class="meta"><span>03</span><span>9m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 9 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Amal is a giant puppet walking through real towns. Where does the performance take place, who is the audience, and how does that change what the piece means?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/amir_nizar_zuabi_walk_with_little_amal_a_theatrical_journey_celebrating_the_refugee_experience">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/amir_nizar_zuabi_walk_with_little_amal_a_theatrical_journey_celebrating_the_refugee_experience</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rz</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/jo_michael_rezes_a_playful_exploration_of_gender_performance">Jo Michael Rezes: A playful exploration of gender performance</a></h3>
+      <div class="meta"><span>04</span><span>17m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 17 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Churchill cross-casts characters in Cloud Nine. Use the talk to explain what an audience notices when gender is performed rather than assumed.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/jo_michael_rezes_a_playful_exploration_of_gender_performance">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/jo_michael_rezes_a_playful_exploration_of_gender_performance</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Es</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/oskar_eustis_why_theater_is_essential_to_democracy">Oskar Eustis: Why theater is essential to democracy</a></h3>
+      <div class="meta"><span>05</span><span>13m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 13 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Eustis traces theatre back to Athens. Test his claim against Antigone: does the play support a democratic reading? This talk is there to be argued with.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/oskar_eustis_why_theater_is_essential_to_democracy">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/oskar_eustis_why_theater_is_essential_to_democracy</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Cr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/ben_cameron_why_the_live_arts_matter">Ben Cameron: Why the live arts matter</a></h3>
+      <div class="meta"><span>06</span><span>12m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 12 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> After watching a filmed production on the NT Collection, list what the recording could not give you that a live performance does. Do you agree with Cameron?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/ben_cameron_why_the_live_arts_matter">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/ben_cameron_why_the_live_arts_matter</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/margaret_hall_how_modern_audiences_can_talk_about_aging_art">Margaret Hall: How modern audiences can talk about aging art</a></h3>
+      <div class="meta"><span>07</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Apply her categories to one List A play written before 1900. What must a director change, and what should be left alone?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/margaret_hall_how_modern_audiences_can_talk_about_aging_art">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/margaret_hall_how_modern_audiences_can_talk_about_aging_art</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ep</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/cara_greene_epstein_how_theater_weathers_wars_outlasts_empires_and_survives_pandemics">Cara Greene Epstein: How theater weathers wars, outlasts empires and survives pandemics</a></h3>
+      <div class="meta"><span>08</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Choose one set text and explain how its original social and historical context shaped the way it was first staged.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/cara_greene_epstein_how_theater_weathers_wars_outlasts_empires_and_survives_pandemics">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/cara_greene_epstein_how_theater_weathers_wars_outlasts_empires_and_survives_pandemics</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Nt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">National Theatre Collection</a></h3>
+      <div class="meta"><span>09</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Filmed NT productions, free through school. Ask your teacher for the login and watch a production of a set text you study.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection/">NT Collection</a> &nbsp;<span class="dim">nationaltheatre.org.uk/learn-explore/schools/national-theatre-collection</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Nd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/discover/greek-theatre-video-collection/">NT Discover: Greek Theatre video collection and Life in Stages</a></h3>
+      <div class="meta"><span>10</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free NT videos on Greek theatre and on how leading directors and designers work.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.nationaltheatre.org.uk/learn-explore/discover/greek-theatre-video-collection/">NT Greek theatre</a> &nbsp;<span class="dim">nationaltheatre.org.uk/learn-explore/discover/greek-theatre-video-collection</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rsc.org.uk/learn/schools-and-teachers/teacher-resources">RSC Learning (Stratford-upon-Avon)</a></h3>
+      <div class="meta"><span>11</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free RSC videos and resource packs on Shakespeare in performance.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rsc.org.uk/learn/schools-and-teachers/teacher-resources">RSC resources</a> &nbsp;<span class="dim">rsc.org.uk/learn/schools-and-teachers/teacher-resources</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham College: Shakespeare – From Page to Stage</a></h3>
+      <div class="meta"><span>12</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free university lectures on Shakespeare. Start with Shakespeare's Lovers if you study Much Ado.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/english">Gresham English</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/english</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">To</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.oldvictheatre.com/discover/the-hub/">The Old Vic Hub</a></h3>
+      <div class="meta"><span>13</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free films and workshops from the Old Vic on how shows are designed and made.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.oldvictheatre.com/discover/the-hub/">Old Vic Hub</a> &nbsp;<span class="dim">oldvictheatre.com/discover/the-hub</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Fa</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.franticassembly.co.uk/frantic-digital">Frantic Assembly: Frantic Digital and free live evaluation resources</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short films showing how Frantic Assembly devise physical theatre. Watch TOUCH before a devising lesson.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.franticassembly.co.uk/frantic-digital">Frantic Digital</a> &nbsp;<span class="dim">franticassembly.co.uk/frantic-digital</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 4 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Rt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.rsc.org.uk/support/rsc-10-tickets">RSC £10 tickets (for Section C live theatre)</a></h3>
+      <div class="meta"><span>15</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Register for RSC £10 tickets and see a show in Stratford. Take notes on lighting, sound, set and costume straight afterwards.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.rsc.org.uk/support/rsc-10-tickets">RSC £10 tickets</a> &nbsp;<span class="dim">rsc.org.uk/support/rsc-10-tickets</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Br</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.birmingham-rep.co.uk/take-part/young-people/">Birmingham Rep 16–25 membership</a></h3>
+      <div class="meta"><span>16</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Join free for cheaper tickets at the Rep.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.birmingham-rep.co.uk/take-part/young-people/">Rep young people</a> &nbsp;<span class="dim">birmingham-rep.co.uk/take-part/young-people</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Fn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.franticassembly.co.uk/frantic-digital">Frantic Assembly TOUCH films and #FranticMirror</a></h3>
+      <div class="meta"><span>17</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Watch a TOUCH film, then try the exercise with a partner and film it.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.franticassembly.co.uk/frantic-digital">Frantic Digital</a> &nbsp;<span class="dim">franticassembly.co.uk/frantic-digital</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ov</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.oldvictheatre.com/discover/the-hub/">Old Vic interactive model box</a></h3>
+      <div class="meta"><span>18</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Design a set online for a scene you are studying.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.oldvictheatre.com/discover/the-hub/">Old Vic Hub</a> &nbsp;<span class="dim">oldvictheatre.com/discover/the-hub</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 3 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Yp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://royalcourttheatre.com/write-and-create/schools-young-people/young-playwrights-award">Young Playwrights Award (Royal Court Theatre)</a></h3>
+      <div class="meta"><span>19</span><span>entry</span><span>Any teenager in the UK</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Write a play on any subject and send it in. Winning plays are published by Nick Hern Books. The Royal Court runs free workshops and video masterclasses to help.</p>
+  <p class="when"><b>When:</b> 2026 entries were open 27 January – 22 April 2026. Expect a similar window in 2027; confirm on the Royal Court site in January.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://royalcourttheatre.com/write-and-create/schools-young-people/young-playwrights-award">Royal Court</a> &nbsp;<span class="dim">royalcourttheatre.com/write-and-create/schools-young-people/young-playwrights-award</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Gp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Gould Prize for Essays in English Literature (Trinity College, Cambridge)</a></h3>
+      <div class="meta"><span>20</span><span>essay</span><span>Y12 (Lower Sixth)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A critical essay of 1,500–2,500 words. Plays written in English count, so a pupil could write on Churchill, Williams or Butterworth. £600 first prize, split between you and the school. No creative writing and no AI.</p>
+  <p class="when"><b>When:</b> 2027 details to be posted in February 2027; the 2026 deadline was 31 July, 12 noon. Confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/">Trinity</a> &nbsp;<span class="dim">trin.cam.ac.uk/undergraduate/essay-prizes/english-literature</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Tc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes-faqs">Thomas Campion English Prize (Peterhouse, Cambridge)</a></h3>
+      <div class="meta"><span>21</span><span>essay</span><span>Y12</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">An English essay on a set question; check each year whether a question fits a play you study. Winners are invited to a lunch at Peterhouse with academics.</p>
+  <p class="when"><b>When:</b> Questions released in the spring; deadline usually March–April. Confirm on Peterhouse site.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/essay-prizes-faqs">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/essay-prizes-faqs</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 8 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Nl</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.nationaltheatre.org.uk/learn-explore/schools/teacher-resources/">National Theatre teacher and student resources</a></h3>
+      <div class="meta"><span>22</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Rehearsal diaries and interviews from real productions.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.nationaltheatre.org.uk/learn-explore/schools/teacher-resources/">NT resources</a> &nbsp;<span class="dim">nationaltheatre.org.uk/learn-explore/schools/teacher-resources</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Fr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.franticassembly.co.uk/resource-for-gcse-alevel-btec">Frantic Assembly free live evaluation documents</a></h3>
+      <div class="meta"><span>23</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">How one company explains its design choices. Use it as a model for your own live theatre notes.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.franticassembly.co.uk/resource-for-gcse-alevel-btec">Frantic resources</a> &nbsp;<span class="dim">franticassembly.co.uk/resource-for-gcse-alevel-btec</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Gt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://teach.shakespearesglobe.com/">Globe Teach Shakespeare</a></h3>
+      <div class="meta"><span>24</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Performance clips and activities from the Globe; your teacher can get access.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://teach.shakespearesglobe.com/">Teach Shakespeare</a> &nbsp;<span class="dim">teach.shakespearesglobe.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ts</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.thestage.co.uk/">The Stage</a></h3>
+      <div class="meta"><span>25</span><span>10m</span><span>some subscriber-only</span></div>
+    </div>
+  </div>
+  <p class="what">Theatre news and reviews. Read reviews of shows you have seen and compare them with your own notes.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.thestage.co.uk/">thestage.co.uk</a> &nbsp;<span class="dim">thestage.co.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Te</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Empty Space, by Peter Brook</span></h3>
+      <div class="meta"><span>26</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A short classic by a director on the practitioner list. Read the first chapter.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tf</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Frantic Assembly Book of Devising Theatre, by Scott Graham and Steven Hoggett</span></h3>
+      <div class="meta"><span>27</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">How Frantic Assembly build a show. Useful if your group is devising with their methods.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bo</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Brecht on Theatre, by Bertolt Brecht, edited by John Willett</span></h3>
+      <div class="meta"><span>28</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Brecht explaining his ideas in his own words. Read one essay, not the whole book.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Tp</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Playmaker, by Thomas Keneally</span></h3>
+      <div class="meta"><span>29</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The novel behind Our Country's Good.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 4 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">BBC In Our Time: Culture archive</a></h3>
+      <div class="meta"><span>30</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for the playwright you study. Three academics, 45 minutes.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01drwny">In Our Time Culture</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01drwny</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ss</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.shakespearesglobe.com/discover/such-stuff-podcast/">Such Stuff (Shakespeare's Globe)</a></h3>
+      <div class="meta"><span>31</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">The Globe's own podcast about how their shows are made.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.shakespearesglobe.com/discover/such-stuff-podcast/">Such Stuff</a> &nbsp;<span class="dim">shakespearesglobe.com/discover/such-stuff-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Tb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.blackplaysarchive.org.uk/that-black-theatre-podcast/">That Black Theatre Podcast (Black Plays Archive, National Theatre)</a></h3>
+      <div class="meta"><span>32</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Thirteen episodes on Black British playwrights and their plays.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.blackplaysarchive.org.uk/that-black-theatre-podcast/">That Black Theatre Podcast</a> &nbsp;<span class="dim">blackplaysarchive.org.uk/that-black-theatre-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Nn</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.nationaltheatre.org.uk/learn-explore/talks/">National Theatre Talks</a></h3>
+      <div class="meta"><span>33</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Directors and designers talking about their productions.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.nationaltheatre.org.uk/learn-explore/talks/">NT Talks</a> &nbsp;<span class="dim">nationaltheatre.org.uk/learn-explore/talks</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 5 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ig</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.franticassembly.co.uk/ignition-2026">Ignition (Frantic Assembly)</a></h3>
+      <div class="meta"><span>34</span><span>apply</span><span>16–24; no previous theatre experience needed</span></div>
+    </div>
+  </div>
+  <p class="what">A free physical theatre programme. Sign up for the trial workshop at the Hippodrome next September.</p>
+  <p class="when"><b>When:</b> Trial workshops each September–October; the 2026 Birmingham Hippodrome trial was 12 September. Selected participants attend a week's intensive in London. Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.franticassembly.co.uk/ignition-2026">Details</a> &nbsp;<span class="dim">franticassembly.co.uk/ignition-2026</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ya</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.birminghamhippodrome.com/hippodrome-projects/young-people/young-advocates/">Young Advocates (Birmingham Hippodrome)</a></h3>
+      <div class="meta"><span>35</span><span>apply</span><span>16–25</span></div>
+    </div>
+  </div>
+  <p class="what">A group of young people who advise the Hippodrome and get training and paid work in return.</p>
+  <p class="when"><b>When:</b> Meets first and third Wednesday of each month; recruits periodically (the 2026 cohort drew over 120 applicants).</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.birminghamhippodrome.com/hippodrome-projects/young-people/young-advocates/">Details</a> &nbsp;<span class="dim">birminghamhippodrome.com/hippodrome-projects/young-people/young-advocates</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Th</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.theatrecraft.org/">TheatreCraft</a></h3>
+      <div class="meta"><span>36</span><span>apply</span><span>Young people up to 25</span></div>
+    </div>
+  </div>
+  <p class="what">A free day in London on backstage careers: lighting, sound, stage management, costume.</p>
+  <p class="when"><b>When:</b> Friday 6 November 2026, Royal Opera House and West End venues; booking opens 19 October 2026. Online Zoom sessions also run during the year.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.theatrecraft.org/">Details</a> &nbsp;<span class="dim">theatrecraft.org</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Rp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.birmingham-rep.co.uk/take-part/rep-pathways/">Rep Pathways (Birmingham Rep)</a></h3>
+      <div class="meta"><span>37</span><span>apply</span><span>18–30</span></div>
+    </div>
+  </div>
+  <p class="what">Training and backstage experience at the Rep once you are 18.</p>
+  <p class="when"><b>When:</b> Ongoing; contact the Rep for intake dates.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.birmingham-rep.co.uk/take-part/rep-pathways/">Details</a> &nbsp;<span class="dim">birmingham-rep.co.uk/take-part/rep-pathways</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ms</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.masterclass.org.uk/">Masterclass (Theatre Royal Haymarket charity)</a></h3>
+      <div class="meta"><span>38</span><span>apply</span><span>16–30</span></div>
+    </div>
+  </div>
+  <p class="what">Free membership for 16–30s: workshops with theatre professionals and £5 West End tickets.</p>
+  <p class="when"><b>When:</b> Events through the year, mostly in London.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.masterclass.org.uk/">Details</a> &nbsp;<span class="dim">masterclass.org.uk</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your drama year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">5 October 2026</div><span class="sym dot">1</span><div><b>NT A-level student conference on Cloud 9: applications close</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">October 2026</div><span class="sym dot">2</span><div><b>NT Drama Teacher Conference applications open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">6 November 2026</div><span class="sym dot">3</span><div><b>TheatreCraft, London</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">8 December 2026</div><span class="sym dot">4</span><div><b>NT Cloud 9 student conference (2–4.30pm) and performance (7.30pm)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">1 January – 20 March 2027</div><span class="sym dot">5</span><div><b>National Youth Theatre auditions</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Late January 2027</div><span class="sym dot">6</span><div><b>Royal Court Young Playwrights Award opens (2026: 27 January)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">February 2027</div><span class="sym dot">7</span><div><b>Trinity Gould Prize 2027 details posted</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">Spring 2027</div><span class="sym dot">8</span><div><b>Peterhouse Thomas Campion questions released; NT contacts schools about Connections 2028 applications</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">31 July 2027 (expected)</div><span class="sym dot">9</span><div><b>Gould Prize deadline</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">August 2027</div><span class="sym dot">10</span><div><b>Frantic Ignition 2027 sign-ups</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Rehearsal diary</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Drama and Theatre Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

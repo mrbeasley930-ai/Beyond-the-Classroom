@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Engineering beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Barlow:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#C2410C; --watch:#1D4ED8; --listen:#6D28D9; --read:#92400E; --do:#15803D; --apply:#0F766E;
+  --f-display:"Rajdhani",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:#1F2933; --hero-ink:#F8FAFC; --hero-muted:#B4BEC9;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:6mm 7mm}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid rgba(255,255,255,.35)}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:28px 32px}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:21.849999999999998pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Engineering · 2026-27</div>
+      <h1>Engineering beyond the classroom<span class="sub">38 things to make, enter, watch and read. Free unless the entry says otherwise.</span></h1>
+      <p>Engineering admissions, apprenticeship applications and the professional bodies all ask the same question: what have you made? The competitions and placements below give you something to make and a deadline to make it by. The talks and reading are for the interview, where you will be asked why it worked. Each time you do something, write one line in your logbook: what you did, one thing you learned, one question it left you with. That is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="do"></span><span data-g="enter"></span><span data-g="apply"></span><span data-g="watch"></span><span data-g="read"></span><span data-g="listen"></span></div>
+      <div class="keyfams"><div data-g="do"><i></i><span><b>Do</b><br><small>Practice and projects</small></span></div><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements and programmes</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts and radio</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="read"><a href="https://www.ingenia.org.uk/"><span class="sym">In</span></a><div><div class="step">Ingenia · Ingenia</div><p>Read one 'How does that work?' article in Ingenia and write down which principle of engineering it depends on.</p></div></div><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy"><span class="sym">Sd</span></a><div><div class="step">Watch · Sadoway</div><p>Watch Donald Sadoway's TED talk on the liquid-metal battery (15 min) and sketch the cell.</p></div></div><div class="pick" data-g="watch"><a href="https://www.youtube.com/@PracticalEngineeringChannel"><span class="sym">Pe</span></a><div><div class="step">Practical Engineering · Practical Engineering</div><p>Watch one Practical Engineering video on a structural failure and note what the engineers got wrong.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>The parts bin</h2>
+    <div class="key"><span>One part per tile. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="do"><b>Do</b><span>Practice and projects · 3</span></div><a class="tile" data-g="do" href="https://isaacscience.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Is</span>
+  <span class="nm">Isaac Science</span>
+  <span class="row"><span>01</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Isaac Science (physics and maths problems)</b><i>Do · 20m</i><span>Free problems marked instantly. Work through the mechanics and electricity decks.</span><em>isaacscience.org ↗</em></span></a><a class="tile" data-g="do" href="https://esat-tmua.ac.uk/prepare/">
+  <span class="fam">Do</span>
+  <span class="sym">Ep</span>
+  <span class="nm">ESAT preparation materials</span>
+  <span class="row"><span>02</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>ESAT preparation materials (UAT-UK)</b><i>Do · 20m</i><span>If you are applying for a course that needs the ESAT, use the free preparation materials here.</span><em>ESAT prepare ↗</em></span></a><a class="tile" data-g="do" href="https://www.ice.springpod.com/">
+  <span class="fam">Do</span>
+  <span class="sym">Iv</span>
+  <span class="nm">ICE virtual work experience</span>
+  <span class="row"><span>03</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>ICE virtual work experience (Springpod)</b><i>Do · 20m</i><span>Free online work experience with the Institution of Civil Engineers.</span><em>ICE virtual work experience ↗</em></span></a><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 6</span></div><a class="tile" data-g="enter" href="https://eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition/">
+  <span class="fam">Enter</span>
+  <span class="sym">Tb</span>
+  <span class="nm">The Big Bang Competition</span>
+  <span class="row"><span>04</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>The Big Bang Competition (EngineeringUK)</b><i>Enter · entry</i><span>Enter a project you have designed and built. Finalists show it at the Big Bang Fair at the NEC in June. Titles include UK Young Engineer of the Year.</span><em>Big Bang Competition ↗</em></span></a><a class="tile" data-g="enter" href="https://www.theiet.org/impact-society/awards-prizes-and-scholarships/iet-future-talent-awards">
+  <span class="fam">Enter</span>
+  <span class="sym">If</span>
+  <span class="nm">IET Future Talent Awards</span>
+  <span class="row"><span>05</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>IET Future Talent Awards (Launch Scholarship)</b><i>Enter · entry</i><span>A scholarship for your degree or apprenticeship, aimed at students facing financial or personal challenges. Check your course is IET-accredited.</span><em>IET Future Talent ↗</em></span></a><a class="tile" data-g="enter" href="https://www.ice.org.uk/get-involved/awards-and-grants/quest-scholarships">
+  <span class="fam">Enter</span>
+  <span class="sym">Iq</span>
+  <span class="nm">ICE QUEST Undergraduate…</span>
+  <span class="row"><span>06</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>ICE QUEST Undergraduate Scholarship (Institution of Civil Engineers)</b><i>Enter · entry</i><span>A scholarship for anyone starting a civil engineering degree. Applications reopen in March 2027.</span><em>ICE QUEST ↗</em></span></a><a class="tile" data-g="enter" href="https://www.smallpeicetrust.org.uk/arkwright-engineering-scholarships/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ae</span>
+  <span class="nm">Arkwright Engineering…</span>
+  <span class="row"><span>07</span><span>entry</span></span>
+  <span class="pop" role="tooltip"><b>Arkwright Engineering Scholarships (Smallpeice Trust)</b><i>Enter · entry</i><span>For Year 11 pupils going into engineering or technical design in the sixth form.</span><em>Smallpeice Trust ↗</em></span></a><a class="tile" data-g="enter" href="https://www.stemracing.co.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Sr</span>
+  <span class="nm">STEM Racing UK</span>
+  <span class="row"><span>08</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>STEM Racing UK (formerly F1 in Schools)</b><i>Enter · paper</i><span>Design, make and race a small car as a team, using CAD and CAM, and present your work to judges.</span><em>STEM Racing UK ↗</em></span></a><a class="tile" data-g="enter" href="https://www.greenpower.co.uk/">
+  <span class="fam">Enter</span>
+  <span class="sym">Gf</span>
+  <span class="nm">Greenpower Formula 24+</span>
+  <span class="row"><span>09</span><span>paper</span></span>
+  <span class="pop" role="tooltip"><b>Greenpower Formula 24+</b><i>Enter · paper</i><span>Build and race an electric car as a team. The department has to decide to take part.</span><em>Greenpower ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements and programmes · 5</span></div><a class="tile" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Ed</span>
+  <span class="nm">EDT Platinum Placements</span>
+  <span class="row"><span>10</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>EDT Platinum Placements (formerly Year in Industry)</b><i>Apply · apply</i><span>A paid year working for an engineering company before university. Applications open 1 October 2026.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.etrust.org.uk/schools-groups">
+  <span class="fam">Apply</span>
+  <span class="sym">Ei</span>
+  <span class="nm">EDT Industrial Cadets: Gold…</span>
+  <span class="row"><span>11</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>EDT Industrial Cadets: Gold Mentored Project</b><i>Apply · apply</i><span>A team project set by a real company, with an engineer as mentor.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.etrust.org.uk/individuals">
+  <span class="fam">Apply</span>
+  <span class="sym">En</span>
+  <span class="nm">EDT Industrial Cadets…</span>
+  <span class="row"><span>12</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>EDT Industrial Cadets: Silver Insight into Apprenticeships</b><i>Apply · apply</i><span>A free course in Birmingham on engineering apprenticeships.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">
+  <span class="fam">Apply</span>
+  <span class="sym">Nr</span>
+  <span class="nm">Nuffield Research Placements</span>
+  <span class="row"><span>13</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements</b><i>Apply · apply</i><span>A summer research project in a university or company.</span><em>Details ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/students/">
+  <span class="fam">Apply</span>
+  <span class="sym">It</span>
+  <span class="nm">In2STEM</span>
+  <span class="row"><span>14</span><span>apply</span></span>
+  <span class="pop" role="tooltip"><b>In2STEM (In2Science UK)</b><i>Apply · apply</i><span>A free summer placement with researchers; check the eligibility criteria.</span><em>Details ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 14</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/elora_hardy_magical_houses_made_of_bamboo">
+  <span class="fam">Watch</span>
+  <span class="sym">Hr</span>
+  <span class="nm">Hardy</span>
+  <span class="row"><span>15</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Elora Hardy: Magical houses, made of bamboo</b><i>Watch · talk · 10m</i><span>Compare bamboo with steel and concrete for tensile strength, stiffness and durability. Where would you not use it, and why?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/michael_green_why_we_should_build_wooden_skyscrapers">
+  <span class="fam">Watch</span>
+  <span class="sym">Gr</span>
+  <span class="nm">Green</span>
+  <span class="row"><span>16</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Michael Green: Why we should build wooden skyscrapers</b><i>Watch · talk · 12m</i><span>Make the case against. What does the talk say about fire, moisture and joints, and what does it leave out?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy">
+  <span class="fam">Watch</span>
+  <span class="sym">Sd</span>
+  <span class="nm">Sadoway</span>
+  <span class="row"><span>17</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Donald Sadoway: The missing link to renewable energy</b><i>Watch · talk · 15m</i><span>Sketch the liquid-metal battery. Why does its operating temperature decide which materials can be used?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/raffaello_d_andrea_the_astounding_athletic_power_of_quadcopters">
+  <span class="fam">Watch</span>
+  <span class="sym">Da</span>
+  <span class="nm">D'Andrea</span>
+  <span class="row"><span>18</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Raffaello D'Andrea: The astounding athletic power of quadcopters</b><i>Watch · talk · 16m</i><span>Draw the feedback loop that keeps a quadcopter stable: sensor, controller, actuator. Where would a programmable microcontroller sit?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/marc_raibert_meet_spot_the_robot_dog_that_can_run_hop_and_open_doors">
+  <span class="fam">Watch</span>
+  <span class="sym">Rb</span>
+  <span class="nm">Raibert</span>
+  <span class="row"><span>19</span><span>14m</span></span>
+  <span class="pop" role="tooltip"><b>Marc Raibert: Meet Spot, the robot dog that can run, hop and open doors</b><i>Watch · talk · 14m</i><span>List the sensors and actuators Spot needs to stay upright. Which component would you expect to fail first in use?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/vijay_kumar_robots_that_fly_and_cooperate">
+  <span class="fam">Watch</span>
+  <span class="sym">Km</span>
+  <span class="nm">Kumar</span>
+  <span class="row"><span>20</span><span>16m</span></span>
+  <span class="pop" role="tooltip"><b>Vijay Kumar: Robots that fly ... and cooperate</b><i>Watch · talk · 16m</i><span>What does a designer trade off when making a flying robot smaller: mass, battery life, motor power or processing?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/joseph_desimone_what_if_3d_printing_was_100x_faster">
+  <span class="fam">Watch</span>
+  <span class="sym">Ds</span>
+  <span class="nm">DeSimone</span>
+  <span class="row"><span>21</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Joseph DeSimone: What if 3D printing was 100x faster?</b><i>Watch · talk · 11m</i><span>Compare this process with layer-by-layer printing and with CNC machining for a batch of 500 parts. Which would you choose, and on what grounds?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/skylar_tibbits_the_emergence_of_4d_printing">
+  <span class="fam">Watch</span>
+  <span class="sym">Tt</span>
+  <span class="nm">Tibbits</span>
+  <span class="row"><span>22</span><span>8m</span></span>
+  <span class="pop" role="tooltip"><b>Skylar Tibbits: The emergence of &quot;4D printing&quot;</b><i>Watch · talk · 8m</i><span>Which material property is being designed in here? How would you test whether a printed part behaves as intended?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">
+  <span class="fam">Watch</span>
+  <span class="sym">Ri</span>
+  <span class="nm">Royal Institution Christmas…</span>
+  <span class="row"><span>23</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution Christmas Lectures archive: engineering series</b><i>Watch · lecture · 1h</i><span>Search the archive for Danielle George (2014, electronics at home) and Saiful Islam (2016, batteries and fuels).</span><em>Ri archive ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">
+  <span class="fam">Watch</span>
+  <span class="sym">Ry</span>
+  <span class="nm">Royal Institution YouTube…</span>
+  <span class="row"><span>24</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution YouTube channel</b><i>Watch · lecture · 1h</i><span>Weekly lectures. Search for engineering, materials or robotics.</span><em>Ri YouTube ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@PracticalEngineeringChannel">
+  <span class="fam">Watch</span>
+  <span class="sym">Pe</span>
+  <span class="nm">Practical Engineering</span>
+  <span class="row"><span>25</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Practical Engineering (Grady Hillhouse)</b><i>Watch · lecture · 1h</i><span>Short films on how bridges, dams and roads work, and why some fail.</span><em>Practical Engineering ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/@TheEfficientEngineer">
+  <span class="fam">Watch</span>
+  <span class="sym">Te</span>
+  <span class="nm">The Efficient Engineer</span>
+  <span class="row"><span>26</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>The Efficient Engineer</b><i>Watch · lecture · 1h</i><span>Clear animated explanations of stress, strain, bending and fatigue.</span><em>The Efficient Engineer ↗</em></span></a><a class="tile" data-g="watch" href="https://www.thisisengineering.org.uk/">
+  <span class="fam">Watch</span>
+  <span class="sym">Ti</span>
+  <span class="nm">This is Engineering</span>
+  <span class="row"><span>27</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>This is Engineering (Royal Academy of Engineering)</b><i>Watch · lecture · 1h</i><span>Short films of real engineers and guidance on routes into engineering.</span><em>thisisengineering.org.uk ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">
+  <span class="fam">Watch</span>
+  <span class="sym">Gc</span>
+  <span class="nm">Gresham College: Information…</span>
+  <span class="row"><span>28</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College: Information Technology collection and schools programme</b><i>Watch · lecture · 1h</i><span>Free lectures on technology and society.</span><em>Gresham IT ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 7</span></div><a class="tile" data-g="read" href="https://www.ingenia.org.uk/">
+  <span class="fam">Read</span>
+  <span class="sym">In</span>
+  <span class="nm">Ingenia</span>
+  <span class="row"><span>29</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Ingenia (Royal Academy of Engineering)</b><i>Read · 10m</i><span>Free engineering magazine. Start with a 'How does that work?' article.</span><em>ingenia.org.uk ↗</em></span></a><a class="tile" data-g="read" href="https://eandt.theiet.org/">
+  <span class="fam">Read</span>
+  <span class="sym">Et</span>
+  <span class="nm">E+T Magazine</span>
+  <span class="row"><span>30</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>E+T Magazine (IET)</b><i>Read · 10m</i><span>Engineering news and features from the IET.</span><em>E+T ↗</em></span></a><a class="tile" data-g="read" href="https://myheplus.com/subject/engineering">
+  <span class="fam">Read</span>
+  <span class="sym">Ch</span>
+  <span class="nm">Cambridge HE+ Engineering</span>
+  <span class="row"><span>31</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge HE+ Engineering</b><i>Read · 10m</i><span>Cambridge's guide to engineering for sixth formers.</span><em>HE+ Engineering ↗</em></span></a><a class="tile" data-g="read" href="https://www.ice.org.uk/your-career/education-resources">
+  <span class="fam">Read</span>
+  <span class="sym">Ie</span>
+  <span class="nm">ICE education resources</span>
+  <span class="row"><span>32</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>ICE education resources</b><i>Read · 10m</i><span>Civil engineering resources from the Institution of Civil Engineers.</span><em>ICE resources ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">So</span>
+  <span class="nm">Structures: Or Why Things…</span>
+  <span class="row"><span>33</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Structures: Or Why Things Don't Fall Down, by J. E. Gordon</b><i>Read · book · book</i><span>Why bridges, buildings and bones stay up. The book most often recommended to engineering applicants.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Sm</span>
+  <span class="nm">Stuff Matters</span>
+  <span class="row"><span>34</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Stuff Matters, by Mark Miodownik</b><i>Read · book · book</i><span>A chapter per material: steel, concrete, glass, plastic and more.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Bl</span>
+  <span class="nm">Built</span>
+  <span class="row"><span>35</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Built, by Roma Agrawal</b><i>Read · book · book</i><span>A structural engineer explains how buildings and bridges are made.</span></span></span><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts and radio · 3</span></div><a class="tile" data-g="listen" href="https://open.spotify.com/show/4LbWOzdlkDNFNipBl9YuQz">
+  <span class="fam">Listen</span>
+  <span class="sym">Ea</span>
+  <span class="nm">Engineering a Better World</span>
+  <span class="row"><span>36</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Engineering a Better World (IET with The House magazine)</b><i>Listen · 30m</i><span>Engineers and MPs discussing energy, infrastructure and technology policy.</span><em>Spotify ↗</em></span></a><a class="tile" data-g="listen" href="https://education.theiet.org/secondary/undercover-engineers-podcast">
+  <span class="fam">Listen</span>
+  <span class="sym">Ue</span>
+  <span class="nm">Undercover Engineers</span>
+  <span class="row"><span>37</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Undercover Engineers (IET Education)</b><i>Listen · 30m</i><span>Interviews with engineers about what they build and how they got there.</span><em>IET Education ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Bi</span>
+  <span class="nm">BBC In Our Time: Science…</span>
+  <span class="row"><span>38</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: Science archive</b><i>Listen · 30m</i><span>Search the archive for engineering, machines, materials and electricity.</span><em>In Our Time Science ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Practice and projects · 3 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://isaacscience.org/">Isaac Science (physics and maths problems)</a></h3>
+      <div class="meta"><span>01</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free problems marked instantly. Work through the mechanics and electricity decks.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://isaacscience.org/">isaacscience.org</a> &nbsp;<span class="dim">isaacscience.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Ep</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://esat-tmua.ac.uk/prepare/">ESAT preparation materials (UAT-UK)</a></h3>
+      <div class="meta"><span>02</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">If you are applying for a course that needs the ESAT, use the free preparation materials here.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://esat-tmua.ac.uk/prepare/">ESAT prepare</a> &nbsp;<span class="dim">esat-tmua.ac.uk/prepare</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Iv</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.ice.springpod.com/">ICE virtual work experience (Springpod)</a></h3>
+      <div class="meta"><span>03</span><span>20m</span></div>
+    </div>
+  </div>
+  <p class="what">Free online work experience with the Institution of Civil Engineers.</p>
+  
+  
+  <p class="url"><a class="" data-g="do" href="https://www.ice.springpod.com/">ICE virtual work experience</a> &nbsp;<span class="dim">ice.springpod.com</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 6 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Tb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition/">The Big Bang Competition (EngineeringUK)</a></h3>
+      <div class="meta"><span>04</span><span>entry</span><span>Ages 11 to 18, UK. Individuals or teams.</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">Enter a project you have designed and built. Finalists show it at the Big Bang Fair at the NEC in June. Titles include UK Young Engineer of the Year.</p>
+  <p class="when"><b>When:</b> Opens for entries in the autumn; closing date for 2027 not yet published. The 2026 finals and awards were at the Big Bang Fair, NEC Birmingham, 9–11 June 2026. Confirm 2027 dates.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition/">Big Bang Competition</a> &nbsp;<span class="dim">eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">If</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.theiet.org/impact-society/awards-prizes-and-scholarships/iet-future-talent-awards">IET Future Talent Awards (Launch Scholarship)</a></h3>
+      <div class="meta"><span>05</span><span>entry</span><span>Y13 leavers starting an IET-accredited degree or degree/higher apprenticeship; UK resident for at least three years</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A scholarship for your degree or apprenticeship, aimed at students facing financial or personal challenges. Check your course is IET-accredited.</p>
+  <p class="when"><b>When:</b> 2026 window was 13 March to 11 September 2026. Register interest for 2027 now; confirm the 2027 window.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.theiet.org/impact-society/awards-prizes-and-scholarships/iet-future-talent-awards">IET Future Talent</a> &nbsp;<span class="dim">theiet.org/impact-society/awards-prizes-and-scholarships/iet-future-talent-awards</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Iq</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.ice.org.uk/get-involved/awards-and-grants/quest-scholarships">ICE QUEST Undergraduate Scholarship (Institution of Civil Engineers)</a></h3>
+      <div class="meta"><span>06</span><span>entry</span><span>Students due to start the first year of a full-time degree (civil engineering and related)</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A scholarship for anyone starting a civil engineering degree. Applications reopen in March 2027.</p>
+  <p class="when"><b>When:</b> Closed at time of compiling; ICE says applications reopen in March 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.ice.org.uk/get-involved/awards-and-grants/quest-scholarships">ICE QUEST</a> &nbsp;<span class="dim">ice.org.uk/get-involved/awards-and-grants/quest-scholarships</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ae</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.smallpeicetrust.org.uk/arkwright-engineering-scholarships/">Arkwright Engineering Scholarships (Smallpeice Trust)</a></h3>
+      <div class="meta"><span>07</span><span>entry</span><span>Year 11 only (scholarship covers the two sixth-form years). Not open to current sixth formers.</span><span>enter yourself</span><span>£45 application fee, processed through the school</span></div>
+    </div>
+  </div>
+  <p class="what">For Year 11 pupils going into engineering or technical design in the sixth form.</p>
+  <p class="when"><b>When:</b> 2026-27 cycle: applications opened 9 September 2026; student deadline 2 December 2026; teacher review by 14 January 2027; online assessment January–February 2027; interviews 17 February to April 2027; awards 29 April 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.smallpeicetrust.org.uk/arkwright-engineering-scholarships/">Smallpeice Trust</a> &nbsp;<span class="dim">smallpeicetrust.org.uk/arkwright-engineering-scholarships</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Sr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.stemracing.co.uk/">STEM Racing UK (formerly F1 in Schools)</a></h3>
+      <div class="meta"><span>08</span><span>paper</span><span>Secondary category, ages 11–19; school teams</span><span>via school</span><span>Registration and manufacturing costs apply; check with STEM Racing UK. CAD software is supplied free.</span></div>
+    </div>
+  </div>
+  <p class="what">Design, make and race a small car as a team, using CAD and CAM, and present your work to judges.</p>
+  <p class="when"><b>When:</b> 2026-27 regional finals run from November 2026 to February 2027 (for example, Shropshire secondary final at Harper Adams, 23 February 2027). National Finals follow in the spring; confirm.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.stemracing.co.uk/">STEM Racing UK</a> &nbsp;<span class="dim">stemracing.co.uk</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Gf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.greenpower.co.uk/">Greenpower Formula 24+</a></h3>
+      <div class="meta"><span>09</span><span>paper</span><span>Ages 16–25; school or college teams</span><span>enter yourself</span><span>Paid: kit car, batteries and race entries. Check current prices with Greenpower.</span></div>
+    </div>
+  </div>
+  <p class="what">Build and race an electric car as a team. The department has to decide to take part.</p>
+  <p class="when"><b>When:</b> Race season at motorsport venues around the country; International Final at Goodwood each October. Check the events page for 2027.</p>
+  
+  <p class="url"><a class="" data-g="enter" href="https://www.greenpower.co.uk/">Greenpower</a> &nbsp;<span class="dim">greenpower.co.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements and programmes · 5 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ed</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">EDT Platinum Placements (formerly Year in Industry)</a></h3>
+      <div class="meta"><span>10</span><span>apply</span><span>Y13, for a paid year in industry before university</span></div>
+    </div>
+  </div>
+  <p class="what">A paid year working for an engineering company before university. Applications open 1 October 2026.</p>
+  <p class="when"><b>When:</b> Applications for 2027-28 placements open 1 October 2026. Most placements start July to September.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.etrust.org.uk/programmes-platinum-placements">Details</a> &nbsp;<span class="dim">etrust.org.uk/programmes-platinum-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Ei</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.etrust.org.uk/schools-groups">EDT Industrial Cadets: Gold Mentored Project</a></h3>
+      <div class="meta"><span>11</span><span>apply</span><span>Y12 school teams</span></div>
+    </div>
+  </div>
+  <p class="what">A team project set by a real company, with an engineer as mentor.</p>
+  <p class="when"><b>When:</b> No dates published on the EDT page; confirm with EDT.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.etrust.org.uk/schools-groups">Details</a> &nbsp;<span class="dim">etrust.org.uk/schools-groups</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">En</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.etrust.org.uk/individuals">EDT Industrial Cadets: Silver Insight into Apprenticeships</a></h3>
+      <div class="meta"><span>12</span><span>apply</span><span>Ages 15–18 (Y10–Y12); runs in Birmingham, Coventry, Herefordshire and the Scottish Highlands</span></div>
+    </div>
+  </div>
+  <p class="what">A free course in Birmingham on engineering apprenticeships.</p>
+  <p class="when"><b>When:</b> Register interest on the EDT site; dates not published.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.etrust.org.uk/individuals">Details</a> &nbsp;<span class="dim">etrust.org.uk/individuals</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Nuffield Research Placements</a></h3>
+      <div class="meta"><span>13</span><span>apply</span><span>Y12, STEM; eligibility criteria apply</span></div>
+    </div>
+  </div>
+  <p class="what">A summer research project in a university or company.</p>
+  <p class="when"><b>When:</b> Applications usually open in the autumn term for the following summer; confirm with STEM Learning.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements">Details</a> &nbsp;<span class="dim">nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">It</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/students/">In2STEM (In2Science UK)</a></h3>
+      <div class="meta"><span>14</span><span>apply</span><span>Y12, STEM; widening-participation criteria apply</span></div>
+    </div>
+  </div>
+  <p class="what">A free summer placement with researchers; check the eligibility criteria.</p>
+  <p class="when"><b>When:</b> 2026 pattern: applications opened December 2025 and closed April 2026; programme ran 20 July to 21 August. Confirm 2027.</p>
+  
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/students/">Details</a> &nbsp;<span class="dim">in2scienceuk.org/students</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 14 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/elora_hardy_magical_houses_made_of_bamboo">Elora Hardy: Magical houses, made of bamboo</a></h3>
+      <div class="meta"><span>15</span><span>10m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 10 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Compare bamboo with steel and concrete for tensile strength, stiffness and durability. Where would you not use it, and why?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/elora_hardy_magical_houses_made_of_bamboo">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/elora_hardy_magical_houses_made_of_bamboo</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/michael_green_why_we_should_build_wooden_skyscrapers">Michael Green: Why we should build wooden skyscrapers</a></h3>
+      <div class="meta"><span>16</span><span>12m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 12 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Make the case against. What does the talk say about fire, moisture and joints, and what does it leave out?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/michael_green_why_we_should_build_wooden_skyscrapers">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/michael_green_why_we_should_build_wooden_skyscrapers</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy">Donald Sadoway: The missing link to renewable energy</a></h3>
+      <div class="meta"><span>17</span><span>15m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 15 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Sketch the liquid-metal battery. Why does its operating temperature decide which materials can be used?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Da</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/raffaello_d_andrea_the_astounding_athletic_power_of_quadcopters">Raffaello D'Andrea: The astounding athletic power of quadcopters</a></h3>
+      <div class="meta"><span>18</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Draw the feedback loop that keeps a quadcopter stable: sensor, controller, actuator. Where would a programmable microcontroller sit?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/raffaello_d_andrea_the_astounding_athletic_power_of_quadcopters">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/raffaello_d_andrea_the_astounding_athletic_power_of_quadcopters</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Rb</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/marc_raibert_meet_spot_the_robot_dog_that_can_run_hop_and_open_doors">Marc Raibert: Meet Spot, the robot dog that can run, hop and open doors</a></h3>
+      <div class="meta"><span>19</span><span>14m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 14 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> List the sensors and actuators Spot needs to stay upright. Which component would you expect to fail first in use?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/marc_raibert_meet_spot_the_robot_dog_that_can_run_hop_and_open_doors">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/marc_raibert_meet_spot_the_robot_dog_that_can_run_hop_and_open_doors</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Km</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/vijay_kumar_robots_that_fly_and_cooperate">Vijay Kumar: Robots that fly ... and cooperate</a></h3>
+      <div class="meta"><span>20</span><span>16m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 16 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> What does a designer trade off when making a flying robot smaller: mass, battery life, motor power or processing?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/vijay_kumar_robots_that_fly_and_cooperate">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/vijay_kumar_robots_that_fly_and_cooperate</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ds</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/joseph_desimone_what_if_3d_printing_was_100x_faster">Joseph DeSimone: What if 3D printing was 100x faster?</a></h3>
+      <div class="meta"><span>21</span><span>11m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 11 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Compare this process with layer-by-layer printing and with CNC machining for a batch of 500 parts. Which would you choose, and on what grounds?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/joseph_desimone_what_if_3d_printing_was_100x_faster">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/joseph_desimone_what_if_3d_printing_was_100x_faster</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Tt</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/skylar_tibbits_the_emergence_of_4d_printing">Skylar Tibbits: The emergence of &quot;4D printing&quot;</a></h3>
+      <div class="meta"><span>22</span><span>8m</span><span>talk</span></div>
+    </div>
+  </div>
+  <p class="what">A 8 min talk.</p>
+  
+  <p class="think"><b>Think about:</b> Which material property is being designed in here? How would you test whether a printed part behaves as intended?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/skylar_tibbits_the_emergence_of_4d_printing">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/skylar_tibbits_the_emergence_of_4d_printing</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ri</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Royal Institution Christmas Lectures archive: engineering series</a></h3>
+      <div class="meta"><span>23</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for Danielle George (2014, electronics at home) and Saiful Islam (2016, batteries and fuels).</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Ri archive</a> &nbsp;<span class="dim">rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ry</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Royal Institution YouTube channel</a></h3>
+      <div class="meta"><span>24</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Weekly lectures. Search for engineering, materials or robotics.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Ri YouTube</a> &nbsp;<span class="dim">youtube.com/user/TheRoyalInstitution</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Pe</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@PracticalEngineeringChannel">Practical Engineering (Grady Hillhouse)</a></h3>
+      <div class="meta"><span>25</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short films on how bridges, dams and roads work, and why some fail.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@PracticalEngineeringChannel">Practical Engineering</a> &nbsp;<span class="dim">youtube.com/@PracticalEngineeringChannel</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Te</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/@TheEfficientEngineer">The Efficient Engineer</a></h3>
+      <div class="meta"><span>26</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Clear animated explanations of stress, strain, bending and fatigue.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/@TheEfficientEngineer">The Efficient Engineer</a> &nbsp;<span class="dim">youtube.com/@TheEfficientEngineer</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ti</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.thisisengineering.org.uk/">This is Engineering (Royal Academy of Engineering)</a></h3>
+      <div class="meta"><span>27</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Short films of real engineers and guidance on routes into engineering.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.thisisengineering.org.uk/">thisisengineering.org.uk</a> &nbsp;<span class="dim">thisisengineering.org.uk</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">Gresham College: Information Technology collection and schools programme</a></h3>
+      <div class="meta"><span>28</span><span>1h</span><span>lecture</span></div>
+    </div>
+  </div>
+  <p class="what">Free lectures on technology and society.</p>
+  
+  
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/schools-and-colleges/information-technology">Gresham IT</a> &nbsp;<span class="dim">gresham.ac.uk/schools-and-colleges/information-technology</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 7 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">In</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.ingenia.org.uk/">Ingenia (Royal Academy of Engineering)</a></h3>
+      <div class="meta"><span>29</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Free engineering magazine. Start with a 'How does that work?' article.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.ingenia.org.uk/">ingenia.org.uk</a> &nbsp;<span class="dim">ingenia.org.uk</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Et</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://eandt.theiet.org/">E+T Magazine (IET)</a></h3>
+      <div class="meta"><span>30</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Engineering news and features from the IET.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://eandt.theiet.org/">E+T</a> &nbsp;<span class="dim">eandt.theiet.org</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ch</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://myheplus.com/subject/engineering">Cambridge HE+ Engineering</a></h3>
+      <div class="meta"><span>31</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Cambridge's guide to engineering for sixth formers.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://myheplus.com/subject/engineering">HE+ Engineering</a> &nbsp;<span class="dim">myheplus.com/subject/engineering</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ie</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.ice.org.uk/your-career/education-resources">ICE education resources</a></h3>
+      <div class="meta"><span>32</span><span>10m</span></div>
+    </div>
+  </div>
+  <p class="what">Civil engineering resources from the Institution of Civil Engineers.</p>
+  
+  
+  <p class="url"><a class="" data-g="read" href="https://www.ice.org.uk/your-career/education-resources">ICE resources</a> &nbsp;<span class="dim">ice.org.uk/your-career/education-resources</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">So</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Structures: Or Why Things Don't Fall Down, by J. E. Gordon</span></h3>
+      <div class="meta"><span>33</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Why bridges, buildings and bones stay up. The book most often recommended to engineering applicants.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Sm</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Stuff Matters, by Mark Miodownik</span></h3>
+      <div class="meta"><span>34</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A chapter per material: steel, concrete, glass, plastic and more.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bl</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Built, by Roma Agrawal</span></h3>
+      <div class="meta"><span>35</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">A structural engineer explains how buildings and bridges are made.</p>
+  
+  
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts and radio · 3 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ea</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://open.spotify.com/show/4LbWOzdlkDNFNipBl9YuQz">Engineering a Better World (IET with The House magazine)</a></h3>
+      <div class="meta"><span>36</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Engineers and MPs discussing energy, infrastructure and technology policy.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://open.spotify.com/show/4LbWOzdlkDNFNipBl9YuQz">Spotify</a> &nbsp;<span class="dim">open.spotify.com/show/4LbWOzdlkDNFNipBl9YuQz</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Ue</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://education.theiet.org/secondary/undercover-engineers-podcast">Undercover Engineers (IET Education)</a></h3>
+      <div class="meta"><span>37</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Interviews with engineers about what they build and how they got there.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://education.theiet.org/secondary/undercover-engineers-podcast">IET Education</a> &nbsp;<span class="dim">education.theiet.org/secondary/undercover-engineers-podcast</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: Science archive</a></h3>
+      <div class="meta"><span>38</span><span>30m</span></div>
+    </div>
+  </div>
+  <p class="what">Search the archive for engineering, machines, materials and electricity.</p>
+  
+  
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time Science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your engineering year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="pick"><div class="when">1 October 2026</div><span class="sym dot">1</span><div><b>EDT Platinum Placements 2027-28 applications open</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">12–16 October 2026</div><span class="sym dot">2</span><div><b>ESAT October sitting (booking closed); January 2027 booking opens 26 October, 3pm</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">October–November 2026</div><span class="sym dot">3</span><div><b>Big Bang Competition opens; Nuffield Research Placements window</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">4 November and 9–13 November 2026</div><span class="sym dot">4</span><div><b>National Engineering Day; Tomorrow's Engineers Week</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">2 December 2026</div><span class="sym dot">5</span><div><b>Arkwright Scholarship student deadline (Y11); teacher review by 14 January 2027</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">November 2026 – February 2027</div><span class="sym dot">6</span><div><b>STEM Racing UK regional finals</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">26–30 December 2026</div><span class="sym dot">7</span><div><b>Ri Christmas Lectures (Jim Al-Khalili, on time) on BBC</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">January 2027</div><span class="sym dot">8</span><div><b>ESAT January sitting</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">March 2027</div><span class="sym dot">9</span><div><b>ICE QUEST Scholarship reopens; IET Future Talent Awards 2027 window (2026 was 13 March – 11 September)</b> <span class="check">check</span></div></div><div class="ev" data-g="pick"><div class="when">June 2027</div><span class="sym dot">10</span><div><b>Big Bang Fair, NEC Birmingham, with Big Bang Competition finals</b> <span class="check">check</span></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Logbook</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Engineering Department · 2026-27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>

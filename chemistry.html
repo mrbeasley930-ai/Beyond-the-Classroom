@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Chemistry beyond the classroom</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#13202B; --muted:#56646F; --line:#D3DCE2; --soft:#EEF2F5;
+  --enter:#C8392D; --watch:#2463C9; --listen:#6E45C7; --read:#9A6200; --do:#1B7F52; --apply:#0B7C7C;
+  --f-display:"Unbounded",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hero-bg:transparent; --hero-ink:var(--ink); --hero-muted:var(--muted);
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@page{size:A4;margin:13mm 13mm 14mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--f-body);font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="pick"]{--g:var(--ink)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+.eyebrow{font-family:var(--f-mono);font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dim{color:var(--muted)}
+.page{page-break-after:always}
+.table-head{break-after:avoid}
+.page:last-child{page-break-after:auto}
+
+/* ---- page 1 ---- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9mm;align-items:end;margin-bottom:5mm;background:var(--hero-bg);color:var(--hero-ink);border-radius:3mm;padding:0}
+.hero .eyebrow,.hero h1 .sub,.hero .keyfams small{color:var(--hero-muted)}
+.hero .keyfams i{outline:1.5px solid transparent}
+.hero h1{font-size:var(--h1,25pt);font-weight:800;letter-spacing:-.03em;margin-top:3mm}
+.hero h1 .sub{display:block;font-weight:500;font-size:10.5pt;letter-spacing:0;color:var(--muted);margin-top:3mm}
+.hero p{margin:3.5mm 0 0;max-width:60ch}
+.spectrum{display:flex;height:6mm;border-radius:3px;overflow:hidden}
+.spectrum span{display:block;flex:1;background:var(--g)}
+.keyfams{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm 4mm;margin-top:3mm;font-size:8.5pt}
+.keyfams div{display:flex;gap:2mm;align-items:baseline}
+.keyfams i{display:inline-block;width:3mm;height:3mm;border-radius:1px;background:var(--g);flex:none;transform:translateY(.3mm)}
+.keyfams b{font-family:var(--f-display);font-weight:700;font-size:8.5pt}
+.keyfams small{color:var(--muted)}
+
+.ht{border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;margin-bottom:5mm;background:var(--soft)}
+.ht-head{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.ht h2{font-size:13pt;font-weight:700}
+.ht .due{font-family:var(--f-mono);font-size:8pt;color:var(--muted)}
+.ht .lede{margin:1.5mm 0 3mm;color:var(--muted)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.pick{display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start;background:#fff;border-left:4px solid var(--g);border-radius:2px;padding:3mm 3.5mm}
+.pick .sym{font-family:var(--f-display);font-weight:700;font-size:15pt;color:var(--g);line-height:1}
+.pick .step{font-family:var(--f-mono);font-size:7pt;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.pick p{margin:1mm 0 0;font-size:8.4pt}
+.pick .pick-url{font-family:var(--f-mono);font-size:6.5pt;color:var(--muted);margin-top:1mm;overflow-wrap:anywhere}
+
+.table-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5mm}
+.table-head h2{font-size:13pt;font-weight:700}
+.key{display:flex;gap:5mm;font-size:8pt;color:var(--muted)}
+.key code{font-family:var(--f-mono);background:var(--soft);padding:0 1mm;border-radius:1px}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6mm}
+.gh{break-after:avoid;grid-column:1/-1;display:flex;align-items:baseline;gap:2.5mm;margin-top:1.2mm;padding:.6mm 2.5mm;border-radius:2px;background:var(--g);color:#fff}
+.gh:first-child{margin-top:0}
+.gh b{font-family:var(--f-display);font-size:8.5pt;letter-spacing:.02em}
+.gh span{font-size:7.5pt;opacity:.9}
+.tile{position:relative;break-inside:avoid;display:grid;grid-template-rows:auto 1fr auto auto;gap:.4mm;height:19.5mm;padding:0 0 1.2mm;border-radius:2px;overflow:visible;
+  background:color-mix(in srgb,var(--g) 16%,#fff);border:1.2pt solid color-mix(in srgb,var(--g) 70%,#fff);min-width:0}
+.tile .fam{display:block;background:var(--g);color:#fff;font-family:var(--f-mono);font-size:5.6pt;letter-spacing:.12em;text-transform:uppercase;padding:.7mm 1.8mm;border-radius:1px 1px 0 0}
+.tile .sym{font-family:var(--f-display);font-weight:700;font-size:14pt;color:var(--g);align-self:center;justify-self:center;line-height:1;letter-spacing:-.02em}
+.tile .nm{font-size:6.4pt;line-height:1.15;padding:0 1.8mm;overflow-wrap:anywhere;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:5.8pt;color:var(--muted);padding:0 1.8mm}
+.tile .pop{display:none}
+.tap{margin-top:2.5mm;font-size:8pt;color:var(--muted)}
+
+/* ---- family pages ---- */
+.fam{break-inside:auto;margin-bottom:6mm}
+.fam-head{border-bottom:3px solid var(--g);padding-bottom:1.5mm;margin-bottom:3.5mm;break-after:avoid}
+.fam-head h2{font-size:16pt;font-weight:800;color:var(--g);letter-spacing:-.02em}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.card{break-inside:avoid;border:1pt solid var(--line);border-top:3px solid var(--g);border-radius:2px;padding:2.8mm 3.2mm 2.5mm;background:#fff}
+.card-top{display:flex;gap:2.5mm;align-items:flex-start}
+.badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:12pt;color:#fff;background:var(--g);width:9mm;height:9mm;border-radius:1.5px;display:grid;place-items:center;letter-spacing:-.02em}
+.card h3{font-family:var(--f-body);font-weight:700;font-size:9.8pt;line-height:1.25}
+.card h3 a{color:var(--g)}
+.meta{display:flex;flex-wrap:wrap;gap:1mm 2.5mm;font-family:var(--f-mono);font-size:6.6pt;color:var(--muted);margin-top:.8mm}
+.what{margin:2mm 0 0}
+.when{margin:1.2mm 0 0;font-size:8.6pt;color:var(--muted)}
+.think{margin:1.5mm 0 0;padding:1.5mm 2.5mm;background:color-mix(in srgb,var(--g) 8%,#fff);border-radius:1.5px;font-size:9pt}
+.url{margin:1.8mm 0 0;font-size:8pt}
+.url a{color:var(--g);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- year page ---- */
+.year-head{margin-bottom:4mm}
+.year-head h2{font-size:16pt;font-weight:800;letter-spacing:-.02em}
+.year-head p{color:var(--muted);margin:1.5mm 0 0;max-width:70ch}
+.check{font-family:var(--f-mono);font-size:6.8pt;text-transform:uppercase;letter-spacing:.08em;padding:.3mm 1.2mm;border:1pt solid var(--muted);border-radius:1px;color:var(--muted)}
+.tl{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:30mm 10mm 1fr;gap:3mm;align-items:start;padding:2.8mm 0;border-bottom:1pt solid var(--line);break-inside:avoid}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:8.5pt;padding-top:.6mm}
+.ev .sym{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--g);width:8mm;height:8mm;border-radius:1.5px;display:grid;place-items:center;font-size:9.5pt}
+.ev .dot{background:var(--soft);color:var(--ink);font-family:var(--f-mono);font-size:8pt}
+.ev b{font-size:10pt}
+.ev p{margin:.5mm 0 0;color:var(--muted)}
+.ev a{color:var(--g);text-decoration:underline;text-underline-offset:2px;font-size:8pt}
+.nbwrap{break-inside:avoid}
+.notebook{margin-top:7mm;border:1.5px solid var(--line);border-radius:3mm;padding:4mm 5mm;background:var(--soft)}
+.notebook h2{font-size:12pt;font-weight:700;margin-bottom:1.5mm}
+.notebook table{width:100%;border-collapse:collapse;margin-top:2.5mm;font-size:8.5pt}
+.notebook th{text-align:left;font-family:var(--f-mono);font-weight:600;font-size:7pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1mm 2mm;border-bottom:1pt solid var(--line)}
+.notebook td{height:7.5mm;border-bottom:1pt solid var(--line);padding:0 2mm}
+.foot{margin-top:5mm;font-size:7.5pt;color:var(--muted);display:flex;justify-content:space-between;gap:4mm}
+</style>
+<style>
+@media screen{
+  html{background:#EEF1F4}
+  body{font-size:15px;line-height:1.5}
+  .page{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 48px;background:#fff;page-break-after:auto}
+  .page+.page{margin-top:24px}
+  .hero{grid-template-columns:1.25fr 1fr;padding:0}
+  .hero h1{font-size:clamp(28px,5vw,48px)}
+  .hero h1 .sub{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .tile{height:auto;aspect-ratio:1/1.18;gap:3px;padding-bottom:8px;transition:transform .12s,box-shadow .12s;text-decoration:none}
+  .tile:hover,.tile:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px -10px var(--g);z-index:3}
+  .tile .fam{font-size:10px;padding:4px 8px}
+  .tile .sym{font-size:34px}
+  .tile .nm{font-size:13px;line-height:1.25;padding:0 8px}
+  .tile .row{font-size:11px;padding:0 8px}
+  .tile .pop{display:none;position:absolute;left:0;top:calc(100% + 8px);width:300px;max-width:min(300px,90vw);background:#fff;color:var(--ink);border:1px solid var(--line);border-top:4px solid var(--g);border-radius:6px;padding:12px 14px;box-shadow:0 12px 28px -8px rgba(0,0,0,.25);z-index:5;font-size:14px;line-height:1.45;text-align:left;cursor:default}
+  .tile:hover .pop,.tile:focus-visible .pop,.tile.open .pop{display:grid;gap:5px}
+  .tile .pop b{font-size:15px;line-height:1.25}
+  .tile .pop i{font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--g)}
+  .tile .pop em{font-style:normal;font-weight:700;color:var(--g)}
+  .grid > .tile:nth-child(n){} 
+  .tile.flip .pop{left:auto;right:0}
+  .cards{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{padding:14px 16px}
+  .card h3{font-size:16px} .what,.think,.when{font-size:14px} .url{font-size:13px} .meta{font-size:11px}
+  .fam-head h2{font-size:28px}
+  .ht{padding:18px 22px} .ht h2{font-size:22px} .pick p{font-size:14px} .pick .sym{font-size:26px}
+  .table-head h2{font-size:22px} .key{font-size:13px}
+  .gh b{font-size:15px} .gh span{font-size:13px} .gh{padding:6px 12px;margin-top:10px}
+  .year-head h2{font-size:28px} .ev{grid-template-columns:140px 40px 1fr} .ev .when{font-size:13px} .ev b{font-size:16px}
+  .notebook{padding:18px 22px} .notebook td{height:34px}
+  .eyebrow{font-size:11px}
+}
+@media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
+</style>
+</head><body>
+
+<section class="page" style="--h1:25pt">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Sixth form · Chemistry · 2026–27</div>
+      <h1>Chemistry beyond the classroom<span class="sub">36 things to watch, read, try and enter. All free.</span></h1>
+      <p>Universities want to see that you followed chemistry past what the exam needs. Pick from the table below, and each time you do something write one line in a notebook: what you did, one thing you learned, one question it left you with. That notebook is your personal statement material.</p>
+    </div>
+    <div>
+      <div class="spectrum"><span data-g="enter"></span><span data-g="watch"></span><span data-g="listen"></span><span data-g="read"></span><span data-g="do"></span><span data-g="apply"></span></div>
+      <div class="keyfams"><div data-g="enter"><i></i><span><b>Enter</b><br><small>Competitions</small></span></div><div data-g="watch"><i></i><span><b>Watch</b><br><small>Talks and lectures</small></span></div><div data-g="listen"><i></i><span><b>Listen</b><br><small>Podcasts</small></span></div><div data-g="read"><i></i><span><b>Read</b><br><small>Magazines and books</small></span></div><div data-g="do"><i></i><span><b>Do</b><br><small>Problems and practice</small></span></div><div data-g="apply"><i></i><span><b>Apply</b><br><small>Placements</small></span></div></div>
+    </div>
+  </header>
+
+  <div class="ht">
+    <div class="eyebrow">Autumn 1 · if you do nothing else this half term</div>
+    <div class="ht-head"><h2>This half term</h2><span class="due">Wanted by Friday, 23 October 2026</span></div>
+    <p class="lede">Three picks from the department for this half term. Do them, write a line in the notebook for each.</p>
+    <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time"><span class="sym">Mo</span></a><div><div class="step">Watch · Modestino</div><p>Watch Miguel Modestino's 9-minute talk and write down one reaction you would run differently.</p></div></div><div class="pick" data-g="do"><a href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad"><span class="sym">Op</span></a><div><div class="step">Try · Olympiad papers</div><p>Do the most recent Olympiad Round 1 paper with the mark scheme beside you. Do not expect to finish it.</p></div></div><div class="pick" data-g="listen"><a href="https://www.bbc.co.uk/programmes/p01gyd7j"><span class="sym">Io</span></a><div><div class="step">Listen · In Our Time</div><p>Listen to one In Our Time science episode on the way to school.</p></div></div></div>
+  </div>
+
+  <div class="table-head">
+    <h2>Your periodic table</h2>
+    <div class="key"><span>One tile per thing. Colour = family.</span><span><code>9m</code> roughly how long it takes</span><span>Hover or tap a tile for a preview</span></div>
+  </div>
+  <div class="grid"><div class="gh" data-g="enter"><b>Enter</b><span>Competitions · 4</span></div><a class="tile" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">
+  <span class="fam">Enter</span>
+  <span class="sym">Ol</span>
+  <span class="nm">Chemistry Olympiad</span>
+  <span class="row"><span>01</span><span>2h</span></span>
+  <span class="pop" role="tooltip"><b>UK Chemistry Olympiad</b><i>Enter · Y12–13 · 2h</i><span>A two-hour paper of problems well beyond A level, sat in school in late January. Your teacher registers the school; you cannot enter on your own.</span><em>RSC Olympiad page ↗</em></span></a><a class="tile" data-g="enter" href="https://c3l6.com/">
+  <span class="fam">Enter</span>
+  <span class="sym">Cc</span>
+  <span class="nm">Cambridge Challenge</span>
+  <span class="row"><span>02</span><span>90m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Chemistry Challenge (C3L6)</b><i>Enter · June · check · 90m</i><span>A 90-minute paper sat in school, usually in June. A gold award gets you an invitation to a residential at the University of Cambridge at the end of August.</span><em>c3l6.com ↗</em></span></a><a class="tile" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">
+  <span class="fam">Enter</span>
+  <span class="sym">Kv</span>
+  <span class="nm">Kelvin Prize</span>
+  <span class="row"><span>03</span><span>essay</span></span>
+  <span class="pop" role="tooltip"><b>Kelvin Science Prize, Peterhouse</b><i>Enter · spring · check · essay</i><span>A science essay on a question set by Peterhouse, Cambridge. Questions come out in the spring; the 2026 deadline was 20 April. Winners are invited to lunch with Cambridge academics.</span><em>Peterhouse ↗</em></span></a><a class="tile" data-g="enter" href="https://oxsci.org/">
+  <span class="fam">Enter</span>
+  <span class="sym">Ox</span>
+  <span class="nm">Oxford Scientist</span>
+  <span class="row"><span>04</span><span>5h</span></span>
+  <span class="pop" role="tooltip"><b>The Oxford Scientist writing competition</b><i>Enter · 5h</i><span>A short piece of science writing for the magazine Oxford students run. Check the site for this year's window.</span><em>oxsci.org ↗</em></span></a><div class="gh" data-g="watch"><b>Watch</b><span>Talks and lectures · 15</span></div><a class="tile" data-g="watch" href="https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time">
+  <span class="fam">Watch</span>
+  <span class="sym">Mo</span>
+  <span class="nm">Modestino</span>
+  <span class="row"><span>05</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Miguel A. Modestino: How to transform the chemical industry, one reaction at a time</b><i>Watch · TED · 9m</i><span>Which reaction in the A level organic course would you most want to run electrochemically, and what would it save?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/vaitea_cowan_how_green_hydrogen_could_end_the_fossil_fuel_era">
+  <span class="fam">Watch</span>
+  <span class="sym">Va</span>
+  <span class="nm">Cowan</span>
+  <span class="row"><span>06</span><span>9m</span></span>
+  <span class="pop" role="tooltip"><b>Vaitea Cowan: How green hydrogen could end the fossil fuel era</b><i>Watch · TED · 9m</i><span>Write the electrolysis half-equations and explain where the energy cost sits.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/karin_oberg_the_galactic_recipe_for_a_living_planet">
+  <span class="fam">Watch</span>
+  <span class="sym">Ob</span>
+  <span class="nm">Öberg</span>
+  <span class="row"><span>07</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Karin Öberg: The galactic recipe for a living planet</b><i>Watch · TED · 13m</i><span>Which of the molecules named have you met in the course, and what evidence identifies them at that distance?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/christy_l_haynes_can_nanoparticles_help_fight_hunger">
+  <span class="fam">Watch</span>
+  <span class="sym">Hy</span>
+  <span class="nm">Haynes</span>
+  <span class="row"><span>08</span><span>11m</span></span>
+  <span class="pop" role="tooltip"><b>Christy L. Haynes: Can nanoparticles help fight hunger?</b><i>Watch · TED · 11m</i><span>What changes chemically when a material is made at nanoscale, and why does that matter for a plant?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/normand_voyer_are_life_saving_medicines_hiding_in_the_world_s_coldest_places">
+  <span class="fam">Watch</span>
+  <span class="sym">Vo</span>
+  <span class="nm">Voyer</span>
+  <span class="row"><span>09</span><span>12m</span></span>
+  <span class="pop" role="tooltip"><b>Normand Voyer: Are life-saving medicines hiding in the world's coldest places?</b><i>Watch · TED · 12m</i><span>How would you get from a plant extract to a single identified compound? Name the techniques.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/sam_afoullouss_the_deep_sea_s_medicinal_secrets">
+  <span class="fam">Watch</span>
+  <span class="sym">Af</span>
+  <span class="nm">Afoullouss</span>
+  <span class="row"><span>10</span><span>13m</span></span>
+  <span class="pop" role="tooltip"><b>Sam Afoullouss: The deep sea's medicinal secrets</b><i>Watch · TED · 13m</i><span>What is the case for and against collecting organisms from an environment we know little about?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/clarice_phelps_how_i_claimed_a_seat_at_the_periodic_table">
+  <span class="fam">Watch</span>
+  <span class="sym">Ph</span>
+  <span class="nm">Phelps</span>
+  <span class="row"><span>11</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Clarice Phelps: How I claimed a seat at the periodic table</b><i>Watch · TED · 15m</i><span>How is a new element confirmed to exist when only a few atoms are ever made?</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.ted.com/talks/george_zaidan_why_your_phone_battery_gets_worse_over_time">
+  <span class="fam">Watch</span>
+  <span class="sym">Zd</span>
+  <span class="nm">Zaidan</span>
+  <span class="row"><span>12</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>George Zaidan: Why your phone battery gets worse over time</b><i>Watch · TED-Ed · 5m</i><span>A short TED-Ed film on what happens inside a lithium-ion cell as it ages.</span><em>Watch on TED ↗</em></span></a><a class="tile" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">
+  <span class="fam">Watch</span>
+  <span class="sym">Xm</span>
+  <span class="nm">Christmas Lectures</span>
+  <span class="row"><span>13</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution Christmas Lectures</b><i>Watch · archive · 1h</i><span>Every series since the 1960s, searchable by topic. A new series is on BBC Four and iPlayer over the Christmas holidays.</span><em>Ri archive ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">
+  <span class="fam">Watch</span>
+  <span class="sym">Ri</span>
+  <span class="nm">Ri on YouTube</span>
+  <span class="row"><span>14</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Royal Institution on YouTube</b><i>Watch · weekly · 1h</i><span>New lectures and demonstrations every week from the Royal Institution in London.</span><em>Ri YouTube ↗</em></span></a><a class="tile" data-g="watch" href="https://www.gresham.ac.uk/watch-now/browse-all?type=597">
+  <span class="fam">Watch</span>
+  <span class="sym">Gr</span>
+  <span class="nm">Gresham College</span>
+  <span class="row"><span>15</span><span>1h</span></span>
+  <span class="pop" role="tooltip"><b>Gresham College science lectures</b><i>Watch · 1h</i><span>Free university-level public lectures, recorded. Browse the science collection.</span><em>Gresham science ↗</em></span></a><a class="tile" data-g="watch" href="http://www.wothers.com/">
+  <span class="fam">Watch</span>
+  <span class="sym">Wo</span>
+  <span class="nm">Wothers</span>
+  <span class="row"><span>16</span><span>45m</span></span>
+  <span class="pop" role="tooltip"><b>Wothers.com lecture-demonstrations</b><i>Watch · Cambridge · 45m</i><span>Lecture-demonstrations from Cambridge's chemistry department, with a lot of things set on fire.</span><em>wothers.com ↗</em></span></a><a class="tile" data-g="watch" href="https://www.chem.ox.ac.uk/learning-resources">
+  <span class="fam">Watch</span>
+  <span class="sym">Dp</span>
+  <span class="nm">Oxford DPhils</span>
+  <span class="row"><span>17</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Chemistry: Introducing our DPhils</b><i>Watch · Oxford · 10m</i><span>Short videos of Oxford PhD students explaining what their research is and how they got there.</span><em>Oxford Chemistry ↗</em></span></a><a class="tile" data-g="watch" href="https://www.youtube.com/watch?v=6rdmpx39PRk&amp;list=PL7A1F4CF36C085DE1">
+  <span class="fam">Watch</span>
+  <span class="sym">Pv</span>
+  <span class="nm">Periodic Videos</span>
+  <span class="row"><span>18</span><span>8m</span></span>
+  <span class="pop" role="tooltip"><b>Periodic Videos, University of Nottingham</b><i>Watch · 118 elements · 8m</i><span>A film for every element, plus molecules and chemistry news.</span><em>Periodic Videos ↗</em></span></a><a class="tile" data-g="watch" href="https://www.oxfordsparks.ox.ac.uk/">
+  <span class="fam">Watch</span>
+  <span class="sym">Sp</span>
+  <span class="nm">Oxford Sparks</span>
+  <span class="row"><span>19</span><span>5m</span></span>
+  <span class="pop" role="tooltip"><b>Oxford Sparks</b><i>Watch · Oxford · 5m</i><span>Short animations about Oxford research, with questions to go with them.</span><em>Oxford Sparks ↗</em></span></a><div class="gh" data-g="listen"><b>Listen</b><span>Podcasts · 3</span></div><a class="tile" data-g="listen" href="https://www.chemistryworld.com/podcasts">
+  <span class="fam">Listen</span>
+  <span class="sym">Cp</span>
+  <span class="nm">Chemistry World pod</span>
+  <span class="row"><span>20</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>Chemistry World podcast</b><i>Listen · RSC · 30m</i><span>The Royal Society of Chemistry's own podcast: chemistry news and the stories behind it.</span><em>Chemistry World podcasts ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">
+  <span class="fam">Listen</span>
+  <span class="sym">Io</span>
+  <span class="nm">In Our Time</span>
+  <span class="row"><span>21</span><span>45m</span></span>
+  <span class="pop" role="tooltip"><b>BBC In Our Time: science archive</b><i>Listen · BBC · 45m</i><span>Three academics discuss one subject for 45 minutes.</span><em>In Our Time science ↗</em></span></a><a class="tile" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">
+  <span class="fam">Listen</span>
+  <span class="sym">Im</span>
+  <span class="nm">Monkey Cage</span>
+  <span class="row"><span>22</span><span>30m</span></span>
+  <span class="pop" role="tooltip"><b>The Infinite Monkey Cage</b><i>Listen · BBC · 30m</i><span>Science and comedy on BBC Radio 4. A good place to start if you do not listen to anything yet.</span><em>Infinite Monkey Cage ↗</em></span></a><div class="gh" data-g="read"><b>Read</b><span>Magazines and books · 6</span></div><a class="tile" data-g="read" href="https://www.chemistryworld.com/">
+  <span class="fam">Read</span>
+  <span class="sym">Cw</span>
+  <span class="nm">Chemistry World</span>
+  <span class="row"><span>23</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Chemistry World</b><i>Read · RSC · 10m</i><span>News and features from the Royal Society of Chemistry's magazine.</span><em>chemistryworld.com ↗</em></span></a><a class="tile" data-g="read" href="https://edu.rsc.org/student">
+  <span class="fam">Read</span>
+  <span class="sym">Ec</span>
+  <span class="nm">RSC student pages</span>
+  <span class="row"><span>24</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>RSC student pages and Education in Chemistry</b><i>Read · RSC · 15m</i><span>Explainer articles pitched at A level, from the Royal Society of Chemistry.</span><em>RSC student pages ↗</em></span></a><a class="tile" data-g="read" href="https://www.nature.com/news">
+  <span class="fam">Read</span>
+  <span class="sym">Na</span>
+  <span class="nm">Nature news</span>
+  <span class="row"><span>25</span><span>10m</span></span>
+  <span class="pop" role="tooltip"><b>Nature news</b><i>Read · 10m</i><span>The free news pages of the science journal Nature.</span><em>nature.com/news ↗</em></span></a><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Kw</span>
+  <span class="nm">Why Reactions Happen</span>
+  <span class="row"><span>26</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>Why Chemical Reactions Happen, by James Keeler and Peter Wothers</b><i>Read · book · book</i><span>The book most often recommended to chemistry applicants. It bridges A level and first-year university.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">Bi</span>
+  <span class="nm">50 Chemistry Ideas</span>
+  <span class="row"><span>27</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>50 Chemistry Ideas You Really Need to Know, by Hayley Birch</b><i>Read · book · book</i><span>Fifty short chapters. A good first wider-reading book.</span></span></span><span class="tile" data-g="read">
+  <span class="fam">Read</span>
+  <span class="sym">St</span>
+  <span class="nm">Secret Life of the PT</span>
+  <span class="row"><span>28</span><span>book</span></span>
+  <span class="pop" role="tooltip"><b>The Secret Life of the Periodic Table, by Ben Still</b><i>Read · book · book</i><span>The periodic table element by element. Pairs well with Periodic Videos.</span></span></span><div class="gh" data-g="do"><b>Do</b><span>Problems and practice · 5</span></div><a class="tile" data-g="do" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">
+  <span class="fam">Do</span>
+  <span class="sym">Op</span>
+  <span class="nm">Olympiad papers</span>
+  <span class="row"><span>29</span><span>2h</span></span>
+  <span class="pop" role="tooltip"><b>Olympiad past papers and video answers</b><i>Do · RSC · 2h</i><span>Every Round 1 paper since 2003, with mark schemes and worked video answers.</span><em>Past papers ↗</em></span></a><a class="tile" data-g="do" href="https://c3l6.com/downloads">
+  <span class="fam">Do</span>
+  <span class="sym">Cx</span>
+  <span class="nm">C3L6 papers</span>
+  <span class="row"><span>30</span><span>90m</span></span>
+  <span class="pop" role="tooltip"><b>Cambridge Chemistry Challenge past papers</b><i>Do · Cambridge · 90m</i><span>Previous Cambridge Chemistry Challenge papers and answers.</span><em>C3L6 downloads ↗</em></span></a><a class="tile" data-g="do" href="https://isaacscience.org/">
+  <span class="fam">Do</span>
+  <span class="sym">Is</span>
+  <span class="nm">Isaac Science</span>
+  <span class="row"><span>31</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>Isaac Science</b><i>Do · 20m</i><span>Free problems from Cambridge, marked instantly. Make an account and work through a topic.</span><em>isaacscience.org ↗</em></span></a><a class="tile" data-g="do" href="https://edu.rsc.org/resources/collections/screen-experiments">
+  <span class="fam">Do</span>
+  <span class="sym">Se</span>
+  <span class="nm">Screen Experiments</span>
+  <span class="row"><span>32</span><span>20m</span></span>
+  <span class="pop" role="tooltip"><b>RSC Screen Experiments</b><i>Do · RSC · 20m</i><span>Practise experimental technique on screen, with the results you would get in the lab.</span><em>Screen Experiments ↗</em></span></a><a class="tile" data-g="do" href="https://www.chemguide.co.uk/">
+  <span class="fam">Do</span>
+  <span class="sym">Cg</span>
+  <span class="nm">Chemguide</span>
+  <span class="row"><span>33</span><span>15m</span></span>
+  <span class="pop" role="tooltip"><b>Chemguide</b><i>Do · A level · 15m</i><span>Plain explanations of every A level topic.</span><em>chemguide.co.uk ↗</em></span></a><div class="gh" data-g="apply"><b>Apply</b><span>Placements · 3</span></div><a class="tile" data-g="apply" href="https://www.nuffieldresearchplacements.org/">
+  <span class="fam">Apply</span>
+  <span class="sym">Nf</span>
+  <span class="nm">Nuffield placement</span>
+  <span class="row"><span>34</span><span>4–6wk</span></span>
+  <span class="pop" role="tooltip"><b>Nuffield Research Placements</b><i>Apply · summer · 4–6wk</i><span>A summer placement in a university or industry lab. Applications usually open in the autumn term. Read the eligibility criteria first.</span><em>Nuffield ↗</em></span></a><a class="tile" data-g="apply" href="https://in2scienceuk.org/students/">
+  <span class="fam">Apply</span>
+  <span class="sym">In</span>
+  <span class="nm">In2Science</span>
+  <span class="row"><span>35</span><span>2wk</span></span>
+  <span class="pop" role="tooltip"><b>In2Science UK</b><i>Apply · summer · 2wk</i><span>Summer placements with working researchers, plus workshops. Eligibility criteria apply.</span><em>In2Science ↗</em></span></a><a class="tile" data-g="apply" href="https://www.etrust.org.uk/the-year-in-industry">
+  <span class="fam">Apply</span>
+  <span class="sym">Yi</span>
+  <span class="nm">Year in Industry</span>
+  <span class="row"><span>36</span><span>1yr</span></span>
+  <span class="pop" role="tooltip"><b>Year in Industry (EDT)</b><i>Apply · paid placement · 1yr</i><span>A paid year working in industry before you start university.</span><em>Year in Industry ↗</em></span></a></div>
+  <p class="tap">Every tile is a link. Each one is written up in full further down the page.</p>
+</section>
+
+
+<section class="fam" data-g="enter">
+  <header class="fam-head">
+    <div class="eyebrow">Competitions · 4 things</div>
+    <h2>Enter</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ol</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">UK Chemistry Olympiad</a></h3>
+      <div class="meta"><span>01</span><span>2h</span><span>Y12–13</span><span>via school</span><span>late Jan · check</span></div>
+    </div>
+  </div>
+  <p class="what">A two-hour paper of problems well beyond A level, sat in school in late January. Your teacher registers the school; you cannot enter on your own.</p>
+  
+  <p class="think"><b>Think about:</b> Do a past paper first (tile Op) so the style is not a shock.</p>
+  <p class="url"><a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">RSC Olympiad page</a> &nbsp;<span class="dim">edu.rsc.org/enrichment/uk-chemistry-olympiad</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Cc</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://c3l6.com/">Cambridge Chemistry Challenge (C3L6)</a></h3>
+      <div class="meta"><span>02</span><span>90m</span><span>Y12</span><span>via school</span><span>June · check</span></div>
+    </div>
+  </div>
+  <p class="what">A 90-minute paper sat in school, usually in June. A gold award gets you an invitation to a residential at the University of Cambridge at the end of August.</p>
+  
+  <p class="think"><b>Think about:</b> Past papers are on the same site (tile Cx).</p>
+  <p class="url"><a class="" data-g="enter" href="https://c3l6.com/">c3l6.com</a> &nbsp;<span class="dim">c3l6.com</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Kv</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Kelvin Science Prize, Peterhouse</a></h3>
+      <div class="meta"><span>03</span><span>essay</span><span>Y12</span><span>enter yourself</span><span>spring · check</span></div>
+    </div>
+  </div>
+  <p class="what">A science essay on a question set by Peterhouse, Cambridge. Questions come out in the spring; the 2026 deadline was 20 April. Winners are invited to lunch with Cambridge academics.</p>
+  
+  <p class="think"><b>Think about:</b> Pick the question you would still want to answer after three weeks of reading about it.</p>
+  <p class="url"><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Peterhouse</a> &nbsp;<span class="dim">pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition</span></p>
+</article>
+<article class="card" data-g="enter">
+  <div class="card-top">
+    <span class="badge">Ox</span>
+    <div class="card-h">
+      <h3><a class="" data-g="enter" href="https://oxsci.org/">The Oxford Scientist writing competition</a></h3>
+      <div class="meta"><span>04</span><span>5h</span><span>all years</span><span>enter yourself</span></div>
+    </div>
+  </div>
+  <p class="what">A short piece of science writing for the magazine Oxford students run. Check the site for this year's window.</p>
+  
+  <p class="think"><b>Think about:</b> Write about one piece of chemistry you have met this year for someone who has never studied it.</p>
+  <p class="url"><a class="" data-g="enter" href="https://oxsci.org/">oxsci.org</a> &nbsp;<span class="dim">oxsci.org</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="watch">
+  <header class="fam-head">
+    <div class="eyebrow">Talks and lectures · 15 things</div>
+    <h2>Watch</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Mo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time">Miguel A. Modestino: How to transform the chemical industry, one reaction at a time</a></h3>
+      <div class="meta"><span>05</span><span>9m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on running industrial reactions with electricity instead of heat.</p>
+  
+  <p class="think"><b>Think about:</b> Which reaction in the A level organic course would you most want to run electrochemically, and what would it save?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Va</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/vaitea_cowan_how_green_hydrogen_could_end_the_fossil_fuel_era">Vaitea Cowan: How green hydrogen could end the fossil fuel era</a></h3>
+      <div class="meta"><span>06</span><span>9m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on mass-producing electrolysers that split water into hydrogen and oxygen.</p>
+  
+  <p class="think"><b>Think about:</b> Write the electrolysis half-equations and explain where the energy cost sits.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/vaitea_cowan_how_green_hydrogen_could_end_the_fossil_fuel_era">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/vaitea_cowan_how_green_hydrogen_could_end_the_fossil_fuel_era</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ob</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/karin_oberg_the_galactic_recipe_for_a_living_planet">Karin Öberg: The galactic recipe for a living planet</a></h3>
+      <div class="meta"><span>07</span><span>13m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on astrochemistry: the molecules that form in space before planets do.</p>
+  
+  <p class="think"><b>Think about:</b> Which of the molecules named have you met in the course, and what evidence identifies them at that distance?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/karin_oberg_the_galactic_recipe_for_a_living_planet">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/karin_oberg_the_galactic_recipe_for_a_living_planet</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Hy</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/christy_l_haynes_can_nanoparticles_help_fight_hunger">Christy L. Haynes: Can nanoparticles help fight hunger?</a></h3>
+      <div class="meta"><span>08</span><span>11m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on using nanoparticles to protect crops.</p>
+  
+  <p class="think"><b>Think about:</b> What changes chemically when a material is made at nanoscale, and why does that matter for a plant?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/christy_l_haynes_can_nanoparticles_help_fight_hunger">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/christy_l_haynes_can_nanoparticles_help_fight_hunger</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Vo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/normand_voyer_are_life_saving_medicines_hiding_in_the_world_s_coldest_places">Normand Voyer: Are life-saving medicines hiding in the world's coldest places?</a></h3>
+      <div class="meta"><span>09</span><span>12m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on finding new drug molecules in organisms from polar regions.</p>
+  
+  <p class="think"><b>Think about:</b> How would you get from a plant extract to a single identified compound? Name the techniques.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/normand_voyer_are_life_saving_medicines_hiding_in_the_world_s_coldest_places">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/normand_voyer_are_life_saving_medicines_hiding_in_the_world_s_coldest_places</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Af</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/sam_afoullouss_the_deep_sea_s_medicinal_secrets">Sam Afoullouss: The deep sea's medicinal secrets</a></h3>
+      <div class="meta"><span>10</span><span>13m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk on searching deep-sea organisms for new medicines.</p>
+  
+  <p class="think"><b>Think about:</b> What is the case for and against collecting organisms from an environment we know little about?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/sam_afoullouss_the_deep_sea_s_medicinal_secrets">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/sam_afoullouss_the_deep_sea_s_medicinal_secrets</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ph</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/clarice_phelps_how_i_claimed_a_seat_at_the_periodic_table">Clarice Phelps: How I claimed a seat at the periodic table</a></h3>
+      <div class="meta"><span>11</span><span>15m</span><span>TED</span></div>
+    </div>
+  </div>
+  <p class="what">A TED talk from a chemist who helped confirm element 117, tennessine.</p>
+  
+  <p class="think"><b>Think about:</b> How is a new element confirmed to exist when only a few atoms are ever made?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/clarice_phelps_how_i_claimed_a_seat_at_the_periodic_table">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/clarice_phelps_how_i_claimed_a_seat_at_the_periodic_table</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Zd</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.ted.com/talks/george_zaidan_why_your_phone_battery_gets_worse_over_time">George Zaidan: Why your phone battery gets worse over time</a></h3>
+      <div class="meta"><span>12</span><span>5m</span><span>TED-Ed</span></div>
+    </div>
+  </div>
+  <p class="what">A short TED-Ed film on what happens inside a lithium-ion cell as it ages.</p>
+  
+  <p class="think"><b>Think about:</b> Draw the half-equations for a lithium-ion cell and mark where the degradation happens.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.ted.com/talks/george_zaidan_why_your_phone_battery_gets_worse_over_time">Watch on TED</a> &nbsp;<span class="dim">ted.com/talks/george_zaidan_why_your_phone_battery_gets_worse_over_time</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Xm</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Royal Institution Christmas Lectures</a></h3>
+      <div class="meta"><span>13</span><span>1h</span><span>archive</span><span>Christmas</span></div>
+    </div>
+  </div>
+  <p class="what">Every series since the 1960s, searchable by topic. A new series is on BBC Four and iPlayer over the Christmas holidays.</p>
+  
+  <p class="think"><b>Think about:</b> Search the archive for a chemistry series and watch the first lecture.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Ri archive</a> &nbsp;<span class="dim">rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Ri</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Royal Institution on YouTube</a></h3>
+      <div class="meta"><span>14</span><span>1h</span><span>weekly</span></div>
+    </div>
+  </div>
+  <p class="what">New lectures and demonstrations every week from the Royal Institution in London.</p>
+  
+  <p class="think"><b>Think about:</b> Subscribe and watch one lecture this month that has nothing to do with your current topic.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/user/TheRoyalInstitution">Ri YouTube</a> &nbsp;<span class="dim">youtube.com/user/TheRoyalInstitution</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Gr</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/browse-all?type=597">Gresham College science lectures</a></h3>
+      <div class="meta"><span>15</span><span>1h</span><span>3,500+ lectures</span></div>
+    </div>
+  </div>
+  <p class="what">Free university-level public lectures, recorded. Browse the science collection.</p>
+  
+  <p class="think"><b>Think about:</b> Find one lecture that touches something on your specification and note where it goes further.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.gresham.ac.uk/watch-now/browse-all?type=597">Gresham science</a> &nbsp;<span class="dim">gresham.ac.uk/watch-now/browse-all?type=597</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Wo</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="http://www.wothers.com/">Wothers.com lecture-demonstrations</a></h3>
+      <div class="meta"><span>16</span><span>45m</span><span>Cambridge</span></div>
+    </div>
+  </div>
+  <p class="what">Lecture-demonstrations from Cambridge's chemistry department, with a lot of things set on fire.</p>
+  
+  <p class="think"><b>Think about:</b> Pick one demonstration and write the equation for what you saw.</p>
+  <p class="url"><a class="" data-g="watch" href="http://www.wothers.com/">wothers.com</a> &nbsp;<span class="dim">wothers.com</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Dp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.chem.ox.ac.uk/learning-resources">Oxford Chemistry: Introducing our DPhils</a></h3>
+      <div class="meta"><span>17</span><span>10m</span><span>Oxford</span></div>
+    </div>
+  </div>
+  <p class="what">Short videos of Oxford PhD students explaining what their research is and how they got there.</p>
+  
+  <p class="think"><b>Think about:</b> Which project would you most want to spend three years on, and what would you need to learn first?</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.chem.ox.ac.uk/learning-resources">Oxford Chemistry</a> &nbsp;<span class="dim">chem.ox.ac.uk/learning-resources</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Pv</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.youtube.com/watch?v=6rdmpx39PRk&amp;list=PL7A1F4CF36C085DE1">Periodic Videos, University of Nottingham</a></h3>
+      <div class="meta"><span>18</span><span>8m</span><span>118 elements</span></div>
+    </div>
+  </div>
+  <p class="what">A film for every element, plus molecules and chemistry news.</p>
+  
+  <p class="think"><b>Think about:</b> Watch the film for an element in this week's lesson and note one fact the textbook left out.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.youtube.com/watch?v=6rdmpx39PRk&amp;list=PL7A1F4CF36C085DE1">Periodic Videos</a> &nbsp;<span class="dim">youtube.com/watch?v=6rdmpx39PRk&amp;list=PL7A1F4CF36C085DE1</span></p>
+</article>
+<article class="card" data-g="watch">
+  <div class="card-top">
+    <span class="badge">Sp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="watch" href="https://www.oxfordsparks.ox.ac.uk/">Oxford Sparks</a></h3>
+      <div class="meta"><span>19</span><span>5m</span><span>Oxford</span></div>
+    </div>
+  </div>
+  <p class="what">Short animations about Oxford research, with questions to go with them.</p>
+  
+  <p class="think"><b>Think about:</b> Answer the questions that come with the animation.</p>
+  <p class="url"><a class="" data-g="watch" href="https://www.oxfordsparks.ox.ac.uk/">Oxford Sparks</a> &nbsp;<span class="dim">oxfordsparks.ox.ac.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="listen">
+  <header class="fam-head">
+    <div class="eyebrow">Podcasts · 3 things</div>
+    <h2>Listen</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Cp</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.chemistryworld.com/podcasts">Chemistry World podcast</a></h3>
+      <div class="meta"><span>20</span><span>30m</span><span>RSC</span></div>
+    </div>
+  </div>
+  <p class="what">The Royal Society of Chemistry's own podcast: chemistry news and the stories behind it.</p>
+  
+  <p class="think"><b>Think about:</b> Listen to one episode and explain its main story to someone at home.</p>
+  <p class="url"><a class="" data-g="listen" href="https://www.chemistryworld.com/podcasts">Chemistry World podcasts</a> &nbsp;<span class="dim">chemistryworld.com/podcasts</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Io</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">BBC In Our Time: science archive</a></h3>
+      <div class="meta"><span>21</span><span>45m</span><span>BBC</span></div>
+    </div>
+  </div>
+  <p class="what">Three academics discuss one subject for 45 minutes.</p>
+  
+  <p class="think"><b>Think about:</b> Search for the periodic table, the chemical bond, Lavoisier, Faraday, Marie Curie, catalysis or plastics.</p>
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/p01gyd7j">In Our Time science</a> &nbsp;<span class="dim">bbc.co.uk/programmes/p01gyd7j</span></p>
+</article>
+<article class="card" data-g="listen">
+  <div class="card-top">
+    <span class="badge">Im</span>
+    <div class="card-h">
+      <h3><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">The Infinite Monkey Cage</a></h3>
+      <div class="meta"><span>22</span><span>30m</span><span>BBC</span></div>
+    </div>
+  </div>
+  <p class="what">Science and comedy on BBC Radio 4. A good place to start if you do not listen to anything yet.</p>
+  
+  <p class="think"><b>Think about:</b> Find an episode on a chemistry topic.</p>
+  <p class="url"><a class="" data-g="listen" href="https://www.bbc.co.uk/programmes/b00snr0w">Infinite Monkey Cage</a> &nbsp;<span class="dim">bbc.co.uk/programmes/b00snr0w</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="read">
+  <header class="fam-head">
+    <div class="eyebrow">Magazines and books · 6 things</div>
+    <h2>Read</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Cw</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.chemistryworld.com/">Chemistry World</a></h3>
+      <div class="meta"><span>23</span><span>10m</span><span>RSC</span><span>free online</span></div>
+    </div>
+  </div>
+  <p class="what">News and features from the Royal Society of Chemistry's magazine.</p>
+  
+  <p class="think"><b>Think about:</b> Read one news story a week. Note the chemistry you recognise and the chemistry you do not.</p>
+  <p class="url"><a class="" data-g="read" href="https://www.chemistryworld.com/">chemistryworld.com</a> &nbsp;<span class="dim">chemistryworld.com</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Ec</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://edu.rsc.org/student">RSC student pages and Education in Chemistry</a></h3>
+      <div class="meta"><span>24</span><span>15m</span><span>RSC</span></div>
+    </div>
+  </div>
+  <p class="what">Explainer articles pitched at A level, from the Royal Society of Chemistry.</p>
+  
+  <p class="think"><b>Think about:</b> Find an article on the topic you found hardest last term.</p>
+  <p class="url"><a class="" data-g="read" href="https://edu.rsc.org/student">RSC student pages</a> &nbsp;<span class="dim">edu.rsc.org/student</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Na</span>
+    <div class="card-h">
+      <h3><a class="" data-g="read" href="https://www.nature.com/news">Nature news</a></h3>
+      <div class="meta"><span>25</span><span>10m</span><span>free online</span></div>
+    </div>
+  </div>
+  <p class="what">The free news pages of the science journal Nature.</p>
+  
+  <p class="think"><b>Think about:</b> Find one story about a new material or reaction and summarise it in three sentences.</p>
+  <p class="url"><a class="" data-g="read" href="https://www.nature.com/news">nature.com/news</a> &nbsp;<span class="dim">nature.com/news</span></p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Kw</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">Why Chemical Reactions Happen, by James Keeler and Peter Wothers</span></h3>
+      <div class="meta"><span>26</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The book most often recommended to chemistry applicants. It bridges A level and first-year university.</p>
+  
+  <p class="think"><b>Think about:</b> Read one chapter alongside the topic you are studying in class.</p>
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">Bi</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">50 Chemistry Ideas You Really Need to Know, by Hayley Birch</span></h3>
+      <div class="meta"><span>27</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">Fifty short chapters. A good first wider-reading book.</p>
+  
+  <p class="think"><b>Think about:</b> Read the chapters on ideas you have not met in class yet.</p>
+  <p class="url dim">Ask the school library.</p>
+</article>
+<article class="card" data-g="read">
+  <div class="card-top">
+    <span class="badge">St</span>
+    <div class="card-h">
+      <h3><span class="" data-g="read">The Secret Life of the Periodic Table, by Ben Still</span></h3>
+      <div class="meta"><span>28</span><span>book</span><span>book</span><span>ask library</span></div>
+    </div>
+  </div>
+  <p class="what">The periodic table element by element. Pairs well with Periodic Videos.</p>
+  
+  <p class="think"><b>Think about:</b> Read about one element per week and watch its Periodic Video.</p>
+  <p class="url dim">Ask the school library.</p>
+</article></div>
+</section>
+<section class="fam" data-g="do">
+  <header class="fam-head">
+    <div class="eyebrow">Problems and practice · 5 things</div>
+    <h2>Do</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Op</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">Olympiad past papers and video answers</a></h3>
+      <div class="meta"><span>29</span><span>2h</span><span>RSC</span></div>
+    </div>
+  </div>
+  <p class="what">Every Round 1 paper since 2003, with mark schemes and worked video answers.</p>
+  
+  <p class="think"><b>Think about:</b> Start with the most recent paper. You are not expected to finish it.</p>
+  <p class="url"><a class="" data-g="do" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">Past papers</a> &nbsp;<span class="dim">edu.rsc.org/enrichment/uk-chemistry-olympiad</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Cx</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://c3l6.com/downloads">Cambridge Chemistry Challenge past papers</a></h3>
+      <div class="meta"><span>30</span><span>90m</span><span>Cambridge</span></div>
+    </div>
+  </div>
+  <p class="what">Previous Cambridge Chemistry Challenge papers and answers.</p>
+  
+  <p class="think"><b>Think about:</b> Try one question a week in Year 12, then a full paper before June.</p>
+  <p class="url"><a class="" data-g="do" href="https://c3l6.com/downloads">C3L6 downloads</a> &nbsp;<span class="dim">c3l6.com/downloads</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Is</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://isaacscience.org/">Isaac Science</a></h3>
+      <div class="meta"><span>31</span><span>20m</span><span>free account</span></div>
+    </div>
+  </div>
+  <p class="what">Free problems from Cambridge, marked instantly. Make an account and work through a topic.</p>
+  
+  <p class="think"><b>Think about:</b> Do a set on a topic you have just finished in class.</p>
+  <p class="url"><a class="" data-g="do" href="https://isaacscience.org/">isaacscience.org</a> &nbsp;<span class="dim">isaacscience.org</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Se</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://edu.rsc.org/resources/collections/screen-experiments">RSC Screen Experiments</a></h3>
+      <div class="meta"><span>32</span><span>20m</span><span>RSC</span></div>
+    </div>
+  </div>
+  <p class="what">Practise experimental technique on screen, with the results you would get in the lab.</p>
+  
+  <p class="think"><b>Think about:</b> Run a practical before you do it for real in class.</p>
+  <p class="url"><a class="" data-g="do" href="https://edu.rsc.org/resources/collections/screen-experiments">Screen Experiments</a> &nbsp;<span class="dim">edu.rsc.org/resources/collections/screen-experiments</span></p>
+</article>
+<article class="card" data-g="do">
+  <div class="card-top">
+    <span class="badge">Cg</span>
+    <div class="card-h">
+      <h3><a class="" data-g="do" href="https://www.chemguide.co.uk/">Chemguide</a></h3>
+      <div class="meta"><span>33</span><span>15m</span><span>A level</span></div>
+    </div>
+  </div>
+  <p class="what">Plain explanations of every A level topic.</p>
+  
+  <p class="think"><b>Think about:</b> Read the Chemguide page for anything you did not follow in a lesson.</p>
+  <p class="url"><a class="" data-g="do" href="https://www.chemguide.co.uk/">chemguide.co.uk</a> &nbsp;<span class="dim">chemguide.co.uk</span></p>
+</article></div>
+</section>
+<section class="fam" data-g="apply">
+  <header class="fam-head">
+    <div class="eyebrow">Placements · 3 things</div>
+    <h2>Apply</h2>
+  </header>
+  <div class="cards">
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Nf</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.nuffieldresearchplacements.org/">Nuffield Research Placements</a></h3>
+      <div class="meta"><span>34</span><span>4–6wk</span><span>Y12</span><span>summer</span></div>
+    </div>
+  </div>
+  <p class="what">A summer placement in a university or industry lab. Applications usually open in the autumn term. Read the eligibility criteria first.</p>
+  
+  <p class="think"><b>Think about:</b> Talk to your teacher about whether you qualify before the window closes.</p>
+  <p class="url"><a class="" data-g="apply" href="https://www.nuffieldresearchplacements.org/">Nuffield</a> &nbsp;<span class="dim">nuffieldresearchplacements.org</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">In</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://in2scienceuk.org/students/">In2Science UK</a></h3>
+      <div class="meta"><span>35</span><span>2wk</span><span>Y12</span><span>summer</span></div>
+    </div>
+  </div>
+  <p class="what">Summer placements with working researchers, plus workshops. Eligibility criteria apply.</p>
+  
+  <p class="think"><b>Think about:</b> Check the criteria and the application dates.</p>
+  <p class="url"><a class="" data-g="apply" href="https://in2scienceuk.org/students/">In2Science</a> &nbsp;<span class="dim">in2scienceuk.org/students</span></p>
+</article>
+<article class="card" data-g="apply">
+  <div class="card-top">
+    <span class="badge">Yi</span>
+    <div class="card-h">
+      <h3><a class="" data-g="apply" href="https://www.etrust.org.uk/the-year-in-industry">Year in Industry (EDT)</a></h3>
+      <div class="meta"><span>36</span><span>1yr</span><span>Y13</span><span>paid placement</span></div>
+    </div>
+  </div>
+  <p class="what">A paid year working in industry before you start university.</p>
+  
+  <p class="think"><b>Think about:</b> Worth knowing about in Year 13 if you are thinking of a gap year.</p>
+  <p class="url"><a class="" data-g="apply" href="https://www.etrust.org.uk/the-year-in-industry">Year in Industry</a> &nbsp;<span class="dim">etrust.org.uk/the-year-in-industry</span></p>
+</article></div>
+</section>
+
+<section class="page">
+  <div class="year-head">
+    <div class="eyebrow">Dates to know</div>
+    <h2>Your chemistry year</h2>
+    <p>Competitions are entered through school: tell your teacher and the department will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+  </div>
+  <div class="tl"><div class="ev" data-g="apply"><div class="when">Oct–Nov 2026</div><a class="" data-g="apply" href="https://www.nuffieldresearchplacements.org/"><span class="sym">Nf</span></a><div><b>Placement applications open</b> <span class="check">check</span><p>Nuffield and In2Science usually open in the autumn term. Check the sites. <a class="" data-g="apply" href="https://www.nuffieldresearchplacements.org/">Nuffield</a></p></div></div><div class="ev" data-g="enter"><div class="when">By December</div><a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad"><span class="sym">Ol</span></a><div><b>Tell your teacher about the Olympiad</b> <span class="check">check</span><p>The school registers entrants; last year's deadline was mid-January. <a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">RSC Olympiad page</a></p></div></div><div class="ev" data-g="watch"><div class="when">Christmas hols</div><a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive"><span class="sym">Xm</span></a><div><b>Royal Institution Christmas Lectures</b> <span class="check">check</span><p>New series on BBC Four and iPlayer. <a class="" data-g="watch" href="https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive">Ri archive</a></p></div></div><div class="ev" data-g="enter"><div class="when">Late Jan 2027</div><a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad"><span class="sym">Ol</span></a><div><b>Chemistry Olympiad Round 1</b> <span class="check">check</span><p>Two-hour paper in school. <a class="" data-g="enter" href="https://edu.rsc.org/enrichment/uk-chemistry-olympiad">RSC Olympiad page</a></p></div></div><div class="ev" data-g="enter"><div class="when">Spring 2027</div><a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition"><span class="sym">Kv</span></a><div><b>Kelvin Prize questions out</b> <span class="check">check</span><p>Essay deadline in the spring; in 2026 it was 20 April. <a class="" data-g="enter" href="https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition">Peterhouse</a></p></div></div><div class="ev" data-g="enter"><div class="when">June 2027</div><a class="" data-g="enter" href="https://c3l6.com/"><span class="sym">Cc</span></a><div><b>Cambridge Chemistry Challenge</b> <span class="check">check</span><p>90-minute paper in school, Year 12. <a class="" data-g="enter" href="https://c3l6.com/">c3l6.com</a></p></div></div><div class="ev" data-g="enter"><div class="when">End Aug 2027</div><a class="" data-g="enter" href="https://c3l6.com/"><span class="sym">Cc</span></a><div><b>C3L6 residential in Cambridge</b> <p>For gold award winners. <a class="" data-g="enter" href="https://c3l6.com/">c3l6.com</a></p></div></div></div>
+
+  <div class="nbwrap">
+  <div class="notebook">
+    <div class="eyebrow">One line per thing</div>
+    <h2>Your Lab notebook</h2>
+    <p style="margin:0;color:var(--muted)">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    <table><thead><tr><th style="width:18mm">Date</th><th style="width:40mm">What I watched, read or did</th><th>One thing I learned</th><th>One question it raised</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <div class="foot"><span>Chemistry Department · 2026–27</span><span>Every link checked 30 September 2026. All free unless the entry says otherwise.</span></div>
+  </div>
+</section>
+<script>
+(function(){
+  const tiles=[...document.querySelectorAll('.tile')];
+  const touch=matchMedia('(hover:none)').matches;
+  tiles.forEach(t=>{
+    t.addEventListener('mouseenter',()=>{ const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); });
+    if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
+  });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+</body></html>
