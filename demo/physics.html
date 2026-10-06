@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Physics Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* A physics lab. The technician at the bench talks you round it. Each family of things to do is a
+   piece of apparatus in the room: trophy cabinet (Enter), whiteboard (Solve), projector screen (Watch),
+   bench radio (Listen), bookshelf (Read), noticeboard by the door (Apply).
+   Same saving, sign-in, lab book and backup as the Chemistry page. */
+:root{
+  --wall:#F3EDDF; --wall2:#E9E1CF; --floor:#C9C1AE; --bench:#2E5A4E; --bench2:#214238; --metal:#8C949C; --card:#FFFFFF;
+  --ink:#1E2430; --muted:#5D6675; --line:#D9D2C2; --soft:#EFE9DB; --paper:#FFFDF5; --cork:#C89A5F; --tape:#F5E27A;
+  --hazard:#F2B705; --red:#B8322B; --on-fill:#FFFFFF; --focus:#1F4FD8;
+  --enter:#C8392D; --watch:#2457C5; --listen:#6E45C7; --read:#9A6200; --do:#1B7F52; --apply:#0B7C8A;
+  --f-sign:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-hand:"Caveat","Segoe Script","Bradley Hand",cursive;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--wall)}
+body{background:var(--wall);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.5;margin:0;
+  background-image:linear-gradient(90deg,transparent 0 48%,rgba(0,0,0,.025) 48% 50%,transparent 50%);background-size:28px 100%}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(12px,3vw,32px);padding-block:20px 72px;display:grid;gap:48px}
+a{color:var(--watch)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{margin:0;line-height:1.05}
+.small{font-size:.86rem;color:var(--muted);margin:0}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+
+/* signage */
+.sign{font-family:var(--f-sign);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.plate{display:inline-flex;align-items:center;gap:12px;background:#1E2430;color:#F7F3E8;border-radius:6px;padding:8px 16px 8px 12px;
+  box-shadow:0 2px 0 #000,0 6px 14px -8px rgba(0,0,0,.6);font-family:var(--f-sign);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem}
+.plate i{width:10px;height:10px;border-radius:50%;background:var(--hazard);box-shadow:inset 0 0 0 2px #1E2430,0 0 0 2px var(--hazard)}
+.hazard{height:8px;background:repeating-linear-gradient(135deg,var(--hazard) 0 14px,#1E2430 14px 28px);border-radius:2px}
+h2.sign{font-size:clamp(1.5rem,3vw,2.1rem)}
+.sec-head{display:grid;gap:6px}
+.sec-head .lede{color:var(--muted);max-width:66ch;margin:0}
+.station-no{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- the room ---------- */
+.room{position:relative;border:10px solid #2A2F3A;border-radius:10px;background:var(--wall2);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.room svg.scene{display:block;width:100%;height:auto}
+.hot{cursor:pointer}
+.hot .halo{fill:none;stroke:#fff;stroke-width:0;opacity:0;transition:all .2s}
+.hot:hover .halo,.hot:focus-visible .halo,.hot.lit .halo{stroke:var(--hazard);stroke-width:5;opacity:1}
+.hot .lbl{font-family:var(--f-sign);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;fill:#fff;paint-order:stroke;stroke:#1E2430;stroke-width:4px}
+.hot .lblbg{fill:#1E2430}
+.bubble{position:absolute;left:36.5%;top:3%;width:min(380px,30%);background:#fff;border:2px solid #1E2430;border-radius:14px;padding:12px 14px;font-size:clamp(.78rem,1.3vw,1rem);line-height:1.35;
+  box-shadow:0 10px 24px -14px rgba(0,0,0,.6);transition:opacity .2s;z-index:3}
+.bubble::after{content:"";position:absolute;left:22px;bottom:-16px;border:10px solid transparent;border-top:14px solid #1E2430;border-bottom:0}
+.bubble::before{content:"";position:absolute;left:24px;bottom:-11px;border:8px solid transparent;border-top:11px solid #fff;border-bottom:0;z-index:1}
+.bubble b{font-family:var(--f-sign);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:.78em;color:var(--muted);display:block;margin-bottom:2px}
+.bubble.hide{opacity:0}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.tech .lids{transform-origin:center;transform-box:fill-box;animation:blink 5.2s ease-in-out infinite}
+.tech .lids2{transform-origin:center;transform-box:fill-box;animation:blink 5.2s ease-in-out .3s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.tech-wrap{animation:bob 4s ease-in-out infinite}
+@keyframes swing{0%{transform:rotate(14deg)}100%{transform:rotate(-14deg)}}
+.pend{transform-origin:1070px 100px;animation:swing 1.3s ease-in-out infinite alternate}
+@keyframes trace{to{stroke-dashoffset:-120}}
+.scope-trace{stroke-dasharray:60 60;animation:trace 1.6s linear infinite}
+@keyframes spark{0%,88%,100%{opacity:0}90%,96%{opacity:1}}
+.spark{animation:spark 6s linear infinite}
+
+/* bench instruments under the room */
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:14px;align-items:stretch}
+.inst{background:#E6E8EA;border:2px solid #9AA2AA;border-radius:10px;padding:14px 14px 12px;position:relative;
+  box-shadow:inset 0 2px 0 #fff,inset 0 -3px 0 #B8BFC6,0 8px 16px -12px rgba(0,0,0,.5);display:grid;gap:8px}
+.inst::before{content:attr(data-label);font-family:var(--f-sign);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem;color:#3B4450;
+  background:#CDD2D7;border-radius:3px;padding:1px 8px;position:absolute;top:-10px;left:12px}
+.inst .screws{position:absolute;inset:6px;pointer-events:none}
+.inst .screws::before,.inst .screws::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#7B848C);top:0}
+.inst .screws::before{left:0}.inst .screws::after{right:0}
+.dial{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+.dial svg{width:150px;height:92px;display:block}
+.count{font-family:var(--f-mono);font-size:1.9rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.count small{font-size:.5em;color:var(--muted);font-weight:400}
+.tally{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.dymo{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--g,#333);color:#fff;padding:2px 7px;border-radius:2px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.picker{display:grid;gap:8px}
+.picker label{font-family:var(--f-sign);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.84rem;color:#3B4450}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:.86rem;border:1.5px solid #9AA2AA;background:#F7F8F9;color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer;box-shadow:0 2px 0 #B8BFC6}
+.seg button[aria-pressed="true"]{background:#1E2430;color:#fff;border-color:#1E2430;box-shadow:none;transform:translateY(1px)}
+.btn{font:inherit;font-weight:600;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;background:#1E2430;color:#fff;display:inline-flex;align-items:center;gap:8px;justify-content:center;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #B9B2A2}
+.btn[hidden]{display:none}
+.btn.g{background:var(--g);color:var(--on-fill)}
+.btn.big{background:var(--red);box-shadow:0 4px 0 #7A1F1A;font-family:var(--f-sign);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:1rem}
+.btn.big:active{transform:translateY(3px);box-shadow:0 1px 0 #7A1F1A}
+.pick-msg{font-size:.88rem;color:var(--muted);min-height:1.3em;margin:0}
+.who{display:grid;gap:6px;align-content:center;font-size:.9rem;color:var(--muted);min-width:180px}
+.who b{color:var(--ink)}
+.who .link{font:inherit;background:none;border:0;color:var(--watch);text-decoration:underline;cursor:pointer;padding:0;text-align:left}
+.saved{font-family:var(--f-mono);font-size:.74rem}
+.saved.ok{color:var(--do)} .saved.bad{color:var(--enter)}
+
+/* ---------- clipboard (this half term) ---------- */
+.clip{background:#B98B5A;border-radius:10px;padding:34px 16px 16px;position:relative;margin-top:14px;box-shadow:0 14px 30px -18px rgba(0,0,0,.6);
+  background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 9px)}
+.clip::before{content:"";position:absolute;left:50%;top:-10px;transform:translateX(-50%);width:140px;height:34px;background:linear-gradient(#B9C0C7,#6E7781);border-radius:6px;box-shadow:0 3px 6px rgba(0,0,0,.4)}
+.clip::after{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);width:60px;height:10px;background:#3B4450;border-radius:3px}
+.sheet-paper{background:var(--paper);border-radius:3px;padding:18px 18px 14px;display:grid;gap:12px;box-shadow:0 1px 0 #d8d1c0,0 3px 0 #fff,0 4px 0 #d8d1c0}
+.ht-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+.ht-head .due{font-family:var(--f-hand);font-size:1.25rem;color:var(--red);font-weight:700}
+.start{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.start-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;border-top:1px dashed #cfc6b2;padding-top:12px}
+.start-card .box{width:34px;height:34px;border:2px solid #1E2430;border-radius:4px;display:grid;place-items:center;font-family:var(--f-hand);font-size:1.6rem;color:var(--do);line-height:1;background:#fff}
+.start-card p{margin:0;font-size:.95rem}
+.start-card .step{font-family:var(--f-sign);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--muted);display:block;margin-bottom:2px}
+.start-card .tile{margin-top:8px}
+
+/* ---------- stations ---------- */
+.stations{display:grid;gap:26px}
+.station{display:grid;gap:12px;scroll-margin-top:16px}
+.st-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;background:#1E2430;color:#F7F3E8;border-radius:8px;padding:8px 14px 8px 8px;border-left:10px solid var(--g)}
+.st-head svg{width:52px;height:40px;display:block}
+.st-head .nm{font-family:var(--f-sign);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:1.25rem;line-height:1}
+.st-head .verb{font-size:.86rem;color:#B9C0CC;display:block;margin-top:2px}
+.st-head .n{font-family:var(--f-mono);font-size:.8rem;color:#F7F3E8;background:rgba(255,255,255,.12);padding:3px 9px;border-radius:4px}
+.station.flash .st-head{outline:4px solid var(--hazard);outline-offset:2px}
+.station.off{display:none}
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:12px}
+.tile{position:relative;font:inherit;text-align:left;color:var(--ink);cursor:pointer;background:var(--card);border:1px solid #CFC7B5;border-radius:4px;
+  padding:26px 12px 12px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px;align-items:start;min-width:0;min-height:96px;
+  box-shadow:0 2px 0 #E2DBC9,0 10px 18px -16px rgba(0,0,0,.5);transition:transform .15s ease, box-shadow .15s ease}
+.tile:hover{transform:translateY(-2px);box-shadow:0 2px 0 #E2DBC9,0 14px 22px -14px rgba(0,0,0,.55)}
+.tile .label{position:absolute;top:-1px;left:10px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--g);padding:3px 8px;border-radius:0 0 3px 3px}
+.tile .code{position:absolute;top:6px;right:10px;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);border:1px solid #CFC7B5;border-radius:3px;padding:0 5px}
+.tile .nm{font-size:.95rem;line-height:1.25;font-weight:600;overflow-wrap:anywhere}
+.tile .t{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);grid-column:1;align-self:end}
+.tile .sw{grid-column:2;grid-row:1 / 3;align-self:end;width:30px;height:48px;border-radius:5px;background:#D9D4C7;border:1px solid #B5AE9E;position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,.25)}
+.tile .sw::before{content:"";position:absolute;left:3px;right:3px;top:3px;height:20px;border-radius:3px;background:linear-gradient(#f5f5f5,#c9c9c9);box-shadow:0 2px 2px rgba(0,0,0,.3);transition:top .15s}
+.tile .sw::after{content:"OFF";position:absolute;left:0;right:0;bottom:4px;text-align:center;font-family:var(--f-mono);font-size:.5rem;color:#7a7568}
+.tile.done{border-color:var(--g);background:color-mix(in srgb,var(--g) 7%,#fff)}
+.tile.done .sw{background:var(--g);border-color:var(--g)}
+.tile.done .sw::before{top:25px}
+.tile.done .sw::after{content:"ON";bottom:auto;top:5px;color:#fff;font-weight:600}
+.tile.done .nm::after{content:" ✓";color:var(--g)}
+.tile.flash{outline:4px solid var(--hazard);outline-offset:3px}
+.tile.new::before{content:"NEW";position:absolute;top:-10px;right:-8px;font-family:var(--f-hand);font-weight:700;font-size:1rem;background:var(--tape);color:#5a4a00;padding:2px 10px;transform:rotate(6deg);box-shadow:0 3px 6px rgba(0,0,0,.25)}
+.tile.done.new::before{display:none}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.chip{font:inherit;font-family:var(--f-sign);font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.92rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid #B9B2A2;background:#FFFDF5;color:var(--ink);padding:5px 12px 5px 8px;border-radius:4px;cursor:pointer;box-shadow:0 2px 0 #CFC7B5}
+.chip i{width:12px;height:12px;border-radius:2px;background:var(--g,#1E2430);display:inline-block}
+.chip b{font-family:var(--f-mono);font-weight:400;color:var(--muted);font-size:.74rem;letter-spacing:0}
+.chip[aria-pressed="true"]{background:#1E2430;color:#fff;border-color:#1E2430;box-shadow:none;transform:translateY(1px)}
+.chip[aria-pressed="true"] b{color:#B9C0CC}
+.key{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
+.key code{font-family:var(--f-mono);font-size:.76rem;background:var(--soft);padding:1px 6px;border-radius:4px;color:var(--ink)}
+
+/* ---------- noticeboard ---------- */
+.board{background:var(--cork);border:14px solid #6B4A2B;border-radius:6px;padding:22px;box-shadow:inset 0 0 40px rgba(0,0,0,.25),0 20px 40px -24px rgba(0,0,0,.6);
+  background-image:radial-gradient(rgba(0,0,0,.08) 1px,transparent 1.5px),radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.5px);background-size:9px 9px,13px 13px;background-position:0 0,4px 6px}
+.year{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px 18px}
+.ev{position:relative;background:var(--paper);padding:22px 14px 12px;border-radius:2px;box-shadow:0 8px 14px -8px rgba(0,0,0,.6);display:grid;gap:6px;transform:rotate(var(--r,0deg))}
+.ev:nth-child(3n){--r:1.4deg}.ev:nth-child(3n+1){--r:-1.2deg}.ev:nth-child(3n+2){--r:.6deg}
+.ev::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--g) 45%,color-mix(in srgb,var(--g) 60%,#000));box-shadow:0 2px 3px rgba(0,0,0,.5)}
+.ev .when{font-family:var(--f-sign);font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--g);font-size:1rem}
+.ev .what b{display:block;line-height:1.25}
+.ev .what span{color:var(--muted);font-size:.9rem;display:block;margin-top:3px}
+.ev .what span.check{display:inline-block;margin-top:0;color:var(--muted);font-size:.64rem}
+.ev .open{font:inherit;font-size:.84rem;display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--g);color:var(--ink);border-radius:4px;padding:4px 10px;cursor:pointer;justify-self:start}
+.ev .open i{font-family:var(--f-mono);font-style:normal;font-weight:600;color:var(--g);font-size:.78rem}
+.check{display:inline-block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid #CFC7B5;border-radius:3px;padding:1px 5px;margin-left:6px;vertical-align:middle}
+.ev .in{position:absolute;right:8px;top:10px;font-family:var(--f-sign);font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--red);border:2px solid var(--red);border-radius:4px;padding:1px 7px;transform:rotate(-8deg);font-size:.82rem;opacity:.85}
+
+/* ---------- lab book ---------- */
+.nb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+form.entry{display:grid;gap:12px;background:var(--card);border:1px solid #CFC7B5;border-radius:10px;padding:18px;box-shadow:0 10px 24px -20px rgba(0,0,0,.5)}
+.field{display:grid;gap:4px}
+.field label{font-family:var(--f-sign);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.84rem;color:#3B4450}
+.field input,.field textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--paper);border:1px solid #CFC7B5;border-radius:6px;padding:9px 10px;width:100%;min-width:0}
+.field textarea{resize:vertical;min-height:4.2em;font-family:var(--f-hand);font-size:1.3rem;line-height:1.3}
+.two{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:10px}
+.book{font-size:1.3rem;background:var(--paper);border-radius:4px 10px 10px 4px;padding:18px 18px 18px 46px;position:relative;box-shadow:-6px 0 0 #B8322B,-10px 0 0 #8F2621,0 16px 30px -20px rgba(0,0,0,.6);
+  background-image:linear-gradient(transparent 0 calc(100% - 1px),#D9D2C2 0),linear-gradient(90deg,transparent 0 36px,#E6A5A0 36px 37px,transparent 37px);background-size:100% 1.6em,100% 100%}
+.entries{display:grid;gap:14px}
+.nb-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.note{display:grid;gap:0;font-family:var(--f-hand);font-size:1em;line-height:1.6em;color:#223}
+.note header{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.note .d{color:var(--red);font-weight:700}
+.note h3{font-family:var(--f-hand);font-size:1em;font-weight:700;line-height:1.6em}
+.note dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px}
+.note dt{color:var(--muted);font-weight:700}
+.note dd{margin:0}
+.note.example{opacity:.6}
+.del{font:inherit;font-family:var(--f-body);font-size:.8rem;background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline}
+.del.arm{color:var(--enter);font-weight:600}
+#copyFallback{width:100%;min-height:8em;font-family:var(--f-mono);font-size:.8rem;background:var(--card);color:var(--ink);border:1px solid #CFC7B5;border-radius:6px;padding:10px}
+
+footer{color:var(--muted);font-size:.85rem;border-top:2px solid #1E2430;padding-top:14px}
+
+/* ---------- detail card ---------- */
+.scrim{position:fixed;inset:0;background:rgba(20,24,30,.55);z-index:20}
+.sheet{position:fixed;z-index:21;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-.4deg);width:min(600px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;
+  background:var(--paper);color:var(--ink);border-radius:4px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.sheet::before{content:"";position:absolute;left:50%;top:-10px;transform:translateX(-50%) rotate(-2deg);width:110px;height:26px;background:rgba(245,226,122,.85);box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start;padding:28px 20px 0}
+.sheet .big{width:84px;min-height:84px;border:2px solid var(--g);border-radius:4px;background:#fff;display:grid;grid-template-rows:auto 1fr auto;padding:6px 8px;gap:2px}
+.sheet .big .n,.sheet .big .t{font-family:var(--f-mono);font-size:.66rem;color:var(--muted)}
+.sheet .big .s{font-family:var(--f-sign);font-weight:800;font-size:1.9rem;align-self:center;line-height:1;color:var(--g)}
+.sheet h3{font-family:var(--f-sign);font-weight:800;font-size:1.5rem;letter-spacing:.01em;margin-top:2px;line-height:1.1}
+.sheet .fam{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.x{font:inherit;font-size:1.5rem;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 8px}
+.sheet-body{padding:14px 20px 20px;display:grid;gap:14px}
+.sheet-body p{margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.68rem;border:1px solid #CFC7B5;border-radius:3px;padding:2px 7px;color:var(--muted);background:#fff}
+.think{border-left:4px solid var(--g);padding:8px 0 8px 12px;background:color-mix(in srgb,var(--g) 7%,transparent);font-family:var(--f-hand);font-size:1.25rem;line-height:1.3}
+.think b{display:block;font-family:var(--f-sign);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g);margin-bottom:2px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn.on{background:var(--g);color:var(--on-fill);border-color:var(--g)}
+
+/* ---------- sign-in gate ---------- */
+.gate[hidden],.wrap[hidden]{display:none}
+.gate{position:fixed;inset:0;z-index:50;background:#2A2F3A;display:grid;place-items:center;padding:20px;
+  background-image:linear-gradient(90deg,transparent 0 48%,rgba(255,255,255,.04) 48% 50%,transparent 50%);background-size:28px 100%}
+.gate-card{width:min(460px,100%);background:var(--paper);color:var(--ink);border-radius:8px;padding:0 0 22px;display:grid;gap:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);overflow:hidden}
+.gate-card .top{background:#1E2430;color:#F7F3E8;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.gate-card .top .sign{font-size:1.3rem}
+.gate-card .body{display:grid;gap:12px;padding:6px 22px 0}
+.gate-card h2{font-size:1.5rem}
+.gate-card .err{color:var(--enter);font-size:.88rem;min-height:1.3em;margin:0}
+.gate-tech{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;align-items:center}
+.gate-tech svg{width:70px;height:110px}
+.gate-tech p{margin:0;font-size:.95rem;background:#fff;border:1.5px solid #1E2430;border-radius:10px;padding:8px 12px;position:relative}
+.gate-tech p::after{content:"";position:absolute;left:-9px;top:40%;border:8px solid transparent;border-right-color:#1E2430;border-left:0}
+
+@media (max-width:900px){
+  .bench{grid-template-columns:1fr 1fr}
+  .who{grid-column:1 / -1}
+  .start{grid-template-columns:1fr}
+  .nb{grid-template-columns:1fr}
+  .bubble{left:34%;top:2%;width:46%}
+}
+@media (max-width:560px){
+  .bench{grid-template-columns:1fr}
+  .mods{grid-template-columns:1fr 1fr;gap:8px}
+  .tile{padding:24px 10px 10px}
+  .two{grid-template-columns:1fr}
+  .bubble{position:static;width:auto;margin:0;border-radius:0;border-width:0 0 2px}
+  .bubble::before,.bubble::after{display:none}
+  .year{grid-template-columns:1fr}
+  .board{padding:14px;border-width:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .tile:hover{transform:none}
+}
+
+/* ---------- demo + feedback ---------- */
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFF4C2;border:2px dashed #B88A00;border-radius:10px;padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-family:var(--f-sign);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:1rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;background:#1E2430;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:21;right:0;top:0;bottom:0;width:min(520px,100vw);background:var(--paper);overflow:auto;box-shadow:-20px 0 50px -30px rgba(0,0,0,.6)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#1E2430}
+.fb-top .x{color:#fff}
+.fb-body{display:grid;gap:12px;padding:18px}
+.fb-body h2{font-size:1.5rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.86rem;border:1.5px solid #B9B2A2;background:#fff;color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.fb-chips button[aria-pressed="true"]{background:var(--do);border-color:var(--do);color:#fff}
+.field textarea.plain{font-family:var(--f-body);font-size:.95rem;line-height:1.4}
+.dept{background:#1E2430;color:#F7F3E8;border-radius:10px;padding:18px 20px;display:grid;gap:8px}
+.dept h2{font-size:1.4rem;color:#F2B705}
+.dept p{margin:0;color:#D5DAE3}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;background:#2A2F3A;display:grid;place-items:center;padding:20px;overflow:auto;
+  background-image:linear-gradient(90deg,transparent 0 48%,rgba(255,255,255,.04) 48% 50%,transparent 50%);background-size:28px 100%}
+.intro[hidden]{display:none}
+.intro-card{width:min(760px,100%);background:var(--paper);border-radius:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:26px 28px;align-items:center}
+.intro-card svg{width:150px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.5rem;line-height:1.15}
+.intro-txt p,.intro-txt li{margin:0;font-size:.98rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#FFF4C2;border:1.5px dashed #B88A00;border-radius:8px;padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(20,24,30,.62);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;border-radius:10px;outline:4px solid var(--hazard);pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(560px,calc(100vw - 32px));background:var(--paper);border-radius:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:64px;height:100px}
+.tour-card .step{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tour-card h3{font-family:var(--f-sign);font-weight:800;font-size:1.3rem;margin:2px 0 4px}
+.tour-card p{margin:0;font-size:.98rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:#CFC7B5}.tour-dots i.on{background:var(--red)}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:22;background:#EEF0F3;overflow:auto;color:#1E2430}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:#1E2430;color:#F7F3E8;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:#fff;margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:#B9C0CC}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.tl{background:#fff;border:1px solid #D5DAE3;border-radius:10px;padding:12px 14px;display:grid;gap:2px}
+.tl b{font-family:var(--f-mono);font-size:1.8rem;font-weight:600;line-height:1}
+.tl span{font-size:.84rem;color:#5D6675}
+.dcard{background:#fff;border:1px solid #D5DAE3;border-radius:10px;padding:16px 18px;display:grid;gap:10px}
+.dcard h3{font-family:var(--f-sign);font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em}
+.dcard .small{color:#5D6675}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid #E6E9EF;vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#5D6675;font-weight:400}
+.dt tr.you td{background:#FFF4C2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:#E6E9EF;border-radius:4px;vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--do)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:2px 7px;border-radius:4px;color:#fff;background:var(--g,#5D6675);margin:1px 2px 1px 0}
+.you-tag{font-family:var(--f-mono);font-size:.66rem;background:#1E2430;color:#fff;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-family:var(--f-hand);font-size:1.15rem;line-height:1.35;border-left:3px solid var(--do);padding:4px 10px;margin:4px 0}
+@media (max-width:700px){.dt .hide-m{display:none}}
+
+/* ---------- backup to file ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  padding:10px 16px;font-weight:700;font-size:.95rem;text-align:center;color:#fff;background:#B42318;border-bottom:3px solid #7A1A10}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner,.bk-dock{display:none!important}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;border-radius:6px;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;justify-items:end;gap:8px;max-width:min(340px,calc(100vw - 32px))}
+.bk-dock[hidden]{display:none}
+body.bk-on{padding-bottom:96px}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-weight:700;font-size:.95rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;
+  background:#B42318;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:var(--card,#fff);color:var(--ink,#111);border:1.5px solid var(--line,#ccc);box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+.bk-msg{background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ccc);border-radius:10px;padding:10px 12px;font-size:.9rem;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.45);display:grid;gap:8px}
+.bk-msg:empty{display:none}
+.bk-msg .bk-row button{font:inherit;font-size:.88rem;font-weight:700;border-radius:6px;padding:6px 12px;cursor:pointer;border:1.5px solid var(--line,#ccc);background:transparent;color:var(--ink,#111)}
+.bk-msg .bk-row button.go{background:#B42318;border-color:#B42318;color:#fff}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The technician, drawn once and reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="technician" class="tech">
+      <rect x="62" y="236" width="30" height="110" rx="6" fill="#2F3440"/><rect x="100" y="236" width="30" height="110" rx="6" fill="#2F3440"/>
+      <path d="M58 346h40v12H56zM98 346h40v12H96z" fill="#1A1D24"/>
+      <path d="M44 128c10-14 24-20 52-20s42 6 52 20l14 118H30z" fill="#FBFBF8" stroke="#C9C9C4" stroke-width="2"/>
+      <path d="M96 112v134" stroke="#D9D9D4" stroke-width="2"/>
+      <path d="M72 112l24 30 24-30" fill="none" stroke="#C9C9C4" stroke-width="2"/>
+      <path d="M80 110l16 26 16-26z" fill="#CFE0F5"/>
+      <path d="M72 108l24 10 24-10-8 24-16 6-16-6z" fill="#E8F0FA" stroke="#B9C9DD" stroke-width="1.5"/>
+      <path d="M92 118h8l6 58-10 14-10-14z" fill="#8E1F3F"/>
+      <g fill="#F3B6C8" opacity=".9"><circle cx="95" cy="132" r="1.3"/><circle cx="99" cy="146" r="1.3"/><circle cx="94" cy="160" r="1.3"/><circle cx="100" cy="172" r="1.3"/></g>
+      <rect x="112" y="150" width="30" height="16" rx="2" fill="#fff" stroke="#9AA2AA"/><rect x="115" y="154" width="14" height="3" fill="#1E2430"/><rect x="115" y="159" width="20" height="2" fill="#9AA2AA"/>
+      <rect x="118" y="130" width="3" height="16" fill="#1F4FD8"/><rect x="123" y="128" width="3" height="18" fill="#C8392D"/>
+      <path d="M44 132c-12 20-16 54-14 86 2 10 16 10 18 0 2-26 4-54 12-74z" fill="#FBFBF8" stroke="#C9C9C4" stroke-width="2"/>
+      <path d="M148 132c12 20 16 54 14 86-2 10-16 10-18 0-2-26-4-54-12-74z" fill="#FBFBF8" stroke="#C9C9C4" stroke-width="2"/>
+      <circle cx="39" cy="222" r="9" fill="#F0C8A5"/><circle cx="153" cy="222" r="9" fill="#F0C8A5"/>
+      <g transform="rotate(-8 150 200)"><rect x="140" y="178" width="34" height="46" rx="2" fill="#B98B5A"/><rect x="143" y="184" width="28" height="38" fill="#FFFDF5"/><rect x="150" y="174" width="14" height="8" rx="2" fill="#6E7781"/><path d="M147 192h20M147 198h20M147 204h14" stroke="#B9C0CC"/></g>
+      <rect x="86" y="92" width="20" height="22" fill="#EDBF9A"/>
+      <ellipse cx="96" cy="66" rx="30" ry="34" fill="#F2C9A6"/>
+      <ellipse cx="66" cy="68" rx="5" ry="7" fill="#EDBF9A"/><ellipse cx="126" cy="68" rx="5" ry="7" fill="#EDBF9A"/>
+      <path d="M64 58c0-22 14-34 34-34 20 0 30 10 32 28 1 6-3 8-8 6-10-4-18-8-26-5-10 4-18 6-24 3-4-2-8 2-8 2z" fill="#C9A15C"/>
+      <path d="M66 54c6-6 10-9 20-10-8 4-12 8-14 14-2 4-6 2-6-4z" fill="#B8903F"/>
+      <path d="M118 44c6 6 10 12 10 18-2-4-6-8-10-10z" fill="#B8903F"/>
+      <path d="M74 56c6-4 12-4 18-2M104 54c6-2 12-2 18 2" fill="none" stroke="#9A7A3C" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="84" cy="66" rx="6" ry="5" fill="#fff"/><ellipse cx="110" cy="66" rx="6" ry="5" fill="#fff"/>
+      <circle cx="85" cy="66.5" r="3.2" fill="#5B8FD1"/><circle cx="111" cy="66.5" r="3.2" fill="#5B8FD1"/>
+      <circle cx="85" cy="66.5" r="1.5" fill="#1E2430"/><circle cx="111" cy="66.5" r="1.5" fill="#1E2430"/>
+      <circle cx="86.3" cy="65.2" r=".9" fill="#fff"/><circle cx="112.3" cy="65.2" r=".9" fill="#fff"/>
+      <ellipse class="lids" cx="84" cy="66" rx="6.5" ry="5.5" fill="#F2C9A6"/><ellipse class="lids2" cx="110" cy="66" rx="6.5" ry="5.5" fill="#F2C9A6"/>
+      <path d="M96 66c-2 6-4 10-2 14 2 2 4 2 6 0" fill="none" stroke="#D9A27E" stroke-width="2" stroke-linecap="round"/>
+      <path d="M84 86c6 6 18 6 24 0" fill="none" stroke="#B5705A" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="76" cy="80" rx="5" ry="3" fill="#F0A8A0" opacity=".45"/><ellipse cx="116" cy="80" rx="5" ry="3" fill="#F0A8A0" opacity=".45"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="40 20 120 200" aria-hidden="true"><use href="#technician"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="plate"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="plate"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="sign" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Physics"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="talks">Talks and lectures</button><button type="button" data-v="local">Local events</button><button type="button" data-v="reading">Reading</button><button type="button" data-v="problems">Problem practice</button><button type="button" data-v="placements">Placements</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange" class="plain"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack" class="plain"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (dates, links, wording)?</label><textarea id="fbWrong" class="plain"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button><button type="button" class="btn ghost" id="fbComment" hidden>Comment on the page instead</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="30 20 140 340" aria-hidden="true"><use href="#technician"/></svg>
+    <div class="intro-txt">
+      <span class="plate" style="justify-self:start"><i></i>Physics lab 2 · demo</span>
+      <h2 class="sign" id="introH">Hello. This is a demo of a web page for your sixth-form physicists.</h2>
+      <p>It is a working copy of the page a pupil would use: 41 free things to watch, solve, read, enter and apply for, each one a piece of apparatus in this lab, with me on the bench to talk them round it. Everything they do saves to the department, and there is a teacher dashboard so you can see who has done what.</p>
+      <ol>
+        <li><b>Sign in at the door</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateH">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <div class="top"><span class="plate"><i></i>Physics lab 2</span><span class="sign" style="margin-left:auto;font-size:.95rem;opacity:.8">Sixth form</span></div>
+    <div class="body">
+      <h2 class="sign" id="gateH">Sign in at the door</h2>
+      <div class="gate-tech"><svg viewBox="40 20 120 200"><use href="#technician"/></svg><p>I'll set your bench up. Your ticks, lab book and competition entries save to the department and follow you to any computer.</p></div>
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+      <p class="err" id="gErr" aria-live="polite"></p>
+      <button class="btn big" type="submit" id="gGo">Enter the lab</button>
+      <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    </div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <div class="demo">
+    <div><b>Demo for the Physics department.</b> This is the working pupil page: sign in with any name, tick things, write in the lab book, ask the technician to pick. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn big" id="fbOpen2">Feedback</button></div>
+  </div>
+
+  <header style="display:grid;gap:14px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <span class="plate"><i></i>Physics lab 2 · beyond the classroom · 2026–27</span>
+      <span class="sign" style="color:var(--muted);font-size:1rem" id="strap"></span>
+    </div>
+    <div class="hazard" aria-hidden="true"></div>
+
+    <div class="room" aria-label="The lab. Click a piece of apparatus to go to that station.">
+      <svg class="scene" viewBox="0 0 1200 420" role="img" aria-labelledby="sceneT">
+        <title id="sceneT">A physics lab with six stations</title>
+        <defs>
+          <linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".5" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity=".4"/></linearGradient>
+          <linearGradient id="benchTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A6B5E"/><stop offset="1" stop-color="#2E5A4E"/></linearGradient>
+          <pattern id="tiles" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#CFC8B6"/><path d="M0 0H40V40" fill="none" stroke="#BDB5A2"/></pattern>
+          <pattern id="cork" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#C89A5F"/><circle cx="2" cy="3" r=".8" fill="#A97B44"/><circle cx="6" cy="6" r=".7" fill="#E0B57C"/></pattern>
+        </defs>
+        <rect width="1200" height="340" fill="#EFE7D6"/>
+        <rect y="300" width="1200" height="12" fill="#D8CFB9"/>
+        <rect y="312" width="1200" height="108" fill="url(#tiles)"/>
+        <rect y="312" width="1200" height="6" fill="#8A8273"/>
+        <rect x="150" y="10" width="320" height="10" rx="5" fill="#fff" stroke="#C9C2B0"/><rect x="700" y="10" width="320" height="10" rx="5" fill="#fff" stroke="#C9C2B0"/>
+        <circle cx="600" cy="40" r="20" fill="#fff" stroke="#1E2430" stroke-width="3"/><path d="M600 40V26M600 40l10 6" stroke="#1E2430" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="1108" y="60" width="84" height="118" fill="#fff" stroke="#C9C2B0"/><text x="1150" y="86" text-anchor="middle" font-family="Barlow Condensed,Impact" font-weight="800" font-size="16" fill="#1E2430">SAFETY</text>
+        <path d="M1150 100l-22 36h44z" fill="none" stroke="#F2B705" stroke-width="5"/><text x="1150" y="134" text-anchor="middle" font-size="18" font-weight="700" fill="#1E2430">!</text>
+        <text x="1150" y="160" text-anchor="middle" font-size="9" fill="#5D6675">GOGGLES ON</text>
+
+        <g class="hot" data-f="enter" data-g="enter" tabindex="0" role="button" aria-label="Enter: competitions. Trophy cabinet">
+          <rect class="halo" x="26" y="86" width="150" height="236" rx="6"/>
+          <rect x="30" y="90" width="142" height="228" rx="4" fill="#6B4A2B"/>
+          <rect x="38" y="98" width="126" height="212" fill="#2E3A4A"/>
+          <rect x="38" y="98" width="126" height="212" fill="url(#glass)"/>
+          <g fill="#F2B705"><path d="M70 150l-6-20h22l-6 20zM64 132c-8 0-10-10-4-12M86 132c8 0 10-10 4-12M72 150h6v8h-6z" stroke="#B88A00" stroke-width="1.5"/><rect x="66" y="158" width="18" height="5" rx="1"/></g>
+          <g fill="#D9DCE0"><path d="M120 150l-6-20h22l-6 20zM122 150h6v8h-6z" stroke="#8C949C" stroke-width="1.5"/><rect x="116" y="158" width="18" height="5" rx="1"/></g>
+          <rect x="38" y="170" width="126" height="4" fill="#8A6A45"/>
+          <g fill="#F2B705"><circle cx="100" cy="210" r="14" stroke="#B88A00" stroke-width="1.5"/><path d="M96 196l4 8 4-8" fill="#C8392D"/></g>
+          <rect x="60" y="232" width="80" height="22" fill="#FFFDF5" stroke="#C9C2B0"/><text x="100" y="247" text-anchor="middle" font-size="10" font-family="IBM Plex Mono" fill="#1E2430">CERTIFICATE</text>
+          <rect x="38" y="258" width="126" height="4" fill="#8A6A45"/>
+          <rect x="52" y="272" width="96" height="22" fill="#fff" stroke="#C9C2B0"/><text x="100" y="287" text-anchor="middle" font-size="10" font-family="IBM Plex Mono" fill="#1E2430">BPhO · BAAO</text>
+          <rect class="lblbg" x="46" y="60" width="110" height="24" rx="3"/><text class="lbl" x="101" y="77" text-anchor="middle">1 · Enter</text>
+        </g>
+
+        <g class="hot" data-f="do" data-g="do" tabindex="0" role="button" aria-label="Solve: problems and practice. Whiteboard">
+          <rect class="halo" x="196" y="56" width="228" height="186" rx="6"/>
+          <rect x="200" y="60" width="220" height="178" rx="3" fill="#fff" stroke="#9AA2AA" stroke-width="4"/>
+          <rect x="200" y="236" width="220" height="8" fill="#B5BCC3"/>
+          <g font-family="Caveat,cursive" font-weight="700" fill="#1F4FD8" font-size="24">
+            <text x="214" y="96">F = ma</text><text x="214" y="128">E = hf − φ</text><text x="214" y="160">λ = h / p</text>
+            <text x="214" y="196" fill="#C8392D">T = 2π√(l/g)</text>
+          </g>
+          <g stroke="#1E2430" stroke-width="2" fill="none"><path d="M338 200V110h70"/><path d="M338 196c14-36 30-60 66-78" stroke="#1B7F52" stroke-width="3"/></g>
+          <text x="360" y="216" font-family="Caveat" font-size="16" fill="#1E2430">v / t</text>
+          <rect x="384" y="222" width="24" height="8" fill="#1F4FD8"/><rect x="356" y="222" width="24" height="8" fill="#C8392D"/>
+          <rect class="lblbg" x="250" y="28" width="120" height="24" rx="3"/><text class="lbl" x="310" y="45" text-anchor="middle">2 · Solve</text>
+        </g>
+
+        <g class="hot" data-f="watch" data-g="watch" tabindex="0" role="button" aria-label="Watch: talks and lectures. Projector screen">
+          <rect class="halo" x="576" y="46" width="220" height="196" rx="6"/>
+          <rect x="580" y="50" width="212" height="12" rx="6" fill="#3B4450"/>
+          <rect x="586" y="60" width="200" height="160" fill="#0E1A30"/>
+          <circle cx="650" cy="130" r="26" fill="#2457C5" opacity=".6"/><circle cx="730" cy="150" r="14" fill="#B48CFF" opacity=".7"/>
+          <g fill="#fff"><circle cx="610" cy="80" r="1.5"/><circle cx="690" cy="92" r="1"/><circle cx="760" cy="76" r="1.5"/><circle cx="630" cy="190" r="1"/><circle cx="770" cy="196" r="1.2"/><circle cx="700" cy="170" r="1"/></g>
+          <path d="M676 110l32 20-32 20z" fill="#fff"/>
+          <rect x="586" y="206" width="200" height="14" fill="#1E2430"/><rect x="590" y="211" width="120" height="4" fill="#C8392D"/>
+          <rect x="680" y="220" width="12" height="16" fill="#3B4450"/>
+          <rect class="lblbg" x="626" y="222" width="120" height="24" rx="3"/><text class="lbl" x="686" y="239" text-anchor="middle">3 · Watch</text>
+        </g>
+
+        <g class="hot" data-f="read" data-g="read" tabindex="0" role="button" aria-label="Read: magazines and books. Bookshelf"><g transform="translate(70 0)">
+          <rect class="halo" x="726" y="56" width="184" height="186" rx="6"/>
+          <rect x="730" y="60" width="176" height="178" fill="#6B4A2B"/>
+          <rect x="738" y="68" width="160" height="162" fill="#4A3220"/>
+          <rect x="738" y="122" width="160" height="5" fill="#8A6A45"/><rect x="738" y="176" width="160" height="5" fill="#8A6A45"/>
+          <g>
+            <rect x="744" y="80" width="14" height="42" fill="#C8392D"/><rect x="760" y="76" width="12" height="46" fill="#2457C5"/><rect x="774" y="84" width="16" height="38" fill="#F2B705"/><rect x="792" y="78" width="12" height="44" fill="#1B7F52"/><rect x="806" y="82" width="18" height="40" fill="#fff" stroke="#9AA2AA"/><rect x="826" y="76" width="12" height="46" fill="#6E45C7"/><rect x="840" y="86" width="26" height="36" fill="#C8392D" transform="skewX(-8)"/>
+            <rect x="744" y="138" width="20" height="38" fill="#0B7C8A"/><rect x="766" y="132" width="12" height="44" fill="#9A6200"/><rect x="780" y="140" width="16" height="36" fill="#fff" stroke="#9AA2AA"/><rect x="798" y="134" width="14" height="42" fill="#2457C5"/><rect x="814" y="130" width="40" height="46" fill="#FFFDF5" stroke="#9AA2AA"/><text x="834" y="156" text-anchor="middle" font-size="9" font-family="Barlow Condensed" font-weight="800" fill="#1E2430">PHYSICS WORLD</text>
+            <rect x="744" y="192" width="40" height="38" fill="#F2B705"/><text x="764" y="214" text-anchor="middle" font-size="8" font-family="IBM Plex Mono" fill="#1E2430">QUANTA</text><rect x="790" y="186" width="14" height="44" fill="#C8392D"/><rect x="806" y="190" width="12" height="40" fill="#1B7F52"/><rect x="820" y="184" width="16" height="46" fill="#2457C5"/><rect x="838" y="192" width="12" height="38" fill="#6E45C7"/>
+          </g>
+          </g><rect class="lblbg" x="830" y="28" width="116" height="24" rx="3"/><text class="lbl" x="888" y="45" text-anchor="middle">5 · Read</text>
+        </g>
+
+        <g class="hot" data-f="apply" data-g="apply" tabindex="0" role="button" aria-label="Apply: placements and programmes. Noticeboard">
+          <rect class="halo" x="926" y="56" width="140" height="150" rx="6"/>
+          <rect x="930" y="60" width="132" height="142" fill="#6B4A2B"/><rect x="936" y="66" width="120" height="130" fill="url(#cork)"/>
+          <rect x="944" y="76" width="44" height="34" fill="#FFFDF5" transform="rotate(-4 966 93)"/><circle cx="966" cy="79" r="3" fill="#C8392D"/>
+          <rect x="1000" y="80" width="46" height="40" fill="#F5E27A" transform="rotate(5 1023 100)"/><circle cx="1023" cy="84" r="3" fill="#2457C5"/>
+          <rect x="946" y="128" width="54" height="36" fill="#CFE0F5" transform="rotate(2 973 146)"/><circle cx="973" cy="131" r="3" fill="#1B7F52"/>
+          <rect x="1008" y="134" width="40" height="46" fill="#FFFDF5" transform="rotate(-6 1028 157)"/><circle cx="1028" cy="138" r="3" fill="#F2B705"/>
+          <text x="973" y="150" font-size="7" font-family="IBM Plex Mono" fill="#1E2430" text-anchor="middle">SUMMER</text>
+          <rect class="lblbg" x="938" y="28" width="116" height="24" rx="3"/><text class="lbl" x="996" y="45" text-anchor="middle">6 · Apply</text>
+        </g>
+
+        <rect x="1104" y="190" width="92" height="126" fill="#3B4450"/><rect x="1112" y="198" width="76" height="110" fill="#4F5A68"/><rect x="1124" y="206" width="52" height="40" fill="#CFE0F5" opacity=".8"/><circle cx="1180" cy="266" r="4" fill="#F2B705"/>
+        <rect x="1114" y="256" width="72" height="14" fill="#F2B705"/><text x="1150" y="267" text-anchor="middle" font-size="9" font-family="Barlow Condensed" font-weight="800" fill="#1E2430">PREP ROOM</text>
+
+        <rect x="190" y="250" width="910" height="16" rx="3" fill="url(#benchTop)"/>
+        <rect x="196" y="266" width="898" height="46" fill="#D9D2C2"/>
+        <g fill="#C3BBA8"><rect x="210" y="272" width="180" height="34"/><rect x="420" y="272" width="180" height="34"/><rect x="630" y="272" width="180" height="34"/><rect x="840" y="272" width="190" height="34"/></g>
+        <g fill="#8C949C"><circle cx="300" cy="289" r="3"/><circle cx="510" cy="289" r="3"/><circle cx="720" cy="289" r="3"/><circle cx="935" cy="289" r="3"/></g>
+        <rect x="196" y="306" width="898" height="6" fill="#214238"/>
+        <g transform="translate(225 194)"><rect width="110" height="56" rx="4" fill="#D9DCE0" stroke="#8C949C"/><rect x="6" y="6" width="66" height="44" rx="2" fill="#0B1F12"/>
+          <path d="M8 28h6l6-16 8 32 8-32 8 32 8-32 6 16h8" fill="none" stroke="#3DDC97" stroke-width="1.5" class="scope-trace"/>
+          <circle cx="86" cy="16" r="5" fill="#3B4450"/><circle cx="100" cy="16" r="5" fill="#3B4450"/><circle cx="86" cy="34" r="5" fill="#3B4450"/><circle cx="100" cy="34" r="5" fill="#C8392D"/></g>
+        <g transform="translate(532 0)"><rect x="18" y="236" width="10" height="14" fill="#8C949C"/><rect x="8" y="150" width="30" height="90" rx="4" fill="#CFC8B6" stroke="#8C949C"/><circle cx="23" cy="140" r="28" fill="#D9DCE0" stroke="#8C949C" stroke-width="2"/><circle cx="14" cy="130" r="8" fill="#fff" opacity=".6"/>
+          <path class="spark" d="M50 140l10-10-6 14 12-6-10 14" fill="none" stroke="#7FD1FF" stroke-width="2" stroke-linecap="round"/></g>
+        <g class="hot" data-f="listen" data-g="listen" tabindex="0" role="button" aria-label="Listen: podcasts. Bench radio">
+          <rect class="halo" x="836" y="176" width="124" height="76" rx="6"/>
+          <rect x="842" y="196" width="112" height="54" rx="6" fill="#6E45C7"/><rect x="848" y="202" width="60" height="42" rx="4" fill="#3B2A6E"/>
+          <g stroke="#B48CFF" stroke-width="2"><path d="M854 208v30M862 208v30M870 208v30M878 208v30M886 208v30M894 208v30M902 208v30"/></g>
+          <circle cx="930" cy="214" r="9" fill="#F7F3E8"/><circle cx="930" cy="236" r="6" fill="#F7F3E8"/><rect x="920" y="178" width="3" height="22" fill="#3B4450" transform="rotate(-25 921 200)"/>
+          <rect x="852" y="246" width="40" height="3" fill="#F2B705"/>
+          <rect class="lblbg" x="836" y="154" width="124" height="24" rx="3"/><text class="lbl" x="898" y="171" text-anchor="middle">4 · Listen</text>
+        </g>
+        <g><rect x="1066" y="92" width="8" height="160" fill="#8C949C"/><rect x="1046" y="248" width="48" height="6" fill="#3B4450"/><rect x="1050" y="92" width="40" height="8" fill="#3B4450"/>
+          <g class="pend"><line x1="1070" y1="100" x2="1070" y2="200" stroke="#1E2430" stroke-width="1.5"/><circle cx="1070" cy="206" r="10" fill="#C8392D" stroke="#7A1F1A" stroke-width="2"/></g></g>
+        <g transform="translate(392 105) scale(.8)"><g class="tech-wrap"><use href="#technician"/></g></g>
+        <path d="M0 400h1200" stroke="#F2B705" stroke-width="4" stroke-dasharray="30 18" opacity=".7"/>
+      </svg>
+      <div class="bubble" id="bubble" aria-live="polite"><b>Technician</b><span id="bubbleTxt">…</span></div>
+    </div>
+
+    <div class="bench">
+      <div class="inst" data-label="Experiments logged"><span class="screws"></span>
+        <div class="dial">
+          <svg viewBox="0 0 150 92" aria-hidden="true">
+            <path d="M15 80A60 60 0 0 1 135 80" fill="none" stroke="#B8BFC6" stroke-width="10"/>
+            <g id="dialArcs"></g>
+            <g id="dialTicks" stroke="#3B4450" stroke-width="1.5"></g>
+            <line id="needle" x1="75" y1="80" x2="20" y2="80" stroke="#C8392D" stroke-width="3" stroke-linecap="round" style="transform-origin:75px 80px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)"/>
+            <circle cx="75" cy="80" r="6" fill="#1E2430"/>
+          </svg>
+          <div>
+            <span class="count" id="count">00<small> / 0</small></span>
+            <p class="small" id="countNote">Nothing logged yet</p>
+            <div class="tally" id="tally"></div>
+          </div>
+        </div>
+      </div>
+      <div class="inst" data-label="Ask the technician"><span class="screws"></span>
+        <div class="picker">
+          <label id="pickLbl">How much time have you got?</label>
+          <div class="seg" role="group" aria-labelledby="pickLbl" id="seg">
+            <button type="button" data-b="quick" aria-pressed="true">About 10 minutes</button>
+            <button type="button" data-b="evening" aria-pressed="false">An evening</button>
+            <button type="button" data-b="long" aria-pressed="false">A few weeks</button>
+          </div>
+          <button class="btn big" type="button" id="pickBtn">Pick one for me</button>
+          <p class="pick-msg" id="pickMsg" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="who">
+        <span>Signed in as <b id="whoName"></b></span>
+        <span class="saved" id="savedMsg" aria-live="polite"></span>
+        <button type="button" class="link" id="signOut">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <section aria-labelledby="startH">
+    <div class="sec-head">
+      <span class="station-no" id="htEyebrow">This half term</span>
+      <h2 class="sign" id="startH">The clipboard</h2>
+    </div>
+    <div class="clip">
+      <div class="sheet-paper">
+        <div class="ht-head"><span class="sign" id="htLabel" style="font-size:1.3rem"></span><span class="due" id="htDue"></span></div>
+        <p class="small" id="htLede"></p>
+        <div class="start" id="start"></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tableH" id="table">
+    <div class="sec-head">
+      <span class="station-no">Six stations · 41 things to do</span>
+      <h2 class="sign" id="tableH">Round the lab</h2>
+      <p class="lede">Open anything to see what it is and what to do with it. Flick the switch when it is done. Each station in the picture above is one of the six below.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Show a station"></div>
+    <div class="key">
+      <span><code>R1</code> equipment code</span>
+      <span><code>15m</code> roughly how long it takes</span>
+      <span>Switch ON = done</span>
+      <span><code>NEW</code> added since your last visit</span>
+    </div>
+    <div class="stations" id="grid"></div>
+  </section>
+
+  <section aria-labelledby="yearH">
+    <div class="sec-head">
+      <span class="station-no">Dates to know</span>
+      <h2 class="sign" id="yearH">The noticeboard</h2>
+      <p class="lede">Competitions are entered through school. Open one and tap <b>I want to enter</b>; your name goes straight to the department and your teacher will register you. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+    </div>
+    <div class="board"><div class="year" id="year"></div></div>
+  </section>
+
+  <section aria-labelledby="nbH" id="notebook">
+    <div class="sec-head">
+      <span class="station-no">One line per thing</span>
+      <h2 class="sign" id="nbH">Your lab book</h2>
+      <p class="lede">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    </div>
+    <div class="nb">
+      <form class="entry" id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbWhat">What I watched, read or did</label><input id="nbWhat" list="whatList" required placeholder="e.g. SPC 2025 paper, Q1–4"></div>
+        </div>
+        <datalist id="whatList"></datalist>
+        <div class="field"><label for="nbLearned">One thing I learned</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">One question it raised</label><textarea id="nbQ"></textarea></div>
+        <button class="btn" type="submit">Write it in the lab book</button>
+        <p class="small">Your lab book saves to the department as you go. <b>Copy my lab book</b> gives you the text for a personal statement draft.</p>
+      </form>
+      <div>
+        <div class="nb-tools" style="margin-bottom:12px">
+          <button class="btn ghost" type="button" id="copyBtn">Copy my lab book</button>
+          <span class="small" id="copyMsg" aria-live="polite"></span>
+        </div>
+        <textarea id="copyFallback" hidden readonly aria-label="Your lab book as text"></textarea>
+        <div class="book"><div id="entries" class="entries"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="sign">What the department would see</h2>
+    <p>A separate teacher page, no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each competition (your entry list); how many of the half-term picks each pupil has done; each pupil's lab book as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Physics: the stations, the picks, the dates, the technician's lines, what gets tracked. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer>
+    Compiled 30 September 2026 by the Physics department. Every link was checked on that date. Everything here is free to you; where a competition has a fee the school pays it. The four books are in the library or on request.
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+const FAM = {
+  enter:{label:"Enter", verb:"Competitions", place:"Trophy cabinet", no:1},
+  do:{label:"Solve", verb:"Problems and practice", place:"Whiteboard", no:2},
+  watch:{label:"Watch", verb:"Talks and lectures", place:"Projector screen", no:3},
+  listen:{label:"Listen", verb:"Podcasts", place:"Bench radio", no:4},
+  read:{label:"Read", verb:"Magazines and books", place:"Bookshelf", no:5},
+  apply:{label:"Apply", verb:"Placements and programmes", place:"Noticeboard by the door", no:6}
+};
+const ICON = {
+  enter:`<svg viewBox="0 0 52 40"><path d="M18 8h16l-3 14h-10z" fill="#F2B705"/><rect x="22" y="22" width="8" height="5" fill="#F2B705"/><rect x="17" y="27" width="18" height="4" fill="#F2B705"/><path d="M18 10c-6 0-7 8-2 10M34 10c6 0 7 8 2 10" fill="none" stroke="#F2B705" stroke-width="2"/></svg>`,
+  do:`<svg viewBox="0 0 52 40"><rect x="4" y="4" width="44" height="30" fill="#fff" stroke="#9AA2AA" stroke-width="2"/><text x="10" y="24" font-family="Caveat" font-weight="700" font-size="16" fill="#1F4FD8">F=ma</text></svg>`,
+  watch:`<svg viewBox="0 0 52 40"><rect x="6" y="4" width="40" height="28" fill="#0E1A30"/><path d="M22 11l12 7-12 7z" fill="#fff"/><rect x="4" y="2" width="44" height="4" fill="#3B4450"/></svg>`,
+  listen:`<svg viewBox="0 0 52 40"><rect x="6" y="12" width="40" height="24" rx="4" fill="#6E45C7"/><rect x="10" y="16" width="18" height="16" fill="#3B2A6E"/><circle cx="37" cy="21" r="4" fill="#F7F3E8"/><circle cx="37" cy="30" r="2.5" fill="#F7F3E8"/><path d="M34 12l6-9" stroke="#3B4450" stroke-width="2"/></svg>`,
+  read:`<svg viewBox="0 0 52 40"><rect x="6" y="6" width="7" height="28" fill="#C8392D"/><rect x="15" y="9" width="6" height="25" fill="#2457C5"/><rect x="23" y="4" width="8" height="30" fill="#F2B705"/><rect x="33" y="8" width="6" height="26" fill="#1B7F52"/><rect x="41" y="6" width="6" height="28" fill="#6E45C7"/></svg>`,
+  apply:`<svg viewBox="0 0 52 40"><rect x="4" y="4" width="44" height="32" fill="#C89A5F" stroke="#6B4A2B" stroke-width="3"/><rect x="10" y="10" width="14" height="12" fill="#FFFDF5"/><rect x="28" y="12" width="14" height="14" fill="#F5E27A"/><circle cx="17" cy="11" r="2" fill="#C8392D"/><circle cx="35" cy="13" r="2" fill="#2457C5"/></svg>`
+};
+// mins drives the "Pick one for me" buckets: quick <= 20, evening <= 180, long > 180
+const ITEMS = [
+  // ---- Enter
+  {s:"R1",g:"enter",short:"BPhO Rounds 1 and 2",name:"British Physics Olympiad: Round 1 and Round 2",mins:120,t:"2h",
+   what:"The national physics olympiad. Round 0, a one-hour multiple-choice paper sat on 1 October, decides who is invited to the two-hour Round 1 on Thursday 12 November. Round 2 (three hours, January) picks the national team. If you missed Round 0, the Astro Round 1 in November is the other route to Round 2.",
+   think:"Do a Round 1 past paper first (BP on the whiteboard) so the style is not a shock. Register for the free BPhO webinars on Round 1 questions, Thursdays at 8pm in the autumn.",tags:["Y12–13","via school","12 Nov"],url:"https://www.bpho.org.uk/bpho/round-1.html",lt:"BPhO Round 1"},
+  {s:"SPC",g:"enter",short:"Senior Physics Challenge",name:"BPhO Senior Physics Challenge (Year 12)",mins:60,t:"1h",
+   what:"A Year 12 competition in two parts: an online multiple-choice quiz (two 30-minute sittings) in the week of 18 January, and a one-hour problem paper on Friday 5 March. Both are sat in school. Certificates for all.",
+   think:"Try one SPC past paper (BP) before Christmas so you know what the problem paper asks.",tags:["Y12","via school","Jan + Mar"],url:"https://www.bpho.org.uk/bpho/as-challenge.html",lt:"BPhO SPC"},
+  {s:"PC",g:"enter",short:"Physics Challenge (Y13)",name:"BPhO Physics Challenge (Year 13)",mins:60,t:"1h",
+   what:"A one-hour paper on Year 13 physics, pushed into applications. Sat in school at any time up to 12 December. Merit at 20 out of 50; it is meant to be hard.",
+   think:"Do last year's paper first (BP). A merit here is worth a line in a personal statement.",tags:["Y13","via school","by 12 Dec"],url:"https://www.bpho.org.uk/bpho/a2-challenge.html",lt:"BPhO Physics Challenge"},
+  {s:"Ast",g:"enter",short:"Astronomy Olympiad",name:"British Astronomy and Astrophysics Olympiad: Astro Challenge and Astro Round 1",mins:60,t:"1–2h",
+   what:"The Astro Challenge is a one-hour paper mixing astronomy with A level physics, sat any time up to 12 December. Astro Round 1 (two hours, 23–27 November) is harder, includes an observational question, and is open entry, so it is a route to BPhO Round 2 for anyone who did not sit Round 0.",
+   think:"If you are taking the Astrophysics option, do the Astro Challenge. Look up how parallax gives the distance to a star before you sit it.",tags:["Y12–13","via school","Nov–Dec"],url:"https://www.bpho.org.uk/baao/astro-challenge/",lt:"BAAO Astro Challenge"},
+  {s:"Kv",g:"enter",short:"Kelvin essay",name:"Kelvin Sciences Essay Competition, Peterhouse, Cambridge",mins:1200,t:"essay",
+   what:"An essay of up to 2,000 words on one of six science questions set by Peterhouse, some of them physics; in 2026 they included quantum computing and biosignatures on exoplanets. Questions come out in the spring; the 2026 deadline was 20 April. Four entries per school, each approved by a teacher.",
+   think:"Pick the question you would still want to answer after three weeks of reading about it.",tags:["Y12","enter yourself","spring · check"],url:"https://www.pet.cam.ac.uk/peterhouse-kelvin-sciences-essay-competition",lt:"Peterhouse"},
+  {s:"Cc",g:"enter",short:"Computational Challenge",name:"BPhO Computational Challenge",mins:3000,t:"wks",
+   what:"Learn to model physics in Excel or Python through weekly online talks, then submit a project. The project runs April to August; in 2026 a ten-week online course on Thursday evenings came first, starting in January. No coding experience needed.",
+   think:"Model something from the course: a projectile with air resistance, or a capacitor discharging.",tags:["Y11–13","enter yourself","Jan–Aug · check"],url:"https://www.bpho.org.uk/bpho/computational-challenge/",lt:"Computational Challenge"},
+  // ---- Solve
+  {s:"Is",g:"do",short:"Isaac Science",name:"Isaac Science (formerly Isaac Physics)",mins:20,t:"20m",
+   what:"Free physics problems from Cambridge, marked instantly, with A level question decks and a section on pre-university physics. Recommended by both the BPhO and Oxford Physics. Make an account so it records your progress.",
+   think:"Do a set on the topic you have just finished in class.",tags:["free account"],url:"https://isaacscience.org/",lt:"isaacscience.org"},
+  {s:"BP",g:"do",short:"BPhO past papers",name:"BPhO past papers and Upgrade Your Physics",mins:60,t:"1h",
+   what:"Past papers and mark schemes for every BPhO competition. Upgrade Your Physics is a free set of notes that bridges A level and olympiad content.",
+   think:"Year 12: start with a Senior Physics Challenge paper. Year 13: start with a Physics Challenge paper. Have the mark scheme beside you and do not expect to finish.",tags:["BPhO","mark schemes"],url:"https://www.bpho.org.uk/Papers/SPC/",lt:"BPhO past papers"},
+  {s:"PAT",g:"do",short:"Oxford PAT papers",name:"Oxford PAT past papers",mins:120,t:"2h",
+   what:"Oxford now uses the ESAT for admissions but keeps the Physics Aptitude Test papers from 2006 to 2024 online, with sample solutions for some years. Good interview preparation.",
+   think:"Do the multiple-choice section of one paper under time. Do not look at the solutions too soon.",tags:["Oxford","interview prep"],url:"https://www.physics.ox.ac.uk/study/undergraduates/how-apply/engineering-and-science-admissions-test-esat/pat-past-papers",lt:"PAT past papers"},
+  {s:"POx",g:"do",short:"Preparing for Oxford Physics",name:"Preparing for Oxford Physics (online course)",mins:3000,t:"wks",
+   what:"A free online course from the summer term of Year 12 to December: webinars, three summer assignments, videos and an interview webinar. Open to anyone thinking of applying for physics; recordings are open to all.",
+   think:"Put the start date in your diary in May and do the three summer assignments.",tags:["Y12","summer","free"],url:"https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13/preparing-oxford-physics",lt:"Preparing for Oxford Physics"},
+  {s:"Cmp",g:"do",short:"COMPOS",name:"COMPOS (Oxford) and its Follow-Along Programme",mins:3000,t:"wks",
+   what:"Weekly online physics and maths tutorials from Oxford for state-school pupils in Years 10 to 13. Registration for 2026–27 closed in September; the self-guided Follow-Along Programme is open to anyone, and Year 13 places go to pupils who took part in Year 12.",
+   think:"Start the Follow-Along Programme now and register properly next September.",tags:["Y12–13","weekly"],url:"https://compos.site.ox.ac.uk/",lt:"COMPOS"},
+  // ---- Watch: talks
+  {s:"Cx",g:"watch",short:"Cox: CERN",name:"Brian Cox: CERN's supercollider",mins:15,t:"15m",
+   what:"A TED talk on the Large Hadron Collider and what it was built to find.",
+   think:"Which particles and interactions from the particles section does Cox mention, and why does a higher collision energy let the LHC make heavier particles?",tags:["TED"],url:"https://www.ted.com/talks/brian_cox_cern_s_supercollider",lt:"Watch on TED"},
+  {s:"OC",g:"watch",short:"O'Connell: quantum object",name:"Aaron O'Connell: Making sense of a visible quantum object",mins:8,t:"8m",
+   what:"A TED talk from the physicist who put a visible object into a quantum superposition.",
+   think:"How does his result connect to energy levels and E = hf in the course, and why did the object have to be cooled so close to absolute zero?",tags:["TED"],url:"https://www.ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object",lt:"Watch on TED"},
+  {s:"Gh",g:"watch",short:"Ghose: quantum computing",name:"Shohini Ghose: A beginner's guide to quantum computing",mins:10,t:"10m",
+   what:"A TED talk on what a quantum computer does differently from the one you are using.",
+   think:"Where in the course do you meet wave–particle duality, and what experimental evidence (electron diffraction, the photoelectric effect) supports it?",tags:["TED"],url:"https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes",lt:"Watch on TED"},
+  {s:"Ad",g:"watch",short:"Adams: gravitational waves",name:"Allan Adams: What the discovery of gravitational waves means",mins:11,t:"11m",
+   what:"A TED talk given days after LIGO announced the first detection.",
+   think:"LIGO is an interferometer. Use superposition and path difference from the waves section to explain how it detects a change in length far smaller than a proton.",tags:["TED"],url:"https://www.ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means",lt:"Watch on TED"},
+  {s:"Gz",g:"watch",short:"Ghez: black hole",name:"Andrea Ghez: The hunt for a supermassive black hole",mins:16,t:"16m",
+   what:"A TED talk from the astronomer whose group tracked stars orbiting the centre of the Milky Way. She won the Nobel Prize for it in 2020.",
+   think:"Using Newton's law of gravitation and Kepler's third law from the fields section, show how the orbit of one star gives the mass of the black hole.",tags:["TED","Nobel 2020"],url:"https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole",lt:"Watch on TED"},
+  {s:"Cw",g:"watch",short:"Cowley: fusion",name:"Steven Cowley: Fusion is energy's future",mins:10,t:"10m",
+   what:"A TED talk from 2009 by a fusion physicist who went on to run the Culham laboratory.",
+   think:"Use the binding energy per nucleon curve to explain why fusing light nuclei releases energy, and kinetic theory to explain why the plasma must be so hot. What has changed since 2009?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future",lt:"Watch on TED"},
+  {s:"Ca",g:"watch",short:"Carroll: time",name:"Sean Carroll: Distant time and the hint of a multiverse",mins:16,t:"16m",
+   what:"A TED talk on why time runs one way. It goes well past the evidence by the end, on purpose.",
+   think:"Carroll links the direction of time to entropy. Which part of his argument is established physics, and at what point does he move beyond the evidence?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/sean_carroll_distant_time_and_the_hint_of_a_multiverse",lt:"Watch on TED"},
+  {s:"Ha",g:"watch",short:"Haas: Li-Fi",name:"Harald Haas: Wireless data from every light bulb",mins:13,t:"13m",
+   what:"A TED talk from 2011 proposing data transmission through LED lighting.",
+   think:"Using the electromagnetic spectrum and absorption, what limits visible-light data transmission, and why is it still not in every bulb fifteen years on?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb",lt:"Watch on TED"},
+  {s:"Cz",g:"watch",short:"Czerski: everyday physics",name:"Helen Czerski: The fascinating physics of everyday life",mins:16,t:"16m",
+   what:"A TED talk on the physics in a teacup, a candle and a bubble.",
+   think:"Choose one everyday effect she describes and write out the A level physics behind it, naming the section of the specification it comes from.",tags:["TED"],url:"https://www.ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life",lt:"Watch on TED"},
+  // ---- Watch: lectures
+  {s:"Bm",g:"watch",short:"Birmingham lectures",name:"University of Birmingham: Institute of Physics public lectures",mins:120,t:"eve",
+   what:"Free evening lectures, 7.30 to 8.30pm in the Poynting Physics Building, one a month: 6 October (dark matter experiments), 3 November (The Invisible Scanners), 2 February (the hottest place in the universe), 2 March (light as a tool of discovery), 13 April (filming the life of an electron), 4 May (neutron detectors). Free parking on campus after 6pm.",
+   think:"Go to one. Write down the one question you would have asked the speaker.",tags:["in person","monthly","free"],url:"https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series",lt:"Birmingham IOP lectures"},
+  {s:"Ox",g:"watch",short:"Oxford Saturday sessions",name:"Oxford Physics: Year 12 taster mornings and masterclasses",mins:165,t:"½ day",
+   what:"Free online Saturday sessions on Zoom. Taster mornings (10.00 to 12.45) on 14 November or 30 January; masterclasses (10.00 to 15.00) on 13 March or 22 May, with taster lectures and an interview skills session. The taster morning uses real data to estimate the age of the universe.",
+   think:"Do one taster morning and one masterclass in Year 12. Register yourself through the page.",tags:["Y12","online","register yourself"],url:"https://www.physics.ox.ac.uk/engage/young-people/years-12-and-13",lt:"Oxford Physics Y12–13"},
+  {s:"Xm",g:"watch",short:"Christmas Lectures",name:"Royal Institution Christmas Lectures 2026: Jim Al-Khalili on time",mins:60,t:"1h",
+   what:"This year's series is on the science of time, broadcast on the BBC between Christmas and New Year. The archive holds every televised series since 1966, including Carl Sagan in 1977.",
+   think:"Watch the first lecture and note where it touches time dilation or entropy.",tags:["Christmas","archive"],url:"https://www.rigb.org/2026-christmas-lectures",lt:"Ri 2026 lectures"},
+  {s:"Ri",g:"watch",short:"Ri on YouTube",name:"Royal Institution on YouTube",mins:60,t:"1h",
+   what:"Recorded public lectures and short demonstrations from the Royal Institution in London, added weekly.",
+   think:"Watch one lecture this month that has nothing to do with your current topic.",tags:["weekly"],url:"https://www.youtube.com/user/TheRoyalInstitution",lt:"Ri YouTube"},
+  {s:"SS",g:"watch",short:"Sixty Symbols",name:"Sixty Symbols, University of Nottingham",mins:8,t:"8m",
+   what:"Short films in which Nottingham physicists explain one symbol or idea at a time, from the Planck constant to entropy.",
+   think:"Find the film for what you are studying this week and note one thing the textbook left out.",tags:["Nottingham"],url:"https://www.youtube.com/@sixtysymbols",lt:"Sixty Symbols"},
+  // ---- Listen
+  {s:"IoT",g:"listen",short:"In Our Time",name:"BBC In Our Time: science archive",mins:45,t:"45m",
+   what:"Three academics discuss one subject for 45 minutes.",
+   think:"Search the archive for Faraday, Maxwell, entropy, the photon, dark matter or the speed of light.",tags:["BBC"],url:"https://www.bbc.co.uk/programmes/p01gyd7j",lt:"In Our Time science"},
+  {s:"PWp",g:"listen",short:"Physics World pod",name:"Physics World podcasts",mins:30,t:"30m",
+   what:"Two free series from the Institute of Physics magazine: Physics World Weekly (news and short interviews) and Physics World Stories (longer features).",
+   think:"Listen to one episode and explain its main story to someone at home.",tags:["IOP"],url:"https://physicsworld.com/podcasts/",lt:"Physics World podcasts"},
+  {s:"IMC",g:"listen",short:"Monkey Cage",name:"The Infinite Monkey Cage",mins:30,t:"30m",
+   what:"Science and comedy on BBC Radio 4. A good place to start if you do not listen to anything yet.",
+   think:"Find an episode on a physics topic.",tags:["BBC"],url:"https://www.bbc.co.uk/programmes/b00snr0w",lt:"Infinite Monkey Cage"},
+  // ---- Read
+  {s:"PW",g:"read",short:"Physics World",name:"Physics World",mins:10,t:"10m",
+   what:"News and features from the Institute of Physics magazine, free online.",
+   think:"Read one news story a week. Note the physics you recognise and the physics you do not.",tags:["IOP","free online"],url:"https://physicsworld.com/",lt:"physicsworld.com"},
+  {s:"Qu",g:"read",short:"Quanta",name:"Quanta Magazine: Physics",mins:15,t:"15m",
+   what:"Free long articles on current research, written for non-specialists. Strong on particle physics, cosmology and quantum topics.",
+   think:"Find one article about a result from the last year and summarise it in three sentences.",tags:["free online"],url:"https://www.quantamagazine.org/physics/",lt:"Quanta Physics"},
+  {s:"HE",g:"read",short:"Cambridge HE+",name:"Cambridge HE+ Physics",mins:30,t:"30m",
+   what:"University-level reading, audio and video on special relativity, nanotechnology and superconductivity, with comments from Cambridge students.",
+   think:"Read the special relativity section alongside the Turning Points option.",tags:["Cambridge"],url:"https://www.myheplus.com/subject/physics",lt:"HE+ Physics"},
+  {s:"IOP",g:"read",short:"IOP student pages",name:"Institute of Physics: resources for school and college students",mins:15,t:"15m",
+   what:"The Institute of Physics student pages, including the Pocket Physics A level study guide and the Your Future with Physics careers guide.",
+   think:"Read the careers guide and write down two jobs you had not heard of.",tags:["IOP"],url:"https://www.iop.org/education/school-and-college-students",lt:"IOP students"},
+  {s:"NS",g:"read",short:"New Scientist",name:"New Scientist",mins:15,t:"15m",
+   what:"The weekly science magazine. Ask the library whether the school has a subscription.",
+   think:"Read the physics pages of one issue a month.",tags:["ask library"],url:"https://www.newscientist.com/",lt:"newscientist.com"},
+  {s:"Pv",g:"read",short:"Povey's Problems",name:"Professor Povey's Perplexing Problems, by Thomas Povey",mins:600,t:"book",
+   what:"Physics and engineering puzzles of the kind asked at Oxford and Cambridge interviews, with full worked solutions.",
+   think:"Do one problem a week on paper before reading the solution.",tags:["book","ask library"],url:"",lt:""},
+  {s:"Emc",g:"read",short:"Why Does E=mc²?",name:"Why Does E=mc²?, by Brian Cox and Jeff Forshaw",mins:900,t:"book",
+   what:"Special relativity built from first principles. Supports the Turning Points option.",
+   think:"Read it before you meet time dilation in class, then compare its derivation with the textbook's.",tags:["book","ask library"],url:"",lt:""},
+  {s:"Rov",g:"read",short:"The Order of Time",name:"The Order of Time, by Carlo Rovelli",mins:600,t:"book",
+   what:"A short book on what physics says about time. Pairs with this year's Christmas Lectures and the Carroll talk.",
+   think:"Read it over Christmas alongside the lectures.",tags:["book","ask library"],url:"",lt:""},
+  {s:"Stc",g:"read",short:"Storm in a Teacup",name:"Storm in a Teacup, by Helen Czerski",mins:600,t:"book",
+   what:"Everyday physics. A good first wider-reading book; pairs with her TED talk.",
+   think:"Read one chapter and find the same effect somewhere in your house.",tags:["book","ask library"],url:"",lt:""},
+  // ---- Apply
+  {s:"Nf",g:"apply",short:"Nuffield placement",name:"Nuffield Research Placements",mins:9000,t:"4–6wk",
+   what:"A summer placement working on a real research project in a university or industry setting. Applications usually open in the autumn term; eligibility criteria apply, including free school meals and first-generation applicants.",
+   think:"Talk to your teacher about whether you qualify before the window closes.",tags:["Y12","summer"],url:"https://www.stem.org.uk/nuffield-research-placements",lt:"Nuffield"},
+  {s:"In",g:"apply",short:"In2Science",name:"In2Science UK",mins:6000,t:"2wk",
+   what:"Summer placements with working researchers, online workshops, and a bursary for travel and lunch. In 2026 applications ran from December to April. Eligibility criteria apply.",
+   think:"Check the criteria and the application dates.",tags:["Y12","summer"],url:"https://in2scienceuk.org/students/",lt:"In2Science"},
+  {s:"Un",g:"apply",short:"UNIQ",name:"UNIQ, University of Oxford",mins:6000,t:"resid.",
+   what:"A free Oxford residential and support programme for state-school Year 12s, prioritising pupils with good grades from backgrounds under-represented at Oxford. Check the course list for physics.",
+   think:"Check the criteria when applications open; your teacher will know when.",tags:["Y12","residential"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  {s:"LU",g:"apply",short:"Levelling Up: Physics",name:"Levelling Up: Physics (Institute of Physics)",mins:9000,t:"months",
+   what:"Free near-peer tutoring and mentoring from physics undergraduates, with a campus visit; the local hub is the University of Birmingham. The long form runs from April of Year 12 to December of Year 13.",
+   think:"Ask your teacher whether a local department is running it this year.",tags:["Y12–13","tutoring"],url:"https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now",lt:"Levelling Up: Physics"}
+];
+const YEAR = [
+  {when:"Tue 6 Oct 2026",what:"Birmingham IOP lecture: dark matter experiments",sub:"7.30pm, Poynting Physics Building. Next ones 3 Nov, 2 Feb, 2 Mar, 13 Apr, 4 May.",s:"Bm",check:false},
+  {when:"Oct–Dec 2026",what:"Placement applications open",sub:"Nuffield usually opens in the autumn term; In2Science opened in December last year. Check the sites.",s:"Nf",check:true},
+  {when:"Thu 12 Nov 2026",what:"BPhO Round 1",sub:"Two-hour paper in school, for pupils invited from Round 0.",s:"R1",check:false},
+  {when:"Sat 14 Nov 2026",what:"Oxford Physics taster morning (online)",sub:"10.00–12.45 on Zoom. Repeated on Saturday 30 January.",s:"Ox",check:false},
+  {when:"23–27 Nov 2026",what:"Astro Round 1",sub:"Two-hour paper in school. Open entry; a route to BPhO Round 2.",s:"Ast",check:false},
+  {when:"By Sat 12 Dec 2026",what:"Physics Challenge (Y13) and Astro Challenge",sub:"One-hour papers sat in school any time before the deadline.",s:"PC",check:false},
+  {when:"Christmas hols",what:"Royal Institution Christmas Lectures",sub:"Jim Al-Khalili on time, on the BBC between Christmas and New Year.",s:"Xm",check:true},
+  {when:"18–22 Jan 2027",what:"Senior Physics Challenge online quiz (Y12)",sub:"Two 30-minute sittings in school. BPhO Round 2 is on Thursday 21 January, by invitation.",s:"SPC",check:false},
+  {when:"Fri 5 Mar 2027",what:"Senior Physics Challenge paper (Y12)",sub:"One hour, in school.",s:"SPC",check:false},
+  {when:"Sat 13 Mar 2027",what:"Oxford Physics masterclass (online)",sub:"10.00–15.00 on Zoom. Repeated on Saturday 22 May.",s:"Ox",check:false},
+  {when:"Spring 2027",what:"Kelvin essay questions out",sub:"Deadline in the spring; in 2026 it was 20 April.",s:"Kv",check:true},
+  {when:"Apr–Aug 2027",what:"Computational Challenge project",sub:"Online course first, then the project. Confirm this year's course dates.",s:"Cc",check:true},
+  {when:"Summer term 2027",what:"Preparing for Oxford Physics starts",sub:"Free online course for Year 12, running to December.",s:"POx",check:true}
+];
+
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three picks are wanted by, and
+      the three items (s = equipment code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three picks from the department for this half term. Do them, tick them, write a line in the lab book for each.",
+  items:[
+    {s:"Gz",step:"Watch",txt:"Watch Andrea Ghez's 16-minute talk and write down which equation from the gravitational fields topic she is using."},
+    {s:"BP",step:"Solve",txt:"Do one past Senior Physics Challenge paper (Year 12) or Physics Challenge paper (Year 13) with the mark scheme beside you."},
+    {s:"Bm",step:"Go",txt:"Go to a free University of Birmingham physics lecture: Tuesday 6 October or Tuesday 3 November, 7.30pm."}
+  ]
+};
+const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-phys-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+
+/* ---------- state ---------- */
+const KEY_BASE="phys-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+
+/* ---------- the technician talks ---------- */
+let _sayT=null;
+function say(txt,hold){ clearTimeout(_sayT); const b=$("bubble"); $("bubbleTxt").textContent=txt; b.classList.remove("hide"); if(hold){ _sayT=setTimeout(()=>b.classList.add("hide"), hold); } }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const n=ITEMS.filter(i=>state.done[i.s]).length;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `Hello ${firstName()}, welcome to the lab. Nothing in here is marked and all of it is free. Start with the clipboard: three things for this half term.`;
+  if(!n) return `Hello again ${firstName()}. Nothing logged yet. The clipboard has three things to start on.`;
+  if(ht<HALFTERM.items.length) return `Hello ${firstName()}. ${n} logged so far, ${ht} of the ${HALFTERM.items.length} half-term picks done. The clipboard is below.`;
+  return `Hello ${firstName()}. Half-term picks done, ${n} logged altogether. Pick a station, or ask me to choose.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Physics",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="phys-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("phys-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- items ---------- */
+function tileHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="tile${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", done":""}${isNew?", new":""}">
+    <span class="label">${FAM[it.g].label}</span><span class="code">${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="sw" aria-hidden="true"></span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="station${off}" id="st-${g}" data-g="${g}">
+      <div class="st-head">${ICON[g]}<div><span class="nm">Station ${FAM[g].no} · ${FAM[g].place}</span><span class="verb">${FAM[g].label} · ${FAM[g].verb}</span></div>
+        <span class="n">${done} / ${list.length}</span></div>
+      <div class="mods">${list.map(it=>tileHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · if you do nothing else this half term";
+  $("htLabel").textContent=HALFTERM.label;
+  $("htDue").textContent="wanted by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="start-card${d?" done-card":""}"><span class="box" aria-hidden="true">${d?"✓":""}</span><div><span class="step">${i+1} · ${esc(x.step)}${d?" · done":""}</span><p>${esc(x.txt)}</p>${tileHTML(it)}</div></div>`;
+  }).join("");
+}
+function renderFilters(){
+  const counts={}; ITEMS.forEach(i=>counts[i.g]=(counts[i.g]||0)+1);
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i></i>Whole lab <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i></i>${FAM[g].no} · ${FAM[g].label} <b>${counts[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+}
+/* dial: a semicircle from the left (0) to the right (1) */
+const arcPt=(f,r=60)=>{ const a=Math.PI*(1-f); return [75+Math.cos(a)*r, 80-Math.sin(a)*r]; };
+function arcPath(f0,f1){ const [x0,y0]=arcPt(f0),[x1,y1]=arcPt(f1); return `M${x0.toFixed(2)} ${y0.toFixed(2)}A60 60 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`; }
+function renderTicks(){ const g=$("dialTicks"); if(g.childElementCount) return;
+  let h=""; for(let k=0;k<=10;k++){ const [x0,y0]=arcPt(k/10,52),[x1,y1]=arcPt(k/10,k%5?56:50); h+=`<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}"/>`; } g.innerHTML=h; }
+function renderMeter(){
+  const n=ITEMS.filter(i=>state.done[i.s]).length;
+  $("count").innerHTML=`${String(n).padStart(2,"0")}<small> / ${ITEMS.length}</small>`;
+  const fams=ORDER.map(g=>({g,n:ITEMS.filter(i=>i.g===g&&state.done[i.s]).length})).filter(x=>x.n);
+  let f=0; $("dialArcs").innerHTML=fams.map(x=>{ const w=x.n/ITEMS.length; const h=`<path d="${arcPath(f,f+w)}" data-g="${x.g}" fill="none" stroke="var(--g)" stroke-width="10"/>`; f+=w; return h; }).join("");
+  renderTicks();
+  $("needle").style.transform=`rotate(${(n/ITEMS.length*180).toFixed(1)}deg)`;
+  $("tally").innerHTML=fams.map(x=>`<span class="dymo" data-g="${x.g}">${FAM[x.g].label} ${x.n}</span>`).join("");
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  let note=`${ht} of ${HALFTERM.items.length} half-term picks done`;
+  if(!n) note="Nothing logged yet";
+  if(ht===HALFTERM.items.length){ const tried=fams.length; note=tried===6?"Half term done. Every station used.":`Half term done. ${tried} of 6 stations used`; }
+  if(n===ITEMS.length) note="The whole lab. Tell your teacher.";
+  $("countNote").textContent=note;
+}
+function renderYear(){
+  $("year").innerHTML=YEAR.map(y=>{const it=BY[y.s]; const inn=state.interest[it.s]; return `<div class="ev" data-g="${it.g}">
+    ${inn?'<span class="in">you’re in</span>':""}
+    <div class="when">${esc(y.when)}</div>
+    <div class="what"><b>${esc(y.what)}${y.check?'<span class="check">check</span>':""}</b><span>${esc(y.sub)}</span></div>
+    <button type="button" class="open" data-s="${it.s}"><i>${esc(it.s)}</i>Open</button></div>`;}).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail card ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? "I want to enter" : "I’m interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or your teacher for a copy.</span>`;
+  const askable = (it.g==="enter" || it.g==="apply") && !it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ Your teacher has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="big" aria-hidden="true"><span class="n">${String(it.n).padStart(2,"0")}</span><span class="s">${esc(it.s)}</span><span class="t">${esc(it.t)}</span></div>
+      <div><div class="fam">Station ${FAM[it.g].no} · ${FAM[it.g].label} · ${FAM[it.g].verb}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <p>${esc(it.what)}</p>
+      <div class="think"><b>Technician's note</b>${esc(it.think)}</div>
+      <div class="tags">${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}
+        ${interestBtn}
+        <button type="button" class="btn ghost" id="shDone" aria-pressed="${done}">${done?"Done ✓ (undo)":"Mark as done"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it up</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?"Entries go through school. Tap the button and the department registers you; no email needed.":"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym];
+  if(was) delete state.done[sym]; else state.done[sym]=true;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const n=ITEMS.filter(i=>state.done[i.s]).length;
+    say(pick([`Logged. That's ${n}.`,`Good. Write a line in the lab book while it is fresh.`,`${BY[sym].short}: done. ${n} on the dial now.`]), 9000); }
+  else say("Taken off the log.", 5000);
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher will sort the entry.`:`Taken off the list for ${BY[sym].short}.`, 9000); }
+
+function goStation(g){
+  state.fam="all"; saveLocal(); renderFilters(); renderGrid();
+  const el=$("st-"+g); if(!el) return;
+  el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  say(`Station ${FAM[g].no}, the ${FAM[g].place.toLowerCase()}: ${FAM[g].verb.toLowerCase()}.`, 8000);
+}
+
+document.addEventListener("click",e=>{
+  const hot=e.target.closest(".hot"); if(hot){ goStation(hot.dataset.f); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("tile")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); $("nbLearned").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goStation(e.target.dataset.f); }
+});
+
+/* ---------- pick one for me ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"about ten minutes",evening:"an evening",long:"a few weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything in this range. Try a different amount of time."; say("You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."); return; }
+  const choice=pool[Math.floor(Math.random()*pool.length)];
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+"… let me look.");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const land=()=>{ document.querySelectorAll("#grid .tile.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .tile[data-s="${choice.s}"]`); if(el){ el.classList.add("flash"); el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"}); }
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}.`;
+    say(`Try ${choice.short}. ${choice.t}, at the ${FAM[choice.g].place.toLowerCase()}.`, 12000);
+    setTimeout(()=>openSheet(choice.s), reduce?0:420); };
+  if(reduce){ land(); return; }
+  $("table").scrollIntoView({behavior:"smooth",block:"start"});
+  let k=0; const spins=12;
+  const tick=()=>{ document.querySelectorAll("#grid .tile.flash").forEach(t=>t.classList.remove("flash"));
+    if(k>=spins){ land(); return; }
+    const r=pool[Math.floor(Math.random()*pool.length)];
+    const el=document.querySelector(`#grid .tile[data-s="${r.s}"]`); if(el) el.classList.add("flash");
+    k++; setTimeout(tick, 60+k*14); };
+  setTimeout(tick,280);
+});
+
+/* ---------- lab book ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function renderNotes(){
+  const box=$("entries");
+  if(!state.notes.length){
+    box.innerHTML=`<article class="note example" aria-label="Example entry">
+      <header><h3>Andrea Ghez, The hunt for a supermassive black hole</h3><span class="d">example</span></header>
+      <dl><dt>Learned</dt><dd>The orbit of one star round the galactic centre gives the mass inside its orbit: about four million solar masses in a region smaller than the solar system.</dd>
+      <dt>Question</dt><dd>How do they measure a star's position precisely enough through the atmosphere to see it move?</dd></dl>
+    </article><p class="small" style="font-family:var(--f-body)">Your lab book is empty. Finish one thing, then write your first line.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>`<article class="note">
+      <header><h3>${esc(n.what)}</h3><span class="d">${esc(fmtDate(n.date))}</span></header>
+      <dl><dt>Learned</dt><dd>${esc(n.learned)}</dd>${n.q?`<dt>Question</dt><dd>${esc(n.q)}</dd>`:""}</dl>
+      <div><button type="button" class="del" data-i="${i}">Delete</button></div>
+    </article>`).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to delete"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Delete"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,what:$("nbWhat").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; state.done[match.s]=true; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  $("nbWhat").value=""; $("nbLearned").value=""; $("nbQ").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Added.";
+  say(pick(["Lab book updated. That is the bit universities read.","Written up. One line like that per thing is all it needs.","Good entry. Keep the question; it is the start of the next one."]), 9000);
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Physics lab book – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)}\nWhat: ${n.what}\nLearned: ${n.learned}${n.q?`\nQuestion: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} ticked, ${notes} lab book ${notes===1?"line":"lines"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+/* ---------- guided tour (demo only) ---------- */
+const TOUR=[
+  {sel:".room", h:"This is the lab", p:"Every family of things to do is a piece of apparatus: competitions in the trophy cabinet, problems on the whiteboard, talks on the screen, podcasts on the radio, reading on the shelf, placements on the noticeboard. Click any of them and the page takes you there. I talk in the bubble: I greet pupils by name and react to what they do."},
+  {sel:".inst[data-label='Experiments logged']", h:"The dial", p:"Every thing a pupil ticks moves the needle, coloured by station. The note under the number tracks the three half-term picks."},
+  {sel:".inst[data-label='Ask the technician']", h:"Pick one for me", p:"A pupil says how much time they have and I choose something they have not done yet: a ten-minute talk, an evening's past paper, or a programme that takes weeks. Try it after the tour."},
+  {sel:".clip", h:"The clipboard", p:"Three picks from the department each half term, with a wanted-by date. You change these six weeks at a time by editing one block at the top of the file; pupils keep everything they have done."},
+  {sel:"#st-enter", h:"The stations", p:"All 41 things, one card each. Open a card for what it is, what to do with it and a link; flick the switch when it is done. Competition cards have an I want to enter button that puts the pupil's name on your entry list."},
+  {sel:".board", h:"The noticeboard", p:"The physics year on one board: Olympiad rounds, Oxford Saturday sessions, Birmingham lectures, essay deadlines, placement windows. Dates still to be confirmed are marked."},
+  {sel:"#notebook", h:"The lab book", p:"One line per thing: what they did, one thing learned, one question raised. It saves to the department as they type and copies out as text for a personal statement or a reference."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, half-term completion and each lab book. Press the button here to open a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("phys-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:420);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Gz","BP","Bm","Is","Cx","PW"],picks:3,notes:[{what:"Andrea Ghez: The hunt for a supermassive black hole",learned:"Kepler's third law gives the mass inside S0-2's orbit: about four million suns.",q:"Why does the orbit precess?"},{what:"BPhO SPC 2025 paper",learned:"Got 3 of the 5 questions out; the capacitor one needed the exponential, not the linear approximation.",q:"When is the linear approximation good enough?"}],interest:["SPC","Ast"],last:"2026-10-05"},
+  {name:"Ben Carter",cls:"12A",done:["Gz","SS"],picks:1,notes:[{what:"Sixty Symbols: Planck constant",learned:"h sets the scale where quantum effects show; it is tiny in J s but not in eV s.",q:""}],interest:[],last:"2026-10-02"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Gz","BP","Is","Qu","OC","Ad","IoT"],picks:2,notes:[{what:"Allan Adams: gravitational waves",learned:"LIGO measures a length change smaller than a proton using interference between two 4 km arms.",q:"How do they stop seismic noise swamping it?"},{what:"Quanta: muon g-2",learned:"The measured magnetic moment is slightly off the Standard Model prediction.",q:"How many sigma is enough?"}],interest:["R1"],last:"2026-10-04"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["BP","PC","PAT","Cw","Emc","HE"],picks:2,notes:[{what:"Oxford PAT 2019",learned:"Section A under time: 18/25. The vectors question needed components, not a diagram.",q:""},{what:"Why Does E=mc²?",learned:"Mass is a form of energy at rest; the c² is a unit conversion.",q:"Why is c the same for everyone?"}],interest:["PC","Kv"],last:"2026-10-05"},
+  {name:"Finn Murphy",cls:"13A",done:["PC","Ri"],picks:1,notes:[],interest:["PC"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Gz","Bm","Nf"],picks:2,notes:[{what:"Birmingham IOP lecture: dark matter",learned:"Direct-detection experiments sit deep underground to cut cosmic-ray background.",q:"What would a null result after twenty years mean?"}],interest:["Nf","In"],last:"2026-10-06"},
+  {name:"Harry Singh",cls:"12B",done:["Is"],picks:0,notes:[],interest:[],last:"2026-10-03"}
+];
+function fmtD(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have logged something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 half-term picks</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>competition / placement interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>lab book lines written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. This is what you register from.</p>
+        <table class="dt"><tr><th>Competition / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which stations get used</h3><p class="small">Things logged across all pupils, by station. Tells you where to point the next half term's picks.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); const max=Math.max(1,...ORDER.map(famCount)); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Logged</th><th>Half-term picks</th><th class="hide-m">Lab book</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"line":"lines"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtD(r.last)}</td></tr>`).join("")}</table></div>
+    <div class="dcard"><h3>Lab books</h3><p class="small">Each pupil's lab book in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Learned: ${esc(n.learned)}${n.q?`<br>Question: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"physics-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-phys-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-phys-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you.", 8000); $("fbForm").reset(); FB.use=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
+});
+// page comments, where the viewer's account allows them
+(async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;
+  const b=$("fbComment"); b.hidden=false; b.addEventListener("click",()=>{ fbShow(false); try{ c.openComposer({element:document.querySelector(".room")}); }catch(e){} }); }catch(e){} })();
+
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" things to watch, solve, read and enter · all free to you";
+$("nbDate").value=today();
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+
+})();
+</script>
+</body>
+</html>

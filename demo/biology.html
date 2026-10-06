@@ -1,0 +1,1566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biology Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Kalam:wght@400;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* A field course. The page is an Ordnance Survey style map of a route through six habitats, and
+   each family of things to do lives in one of them: field station (Read), pond (Practise),
+   wood (Listen), summit (Enter), bird hide (Watch), jetty (Apply). A field leader walks the
+   pupil round. Progress is the pupil's own index of diversity, so spreading out scores higher
+   than doing ten of one thing. Same saving, sign-in, notebook and backup as the Chemistry and
+   Physics pages; the same summary() fields go to the department. */
+:root{
+  --paper:#F5F0DF; --paper2:#EDE6CF; --card:#FFFEF8; --ink:#1F2B1C; --muted:#5B6656; --line:#D6CDB2; --soft:#EFE9D6;
+  --olive:#56652B; --olive2:#3F4B1E; --control:#B0186A; --path:#C8372D; --gridline:#A9CBE8; --water:#C3E0F1; --water2:#6FAEDA;
+  --wood:#D3E7BF; --moor:#EADFEA; --sand:#F1E3B8; --notebook:#F2C94C; --stamp:#1F6B3A; --focus:#1F4FD8; --on-fill:#FFFFFF;
+  --read:#7A4E1D; --do:#2463A6; --listen:#2E7A33; --enter:#7B3F8C; --watch:#8A6100; --apply:#0D6C76;
+  --f-head:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-hand:"Kalam","Segoe Print","Bradley Hand",cursive;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.5;margin:0;
+  background-image:linear-gradient(rgba(169,203,232,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(169,203,232,.18) 1px,transparent 1px);background-size:64px 64px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(12px,3vw,32px);padding-block:20px 80px;display:grid;gap:52px}
+a{color:var(--do)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{margin:0;line-height:1.08}
+.small{font-size:.86rem;color:var(--muted);margin:0}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+
+.head{font-family:var(--f-head);font-weight:900;letter-spacing:-.01em}
+h2.head{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sec-head{display:grid;gap:6px}
+.sec-head .lede{color:var(--muted);max-width:68ch;margin:0}
+.badge{display:inline-flex;align-items:center;gap:10px;background:var(--olive2);color:#F5F0DF;border-radius:4px;padding:7px 14px 7px 10px;font-family:var(--f-mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.badge i{width:14px;height:14px;border-radius:50%;border:3px solid var(--control);background:#fff}
+.btn{font:inherit;font-weight:700;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;background:var(--olive2);color:#fff;display:inline-flex;align-items:center;gap:8px;justify-content:center;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #B4AB90}
+.btn[hidden]{display:none}
+.btn.g{background:var(--g);color:var(--on-fill)}
+.btn.big{background:var(--control);box-shadow:0 4px 0 #6E0C41;font-family:var(--f-head);font-weight:700;font-size:1.05rem}
+.btn.big:active{transform:translateY(3px);box-shadow:0 1px 0 #6E0C41}
+.btn.on{background:var(--g);color:var(--on-fill);border-color:var(--g)}
+
+/* ---------- the map ---------- */
+.expedition{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:stretch}
+.map-wrap{position:relative;background:#fff;padding:10px;border:1px solid #BFB69A;box-shadow:0 2px 0 #D9D0B4,0 24px 40px -26px rgba(40,50,20,.6)}
+.map-wrap::before{content:"";position:absolute;inset:4px;border:1.5px solid var(--olive2);pointer-events:none}
+svg.map{display:block;width:100%;height:auto;background:var(--paper)}
+.hot{cursor:pointer}
+.hot .halo{fill:none;stroke:var(--control);stroke-width:0;opacity:0;stroke-dasharray:10 6;transition:opacity .2s}
+.hot:hover .halo,.hot:focus-visible .halo,.hot.lit .halo{stroke-width:4;opacity:1}
+.hot:focus{outline:none}
+.ctrl circle.ring{fill:#fff;stroke:var(--control);stroke-width:5}
+.ctrl text{font-family:var(--f-mono);font-weight:500;font-size:20px;fill:var(--control)}
+.ctrl.got circle.ring{fill:var(--control)}
+.ctrl.got text{fill:#fff}
+.plate rect{fill:#fff;stroke:var(--ink);stroke-width:1.5}
+.plate text{font-family:var(--f-head);font-weight:700;font-size:19px;fill:var(--ink)}
+.plate text.sub{font-family:var(--f-mono);font-weight:400;font-size:12px;letter-spacing:.08em;fill:var(--muted);text-transform:uppercase}
+.mlabel{font-family:var(--f-head);font-style:italic;font-weight:500;fill:#2C6E9E}
+.mlabel.land{fill:#4F5B3A}
+#yah{transition:transform .9s cubic-bezier(.4,1.2,.5,1)}
+@keyframes pulse{0%{r:10;opacity:.7}100%{r:30;opacity:0}}
+.yah-pulse{animation:pulse 1.8s ease-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-3px)}}
+.bird{animation:drift 5s ease-in-out infinite}
+@keyframes ripple{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+.rip{transform-origin:center;transform-box:fill-box;animation:ripple 3.2s ease-out infinite}
+.rip2{animation-delay:1.6s}
+@keyframes boat{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.boat{transform-origin:center bottom;transform-box:fill-box;animation:boat 4s ease-in-out infinite}
+
+/* field leader */
+.leader{background:var(--card);border:1px solid #BFB69A;display:grid;grid-template-rows:auto auto 1fr;box-shadow:0 2px 0 #D9D0B4,0 24px 40px -26px rgba(40,50,20,.6)}
+.leader .cap{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:10px 14px 0}
+.leader .pic{display:grid;place-items:center;background:linear-gradient(#DDEBF3,#EEF4E2 70%,#D3E7BF 70%);margin:8px 14px 0;border:1px solid var(--line);height:210px;overflow:hidden}
+.leader .pic svg{height:200px;width:auto;margin-top:16px}
+.bubble{margin:14px;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;position:relative;font-size:.98rem;line-height:1.4;align-self:start;transition:opacity .2s}
+.bubble::after{content:"";position:absolute;left:40px;top:-15px;border:9px solid transparent;border-bottom:14px solid var(--ink);border-top:0}
+.bubble::before{content:"";position:absolute;left:42px;top:-10px;border:7px solid transparent;border-bottom:11px solid #fff;border-top:0;z-index:1}
+.bubble b{font-family:var(--f-mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:.7rem;color:var(--muted);display:block;margin-bottom:3px}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.ldr .lids{transform-origin:center;transform-box:fill-box;animation:blink 5.6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(1.2deg)}}
+.ldr-wrap{transform-origin:96px 350px;animation:sway 5s ease-in-out infinite}
+.go-list{display:none}
+
+/* ---------- field kit ---------- */
+.kit{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) auto;gap:16px;align-items:stretch}
+.kcard{background:var(--card);border:1px solid #BFB69A;padding:16px 16px 14px;display:grid;gap:10px;position:relative;box-shadow:0 2px 0 #D9D0B4}
+.kcard > .t{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.squared{background-color:#FFFEF6;background-image:linear-gradient(#D7E5F1 1px,transparent 1px),linear-gradient(90deg,#D7E5F1 1px,transparent 1px);background-size:18px 18px}
+.div-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.dval{font-family:var(--f-head);font-weight:900;font-size:3rem;line-height:1;color:var(--olive2);min-width:2.4ch;text-align:center}
+.dval small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.7rem;color:var(--muted);letter-spacing:.08em;margin-top:4px}
+.working{font-family:var(--f-hand);font-size:1.12rem;line-height:1.35;color:#1F3A66}
+.working .f{white-space:nowrap}
+.tallies{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 14px}
+.trow{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:6px;align-items:center;font-size:.82rem}
+.trow .dot{width:10px;height:10px;border-radius:50%;background:var(--g)}
+.trow .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow .gt{grid-column:1 / -1;min-height:20px}
+.trow svg{height:20px;display:block}
+.trow .n{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.compass-card{grid-template-columns:auto minmax(0,1fr);align-items:center}
+.compass-card > .t{grid-column:1 / -1}
+.compass{width:120px;height:120px;display:block}
+#needle{transform-origin:60px 60px;transition:transform 1.6s cubic-bezier(.2,.9,.25,1)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:.84rem;border:1.5px solid #B4AB90;background:#FFFEF8;color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--olive2);color:#fff;border-color:var(--olive2)}
+.pick-col{display:grid;gap:8px}
+.pick-col label{font-weight:700;font-size:.9rem}
+.pick-msg{font-size:.88rem;color:var(--muted);min-height:1.3em;margin:0}
+.who{display:grid;gap:6px;align-content:center;font-size:.9rem;color:var(--muted);min-width:170px}
+.who b{color:var(--ink)}
+.who .link{font:inherit;background:none;border:0;color:var(--do);text-decoration:underline;cursor:pointer;padding:0;text-align:left}
+.saved{font-family:var(--f-mono);font-size:.74rem}
+.saved.ok{color:var(--stamp)} .saved.bad{color:#B42318}
+
+/* ---------- route card (this half term) ---------- */
+.route{background:#E9F1E0;border:2px solid var(--olive2);border-radius:16px;padding:18px;display:grid;gap:14px;position:relative;
+  box-shadow:inset 0 0 0 6px #F7FAF2,0 18px 30px -24px rgba(40,50,20,.7)}
+.route::before{content:"";position:absolute;top:14px;right:18px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:2px solid var(--olive2);box-shadow:inset 0 0 0 4px #E9F1E0}
+.rc-head{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;padding-right:40px}
+.rc-head .due{font-family:var(--f-hand);font-weight:700;font-size:1.3rem;color:var(--control)}
+.legs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:leg}
+.leg{background:var(--card);border:1px solid #BFCBA9;border-radius:8px;padding:12px;display:grid;gap:8px;align-content:start;position:relative}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:34px;height:34px;border-radius:50%;border:4px solid var(--control);display:grid;place-items:center;font-family:var(--f-mono);font-weight:500;color:var(--control);background:#fff;flex:none}
+.leg.done .lno{background:var(--control);color:#fff}
+.leg .step{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.leg p{margin:0;font-size:.95rem}
+
+/* ---------- habitats and record cards ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid #B4AB90;background:var(--card);color:var(--ink);padding:5px 12px 5px 6px;border-radius:999px;cursor:pointer}
+.chip i{width:20px;height:20px;border-radius:50%;background:var(--g,var(--olive2));display:inline-grid;place-items:center;color:#fff;font-style:normal;font-family:var(--f-mono);font-size:.7rem}
+.chip b{font-family:var(--f-mono);font-weight:400;color:var(--muted);font-size:.74rem}
+.chip[aria-pressed="true"]{background:var(--olive2);color:#fff;border-color:var(--olive2)}
+.chip[aria-pressed="true"] b{color:#D9E0C8}
+.key{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
+.key code{font-family:var(--f-mono);font-size:.76rem;background:var(--soft);padding:1px 6px;border-radius:4px;color:var(--ink)}
+.habitats{display:grid;gap:30px}
+.hab{display:grid;gap:12px;scroll-margin-top:60px;padding:14px;border-radius:4px;background:color-mix(in srgb,var(--g) 6%,transparent);border-left:6px solid var(--g)}
+.hab.off{display:none}
+.hab.flash{outline:4px dashed var(--control);outline-offset:4px}
+.hab-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.hab-head svg{width:56px;height:44px;display:block}
+.hab-head .nm{font-family:var(--f-head);font-weight:900;font-size:1.45rem;line-height:1.05}
+.hab-head .verb{font-size:.88rem;color:var(--muted);display:block;margin-top:3px}
+.hab-head .n{font-family:var(--f-mono);font-size:.8rem;color:#fff;background:var(--g);padding:3px 10px;border-radius:999px;white-space:nowrap}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.rec{position:relative;font:inherit;text-align:left;color:var(--ink);cursor:pointer;background:var(--card);border:1px solid #CFC6AA;border-top:6px solid var(--g);border-radius:2px;
+  padding:10px 12px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;gap:4px 10px;min-width:0;min-height:112px;
+  box-shadow:0 2px 0 #E2DAC2;transition:transform .15s ease, box-shadow .15s ease}
+.rec:hover{transform:translateY(-2px);box-shadow:0 2px 0 #E2DAC2,0 14px 22px -16px rgba(40,50,20,.6)}
+.rec .no{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.rec .nm{grid-column:1 / -1;font-family:var(--f-head);font-weight:700;font-size:1.02rem;line-height:1.2;overflow-wrap:anywhere}
+.rec .t{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);align-self:end}
+.rec .stamp{grid-column:2;grid-row:3;align-self:end;justify-self:end;width:58px;height:58px;margin:-30px -4px -4px 0;border-radius:50%;border:2px dashed #C9C0A4;display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:#A39A80;text-align:center;line-height:1.15}
+.rec.done{background:color-mix(in srgb,var(--g) 6%,#fff)}
+.rec.done .stamp{border:3px double var(--g);color:var(--g);transform:rotate(-14deg);font-weight:500;font-size:.56rem;background:rgba(255,255,255,.6)}
+.rec.flash{outline:4px solid var(--control);outline-offset:3px}
+.rec.new::before{content:"NEW";position:absolute;top:-14px;right:10px;font-family:var(--f-hand);font-weight:700;font-size:.95rem;background:#FFE36E;color:#5a4a00;padding:0 10px;transform:rotate(4deg);box-shadow:0 3px 6px rgba(0,0,0,.2)}
+.rec.done.new::before{display:none}
+.leg .rec{min-height:96px}
+
+/* ---------- field season (dates) ---------- */
+.season{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.month{background:var(--card);border:1px solid #CFC6AA;display:grid;grid-template-rows:auto auto 1fr;min-height:120px}
+.month .mh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:8px 12px;color:#fff;background:var(--s)}
+.month .mh b{font-family:var(--f-head);font-weight:900;font-size:1.15rem}
+.month .mh span{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.month .nature{font-family:var(--f-hand);font-size:.98rem;color:var(--muted);padding:6px 12px 0;line-height:1.25}
+.month .evs{display:grid;gap:8px;padding:8px 12px 12px;align-content:start}
+.month.quiet .evs::after{content:"Nothing fixed. A good month for the reading and the talks.";font-size:.84rem;color:var(--muted)}
+.mon-autumn{--s:#A0522D}.mon-winter{--s:#4A6378}.mon-spring{--s:#5E8C31}.mon-summer{--s:#B8860B}
+.ev{border-left:4px solid var(--g);padding:2px 0 2px 10px;display:grid;gap:3px;position:relative}
+.ev .when{font-family:var(--f-mono);font-size:.74rem;color:var(--g);font-weight:500}
+.ev b{line-height:1.25;font-size:.95rem}
+.ev .sub{color:var(--muted);font-size:.86rem}
+.ev .open{font:inherit;font-size:.82rem;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1.5px solid var(--g);color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;justify-self:start;text-decoration:none}
+.ev .in{font-family:var(--f-hand);font-weight:700;color:var(--control);font-size:1rem}
+.check{display:inline-block;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid #CFC6AA;border-radius:3px;padding:0 5px;margin-left:6px;vertical-align:middle;font-weight:400}
+
+/* ---------- field notebook ---------- */
+.nb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+form.entry{display:grid;gap:12px;background:var(--card);border:1px solid #BFB69A;padding:18px;box-shadow:0 2px 0 #D9D0B4}
+.field{display:grid;gap:4px}
+.field label{font-weight:700;font-size:.88rem}
+.field input,.field textarea{font:inherit;font-size:.95rem;color:var(--ink);background:#FFFEF6;border:1px solid #CFC6AA;border-radius:4px;padding:9px 10px;width:100%;min-width:0}
+.field textarea{resize:vertical;min-height:4.2em;font-family:var(--f-hand);font-size:1.15rem;line-height:1.35}
+.two{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:10px}
+.fnb{background:var(--notebook);border-radius:10px;padding:14px 14px 14px 30px;position:relative;box-shadow:0 18px 30px -22px rgba(40,50,20,.8)}
+.fnb::before{content:"";position:absolute;left:10px;top:18px;bottom:18px;width:8px;background:repeating-linear-gradient(#3B3B3B 0 6px,transparent 6px 18px);border-radius:3px}
+.fnb .cover{font-family:var(--f-head);font-weight:900;color:#4A3A00;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;margin:0 0 8px}
+.fnb .pages{border-radius:4px;padding:14px 16px;font-size:1.15rem;min-height:200px;background-color:#FFFEF6;
+  background-image:linear-gradient(#D7E5F1 1px,transparent 1px),linear-gradient(90deg,#D7E5F1 1px,transparent 1px);background-size:20px 20px}
+.entries{display:grid;gap:16px}
+.nb-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.note{display:grid;font-family:var(--f-hand);font-size:1em;line-height:1.4;color:#1F3A66;border-bottom:1px dashed #9FB3C6;padding-bottom:10px}
+.note header{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.note .d{color:var(--control);font-weight:700}
+.note h3{font-family:var(--f-hand);font-size:1em;font-weight:700;line-height:1.35}
+.note dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px}
+.note dt{color:var(--muted);font-weight:700}
+.note dd{margin:0}
+.note.example{opacity:.6}
+.del{font:inherit;font-family:var(--f-body);font-size:.8rem;background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline}
+.del.arm{color:#B42318;font-weight:700}
+#copyFallback{width:100%;min-height:8em;font-family:var(--f-mono);font-size:.8rem;background:var(--card);color:var(--ink);border:1px solid #CFC6AA;border-radius:6px;padding:10px}
+footer{color:var(--muted);font-size:.85rem;border-top:2px solid var(--olive2);padding-top:14px}
+
+/* ---------- detail card: a field guide entry ---------- */
+.scrim{position:fixed;inset:0;background:rgba(25,32,20,.55);z-index:20}
+.sheet{position:fixed;z-index:21;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;
+  background:var(--card);color:var(--ink);border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border-top:10px solid var(--g)}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start;padding:18px 20px 0}
+.sheet .plate-ic{width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,var(--g) 12%,#fff);border:2px solid var(--g);display:grid;place-items:center}
+.sheet .plate-ic svg{width:46px;height:36px}
+.sheet h3{font-family:var(--f-head);font-weight:900;font-size:1.45rem;margin-top:3px;line-height:1.12}
+.sheet .fam{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.x{font:inherit;font-size:1.6rem;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 8px}
+.sheet-body{padding:14px 20px 20px;display:grid;gap:14px}
+.sheet-body p{margin:0}
+.sheet-body .lab{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1px solid #CFC6AA;border-radius:999px;padding:2px 9px;color:var(--muted);background:#fff}
+.think{border:1.5px solid var(--g);border-radius:8px;padding:10px 12px;background:color-mix(in srgb,var(--g) 6%,#FFFEF6);font-family:var(--f-hand);font-size:1.18rem;line-height:1.35;color:#1F3A66}
+.think b{display:block;font-family:var(--f-mono);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--g);margin-bottom:2px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- sign-in gate ---------- */
+.gate[hidden],.wrap[hidden]{display:none}
+.gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;overflow:auto;background:#2F3B22;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px}
+.gate-card{width:min(480px,100%);background:var(--card);color:var(--ink);border-radius:6px;padding:0 0 22px;display:grid;gap:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);overflow:hidden}
+.gate-card .top{background:var(--olive2);color:#F5F0DF;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.gate-card .body{display:grid;gap:12px;padding:6px 22px 0}
+.gate-card h2{font-size:1.6rem}
+.gate-card .err{color:#B42318;font-size:.88rem;min-height:1.3em;margin:0}
+.gate-ldr{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;align-items:center}
+.gate-ldr svg{width:78px;height:auto}
+.gate-ldr p{margin:0;font-size:.95rem;background:#fff;border:1.5px solid var(--ink);border-radius:10px;padding:8px 12px;position:relative}
+.gate-ldr p::after{content:"";position:absolute;left:-9px;top:40%;border:8px solid transparent;border-right-color:var(--ink);border-left:0}
+
+@media (max-width:980px){
+  .expedition{grid-template-columns:1fr}
+  .leader{grid-template-columns:150px minmax(0,1fr);grid-template-rows:auto 1fr}
+  .leader .cap{grid-column:1 / -1}
+  .leader .pic{height:170px;margin:8px 0 14px 14px}
+  .leader .pic svg{height:160px}
+  .bubble{align-self:center}
+  .bubble::after{left:-15px;top:30px;border:9px solid transparent;border-right:14px solid var(--ink);border-left:0}
+  .bubble::before{left:-10px;top:32px;border:7px solid transparent;border-right:11px solid #fff;border-left:0}
+  .kit{grid-template-columns:1fr 1fr}
+  .who{grid-column:1 / -1}
+  .legs{grid-template-columns:1fr}
+  .nb{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .go-list{display:flex;flex-wrap:wrap;gap:6px}
+  .kit{grid-template-columns:1fr}
+  .tallies{grid-template-columns:1fr 1fr}
+  .recs{grid-template-columns:1fr 1fr;gap:8px}
+  .rec{padding:10px 9px 10px}
+  .rec .stamp{width:46px;height:46px;font-size:.44rem}
+  .two{grid-template-columns:1fr}
+  .leader{grid-template-columns:100px minmax(0,1fr)}
+  .leader .pic{height:130px}
+  .leader .pic svg{height:120px}
+  .bubble{font-size:.92rem;margin:10px}
+  .hab{padding:10px}
+  .compass{width:96px;height:96px}
+}
+@media (max-width:400px){ .recs{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .rec:hover{transform:none}
+}
+
+/* ---------- backup to file ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  padding:10px 16px;font-weight:700;font-size:.95rem;text-align:center;color:#fff;background:#B42318;border-bottom:3px solid #7A1A10}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;border-radius:6px;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;justify-items:end;gap:8px;max-width:min(340px,calc(100vw - 32px))}
+.bk-dock[hidden]{display:none}
+body.bk-on{padding-bottom:96px}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-weight:700;font-size:.95rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;
+  background:#B42318;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:var(--card,#fff);color:var(--ink,#111);border:1.5px solid var(--line,#ccc);box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+.bk-msg{background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ccc);border-radius:10px;padding:10px 12px;font-size:.9rem;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.45);display:grid;gap:8px}
+.bk-msg:empty{display:none}
+.bk-msg .bk-row button{font:inherit;font-size:.88rem;font-weight:700;border-radius:6px;padding:6px 12px;cursor:pointer;border:1.5px solid var(--line,#ccc);background:transparent;color:var(--ink,#111)}
+.bk-msg .bk-row button.go{background:#B42318;border-color:#B42318;color:#fff}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#FFF4C2;border:2px dashed #B88A00;border-radius:10px;padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-family:var(--f-head);font-weight:700;font-size:1.02rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;background:var(--olive2);color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:21;right:0;top:0;bottom:0;width:min(520px,100vw);background:var(--card);overflow:auto;box-shadow:-20px 0 50px -30px rgba(0,0,0,.6)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--olive2)}
+.fb-top .x{color:#fff}
+.fb-body{display:grid;gap:12px;padding:18px}
+.fb-body h2{font-size:1.5rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.86rem;border:1.5px solid #B4AB90;background:#fff;color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.fb-chips button[aria-pressed="true"]{background:var(--listen);border-color:var(--listen);color:#fff}
+.field textarea.plain{font-family:var(--f-body);font-size:.95rem;line-height:1.4}
+.dept{background:var(--olive2);color:#F5F0DF;border-radius:10px;padding:18px 20px;display:grid;gap:8px}
+.dept h2{font-size:1.5rem;color:#F2C94C}
+.dept p{margin:0;color:#E2E6D2}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:#2F3B22;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px}
+.intro[hidden]{display:none}
+.intro-card{width:min(780px,100%);background:var(--card);border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;padding:26px 28px;align-items:center}
+.intro-card svg{width:150px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.6rem;line-height:1.15}
+.intro-txt p,.intro-txt li{margin:0;font-size:.98rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#FFF4C2;border:1.5px dashed #B88A00;border-radius:8px;padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:110px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(25,32,20,.62);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;border-radius:10px;outline:4px dashed var(--control);pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(580px,calc(100vw - 32px));background:var(--card);border-radius:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:60px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tour-card h3{font-family:var(--f-head);font-weight:900;font-size:1.3rem;margin:2px 0 4px}
+.tour-card p{margin:0;font-size:.98rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:#CFC6AA}.tour-dots i.on{background:var(--control)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:22;background:#EEF1E8;overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--olive2);color:#F5F0DF;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:#fff;margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:#D9E0C8}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:#fff;border:1px solid #D3D8C6;border-radius:10px;padding:12px 14px;display:grid;gap:2px}
+.tl b{font-family:var(--f-head);font-size:1.9rem;font-weight:900;line-height:1}
+.tl span{font-size:.84rem;color:var(--muted)}
+.dcard{background:#fff;border:1px solid #D3D8C6;border-radius:10px;padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-family:var(--f-head);font-weight:900;font-size:1.25rem}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid #E6E9E0;vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.dt tr.you td{background:#FFF4C2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:#E6E9E0;border-radius:4px;vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--listen)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:2px 7px;border-radius:999px;color:#fff;background:var(--g,#5B6656);margin:1px 2px 1px 0}
+.you-tag{font-family:var(--f-mono);font-size:.66rem;background:var(--olive2);color:#fff;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-family:var(--f-hand);font-size:1.08rem;line-height:1.35;border-left:3px solid var(--listen);padding:4px 10px;margin:4px 0;color:#1F3A66}
+.dv{font-family:var(--f-head);font-weight:900}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The field leader, drawn once and reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="leader" class="ldr">
+      <!-- wellies and trousers -->
+      <rect x="64" y="232" width="28" height="80" rx="6" fill="#4C5340"/><rect x="100" y="232" width="28" height="80" rx="6" fill="#4C5340"/>
+      <path d="M60 300h34v44c0 4-2 6-6 6H58c-4 0-6-3-4-6z" fill="#2F5A31"/><path d="M98 300h34v44c0 4-2 6-6 6H102c-4 0-6-3-4-6z" fill="#2F5A31"/>
+      <path d="M54 344h40v8H52zM98 344h40v8H96z" fill="#1C2E1B"/>
+      <rect x="62" y="304" width="30" height="4" fill="#3E7240"/><rect x="100" y="304" width="30" height="4" fill="#3E7240"/>
+      <!-- waxed jacket -->
+      <path d="M46 126c10-14 26-19 50-19s40 5 50 19l12 124c-34 8-90 8-124 0z" fill="#5C6B2E" stroke="#3F4B1E" stroke-width="2"/>
+      <path d="M96 116v134" stroke="#3F4B1E" stroke-width="2"/>
+      <rect x="54" y="196" width="30" height="22" rx="3" fill="#56652B" stroke="#3F4B1E" stroke-width="1.5"/><rect x="108" y="196" width="30" height="22" rx="3" fill="#56652B" stroke="#3F4B1E" stroke-width="1.5"/>
+      <path d="M54 196h30v7H54zM108 196h30v7h-30z" fill="#4C5A25"/>
+      <path d="M70 108l26 14 26-14-4 16-22 8-22-8z" fill="#7A5230"/>
+      <path d="M84 110l12 8 12-8" fill="none" stroke="#5E3E22" stroke-width="1.5"/>
+      <!-- scarf -->
+      <path d="M78 104c10 6 26 6 36 0l2 10c-12 6-28 6-40 0z" fill="#C2452D"/><path d="M104 112l8 30-8 2-6-28z" fill="#A83A25"/>
+      <!-- binoculars on a strap -->
+      <path d="M80 112c-2 12 0 24 4 32M112 112c2 12 0 24-4 32" fill="none" stroke="#2A2A24" stroke-width="2"/>
+      <rect x="74" y="142" width="18" height="26" rx="5" fill="#2B2F2A"/><rect x="100" y="142" width="18" height="26" rx="5" fill="#2B2F2A"/>
+      <rect x="90" y="148" width="12" height="10" fill="#3B4038"/>
+      <circle cx="83" cy="166" r="6" fill="#6FA6C9" stroke="#2B2F2A" stroke-width="2"/><circle cx="109" cy="166" r="6" fill="#6FA6C9" stroke="#2B2F2A" stroke-width="2"/>
+      <circle cx="81" cy="164" r="2" fill="#fff" opacity=".7"/><circle cx="107" cy="164" r="2" fill="#fff" opacity=".7"/>
+      <!-- arms -->
+      <path d="M46 130c-12 20-16 54-14 86 2 10 16 10 18 0 2-26 4-54 12-74z" fill="#5C6B2E" stroke="#3F4B1E" stroke-width="2"/>
+      <path d="M146 130c12 20 16 54 14 86-2 10-16 10-18 0-2-26-4-54-12-74z" fill="#5C6B2E" stroke="#3F4B1E" stroke-width="2"/>
+      <circle cx="41" cy="222" r="9" fill="#8A5838"/><circle cx="151" cy="222" r="9" fill="#8A5838"/>
+      <!-- yellow waterproof notebook and pencil -->
+      <g transform="rotate(10 150 206)"><rect x="138" y="186" width="30" height="40" rx="2" fill="#F2C94C" stroke="#B88A00" stroke-width="1.5"/><path d="M142 196h20M142 202h20M142 208h14" stroke="#B88A00"/><rect x="164" y="180" width="3" height="26" fill="#C2452D" transform="rotate(18 165 193)"/></g>
+      <!-- head -->
+      <rect x="86" y="90" width="20" height="20" fill="#7E4F32"/>
+      <ellipse cx="96" cy="66" rx="29" ry="33" fill="#8F5C3C"/>
+      <ellipse cx="67" cy="70" rx="5" ry="7" fill="#7E4F32"/><ellipse cx="125" cy="70" rx="5" ry="7" fill="#7E4F32"/>
+      <!-- curly hair, tied back -->
+      <g fill="#2A1B13">
+        <circle cx="132" cy="44" r="13"/><circle cx="140" cy="56" r="10"/>
+        <circle cx="70" cy="50" r="11"/><circle cx="78" cy="38" r="12"/><circle cx="92" cy="32" r="12"/><circle cx="106" cy="32" r="12"/><circle cx="119" cy="38" r="12"/><circle cx="126" cy="50" r="10"/>
+        <circle cx="66" cy="60" r="8"/><circle cx="127" cy="60" r="7"/>
+        <path d="M70 50c8 4 18 4 26-2 8 6 20 6 30 2l-2 8c-10 2-20 0-28-4-8 4-18 4-26 2z"/>
+      </g>
+      <g fill="#3D2A1E"><circle cx="84" cy="34" r="3"/><circle cx="102" cy="29" r="3"/><circle cx="118" cy="36" r="3"/><circle cx="74" cy="46" r="2.5"/></g>
+      <!-- face -->
+      <path d="M76 58c5-3 11-3 15-1M102 57c5-2 11-2 15 1" fill="none" stroke="#2A1B13" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="84" cy="68" rx="6" ry="5" fill="#fff"/><ellipse cx="109" cy="68" rx="6" ry="5" fill="#fff"/>
+      <circle cx="84.5" cy="68.5" r="3.3" fill="#4A2E1E"/><circle cx="109.5" cy="68.5" r="3.3" fill="#4A2E1E"/>
+      <circle cx="84.5" cy="68.5" r="1.5" fill="#120A06"/><circle cx="109.5" cy="68.5" r="1.5" fill="#120A06"/>
+      <circle cx="85.8" cy="67.2" r=".9" fill="#fff"/><circle cx="110.8" cy="67.2" r=".9" fill="#fff"/>
+      <ellipse class="lids" cx="84" cy="68" rx="6.5" ry="5.5" fill="#8F5C3C"/><ellipse class="lids" cx="109" cy="68" rx="6.5" ry="5.5" fill="#8F5C3C"/>
+      <g fill="none" stroke="#3A2618" stroke-width="2"><circle cx="84" cy="68" r="9.5"/><circle cx="109" cy="68" r="9.5"/><path d="M93.5 67c2-2 4-2 6 0M74.5 66l-7-2M118.5 66l7-2"/></g>
+      <path d="M96 72c-2 5-3 8-1 11 2 1 4 1 5-1" fill="none" stroke="#6E432A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M84 88c7 6 19 6 25 0" fill="none" stroke="#5A2A1C" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="74" cy="82" rx="5" ry="3" fill="#C0705A" opacity=".45"/><ellipse cx="118" cy="82" rx="5" ry="3" fill="#C0705A" opacity=".45"/>
+    </g>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="30 20 140 340" aria-hidden="true"><use href="#leader"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge" style="background:transparent;padding:0"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge" style="background:transparent;padding:0"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Biology"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="talks">Talks and lectures</button><button type="button" data-v="fieldwork">Fieldwork and citizen science</button><button type="button" data-v="olympiad">Olympiad practice</button><button type="button" data-v="reading">Reading</button><button type="button" data-v="medicine">Medicine and vet applicants</button><button type="button" data-v="local">Local events</button><button type="button" data-v="placements">Placements</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The index of diversity as the progress measure: keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="also" aria-pressed="false">Keep it, add a plain count</button><button type="button" data-v="drop" aria-pressed="false">Replace it</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange" class="plain"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack" class="plain"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (dates, links, wording)?</label><textarea id="fbWrong" class="plain"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button><button type="button" class="btn ghost" id="fbComment" hidden>Comment on the page instead</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="30 20 140 340" aria-hidden="true"><use href="#leader"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Biology field course · demo</span>
+      <h2 class="head" id="introH">Hello. This is a demo of a web page for your sixth-form biologists.</h2>
+      <p>It is a working copy of the page a pupil would use: 35 free things to read, practise, listen to, enter, watch and apply for, laid out as a field course on a map with six habitats. I am the field leader and I walk them round. Their progress is their own index of diversity, so spreading across habitats scores higher than doing ten of one thing. Everything they do saves to the department, and there is a teacher dashboard so you can see who has done what.</p>
+      <ol>
+        <li><b>Sign the register</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateH">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <div class="top"><span class="badge" style="background:transparent;padding:0"><i></i>Biology field course</span><span style="margin-left:auto;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85">Sixth form</span></div>
+    <div class="body">
+      <h2 class="head" id="gateH">Sign the register at the field station</h2>
+      <div class="gate-ldr"><svg viewBox="30 20 140 340"><use href="#leader"/></svg><p>I'm leading the course this year. Sign in and I'll walk you round. Your records, notebook and competition entries save to the department and follow you to any computer.</p></div>
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+      <p class="err" id="gErr" aria-live="polite"></p>
+      <button class="btn big" type="submit" id="gGo">Set off</button>
+      <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    </div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the Biology department.</b> This is the working pupil page: sign in with any name, record things, write in the notebook, ask the field leader to pick. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn big" id="fbOpen2">Feedback</button></div>
+  </div>
+
+  <header style="display:grid;gap:16px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <span class="badge"><i></i>Biology · beyond the classroom · 2026–27</span>
+      <span class="eyebrow" id="strap"></span>
+    </div>
+    <h1 class="head" style="font-size:clamp(2rem,5vw,3.4rem);max-width:20ch">The field course</h1>
+
+    <div class="expedition">
+      <div class="map-wrap" aria-label="The map. Click a numbered habitat to go to it.">
+        <svg class="map" viewBox="0 0 1200 540" role="img" aria-labelledby="mapT">
+          <title id="mapT">A map of the field course route through six habitats</title>
+          <defs>
+            <pattern id="marsh" width="24" height="16" patternUnits="userSpaceOnUse"><rect width="24" height="16" fill="#E4EFE2"/><path d="M4 12h9M6 12l-1.5-5M8.5 12V6M11 12l1.5-5" stroke="#3E8FC4" stroke-width="1.2" fill="none"/></pattern>
+            <pattern id="waves" width="44" height="16" patternUnits="userSpaceOnUse"><rect width="44" height="16" fill="#C3E0F1"/><path d="M0 9q11-7 22 0t22 0" fill="none" stroke="#86BCE0" stroke-width="1.3"/></pattern>
+            <pattern id="heath" width="30" height="22" patternUnits="userSpaceOnUse"><rect width="30" height="22" fill="#EFE3EC"/><path d="M6 14l2-4 2 4M20 8l2-4 2 4" fill="none" stroke="#B48BB0" stroke-width="1"/></pattern>
+            <g id="tr"><circle r="9" fill="#A8CF8A" stroke="#5E8F45" stroke-width="1.3"/><path d="M0 9v5" stroke="#5E8F45" stroke-width="1.5"/></g>
+            <g id="cf"><path d="M0-11l8 16H-8z" fill="#86B472" stroke="#4F7D3E" stroke-width="1.2"/><path d="M0 5v5" stroke="#4F7D3E" stroke-width="1.5"/></g>
+          </defs>
+          <rect width="1200" height="540" fill="#F5F0DF"/>
+          <!-- field boundaries -->
+          <g fill="none" stroke="#9DBB7E" stroke-width="1.4" stroke-dasharray="2 3">
+            <path d="M0 250C120 240 200 250 250 230M80 330l120-30 60 60M0 470l90-40M520 240l60 120 120-20M560 420l140-60M620 250l140 40"/>
+          </g>
+          <!-- grid -->
+          <g stroke="#A9CBE8" stroke-width="1" opacity=".75">
+            <path d="M100 0V540M200 0V540M300 0V540M400 0V540M500 0V540M600 0V540M700 0V540M800 0V540M900 0V540M1000 0V540M1100 0V540"/>
+            <path d="M0 100H1200M0 200H1200M0 300H1200M0 400H1200M0 500H1200"/>
+          </g>
+          <g font-family="DM Mono,monospace" font-size="11" fill="#5E8DB8">
+            <text x="104" y="12">41</text><text x="204" y="12">42</text><text x="304" y="12">43</text><text x="404" y="12">44</text><text x="504" y="12">45</text><text x="604" y="12">46</text><text x="704" y="12">47</text><text x="804" y="12">48</text><text x="904" y="12">49</text><text x="1004" y="12">50</text><text x="1104" y="12">51</text>
+            <text x="3" y="98">88</text><text x="3" y="198">87</text><text x="3" y="298">86</text><text x="3" y="398">85</text><text x="3" y="498">84</text>
+          </g>
+          <!-- road to the field station -->
+          <path d="M0 455C60 452 100 446 150 440" fill="none" stroke="#9A8A5A" stroke-width="12"/><path d="M0 455C60 452 100 446 150 440" fill="none" stroke="#F6D36B" stroke-width="9"/>
+          <!-- stream from the summit to the estuary -->
+          <path d="M760 160C780 200 760 230 800 260S860 300 880 330 960 380 1010 430" fill="none" stroke="#6FAEDA" stroke-width="3.5"/>
+          <path d="M520 150C480 190 430 230 380 268" fill="none" stroke="#6FAEDA" stroke-width="2.5"/>
+
+          <!-- 3 · wood (Listen) -->
+          <g class="hot" data-f="listen" data-g="listen" tabindex="0" role="button" aria-label="Habitat 3, Dawn Chorus Wood: Listen, podcasts">
+            <path class="halo" d="M60 52C160 18 360 22 520 46 560 110 540 190 470 222 360 250 200 244 110 214 50 184 40 110 60 52z"/>
+            <path d="M70 60C170 30 350 32 506 54 544 112 526 184 462 212 360 238 206 232 118 204 64 178 52 112 70 60z" fill="#D3E7BF" stroke="#7FAF6A" stroke-width="1.5"/>
+            <g>
+              <use href="#tr" x="110" y="90"/><use href="#tr" x="150" y="76"/><use href="#cf" x="190" y="96"/><use href="#tr" x="232" y="78"/><use href="#tr" x="274" y="98"/><use href="#cf" x="316" y="74"/><use href="#tr" x="358" y="92"/><use href="#tr" x="400" y="72"/><use href="#cf" x="440" y="96"/><use href="#tr" x="484" y="88"/>
+              <use href="#tr" x="96" y="140"/><use href="#cf" x="136" y="166"/><use href="#tr" x="176" y="140"/><use href="#tr" x="212" y="182"/><use href="#cf" x="380" y="138"/><use href="#tr" x="420" y="164"/><use href="#tr" x="460" y="140"/><use href="#tr" x="496" y="160"/><use href="#cf" x="436" y="196"/><use href="#tr" x="160" y="200"/>
+            </g>
+            <g class="bird" fill="none" stroke="#2E7A33" stroke-width="2" stroke-linecap="round"><path d="M250 132q6-6 12 0q6-6 12 0"/><path d="M290 152q4-4 8 0q4-4 8 0"/></g>
+            <g fill="#2E7A33" font-family="Fraunces,serif" font-size="20"><text x="330" y="120">♪</text><text x="350" y="104" font-size="15">♫</text></g>
+            <text class="mlabel land" x="232" y="226" font-size="17">Dawn Chorus Wood</text>
+            <g class="plate" transform="translate(338 118)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Listen</text><text class="sub" x="12" y="36">3 · Podcasts</text></g>
+          </g>
+
+          <!-- 4 · summit (Enter) -->
+          <g class="hot" data-f="enter" data-g="enter" tabindex="0" role="button" aria-label="Habitat 4, Beacon Summit: Enter, competitions">
+            <ellipse class="halo" cx="770" cy="122" rx="206" ry="112"/>
+            <ellipse cx="770" cy="124" rx="196" ry="102" fill="url(#heath)"/>
+            <g fill="none" stroke="#C9996A" stroke-width="1.5">
+              <ellipse cx="770" cy="124" rx="196" ry="102"/><ellipse cx="772" cy="120" rx="158" ry="82"/><ellipse cx="774" cy="116" rx="120" ry="62"/><ellipse cx="770" cy="112" rx="84" ry="44"/><ellipse cx="768" cy="110" rx="48" ry="26" stroke-width="2.2"/>
+            </g>
+            <g font-family="DM Mono,monospace" font-size="11" fill="#A9784A"><text x="582" y="128">300</text><text x="622" y="124">350</text><text x="660" y="120">400</text></g>
+            <path d="M768 92l14 24h-28z" fill="#fff" stroke="#1F2B1C" stroke-width="2.5"/><circle cx="768" cy="108" r="3.5" fill="#1F2B1C"/>
+            <text font-family="DM Mono,monospace" font-size="12" x="788" y="114" fill="#1F2B1C">412</text>
+            <text class="mlabel land" x="820" y="186" font-size="18">Beacon Summit</text>
+            <g class="plate" transform="translate(830 54)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Enter</text><text class="sub" x="12" y="36">4 · Competitions</text></g>
+          </g>
+
+          <!-- 2 · pond (Practise) -->
+          <g class="hot" data-f="do" data-g="do" tabindex="0" role="button" aria-label="Habitat 2, Mill Pond: Practise, past papers and citizen science">
+            <ellipse class="halo" cx="340" cy="318" rx="130" ry="70"/>
+            <path d="M240 318C246 280 300 262 354 266S446 294 438 324 384 372 330 370 236 352 240 318z" fill="#C3E0F1" stroke="#6FAEDA" stroke-width="2"/>
+            <circle class="rip" cx="320" cy="316" r="16" fill="none" stroke="#fff" stroke-width="2"/><circle class="rip rip2" cx="380" cy="330" r="12" fill="none" stroke="#fff" stroke-width="2"/>
+            <g stroke="#4E8B3C" stroke-width="2" stroke-linecap="round"><path d="M252 300l-4-16M258 298v-18M264 300l4-14M420 346l-3-14M426 344v-16M432 346l4-12"/></g>
+            <g fill="#7A5230"><rect x="396" y="282" width="48" height="10"/><rect x="398" y="292" width="4" height="10"/><rect x="438" y="292" width="4" height="10"/></g>
+            <path d="M444 262l-26 22" stroke="#5B4A2A" stroke-width="2.5"/><ellipse cx="414" cy="290" rx="10" ry="6" fill="none" stroke="#5B4A2A" stroke-width="2"/>
+            <text class="mlabel" x="292" y="392" font-size="17">Mill Pond</text>
+            <g class="plate" transform="translate(452 312)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Practise</text><text class="sub" x="12" y="36">2 · Papers + data</text></g>
+          </g>
+
+          <!-- 5 · hide on the marsh (Watch) -->
+          <g class="hot" data-f="watch" data-g="watch" tabindex="0" role="button" aria-label="Habitat 5, Saltmarsh Hide: Watch, talks and lectures">
+            <path class="halo" d="M760 276C840 252 960 262 1040 298 1060 350 1030 404 960 414 870 420 790 396 760 352z"/>
+            <path d="M770 284C846 262 956 270 1030 304 1048 350 1022 398 958 406 872 412 798 390 770 350z" fill="url(#marsh)" stroke="#86BCE0" stroke-width="1.5"/>
+            <g transform="translate(930 334)">
+              <rect x="0" y="10" width="72" height="40" fill="#7A5230" stroke="#4A3018" stroke-width="2"/><path d="M-6 12l42-18 42 18z" fill="#5B3A1E"/>
+              <rect x="10" y="22" width="52" height="8" fill="#1F1A12"/>
+              <rect x="28" y="50" width="6" height="16" fill="#4A3018"/><rect x="40" y="50" width="6" height="16" fill="#4A3018"/>
+            </g>
+            <g class="bird" fill="none" stroke="#1F2B1C" stroke-width="2" stroke-linecap="round"><path d="M820 304q8-8 16 0q8-8 16 0"/><path d="M860 330q5-5 10 0q5-5 10 0"/></g>
+            <text class="mlabel" x="796" y="400" font-size="17">Saltmarsh</text>
+            <g class="plate" transform="translate(940 254)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Watch</text><text class="sub" x="12" y="36">5 · Talks + lectures</text></g>
+          </g>
+
+          <!-- 6 · jetty on the estuary (Apply) -->
+          <g class="hot" data-f="apply" data-g="apply" tabindex="0" role="button" aria-label="Habitat 6, the jetty: Apply, placements and programmes">
+            <path class="halo" d="M900 540C930 470 1030 420 1200 400V540z"/>
+            <path d="M910 540C940 476 1036 430 1200 412V540z" fill="url(#waves)"/>
+            <path d="M910 540C940 476 1036 430 1200 412" fill="none" stroke="#E9D9A4" stroke-width="8"/>
+            <g fill="#8A6A3C"><rect x="1020" y="440" width="12" height="70" transform="rotate(-28 1026 475)"/></g>
+            <g stroke="#5B4A2A" stroke-width="3"><path d="M1012 452l78 44M1006 462l78 44"/></g>
+            <g transform="translate(1110 474)"><g class="boat"><path d="M0 20h56l-8 14H8z" fill="#C2452D"/><rect x="26" y="-14" width="3" height="34" fill="#5B4A2A"/><path d="M30-12l22 28H30z" fill="#FFFEF8" stroke="#BFB69A"/></g></g>
+            <text class="mlabel" x="1110" y="532" font-size="18">Estuary</text>
+            <text font-family="DM Mono,monospace" font-size="10" x="946" y="518" fill="#2C6E9E">ferry to research station</text>
+            <g class="plate" transform="translate(1030 392)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Apply</text><text class="sub" x="12" y="36">6 · Placements</text></g>
+          </g>
+
+          <!-- 1 · field station (Read) -->
+          <g class="hot" data-f="read" data-g="read" tabindex="0" role="button" aria-label="Habitat 1, the field station: Read, magazines and books">
+            <rect class="halo" x="60" y="372" width="250" height="140" rx="8"/>
+            <g fill="#3A3A34"><rect x="150" y="400" width="70" height="36"/><rect x="220" y="410" width="30" height="26"/><rect x="128" y="440" width="34" height="20"/></g>
+            <rect x="90" y="456" width="30" height="30" fill="#2C6E9E"/><text x="105" y="478" text-anchor="middle" font-family="Public Sans,sans-serif" font-weight="700" font-size="20" fill="#fff">P</text>
+            <g fill="#fff" stroke="#2C6E9E" stroke-width="1.5"><rect x="230" y="446" width="22" height="22" rx="3"/></g><text x="241" y="462" text-anchor="middle" font-family="Public Sans,sans-serif" font-weight="700" font-size="13" fill="#2C6E9E">i</text>
+            <text class="mlabel land" x="150" y="500" font-size="17">Field Station</text>
+            <g class="plate" transform="translate(36 356)"><rect width="162" height="44" rx="3"/><text x="12" y="20">Read</text><text class="sub" x="12" y="36">1 · Books + mags</text></g>
+          </g>
+
+          <!-- the route -->
+          <path id="routePath" d="M205 418C250 380 290 360 318 318S280 200 300 150 560 100 690 146 840 220 900 318 1000 420 1050 470" fill="none" stroke="#C8372D" stroke-width="3.5" stroke-dasharray="10 7" stroke-linecap="round"/>
+
+          <!-- control points (filled once that habitat has a record) -->
+          <g id="ctrls"></g>
+
+          <!-- you are here -->
+          <g id="yah" style="transform:translate(205px,418px)">
+            <circle class="yah-pulse" r="10" fill="none" stroke="#B0186A" stroke-width="3"/>
+            <path d="M0 0c-10-14-14-20-14-27a14 14 0 0 1 28 0c0 7-4 13-14 27z" fill="#B0186A" stroke="#fff" stroke-width="2"/><circle cy="-27" r="5" fill="#fff"/>
+          </g>
+
+          <!-- compass rose, scale, title -->
+          <g transform="translate(1130 70)">
+            <circle r="34" fill="#FFFEF8" stroke="#1F2B1C" stroke-width="1.5"/>
+            <path d="M0-30l7 30-7 30-7-30z" fill="#1F2B1C"/><path d="M0-30l7 30H-7z" fill="#C8372D"/>
+            <text y="-38" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="15" fill="#1F2B1C">N</text>
+          </g>
+          <g transform="translate(540 486)">
+            <rect x="0" y="0" width="350" height="42" fill="#FFFEF8" stroke="#1F2B1C" stroke-width="1.5"/>
+            <text x="12" y="18" font-family="Fraunces,serif" font-weight="900" font-size="15" fill="#1F2B1C">BEYOND THE CLASSROOM · FIELD COURSE</text>
+            <text x="12" y="34" font-family="DM Mono,monospace" font-size="11" fill="#5B6656">Sheet BIO 26/27 · six habitats · all free</text>
+          </g>
+          <g transform="translate(330 506)" font-family="DM Mono,monospace" font-size="10" fill="#1F2B1C">
+            <rect width="60" height="6" fill="#1F2B1C"/><rect x="60" width="60" height="6" fill="#fff" stroke="#1F2B1C"/><rect x="120" width="60" height="6" fill="#1F2B1C"/>
+            <text y="20">0</text><text x="112" y="20">500 m</text>
+          </g>
+        </svg>
+      </div>
+
+      <aside class="leader" aria-label="Your field leader">
+        <span class="cap">Your field leader</span>
+        <div class="pic"><svg viewBox="30 20 140 340" aria-hidden="true"><g class="ldr-wrap"><use href="#leader"/></g></svg></div>
+        <div class="bubble" id="bubble" aria-live="polite"><b>Field leader</b><span id="bubbleTxt">…</span></div>
+      </aside>
+    </div>
+    <div class="go-list" id="goList" role="group" aria-label="Go to a habitat"></div>
+
+    <div class="kit">
+      <div class="kcard squared div-card" aria-labelledby="divT">
+        <span class="t" id="divT">Your index of diversity</span>
+        <div class="div-top">
+          <div class="dval" id="dval">–<small>d</small></div>
+          <div class="working" id="working"></div>
+        </div>
+        <div class="tallies" id="tallies"></div>
+      </div>
+      <div class="kcard compass-card">
+        <span class="t">Ask the field leader</span>
+        <svg class="compass" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="56" fill="#E9F1E0" stroke="#3F4B1E" stroke-width="3"/>
+          <circle cx="60" cy="60" r="46" fill="#FFFEF8" stroke="#BFCBA9"/>
+          <g id="cTicks" stroke="#3F4B1E" stroke-width="1.3"></g>
+          <g font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#1F2B1C" text-anchor="middle"><text x="60" y="27">N</text><text x="98" y="65">E</text><text x="60" y="104">S</text><text x="22" y="65">W</text></g>
+          <g id="needle"><path d="M60 18l7 42H53z" fill="#C8372D"/><path d="M60 102l7-42H53z" fill="#3F4B1E"/></g>
+          <circle cx="60" cy="60" r="5" fill="#1F2B1C"/>
+        </svg>
+        <div class="pick-col">
+          <label id="pickLbl">How much time have you got?</label>
+          <div class="seg" role="group" aria-labelledby="pickLbl" id="seg">
+            <button type="button" data-b="quick" aria-pressed="true">About 10 minutes</button>
+            <button type="button" data-b="evening" aria-pressed="false">An evening</button>
+            <button type="button" data-b="long" aria-pressed="false">A few weeks</button>
+          </div>
+          <button class="btn big" type="button" id="pickBtn">Pick one for me</button>
+          <p class="pick-msg" id="pickMsg" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="who">
+        <span>Signed in as <b id="whoName"></b></span>
+        <span class="saved" id="savedMsg" aria-live="polite"></span>
+        <button type="button" class="link" id="signOut">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <section aria-labelledby="startH">
+    <div class="sec-head">
+      <span class="eyebrow" id="htEyebrow">This half term</span>
+      <h2 class="head" id="startH">The route card</h2>
+    </div>
+    <div class="route" style="margin-top:14px">
+      <div class="rc-head"><span class="head" id="htLabel" style="font-size:1.4rem"></span><span class="due" id="htDue"></span></div>
+      <p class="small" id="htLede" style="margin-top:-6px"></p>
+      <div class="legs" id="start"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tableH" id="table">
+    <div class="sec-head">
+      <span class="eyebrow" id="tableEyebrow">Six habitats</span>
+      <h2 class="head" id="tableH">The habitats</h2>
+      <p class="lede">Open any record card to see what it is and what to do with it. Press <b>Record it</b> when it is done and it gets stamped. Each numbered place on the map is one of the habitats below. Records in more habitats raise your index of diversity.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Show a habitat" style="margin-top:12px"></div>
+    <div class="key" style="margin:10px 0 14px">
+      <span><code>BBO</code> record reference</span>
+      <span><code>15m</code> roughly how long it takes</span>
+      <span>Stamped = done</span>
+      <span><code>NEW</code> added since your last visit</span>
+    </div>
+    <div class="habitats" id="grid"></div>
+  </section>
+
+  <section aria-labelledby="yearH">
+    <div class="sec-head">
+      <span class="eyebrow">Dates to know</span>
+      <h2 class="head" id="yearH">The field season</h2>
+      <p class="lede">The biology year from October to July. Competitions are entered through school: open one and tap <b>I want to enter</b>, and your name goes straight to the department. Dates marked <span class="check">check</span> follow last year's pattern and have not been confirmed for 2027 yet.</p>
+    </div>
+    <div class="season" id="year" style="margin-top:14px"></div>
+  </section>
+
+  <section aria-labelledby="nbH" id="notebook">
+    <div class="sec-head">
+      <span class="eyebrow">One entry per thing</span>
+      <h2 class="head" id="nbH">Your field notebook</h2>
+      <p class="lede">What you did, one thing you learned, one question it left you with. Bring this to any conversation about university applications.</p>
+    </div>
+    <div class="nb" style="margin-top:14px">
+      <form class="entry" id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbWhat">What I watched, read or did</label><input id="nbWhat" list="whatList" required placeholder="e.g. BBO 2023 paper, first 20 questions"></div>
+        </div>
+        <datalist id="whatList"></datalist>
+        <div class="field"><label for="nbLearned">One thing I learned</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">One question it raised</label><textarea id="nbQ"></textarea></div>
+        <button class="btn" type="submit">Write it in the notebook</button>
+        <p class="small">Your notebook saves to the department as you go. <b>Copy my notebook</b> gives you the text for a personal statement draft.</p>
+      </form>
+      <div>
+        <div class="nb-tools" style="margin-bottom:12px">
+          <button class="btn ghost" type="button" id="copyBtn">Copy my notebook</button>
+          <span class="small" id="copyMsg" aria-live="polite"></span>
+        </div>
+        <textarea id="copyFallback" hidden readonly aria-label="Your notebook as text"></textarea>
+        <div class="fnb"><p class="cover" id="nbCover">Field notebook</p><div class="pages"><div id="entries" class="entries"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="head">What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each competition (your entry list, which matters for the Olympiad because pupils cannot enter alone); how many of the half-term picks each pupil has done; each pupil's index of diversity and which habitats they have not visited; each field notebook as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Biology: the habitats, the picks, the dates, the field leader's lines, what gets tracked. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer>
+    Compiled 30 September 2026 by the Biology department. Every link was checked on that date. Everything here is free to you except where a card says otherwise; where a competition has a fee the school pays it. The four books are in the library or on request.
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+/* Six habitats in route order. x,y = the control point on the map. */
+const FAM = {
+  read:{label:"Read", verb:"Magazines and books", place:"Field Station", the:"the field station", no:1, x:205, y:418},
+  do:{label:"Practise", verb:"Past papers and citizen science", place:"Mill Pond", the:"the pond", no:2, x:318, y:318},
+  listen:{label:"Listen", verb:"Podcasts", place:"Dawn Chorus Wood", the:"the wood", no:3, x:300, y:150},
+  enter:{label:"Enter", verb:"Competitions", place:"Beacon Summit", the:"the summit", no:4, x:690, y:146},
+  watch:{label:"Watch", verb:"Talks and lectures", place:"Saltmarsh Hide", the:"the hide", no:5, x:900, y:318},
+  apply:{label:"Apply", verb:"Placements and programmes", place:"The Jetty", the:"the jetty", no:6, x:1050, y:470}
+};
+const ICON = {
+  read:`<svg viewBox="0 0 56 44"><rect x="8" y="16" width="30" height="22" fill="#3A3A34"/><path d="M4 18l19-12 19 12z" fill="#7A4E1D"/><rect x="34" y="22" width="18" height="16" rx="1" fill="#FFFEF8" stroke="#7A4E1D" stroke-width="2"/><path d="M43 24v13" stroke="#7A4E1D" stroke-width="1.5"/></svg>`,
+  do:`<svg viewBox="0 0 56 44"><ellipse cx="26" cy="30" rx="22" ry="10" fill="#C3E0F1" stroke="#2463A6" stroke-width="2"/><path d="M48 4L30 24" stroke="#5B4A2A" stroke-width="2.5"/><ellipse cx="28" cy="27" rx="7" ry="4" fill="none" stroke="#5B4A2A" stroke-width="2"/><path d="M8 26l-2-8M12 24v-9" stroke="#2E7A33" stroke-width="2"/></svg>`,
+  listen:`<svg viewBox="0 0 56 44"><circle cx="20" cy="20" r="13" fill="#A8CF8A" stroke="#2E7A33" stroke-width="2"/><path d="M20 33v9" stroke="#2E7A33" stroke-width="3"/><path d="M36 14q4-4 8 0q4-4 8 0" fill="none" stroke="#2E7A33" stroke-width="2" stroke-linecap="round"/><text x="38" y="34" font-size="14" fill="#2E7A33">♪</text></svg>`,
+  enter:`<svg viewBox="0 0 56 44"><ellipse cx="28" cy="30" rx="26" ry="12" fill="#EFE3EC" stroke="#C9996A" stroke-width="1.5"/><ellipse cx="28" cy="28" rx="14" ry="6" fill="none" stroke="#C9996A" stroke-width="1.5"/><path d="M28 8l9 16H19z" fill="#fff" stroke="#7B3F8C" stroke-width="2.5"/><circle cx="28" cy="19" r="2.5" fill="#7B3F8C"/></svg>`,
+  watch:`<svg viewBox="0 0 56 44"><path d="M6 16l22-10 22 10z" fill="#5B3A1E"/><rect x="10" y="16" width="36" height="20" fill="#8A6100"/><rect x="15" y="22" width="26" height="5" fill="#1F1A12"/><path d="M4 40h48" stroke="#3E8FC4" stroke-width="2"/></svg>`,
+  apply:`<svg viewBox="0 0 56 44"><path d="M0 32q7-5 14 0t14 0 14 0 14 0V44H0z" fill="#C3E0F1"/><path d="M4 24l26 12" stroke="#5B4A2A" stroke-width="3"/><path d="M34 26h18l-4 7H38z" fill="#C2452D"/><rect x="42" y="8" width="2" height="18" fill="#5B4A2A"/><path d="M44 9l9 14h-9z" fill="#FFFEF8" stroke="#0D6C76"/></svg>`
+};
+// mins drives the "Pick one for me" buckets: quick <= 20, evening <= 180, long > 180
+const ITEMS = [
+  // ---- 1 Read · field station
+  {s:"Nat",g:"read",short:"Nature news",name:"Nature news",mins:10,t:"10m",
+   what:"The free news pages of the journal Nature: current research stories in genetics, ecology and medicine, written for scientists outside the field.",
+   think:"Read one story a week. Note which part of the course it builds on and which words you had to look up.",tags:["free online","weekly"],url:"https://www.nature.com/news",lt:"nature.com/news"},
+  {s:"TB",g:"read",short:"The Biologist",name:"The Biologist (Royal Society of Biology) and BioNet membership",mins:15,t:"15m",
+   what:"The Royal Society of Biology's magazine. Some articles are free to read online; the full magazine comes with BioNet student membership, which costs £10 a year.",
+   think:"Read one of the free articles and find the experiment at the centre of it. What was the control?",tags:["RSB","£10 for full access"],url:"https://www.rsb.org.uk/join-bionet.html",lt:"RSB BioNet"},
+  {s:"NS",g:"read",short:"New Scientist",name:"New Scientist",mins:15,t:"15m",
+   what:"The weekly science magazine. It is a paid subscription; ask the library whether the school has one.",
+   think:"Read the life sciences pages of one issue a month.",tags:["ask library","paid"],url:"https://www.newscientist.com/",lt:"newscientist.com"},
+  {s:"HE",g:"read",short:"Cambridge HE+",name:"Cambridge HE+ Biology",mins:300,t:"project",
+   what:"Six university-style study units from Cambridge: epigenetics, genetic variation and evolution, brown adipose tissue, introduction to neuroscience, microscopy, and transfusions and transplants. Each has reading, video, audio and problems.",
+   think:"Do the epigenetics unit after gene expression in class, or the neuroscience unit after nervous coordination. Either one is a good half-term project.",tags:["Cambridge","half-term project"],url:"https://myheplus.com/subject/biology",lt:"HE+ Biology"},
+  {s:"SG",g:"read",short:"The Selfish Gene",name:"The Selfish Gene, by Richard Dawkins",mins:900,t:"book",
+   what:"The classic book on evolution from the gene's point of view. It is the book biology applicants mention most, so interviewers expect you to have a view on it.",
+   think:"Read the first four chapters. Do you agree that the gene, rather than the organism, is the thing natural selection acts on? Write down one reason for and one against.",tags:["book","ask library"],url:"",lt:""},
+  {s:"ICM",g:"read",short:"I Contain Multitudes",name:"I Contain Multitudes, by Ed Yong",mins:720,t:"book",
+   what:"How microbes shape every animal, including you. Pairs with the Ed Yong and Rob Knight talks in the hide.",
+   think:"Find one experiment in the book that shows a microbe causing something, rather than just being found alongside it. How was it done?",tags:["book","ask library"],url:"",lt:""},
+  {s:"EL",g:"read",short:"Entangled Life",name:"Entangled Life, by Merlin Sheldrake",mins:720,t:"book",
+   what:"A book about fungi and the networks they form with plant roots. Read it alongside the Suzanne Simard talk.",
+   think:"Sheldrake and Simard describe the same networks. Which of them is more careful about what the evidence shows?",tags:["book","ask library"],url:"",lt:""},
+  {s:"Gn",g:"read",short:"The Gene",name:"The Gene: An Intimate History, by Siddhartha Mukherjee",mins:1200,t:"book",
+   what:"The history of genetics from Mendel to gene editing. It is long, but the chapters can be read on their own.",
+   think:"Read the chapters on Mendel before the inheritance topic, or the last part on gene editing after the Doudna talk.",tags:["book","ask library"],url:"",lt:""},
+  // ---- 2 Practise · pond
+  {s:"BP",g:"do",short:"BBO past papers",name:"British Biology Olympiad past papers",mins:90,t:"1h30",
+   what:"Olympiad papers from 2019 to 2024 on the UK Biology Competitions page. There are no mark schemes, on purpose: you are expected to look up anything you could not answer.",
+   think:"Sit one 45-minute paper with a timer. Then look up every question you guessed, and write the best of them in your field notebook.",tags:["UKBC","no mark schemes"],url:"https://ukbiologycompetitions.org/british-biology-olympiad/",lt:"UKBC past papers"},
+  {s:"SoS",g:"do",short:"Signs of Spring",name:"Signs of Spring (Royal Society of Biology and Field Studies Council)",mins:3000,t:"Jan–Jun",
+   what:"A citizen-science survey that runs every year from January to June. You record the first time you see ten seasonal events (snowdrops, frogspawn, bumblebees and others) and your records go onto a national map.",
+   think:"Pick one of the ten events and watch for it on your way to school. Compare your date with the map: is your area early or late, and why might that be?",tags:["citizen science","Jan–Jun"],url:"https://www.rsb.org.uk/citizen-science.html",lt:"RSB citizen science"},
+  {s:"Zoo",g:"do",short:"Zooniverse",name:"Zooniverse biology projects",mins:20,t:"20m",
+   what:"Classify real research data online: camera-trap photographs of European wildlife, animal behaviour coded from video, and more. Researchers use the results.",
+   think:"Classify fifty camera-trap images. Which two species were hardest to tell apart, and which feature settled it?",tags:["citizen science","free account"],url:"https://www.zooniverse.org/projects?discipline=biology",lt:"zooniverse.org"},
+  // ---- 3 Listen · wood
+  {s:"IoT",g:"listen",short:"In Our Time",name:"BBC In Our Time: science archive",mins:45,t:"45m",
+   what:"Three academics discuss one subject for 45 minutes. The archive goes back more than twenty years.",
+   think:"Search the archive for photosynthesis, the Krebs cycle, epigenetics, the immune system, Darwin or Mendel. Pick the one closest to your current topic.",tags:["BBC"],url:"https://www.bbc.co.uk/programmes/p01gyd7j",lt:"In Our Time science"},
+  {s:"BM",g:"listen",short:"Bioscience Matters",name:"Bioscience Matters (Royal Society of Biology podcast)",mins:30,t:"30m",
+   what:"The Royal Society of Biology's own podcast: interviews with researchers on new findings and on science policy. Recent episodes cover plant health, rewilding, genetic technologies in cancer research and venom in drug discovery.",
+   think:"Listen to one episode and explain its main finding to someone at home in two minutes.",tags:["RSB","free"],url:"https://www.rsb.org.uk/podcast.html",lt:"RSB podcast"},
+  {s:"IMC",g:"listen",short:"Monkey Cage",name:"The Infinite Monkey Cage",mins:30,t:"30m",
+   what:"Science and comedy on BBC Radio 4. A good place to start if you do not listen to anything yet.",
+   think:"Find an episode on a biology topic and note one claim you would want to check.",tags:["BBC"],url:"https://www.bbc.co.uk/programmes/b00snr0w",lt:"Infinite Monkey Cage"},
+  // ---- 4 Enter · summit
+  {s:"BBO",g:"enter",short:"Biology Olympiad",name:"British Biology Olympiad (UK Biology Competitions)",mins:90,t:"2×45m",
+   what:"Two 45-minute online multiple-choice papers, sat in school between 15 and 22 January, going well beyond A level. Top scorers go on to selection rounds at Warwick for the UK team. School registration opened on 1 October; pupils cannot enter alone.",
+   think:"Do one past paper at the pond before Christmas so the style is not a shock. There are no mark schemes, so the looking-up is the practice.",tags:["Y12–13","via school","15–22 Jan"],url:"https://ukbiologycompetitions.org/british-biology-olympiad/",lt:"UKBC page"},
+  {s:"IBO",g:"enter",short:"Intermediate Olympiad",name:"Intermediate Biology Olympiad (UK Biology Competitions)",mins:60,t:"1h",
+   what:"The Year 12 version of the Olympiad, sat in school during the 4–18 June window. Registration opens on 17 April. Good practice for the full Olympiad in Year 13.",
+   think:"If you sit the full Olympiad in January, enter this as well. Compare which topics caught you out each time.",tags:["Y12","via school","4–18 Jun"],url:"https://ukbiologycompetitions.org/intermediate-biology-olympiad/",lt:"UKBC page"},
+  {s:"CBC",g:"enter",short:"Cambridge Biology Challenge",name:"Cambridge Biology Challenge (Homerton College)",mins:600,t:"team",
+   what:"A team competition for up to five pupils. A new Cambridge-style biology question comes out every three weeks and teams have two weeks to answer it as a poster, video, podcast or essay. Selected teams are invited to Homerton in August. Last year the first question came out on 20 October.",
+   think:"Find four others now. Decide who is best at each format before the first question comes out.",tags:["Y10–13","teams of 5","from Oct · check"],url:"https://www.homerton.cam.ac.uk/cambridge-biology-challenge",lt:"Homerton"},
+  {s:"Kv",g:"enter",short:"Kelvin essay",name:"Peterhouse Kelvin Sciences Essay Competition (Cambridge)",mins:1200,t:"essay",
+   what:"An essay of up to 2,000 words on one of six science questions set by Peterhouse. In 2026 the biology options included species conservation, chirality in biology, and why lifespan varies between species. The 2026 deadline was 20 April. A school can send four entries, each approved by a teacher, so the department chooses.",
+   think:"Pick the question you would still want to answer after three weeks of reading about it.",tags:["Y12","teacher approval","spring · check"],url:"https://www.pet.cam.ac.uk/peterhouse-kelvin-biological-sciences-essay-competition",lt:"Peterhouse"},
+  {s:"Ph",g:"enter",short:"Young Photographer",name:"Royal Society of Biology Young Photographer of the Year",mins:300,t:"photos",
+   what:"Photograph living things in their habitat to a set theme (2026: Colours of Nature) and submit up to six pictures online. Open to anyone 18 or under. The winner receives £500 and an invitation to the Biology Week awards in London. Last year it ran from 10 March to 5 May.",
+   think:"Start taking pictures now so you have a choice when the theme is announced. Note the species and the place for each one.",tags:["18 and under","enter yourself","Mar–May · check"],url:"https://www.rsb.org.uk/photo-competition.html",lt:"RSB page"},
+  // ---- 5 Watch · hide
+  {s:"Dou",g:"watch",short:"Doudna: CRISPR",name:"Jennifer Doudna: How CRISPR lets us edit our DNA",mins:16,t:"16m",
+   what:"A TED talk by one of the two scientists awarded the 2020 Nobel Prize in Chemistry for CRISPR–Cas9 gene editing.",
+   think:"Explain how Cas9 finds its target sequence using complementary base pairing. Which of her ethical concerns do you think is the most serious, and why?",tags:["TED","Nobel 2020"],url:"https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna",lt:"Watch on TED"},
+  {s:"McK",g:"watch",short:"McKenna: antibiotics",name:"Maryn McKenna: What do we do when antibiotics don't work any more?",mins:17,t:"17m",
+   what:"A TED talk by a public-health journalist on what medicine would look like if antibiotic resistance keeps spreading.",
+   think:"Use natural selection to explain how resistance spreads through a bacterial population. Which of her proposed measures would slow it most?",tags:["TED","medicine"],url:"https://www.ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more",lt:"Watch on TED"},
+  {s:"Bas",g:"watch",short:"Bassler: bacteria talk",name:"Bonnie Bassler: How bacteria \"talk\"",mins:18,t:"18m",
+   what:"A TED talk on quorum sensing: how bacteria count their own numbers with chemical signals and then act together.",
+   think:"Quorum sensing switches genes on when a signal molecule passes a threshold. Compare this with how oestrogen regulates transcription.",tags:["TED"],url:"https://www.ted.com/talks/bonnie_bassler_how_bacteria_talk",lt:"Watch on TED"},
+  {s:"Kn",g:"watch",short:"Knight: our microbes",name:"Rob Knight: How our microbes make us who we are",mins:17,t:"17m",
+   what:"A TED talk on the microbes that live in and on each of us, and how they differ from person to person.",
+   think:"Pick one link he describes between gut microbes and a condition. How would you design a study to show the microbes cause it, rather than being correlated with it?",tags:["TED","medicine"],url:"https://www.ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are",lt:"Watch on TED"},
+  {s:"Sim",g:"watch",short:"Simard: trees talk",name:"Suzanne Simard: How trees talk to each other",mins:18,t:"18m",
+   what:"A TED talk on fungal networks linking the roots of forest trees. Some of her claims have been criticised for going further than the evidence, so watch it to argue with it.",
+   think:"Where do mycorrhizae come into nutrient cycles? Which of her claims about trees sharing carbon are supported by the evidence she shows, and which go further than it?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other",lt:"Watch on TED"},
+  {s:"Wal",g:"watch",short:"Walker: sleep",name:"Matt Walker: Sleep is your superpower",mins:19,t:"19m",
+   what:"A TED talk on sleep and health. Several of its statistics have been challenged since, so watch it to argue with it.",
+   think:"Choose two of his statistics. For each, say whether it shows correlation or causation and what data you would need before accepting it.",tags:["TED","argue with it"],url:"https://www.ted.com/talks/matt_walker_sleep_is_your_superpower",lt:"Watch on TED"},
+  {s:"Yg",g:"watch",short:"Yong: zombie roaches",name:"Ed Yong: Zombie roaches and other parasite tales",mins:13,t:"13m",
+   what:"A TED talk on parasites that take over their hosts' behaviour.",
+   think:"Choose one parasite that changes its host's behaviour. Which parts of the course on receptors, nerves and synapses would it have to act on?",tags:["TED"],url:"https://www.ted.com/talks/ed_yong_zombie_roaches_and_other_parasite_tales",lt:"Watch on TED"},
+  {s:"Hrt",g:"watch",short:"How the heart pumps",name:"Edmond Hui (TED-Ed): How the heart actually pumps blood",mins:5,t:"4m",
+   what:"A four-minute animated TED-Ed lesson on the cardiac cycle.",
+   think:"Sketch the pressure changes in the left atrium, left ventricle and aorta through one cardiac cycle, and mark when each valve opens and closes.",tags:["TED-Ed","medicine"],url:"https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood",lt:"Watch on TED"},
+  {s:"WS",g:"watch",short:"Biology: The Whole Story",name:"Biology: The Whole Story (University of Oxford)",mins:40,t:"10 films",
+   what:"Ten films by Professor Lindsay Turnbull of Oxford's Department of Biology, one for each big idea: information in cells, evolution, sexual reproduction, energy in cells, bacteria, eukaryotes, animals, vertebrates, plants and ecology.",
+   think:"Watch the film that matches the topic you are on now, and note one thing she says that the textbook does not.",tags:["Oxford"],url:"https://podcasts.ox.ac.uk/series/biology-whole-story",lt:"Oxford podcasts"},
+  {s:"Gr",g:"watch",short:"Gresham lectures",name:"Gresham College: Science for schools",mins:60,t:"1h",
+   what:"Free recorded hour-long university lectures at A level standard, including series on immunology (how vaccines work, microbial and plant immunity), evolution and microbiology.",
+   think:"Watch one immunology lecture alongside the immune system topic, or one evolution lecture alongside speciation.",tags:["free","1 hour"],url:"https://www.gresham.ac.uk/schools-and-colleges/science",lt:"Gresham Science"},
+  {s:"Xm",g:"watch",short:"Christmas Lectures archive",name:"Royal Institution Christmas Lectures archive",mins:60,t:"1h",
+   what:"Every series back to the 1960s. This year's series (Jim Al-Khalili on time) is physics, so for biology go to the archive: Who Am I? (2018, Alice Roberts and Aoife McLysaght) on DNA and genomes, or Going Viral (2021, Jonathan Van-Tam) on the immune system and vaccines.",
+   think:"Watch the first lecture of Who Am I? over Christmas and note one thing about gene expression that the course has not told you yet.",tags:["Christmas","archive"],url:"https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive",lt:"Ri archive"},
+  {s:"Ri",g:"watch",short:"Ri on YouTube",name:"Royal Institution on YouTube",mins:60,t:"1h",
+   what:"Full-length evening talks by working scientists and writers, plus short demonstration films, added every week.",
+   think:"Watch one biology talk this month on something you have not studied yet.",tags:["weekly"],url:"https://www.youtube.com/user/TheRoyalInstitution",lt:"Ri YouTube"},
+  {s:"AZ",g:"watch",short:"RSB A to Z",name:"Royal Society of Biology: A to Z of the Biosciences",mins:10,t:"10m",
+   what:"Short films in which working biologists (a geneticist, a virologist, a neuroscientist, a behavioural ecologist and others) describe their work and the qualifications they needed.",
+   think:"Watch two for branches of biology you know least about. Would either change what you apply for?",tags:["careers","RSB"],url:"https://www.rsb.org.uk/a-to-z-biosciences.html",lt:"RSB A to Z"},
+  // ---- 6 Apply · jetty
+  {s:"Nf",g:"apply",short:"Nuffield placement",name:"Nuffield Research Placements",mins:9000,t:"4–6wk",
+   what:"A summer research placement in a university or industry lab, funded by the Nuffield Foundation and delivered by STEM Learning. Applications usually open in the autumn term. Eligibility criteria apply. Pupils who complete one can submit it for a Gold CREST Award.",
+   think:"Talk to your teacher about whether you qualify before the window closes.",tags:["Y12","summer"],url:"https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements",lt:"Nuffield"},
+  {s:"In",g:"apply",short:"In2STEM",name:"In2Science UK: In2STEM",mins:6000,t:"1–2wk",
+   what:"A one to two week placement with researchers in July or August, plus online workshops. It is free, with a bursary for travel and lunch. In 2026 applications ran from December to April. Eligibility criteria apply.",
+   think:"Check the criteria and put the December opening in your diary.",tags:["Y12","summer"],url:"https://in2scienceuk.org/our-programmes/in2stem/",lt:"In2STEM"},
+  {s:"Un",g:"apply",short:"UNIQ",name:"UNIQ, University of Oxford",mins:6000,t:"resid.",
+   what:"A free Oxford residential and support programme for state-school Year 12s, prioritising pupils with good grades from backgrounds under-represented at Oxford. Applications for UNIQ 2027 open in December. Check the course list for biology and biomedical sciences.",
+   think:"Check the criteria when applications open in December; your teacher will know the dates.",tags:["Y12","residential","opens Dec"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"}
+];
+/* The field season. m = month (YYYY-MM) it sits under. s links to an item; url is for events with no item. */
+const YEAR = [
+  {m:"2026-10",when:"From 1 Oct",what:"Biology Olympiad registration opens",sub:"Tap I want to enter on the Olympiad card so the department registers you.",s:"BBO",check:false},
+  {m:"2026-10",when:"8–18 Oct",what:"Royal Society of Biology: Biology Week",sub:"Events across the UK. Watch for what the department runs in school.",url:"https://www.rsb.org.uk/biology-week.html",check:false},
+  {m:"2026-10",when:"Late Oct",what:"Cambridge Biology Challenge: first question",sub:"Last year it came out on 20 October, with a new question every three weeks.",s:"CBC",check:true},
+  {m:"2026-11",when:"Autumn term",what:"Nuffield placement applications",sub:"Usually open in the autumn term. Check eligibility with your teacher.",s:"Nf",check:true},
+  {m:"2026-12",when:"December",what:"In2STEM and UNIQ applications open",sub:"Both summer programmes for Year 12 open their applications in December.",s:"Un",check:true},
+  {m:"2026-12",when:"Christmas hols",what:"Christmas Lectures",sub:"This year's series is physics. Watch Who Am I? or Going Viral from the archive instead.",s:"Xm",check:false},
+  {m:"2027-01",when:"15–22 Jan",what:"British Biology Olympiad papers",sub:"Two 45-minute online papers, sat in school.",s:"BBO",check:false},
+  {m:"2027-01",when:"January",what:"Signs of Spring survey starts",sub:"Record the first snowdrops, frogspawn and bumblebees you see, through to June.",s:"SoS",check:true},
+  {m:"2027-03",when:"March",what:"Young Photographer of the Year opens",sub:"Last year it ran from 10 March to 5 May.",s:"Ph",check:true},
+  {m:"2027-04",when:"Spring",what:"Kelvin essay deadline",sub:"Questions come out in the spring; in 2026 the deadline was 20 April. Four entries per school.",s:"Kv",check:true},
+  {m:"2027-04",when:"17 Apr",what:"Intermediate Olympiad registration opens",sub:"Year 12 only.",s:"IBO",check:false},
+  {m:"2027-06",when:"4–18 Jun",what:"Intermediate Biology Olympiad papers",sub:"Sat in school during the window.",s:"IBO",check:false},
+  {m:"2027-07",when:"July–Aug",what:"Summer placements run",sub:"Nuffield, In2STEM and UNIQ all happen over the summer holiday.",s:"Nf",check:false}
+];
+const MONTHS = [
+  ["2026-10","October","autumn","Fungi fruiting; swallows gone"],["2026-11","November","autumn","Leaf fall; redwings arrive"],
+  ["2026-12","December","winter","Starling roosts at dusk"],["2027-01","January","winter","First snowdrops"],
+  ["2027-02","February","winter","Frogspawn in the pond"],["2027-03","March","spring","Queen bumblebees out"],
+  ["2027-04","April","spring","Dawn chorus building"],["2027-05","May","spring","Hawthorn in flower"],
+  ["2027-06","June","summer","Longest days; peak growth"],["2027-07","July","summer","Fieldwork season"]
+];
+
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three picks are wanted by, and
+      the three items (s = record reference from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three picks from the department for this half term. Do them, record them, write a notebook entry for each.",
+  items:[
+    {s:"Dou",step:"Watch",txt:"Watch Jennifer Doudna's 16-minute talk on CRISPR and write down how Cas9 finds the right place in the DNA."},
+    {s:"BP",step:"Practise",txt:"Try one British Biology Olympiad past paper. There are no mark schemes, so look up the questions you could not answer."},
+    {s:"WS",step:"Watch",txt:"Watch the film from Biology: The Whole Story that matches the topic you are studying now."}
+  ]
+};
+const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-bio-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+
+/* ---------- state ---------- */
+const KEY_BASE="bio-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",at:"read",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- index of diversity: d = N(N-1) / sum n(n-1), habitats as the "species" ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function diversity(){
+  const c=counts(); const N=ORDER.reduce((a,g)=>a+c[g],0); const S=ORDER.reduce((a,g)=>a+c[g]*(c[g]-1),0);
+  const k=ORDER.filter(g=>c[g]).length;
+  let d=null, kind="none";
+  if(N>=2 && S>0){ d=N*(N-1)/S; kind="num"; } else if(N>=2){ kind="inf"; } else if(N===1){ kind="one"; }
+  return {c,N,S,k,d,kind};
+}
+const fmtD=d=> d==null ? "–" : (Math.round(d*10)/10).toString();
+
+/* ---------- the field leader talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const D=diversity(); const n=D.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `Hello ${firstName()}, welcome to the field course. There are six habitats on the map and everything in them is free. Start with the route card below: three things for this half term.`;
+  if(!n) return `Hello again ${firstName()}. Nothing recorded yet. The route card has three things to start on.`;
+  if(ht<HALFTERM.items.length) return `Hello ${firstName()}. ${n} recorded in ${D.k} ${D.k===1?"habitat":"habitats"} so far, and ${ht} of the ${HALFTERM.items.length} route card picks done.`;
+  if(D.k<6) return `Hello ${firstName()}. Route card done, ${n} recorded. You have not been to ${ORDER.filter(g=>!D.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")} yet; a record there would lift your diversity.`;
+  return `Hello ${firstName()}. ${n} recorded across all six habitats. Pick anywhere, or ask me to choose.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const D=diversity();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Biology",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           diversity:{d:D.kind==="num"?Math.round(D.d*100)/100:(D.kind==="inf"?"max":null), habitats:D.k},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="bio-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="read";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="Field notebook · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("bio-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- record cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", recorded":""}${isNew?", new":""}">
+    <span class="no">Rec ${String(it.n).padStart(2,"0")} · ${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="stamp" aria-hidden="true">${done?"Recorded<br>✓":"not yet<br>recorded"}</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="hab${off}" id="hab-${g}" data-g="${g}">
+      <div class="hab-head">${ICON[g]}<div><span class="nm">${FAM[g].no} · ${FAM[g].place}</span><span class="verb">${FAM[g].label} · ${FAM[g].verb}</span></div>
+        <span class="n">${done} / ${list.length}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · if you do nothing else this half term";
+  $("htLabel").textContent=HALFTERM.label+" route";
+  $("htDue").textContent="back by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">Leg ${i+1} · ${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · done":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const counts={}; ITEMS.forEach(i=>counts[i.g]=(counts[i.g]||0)+1);
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>✦</i>All six <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${counts[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+/* five-bar gate tally */
+function gate(n){
+  if(!n) return `<svg viewBox="0 0 10 20" aria-hidden="true"></svg>`;
+  let h="", x=2; const full=Math.floor(n/5), rest=n%5;
+  for(let k=0;k<full;k++){ for(let j=0;j<4;j++) h+=`<path d="M${x+j*5} 3v14"/>`; h+=`<path d="M${x-2} 15L${x+17} 5"/>`; x+=26; }
+  for(let j=0;j<rest;j++) h+=`<path d="M${x+j*5} 3v14"/>`;
+  const w=x+rest*5+2;
+  return `<svg viewBox="0 0 ${w} 20" style="width:${w}px" aria-hidden="true"><g stroke="var(--g)" stroke-width="2" stroke-linecap="round" fill="none">${h}</g></svg>`;
+}
+function renderMeter(){
+  const D=diversity();
+  $("dval").innerHTML=(D.kind==="num"?fmtD(D.d):D.kind==="inf"?"max":"–")+"<small>d</small>";
+  const ns=ORDER.filter(g=>D.c[g]).map(g=>D.c[g]);
+  let w;
+  if(D.kind==="none") w=`Nothing recorded yet. Each record counts as one find in the habitat it belongs to; the index uses the same formula as your ecology practical:<br><span class="f">d = N(N − 1) ÷ Σ n(n − 1)</span>`;
+  else if(D.kind==="one") w=`One record so far. You need at least two before the index means anything.<br><span class="f">d = N(N − 1) ÷ Σ n(n − 1)</span>`;
+  else if(D.kind==="inf") w=`N = ${D.N}, every record in a different habitat, so Σ n(n − 1) = 0 and d has no upper limit. Add a second record anywhere to get a number.`;
+  else w=`N = ${D.N} &nbsp;·&nbsp; Σ n(n − 1) = ${ns.filter(n=>n>1).map(n=>`${n}×${n-1}`).join(" + ")||"0"} = ${D.S}<br><span class="f">d = ${D.N}×${D.N-1} ÷ ${D.S} = ${fmtD(D.d)}</span> &nbsp;·&nbsp; ${D.k} of 6 habitats`;
+  $("working").innerHTML=w;
+  $("tallies").innerHTML=ORDER.map(g=>`<div class="trow" data-g="${g}"><span class="dot"></span><span class="nm">${FAM[g].label}</span><span class="n">${D.c[g]}</span><span class="gt">${gate(D.c[g])}</span></div>`).join("");
+  /* map: fill the control point of every habitat with a record; move the pin */
+  $("ctrls").innerHTML=ORDER.map(g=>{ const f=FAM[g]; const got=D.c[g]>0;
+    return `<g class="ctrl${got?" got":""}" transform="translate(${f.x} ${f.y})"><circle class="ring" r="17"/><text text-anchor="middle" y="7">${got?"✓":f.no}</text></g>`; }).join("");
+  moveYah(state.at,true);
+}
+function moveYah(g,instant){ const f=FAM[g]||FAM.read; const el=$("yah"); if(instant) el.style.transition="none";
+  el.style.transform=`translate(${f.x}px,${f.y}px)`; if(instant){ void el.getBoundingClientRect(); el.style.transition=""; } }
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,season,nature])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month mon-${season}${evs.length?"":" quiet"}"><div class="mh"><b>${name}</b><span>${season}</span></div>
+      <div class="nature">${esc(nature)}</div>
+      <div class="evs">${evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short)}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">RSB page ↗</a>`:"");
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}</span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ you’re on the list</span>':""}${btn}</div>`; }).join("")}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail card ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? "I want to enter" : "I’m interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or your teacher for a copy.</span>`;
+  const askable = (it.g==="enter" || it.g==="apply") && !it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ Your teacher has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${ICON[it.g]}</div>
+      <div><div class="fam">${FAM[it.g].no} · ${FAM[it.g].place} · ${FAM[it.g].label} · Rec ${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Field leader's note</b>${esc(it.think)}</div>
+      <div class="tags">${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Recorded ✓ (undo)":"Record it"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it up</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?"Entries go through school. Tap the button and the department registers you; no email needed.":"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=diversity();
+  if(was) delete state.done[sym]; else state.done[sym]=true;
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const D=diversity(); const g=BY[sym].g;
+    if(before.c[g]===0 && D.k>1) say(`First record at ${FAM[g].the}. That is ${D.k} habitats now, and your diversity has gone up.`);
+    else if(before.c[g]===0) say(`First record: ${BY[sym].short}. Write a notebook entry while it is fresh.`);
+    else say(pick([`Recorded. That's ${D.N}.`,`Good. Write a notebook entry while it is fresh.`,`${BY[sym].short}: stamped. ${D.N} records now.`,`Another one at ${FAM[g].the}. Try somewhere new next time; it does more for your diversity.`])); }
+  else say("Taken off your records.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher will sort the entry.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goStation(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid(); moveYah(g);
+  const el=$("hab-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:450);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const D=diversity();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${D.c[g]?`You have ${D.c[g]} recorded here.`:"Nothing recorded here yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const hot=e.target.closest(".hot"); if(hot){ goStation(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goStation(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbLearned").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goStation(e.target.dataset.f); }
+});
+
+/* ---------- pick one for me: the compass ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"about ten minutes",evening:"an evening",long:"a few weeks"};
+let needleDeg=0;
+(function(){ let h=""; for(let k=0;k<36;k++){ const a=k*10*Math.PI/180, r0=k%9?42:38, r1=46; h+=`<line x1="${(60+Math.sin(a)*r0).toFixed(1)}" y1="${(60-Math.cos(a)*r0).toFixed(1)}" x2="${(60+Math.sin(a)*r1).toFixed(1)}" y2="${(60-Math.cos(a)*r1).toFixed(1)}"/>`; } $("cTicks").innerHTML=h; })();
+function bearingTo(g){ const from=FAM[state.at]||FAM.read, to=FAM[g]; if(from===to) return null;
+  let b=Math.atan2(to.x-from.x, -(to.y-from.y))*180/Math.PI; return (b+360)%360; }
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything in this range. Try a different amount of time."; say("You have recorded everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."); return; }
+  // prefer a habitat the pupil has not recorded in yet, two times in three
+  const D=diversity(); const fresh=pool.filter(i=>!D.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  const brg=bearingTo(choice.g);
+  const target = brg==null ? (needleDeg - needleDeg%360 + 720) : (needleDeg - needleDeg%360 + 720 + brg);
+  needleDeg=target; $("needle").style.transform=`rotate(${target}deg)`;
+  say("Something that takes "+BUCKET_TXT[state.bucket]+"… let me take a bearing.");
+  $("pickBtn").disabled=true;
+  const land=()=>{ $("pickBtn").disabled=false;
+    const where = brg==null ? `right here at ${FAM[choice.g].the}` : `bearing ${String(Math.round(brg)).padStart(3,"0")}° to ${FAM[choice.g].the}`;
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, ${where}.`;
+    say(`Try ${choice.short}. ${choice.t}, ${where}.${!D.c[choice.g]?" A new habitat for you.":""}`);
+    state.at=choice.g; saveLocal(); moveYah(choice.g);
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:500); };
+  setTimeout(land, reduceMotion()?0:1700);
+});
+
+/* ---------- field notebook ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function renderNotes(){
+  const box=$("entries");
+  if(!state.notes.length){
+    box.innerHTML=`<article class="note example" aria-label="Example entry">
+      <header><h3>Jennifer Doudna, How CRISPR lets us edit our DNA</h3><span class="d">example</span></header>
+      <dl><dt>Learned</dt><dd>Cas9 is guided by a short RNA whose bases pair with the target DNA, so it cuts only where the sequence matches.</dd>
+      <dt>Question</dt><dd>What happens if the guide RNA nearly matches somewhere else in the genome?</dd></dl>
+    </article><p class="small" style="font-family:var(--f-body)">Your notebook is empty. Finish one thing, then write your first entry.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>`<article class="note">
+      <header><h3>${esc(n.what)}</h3><span class="d">${esc(fmtDate(n.date))}</span></header>
+      <dl><dt>Learned</dt><dd>${esc(n.learned)}</dd>${n.q?`<dt>Question</dt><dd>${esc(n.q)}</dd>`:""}</dl>
+      <div><button type="button" class="del" data-i="${i}">Delete</button></div>
+    </article>`).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to delete"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Delete"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,what:$("nbWhat").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  $("nbWhat").value=""; $("nbLearned").value=""; $("nbQ").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Added.";
+  say(pick(["Notebook updated. That is the part universities read.","Written up. One entry like that per thing is all it needs.","Good entry. Keep the question; it is where the next one starts."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Biology field notebook – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)}\nWhat: ${n.what}\nLearned: ${n.learned}${n.q?`\nQuestion: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} recorded, ${notes} notebook ${notes===1?"entry":"entries"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const TOUR=[
+  {sel:".map-wrap", h:"This is the field course", p:"Six habitats on one map, each holding one kind of thing to do: reading at the field station, past papers and citizen science at the pond, podcasts in the wood, competitions on the summit, talks in the bird hide, placements at the jetty. Click a numbered habitat and the page takes you there. The circles fill in as a pupil records something in each one."},
+  {sel:".leader", h:"The field leader", p:"I greet each pupil by name and react to what they do: a first record in a new habitat, a notebook entry, a competition they have asked to enter. When they come back I tell them which habitats they have not visited yet."},
+  {sel:".div-card", h:"The index of diversity", p:"Progress is shown as the pupil's own index of diversity, d = N(N − 1) ÷ Σ n(n − 1), with the six habitats as the species. Ten talks and nothing else gives d = 1; spreading out raises it. The working is written out each time, so it doubles as practice with the formula from the ecology practical."},
+  {sel:".compass-card", h:"Pick one for me", p:"A pupil says how much time they have and the compass picks something they have not done, leaning towards habitats they have not visited yet. The pin on the map walks there."},
+  {sel:".route", h:"The route card", p:"Three picks from the department each half term, with a date they are wanted by. You change these by editing one block at the top of the file; pupils keep everything they have done."},
+  {sel:"#hab-read", h:"The habitats", p:"All 35 things, one record card each. A card opens to say what it is, what to do with it and a link. Record it and the card is stamped. Competition and placement cards have a button that puts the pupil's name on your list."},
+  {sel:".season", h:"The field season", p:"The biology year from October to July, month by month: Olympiad registration and papers, the Cambridge Biology Challenge, essay and photography deadlines, placement windows. Dates still to be confirmed are marked."},
+  {sel:"#notebook", h:"The field notebook", p:"One entry per thing: what they did, one thing learned, one question raised. It saves to the department as they write and copies out as text for a personal statement or a reference."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, half-term completion, each pupil's diversity and their notebooks. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("bio-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Dou","BP","WS","Nat","Zoo","BM","BBO"],picks:3,notes:[{what:"Jennifer Doudna: How CRISPR lets us edit our DNA",learned:"The guide RNA base-pairs with the target DNA, so Cas9 only cuts where the 20 bases match.",q:"How often does it cut somewhere that nearly matches?"},{what:"BBO 2023 paper",learned:"Got 31 of 50. The plant physiology questions went well past the course.",q:"What is a C4 plant and why does it matter in hot climates?"}],interest:["BBO","CBC"],last:"2026-10-05"},
+  {name:"Ben Carter",cls:"12A",done:["Dou","Wal"],picks:1,notes:[{what:"Matt Walker: Sleep is your superpower",learned:"His testosterone figure comes from a small study of young men; it shows correlation, not cause.",q:""}],interest:[],last:"2026-10-02"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Dou","BP","WS","Kn","McK","Bas","Hrt"],picks:3,notes:[{what:"Rob Knight: How our microbes make us who we are",learned:"Mice given gut microbes from obese twins put on more fat than mice given microbes from lean twins.",q:"Would the same transfer work between humans?"},{what:"Maryn McKenna: antibiotics",learned:"Resistant bacteria were around before antibiotics; using them selects for the resistant ones.",q:""}],interest:["BBO"],last:"2026-10-04"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["BP","SG","Gn","Gr","IoT","Kv","Nf"],picks:1,notes:[{what:"The Selfish Gene, chapters 1–4",learned:"Dawkins treats the organism as a vehicle the genes build to copy themselves.",q:"Does that explain behaviour that costs the individual, like worker bees not breeding?"}],interest:["BBO","Kv","Nf"],last:"2026-10-05"},
+  {name:"Finn Murphy",cls:"13A",done:["BBO","Ri"],picks:0,notes:[],interest:["BBO"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Dou","Sim","EL","SoS"],picks:1,notes:[{what:"Suzanne Simard: How trees talk to each other",learned:"Labelled carbon moved from birch to fir through the fungal network in her experiments.",q:"How much of the carbon actually reached the fir's leaves?"}],interest:["Ph","In"],last:"2026-10-06"},
+  {name:"Harry Singh",cls:"12B",done:["Zoo"],picks:0,notes:[],interest:[],last:"2026-10-03"}
+];
+function dOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const N=done.length, S=ORDER.reduce((a,g)=>a+c[g]*(c[g]-1),0), k=ORDER.filter(g=>c[g]).length;
+  const d = N<2 ? "–" : S===0 ? "max" : (Math.round(N*(N-1)/S*10)/10).toString();
+  return {d,k,c}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have recorded something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 half-term picks</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>competition / placement interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>notebook entries written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. This is what you register from on the UKBC portal.</p>
+        <table class="dt"><tr><th>Competition / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which habitats get used</h3><p class="small">Records across all pupils, by habitat. Tells you where to point the next half term's picks.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Recorded</th><th>Diversity</th><th>Half-term picks</th><th class="hide-m">Notebook</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const D=dOf(r.done); const missingH=ORDER.filter(g=>!D.c[g]).map(g=>FAM[g].label);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td><span class="dv">${D.d}</span> <span class="small">${D.k}/6${missingH.length&&missingH.length<6?` · not yet: ${missingH.join(", ")}`:""}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"entry":"entries"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Field notebooks</h3><p class="small">Each pupil's notebook in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Learned: ${esc(n.learned)}${n.q?`<br>Question: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",div:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.div=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"biology-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,diversity:FB.div,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-bio-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-bio-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.div=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
+});
+// page comments, where the viewer's account allows them
+(async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;
+  const b=$("fbComment"); b.hidden=false; b.addEventListener("click",()=>{ fbShow(false); try{ c.openComposer({element:document.querySelector(".map-wrap")}); }catch(e){} }); }catch(e){} })();
+
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" things to read, watch, enter and apply for · six habitats";
+$("tableEyebrow").textContent="Six habitats · "+ITEMS.length+" things to do";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+
+})();
+</script>
+</body>
+</html>

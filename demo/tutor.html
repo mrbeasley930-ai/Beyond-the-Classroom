@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tutor Desk – Beyond the Classroom demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a tutor's desk. One form group on the blotter; each tutee is a manila folder that opens over the desk;
+   the UCAS pack is a sheet of paper built from the folder. Subject colours are the coloured index tabs. */
+:root{
+  --ground:#e7e1d4; --paper:#fffdf8; --paper2:#f6f1e6; --ink:#1c2127; --mute:#636a66; --line:#d6cfbf; --line2:#eae4d6;
+  --accent:#0d6b63; --accent-ink:#ffffff; --manila:#f0d99b; --manila-ink:#4a3a0f; --flag:#b3261e; --flag-bg:#fbe9e7; --ok:#2f7d32;
+  --chem:#c7791a; --phys:#2c5ec9; --bio:#3c8a3e; --art:#c42a7d; --grey:#9a9a92;
+  --f-head:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif; --f-body:"Public Sans",ui-sans-serif,system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#15181a; --paper:#20252a; --paper2:#262c31; --ink:#ece8df; --mute:#a3a89f; --line:#3a4046; --line2:#2d3338;
+  --accent:#4fb3a9; --accent-ink:#0e1b19; --manila:#5d4c26; --manila-ink:#f3e6c2; --flag:#f08a80; --flag-bg:#3a2320; --ok:#7fc383;
+  --chem:#e4973b; --phys:#6f94e8; --bio:#67b36a; --art:#e85aa8; --grey:#7a7f7a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#15181a; --paper:#20252a; --paper2:#262c31; --ink:#ece8df; --mute:#a3a89f; --line:#3a4046; --line2:#2d3338;
+  --accent:#4fb3a9; --accent-ink:#0e1b19; --manila:#5d4c26; --manila-ink:#f3e6c2; --flag:#f08a80; --flag-bg:#3a2320; --ok:#7fc383;
+  --chem:#e4973b; --phys:#6f94e8; --bio:#67b36a; --art:#e85aa8; --grey:#7a7f7a; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.5 var(--f-body)}
+body{padding-block:0}
+h1,h2,h3{font-family:var(--f-head);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);background:var(--accent);color:var(--accent-ink);border-color:transparent;padding:10px 16px;border-radius:6px;cursor:pointer;font-weight:600;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.sm{padding:6px 10px;font-size:.85rem}
+.btn:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.small{font-size:.86rem;color:var(--mute)}
+.x{background:none;border:0;font-size:1.6rem;line-height:1;cursor:pointer;padding:4px 8px;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:22px clamp(16px,3vw,36px) 80px;display:grid;gap:22px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:.72rem;padding:2px 8px;border-radius:3px;color:#fff;background:var(--c,var(--grey));white-space:nowrap}
+.chip.off{background:transparent;color:var(--mute);border:1px dashed var(--line);}
+.chip i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.9}
+
+/* ---------- desk header ---------- */
+.deskbar{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.deskbar .in{max-width:1200px;margin:0 auto;padding:12px clamp(16px,3vw,36px);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.deskbar h1{font-size:1.25rem}
+.deskbar .live{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.deskbar .spacer{flex:1}
+.demo-strip{background:var(--manila);color:var(--manila-ink);font-size:.86rem;padding:6px clamp(16px,3vw,36px);text-align:center}
+.demo-strip b{font-weight:600}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tl{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:2px;min-width:0}
+.tl b{font-family:var(--f-head);font-size:2rem;line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+.tl span{font-size:.82rem;color:var(--mute)}
+.tl.warn b{color:var(--flag)}
+
+/* cards */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:12px;min-width:0}
+.card h2{font-size:1.35rem}
+.card h3{font-size:1.05rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;align-items:start}
+
+/* form table */
+.tblwrap{overflow-x:auto;margin:0 -4px;padding:0 4px}
+table.ft{width:100%;border-collapse:collapse;font-size:.92rem}
+.ft th,.ft td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.ft th{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:500;white-space:nowrap}
+.ft tbody tr{cursor:pointer}
+.ft tbody tr:hover td{background:var(--paper2)}
+.ft td.name{font-weight:600;white-space:nowrap}
+.ft .subs{display:flex;flex-wrap:wrap;gap:4px}
+.ft .num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.bar{display:inline-flex;height:8px;width:96px;background:var(--line2);border-radius:2px;overflow:hidden;vertical-align:middle;margin-right:6px}
+.bar i{display:block;height:100%}
+.ft td.needs{min-width:170px;white-space:normal}
+.flag{display:inline-block;font-size:.8rem;color:var(--flag);background:var(--flag-bg);border-radius:4px;padding:2px 7px;margin:1px 0}
+.quiet{color:var(--mute);font-size:.84rem}
+.ft td.open{text-align:right;white-space:nowrap}
+.ft .fold{display:inline-block;width:22px;height:16px;background:var(--manila);border-radius:2px 2px 1px 1px;position:relative;vertical-align:middle;margin-right:6px}
+.ft .fold:before{content:"";position:absolute;left:0;top:-4px;width:9px;height:5px;background:var(--manila);border-radius:2px 2px 0 0}
+@media (max-width:720px){.ft .hm{display:none}}
+
+/* word list */
+.word{display:grid;gap:10px}
+.word li{list-style:none;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start}
+.word ul{margin:0;padding:0;display:grid;gap:10px}
+.word .who{font-weight:600;white-space:nowrap}
+
+/* ---------- folder ---------- */
+.ovl{position:fixed;inset:0;z-index:20;background:var(--ground);overflow:auto}
+.ovl[hidden]{display:none}
+.ovl-top{position:sticky;top:0;z-index:2;background:var(--paper);border-bottom:1px solid var(--line);padding:10px clamp(16px,3vw,36px) 10px calc(clamp(16px,3vw,36px));padding-top:calc(10px + env(safe-area-inset-top,0px));display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ovl-top .x{margin-left:auto}
+.folder{max-width:1100px;margin:22px auto 80px;padding:0 clamp(16px,3vw,36px);display:grid;gap:18px}
+.tab-row{display:flex;gap:4px;align-items:flex-end;padding-left:10px}
+.tab{background:var(--manila);color:var(--manila-ink);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:6px 6px 0 0;border-bottom:3px solid var(--c,var(--manila))}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px clamp(16px,3vw,28px);display:grid;gap:18px;box-shadow:0 1px 0 var(--line),0 8px 24px rgba(0,0,0,.06)}
+.fhead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
+.fhead h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800}
+.fhead .meta{display:grid;gap:6px}
+.fhead .actions{display:grid;gap:8px;justify-items:stretch}
+@media (max-width:640px){.fhead{grid-template-columns:1fr}}
+.subbars{display:grid;gap:8px}
+.subbar{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.9rem}
+.subbar .bar{width:100%}
+.subbar .mono{color:var(--mute);font-size:.8rem}
+.tline{width:100%;height:auto;display:block;max-width:100%}
+.evlist{display:grid;gap:0;border-top:1px solid var(--line2)}
+.ev{display:grid;grid-template-columns:72px 92px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid var(--line2);align-items:start;font-size:.92rem}
+.ev .d{font-family:var(--f-mono);font-size:.78rem;color:var(--mute);padding-top:3px}
+.ev .nm{font-weight:500}
+.ev .fam{font-size:.78rem;color:var(--mute)}
+.ev .star{color:var(--accent);font-size:.78rem;margin-left:6px}
+@media (max-width:560px){.ev{grid-template-columns:72px minmax(0,1fr)}.ev .chip{grid-column:2}}
+.note{border-left:3px solid var(--c,var(--accent));padding:6px 12px;display:grid;gap:4px;background:var(--paper2);border-radius:0 6px 6px 0}
+.note .nh{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8rem;color:var(--mute)}
+.note q{quotes:"“" "”";font-style:normal}
+.note .lab{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-right:6px}
+.notes{display:grid;gap:10px}
+.entries{display:grid;gap:6px}
+.stamp{display:inline-block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);border:2px solid var(--flag);border-radius:4px;padding:1px 6px;transform:rotate(-3deg);margin-left:8px}
+
+/* ---------- UCAS pack ---------- */
+.pack{display:grid;gap:14px}
+.qcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+@media (max-width:900px){.qcols{grid-template-columns:1fr}}
+.qcol{background:var(--paper2);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:8px;min-width:0}
+.qcol h4{font-family:var(--f-head);font-size:1rem;margin:0;line-height:1.2}
+.qcol .qn{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);letter-spacing:.1em}
+.evc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:grid;gap:4px;font-size:.88rem;position:relative}
+.evc .top{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.evc .d{font-family:var(--f-mono);font-size:.72rem;color:var(--mute)}
+.evc q{font-size:.85rem;color:var(--ink);quotes:"“" "”"}
+.evc .mv{display:flex;gap:3px;margin-top:2px}
+.evc .mv button{border:1px solid var(--line);background:var(--paper2);border-radius:3px;font-family:var(--f-mono);font-size:.7rem;padding:1px 7px;cursor:pointer}
+.evc .mv button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.evc .mv .rm{margin-left:auto;color:var(--mute)}
+.empty{font-size:.86rem;color:var(--mute);padding:6px 2px}
+textarea.ref{width:100%;min-height:150px;font:inherit;font-size:.92rem;line-height:1.5;padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);resize:vertical}
+.pack-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.toast{font-size:.86rem;color:var(--ok)}
+
+/* ---------- pupil view ---------- */
+.pupil-wrap{max-width:720px;margin:22px auto 80px;padding:0 clamp(16px,3vw,36px);display:grid;gap:16px}
+.pupil{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.pupil .worlds{display:grid;gap:8px}
+.world{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line2);border-radius:8px}
+.world .dot{width:14px;height:14px;border-radius:50%;background:var(--c)}
+.world .w{font-size:.8rem;color:var(--mute)}
+.pq{display:grid;gap:6px}
+.pq h4{margin:0;font-family:var(--f-head);font-size:1rem}
+.pq ul{margin:0;padding-left:1.1em;font-size:.9rem;display:grid;gap:4px}
+
+/* ---------- welcome ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--ground)}
+.intro[hidden]{display:none}
+.intro-card{width:min(820px,100%);background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.14);display:grid;grid-template-columns:200px minmax(0,1fr);gap:26px;padding:30px 32px;align-items:center}
+.intro-card svg{width:200px;height:auto;max-width:100%}
+.intro-txt{display:grid;gap:14px;min-width:0}
+.intro-txt h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800}
+.intro-txt p,.intro-txt li{font-size:.98rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.intro-note{font-size:.86rem;background:var(--manila);color:var(--manila-ink);border-radius:6px;padding:8px 10px}
+@media (max-width:640px){.intro-card{grid-template-columns:1fr;justify-items:center;padding:22px}.intro-card svg{width:140px}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(10,14,16,.62);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px solid var(--manila);outline-offset:4px;border-radius:8px;pointer-events:none;transition:all .3s ease;box-shadow:0 0 0 9999px rgba(10,14,16,.62)}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:20px;transform:translateX(-50%);width:min(620px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;box-shadow:0 16px 40px rgba(0,0,0,.25);display:grid;gap:4px;padding:16px 18px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.tour-card[hidden]{display:none}
+.tour-card h3{font-size:1.2rem}
+.tour-card p{font-size:.95rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.tour-nav .skip{margin-left:auto;background:none;border:0;color:var(--mute);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.tour-dots i.on{background:var(--accent)}
+
+/* ---------- feedback ---------- */
+.fb-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;background:var(--ink);color:var(--paper);font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.fb-fab[hidden]{display:none}
+.scrim{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.35)}
+.scrim[hidden]{display:none}
+.fb{position:fixed;z-index:21;right:0;top:0;bottom:0;width:min(520px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--line)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.4rem}
+.field{display:grid;gap:4px}
+.field label{font-size:.86rem;font-weight:600}
+.field input,.field textarea,.field select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:.86rem;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.fb-msg{font-size:.9rem;min-height:1.4em}
+.fb-copy{white-space:pre-wrap;font:.8rem/1.4 var(--f-mono);background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:10px;max-height:220px;overflow:auto}
+
+/* ---------- make it yours ---------- */
+.yours{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.yours .card h3{font-size:1.1rem}
+.yours ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.92rem}
+.want{display:grid;gap:8px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ===== welcome ===== -->
+<div class="intro" id="intro">
+  <div class="intro-card">
+    <svg viewBox="0 0 200 180" aria-hidden="true">
+      <defs><filter id="sh" x="-10%" y="-10%" width="130%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity=".18"/></filter></defs>
+      <!-- a stack of four manila folders, each with its subject tab -->
+      <g filter="url(#sh)">
+        <rect x="22" y="112" width="156" height="50" rx="4" fill="#e9cf8a"/><rect x="22" y="104" width="46" height="12" rx="3" fill="#c42a7d"/>
+        <rect x="18" y="84" width="156" height="50" rx="4" fill="#f0d99b"/><rect x="66" y="76" width="46" height="12" rx="3" fill="#3c8a3e"/>
+        <rect x="24" y="56" width="156" height="50" rx="4" fill="#e9cf8a"/><rect x="118" y="48" width="46" height="12" rx="3" fill="#2c5ec9"/>
+        <rect x="20" y="28" width="156" height="50" rx="4" fill="#f4e0a6"/><rect x="30" y="20" width="46" height="12" rx="3" fill="#c7791a"/>
+      </g>
+      <!-- paper poking out of the top folder -->
+      <rect x="34" y="36" width="128" height="34" rx="2" fill="#fffdf8"/>
+      <rect x="44" y="44" width="70" height="3" fill="#c9c2b2"/><rect x="44" y="52" width="100" height="3" fill="#c9c2b2"/><rect x="44" y="60" width="84" height="3" fill="#c9c2b2"/>
+      <text x="100" y="176" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="#636a66" letter-spacing="2">FORM 12B</text>
+    </svg>
+    <div class="intro-txt">
+      <span class="eyebrow">Beyond the Classroom · for tutors · demo</span>
+      <h2>Everything your tutees do, in one place, ready for UCAS.</h2>
+      <p>Four departments (Chemistry, Physics, Biology, Art) now run tracked "Beyond the Classroom" pages. Pupils sign in with their form and name, so what a pupil does in every subject can be put together under their name for their tutor. This is a working demo of that tutor view, with an invented form group.</p>
+      <ol>
+        <li><b>Look at the form.</b> Who is doing what, who needs a word.</li>
+        <li><b>Open a folder.</b> One tutee, every subject, in their own words.</li>
+        <li><b>Build the UCAS pack.</b> Their evidence sorted under the three personal statement questions, plus lines for the reference.</li>
+      </ol>
+      <p class="intro-note"><b>Demo data:</b> form 12B is imagined, as it might look eight weeks in (20 Nov 2026). The activities are the real ones on the four live pages. No real pupil appears here.</p>
+      <div class="row">
+        <button type="button" class="btn" id="startTour">Start with the short tour</button>
+        <button type="button" class="btn ghost" id="skipIntro">Go straight to the desk</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== tour ===== -->
+<div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <span class="eyebrow" id="tourStep"></span>
+  <h3 id="tourH"></h3>
+  <p id="tourP"></p>
+  <div class="tour-nav">
+    <button type="button" class="btn ghost sm" id="tourBack">Back</button>
+    <button type="button" class="btn sm" id="tourNext">Next</button>
+    <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+    <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+  </div>
+</div>
+
+<!-- ===== the desk ===== -->
+<div class="demo-strip"><b>Demo.</b> Imagined form 12B, eight weeks in. Press <b>Feedback</b> (bottom left) to tell Simon what you would want.</div>
+<header class="deskbar">
+  <div class="in">
+    <h1>Tutor Desk · <span class="mono" id="formName"></span></h1>
+    <div class="live" id="liveSubs"></div>
+    <span class="spacer"></span>
+    <span class="small">As of <span class="mono" id="asOf"></span></span>
+    <button type="button" class="btn ghost sm" id="openPupilBtn">What a pupil sees</button>
+  </div>
+</header>
+
+<main class="wrap" id="desk">
+  <section class="tiles" id="tiles" aria-label="Form at a glance"></section>
+
+  <div class="two">
+      <section class="card" id="wordCard">
+        <h2>Worth a word this week</h2>
+        <div class="word" id="wordList"></div>
+        <p class="small">Three plain rules, nothing clever: nothing logged for three weeks; signed in but nothing done; doing things but writing nothing down. The rules are ours to change.</p>
+      </section>
+      <section class="card" id="howCard">
+        <h2>What you have to do</h2>
+        <p style="font-size:.95rem">Open this page. Read it. That is the list.</p>
+        <ul style="margin:0;padding-left:1.1em;font-size:.92rem;display:grid;gap:4px">
+          <li>Nothing to set up and no spreadsheet to keep. The page pulls the four departments' records every time it opens.</li>
+          <li>Pupils add nothing for your benefit. They tick and write on the subject pages they already use; this view reads the same records.</li>
+          <li>The only rule for pupils: the same form code and full name on every subject page. The pages already ask for both.</li>
+        </ul>
+      </section>
+
+  </div>
+
+  <section class="card" id="formCard">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+        <h2>The form</h2>
+        <label class="small">Order by
+          <select id="sortSel" style="font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)">
+            <option value="done">most done</option><option value="recent">least recent first</option><option value="name">surname</option>
+          </select>
+        </label>
+      </div>
+      <p class="small">Click a tutee to open their folder. Coloured subjects have a live page; grey ones do not yet.</p>
+      <div class="tblwrap"><table class="ft" id="ft"><thead><tr>
+        <th>Tutee</th><th>Subjects</th><th>Done</th><th class="hm">Notebook</th><th class="hm">Entering</th><th>Last active</th><th class="needs">Needs</th><th></th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+
+  <section class="card" id="yoursCard">
+    <h2>Built in school, changed in school</h2>
+    <p style="max-width:70ch">The pages, the records and this view are ours. There is no supplier, no licence and no waiting list. If the tutor team wants a column, a different sort, a different set of rules for "worth a word", or an export shaped like a form you already use, that is a conversation with Simon and a change to one file.</p>
+    <div class="yours">
+      <div class="card" style="background:var(--paper2)"><h3>Already possible</h3><ul>
+        <li>Pull one tutee's record as plain text to paste into a reference or a Unifrog note</li>
+        <li>CSV of the whole form for a spreadsheet</li>
+        <li>Head of Year view across every form</li>
+        <li>A half-termly summary emailed to each tutor</li>
+        <li>Pupils' own view of the same record (see <b>What a pupil sees</b>)</li></ul></div>
+      <div class="card" style="background:var(--paper2)"><h3>Easy to add</h3><ul>
+        <li>Your existing UCAS tracking columns (target course, predicted grades entered by hand, statement draft status)</li>
+        <li>Work experience and volunteering logged by the pupil, so question 3 fills too</li>
+        <li>A tutor note on each folder that only tutors see</li>
+        <li>Deadlines for the competitions a pupil has put their hand up for</li>
+        <li>Flags set by Heads of Year rather than by Simon</li></ul></div>
+      <div class="card" style="background:var(--paper2)"><h3>As more departments join</h3><ul>
+        <li>Each new subject page appears here on its own, under the same names</li>
+        <li>History, Economics, Maths and the rest are already written as resource lists; the tracked pages follow department by department</li>
+        <li>Nothing changes for tutors when a subject is added</li></ul></div>
+    </div>
+    <div class="want">
+      <p class="small">If you would use this, say which of these you would want first. It goes into your feedback.</p>
+      <div class="chips" id="wantChips">
+        <button type="button" data-v="plain text for references" aria-pressed="false">Plain text for references</button>
+        <button type="button" data-v="match our UCAS tracker columns" aria-pressed="false">Match our UCAS tracker columns</button>
+        <button type="button" data-v="work experience log" aria-pressed="false">Work experience log</button>
+        <button type="button" data-v="tutor-only notes" aria-pressed="false">Tutor-only notes</button>
+        <button type="button" data-v="head of year view" aria-pressed="false">Head of Year view</button>
+        <button type="button" data-v="emailed summary" aria-pressed="false">Half-termly email</button>
+        <button type="button" data-v="competition deadlines" aria-pressed="false">Competition deadlines</button>
+        <button type="button" data-v="pupil's own view" aria-pressed="false">Pupil's own view</button>
+      </div>
+      <div><button type="button" class="btn" id="fbOpen2">Send feedback to Simon</button></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== folder ===== -->
+<div class="ovl" id="folder" hidden aria-label="Tutee folder">
+  <div class="ovl-top">
+    <span class="eyebrow">Folder</span><b id="fTitle"></b>
+    <button type="button" class="btn ghost sm" id="fPrev">‹ Previous</button>
+    <button type="button" class="btn ghost sm" id="fNext">Next ›</button>
+    <button type="button" class="x" id="fClose" aria-label="Close folder">×</button>
+  </div>
+  <div class="folder">
+    <div class="tab-row" id="fTabs"></div>
+    <div class="sheet">
+      <div class="fhead">
+        <div class="meta">
+          <h2 id="fName"></h2>
+          <p class="small" id="fSubs"></p>
+          <p style="font-size:.95rem"><span class="eyebrow">Course idea (from the pupil)</span><br><span id="fCourse"></span></p>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn" id="buildPack">Build the UCAS pack</button>
+          <button type="button" class="btn ghost" id="copyFolder">Copy folder as text</button>
+          <span class="toast" id="fToast"></span>
+        </div>
+      </div>
+      <div id="fBars" class="subbars"></div>
+      <div id="fTimeline"></div>
+    </div>
+
+    <div class="sheet" id="packSheet" hidden>
+      <div>
+        <span class="eyebrow">UCAS pack · personal statement evidence</span>
+        <h3 style="font-size:1.4rem;margin-top:4px">Sorted under the three questions</h3>
+        <p class="small" style="max-width:72ch;margin-top:6px">UCAS personal statements are now three answers. This is a first sort of what the pupil has already done and written, using plain rules (talks and reading under 1, practice and competitions under 2, visits, events and programmes under 3). Move anything with the 1 2 3 buttons; × drops it. The pupil writes the statement; this is the raw material, with dates, in their own words.</p>
+      </div>
+      <div class="qcols" id="qcols"></div>
+      <div>
+        <h3 style="font-size:1.15rem">For the reference · "supportive information"</h3>
+        <p class="small" style="margin:4px 0 8px">Drafted from the record. Facts and dates only, in the order they happened. Edit, then copy.</p>
+        <textarea class="ref" id="refText" aria-label="Reference draft"></textarea>
+      </div>
+      <div class="pack-actions">
+        <button type="button" class="btn" id="copyPack">Copy the whole pack</button>
+        <button type="button" class="btn ghost" id="copyRef">Copy the reference lines only</button>
+        <span class="toast" id="pToast"></span>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <h3>Everything, in date order</h3>
+      <div class="evlist" id="fEv"></div>
+    </div>
+    <div class="sheet">
+      <h3>In their own words</h3>
+      <p class="small">Every notebook entry the pupil wrote on a subject page: what they did, what they took from it, the question it left them with. This is what a personal statement is made of.</p>
+      <div class="notes" id="fNotes"></div>
+    </div>
+    <div class="sheet">
+      <h3>Competitions they have put their hand up for</h3>
+      <div class="entries" id="fEntries"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== pupil view ===== -->
+<div class="ovl" id="pupilView" hidden aria-label="What a pupil sees">
+  <div class="ovl-top">
+    <span class="eyebrow">What a pupil sees</span>
+    <label class="small">Pupil <select id="pvSel" style="font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)"></select></label>
+    <button type="button" class="x" id="pvClose" aria-label="Close">×</button>
+  </div>
+  <div class="pupil-wrap">
+    <p class="small" style="max-width:68ch">The same record from the pupil's side. They sign in once with their form and name and see every subject's page they have used, and their evidence already sorted for UCAS. They type nothing new here. The point for the pupil: from the first week of Year 12, every talk, visit and competition is banked with a date and their own sentence about it, so the statement in Year 13 is assembled rather than remembered.</p>
+    <div class="pupil" id="pupilCard"></div>
+  </div>
+</div>
+
+<!-- ===== feedback ===== -->
+<button type="button" class="fb-fab" id="fbOpen">Feedback</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<aside class="fb" id="fb" hidden aria-label="Feedback">
+  <div class="fb-top"><b>Tell Simon what you think</b><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form class="fb-body" id="fbForm">
+    <h2>Would this help with UCAS?</h2>
+    <div class="field"><label for="fbName">Your name</label><input id="fbName" autocomplete="name" required></div>
+    <div class="field"><label for="fbRole">Role</label><select id="fbRole"><option>Form tutor</option><option>Head of Year</option><option>Sixth-form team</option><option>SLT</option><option>Other</option></select></div>
+    <div class="field"><label>Would you use it?</label><div class="chips" id="fbUse">
+      <button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="with changes" aria-pressed="false">With changes</button><button type="button" data-v="not sure" aria-pressed="false">Not sure</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>What do you use for UCAS evidence now?</label><div class="chips" id="fbNow">
+      <button type="button" data-v="spreadsheet" aria-pressed="false">Spreadsheet</button><button type="button" data-v="Unifrog" aria-pressed="false">Unifrog</button><button type="button" data-v="SIMS/Arbor notes" aria-pressed="false">SIMS / Arbor notes</button><button type="button" data-v="paper" aria-pressed="false">Paper</button><button type="button" data-v="memory and email" aria-pressed="false">Memory and email</button></div></div>
+    <div class="field"><label>Wanted first (from the list on the page)</label><div class="small" id="fbWantEcho">Nothing ticked yet.</div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbMissing">What is missing for the way your form works?</label><textarea id="fbMissing"></textarea></div>
+    <div class="field"><label for="fbForms">If you already have a UCAS tracking form, what are its column headings?</label><textarea id="fbForms" placeholder="Paste or type them. We will match them."></textarea></div>
+    <div><button type="submit" class="btn" id="fbSend">Send</button></div>
+    <div class="fb-msg" id="fbMsg"></div>
+    <div class="fb-copy" id="fbCopy" hidden></div>
+  </form>
+</aside>
+
+<script>
+const D = {"asOf": "2026-11-20", "form": "12B", "subj": {"chem": {"name": "Chemistry", "book": "sc-chem", "world": "the lab bench", "who": "the department"}, "phys": {"name": "Physics", "book": "sc-phys", "world": "the physics lab", "who": "the lab technician"}, "bio": {"name": "Biology", "book": "sc-bio", "world": "the field course", "who": "the field leader"}, "art": {"name": "Art", "book": "sc-art", "world": "the underpass", "who": "the magpie"}}, "total": {"chem": 36, "phys": 41, "bio": 35, "art": 37}, "pupils": [{"name": "Priya Shah", "form": "12B", "subjects": ["Chemistry", "Biology", "Maths"], "course": "Medicine (thinking about Birmingham, Leicester, Cardiff)", "rec": {"chem": {"done": [{"s": "Mo", "date": "2026-10-02", "name": "Miguel A. Modestino: How to transform the chemical industry, one reaction at a time", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time"}, {"s": "Op", "date": "2026-10-09", "name": "Olympiad past papers and video answers", "fam": "Do", "g": "do", "url": "https://edu.rsc.org/enrichment/uk-chemistry-olympiad"}, {"s": "Cp", "date": "2026-10-14", "name": "Chemistry World podcast", "fam": "Listen", "g": "listen", "url": "https://www.chemistryworld.com/podcasts"}, {"s": "Ph", "date": "2026-10-16", "name": "Clarice Phelps: How I claimed a seat at the periodic table", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/clarice_phelps_how_i_claimed_a_seat_at_the_periodic_table"}, {"s": "Cw", "date": "2026-10-21", "name": "Chemistry World", "fam": "Read", "g": "read", "url": "https://www.chemistryworld.com/"}, {"s": "Vo", "date": "2026-11-03", "name": "Normand Voyer: Are life-saving medicines hiding in the world's coldest places?", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/normand_voyer_are_life_saving_medicines_hiding_in_the_world_s_coldest_places"}, {"s": "Bi", "date": "2026-11-12", "name": "50 Chemistry Ideas You Really Need to Know, by Hayley Birch", "fam": "Read", "g": "read", "url": ""}, {"s": "Is", "date": "2026-11-17", "name": "Isaac Science", "fam": "Do", "g": "do", "url": "https://isaacscience.org/"}], "notes": [{"date": "2026-10-02", "s": "Mo", "name": "Miguel A. Modestino: How to transform the chemical industry, one reaction at a time", "what": "Watched the Modestino talk on electrifying chemical plants.", "learned": "That most industrial reactions still run on heat from gas, and that using electricity instead changes which catalysts you need. He talked about ammonia.", "q": "Could you run the Haber process on renewable electricity at a scale that actually matters?"}, {"date": "2026-10-16", "s": "Ph", "name": "Clarice Phelps: How I claimed a seat at the periodic table", "what": "Clarice Phelps on helping to confirm tennessine.", "learned": "She is the first African-American woman involved in discovering an element. The actual work was purifying berkelium for months, not a eureka moment.", "q": "How do you prove you have made an atom that only exists for milliseconds?"}, {"date": "2026-11-03", "s": "Vo", "name": "Normand Voyer: Are life-saving medicines hiding in the world's coldest places?", "what": "Normand Voyer on medicines from Arctic organisms.", "learned": "Cold-water organisms make unusual molecules because they cannot move away from threats. Links to the drug discovery bit of the course and to antibiotic resistance.", "q": "Who owns a molecule found in Inuit territory?"}, {"date": "2026-11-12", "s": "Bi", "name": "50 Chemistry Ideas You Really Need to Know, by Hayley Birch", "what": "Read the first 12 chapters of Hayley Birch's 50 Chemistry Ideas.", "learned": "The chapter on chirality explained thalidomide properly for the first time: two mirror images, one safe and one not, and the body converts one to the other anyway.", "q": "Why did regulators not require testing both enantiomers before the 1960s?"}], "interest": [{"s": "Ol", "when": "2026-10-09", "name": "UK Chemistry Olympiad"}, {"s": "Cc", "when": "2026-10-21", "name": "Cambridge Chemistry Challenge (C3L6)"}], "signedIn": true}, "bio": {"done": [{"s": "Dou", "date": "2026-10-05", "name": "Jennifer Doudna: How CRISPR lets us edit our DNA", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna"}, {"s": "BP", "date": "2026-10-12", "name": "British Biology Olympiad past papers", "fam": "Practise", "g": "do", "url": "https://ukbiologycompetitions.org/british-biology-olympiad/"}, {"s": "WS", "date": "2026-10-19", "name": "Biology: The Whole Story (University of Oxford)", "fam": "Watch", "g": "watch", "url": "https://podcasts.ox.ac.uk/series/biology-whole-story"}, {"s": "McK", "date": "2026-10-26", "name": "Maryn McKenna: What do we do when antibiotics don't work any more?", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/maryn_mckenna_what_do_we_do_when_antibiotics_don_t_work_any_more"}, {"s": "ICM", "date": "2026-11-09", "name": "I Contain Multitudes, by Ed Yong", "fam": "Read", "g": "read", "url": ""}, {"s": "Zoo", "date": "2026-11-15", "name": "Zooniverse biology projects", "fam": "Practise", "g": "do", "url": "https://www.zooniverse.org/projects?discipline=biology"}], "notes": [{"date": "2026-10-05", "s": "Dou", "name": "Jennifer Doudna: How CRISPR lets us edit our DNA", "what": "Jennifer Doudna's TED talk on CRISPR.", "learned": "Cas9 is guided by a short RNA that pairs with the target DNA; the protein does the cutting. She asked for a pause on editing embryos and that surprised me from the person who invented it.", "q": "If the guide RNA pairs with the wrong site, how often does that happen in a real cell?"}, {"date": "2026-10-26", "s": "McK", "name": "Maryn McKenna: What do we do when antibiotics don't work any more?", "what": "Maryn McKenna on antibiotics running out.", "learned": "Most antibiotics in the world go into farm animals, not people. She linked it to how cheap chicken got after the 1940s.", "q": "Could the UK ban routine farm antibiotics and still have cheap meat?"}, {"date": "2026-11-09", "s": "ICM", "name": "I Contain Multitudes, by Ed Yong", "what": "Ed Yong, I Contain Multitudes, first half.", "learned": "Germ-free mice have under-developed immune systems. The microbiome idea connects to the antibiotic talk: killing bacteria has a cost we did not count.", "q": "Is a faecal transplant actually a medicine, legally?"}], "interest": [{"s": "BBO", "when": "2026-10-12", "name": "British Biology Olympiad (UK Biology Competitions)"}], "signedIn": true}}}, {"name": "Daniel Okafor", "form": "12B", "subjects": ["Physics", "Maths", "Further Maths"], "course": "Engineering (mechanical or aerospace)", "rec": {"phys": {"done": [{"s": "Gz", "date": "2026-10-03", "name": "Andrea Ghez: The hunt for a supermassive black hole", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole"}, {"s": "BP", "date": "2026-10-08", "name": "BPhO past papers and Upgrade Your Physics", "fam": "Solve", "g": "do", "url": "https://www.bpho.org.uk/Papers/SPC/"}, {"s": "Bm", "date": "2026-10-06", "name": "University of Birmingham: Institute of Physics public lectures", "fam": "Watch", "g": "watch", "url": "https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series"}, {"s": "Is", "date": "2026-10-15", "name": "Isaac Science (formerly Isaac Physics)", "fam": "Solve", "g": "do", "url": "https://isaacscience.org/"}, {"s": "Cz", "date": "2026-10-22", "name": "Helen Czerski: The fascinating physics of everyday life", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/helen_czerski_the_fascinating_physics_of_everyday_life"}, {"s": "PW", "date": "2026-11-05", "name": "Physics World", "fam": "Read", "g": "read", "url": "https://physicsworld.com/"}, {"s": "Ad", "date": "2026-11-10", "name": "Allan Adams: What the discovery of gravitational waves means", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/allan_adams_what_the_discovery_of_gravitational_waves_means"}, {"s": "SPC", "date": "2026-11-18", "name": "BPhO Senior Physics Challenge (Year 12)", "fam": "Enter", "g": "enter", "url": "https://www.bpho.org.uk/bpho/as-challenge.html"}], "notes": [{"date": "2026-10-03", "s": "Gz", "name": "Andrea Ghez: The hunt for a supermassive black hole", "what": "Andrea Ghez on the black hole at the centre of the galaxy.", "learned": "She uses Kepler's third law on the orbits of stars near the centre to get the mass: about 4 million suns. It is the same equation as the gravitational fields topic, just with a bigger number.", "q": "How do they correct for the atmosphere blurring the stars?"}, {"date": "2026-10-06", "s": "Bm", "name": "University of Birmingham: Institute of Physics public lectures", "what": "Went to the Birmingham IOP lecture on fusion with Yusuf.", "learned": "Tokamaks lose heat through turbulence that nobody can fully model yet. The speaker said the engineering (magnets, materials) is now the hard part, not the physics.", "q": "Why is the first wall of a reactor such a problem if neutrons have no charge?"}, {"date": "2026-11-10", "s": "Ad", "name": "Allan Adams: What the discovery of gravitational waves means", "what": "Allan Adams on gravitational waves.", "learned": "LIGO measured a length change smaller than a proton over 4 km. The signal matched the simulation of two black holes merging.", "q": "How do you rule out a lorry driving past?"}], "interest": [{"s": "SPC", "when": "2026-10-08", "name": "BPhO Senior Physics Challenge (Year 12)"}, {"s": "R1", "when": "2026-11-05", "name": "British Physics Olympiad: Round 1 and Round 2"}], "signedIn": true}}}, {"name": "Amelia Hart", "form": "12B", "subjects": ["Art", "English Literature", "History"], "course": "History of Art, or Fine Art (foundation year first?)", "rec": {"art": {"done": [{"s": "Ik", "date": "2026-10-04", "name": "Ikon Gallery", "fam": "Do", "g": "do", "url": "https://www.ikon-gallery.org/"}, {"s": "Kap", "date": "2026-10-07", "name": "Titus Kaphar: Can art amend history?", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/titus_kaphar_can_art_amend_history"}, {"s": "GWA", "date": "2026-10-11", "name": "The Great Women Artists podcast (Katy Hessel)", "fam": "Listen", "g": "listen", "url": "https://www.thegreatwomenartists.com/katy-hessel-podcast"}, {"s": "BMAG", "date": "2026-10-18", "name": "Birmingham Museum & Art Gallery", "fam": "Do", "g": "do", "url": "https://www.birminghammuseums.org.uk/birmingham-museum-and-art-gallery"}, {"s": "Crt", "date": "2026-10-28", "name": "Courtauld Young People's Workshops (16–18)", "fam": "Watch", "g": "watch", "url": "https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/"}, {"s": "Sm", "date": "2026-11-02", "name": "Smarthistory", "fam": "Read", "g": "read", "url": "https://smarthistory.org/"}, {"s": "Ser", "date": "2026-11-08", "name": "Maurizio Seracini: The secret lives of paintings", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings"}, {"s": "WoS", "date": "2026-11-14", "name": "Ways of Seeing, by John Berger", "fam": "Read", "g": "read", "url": ""}, {"s": "Han", "date": "2026-11-16", "name": "Phil Hansen: Embrace the shake", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/phil_hansen_embrace_the_shake"}], "notes": [{"date": "2026-10-04", "s": "Ik", "name": "Ikon Gallery", "what": "Ikon, Balraj Khanna show. Two sketchbook pages of the large canvases.", "learned": "His shapes look like letters that are not letters. I copied the way he leaves the canvas showing through the thin paint.", "q": "Try priming a board badly on purpose and painting over it thin."}, {"date": "2026-10-07", "s": "Kap", "name": "Titus Kaphar: Can art amend history?", "what": "Titus Kaphar, Can art amend history?", "learned": "He paints over a historical group portrait live on stage to bring forward the Black figure at the edge. The painting is not destroyed, it is edited.", "q": "Take one of my old family photos and paint over everything except one person."}, {"date": "2026-10-28", "s": "Crt", "name": "Courtauld Young People's Workshops (16–18)", "what": "Courtauld half-term online workshop on looking slowly.", "learned": "Twenty minutes on one painting. I saw the second figure in the mirror only after ten.", "q": "Do the same with one of my own pieces before I decide it is finished."}, {"date": "2026-11-14", "s": "WoS", "name": "Ways of Seeing, by John Berger", "what": "Berger, Ways of Seeing, chapters 1–3.", "learned": "Reproduction changes what a painting means. The chapter on the nude is about who the picture is for.", "q": "Make a piece that only works in the room, not as a photo."}], "interest": [{"s": "Art", "when": "2026-10-11", "name": "Articulation Prize (National Gallery)"}, {"s": "RA", "when": "2026-11-02", "name": "Young Artists' Summer Show (Royal Academy of Arts)"}], "signedIn": true}}}, {"name": "Yusuf Rahman", "form": "12B", "subjects": ["Chemistry", "Physics", "Maths"], "course": "Chemical engineering", "rec": {"chem": {"done": [{"s": "Mo", "date": "2026-10-05", "name": "Miguel A. Modestino: How to transform the chemical industry, one reaction at a time", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time"}, {"s": "Va", "date": "2026-10-12", "name": "Vaitea Cowan: How green hydrogen could end the fossil fuel era", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/vaitea_cowan_how_green_hydrogen_could_end_the_fossil_fuel_era"}, {"s": "Cx", "date": "2026-10-20", "name": "Cambridge Chemistry Challenge past papers", "fam": "Do", "g": "do", "url": "https://c3l6.com/downloads"}, {"s": "Cg", "date": "2026-11-02", "name": "Chemguide", "fam": "Do", "g": "do", "url": "https://www.chemguide.co.uk/"}], "notes": [{"date": "2026-10-12", "s": "Va", "name": "Vaitea Cowan: How green hydrogen could end the fossil fuel era", "what": "Vaitea Cowan on green hydrogen.", "learned": "Electrolysers are the bottleneck, and the cost is mostly the electricity. She said the chemistry is a hundred years old.", "q": "If the chemistry is old, what exactly is the engineering problem?"}], "interest": [{"s": "Cc", "when": "2026-10-20", "name": "Cambridge Chemistry Challenge (C3L6)"}], "signedIn": true}, "phys": {"done": [{"s": "Bm", "date": "2026-10-06", "name": "University of Birmingham: Institute of Physics public lectures", "fam": "Watch", "g": "watch", "url": "https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series"}, {"s": "Cw", "date": "2026-10-13", "name": "Steven Cowley: Fusion is energy's future", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/steven_cowley_fusion_is_energy_s_future"}, {"s": "Is", "date": "2026-10-27", "name": "Isaac Science (formerly Isaac Physics)", "fam": "Solve", "g": "do", "url": "https://isaacscience.org/"}, {"s": "HE", "date": "2026-11-11", "name": "Cambridge HE+ Physics", "fam": "Read", "g": "read", "url": "https://www.myheplus.com/subject/physics"}], "notes": [{"date": "2026-10-13", "s": "Cw", "name": "Steven Cowley: Fusion is energy's future", "what": "Steven Cowley on fusion, after the Birmingham lecture.", "learned": "Fusion needs 100 million degrees because the nuclei repel. The lecture said the same thing with better diagrams.", "q": "Why is deuterium-tritium easier than deuterium-deuterium?"}], "interest": [], "signedIn": true}}}, {"name": "Grace Whitfield", "form": "12B", "subjects": ["Biology", "Chemistry", "Psychology"], "course": "Biomedical science, maybe nursing", "rec": {"bio": {"done": [{"s": "Dou", "date": "2026-10-08", "name": "Jennifer Doudna: How CRISPR lets us edit our DNA", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna"}, {"s": "Hrt", "date": "2026-10-08", "name": "Edmond Hui (TED-Ed): How the heart actually pumps blood", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood"}, {"s": "Wal", "date": "2026-10-15", "name": "Matt Walker: Sleep is your superpower", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/matt_walker_sleep_is_your_superpower"}, {"s": "Nat", "date": "2026-10-22", "name": "Nature news", "fam": "Read", "g": "read", "url": "https://www.nature.com/news"}], "notes": [{"date": "2026-10-15", "s": "Wal", "name": "Matt Walker: Sleep is your superpower", "what": "Matt Walker, Sleep is your superpower.", "learned": "Sleep after learning helps you keep it; sleep before learning helps you take it in. He said teenagers' body clocks run late, which is why school at 8.30 is hard.", "q": "Is the evidence for later school starts as good as he makes it sound?"}], "interest": [], "signedIn": true}, "chem": {"done": [{"s": "Mo", "date": "2026-10-09", "name": "Miguel A. Modestino: How to transform the chemical industry, one reaction at a time", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time"}, {"s": "Zd", "date": "2026-10-23", "name": "George Zaidan: Why your phone battery gets worse over time", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/george_zaidan_why_your_phone_battery_gets_worse_over_time"}], "notes": [], "interest": [], "signedIn": true}}}, {"name": "Tom Brennan", "form": "12B", "subjects": ["Physics", "Computer Science", "Maths"], "course": "Physics or computer science, not decided", "rec": {"phys": {"done": [{"s": "Gz", "date": "2026-10-10", "name": "Andrea Ghez: The hunt for a supermassive black hole", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole"}, {"s": "SS", "date": "2026-10-17", "name": "Sixty Symbols, University of Nottingham", "fam": "Watch", "g": "watch", "url": "https://www.youtube.com/@sixtysymbols"}, {"s": "OC", "date": "2026-11-07", "name": "Aaron O'Connell: Making sense of a visible quantum object", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/aaron_o_connell_making_sense_of_a_visible_quantum_object"}, {"s": "Cmp", "date": "2026-11-14", "name": "COMPOS (Oxford) and its Follow-Along Programme", "fam": "Solve", "g": "do", "url": "https://compos.site.ox.ac.uk/"}], "notes": [{"date": "2026-11-07", "s": "OC", "name": "Aaron O'Connell: Making sense of a visible quantum object", "what": "Aaron O'Connell's talk on the quantum object you can see.", "learned": "A tiny metal paddle was put in a superposition of vibrating and not vibrating. He says the question is why we never see this for big things.", "q": "Is it that the object is big, or that it is warm?"}], "interest": [{"s": "Cc", "when": "2026-11-14", "name": "BPhO Computational Challenge"}], "signedIn": true}}}, {"name": "Leila Haddad", "form": "12B", "subjects": ["Art", "Biology", "Geography"], "course": "Architecture", "rec": {"art": {"done": [{"s": "Eli", "date": "2026-10-09", "name": "Olafur Eliasson: Playing with space and light", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/olafur_eliasson_playing_with_space_and_light"}, {"s": "Ik", "date": "2026-10-25", "name": "Ikon Gallery", "fam": "Do", "g": "do", "url": "https://www.ikon-gallery.org/"}, {"s": "GAC", "date": "2026-11-06", "name": "Google Arts & Culture", "fam": "Do", "g": "do", "url": "https://artsandculture.google.com/"}], "notes": [{"date": "2026-10-09", "s": "Eli", "name": "Olafur Eliasson: Playing with space and light", "what": "Olafur Eliasson on space and light.", "learned": "He designs the experience, not the object. The waterfall under the bridge was there to make people notice the scale of the bridge.", "q": "Make a drawing where the thing drawn is the gap, not the object."}], "interest": [], "signedIn": true}, "bio": {"done": [{"s": "Sim", "date": "2026-10-16", "name": "Suzanne Simard: How trees talk to each other", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/suzanne_simard_how_trees_talk_to_each_other"}, {"s": "SoS", "date": "2026-11-01", "name": "Signs of Spring (Royal Society of Biology and Field Studies Council)", "fam": "Practise", "g": "do", "url": "https://www.rsb.org.uk/citizen-science.html"}], "notes": [{"date": "2026-10-16", "s": "Sim", "name": "Suzanne Simard: How trees talk to each other", "what": "Suzanne Simard on trees talking.", "learned": "Fungal networks move carbon between trees, and mother trees send more to their own seedlings. Useful for the ecosystems topic and oddly for architecture: structure that shares load.", "q": "How much of this is measured and how much is a nice story?"}], "interest": [], "signedIn": true}}}, {"name": "Sam Kowalski", "form": "12B", "subjects": ["Economics", "Maths", "Politics"], "course": "PPE or Economics", "rec": {}}, {"name": "Hana Begum", "form": "12B", "subjects": ["Chemistry", "Biology", "Maths"], "course": "Dentistry", "rec": {"chem": {"done": [{"s": "Mo", "date": "2026-10-07", "name": "Miguel A. Modestino: How to transform the chemical industry, one reaction at a time", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/miguel_a_modestino_how_to_transform_the_chemical_industry_one_reaction_at_a_time"}, {"s": "Op", "date": "2026-10-14", "name": "Olympiad past papers and video answers", "fam": "Do", "g": "do", "url": "https://edu.rsc.org/enrichment/uk-chemistry-olympiad"}, {"s": "Hy", "date": "2026-10-28", "name": "Christy L. Haynes: Can nanoparticles help fight hunger?", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/christy_l_haynes_can_nanoparticles_help_fight_hunger"}, {"s": "Se", "date": "2026-11-04", "name": "RSC Screen Experiments", "fam": "Do", "g": "do", "url": "https://edu.rsc.org/resources/collections/screen-experiments"}, {"s": "Ec", "date": "2026-11-16", "name": "RSC student pages and Education in Chemistry", "fam": "Read", "g": "read", "url": "https://edu.rsc.org/student"}], "notes": [{"date": "2026-10-28", "s": "Hy", "name": "Christy L. Haynes: Can nanoparticles help fight hunger?", "what": "Christy Haynes on nanoparticles and crops.", "learned": "Nanoparticles can carry nutrients into a plant more efficiently than spraying. Her point was about testing for harm before use, not after.", "q": "What happens to the nanoparticles in the soil afterwards?"}], "interest": [{"s": "Ol", "when": "2026-10-14", "name": "UK Chemistry Olympiad"}], "signedIn": true}, "bio": {"done": [{"s": "Dou", "date": "2026-10-06", "name": "Jennifer Doudna: How CRISPR lets us edit our DNA", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/jennifer_doudna_how_crispr_lets_us_edit_our_dna"}, {"s": "Bas", "date": "2026-10-20", "name": "Bonnie Bassler: How bacteria \"talk\"", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/bonnie_bassler_how_bacteria_talk"}, {"s": "BP", "date": "2026-11-03", "name": "British Biology Olympiad past papers", "fam": "Practise", "g": "do", "url": "https://ukbiologycompetitions.org/british-biology-olympiad/"}], "notes": [{"date": "2026-10-20", "s": "Bas", "name": "Bonnie Bassler: How bacteria \"talk\"", "what": "Bonnie Bassler on how bacteria talk.", "learned": "Quorum sensing: bacteria release a molecule and only act when enough of it is around. Dental plaque is a biofilm doing exactly this.", "q": "Could you stop plaque by jamming the signal instead of killing the bacteria?"}], "interest": [{"s": "BBO", "when": "2026-11-03", "name": "British Biology Olympiad (UK Biology Competitions)"}], "signedIn": true}}}, {"name": "Oliver Price", "form": "12B", "subjects": ["Physics", "Maths", "Further Maths"], "course": "Maths", "rec": {"phys": {"done": [], "notes": [], "interest": [], "signedIn": true}}}, {"name": "Zara Mahmood", "form": "12B", "subjects": ["Art", "Drama and Theatre", "English Literature"], "course": "Fine Art", "rec": {"art": {"done": [{"s": "Kap", "date": "2026-10-05", "name": "Titus Kaphar: Can art amend history?", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/titus_kaphar_can_art_amend_history"}, {"s": "Ik", "date": "2026-10-19", "name": "Ikon Gallery", "fam": "Do", "g": "do", "url": "https://www.ikon-gallery.org/"}, {"s": "Jor", "date": "2026-10-26", "name": "Chris Jordan: Turning powerful stats into art", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/chris_jordan_pictures_some_shocking_stats"}, {"s": "TAN", "date": "2026-11-09", "name": "The Art Newspaper podcasts", "fam": "Listen", "g": "listen", "url": "https://www.theartnewspaper.com/podcasts"}, {"s": "BD", "date": "2026-11-13", "name": "The Big Draw Festival", "fam": "Do", "g": "do", "url": "https://thebigdraw.org/"}], "notes": [{"date": "2026-10-26", "s": "Jor", "name": "Chris Jordan: Turning powerful stats into art", "what": "Chris Jordan, turning statistics into art.", "learned": "Images made of thousands of tiny objects, like 2.4 million plastic bits. From far away it is a picture, close up it is the number.", "q": "Build a piece out of every receipt my family gets in a month."}, {"date": "2026-11-13", "s": "BD", "name": "The Big Draw Festival", "what": "Big Draw event at the Custard Factory.", "learned": "Drew for two hours on a shared roll of paper with strangers. Nobody signed anything.", "q": "Run a shared drawing in the sixth-form common room."}], "interest": [{"s": "RA", "when": "2026-11-09", "name": "Young Artists' Summer Show (Royal Academy of Arts)"}], "signedIn": true}}}, {"name": "Ethan Clarke", "form": "12B", "subjects": ["Biology", "Geography", "Physical Education"], "course": "Sport science, or physiotherapy", "rec": {"bio": {"done": [{"s": "Hrt", "date": "2026-10-12", "name": "Edmond Hui (TED-Ed): How the heart actually pumps blood", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/edmond_hui_how_the_heart_actually_pumps_blood"}, {"s": "Wal", "date": "2026-10-19", "name": "Matt Walker: Sleep is your superpower", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/matt_walker_sleep_is_your_superpower"}, {"s": "Kn", "date": "2026-11-02", "name": "Rob Knight: How our microbes make us who we are", "fam": "Watch", "g": "watch", "url": "https://www.ted.com/talks/rob_knight_how_our_microbes_make_us_who_we_are"}], "notes": [{"date": "2026-10-19", "s": "Wal", "name": "Matt Walker: Sleep is your superpower", "what": "Matt Walker on sleep.", "learned": "Sleep-deprived athletes get injured more. He had a graph for that.", "q": "Does the same apply to a 17-year-old with training at 7am?"}], "interest": [], "signedIn": true}}}]};
+const $ = id => document.getElementById(id);
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const SUBJ = D.subj, ORDER = ["chem","phys","bio","art"];
+const COL = {chem:"var(--chem)",phys:"var(--phys)",bio:"var(--bio)",art:"var(--art)"};
+const NAME2KEY = Object.fromEntries(ORDER.map(k=>[SUBJ[k].name,k]));
+const AS_OF = new Date(D.asOf+"T12:00:00");
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmt = d => { const x=new Date(d+"T12:00:00"); return x.getDate()+" "+MON[x.getMonth()]; };
+const fmtLong = d => { const x=new Date(d+"T12:00:00"); return x.getDate()+" "+MON[x.getMonth()]+" "+x.getFullYear(); };
+const days = d => Math.round((AS_OF - new Date(d+"T12:00:00"))/86400000);
+const surname = n => n.trim().split(/\s+/).slice(-1)[0];
+const first = n => n.trim().split(/\s+/)[0];
+
+/* ---------- derived per pupil ---------- */
+function liveKeys(p){ return ORDER.filter(k=>p.rec[k]); }
+function allEvents(p){
+  const ev=[];
+  for(const k of liveKeys(p)){
+    const r=p.rec[k];
+    const noteBy=Object.fromEntries(r.notes.map(n=>[n.s,n]));
+    r.done.forEach(d=>ev.push({k,s:d.s,name:d.name,fam:d.fam,g:d.g,date:d.date,note:noteBy[d.s]||null,url:d.url}));
+  }
+  ev.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+  return ev;
+}
+function stats(p){
+  const ev=allEvents(p);
+  const notes=liveKeys(p).reduce((a,k)=>a+p.rec[k].notes.length,0);
+  const ent=liveKeys(p).flatMap(k=>p.rec[k].interest.map(i=>({k,...i})));
+  const last=ev.length?ev[ev.length-1].date:null;
+  return {ev,done:ev.length,notes,ent,last};
+}
+function flags(p){
+  const f=[]; const lk=liveKeys(p); if(!lk.length) return f;
+  const s=stats(p);
+  if(!s.done) f.push({t:"Signed in, nothing logged yet",why:"signed in to "+lk.map(k=>SUBJ[k].name).join(" and ")+" but has not marked anything done"});
+  else if(days(s.last)>=21) f.push({t:"Nothing logged for "+days(s.last)+" days",why:"last activity "+fmtLong(s.last)});
+  if(s.done>=3 && s.notes===0) f.push({t:"Does things, writes nothing",why:s.done+" done, no notebook entries. The notebook is the UCAS material."});
+  return f;
+}
+
+/* ---------- desk ---------- */
+let SORT="done";
+function renderDesk(){
+  $("formName").textContent=D.form; $("asOf").textContent=fmtLong(D.asOf);
+  $("liveSubs").innerHTML=ORDER.map(k=>`<span class="chip" style="--c:${COL[k]}"><i></i>${SUBJ[k].name} · live</span>`).join("")+`<span class="chip off">17 more to come</span>`;
+  const ps=D.pupils; let using=0,done=0,notes=0,ent=0,word=0;
+  ps.forEach(p=>{ const s=stats(p); if(s.done) using++; done+=s.done; notes+=s.notes; ent+=s.ent.length; if(flags(p).length) word++; });
+  const eligible=ps.filter(p=>p.subjects.some(n=>NAME2KEY[n])).length;
+  $("tiles").innerHTML=[
+    [using+" <small style='font-size:1rem;color:var(--mute)'>of "+eligible+"</small>","tutees using a live page"],
+    [done,"activities logged since September"],
+    [notes,"notebook entries, in their own words"],
+    [ent,"competition entries flagged"],
+    [word,"worth a word this week","warn"]
+  ].map(([b,s,c])=>`<div class="tl ${c||""}"><b>${b}</b><span>${s}</span></div>`).join("");
+  // table
+  const rows=ps.slice();
+  if(SORT==="done") rows.sort((a,b)=>stats(b).done-stats(a).done||surname(a.name).localeCompare(surname(b.name)));
+  else if(SORT==="name") rows.sort((a,b)=>surname(a.name).localeCompare(surname(b.name)));
+  else rows.sort((a,b)=>{ const la=stats(a).last||"0", lb=stats(b).last||"0"; return la<lb?-1:la>lb?1:0; });
+  $("ft").querySelector("tbody").innerHTML=rows.map(p=>{
+    const s=stats(p), lk=liveKeys(p), i=D.pupils.indexOf(p);
+    const tot=lk.reduce((a,k)=>a+D.total[k],0);
+    const subs=p.subjects.map(n=>{ const k=NAME2KEY[n]; return k?`<span class="chip" style="--c:${COL[k]}">${n}</span>`:`<span class="chip off">${n}</span>`; }).join("");
+    const fl=flags(p);
+    const barHtml=lk.length?`<span class="bar">${lk.map(k=>`<i style="width:${Math.round(p.rec[k].done.length/tot*100)}%;background:${COL[k]}"></i>`).join("")}</span><span class="num">${s.done}</span>`:`<span class="quiet">no live subject yet</span>`;
+    return `<tr data-i="${i}" tabindex="0"><td class="name">${esc(p.name)}</td><td><div class="subs">${subs}</div></td><td>${barHtml}</td><td class="hm num">${lk.length?s.notes:"–"}</td><td class="hm num">${lk.length?s.ent.length:"–"}</td><td class="num">${s.last?fmt(s.last):(lk.length?'<span class="quiet">never</span>':'–')}</td><td class="needs">${fl.map(f=>`<span class="flag">${f.t}</span>`).join(" ")||(lk.length?'<span class="quiet">nothing</span>':'')}</td><td class="open">${lk.length?'<span class="fold"></span>open':''}</td></tr>`;
+  }).join("");
+  // worth a word
+  const wl=ps.filter(p=>flags(p).length).sort((a,b)=>surname(a.name).localeCompare(surname(b.name)));
+  $("wordList").innerHTML=wl.length?`<ul>${wl.map(p=>`<li><span class="who"><a href="#" data-open="${D.pupils.indexOf(p)}">${esc(first(p.name))} ${esc(surname(p.name))}</a></span><span>${flags(p).map(f=>`<b style="font-weight:600">${f.t}.</b> <span class="small">${esc(f.why)}</span>`).join("<br>")}</span></li>`).join("")}</ul>`:`<p class="small">Nobody this week.</p>`;
+}
+$("sortSel").addEventListener("change",e=>{ SORT=e.target.value; renderDesk(); });
+document.addEventListener("click",e=>{
+  const tr=e.target.closest("tr[data-i]"); if(tr){ openFolder(+tr.dataset.i); return; }
+  const a=e.target.closest("a[data-open]"); if(a){ e.preventDefault(); openFolder(+a.dataset.open); }
+});
+$("ft").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const tr=e.target.closest("tr[data-i]"); if(tr) openFolder(+tr.dataset.i); } });
+
+/* ---------- folder ---------- */
+let CUR=null, PACK=null;
+function withLive(){ return D.pupils.map((p,i)=>i).filter(i=>liveKeys(D.pupils[i]).length); }
+function openFolder(i){
+  const p=D.pupils[i]; if(!liveKeys(p).length) return;
+  CUR=i; PACK=null; $("packSheet").hidden=true; $("fToast").textContent="";
+  const s=stats(p), lk=liveKeys(p);
+  $("fTitle").textContent=p.name+" · "+p.form;
+  $("fTabs").innerHTML=lk.map(k=>`<span class="tab" style="--c:${COL[k]}">${SUBJ[k].name}</span>`).join("");
+  $("fName").textContent=p.name;
+  $("fSubs").innerHTML=p.subjects.map(n=>{ const k=NAME2KEY[n]; return k?`<span class="chip" style="--c:${COL[k]}">${n}</span>`:`<span class="chip off">${n}</span>`; }).join(" ");
+  $("fCourse").textContent=p.course;
+  $("fBars").innerHTML=lk.map(k=>{ const r=p.rec[k]; const n=r.done.length, t=D.total[k]; const fams=[...new Set(r.done.map(d=>d.fam))];
+    return `<div class="subbar"><span><span class="chip" style="--c:${COL[k]}">${SUBJ[k].name}</span></span><span class="bar"><i style="width:${Math.round(n/t*100)}%;background:${COL[k]}"></i></span><span class="mono">${n} of ${t} · ${r.notes.length} note${r.notes.length===1?"":"s"}${fams.length?" · "+fams.join(", "):""}</span></div>`; }).join("");
+  $("fTimeline").innerHTML=timeline(p);
+  $("fEv").innerHTML=s.ev.length?s.ev.map(e=>`<div class="ev"><span class="d">${fmt(e.date)}</span><span class="chip" style="--c:${COL[e.k]}">${SUBJ[e.k].name}</span><span><span class="nm">${esc(e.name)}</span> <span class="fam">· ${esc(e.fam)}</span>${e.note?'<span class="star">✎ notebook</span>':""}</span></div>`).join(""):`<p class="empty">Nothing marked done yet.</p>`;
+  const notes=lk.flatMap(k=>p.rec[k].notes.map(n=>({k,...n}))).sort((a,b)=>a.date<b.date?-1:1);
+  $("fNotes").innerHTML=notes.length?notes.map(n=>`<div class="note" style="--c:${COL[n.k]}"><div class="nh"><span class="mono">${fmtLong(n.date)}</span><span class="chip" style="--c:${COL[n.k]}">${SUBJ[n.k].name}</span><span>${esc(n.name)}</span></div><p><span class="lab">Did</span>${esc(n.what)}</p><p><span class="lab">Took from it</span><q>${esc(n.learned)}</q></p><p><span class="lab">${n.k==="art"?"Would try":"Question"}</span>${esc(n.q)}</p></div>`).join(""):`<p class="empty">No notebook entries yet. ${esc(first(p.name))} has done ${s.done} thing${s.done===1?"":"s"} and written about none of them; worth asking for one line per activity.</p>`;
+  $("fEntries").innerHTML=s.ent.length?s.ent.map(e=>`<div><span class="chip" style="--c:${COL[e.k]}">${SUBJ[e.k].name}</span> ${esc(e.name)} <span class="small">· flagged ${fmt(e.when)}</span><span class="stamp">wants in</span></div>`).join(""):`<p class="empty">None flagged yet.</p>`;
+  const wl=withLive(), pos=wl.indexOf(i); $("fPrev").disabled=pos<=0; $("fNext").disabled=pos>=wl.length-1;
+  $("folder").hidden=false; $("folder").scrollTop=0; $("pupilView").hidden=true;
+}
+function timeline(p){
+  // Sept 2026 to July 2027, one row per live subject, a dot per activity, a ring where there is a notebook entry
+  const lk=liveKeys(p); const W=760, L=70, R=16, rowH=26, top=26; const H=top+lk.length*rowH+8;
+  const start=new Date("2026-09-01T12:00:00"), end=new Date("2027-07-31T12:00:00");
+  const x=d=>L+((new Date(d+"T12:00:00")-start)/(end-start))*(W-L-R);
+  let g=`<svg class="tline" viewBox="0 0 ${W} ${H}" role="img" aria-label="Timeline of activities from September to July">`;
+  const months=[]; for(let m=new Date(start);m<end;m.setMonth(m.getMonth()+1)) months.push(new Date(m));
+  months.forEach(m=>{ const xx=L+((m-start)/(end-start))*(W-L-R); g+=`<line x1="${xx}" y1="${top-8}" x2="${xx}" y2="${H-6}" stroke="var(--line2)"/><text x="${xx+3}" y="${top-12}" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mute)">${MON[m.getMonth()]}</text>`; });
+  const xa=x(D.asOf); g+=`<line x1="${xa}" y1="${top-8}" x2="${xa}" y2="${H-6}" stroke="var(--mute)" stroke-dasharray="3 3"/><text x="${xa-3}" y="${H-8}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="8" fill="var(--mute)">today</text>`;
+  lk.forEach((k,i)=>{ const y=top+i*rowH+10; g+=`<text x="0" y="${y+4}" font-family="Public Sans,sans-serif" font-size="11" fill="var(--ink)">${SUBJ[k].name}</text><line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line)"/>`;
+    const noted=new Set(p.rec[k].notes.map(n=>n.s));
+    p.rec[k].done.forEach(d=>{ const xx=x(d.date); g+=noted.has(d.s)?`<circle cx="${xx}" cy="${y}" r="6" fill="${COL[k]}"/><circle cx="${xx}" cy="${y}" r="2.2" fill="var(--paper)"/>`:`<circle cx="${xx}" cy="${y}" r="4.5" fill="${COL[k]}"/>`; });
+    p.rec[k].interest.forEach(e=>{ const xx=x(e.when); g+=`<path d="M${xx} ${y-10} l4 7 h-8 z" fill="var(--flag)"/>`; });
+  });
+  g+=`</svg><p class="small" style="margin-top:4px">Dot = marked done · dot with a hole = also wrote a notebook entry · red triangle = put their hand up for a competition.</p>`;
+  return g;
+}
+$("fClose").addEventListener("click",()=>{ $("folder").hidden=true; });
+$("fPrev").addEventListener("click",()=>{ const wl=withLive(); openFolder(wl[wl.indexOf(CUR)-1]); });
+$("fNext").addEventListener("click",()=>{ const wl=withLive(); openFolder(wl[wl.indexOf(CUR)+1]); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(!$("fb").hidden) fbShow(false); else if(!$("pupilView").hidden) $("pupilView").hidden=true; else if(!$("folder").hidden) $("folder").hidden=true; } });
+
+/* ---------- UCAS sort ---------- */
+const Q = [
+  {n:1,h:"Why do you want to study this course or subject?",rule:"talks, podcasts, reading"},
+  {n:2,h:"How have your qualifications and studies helped you to prepare?",rule:"practice, problems, competitions"},
+  {n:3,h:"What else have you done to prepare outside of education?",rule:"visits, events, programmes, placements"}
+];
+const EVENT_SLUGS=new Set(["Bm","Ox","Ik","BMAG","BD","Crt","NGs","UoB","SoS","Gre"]);
+function firstSort(e){
+  if(e.g==="apply"||EVENT_SLUGS.has(e.s)) return 3;
+  if(e.g==="do"||e.g==="enter") return 2;
+  return 1;
+}
+function buildPack(p){
+  const ev=allEvents(p).map((e,i)=>({id:i,...e,q:firstSort(e)}));
+  // flagged competitions count as evidence too (intention, dated)
+  stats(p).ent.forEach((e,j)=>ev.push({id:1000+j,k:e.k,s:e.s,name:e.name,fam:"competition entry flagged",date:e.when,note:null,q:2,flagged:true}));
+  ev.sort((a,b)=>a.date<b.date?-1:1);
+  return ev;
+}
+function renderPack(){
+  const p=D.pupils[CUR]; if(!PACK) PACK=buildPack(p);
+  $("qcols").innerHTML=Q.map(q=>{ const items=PACK.filter(e=>e.q===q.n);
+    return `<div class="qcol"><span class="qn">QUESTION ${q.n} · first sort: ${q.rule}</span><h4>${q.h}</h4>${items.length?items.map(e=>`<div class="evc"><div class="top"><span class="chip" style="--c:${COL[e.k]}">${SUBJ[e.k].name}</span><span class="d">${fmt(e.date)}</span></div><div>${esc(e.name)}${e.flagged?' <span class="stamp" style="margin-left:4px">wants in</span>':''}</div>${e.note?`<q>${esc(e.note.learned)}</q>`:""}<div class="mv">${[1,2,3].map(n=>`<button type="button" data-id="${e.id}" data-q="${n}" aria-pressed="${n===e.q}">${n}</button>`).join("")}<button type="button" class="rm" data-id="${e.id}" data-q="0" aria-label="Remove">×</button></div></div>`).join(""):`<p class="empty">Nothing here yet. Visits, events, placements and summer schools land here, and work experience would too if pupils logged it.</p>`}</div>`; }).join("");
+  $("refText").value=refDraft(p);
+}
+function refDraft(p){
+  const s=stats(p), lk=liveKeys(p), f=first(p.name);
+  const subs=lk.map(k=>SUBJ[k].name); const subsTxt=subs.length>1?subs.slice(0,-1).join(", ")+" and "+subs.slice(-1):subs[0];
+  const firstDate=s.ev.length?fmtLong(s.ev[0].date):null;
+  const L=[];
+  L.push(`${f} has used the school's Beyond the Classroom programme in ${subsTxt}${firstDate?" since "+firstDate:""}. ${s.done?`As of ${fmtLong(D.asOf)} ${f} has completed ${s.done} of the listed activities and written ${s.notes} notebook ${s.notes===1?"entry":"entries"} about them.`:""}`);
+  const byFam={}; s.ev.forEach(e=>{ (byFam[e.fam]=byFam[e.fam]||[]).push(e); });
+  Object.entries(byFam).forEach(([fam,es])=>{ L.push(`${fam}: `+es.map(e=>`${e.name} (${SUBJ[e.k].name}, ${fmt(e.date)})`).join("; ")+"."); });
+  if(s.ent.length) L.push(`${f} has registered interest in ${s.ent.map(e=>e.name+" ("+SUBJ[e.k].name+")").join(" and ")}.`);
+  const notes=lk.flatMap(k=>p.rec[k].notes).sort((a,b)=>a.date<b.date?-1:1);
+  if(notes.length){ const n=notes[notes.length-1]; L.push(`In ${f}'s own words (${fmtLong(n.date)}, on ${n.name}): "${n.learned}"`); }
+  return L.join("\n\n");
+}
+$("buildPack").addEventListener("click",()=>{ renderPack(); $("packSheet").hidden=false; $("packSheet").scrollIntoView({behavior:"smooth",block:"start"}); });
+$("qcols").addEventListener("click",e=>{ const b=e.target.closest("button[data-id]"); if(!b) return; const it=PACK.find(x=>x.id===+b.dataset.id); if(!it) return; const q=+b.dataset.q; if(q===0) PACK=PACK.filter(x=>x!==it); else it.q=q; renderPack(); });
+function packText(p){
+  const out=[`UCAS pack · ${p.name} · ${p.form} · built ${fmtLong(D.asOf)}`,`Course idea: ${p.course}`,""];
+  Q.forEach(q=>{ out.push(`QUESTION ${q.n}. ${q.h}`); const items=PACK.filter(e=>e.q===q.n); if(!items.length) out.push("  (nothing yet)"); items.forEach(e=>{ out.push(`  ${fmt(e.date)} · ${SUBJ[e.k].name} · ${e.name}${e.flagged?" (wants to enter)":""}`); if(e.note){ out.push(`      did: ${e.note.what}`); out.push(`      took from it: ${e.note.learned}`); out.push(`      ${p.rec[e.k]&&e.k==="art"?"would try":"question"}: ${e.note.q}`); } }); out.push(""); });
+  out.push("FOR THE REFERENCE"); out.push($("refText").value);
+  return out.join("\n");
+}
+function folderText(p){
+  const s=stats(p); const out=[`${p.name} · ${p.form} · as of ${fmtLong(D.asOf)}`,`Subjects: ${p.subjects.join(", ")}`,`Course idea: ${p.course}`,""];
+  out.push("ACTIVITIES"); s.ev.forEach(e=>out.push(`  ${fmt(e.date)} · ${SUBJ[e.k].name} · ${e.name} (${e.fam})${e.note?" ✎":""}`));
+  const notes=liveKeys(p).flatMap(k=>p.rec[k].notes.map(n=>({k,...n}))).sort((a,b)=>a.date<b.date?-1:1);
+  if(notes.length){ out.push("","NOTEBOOK"); notes.forEach(n=>{ out.push(`  ${fmtLong(n.date)} · ${SUBJ[n.k].name} · ${n.name}`); out.push(`    did: ${n.what}`); out.push(`    took from it: ${n.learned}`); out.push(`    ${n.k==="art"?"would try":"question"}: ${n.q}`); }); }
+  if(s.ent.length){ out.push("","COMPETITIONS FLAGGED"); s.ent.forEach(e=>out.push(`  ${e.name} (${SUBJ[e.k].name}) · ${fmt(e.when)}`)); }
+  return out.join("\n");
+}
+async function copy(txt, el){
+  try{ await navigator.clipboard.writeText(txt); el.textContent="Copied."; }
+  catch(e){ const ta=document.createElement("textarea"); ta.value=txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); el.textContent="Copied."; }catch(err){ el.textContent="Select and copy from the box above."; } ta.remove(); }
+  setTimeout(()=>el.textContent="",2500);
+}
+$("copyPack").addEventListener("click",()=>copy(packText(D.pupils[CUR]),$("pToast")));
+$("copyRef").addEventListener("click",()=>copy($("refText").value,$("pToast")));
+$("copyFolder").addEventListener("click",()=>copy(folderText(D.pupils[CUR]),$("fToast")));
+
+/* ---------- pupil view ---------- */
+function renderPupil(i){
+  const p=D.pupils[i], lk=liveKeys(p), s=stats(p); const pack=buildPack(p);
+  const html=[`<div><span class="eyebrow">My record</span><h2 style="font-size:1.6rem;margin-top:2px">${esc(p.name)} · ${p.form}</h2><p class="small">Signed in once. Everything below is pulled from the subject pages ${esc(first(p.name))} already uses.</p></div>`,
+    `<div class="worlds">${lk.map(k=>{ const r=p.rec[k]; return `<div class="world" style="--c:${COL[k]}"><span class="dot"></span><span><b>${SUBJ[k].name}</b><br><span class="w">${SUBJ[k].world} · ${r.done.length} of ${D.total[k]} done · ${r.notes.length} notebook ${r.notes.length===1?"entry":"entries"}</span></span><span class="mono small">${Math.round(r.done.length/D.total[k]*100)}%</span></div>`; }).join("")}</div>`,
+    `<div><span class="eyebrow">My UCAS evidence so far</span><p class="small" style="margin:4px 0 10px">Sorted under the three personal statement questions. Dates and your own words, kept for you until Year 13.</p>
+      <div style="display:grid;gap:12px">${Q.map(q=>{ const items=pack.filter(e=>e.q===q.n); return `<div class="pq"><h4>${q.n}. ${q.h}</h4>${items.length?`<ul>${items.map(e=>`<li><b>${esc(e.name)}</b> <span class="small">(${SUBJ[e.k].name}, ${fmt(e.date)})</span>${e.note?`<br><span class="small">“${esc(e.note.learned)}”</span>`:""}</li>`).join("")}</ul>`:`<p class="empty">Nothing yet. Anything you do on a subject page lands here.</p>`}</div>`; }).join("")}</div></div>`,
+    `<p class="small">${s.notes<s.done?`${s.done-s.notes} of your activities have no notebook line. One sentence each is enough, and it is the sentence you will want in a year.`:`Every activity has a notebook line. Keep going.`}</p>`];
+  $("pupilCard").innerHTML=html.join("");
+}
+function openPupil(i){
+  const sel=$("pvSel"); sel.innerHTML=withLive().map(j=>`<option value="${j}">${esc(D.pupils[j].name)}</option>`).join(""); sel.value=i;
+  renderPupil(i); $("pupilView").hidden=false; $("pupilView").scrollTop=0;
+}
+$("pvSel").addEventListener("change",e=>renderPupil(+e.target.value));
+$("openPupilBtn").addEventListener("click",()=>openPupil(CUR!==null&&liveKeys(D.pupils[CUR]).length?CUR:withLive()[0]));
+$("pvClose").addEventListener("click",()=>{ $("pupilView").hidden=true; });
+
+/* ---------- welcome + tour ---------- */
+const PRIYA=D.pupils.findIndex(p=>p.name==="Priya Shah");
+const TOUR=[
+  {sel:"#tiles",h:"The form at a glance",p:"Five numbers, refreshed every time the page opens: who is using a live page, how much has been logged, how many have put their hand up for a competition, and who is worth a word.",before:()=>{ $("folder").hidden=true; $("pupilView").hidden=true; }},
+  {sel:"#formCard",h:"One row per tutee",p:"Subjects in colour have a live page; grey ones are still to come, so a tutee like Sam shows no record yet rather than a bad one. The bar is activities done across all their live subjects."},
+  {sel:"#wordCard",h:"Who to talk to",p:"Three plain rules pick out the pupils to catch in tutor time. The rules are written in the page and can be whatever the tutor team decides."},
+  {sel:"#howCard",h:"What a tutor has to do",p:"Open the page and read it. Pupils do nothing extra either; the records come from the subject pages they already use."},
+  {sel:".sheet",h:"A tutee's folder",p:"Every subject in one place: how far through each page, a timeline from September to July, and the pupil's own course idea.",before:()=>{ openFolder(PRIYA); }},
+  {sel:"#fTimeline",h:"The year, drawn",p:"A dot for each activity, a hollow dot where they also wrote a notebook entry, a red triangle where they put their hand up for a competition. Gaps are easy to see."},
+  {sel:"#fNotes",h:"In their own words",p:"Each notebook entry is dated: what they did, what they took from it, the question it left. This is what makes a personal statement specific. It is written in the moment, not reconstructed in Year 13.",before:()=>{ $("fNotes").scrollIntoView({block:"center"}); }},
+  {sel:"#packSheet",h:"The UCAS pack",p:"One button sorts everything under the three personal statement questions, with dates and quotes. Move items with 1 2 3, drop any with ×, and copy the lot as plain text for the pupil or for Unifrog.",before:()=>{ renderPack(); $("packSheet").hidden=false; $("packSheet").scrollIntoView({block:"start"}); }},
+  {sel:"#refText",h:"Lines for the reference",p:"A factual draft for the supportive-information section of the UCAS reference, in date order, with one quotation. Edit it here and copy it.",before:()=>{ $("refText").scrollIntoView({block:"center"}); }},
+  {sel:"#pupilCard",h:"What the pupil sees",p:"The same record from their side, sorted for UCAS from the first week of Year 12. They type nothing new; the page just shows them what they have banked and where the gaps are.",before:()=>{ $("folder").hidden=true; openPupil(PRIYA); }},
+  {sel:"#yoursCard",h:"Ours to change",p:"No supplier and no licence. Columns, rules, exports and a Head of Year view are changes to one file. Tick what you would want first, then press Feedback and tell Simon.",before:()=>{ $("pupilView").hidden=true; $("yoursCard").scrollIntoView({block:"start"}); }}
+];
+let TS=-1;
+function ringTo(sel){ const el=document.querySelector(sel); const r=$("tourRing"); if(!el){ r.hidden=true; return; } const b=el.getBoundingClientRect(); r.hidden=false; r.style.left=b.left+"px"; r.style.top=b.top+"px"; r.style.width=b.width+"px"; r.style.height=b.height+"px"; }
+function tourGo(n){
+  if(n<0||n>=TOUR.length){ tourEnd(); return; }
+  TS=n; const t=TOUR[n]; if(t.before) t.before();
+  $("tourStep").textContent="Tour · "+(n+1)+" of "+TOUR.length; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourDots").innerHTML=TOUR.map((_,i)=>`<i class="${i===n?"on":""}"></i>`).join("");
+  $("tourBack").disabled=n===0; $("tourNext").textContent=n===TOUR.length-1?"Finish":"Next";
+  $("tourCard").hidden=false;
+  setTimeout(()=>{ const el=document.querySelector(t.sel); if(el&&!t.before) el.scrollIntoView({block:"center",behavior:"smooth"}); setTimeout(()=>ringTo(t.sel),350); },60);
+}
+function tourEnd(){ TS=-1; $("tourCard").hidden=true; $("tourRing").hidden=true; }
+$("tourNext").addEventListener("click",()=>tourGo(TS+1)); $("tourBack").addEventListener("click",()=>tourGo(TS-1)); $("tourSkip").addEventListener("click",tourEnd);
+addEventListener("scroll",()=>{ if(TS>=0) ringTo(TOUR[TS].sel); },{passive:true}); addEventListener("resize",()=>{ if(TS>=0) ringTo(TOUR[TS].sel); });
+$("folder").addEventListener("scroll",()=>{ if(TS>=0) ringTo(TOUR[TS].sel); },{passive:true}); $("pupilView").addEventListener("scroll",()=>{ if(TS>=0) ringTo(TOUR[TS].sel); },{passive:true});
+$("startTour").addEventListener("click",()=>{ $("intro").hidden=true; tourGo(0); });
+$("skipIntro").addEventListener("click",()=>{ $("intro").hidden=true; });
+
+/* ---------- feedback ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", token:"vp_8c7103b52959b06cb55526bf", book:"sc-tutor-feedback" };
+const FB={use:"",now:new Set(),want:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on){ $("fbWantEcho").textContent=FB.want.size?[...FB.want].join(", "):"Nothing ticked yet."; $("fbName").focus(); } }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const n=e.target.closest("#fbNow button"); if(n){ const v=n.dataset.v; FB.now.has(v)?FB.now.delete(v):FB.now.add(v); n.setAttribute("aria-pressed",String(FB.now.has(v))); return; }
+  const w=e.target.closest("#wantChips button"); if(w){ const v=w.dataset.v; FB.want.has(v)?FB.want.delete(v):FB.want.add(v); w.setAttribute("aria-pressed",String(FB.want.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"tutor-desk-demo",name,role:$("fbRole").value,use:FB.use,now:[...FB.now],want:[...FB.want],change:$("fbChange").value.trim(),missing:$("fbMissing").value.trim(),forms:$("fbForms").value.trim(),sent:new Date().toISOString(),ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…"; $("fbCopy").hidden=true;
+  const key=CLOUD.book+"::"+name+"::"+rec.sent; let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:CLOUD.book,data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you; Simon will see it."; $("fbForm").reset(); FB.use=""; FB.now.clear(); document.querySelectorAll("#fbUse button,#fbNow button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1600); }
+  else { $("fbMsg").textContent="That did not send. Copy the text below into an email to Simon instead."; $("fbCopy").hidden=false; $("fbCopy").textContent=["Tutor Desk demo feedback","Name: "+name,"Role: "+rec.role,"Would use: "+rec.use,"Uses now: "+rec.now.join(", "),"Wanted first: "+rec.want.join(", "),"Change: "+rec.change,"Missing: "+rec.missing,"Current form headings: "+rec.forms].join("\n"); }
+});
+
+renderDesk();
+</script>
+</body>
+</html>

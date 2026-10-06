@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Art Beyond the Classroom – demo</title>
+<meta name="description" content="Free things for A-level Fine Art students to see, watch, listen to, read, do, enter and apply for. The Underpass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141418; --wall:#232329; --card:#1d1d23; --paper:#f3efe6; --ink:#141418; --txt:#f0ecf4; --muted:#a8a3b3; --line:#3a3a44;
+  --enter:#ff2d95; --watch:#19e6ff; --listen:#e8ff2a; --read:#ff6a1f; --do:#7cff4a; --apply:#b388ff;
+  --f-head:"Anton",Impact,"Arial Narrow",sans-serif; --f-mark:"Permanent Marker","Comic Sans MS",cursive; --f-body:"Space Grotesk",system-ui,sans-serif; --f-mono:"Space Mono",ui-monospace,monospace;
+}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f-body);font-size:1rem;line-height:1.5;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(255,45,149,.10),transparent 45%),radial-gradient(ellipse at 90% 10%,rgba(25,230,255,.08),transparent 40%)}
+a{color:var(--watch)}
+h1,h2,h3{margin:0;font-weight:400}
+.head{font-family:var(--f-head);letter-spacing:.02em;text-transform:uppercase}
+.mark{font-family:var(--f-mark)}
+.mono{font-family:var(--f-mono)}
+.small{font-size:.86rem;color:var(--muted)}
+.wrap{max-width:1180px;margin:0 auto;padding:18px clamp(12px,3vw,32px) 80px;display:grid;gap:26px}
+[hidden]{display:none!important}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--listen);background:#000;padding:4px 10px;border:1px solid #333}
+.badge i{width:8px;height:8px;background:var(--listen);display:inline-block}
+.btn{font:inherit;font-family:var(--f-head);text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;border:2px solid #000;background:var(--listen);color:#000;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000;transition:transform .08s}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
+.btn.ghost{background:#fff;color:#000}
+.btn.g{background:var(--g,#fff);color:#000}
+.btn.on{background:#000;color:#fff;border-color:#fff}
+.btn.big{font-size:1.25rem;padding:12px 22px}
+.btn:disabled{opacity:.5;cursor:default}
+.x{font:inherit;font-size:1.6rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:2px 8px}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:20px}
+.gate-card{width:min(640px,100%);background:var(--paper);color:var(--ink);padding:28px 30px;border:3px solid #000;box-shadow:10px 10px 0 var(--enter);position:relative;display:grid;gap:14px}
+.gate-card::before{content:"";position:absolute;left:-14px;top:-18px;width:120px;height:26px;background:var(--listen);transform:rotate(-6deg);opacity:.9}
+.gate-card h1{font-size:clamp(2.4rem,7vw,3.6rem);line-height:.95}
+.gate-card p{margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:4px}
+.field label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.field input,.field textarea{font:inherit;padding:10px 12px;border:2px solid #000;background:#fff;color:#000;width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.err{color:#b4001e;font-weight:700;min-height:1.2em}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+
+/* ---------- header ---------- */
+header.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end}
+header.top h1{font-size:clamp(3rem,9vw,6rem);line-height:.9;letter-spacing:.01em}
+header.top h1 span{display:block;color:var(--enter);-webkit-text-stroke:1px var(--enter);color:transparent}
+.strap{font-family:var(--f-mono);font-size:.9rem;color:var(--muted);margin-top:8px}
+.who{display:grid;gap:6px;justify-items:end;text-align:right}
+.who b{font-family:var(--f-mark);font-size:1.15rem;color:var(--listen)}
+.saved{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted)}
+.saved.ok{color:var(--do)} .saved.bad{color:var(--enter)}
+.who button{font:inherit;font-size:.82rem;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+@media (max-width:620px){header.top{grid-template-columns:1fr}.who{justify-items:start;text-align:left}}
+
+/* ---------- the wall ---------- */
+.wall-wrap{position:relative;border:3px solid #000;background:#000;box-shadow:8px 8px 0 var(--watch)}
+.wall-wrap svg{display:block;width:100%;height:auto}
+.wall-cap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center;padding:8px 12px;background:#000;border-top:1px solid #333;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wall-cap span b{color:#fff}
+.hot{cursor:pointer;outline:none}
+.hot .lbl{font-family:var(--f-head);font-size:34px;letter-spacing:2px;fill:#fff;opacity:.95;pointer-events:none}
+.hot .num{font-family:var(--f-mono);font-size:18px;font-weight:700;fill:#000}
+.hot .numbg{fill:var(--g);stroke:#000;stroke-width:3}
+.hot:hover .numbg,.hot:focus-visible .numbg,.hot.lit .numbg{fill:#fff}
+.hot:focus-visible .ring,.hot.lit .ring{stroke:#fff;stroke-dasharray:8 6}
+.hot .ring{fill:transparent;stroke:transparent;stroke-width:3}
+.hot .cnt{font-family:var(--f-mono);font-size:13px;fill:#fff}
+.paint{opacity:calc(.10 + .9*var(--k,0));transform-box:fill-box;transform-origin:center;transform:scale(calc(.55 + .45*var(--k,0)));transition:opacity .6s,transform .6s}
+.drip{transform-box:fill-box;transform-origin:top;transform:scaleY(var(--k,0));transition:transform .8s}
+.tube{animation:flick 7s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.35}94%{opacity:1}96%{opacity:.6}97%{opacity:1}}
+.screen-glow{animation:glow 3s ease-in-out infinite alternate}
+@keyframes glow{from{opacity:.55}to{opacity:1}}
+
+/* ---------- magpie row ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.magpie{display:grid;grid-template-columns:190px minmax(0,1fr);gap:14px;align-items:end;align-content:end;background:var(--card);border:2px solid var(--line);padding:16px}
+.magpie-img{width:190px;height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.6))}
+.magpie-img.fly{animation:fly 1.7s ease-in-out}
+@keyframes fly{0%{transform:translate(0,0) scale(1)}40%{transform:translate(70vw,-70px) scale(.5);opacity:0}60%{transform:translate(70vw,-70px) scale(.5);opacity:0}100%{transform:translate(0,0) scale(1);opacity:1}}
+.bubble{position:relative;background:#fff;color:#000;border:3px solid #000;padding:14px 16px;font-family:var(--f-mark);font-size:1.12rem;line-height:1.35;min-height:84px;box-shadow:5px 5px 0 #000}
+.bubble::after{content:"";position:absolute;left:-18px;bottom:16px;border:9px solid transparent;border-right:12px solid #000;border-left:0}
+.bubble .nm{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-bottom:4px}
+.side{display:grid;gap:14px}
+.card{background:var(--card);border:2px solid var(--line);padding:16px 18px;display:grid;gap:10px}
+.card h2{font-size:1.5rem}
+.cover{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+.cover .pct{font-family:var(--f-head);font-size:3.2rem;line-height:1;color:#fff}
+.cover .pct small{font-size:1.2rem;color:var(--muted);margin-left:2px}
+.roller{height:22px;border:2px solid #000;background:#0b0b0e;position:relative;overflow:hidden}
+.roller i{position:absolute;inset:0;width:var(--w,0%);background:repeating-linear-gradient(90deg,var(--enter) 0 16.6%,var(--watch) 0 33.3%,var(--listen) 0 50%,var(--read) 0 66.6%,var(--do) 0 83.3%,var(--apply) 0 100%);transition:width .6s}
+.palette{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:34px;height:34px;border:2px solid #000;background:#2a2a32;display:grid;place-items:center;font-family:var(--f-mono);font-size:.68rem;color:#777;position:relative}
+.swatch.got{background:var(--g);color:#000;font-weight:700}
+.swatch.got::after{content:"";position:absolute;left:4px;bottom:-10px;width:5px;height:10px;background:var(--g);border:1px solid #000;border-top:0}
+.seg{display:inline-flex;border:2px solid #000;background:#000;gap:2px}
+.seg button{font:inherit;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em;background:#2a2a32;color:#ddd;border:0;padding:7px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--listen);color:#000;font-weight:700}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pickmsg{font-family:var(--f-mark);color:var(--listen);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:520px){.magpie{grid-template-columns:1fr;justify-items:center}.bubble::after{display:none}}
+
+/* ---------- the brief (half term) ---------- */
+.brief{position:relative;background:var(--paper);color:var(--ink);border:3px solid #000;padding:22px 24px 24px;transform:rotate(-.6deg);box-shadow:8px 8px 0 #000}
+.brief::before,.brief::after{content:"";position:absolute;top:-12px;width:90px;height:24px;background:rgba(232,255,42,.85);transform:rotate(-4deg)}
+.brief::before{left:30px}.brief::after{right:40px;transform:rotate(5deg)}
+.brief .eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#444}
+.brief h2{font-size:2.2rem;line-height:1}
+.brief .due{font-family:var(--f-mark);font-size:1.05rem;color:#b4001e}
+.brief .lede{margin:6px 0 14px}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.leg{display:grid;gap:8px;border:2px dashed #555;padding:12px;background:#fff}
+.leg.done{border-style:solid;border-color:#000;background:#eaffdc}
+.leg .lh{display:flex;align-items:center;gap:8px}
+.leg .lno{width:30px;height:30px;border:2px solid #000;background:#000;color:#fff;font-family:var(--f-head);display:grid;place-items:center;font-size:1.1rem}
+.leg.done .lno{background:var(--do);color:#000}
+.leg .step{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#444}
+.leg p{margin:0;font-size:.95rem}
+.brief .rec{color:#000;background:#fff}
+
+/* ---------- zones ---------- */
+.section-h{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px}
+.section-h h2{font-size:clamp(2rem,5vw,3rem);line-height:1}
+.section-h .eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-family:var(--f-mono);font-size:.78rem;display:inline-flex;align-items:center;gap:7px;border:2px solid var(--g,#555);background:#000;color:#fff;padding:6px 11px;cursor:pointer}
+.chip i{font-style:normal;background:var(--g,#555);color:#000;font-weight:700;padding:0 5px}
+.chip b{color:var(--muted);font-weight:400}
+.chip[aria-pressed="true"]{background:var(--g,#fff);color:#000}
+.chip[aria-pressed="true"] b{color:#000}
+.chip.go{border-style:dashed}
+.zones{display:grid;gap:22px}
+.zone{border:2px solid var(--g);background:var(--card);position:relative;padding:16px 18px 18px}
+.zone.off{display:none}
+.zone.flash{box-shadow:0 0 0 4px var(--g)}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;margin-bottom:12px}
+.zone-head .ic{width:54px;height:54px;border:2px solid #000;background:var(--g);display:grid;place-items:center}
+.zone-head .ic svg{width:40px;height:40px}
+.zone-head .nm{font-family:var(--f-head);font-size:1.7rem;line-height:1;text-transform:uppercase}
+.zone-head .verb{display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+.zone-head .n{font-family:var(--f-mono);font-size:.9rem;color:var(--muted)}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;display:grid;gap:4px;align-content:start;background:#fff;color:#000;border:2px solid #000;padding:10px 12px 12px;cursor:pointer;min-height:110px;box-shadow:3px 3px 0 var(--g);transition:transform .08s}
+.rec:nth-child(3n+1){transform:rotate(-1deg)} .rec:nth-child(3n+2){transform:rotate(.7deg)} .rec:nth-child(3n){transform:rotate(-.4deg)}
+.rec:hover,.rec:focus-visible{transform:rotate(0) translate(-2px,-2px);box-shadow:5px 5px 0 var(--g);outline:none}
+.rec .no{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;color:#666}
+.rec .nm{font-weight:700;line-height:1.2;font-size:.98rem}
+.rec .t{font-family:var(--f-mono);font-size:.72rem;color:#444}
+.rec .stamp{position:absolute;right:6px;bottom:6px;font-family:var(--f-head);font-size:.95rem;letter-spacing:.08em;padding:1px 7px;border:2px solid var(--g);color:var(--g);transform:rotate(-8deg);opacity:0}
+.rec.done{background:#101014;color:#fff;border-color:var(--g)}
+.rec.done .no,.rec.done .t{color:#bbb}
+.rec.done .nm{text-decoration:line-through;text-decoration-color:var(--g);text-decoration-thickness:3px}
+.rec.done .stamp{opacity:1;background:#000}
+.rec.new::before{content:"NEW";position:absolute;left:-8px;top:-10px;background:var(--listen);color:#000;font-family:var(--f-mono);font-size:.62rem;font-weight:700;padding:2px 6px;border:2px solid #000;transform:rotate(-6deg)}
+.rec.flash{box-shadow:0 0 0 4px var(--listen)}
+
+/* ---------- gig poster (the year) ---------- */
+.poster{background:#fff;color:#000;border:3px solid #000;padding:22px clamp(14px,3vw,34px) 26px;box-shadow:8px 8px 0 var(--enter)}
+.poster .ptop{text-align:center;border-bottom:4px solid #000;padding-bottom:10px;margin-bottom:10px}
+.poster .ptop h2{font-size:clamp(2.6rem,8vw,5rem);line-height:.9}
+.poster .ptop .sub{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase}
+.months{display:grid;gap:0}
+.month{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;border-bottom:2px solid #000;padding:10px 0}
+.month .mh{font-family:var(--f-head);font-size:1.6rem;line-height:1;text-transform:uppercase;align-self:start}
+.month .mh small{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;color:#666;text-transform:uppercase;margin-top:4px}
+.month.quiet .mh{color:#999}
+.evs{display:grid;gap:8px}
+.ev{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;border-left:6px solid var(--g);padding:4px 10px}
+.ev .when{font-family:var(--f-mono);font-size:.74rem;font-weight:700;letter-spacing:.04em;min-width:90px}
+.ev b{display:block;font-size:.98rem;line-height:1.2}
+.ev .sub{display:block;font-size:.84rem;color:#444}
+.ev .check{display:inline-block;margin-left:6px;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid #000;padding:0 5px}
+.ev .in{display:block;font-family:var(--f-mark);color:#1c7f3a;font-size:.9rem}
+.ev .open{font:inherit;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:#000;color:#fff;border:0;padding:6px 10px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.poster .quiet-note{font-family:var(--f-mark);color:#555;font-size:.95rem}
+@media (max-width:600px){.month{grid-template-columns:1fr;gap:6px}.ev{grid-template-columns:1fr}.ev .open{justify-self:start}}
+
+/* ---------- the black book (sketchbook) ---------- */
+.book{background:#0c0c0f;border:3px solid #000;box-shadow:8px 8px 0 var(--listen);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0}
+.book .cover-side{padding:26px 24px;border-right:3px solid #222;display:grid;gap:12px;align-content:start;background:linear-gradient(135deg,#17171c,#0c0c0f)}
+.book .tape{display:inline-block;background:#e8e0c8;color:#000;font-family:var(--f-mark);font-size:1.3rem;padding:6px 14px;transform:rotate(-2deg);justify-self:start}
+.book h2{font-size:2.4rem;line-height:1}
+.book .cover-side p{margin:0;color:var(--muted)}
+.book form{display:grid;gap:10px}
+.book .field input,.book .field textarea{background:#fff;color:#000}
+.book .entries{padding:22px 24px;display:grid;gap:14px;align-content:start;background:#0c0c0f}
+.note{background:#fff;color:#000;padding:12px 14px;border:2px solid #000;position:relative;transform:rotate(.4deg)}
+.note:nth-child(even){transform:rotate(-.5deg)}
+.note.example{opacity:.75;border-style:dashed}
+.note header{display:flex;justify-content:space-between;gap:10px;align-items:baseline;border-bottom:2px solid #000;padding-bottom:4px;margin-bottom:6px}
+.note h3{font-family:var(--f-mark);font-size:1.1rem;line-height:1.2}
+.note .d{font-family:var(--f-mono);font-size:.68rem;color:#666;white-space:nowrap}
+.note dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:.95rem}
+.note dt{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#666;padding-top:3px}
+.note dd{margin:0;font-family:var(--f-mark);font-size:1rem;line-height:1.3}
+.del{font:inherit;font-size:.74rem;background:none;border:0;color:#777;text-decoration:underline;cursor:pointer;padding:0;margin-top:6px}
+.del.arm{color:#b4001e;font-weight:700}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:120px;font-family:var(--f-mono);font-size:.8rem}
+@media (max-width:820px){.book{grid-template-columns:1fr}.book .cover-side{border-right:0;border-bottom:3px solid #222}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:20}
+.sheet{position:fixed;z-index:21;left:50%;top:50%;transform:translate(-50%,-50%);width:min(680px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:#fff;color:#000;border:3px solid #000;box-shadow:10px 10px 0 var(--g)}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start;padding:16px 18px;background:var(--g);color:#000;border-bottom:3px solid #000}
+.sheet-top .fam{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.sheet-top h3{font-family:var(--f-head);font-size:1.7rem;line-height:1.05;text-transform:uppercase;margin-top:2px}
+.plate-ic{width:54px;height:54px;border:2px solid #000;background:#fff;display:grid;place-items:center}
+.plate-ic svg{width:40px;height:40px}
+.sheet-body{padding:18px;display:grid;gap:14px}
+.sheet-body .lab{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#666}
+.sheet-body p{margin:4px 0 0}
+.think{background:#f3efe6;border-left:6px solid #000;padding:10px 14px;font-family:var(--f-mark);font-size:1.05rem;line-height:1.35}
+.think b{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1.5px solid #000;padding:2px 8px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.sheet .small{color:#555}
+
+/* ---------- footer ---------- */
+footer{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-head);text-transform:uppercase;letter-spacing:.06em;font-size:1rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--listen);color:#000;border:3px dashed #000;padding:12px 16px;font-size:.95rem}
+.demo .btn{box-shadow:3px 3px 0 #000}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-family:var(--f-head);text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;border:2px solid #000;padding:11px 18px;cursor:pointer;background:var(--enter);color:#000;box-shadow:4px 4px 0 #000}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:21;right:0;top:0;bottom:0;width:min(520px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:3px solid #000}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#000;color:#fff}
+.fb-top .x{color:#fff}
+.fb-body{display:grid;gap:12px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-body .small{color:#444}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.86rem;border:2px solid #000;background:#fff;color:#000;padding:5px 11px;cursor:pointer}
+.fb-chips button[aria-pressed="true"]{background:var(--enter)}
+.fb .seg{background:#000}
+.fb .seg button{background:#fff;color:#000}
+.fb .seg button[aria-pressed="true"]{background:var(--listen)}
+.dept{background:#000;color:#fff;border:3px solid var(--watch);padding:18px 20px;display:grid;gap:8px}
+.dept h2{font-size:1.7rem;color:var(--watch)}
+.dept p{margin:0;color:#ddd}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:#141418;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(255,45,149,.18),transparent 45%),radial-gradient(ellipse at 90% 10%,rgba(25,230,255,.14),transparent 40%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(800px,100%);background:var(--paper);color:var(--ink);border:3px solid #000;box-shadow:10px 10px 0 var(--enter);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:26px 28px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.05}
+.intro-txt p,.intro-txt li{margin:0;font-size:.98rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:var(--listen);color:#000;border:2px dashed #000;padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.7);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:4px dashed var(--listen);pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(600px,calc(100vw - 32px));background:#fff;color:#000;border:3px solid #000;box-shadow:8px 8px 0 var(--listen);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:70px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#666}
+.tour-card h3{font-family:var(--f-head);text-transform:uppercase;font-size:1.4rem;margin:2px 0 4px}
+.tour-card p{margin:0;font-size:.98rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:#555;text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;background:#ccc}.tour-dots i.on{background:#000}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:22;background:#f3efe6;overflow:auto;color:#000}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:#000;color:#fff;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:#fff;margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:#ccc}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:#fff;border:2px solid #000;padding:12px 14px;display:grid;gap:2px}
+.tl b{font-family:var(--f-head);font-size:2rem;line-height:1}
+.tl span{font-size:.84rem;color:#555}
+.dcard{background:#fff;border:2px solid #000;padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-family:var(--f-head);text-transform:uppercase;font-size:1.3rem}
+.dcard .small{color:#555}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid #ddd;vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;font-weight:400}
+.dt tr.you td{background:#fff8b0}
+.dt .meter{display:inline-block;width:90px;height:8px;background:#e6e6e6;vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--enter)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:2px 7px;color:#000;background:var(--g,#ccc);margin:1px 2px 1px 0}
+.you-tag{font-family:var(--f-mono);font-size:.66rem;background:#000;color:#fff;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-family:var(--f-mark);font-size:1.05rem;line-height:1.35;border-left:4px solid #000;padding:4px 10px;margin:4px 0}
+.dv{font-family:var(--f-head);font-size:1.1rem}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid #000;margin-right:2px;vertical-align:middle;background:#ddd}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The magpie, drawn once and reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b4fd8"/><stop offset=".5" stop-color="#17a89b"/><stop offset="1" stop-color="#0a0a0f"/></linearGradient>
+    <symbol id="magpie" viewBox="0 0 220 200">
+      <!-- tail -->
+      <path d="M118 128 L212 176 L206 184 L112 142 Z" fill="url(#sheen)"/>
+      <path d="M116 132 L200 190 L192 194 L110 146 Z" fill="#0a0a0f"/>
+      <!-- body -->
+      <ellipse cx="96" cy="118" rx="54" ry="38" fill="#0a0a0f"/>
+      <!-- white belly -->
+      <path d="M48 124 Q70 160 118 150 Q130 132 112 118 Q86 110 48 124Z" fill="#fff"/>
+      <!-- wing -->
+      <path d="M78 96 Q130 84 156 116 Q132 128 100 126 Q82 118 78 96Z" fill="url(#sheen)"/>
+      <path d="M96 108 Q128 104 148 118 Q128 122 104 120Z" fill="#fff" opacity=".9"/>
+      <!-- head -->
+      <circle cx="56" cy="84" r="26" fill="#0a0a0f"/>
+      <!-- beak -->
+      <path d="M34 82 L8 90 L34 96 Z" fill="#2b2b33"/>
+      <path d="M34 90 L8 90 L34 96Z" fill="#101014"/>
+      <!-- eye -->
+      <circle cx="48" cy="80" r="6" fill="#fff"/><circle cx="46" cy="80" r="3.2" fill="#000"/><circle cx="44.5" cy="78.5" r="1.1" fill="#fff"/>
+      <!-- legs -->
+      <path d="M88 154 L84 180 M80 180 L92 180 M106 154 L108 180 M102 180 L116 180" stroke="#555" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <!-- something shiny in the beak -->
+      <g class="shiny"><path d="M10 90 l6 -8 6 8 -6 8z" fill="#e8ff2a" stroke="#000" stroke-width="1"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 220 200" aria-hidden="true"><use href="#magpie"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge" style="background:transparent;padding:0;border:0"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge" style="background:transparent;padding:0;border:0"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Art"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="galleries">Galleries and exhibitions</button><button type="button" data-v="artists">Artist talks and interviews</button><button type="button" data-v="arthistory">Art history</button><button type="button" data-v="technique">Technique and materials</button><button type="button" data-v="portfolio">Art school and portfolio</button><button type="button" data-v="local">Local and Birmingham</button><button type="button" data-v="summer">Summer schools</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the underpass, the magpie, painting the wall. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange" class="plain"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack" class="plain"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (dates, links, wording)?</label><textarea id="fbWrong" class="plain"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button><button type="button" class="btn ghost" id="fbComment" hidden>Comment on the page instead</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 220 200" aria-hidden="true"><use href="#magpie"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Art · The Underpass · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your sixth-form artists.</h2>
+      <p>It is a working copy of the page a pupil would use: 37 free things to enter, watch, listen to, read, do and apply for, laid out as one wall in an underpass with six parts. The pupil paints the wall as they go, and a magpie keeps track and fetches things for them. Everything they do saves to the department, and there is a teacher dashboard so you can see who has done what.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <span class="badge"><i></i>Art · Beyond the classroom</span>
+    <h1 class="head" id="gateH">The<br>Underpass</h1>
+    <p>A wall of free things for A-level Fine Art: exhibitions to draw in, talks, podcasts, reading, competitions and summer schools. You paint the wall as you go, and the magpie keeps track. Everything you do saves to the department.</p>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small" style="color:#444">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Into the underpass</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the Art department.</b> This is the working pupil page: sign in with any name, mark things done, write in the black book, send the magpie. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" style="background:var(--enter)" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Art · Beyond the classroom</span>
+      <h1 class="head">The Underpass<span>Fine Art</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE WALL ===== -->
+  <section class="wall-wrap" aria-label="The underpass wall: six places to click">
+    <svg viewBox="0 0 1200 600" role="group" aria-label="An underpass wall with six places">
+      <defs>
+        <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .14 0"/></filter>
+        <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+        <filter id="blur2"><feGaussianBlur stdDeviation="3"/></filter>
+        <pattern id="slats" width="12" height="14" patternUnits="userSpaceOnUse"><rect width="12" height="14" fill="#8a8a94"/><rect y="9" width="12" height="5" fill="#5c5c66"/></pattern>
+        <pattern id="halftone" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.6" fill="#000" opacity=".35"/></pattern>
+      </defs>
+      <!-- wall + grain -->
+      <rect width="1200" height="600" fill="#2a2a31"/>
+      <rect width="1200" height="600" fill="#fff" filter="url(#grain)" opacity=".5"/>
+      <!-- blocks -->
+      <g stroke="#1e1e24" stroke-width="2" fill="none" opacity=".7">
+        <path d="M0 150H1200M0 230H1200M0 310H1200M0 390H1200M0 470H1200"/>
+        <path d="M80 70V150M240 70V150M400 70V150M560 70V150M720 70V150M880 70V150M1040 70V150M160 150V230M320 150V230M480 150V230M640 150V230M800 150V230M960 150V230M1120 150V230M80 230V310M240 230V310M400 230V310M560 230V310M720 230V310M880 230V310M1040 230V310M160 310V390M320 310V390M480 310V390M640 310V390M800 310V390M960 310V390M1120 310V390M80 390V470M240 390V470M400 390V470M560 390V470M720 390V470M880 390V470M1040 390V470"/>
+      </g>
+      <!-- old tags on the wall (original) -->
+      <g font-family="Permanent Marker, cursive" fill="none" stroke="#4a4a55" stroke-width="2" opacity=".8">
+        <text x="330" y="200" font-size="42" transform="rotate(-6 330 200)">look up</text>
+        <text x="770" y="215" font-size="28" transform="rotate(4 770 215)">draw it first</text>
+        <text x="520" y="270" font-size="26" transform="rotate(-3 520 270)">AO1 ↑</text>
+      </g>
+      <!-- ceiling and light -->
+      <rect width="1200" height="56" fill="#121216"/>
+      <rect x="0" y="56" width="1200" height="8" fill="#0b0b0e"/>
+      <rect x="320" y="28" width="560" height="60" fill="#e8ff2a" opacity=".18" filter="url(#blur)"/>
+      <rect class="tube" x="330" y="38" width="540" height="10" rx="5" fill="#f8fff0"/>
+      <path d="M340 48 L300 120 M860 48 L900 120" stroke="#e8ff2a" stroke-width="1" opacity=".25"/>
+      <!-- pipe -->
+      <rect x="0" y="66" width="1200" height="10" fill="#45454e"/><rect x="0" y="74" width="1200" height="3" fill="#2b2b31"/>
+      <!-- pavement -->
+      <rect y="500" width="1200" height="100" fill="#35353c"/>
+      <rect y="500" width="1200" height="6" fill="#55555e"/>
+      <rect y="500" width="1200" height="100" fill="#fff" filter="url(#grain)" opacity=".35"/>
+      <ellipse cx="640" cy="565" rx="110" ry="14" fill="#1a1a22" opacity=".9"/>
+      <ellipse cx="640" cy="563" rx="90" ry="8" fill="#19e6ff" opacity=".12"/>
+      <path d="M0 560 Q 300 556 600 560 T 1200 560" stroke="#2a2a31" stroke-width="2" fill="none"/>
+
+      <!-- ===== paint patches: one per zone, filled in as the pupil works ===== -->
+      <g id="paint-enter" class="paint" data-g="enter" style="--k:0"><ellipse cx="185" cy="280" rx="150" ry="170" fill="var(--enter)" opacity=".55" filter="url(#blur)"/><ellipse cx="185" cy="280" rx="150" ry="170" fill="url(#halftone)"/></g>
+      <g id="paint-watch" class="paint" data-g="watch" style="--k:0"><ellipse cx="430" cy="300" rx="110" ry="150" fill="var(--watch)" opacity=".5" filter="url(#blur)"/><ellipse cx="430" cy="300" rx="110" ry="150" fill="url(#halftone)"/></g>
+      <g id="paint-listen" class="paint" data-g="listen" style="--k:0"><ellipse cx="650" cy="300" rx="110" ry="150" fill="var(--listen)" opacity=".5" filter="url(#blur)"/><ellipse cx="650" cy="300" rx="110" ry="150" fill="url(#halftone)"/></g>
+      <g id="paint-read" class="paint" data-g="read" style="--k:0"><ellipse cx="835" cy="300" rx="90" ry="150" fill="var(--read)" opacity=".55" filter="url(#blur)"/><ellipse cx="835" cy="300" rx="90" ry="150" fill="url(#halftone)"/></g>
+      <g id="paint-do" class="paint" data-g="do" style="--k:0"><ellipse cx="995" cy="300" rx="80" ry="150" fill="var(--do)" opacity=".5" filter="url(#blur)"/><ellipse cx="995" cy="300" rx="80" ry="150" fill="url(#halftone)"/></g>
+      <g id="paint-apply" class="paint" data-g="apply" style="--k:0"><ellipse cx="1130" cy="300" rx="70" ry="170" fill="var(--apply)" opacity=".55" filter="url(#blur)"/><ellipse cx="1130" cy="300" rx="70" ry="170" fill="url(#halftone)"/></g>
+      <!-- drips -->
+      <g id="drips">
+        <rect class="drip" data-g="enter" x="150" y="400" width="6" height="90" fill="var(--enter)" style="--k:0"/><rect class="drip" data-g="enter" x="230" y="420" width="4" height="70" fill="var(--enter)" style="--k:0"/>
+        <rect class="drip" data-g="watch" x="470" y="420" width="5" height="70" fill="var(--watch)" style="--k:0"/>
+        <rect class="drip" data-g="listen" x="610" y="430" width="5" height="60" fill="var(--listen)" style="--k:0"/><rect class="drip" data-g="listen" x="690" y="440" width="4" height="50" fill="var(--listen)" style="--k:0"/>
+        <rect class="drip" data-g="read" x="860" y="430" width="5" height="60" fill="var(--read)" style="--k:0"/>
+        <rect class="drip" data-g="do" x="1010" y="420" width="5" height="70" fill="var(--do)" style="--k:0"/>
+        <rect class="drip" data-g="apply" x="1150" y="440" width="4" height="50" fill="var(--apply)" style="--k:0"/>
+      </g>
+
+      <!-- ===== 1 ENTER · the flyposting ===== -->
+      <g class="hot" data-f="enter" data-g="enter" tabindex="0" role="button" aria-label="1, the flyposting: competitions to enter">
+        <rect class="ring" x="60" y="100" width="250" height="390" rx="6"/>
+        <g transform="rotate(-5 180 250)"><rect x="90" y="150" width="150" height="200" fill="#efe6d2"/><rect x="100" y="160" width="130" height="30" fill="#000"/><rect x="100" y="200" width="90" height="8" fill="#555"/><rect x="100" y="216" width="110" height="8" fill="#555"/><rect x="100" y="232" width="70" height="8" fill="#555"/></g>
+        <g transform="rotate(4 230 300)"><rect x="150" y="210" width="140" height="190" fill="#ff2d95"/><rect x="160" y="222" width="120" height="120" fill="#fff" opacity=".9"/><circle cx="220" cy="282" r="40" fill="#000"/><rect x="160" y="352" width="100" height="10" fill="#000"/></g>
+        <g transform="rotate(-9 150 400)"><rect x="90" y="330" width="120" height="150" fill="#e8ff2a"/><path d="M90 330 l15 10 -12 12 14 11 -10 13 12 12 -9 14 11 12 -10 14 10 12 -11 20" fill="none" stroke="#2a2a31" stroke-width="6"/><rect x="110" y="350" width="80" height="14" fill="#000"/><rect x="110" y="372" width="60" height="8" fill="#000"/><rect x="110" y="388" width="70" height="8" fill="#000"/></g>
+        <path d="M240 150 l30 -6 -8 22z M100 470 l-20 6 8 -20z" fill="#efe6d2" opacity=".8"/>
+        <text class="lbl" x="106" y="130">ENTER</text>
+        <circle class="numbg" cx="80" cy="118" r="18"/><text class="num" x="80" y="125" text-anchor="middle">1</text>
+        <text class="cnt" id="cnt-enter" x="290" y="482" text-anchor="end"></text>
+      </g>
+
+      <!-- ===== 2 WATCH · the telly ===== -->
+      <g class="hot" data-f="watch" data-g="watch" tabindex="0" role="button" aria-label="2, the telly: talks and lectures to watch">
+        <rect class="ring" x="330" y="100" width="200" height="390" rx="6"/>
+        <path d="M425 320 l-30 -60 M435 320 l40 -70" stroke="#999" stroke-width="4" stroke-linecap="round"/>
+        <rect x="350" y="318" width="170" height="150" rx="12" fill="#cfc9bd" stroke="#000" stroke-width="3"/>
+        <rect x="364" y="332" width="118" height="98" rx="8" fill="#0d0d12"/>
+        <rect class="screen-glow" x="364" y="332" width="118" height="98" rx="8" fill="#19e6ff" opacity=".55" filter="url(#blur2)"/>
+        <g font-family="Space Mono, monospace" font-size="12" fill="#0d0d12"><text x="372" y="360">▶ PLAY</text></g>
+        <rect x="492" y="340" width="18" height="18" rx="9" fill="#333"/><rect x="492" y="366" width="18" height="18" rx="9" fill="#333"/><rect x="492" y="392" width="18" height="30" rx="3" fill="#333"/>
+        <rect x="360" y="468" width="30" height="24" fill="#8a8a94"/><rect x="480" y="468" width="30" height="24" fill="#8a8a94"/>
+        <text class="lbl" x="376" y="130">WATCH</text>
+        <circle class="numbg" cx="350" cy="118" r="18"/><text class="num" x="350" y="125" text-anchor="middle">2</text>
+        <text class="cnt" id="cnt-watch" x="520" y="482" text-anchor="end"></text>
+      </g>
+
+      <!-- ===== 3 LISTEN · the boombox ===== -->
+      <g class="hot" data-f="listen" data-g="listen" tabindex="0" role="button" aria-label="3, the boombox: podcasts to listen to">
+        <rect class="ring" x="550" y="100" width="200" height="390" rx="6"/>
+        <rect x="565" y="456" width="170" height="44" fill="#6b4a2a" stroke="#000" stroke-width="3"/><path d="M565 478h170" stroke="#3a2816" stroke-width="3"/>
+        <path d="M600 352 q50 -40 100 0" stroke="#999" stroke-width="5" fill="none"/>
+        <rect x="560" y="352" width="180" height="104" rx="10" fill="#2b2b33" stroke="#000" stroke-width="3"/>
+        <circle cx="600" cy="404" r="30" fill="#111" stroke="#777" stroke-width="3"/><circle cx="600" cy="404" r="12" fill="#333"/>
+        <circle cx="700" cy="404" r="30" fill="#111" stroke="#777" stroke-width="3"/><circle cx="700" cy="404" r="12" fill="#333"/>
+        <rect x="636" y="372" width="28" height="36" rx="3" fill="#e8ff2a"/><rect x="640" y="378" width="20" height="4" fill="#000"/><rect x="640" y="386" width="20" height="4" fill="#000"/>
+        <rect x="636" y="416" width="28" height="18" rx="2" fill="#555"/>
+        <g fill="#e8ff2a"><rect x="610" y="440" width="4" height="8"/><rect x="618" y="434" width="4" height="14"/><rect x="626" y="438" width="4" height="10"/><rect x="674" y="436" width="4" height="12"/><rect x="682" y="442" width="4" height="6"/></g>
+        <text class="lbl" x="596" y="130">LISTEN</text>
+        <circle class="numbg" cx="570" cy="118" r="18"/><text class="num" x="570" y="125" text-anchor="middle">3</text>
+        <text class="cnt" id="cnt-listen" x="740" y="482" text-anchor="end"></text>
+      </g>
+
+      <!-- ===== 4 READ · the railing ===== -->
+      <g class="hot" data-f="read" data-g="read" tabindex="0" role="button" aria-label="4, the railing: books and sites to read">
+        <rect class="ring" x="765" y="100" width="150" height="390" rx="6"/>
+        <rect x="770" y="280" width="140" height="8" fill="#55555e"/><rect x="770" y="500" width="140" height="6" fill="#444"/>
+        <g fill="#55555e"><rect x="780" y="280" width="6" height="220"/><rect x="812" y="280" width="6" height="220"/><rect x="844" y="280" width="6" height="220"/><rect x="876" y="280" width="6" height="220"/><rect x="904" y="280" width="6" height="220"/></g>
+        <g transform="rotate(-8 800 340)"><rect x="774" y="300" width="42" height="60" fill="#ff6a1f" stroke="#000" stroke-width="2"/><rect x="780" y="310" width="30" height="6" fill="#000"/><rect x="780" y="322" width="22" height="4" fill="#000"/></g>
+        <g transform="rotate(6 860 370)"><rect x="836" y="330" width="48" height="66" fill="#fff" stroke="#000" stroke-width="2"/><rect x="842" y="338" width="36" height="36" fill="#ff2d95"/><rect x="842" y="380" width="26" height="4" fill="#000"/></g>
+        <g transform="rotate(-4 820 430)"><rect x="796" y="400" width="52" height="58" fill="#19e6ff" stroke="#000" stroke-width="2"/><rect x="802" y="410" width="40" height="6" fill="#000"/><rect x="802" y="422" width="30" height="4" fill="#000"/><rect x="802" y="432" width="36" height="4" fill="#000"/></g>
+        <g transform="rotate(10 880 450)"><rect x="858" y="420" width="44" height="62" fill="#e8ff2a" stroke="#000" stroke-width="2"/><circle cx="880" cy="450" r="12" fill="#000"/></g>
+        <g stroke="#fff" stroke-width="2" fill="none"><path d="M790 300 q-10 4 0 8M850 330 q8 4 0 8M820 400 q-8 4 0 8"/></g>
+        <text class="lbl" x="810" y="130">READ</text>
+        <circle class="numbg" cx="785" cy="118" r="18"/><text class="num" x="785" y="125" text-anchor="middle">4</text>
+        <text class="cnt" id="cnt-read" x="908" y="482" text-anchor="end"></text>
+      </g>
+
+      <!-- ===== 5 DO · the cans ===== -->
+      <g class="hot" data-f="do" data-g="do" tabindex="0" role="button" aria-label="5, the cans: galleries to draw in and things to make">
+        <rect class="ring" x="925" y="100" width="140" height="390" rx="6"/>
+        <!-- stencil on the wall (original mark) -->
+        <g transform="translate(955 230)"><circle cx="40" cy="40" r="44" fill="#7cff4a" opacity=".25" filter="url(#blur2)"/><path d="M40 6 L74 40 L40 74 L6 40 Z" fill="none" stroke="#7cff4a" stroke-width="6"/><path d="M26 40 h28 M40 26 v28" stroke="#7cff4a" stroke-width="6"/></g>
+        <!-- cans -->
+        <g stroke="#000" stroke-width="2"><rect x="938" y="430" width="24" height="68" rx="4" fill="#7cff4a"/><rect x="938" y="430" width="24" height="12" fill="#bbb"/><rect x="946" y="420" width="8" height="10" fill="#333"/>
+          <rect x="968" y="440" width="24" height="58" rx="4" fill="#ff2d95"/><rect x="968" y="440" width="24" height="12" fill="#bbb"/><rect x="976" y="430" width="8" height="10" fill="#333"/>
+          <g transform="rotate(80 1030 480)"><rect x="1018" y="440" width="24" height="60" rx="4" fill="#19e6ff"/><rect x="1018" y="440" width="24" height="12" fill="#bbb"/><rect x="1026" y="430" width="8" height="10" fill="#333"/></g>
+          <rect x="1000" y="452" width="24" height="46" rx="4" fill="#e8ff2a"/><rect x="1000" y="452" width="24" height="12" fill="#bbb"/><rect x="1008" y="442" width="8" height="10" fill="#333"/></g>
+        <path d="M1035 400 q-20 -10 -12 -30" stroke="#7cff4a" stroke-width="3" fill="none" stroke-dasharray="2 5"/>
+        <text class="lbl" x="970" y="130">DO</text>
+        <circle class="numbg" cx="945" cy="118" r="18"/><text class="num" x="945" y="125" text-anchor="middle">5</text>
+        <text class="cnt" id="cnt-do" x="1060" y="482" text-anchor="end"></text>
+      </g>
+
+      <!-- ===== 6 APPLY · the shutter ===== -->
+      <g class="hot" data-f="apply" data-g="apply" tabindex="0" role="button" aria-label="6, the shutter: summer schools and courses to apply for">
+        <rect class="ring" x="1075" y="100" width="120" height="390" rx="6"/>
+        <rect x="1080" y="140" width="110" height="360" fill="url(#slats)" stroke="#000" stroke-width="3"/>
+        <rect x="1076" y="130" width="118" height="14" fill="#333" stroke="#000" stroke-width="2"/>
+        <g stroke="#000" stroke-width="1.5"><rect x="1092" y="200" width="44" height="30" rx="6" fill="#b388ff" transform="rotate(-10 1114 215)"/><rect x="1130" y="260" width="40" height="40" rx="20" fill="#e8ff2a" transform="rotate(8 1150 280)"/><rect x="1090" y="320" width="50" height="26" rx="4" fill="#fff" transform="rotate(5 1115 333)"/><rect x="1128" y="380" width="36" height="36" rx="4" fill="#ff2d95" transform="rotate(-14 1146 398)"/><rect x="1094" y="420" width="44" height="22" rx="11" fill="#19e6ff" transform="rotate(-4 1116 431)"/></g>
+        <rect x="1130" y="460" width="24" height="10" fill="#222"/>
+        <text class="lbl" x="1114" y="128" font-size="22">APPLY</text>
+        <circle class="numbg" cx="1095" cy="118" r="18"/><text class="num" x="1095" y="125" text-anchor="middle">6</text>
+        <text class="cnt" id="cnt-apply" x="1190" y="482" text-anchor="end"></text>
+      </g>
+    </svg>
+    <div class="wall-cap"><span>Click a number to jump to that part of the wall</span><span>Wall covered: <b id="capPct">0%</b> · colours in your palette: <b id="capCol">0 / 6</b></span></div>
+  </section>
+
+  <!-- ===== MAGPIE + progress + pick ===== -->
+  <section class="crew" aria-label="The magpie, your progress, and pick one for me">
+    <div class="magpie">
+      <svg class="magpie-img" id="magpieImg" viewBox="0 0 220 200" aria-hidden="true"><use href="#magpie"/></svg>
+      <div class="bubble" role="status" aria-live="polite"><span class="nm">The magpie</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card cover-card">
+        <h2 class="head">Wall covered</h2>
+        <div class="cover"><div class="pct" id="pctVal">0<small>%</small></div>
+          <div><div class="roller" aria-hidden="true"><i id="roller"></i></div><p class="small" id="coverTxt" style="margin:6px 0 0"></p></div></div>
+        <div class="palette" id="palette" aria-label="Colours in your palette"></div>
+      </div>
+      <div class="card pick-card">
+        <h2 class="head">Send the magpie</h2>
+        <p class="small" style="margin:0">Say how long you have. It brings back one thing you have not done, and likes parts of the wall you have not touched.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">10 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Go on then</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE BRIEF (half term) ===== -->
+  <section class="brief route" aria-labelledby="startH">
+    <span class="eyebrow" id="htEyebrow"></span>
+    <h2 class="head" id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== ZONES ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 class="head" id="tableH">The whole wall</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a part of the wall"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one part of the wall"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE YEAR (gig poster) ===== -->
+  <section class="poster season" aria-labelledby="yearH">
+    <div class="ptop"><span class="sub">Tour dates · October 2026 – July 2027</span><h2 class="head" id="yearH">The year on one poster</h2><span class="sub">Deadlines, openings, windows · "check" = date not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== THE BLACK BOOK ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side">
+      <span class="tape" id="nbCover">Black book</span>
+      <h2 class="head" id="nbH">One entry per thing</h2>
+      <p>Date it. Say what it was. One thing you took from it, and one thing you would try because of it. This is what your annotations, your personal statement and your reference get built from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbWhat">What</label><input id="nbWhat" list="whatList" placeholder="talk, show, podcast, book…" required><datalist id="whatList"></datalist></div>
+        </div>
+        <div class="field"><label for="nbLearned">What I took from it</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">What I would try next (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">Stick it in</button><button class="btn ghost" type="button" id="copyBtn">Copy the book as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your notebook as text"></textarea>
+      </form>
+    </div>
+    <div class="entries" id="entries"></div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="head">What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each competition (your entry list for the RA show and Articulation, which go through school); how many of the half-term brief each pupil has done; how much of the wall each has painted and which parts are still grey; each black book as copyable text for references, personal statements and sketchbook annotation; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Art: the six parts of the wall, the brief, the dates, the magpie's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer>
+    Compiled 30 September 2026 · links checked then · AQA A-level Art and Design: Fine Art (7202) · Free at the point of use unless the card says otherwise
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+/* Six parts of the wall, left to right. */
+const FAM = {
+  enter:{label:"Enter", verb:"Competitions and prizes", place:"The flyposting", the:"the flyposting", no:1},
+  watch:{label:"Watch", verb:"Talks, lectures and workshops", place:"The telly", the:"the telly", no:2},
+  listen:{label:"Listen", verb:"Podcasts", place:"The boombox", the:"the boombox", no:3},
+  read:{label:"Read", verb:"Sites and books", place:"The railing", the:"the railing", no:4},
+  do:{label:"Do", verb:"Galleries, drawing, making", place:"The cans", the:"the cans", no:5},
+  apply:{label:"Apply", verb:"Summer schools, courses, open days", place:"The shutter", the:"the shutter", no:6}
+};
+const ICON = {
+  enter:`<svg viewBox="0 0 40 40"><rect x="6" y="4" width="22" height="30" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(-6 17 19)"/><rect x="14" y="10" width="22" height="28" fill="#000" transform="rotate(5 25 24)"/><rect x="18" y="16" width="14" height="4" fill="#fff"/><rect x="18" y="23" width="10" height="3" fill="#fff"/></svg>`,
+  watch:`<svg viewBox="0 0 40 40"><rect x="4" y="10" width="32" height="24" rx="4" fill="#000"/><rect x="8" y="14" width="20" height="16" rx="2" fill="#fff"/><path d="M15 17l8 5-8 5z" fill="#000"/><path d="M18 10l-6-7M22 10l6-7" stroke="#000" stroke-width="2"/></svg>`,
+  listen:`<svg viewBox="0 0 40 40"><rect x="3" y="12" width="34" height="22" rx="4" fill="#000"/><circle cx="12" cy="23" r="6" fill="#fff"/><circle cx="28" cy="23" r="6" fill="#fff"/><circle cx="12" cy="23" r="2" fill="#000"/><circle cx="28" cy="23" r="2" fill="#000"/><path d="M12 12q8-8 16 0" stroke="#000" stroke-width="2" fill="none"/></svg>`,
+  read:`<svg viewBox="0 0 40 40"><rect x="6" y="6" width="14" height="28" fill="#000" transform="rotate(-8 13 20)"/><rect x="18" y="8" width="16" height="26" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(6 26 21)"/><rect x="22" y="14" width="8" height="2" fill="#000"/><rect x="22" y="19" width="8" height="2" fill="#000"/></svg>`,
+  do:`<svg viewBox="0 0 40 40"><rect x="14" y="10" width="12" height="26" rx="2" fill="#000"/><rect x="14" y="10" width="12" height="6" fill="#fff" stroke="#000" stroke-width="2"/><rect x="18" y="4" width="4" height="6" fill="#000"/><circle cx="31" cy="8" r="3" fill="#000"/><circle cx="35" cy="14" r="2" fill="#000"/><circle cx="8" cy="30" r="2" fill="#000"/></svg>`,
+  apply:`<svg viewBox="0 0 40 40"><rect x="5" y="6" width="30" height="30" fill="#000"/><g fill="#fff"><rect x="8" y="10" width="24" height="3"/><rect x="8" y="16" width="24" height="3"/><rect x="8" y="22" width="24" height="3"/><rect x="8" y="28" width="24" height="3"/></g><circle cx="27" cy="19" r="6" fill="#fff" stroke="#000" stroke-width="2"/></svg>`
+};
+// mins drives the "Send the magpie" buckets: quick <= 20, evening <= 180, long > 180
+const ITEMS = [
+  // ---- 1 Enter · the flyposting
+  {s:"RA",g:"enter",short:"RA Young Artists' Summer Show",name:"Young Artists' Summer Show (Royal Academy of Arts)",mins:600,t:"one piece",
+   what:"Submit one piece of your own work, from any year, to a free national exhibition at the Royal Academy in London. More than 25,000 students took part in 2026. Selected work is shown in the gallery and online. The school registers and uploads; no late entries.",
+   think:"Pick the piece now and photograph it properly: flat, daylight, no shadow of you in it. The upload is the artwork as far as the judges are concerned.",tags:["free","ages 4–18","school enters you","Jan–Mar"],url:"https://youngartists.royalacademy.org.uk/get-involved",lt:"RA Young Artists"},
+  {s:"Art",g:"enter",short:"Articulation Prize",name:"Articulation Prize (National Gallery)",mins:300,t:"10-min talk",
+   what:"A 10-minute talk to an audience about one work of art, building or artefact. School runs a heat and puts a speaker forward for the regional heat at a partner museum. Free online mentoring and preparation guides on the site. Ages 16–19.",
+   think:"Choose a work you can stand in front of. Ten minutes on one object is exactly what the written related study asks of you, out loud.",tags:["ages 16–19","school heat first","dates to confirm"],url:"https://www.nationalgallery.org.uk/learning/secondary-schools/articulation/articulation-prize",lt:"Articulation"},
+  {s:"TC",g:"enter",short:"Trenchard Cox Scholarship",name:"Sir Trenchard Cox Scholarship (The Arts Society and Art History Abroad)",mins:400,t:"2 × 400 words",
+   what:"Two 400-word essays, one on an artwork you love and one on an artwork you dislike, each with a photograph, submitted online as an anonymous PDF. Ages 17–18. Free to enter. First prize is a two-week art history course in Italy; flights, meals and insurance are not covered.",
+   think:"The dislike essay is the harder and better one. Pick something you have a real argument with and say what it fails to do, not just that you do not like it.",tags:["free to enter","ages 17–18","enter yourself","opens Jan"],url:"https://www.arthistoryabroad.com/scholarships-awards/",lt:"AHA scholarships"},
+
+  // ---- 2 Watch · the telly
+  {s:"Kap",g:"watch",short:"Titus Kaphar · Can art amend history?",name:"Titus Kaphar: Can art amend history?",mins:13,t:"13m",
+   what:"Kaphar paints over part of a copy of a Frans Hals group portrait, live on stage, to change who the painting is about.",
+   think:"What would you need to know about the original's context (AO1) before an intervention like this makes sense? Write it as a list before you watch the end.",tags:["TED","free"],url:"https://www.ted.com/talks/titus_kaphar_can_art_amend_history",lt:"ted.com"},
+  {s:"Han",g:"watch",short:"Phil Hansen · Embrace the shake",name:"Phil Hansen: Embrace the shake",mins:10,t:"10m",
+   what:"An artist with nerve damage in his hand on what happened when he stopped fighting the tremor and built work round it.",
+   think:"Set yourself one limit for a week of sketchbook work: one colour, one tool, or a time limit. Record in your annotations what it changed (AO3).",tags:["TED","free"],url:"https://www.ted.com/talks/phil_hansen_embrace_the_shake",lt:"ted.com"},
+  {s:"Eli",g:"watch",short:"Olafur Eliasson · Space and light",name:"Olafur Eliasson: Playing with space and light",mins:9,t:"9m",
+   what:"Eliasson treats light, weather and space as materials, from the Weather Project at Tate Modern to a waterfall under Brooklyn Bridge.",
+   think:"Which of the AQA Fine Art areas does his work belong to, and how would you record an installation in a sketchbook when there is no object to draw?",tags:["TED","free"],url:"https://www.ted.com/talks/olafur_eliasson_playing_with_space_and_light",lt:"ted.com"},
+  {s:"Ser",g:"watch",short:"Maurizio Seracini · Secret lives of paintings",name:"Maurizio Seracini: The secret lives of paintings",mins:12,t:"12m",
+   what:"Scanning Renaissance paintings with infrared and X-ray to see the drawings and changes under the surface.",
+   think:"What do the scans reveal about how the paintings were made? Link it to the underpainting and glazing named in the specification.",tags:["TED","free"],url:"https://www.ted.com/talks/maurizio_seracini_the_secret_lives_of_paintings",lt:"ted.com"},
+  {s:"Dut",g:"watch",short:"Denis Dutton · A Darwinian theory of beauty",name:"Denis Dutton: A Darwinian theory of beauty",mins:15,t:"15m",
+   what:"A philosopher argues that our sense of beauty was shaped by evolution. This talk is on the wall to be disagreed with.",
+   think:"Choose one artwork made not to be beautiful and use it to argue against Dutton. Two paragraphs, in the black book.",tags:["TED","free","argue with it"],url:"https://www.ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty",lt:"ted.com"},
+  {s:"Gat",g:"watch",short:"Theaster Gates · Reviving a neighbourhood",name:"Theaster Gates: How to revive a neighborhood with imagination, beauty and art",mins:17,t:"17m",
+   what:"A potter who buys derelict buildings on Chicago's South Side and turns them into libraries, archives and cinemas.",
+   think:"Is Gates's rebuilding work art? Answer with the specification's own phrase about how images and artefacts relate to 'social, environmental, cultural and/or ethical contexts'.",tags:["TED","free"],url:"https://www.ted.com/talks/theaster_gates_how_to_revive_a_neighborhood_with_imagination_beauty_and_art",lt:"ted.com"},
+  {s:"Soo",g:"watch",short:"Amit Sood · Every piece of art, up close",name:"Amit Sood: Every piece of art you've ever wanted to see, up close and searchable",mins:15,t:"15m",
+   what:"The person behind Google Arts & Culture on gigapixel scans, street view inside museums and searching art by colour.",
+   think:"Find a painting from your contextual research on Google Arts & Culture and zoom right in. Record three details you could not see in a book reproduction.",tags:["TED","free"],url:"https://www.ted.com/talks/amit_sood_every_piece_of_art_you_ve_ever_wanted_to_see_up_close_and_searchable",lt:"ted.com"},
+  {s:"Jor",g:"watch",short:"Chris Jordan · Stats into art",name:"Chris Jordan: Turning powerful stats into art",mins:11,t:"11m",
+   what:"Photographs built from hundreds of thousands of repeated objects, each one standing for a statistic.",
+   think:"Jordan uses scale and repetition to carry a number. How do scale and repetition carry meaning in one piece of your own work (AO4)?",tags:["TED","free"],url:"https://www.ted.com/talks/chris_jordan_pictures_some_shocking_stats",lt:"ted.com"},
+  {s:"Crt",g:"watch",short:"Courtauld workshops (16–18)",name:"Courtauld Young People's Workshops (16–18)",mins:90,t:"90m each",
+   what:"Free workshops for state-school students aged 16–18 with artists, curators and art historians, using the Courtauld collection. October 2026: Making Colour (8 Oct, 4.30pm, online); Ways of Looking (26 Oct, 10am, online); Architecture Introduction (27 Oct, online); Shock and Rebellion (28 Oct, online); Gallery Tour and Prints Visit (29 Oct, in person, London). Booking is by form and fills up.",
+   think:"Making Colour is the one for materials and techniques (AO2). Ways of Looking is the one for contextual sources (AO1). Book one, go, and write it up the same evening.",tags:["free","online","book early","half term"],url:"https://courtauld.ac.uk/take-part/schools/young-people/free-workshops-16-18/",lt:"Courtauld workshops"},
+  {s:"Gre",g:"watch",short:"Gresham College art lectures",name:"Gresham College art collection and schools programme",mins:60,t:"60m",
+   what:"Free recorded university lectures on painting, portraiture, illustration and architecture: English Landscape, Artists in London, British Illustrators and Illustration, Christian Themes in Art, Chinese Art 1911–1976. Schools-only live talks run online in term time.",
+   think:"Pick one lecture that matches the theme of your personal investigation and cite it as a contextual source. A lecture counts; a scroll does not.",tags:["free","recorded","university"],url:"https://www.gresham.ac.uk/schools-and-colleges/art",lt:"Gresham Art"},
+  {s:"NGs",g:"watch",short:"National Gallery schools sessions",name:"National Gallery secondary schools programme",mins:60,t:"60m",
+   what:"Free sessions for UK schools, on site in London or online (Art School Live and on-demand): talks, gallery workshops and studio workshops. Booked through school.",
+   think:"Ask your teacher to book an online session for the class while you are still choosing a theme for Component 1. Then write down which painting in the session you would steal from.",tags:["free","through school","online"],url:"https://www.nationalgallery.org.uk/learning/secondary-schools",lt:"NG schools"},
+  {s:"UoB",g:"watch",short:"UoB art history seminar · Art Materials and Empire",name:"University of Birmingham Art History research seminars (Barber Institute)",mins:75,t:"75m",
+   what:"Free hybrid research seminars run by the university's Department of Art History, Curating and Visual Studies. Next: Art Materials and Empire, Dr Bharti Parmar, Wednesday 7 October 2026, 4.15–5.30pm, Alan Walters Building, or online.",
+   think:"A research seminar is a different thing from a talk: it is one person's unfinished argument. Note one claim you could use in a related study on materials, and one you would want to check.",tags:["free","Birmingham","online or campus","7 Oct"],url:"https://barber.org.uk/whats-on/",lt:"Barber what's on"},
+
+  // ---- 3 Listen · the boombox
+  {s:"IOT",g:"listen",short:"In Our Time · Culture archive",name:"BBC In Our Time: Culture archive",mins:45,t:"45m",
+   what:"Three academics and 45 minutes on one subject. The Culture archive has episodes on individual artists and movements.",
+   think:"Search the archive for an artist or movement you are researching. Listen with the black book open and write down the one disagreement between the three guests.",tags:["free","BBC","archive"],url:"https://www.bbc.co.uk/programmes/p01drwny",lt:"In Our Time"},
+  {s:"GWA",g:"listen",short:"The Great Women Artists podcast",name:"The Great Women Artists podcast (Katy Hessel)",mins:60,t:"60m",
+   what:"Over 180 free interview episodes with artists (Tracey Emin, Jenny Saville, Judy Chicago, Barbara Kruger) and writers talking about women artists.",
+   think:"Artists talk about how they actually work. Pick an episode with an artist you have never heard of; that is where contextual sources outside the usual list come from.",tags:["free","interviews"],url:"https://www.thegreatwomenartists.com/katy-hessel-podcast",lt:"Great Women Artists"},
+  {s:"TAN",g:"listen",short:"The Art Newspaper · A Brush with…",name:"The Art Newspaper podcasts",mins:45,t:"45m",
+   what:"The Week in Art (weekly news) and A Brush with… (long interviews with artists about their influences). Free.",
+   think:"A Brush with… is artists naming their influences, which is exactly what your annotations should do. Steal the format: artist, influence, what they took from it.",tags:["free","interviews","news"],url:"https://www.theartnewspaper.com/podcasts",lt:"Art Newspaper podcasts"},
+  {s:"SiC",g:"listen",short:"National Gallery · Stories in Colour",name:"National Gallery: Stories in Colour",mins:25,t:"25m",
+   what:"The Gallery's free podcast: short episodes on paintings in the collection. Series two ran weekly from May to July 2026.",
+   think:"Listen to one episode, then find the painting on Art UK or the Gallery site and draw it from the screen for twenty minutes.",tags:["free","short"],url:"https://www.nationalgallery.org.uk/podcast",lt:"Stories in Colour"},
+
+  // ---- 4 Read · the railing
+  {s:"Sm",g:"read",short:"Smarthistory",name:"Smarthistory",mins:15,t:"15m",
+   what:"Free, ad-free art history written and filmed by more than 850 scholars, from prehistory to today and across every continent. The best free starting point for contextual research.",
+   think:"Start here every time you research an artist. Read the essay, then find one thing it does not say and go looking for that.",tags:["free","start here"],url:"https://smarthistory.org/",lt:"smarthistory.org"},
+  {s:"Kh",g:"read",short:"Khan Academy · Art history",name:"Khan Academy: Art history",mins:20,t:"20m",
+   what:"Free art history course with videos and articles, arranged by period and region.",
+   think:"Use it to place your artist: what came just before them, and what they were reacting against.",tags:["free","videos"],url:"https://www.khanacademy.org/humanities/art-history",lt:"Khan Academy"},
+  {s:"Tt",g:"read",short:"Tate · Art Terms",name:"Tate: Art Terms and artist pages",mins:10,t:"10m",
+   what:"A free glossary of 461 terms and pages on more than 4,000 artists in the Tate collection. The specification requires specialist vocabulary; this is where it lives.",
+   think:"Every time you write an annotation with a word you are not sure of, look it up here and use it properly the next time.",tags:["free","vocabulary"],url:"https://www.tate.org.uk/art/art-terms",lt:"Tate Art Terms"},
+  {s:"AUK",g:"read",short:"Art UK",name:"Art UK",mins:15,t:"15m",
+   what:"Free online access to about a million artworks in UK public collections, searchable by venue, region, style, material and technique, including what is on the walls in Birmingham.",
+   think:"Search the West Midlands for a painting on your theme that you could go and stand in front of. Then go and stand in front of it.",tags:["free","search","local"],url:"https://artuk.org/",lt:"artuk.org"},
+  {s:"BA",g:"read",short:"British Academy · decolonising art history",name:"British Academy: How can art history be decolonised?",mins:10,t:"10m",
+   what:"A short essay (about 900 words, 2021) by Mary Kelly and Ceren Özpınar on the limits of the Western canon.",
+   think:"If your investigation looks beyond European art, this is a starting point. Write down who is missing from the art history you were taught at GCSE.",tags:["free","short","essay"],url:"https://www.thebritishacademy.ac.uk/blog/how-can-art-history-be-decolonised/",lt:"British Academy"},
+  {s:"WoS",g:"read",short:"Ways of Seeing · John Berger",name:"Ways of Seeing, by John Berger",mins:300,t:"book",
+   what:"Short and still widely set. The essays on the nude and on oil painting as property give you a critical position to take in the related study.",
+   think:"Read one essay and decide whether you agree. If you do not, say exactly where he loses you. Either answer is usable.",tags:["book","ask library","short"],url:"",lt:""},
+  {s:"SAWM",g:"read",short:"The Story of Art Without Men · Katy Hessel",name:"The Story of Art Without Men, by Katy Hessel",mins:900,t:"book",
+   what:"A survey of women artists from the 1500s to now; pairs with her podcast on the boombox.",
+   think:"Use the index. Find two artists on your theme that no one in the room has heard of.",tags:["book","ask library"],url:"",lt:""},
+  {s:"SDAW",g:"read",short:"Seven Days in the Art World · Sarah Thornton",name:"Seven Days in the Art World, by Sarah Thornton",mins:600,t:"book",
+   what:"A week in art schools, auctions, prizes and magazines. On an Oxford college reading list; useful if you are thinking about art school.",
+   think:"Read the chapter on the crit. That is what a foundation year is like on a Tuesday.",tags:["book","ask library","art school"],url:"",lt:""},
+
+  // ---- 5 Do · the cans
+  {s:"BMAG",g:"do",short:"Birmingham Museum & Art Gallery",name:"Birmingham Museum & Art Gallery",mins:90,t:"an hour+",
+   what:"Free entry, Tuesday–Sunday 10am–5pm, and daily in the October half term. The Pre-Raphaelite collection is one of the most important anywhere.",
+   think:"Spend an hour drawing from one painting in the Pre-Raphaelite galleries. First-hand studies from a primary source are AO3; a photo of the painting is not.",tags:["free","city centre","draw from it"],url:"https://www.birminghammuseums.org.uk/birmingham-museum-and-art-gallery",lt:"BMAG"},
+  {s:"Ik",g:"do",short:"Ikon · Balraj Khanna",name:"Ikon Gallery",mins:90,t:"an hour+",
+   what:"Free contemporary art in Brindleyplace. Balraj Khanna: Lines of Flight, a survey of more than 40 paintings over six decades, runs 30 September 2026 – 21 February 2027. Spotlight tours on Thursdays and Sundays.",
+   think:"Two sketchbook pages: one of studies, one of notes on how the paint is put on. Khanna's lines are the thing to look at; try and work out the order he made them in.",tags:["free","Brindleyplace","to 21 Feb"],url:"https://www.ikon-gallery.org/",lt:"Ikon"},
+  {s:"GAC",g:"do",short:"Google Arts & Culture",name:"Google Arts & Culture",mins:20,t:"20m",
+   what:"Free high-resolution images from over 2,000 museums, with gigapixel zoom, 3D models and museum tours. Pairs with the Amit Sood talk on the telly.",
+   think:"Zoom in until the brushstrokes fall apart. Copy a ten-centimetre square of the surface at full size in your sketchbook.",tags:["free","zoom"],url:"https://artsandculture.google.com/",lt:"Arts & Culture"},
+  {s:"BD",g:"do",short:"The Big Draw",name:"The Big Draw Festival",mins:120,t:"an event",
+   what:"Free drawing events run by museums, universities and galleries each October. Check the listings for West Midlands events.",
+   think:"Go to one and draw with strangers. Bring back the drawings, however they came out, and annotate what the event made you do differently.",tags:["free","October","events"],url:"https://thebigdraw.org/",lt:"The Big Draw"},
+  {s:"UAL",g:"do",short:"UAL portfolio advice",name:"UAL portfolio advice",mins:30,t:"30m",
+   what:"University of the Arts London's free portfolio guidance: videos from staff and students, and how to prepare and upload a digital portfolio. For anyone applying to art school or a foundation course.",
+   think:"Watch the staff videos and then lay out your own work on the floor as if it were a portfolio. What is missing?",tags:["free","Y13","art school"],url:"https://www.arts.ac.uk/study-at-ual/apply/portfolio-advice",lt:"UAL portfolio"},
+
+  // ---- 6 Apply · the shutter
+  {s:"Un",g:"apply",short:"UNIQ · History of Art (Oxford)",name:"UNIQ (Oxford): History of Art",mins:2000,t:"a week",
+   what:"Free residential and support programme for Year 12s at UK state schools, priority to under-represented backgrounds. History of Art is offered; Fine Art is not. 2026 pattern: applications 15 December – 13 January (midday); residential late June/July. 2027 dates not yet published.",
+   think:"Apply in December. The application asks why the subject; your black book is where that answer is.",tags:["free","Y12","Oxford","Dec–Jan","check dates"],url:"https://www.uniq.ox.ac.uk/key-dates",lt:"UNIQ"},
+  {s:"ST",g:"apply",short:"Sutton Trust · History of Art (Cambridge)",name:"Sutton Trust summer school: History of Art (Cambridge)",mins:2000,t:"a week",
+   what:"Free week-long residential run with the Cambridge History of Art department: tutorials, museum visits and a research project. Year 12 at state schools with at least five GCSEs at 9–6; priority criteria apply. Applications usually open in the new year.",
+   think:"Check the criteria with your teacher before you fall in love with it. If you fit, it is the strongest week on this wall.",tags:["free","Y12","Cambridge","check criteria"],url:"https://www.hoart.cam.ac.uk/outreach/sutton-trust-summer-school",lt:"Sutton Trust"},
+  {s:"CSU",g:"apply",short:"Courtauld Summer University",name:"Courtauld Summer University and Seminar Sessions",mins:2000,t:"a week",
+   what:"Free. Year 12 at UK state schools, priority to under-represented groups. 2026 pattern: applications opened 23 March; Seminar Sessions online 9–11 June; Summer University online 29 June – 3 July and in person 8–10 July, with travel bursaries. Confirm 2027.",
+   think:"The online Art and Identity week needs no travel. Put the March opening date in your phone now.",tags:["free","Y12","online option","March"],url:"https://courtauld.ac.uk/take-part/schools/young-people/summer-university/",lt:"Courtauld Summer University"},
+  {s:"AHL",g:"apply",short:"Art History Link-Up · free A level",name:"Art History Link-Up: online Art History A level",mins:6000,t:"a year",
+   what:"A free Pearson A level in History of Art taught on term-time Saturdays (26 September 2026 – 3 July 2027) by subject specialists, in person at the Courtauld or online. For Y12–13 in state sixth forms; priority to widening-participation pupils. Includes an EPQ route.",
+   think:"It is a whole extra A level on Saturdays. Talk to your teacher first; then, if it is for you, join the waitlist.",tags:["free","Saturdays","talk to your teacher","waitlist"],url:"https://www.arthistorylinkup.org/programmes/art-history-a-level",lt:"Art History Link-Up"},
+  {s:"Ru",g:"apply",short:"Ruskin School of Art open days",name:"Ruskin School of Art (Oxford) open days",mins:240,t:"a day",
+   what:"Undergraduate open days for Fine Art (BFA): tours and a talk with tutors and students. 2026 dates were 1 and 2 July (in person) and 18 September (in person and online); booking opened 5 May. The Ruskin does not review portfolios at open days.",
+   think:"If Fine Art at a university rather than an art school is a possibility, this is the one to see. The September online session suits anyone who cannot travel.",tags:["free","Y12","online option","check dates"],url:"https://www.rsa.ox.ac.uk/study/undergraduate/open-days",lt:"Ruskin open days"}
+];
+/* The year as tour dates. m = month (YYYY-MM). s links to an item; url is for events with no item. */
+const YEAR = [
+  {m:"2026-10",when:"Wed 7 Oct",what:"UoB seminar: Art Materials and Empire",sub:"4.15–5.30pm, Alan Walters Building or online.",s:"UoB",check:false},
+  {m:"2026-10",when:"Thu 8 Oct",what:"Courtauld online workshop: Making Colour",sub:"4.30pm. Book on the Courtauld form; it fills.",s:"Crt",check:false},
+  {m:"2026-10",when:"October",what:"The Big Draw Festival",sub:"Free drawing events; check the listings for the West Midlands.",s:"BD",check:false},
+  {m:"2026-10",when:"26–29 Oct",what:"Courtauld half-term workshops",sub:"Three online, one in London. Booking essential.",s:"Crt",check:false},
+  {m:"2026-11",when:"By 1 Nov",what:"Barber paintings at Compton Verney close",sub:"Modern Masterpieces from the Barber. Free for 18 and under; adults pay. The Barber itself is shut for redevelopment.",url:"https://www.comptonverney.org.uk/",check:false},
+  {m:"2026-12",when:"December",what:"UNIQ applications open (History of Art)",sub:"2026 window was 15 December – 13 January, midday.",s:"Un",check:true},
+  {m:"2027-01",when:"January",what:"RA Young Artists' Summer Show opens for entries",sub:"School registers; 2026 closing date was 4 March.",s:"RA",check:true},
+  {m:"2027-01",when:"January",what:"Trenchard Cox Scholarship opens",sub:"Two 400-word essays. 2026 deadline was 22 March, 5.30pm.",s:"TC",check:true},
+  {m:"2027-02",when:"Early Feb",what:"AQA releases the Component 2 set assignment",sub:"The externally set assignment lands. Check aqa.org.uk/keydates.",url:"https://www.aqa.org.uk/keydates",check:true},
+  {m:"2027-02",when:"Sun 21 Feb",what:"Ikon: Balraj Khanna closes",sub:"Last day of Lines of Flight. Go before it goes.",s:"Ik",check:false},
+  {m:"2027-03",when:"Early Mar",what:"RA Young Artists deadline",sub:"No late entries. Have the photograph ready in February.",s:"RA",check:true},
+  {m:"2027-03",when:"Late Mar",what:"Trenchard Cox deadline · Courtauld Summer University opens",sub:"Courtauld opened 23 March in 2026; Sutton Trust applications usually open in the new year too.",s:"CSU",check:true},
+  {m:"2027-05",when:"May",what:"Ruskin open day booking opens",sub:"Opened 5 May in 2026 for the July and September open days.",s:"Ru",check:true},
+  {m:"2027-06",when:"June",what:"Courtauld Seminar Sessions (online)",sub:"9–11 June in 2026.",s:"CSU",check:true},
+  {m:"2027-07",when:"July",what:"Summer schools run · Ruskin open days",sub:"UNIQ, Sutton Trust and the Courtauld Summer University all happen late June to mid July.",s:"Un",check:true},
+  {m:"2027-07",when:"Jul–Aug",what:"RA Young Artists' Summer Show exhibition",sub:"At the Royal Academy, free entry. 14 July – 30 August in 2026.",s:"RA",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","term 1"],["2026-11","November","term 1"],["2026-12","December","term 1"],["2027-01","January","term 2"],
+  ["2027-02","February","term 2"],["2027-03","March","term 2"],["2027-04","April","term 3"],["2027-05","May","term 3"],
+  ["2027-06","June","term 3"],["2027-07","July","summer"]
+];
+
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three picks are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three things from the department for this half term. Do them, mark them done, write each one up in the black book.",
+  items:[
+    {s:"Ik",step:"Do",txt:"Go to Ikon's free Balraj Khanna show before 21 February and fill two sketchbook pages with studies and notes."},
+    {s:"Crt",step:"Watch",txt:"Book a free online Courtauld workshop in the October half term (26–28 October)."},
+    {s:"Kap",step:"Watch",txt:"Watch Titus Kaphar (13 min) and write down what you would need to know about a painting before changing it."}
+  ]
+};
+const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-art-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+
+/* ---------- state ---------- */
+const KEY_BASE="art-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",at:"enter",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- the wall: how much is painted ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function wall(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  return {c,t,N,k,pct};
+}
+
+/* ---------- the magpie talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const W=wall(); const n=W.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}. New face. Six parts of the wall, ${ITEMS.length} things on it, all free. Start with the brief taped up below: three things for this half term.`;
+  if(!n) return `Back again, ${firstName()}. The wall is still grey. The brief has three things on it; do one tonight.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${n} done, ${W.pct}% of the wall covered, ${ht} of the ${HALFTERM.items.length} on the brief. Not bad. Not finished.`;
+  if(W.k<6) return `${firstName()}. Brief done, ${n} things in the bag. You have not touched ${ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")} yet. I want those colours.`;
+  return `${firstName()}. ${n} things, all six colours, ${W.pct}% of the wall. Pick anything, or send me.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const W=wall();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Art",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           wall:{pct:W.pct, colours:W.k},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="art-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="enter";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="Black book · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("art-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- sticker cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", done":""}${isNew?", new":""}">
+    <span class="no">#${String(it.n).padStart(2,"0")} · ${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="stamp" aria-hidden="true">DONE</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="zone${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic">${ICON[g]}</div><div><span class="nm">${FAM[g].no} · ${FAM[g].place}</span><span class="verb">${FAM[g].label} · ${FAM[g].verb}</span></div>
+        <span class="n">${done} / ${list.length}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · the brief · if you do nothing else";
+  $("htLabel").textContent="The "+HALFTERM.label+" brief";
+  $("htDue").textContent="wanted by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">${i+1} · ${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · done":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>✦</i>Whole wall <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderMeter(){
+  const W=wall();
+  $("pctVal").innerHTML=W.pct+"<small>%</small>";
+  $("roller").style.setProperty("--w",W.pct+"%");
+  $("capPct").textContent=W.pct+"%"; $("capCol").textContent=W.k+" / 6";
+  let w;
+  if(!W.N) w="Grey wall. Every card you mark done paints a bit of it, in the colour of that part of the wall.";
+  else if(W.k<6) w=`${W.N} of ${ITEMS.length} done. ${W.k} of 6 colours in the palette; still grey at ${ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].the).join(", ")}.`;
+  else w=`${W.N} of ${ITEMS.length} done and all six colours in the palette.`;
+  $("coverTxt").textContent=w;
+  $("palette").innerHTML=ORDER.map(g=>`<span class="swatch${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].label}: ${W.c[g]} of ${W.t[g]}">${W.c[g]?W.c[g]:FAM[g].no}</span>`).join("");
+  /* paint the wall */
+  ORDER.forEach(g=>{ const k=W.t[g]?W.c[g]/W.t[g]:0;
+    const p=$("paint-"+g); if(p) p.style.setProperty("--k",k.toFixed(3));
+    document.querySelectorAll(`.drip[data-g="${g}"]`).forEach(d=>d.style.setProperty("--k",(k>=.34?Math.min(1,(k-.34)/.66):0).toFixed(3)));
+    const c=$("cnt-"+g); if(c) c.textContent=W.c[g]?`${W.c[g]}/${W.t[g]}`:""; });
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short.split(" · ")[0])}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">Site ↗</a>`:"");
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing booked. Draw.</span>`}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the art department for a copy.</span>`;
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${ICON[it.g]}</div>
+      <div><div class="fam">${FAM[it.g].no} · ${FAM[it.g].place} · ${FAM[it.g].label} · #${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Magpie's note</b>${esc(it.think)}</div>
+      <div class="tags">${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Done ✓ (undo)":"Mark it done"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it up</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department registers you; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=wall();
+  if(was) delete state.done[sym]; else state.done[sym]=true;
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const W=wall(); const g=BY[sym].g;
+    if(before.c[g]===0 && W.k>1) say(`First one at ${FAM[g].the}. That's a new colour; ${W.k} of 6 now. Mine.`);
+    else if(before.c[g]===0) say(`First thing on the wall: ${BY[sym].short}. Write it up while it's fresh.`);
+    else if(W.c[g]===W.t[g]) say(`That's all of ${FAM[g].the} painted. Show-off.`);
+    else say(pick([`Done. ${W.N} now. ${W.pct}% of the wall.`,`Into the black book with it, while you still remember.`,`${BY[sym].short}: had it. ${W.N} things.`,`Another one at ${FAM[g].the}. Try somewhere grey next; I'm collecting colours.`])); }
+  else say("Taken back off the wall.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher sorts the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const W=wall();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${W.c[g]?`${W.c[g]} of ${W.t[g]} done here.`:"Still grey here."}`);
+}
+
+document.addEventListener("click",e=>{
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbLearned").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- send the magpie: pick one for me ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"about ten minutes",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a part of the wall the pupil has not painted yet, two times in three
+  const W=wall(); const fresh=pool.filter(i=>!W.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+"… back in a second.");
+  $("pickBtn").disabled=true;
+  const img=$("magpieImg"); img.classList.remove("fly"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("fly");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("fly");
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, at ${FAM[choice.g].the}.`;
+    say(`Found this. ${choice.short}: ${choice.t}, ${FAM[choice.g].the}.${!W.c[choice.g]?" A colour you haven't got.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1700);
+});
+
+/* ---------- the black book ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function renderNotes(){
+  const box=$("entries");
+  if(!state.notes.length){
+    box.innerHTML=`<article class="note example" aria-label="Example entry">
+      <header><h3>Titus Kaphar, Can art amend history?</h3><span class="d">example</span></header>
+      <dl><dt>Took</dt><dd>He does not destroy the Hals; he paints over a copy, so the intervention only works if you know the original and who is standing at the back of it.</dd>
+      <dt>Try</dt><dd>Copy a group portrait from BMAG and paint out everyone but one figure. See what the picture is about then.</dd></dl>
+    </article><p class="small">Your black book is empty. Do one thing, then stick the first entry in.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>`<article class="note">
+      <header><h3>${esc(n.what)}</h3><span class="d">${esc(fmtDate(n.date))}</span></header>
+      <dl><dt>Took</dt><dd>${esc(n.learned)}</dd>${n.q?`<dt>Try</dt><dd>${esc(n.q)}</dd>`:""}</dl>
+      <div><button type="button" class="del" data-i="${i}">Tear it out</button></div>
+    </article>`).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to tear it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Tear it out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,what:$("nbWhat").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  $("nbWhat").value=""; $("nbLearned").value=""; $("nbQ").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="In.";
+  say(pick(["In the book. That is the bit universities actually read.","Written up. One entry like that per thing is plenty.","Good. Keep the 'try' line; that is where the next piece starts."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Art black book – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)}\nWhat: ${n.what}\nTook: ${n.learned}${n.q?`\nTry: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} done, ${notes} black book ${notes===1?"entry":"entries"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const TOUR=[
+  {sel:".wall-wrap", h:"This is the wall", p:"One underpass wall in six parts, each holding one kind of thing: competitions on the flyposting, talks and workshops on the telly, podcasts on the boombox, reading on the railing, galleries and making at the cans, summer schools and courses on the shutter. Click a number and the page takes you there. Each part gets painted in its own colour as the pupil marks things done."},
+  {sel:".magpie", h:"The magpie", p:"It greets each pupil by name and reacts to what they do: the first thing in a new part of the wall, a black book entry, a competition they have asked to enter. When they come back it tells them which parts are still grey. Magpies collect things, which is what we want sixth-form artists to do with influences."},
+  {sel:".cover-card", h:"Wall covered", p:"Progress is how much of the wall is painted and how many of the six colours are in the palette. Twelve talks and nothing else leaves five parts grey; spreading out fills the wall."},
+  {sel:".pick-card", h:"Send the magpie", p:"A pupil says how long they have and the magpie flies off and brings back one thing they have not done, leaning towards parts of the wall they have not touched."},
+  {sel:".brief", h:"The brief", p:"Three things from the department each half term, taped to the wall with a date they are wanted by. You change these by editing one block at the top of the file; pupils keep everything they have done."},
+  {sel:"#zone-enter", h:"The six parts", p:"All 37 things, one sticker each. A sticker opens to say what it is, a magpie's note on what to do with it, and a link. Mark it done and the sticker is stamped. Competition and summer-school stickers have a button that puts the pupil's name on your list."},
+  {sel:".poster", h:"The year on one poster", p:"October to July as a list of tour dates: the Courtauld workshops, Ikon closing, UNIQ and the RA opening, the set assignment landing, deadlines, summer schools. Dates still to be confirmed are marked."},
+  {sel:"#notebook", h:"The black book", p:"One entry per thing: what it was, one thing they took from it, one thing they would try because of it. It saves to the department as they write and copies out as text for annotation, a personal statement or a reference."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, half-term completion, how much wall each has painted, and their black books. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("art-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Kap","Crt","Ik","Sm","GWA","BMAG","RA"],picks:3,notes:[{what:"Titus Kaphar: Can art amend history?",learned:"He paints over a copy, not the Hals itself, so the point only lands if you know who is standing at the back of the original.",q:"Copy a group portrait at BMAG and paint out everyone but one figure."},{what:"Ikon Gallery",learned:"Khanna's lines look fast but the paint underneath is layered; the order of making is visible at the edges.",q:"Try the same thing with masking tape and three layers."}],interest:["RA","Art"],last:"2026-10-05"},
+  {name:"Ben Carter",cls:"12A",done:["Kap","Han"],picks:1,notes:[{what:"Phil Hansen: Embrace the shake",learned:"The limit (one colour, one tool) is what gave him a style; the tremor was the start, not the end.",q:""}],interest:[],last:"2026-10-02"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Kap","Crt","Ik","Ser","Tt","GAC","Soo"],picks:3,notes:[{what:"Maurizio Seracini: The secret lives of paintings",learned:"The underdrawing of the Adoration is a different composition from the paint on top; the finished picture hides a change of mind.",q:"Photograph my own underdrawing before I paint over it and keep both in the sketchbook."},{what:"Google Arts & Culture",learned:"Zoomed into a Pre-Raphaelite surface: the green is painted over a white ground, which is why it glows.",q:""}],interest:["RA"],last:"2026-10-04"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["WoS","UoB","BA","TC","UAL","CSU","Gre"],picks:1,notes:[{what:"Ways of Seeing, by John Berger",learned:"The oil painting as a way of owning things: the argument is about the buyer, not the painter.",q:"Would it hold for a portrait the sitter never saw? Test it on one at BMAG."}],interest:["TC","CSU"],last:"2026-10-05"},
+  {name:"Finn Murphy",cls:"13A",done:["RA","Jor"],picks:0,notes:[],interest:["RA"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Kap","Eli","TAN","BD"],picks:1,notes:[{what:"Olafur Eliasson: Playing with space and light",learned:"The work is the room plus the people in it; you record it by drawing the audience, not the object.",q:"Draw the crowd at Ikon instead of the paintings."}],interest:["Un","Crt"],last:"2026-10-06"},
+  {name:"Harry Singh",cls:"12B",done:["GAC"],picks:0,notes:[],interest:[],last:"2026-10-03"}
+];
+function wOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const pct=Math.round(done.length/ITEMS.length*100);
+  return {pct,k,c}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 on the brief</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>competition / summer school interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>black book entries written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. The RA show and Articulation are entered through school, so this is your list.</p>
+        <table class="dt"><tr><th>Competition / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which parts of the wall get used</h3><p class="small">Things done across all pupils, by part of the wall. Tells you where to point the next half term's brief.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Done</th><th>Wall</th><th>The brief</th><th class="hide-m">Black book</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const W=wOf(r.done); const grey=ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].label);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td><span class="dv">${W.pct}%</span> ${ORDER.map(g=>`<span class="sw${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].label}"></span>`).join("")} <span class="small">${grey.length&&grey.length<6?`still grey: ${grey.join(", ")}`:grey.length===6?"":"all six"}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"entry":"entries"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Black books</h3><p class="small">Each pupil's book in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Took: ${esc(n.learned)}${n.q?`<br>Try: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"art-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,look:FB.look,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-art-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-art-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
+});
+// page comments, where the viewer's account allows them
+(async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;
+  const b=$("fbComment"); b.hidden=false; b.addEventListener("click",()=>{ fbShow(false); try{ c.openComposer({element:document.querySelector(".wall-wrap")}); }catch(e){} }); }catch(e){} })();
+
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to see, watch, hear, read, make, enter and apply for · six parts of one wall";
+$("tableEyebrow").textContent="Six parts of the wall · "+ITEMS.length+" things on it";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+
+})();
+</script>
+</body>
+</html>
