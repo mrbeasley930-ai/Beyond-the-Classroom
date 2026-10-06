@@ -1429,7 +1429,7 @@ $("fbForm").addEventListener("submit",async e=>{
       body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-art-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
   $("fbSend").disabled=false;
   if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
-  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
+  else { const lines=Object.entries(rec).filter(([k,v])=>!["kind","ua","pupilView"].includes(k)&&v!==""&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>k+": "+(Array.isArray(v)?v.join(", "):v)); let box=$("fbCopy"); if(!box){ box=document.createElement("textarea"); box.id="fbCopy"; box.readOnly=true; box.className="plain"; box.style.cssText="width:100%;min-height:180px;font:inherit;font-size:.85rem;padding:8px;border:2px solid currentColor"; $("fbMsg").after(box); } box.hidden=false; box.value=lines.join("\n"); box.focus(); box.select(); $("fbMsg").innerHTML="That did not send from this link. Your answers are below: copy them into an email to Simon. The feedback button does work on <a href=\"https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/art.html\" target=\"_blank\" rel=\"noopener\">this version of the demo</a>."; }
 });
 // page comments, where the viewer's account allows them
 (async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;
