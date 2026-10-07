@@ -1,0 +1,1695 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Economics Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE TENTH CHAIR — Economics, Beyond the Classroom
+   The Bank of England's Monetary Policy Committee has nine members and
+   meets eight times a year. This page puts a tenth chair at the table.
+   Before each decision the pupil reads the briefing pack (the same data
+   the committee reads), casts a vote with written reasons, and after the
+   announcement sees how the real committee split. The rest of the page is
+   the briefing pack itself: 53 free things to enter, watch, hear, read, do
+   and apply for. The guide is the Secretary, who takes the minutes.
+   ====================================================================== */
+:root{
+  --bg:#0c1522; --bg2:#101c2d; --bg3:#162538; --panel:#13203200; --line:#2a3b52; --line2:#1d2c40;
+  --ink:#e9edf3; --ink2:#a9b4c4; --dim:#6d7b90;
+  --amber:#f3b23b; --amber2:#ffd27a;
+  --enter:#e0604f;  /* 1 Submissions — red */
+  --watch:#f3b23b;  /* 2 Evidence sessions — amber */
+  --listen:#3cc1b3; /* 3 The wires — teal */
+  --read:#5b9cf6;   /* 4 The data room — blue */
+  --do:#7ed07a;     /* 5 The models — green */
+  --apply:#c48cf5;  /* 6 Appointments — violet */
+  --hold:#8b97a8; --raise:#e0604f; --cut:#5b9cf6;
+  --f-text:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-text);font-size:1.08rem;line-height:1.5;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:28px 28px}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.1;letter-spacing:-.005em}
+.head{font-family:var(--f-text);font-weight:500}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.small{font-size:.9rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line);padding:4px 10px;border-radius:2px;background:var(--bg2)}
+.badge i{width:7px;height:7px;background:var(--amber);display:inline-block}
+.btn{font:inherit;font-size:1rem;background:var(--amber);color:#1a1205;border:1px solid var(--amber);padding:10px 18px;cursor:pointer;border-radius:2px;letter-spacing:.01em;font-weight:500}
+.btn:hover{background:var(--amber2);border-color:var(--amber2)}
+.btn.big{font-size:1.1rem;padding:12px 22px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink2)}
+.btn.ghost:hover{background:rgba(255,255,255,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.g{background:var(--g,var(--amber));border-color:var(--g,var(--amber));color:#0c1522}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--listen);outline-offset:2px}
+.field{display:grid;gap:4px}
+.field label{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field textarea,.field select{font:inherit;font-size:1.05rem;background:var(--bg3);border:1px solid var(--line);padding:8px 10px;color:var(--ink);width:100%;border-radius:2px}
+.field textarea{min-height:84px;resize:vertical;line-height:1.45}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#ff8b7c;min-height:1.3em;font-size:.95rem}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;gap:34px}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(760px,100%);background:var(--bg2);border:1px solid var(--line);padding:34px 36px;display:grid;gap:18px;box-shadow:0 0 0 1px #000, 0 30px 60px rgba(0,0,0,.5)}
+.gate-card h1{font-size:clamp(2.6rem,6vw,4rem);font-weight:500}
+.gate-card h1 em{font-style:italic;font-weight:400;color:var(--ink2);display:block;font-size:.45em;margin-top:6px}
+.gate-card p{margin:0}
+.gate-sec{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.gate-sec svg{width:120px;height:auto}
+@media (max-width:560px){.gate-sec{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+
+/* ---------- ticker ---------- */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#07101b;overflow:hidden;white-space:nowrap;font-family:var(--f-mono);font-size:.8rem;letter-spacing:.04em;padding:7px 0;color:var(--ink2)}
+.ticker .run{display:inline-block;padding-left:100%;animation:tick 46s linear infinite}
+.ticker .run span{display:inline-block;margin-right:42px}
+.ticker b{color:var(--amber);font-weight:500}
+.ticker .up{color:#ff8b7c}.ticker .dn{color:#8fc2ff}
+@media (prefers-reduced-motion:reduce){.ticker .run{animation:none;padding-left:0;white-space:normal}}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.top h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.top h1 span{display:block;font-size:1.05rem;font-style:italic;font-weight:400;color:var(--ink2);margin-top:4px;letter-spacing:0}
+.strap{font-size:.98rem;color:var(--ink2);margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:.95rem}
+.who b{font-weight:500}
+.who button{font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:var(--dim)}
+.saved.ok{color:#7ed07a}.saved.bad{color:#ff8b7c}
+
+/* ---------- the committee room ---------- */
+.room{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.table-wrap{position:relative;border:1px solid var(--line);background:var(--bg2);overflow:hidden}
+.table-wrap svg.tbl{display:block;width:100%;height:auto}
+.tbl .felt{fill:#0f3b2e}
+.tbl .felt-edge{fill:none;stroke:#1d5a47;stroke-width:3}
+.tbl .wood{fill:#3a2a1c}
+.tbl .chair{cursor:default}
+.tbl .chair rect{fill:#1a2a3e;stroke:var(--line);stroke-width:1.2;rx:6}
+.tbl .chair text{font-family:var(--f-mono);font-size:11px;fill:var(--ink2);text-anchor:middle;dominant-baseline:central}
+.tbl .chair.you rect{fill:#3b2d0a;stroke:var(--amber);stroke-width:2}
+.tbl .chair.you.v-hold rect{fill:#3a4454;stroke:var(--amber)}
+.tbl .chair.you.v-raise rect{fill:#5a2a24;stroke:var(--amber)}
+.tbl .chair.you.v-cut rect{fill:#24395a;stroke:var(--amber)}
+.tbl .chair.you text{fill:var(--amber2);font-weight:700}
+.tbl .chair.empty rect{stroke-dasharray:4 3}
+.tbl .caption{font-family:var(--f-mono);font-size:11px;fill:var(--ink2);letter-spacing:1px}
+.tbl .caption.big{font-size:14px;fill:var(--ink)}
+.tbl .paper{fill:#e9edf3;stroke:#9aa5b5;stroke-width:.6}
+.tbl .paperline{stroke:#9aa5b5;stroke-width:.8}
+.tbl .gavel{fill:#c9a24a}
+.tbl .cup{fill:#e9edf3}
+.tbl .dot{fill:var(--amber)}
+.tbl .legend text{font-family:var(--f-mono);font-size:10.5px;fill:var(--ink2)}
+.tbl .legend rect{rx:2}
+.room-cap{padding:12px 16px;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink2);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+.room-cap b{color:var(--ink);font-weight:500}
+
+/* briefing pack (the screens) */
+.screens{display:grid;gap:12px;align-content:start}
+.scr{background:#07101b;border:1px solid var(--line);padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center;position:relative;text-decoration:none;color:inherit}
+.scr:hover{border-color:var(--ink2)}
+.scr .k{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.scr .v{font-family:var(--f-mono);font-size:2rem;line-height:1;color:var(--amber);font-weight:500;grid-row:span 2;align-self:center}
+.scr .v small{font-size:.9rem;color:var(--ink2);font-weight:400;margin-left:2px}
+.scr .p{font-size:.86rem;color:var(--ink2)}
+.scr .n{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;color:var(--dim);grid-column:1/-1;border-top:1px dashed var(--line2);padding-top:6px;margin-top:2px}
+.scr .n b{color:var(--ink2);font-weight:500}
+.scr.target .v{color:var(--ink)}
+.scr:after{content:"↗";position:absolute;right:10px;top:8px;font-family:var(--f-mono);font-size:.75rem;color:var(--dim)}
+@media (max-width:900px){.room{grid-template-columns:1fr}}
+
+/* ---------- the vote ---------- */
+.vote{border:1px solid var(--amber);background:linear-gradient(180deg,#1a1808,#0f1627 60%);padding:22px 24px;display:grid;gap:16px;position:relative}
+.vote .vh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px}
+.vote h2{font-size:1.9rem}
+.vote .when{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.vote .lede{margin:0;color:var(--ink2)}
+.ballot{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.ballot button{font:inherit;font-family:var(--f-mono);font-size:.9rem;background:var(--bg3);color:var(--ink);border:1px solid var(--line);padding:12px 6px;cursor:pointer;display:grid;gap:2px;justify-items:center;border-radius:2px}
+.ballot button small{font-size:.66rem;color:var(--ink2);letter-spacing:.08em;text-transform:uppercase}
+.ballot button[aria-pressed="true"]{border-color:var(--amber);background:#2a230c;color:var(--amber2)}
+.ballot button:disabled{opacity:.45;cursor:default}
+.ballot button.cut[aria-pressed="true"]{border-color:var(--cut);background:#1a2c4a;color:#bcd8ff}
+.ballot button.raise[aria-pressed="true"]{border-color:var(--raise);background:#4a1f1a;color:#ffc3ba}
+.vote textarea{min-height:120px}
+.vote .meta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--ink2)}
+.vote .meta b{color:var(--amber);font-weight:500}
+.vote .cast{font-size:1rem;color:var(--ink)}
+.result{border:1px solid var(--line);background:var(--bg2);padding:14px 16px;display:grid;gap:8px}
+.result .r{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:1rem;align-items:baseline}
+.result .r .k{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.result .match{font-family:var(--f-mono);font-size:.8rem;padding:3px 8px;border:1px solid currentColor;border-radius:2px;justify-self:start}
+.result .match.yes{color:#7ed07a}.result .match.no{color:var(--amber)}
+.record{display:grid;gap:0;border:1px solid var(--line)}
+.record .row{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:6px 14px;padding:10px 14px;border-bottom:1px solid var(--line2);font-size:.95rem;align-items:center}
+.record .row:last-child{border-bottom:0}
+.record .row .d{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2);letter-spacing:.04em}
+.record .row .d b{display:block;color:var(--ink);font-weight:500;font-size:.9rem}
+.record .row .mids{display:grid;gap:4px}
+.record .row .mine{color:var(--ink)}
+.record .row .mine i{font-style:normal;font-family:var(--f-mono);font-size:.7rem;padding:1px 6px;border:1px solid var(--line);margin-right:6px;color:var(--ink2)}
+.record .row .mine i.hold{color:var(--hold)}.record .row .mine i.raise{color:var(--raise)}.record .row .mine i.cut{color:var(--cut)}
+.record .row .st{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.record .row.open{background:rgba(243,178,59,.06)}
+.record .row.open .st{color:var(--amber)}
+.record .row.now .st{color:#7ed07a}
+.record .why{grid-column:2/4;font-size:.9rem;color:var(--ink2);border-left:2px solid var(--line);padding-left:10px}
+.record .why button{font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+@media (max-width:700px){.ballot{grid-template-columns:repeat(5,1fr)}.ballot button{padding:10px 2px;font-size:.78rem}.record .row{grid-template-columns:1fr}.record .why{grid-column:1}}
+
+/* ---------- the Secretary + progress + fetch ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.sec{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;align-items:end}
+.sec-img{width:170px;height:auto;transform-origin:50% 90%}
+.sec-img.shuffle{animation:shuffle 1.6s ease-in-out}
+@keyframes shuffle{0%{transform:translateX(0)}25%{transform:translateX(26px) rotate(-2deg)}50%{transform:translateX(40px) rotate(1deg)}75%{transform:translateX(12px) rotate(-1deg)}100%{transform:translateX(0)}}
+.bubble{position:relative;background:var(--bg2);border:1px solid var(--line);padding:16px 18px;border-radius:2px;min-height:110px;display:grid;align-content:start;gap:6px}
+.bubble:before{content:"";position:absolute;left:-9px;bottom:22px;width:16px;height:16px;background:var(--bg2);border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.bubble .nm{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.bubble #bubbleTxt{font-size:1.1rem;line-height:1.4}
+.side{display:grid;gap:16px}
+.card{background:var(--bg2);border:1px solid var(--line);padding:18px 20px;display:grid;gap:12px}
+.card h2{font-size:1.5rem}
+.dist{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.dist .pct{font-size:3rem;font-weight:500;line-height:1;font-family:var(--f-mono);color:var(--amber)}
+.dist .pct small{font-size:1.2rem;color:var(--ink2);font-weight:400}
+.bar{position:relative;height:14px;background:var(--bg3);border:1px solid var(--line)}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:var(--amber);transition:width .8s ease}
+.stretches{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:30px;height:30px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:.78rem;color:var(--dim);background:transparent}
+.swatch.got{background:var(--g);color:#0c1522;border-color:var(--g)}
+.votes-line{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.8rem;color:var(--ink2)}
+.votes-line b{color:var(--ink);font-weight:500}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.seg button{font:inherit;font-size:.95rem;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--line);padding:8px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.sec{grid-template-columns:1fr;justify-items:center}.bubble:before{display:none}}
+
+/* ---------- the agenda (half term) ---------- */
+.agenda{background:var(--bg2);border:1px solid var(--line);padding:22px 24px;display:grid;gap:10px;position:relative}
+.agenda:before{content:"AGENDA";position:absolute;right:18px;top:-9px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.2em;background:var(--bg);color:var(--amber);padding:0 8px;border:1px solid var(--line)}
+.agenda h2{font-size:1.8rem}
+.agenda .due{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.agenda .lede{margin:0;color:var(--ink2)}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px}
+.leg{border-top:3px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:28px;height:28px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-mono);font-size:.85rem}
+.leg.done .lno{background:var(--g);color:#0c1522}
+.leg .step{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- sections of the pack and the papers ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-size:1.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.92rem;border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:2px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-family:var(--f-mono);font-size:.72rem;color:var(--g,var(--ink2))}
+.chip b{font-weight:400;color:var(--ink2);font-family:var(--f-mono);font-size:.75rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:var(--bg)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:12px}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:8px}
+.zone-head .ic{width:46px;height:46px;border:1.5px solid var(--g);display:grid;place-items:center;color:var(--g);font-family:var(--f-mono);font-size:1rem}
+.zone-head .nm{display:block;font-size:1.45rem}
+.zone-head .verb{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.zone-head .n{font-family:var(--f-mono);font-size:.8rem;color:var(--g)}
+.zone.flash .zone-head{animation:flash 2.2s ease}
+@keyframes flash{0%,100%{background:transparent}20%{background:rgba(255,255,255,.08)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:var(--bg2);border:1px solid var(--line);padding:12px 14px;cursor:pointer;display:grid;gap:4px;align-content:start;min-height:104px;border-radius:2px;color:var(--ink)}
+.rec:hover{border-color:var(--ink2);background:var(--bg3)}
+.rec .no{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;color:var(--g)}
+.rec .nm{font-size:1.05rem;line-height:1.25}
+.rec .t{font-family:var(--f-mono);font-size:.72rem;color:var(--ink2)}
+.rec .stamp{position:absolute;right:10px;top:10px;width:24px;height:24px;border:1.5px solid var(--g);display:none;place-items:center;color:var(--g);font-size:.95rem}
+.rec.done{background:#0b1320}
+.rec.done .nm{color:var(--ink2)}
+.rec.done .stamp{display:grid;background:var(--g);color:#0c1522}
+.rec.done:after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--g)}
+.rec.new:before{content:"new";position:absolute;right:10px;bottom:10px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#0c1522;background:var(--amber);padding:1px 6px}
+.rec.flash{animation:flash 3s ease}
+.rec.argue .t:after{content:" · argue with it";color:var(--amber)}
+
+/* ---------- the calendar (year) ---------- */
+.almanac{border:1px solid var(--line);background:var(--bg2)}
+.atop{padding:18px 22px;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.atop h2{font-size:1.9rem}
+.atop .sub{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.month{border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-size:1.25rem;display:flex;justify-content:space-between;align-items:baseline}
+.month .mh small{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.month.quiet .mh{color:var(--ink2)}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.95rem}
+.ev.mpc{border-left-color:var(--amber)}
+.ev .when{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:var(--ink2);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid var(--amber);color:var(--amber);font-size:.6rem;padding:0 5px;letter-spacing:.1em;text-transform:uppercase}
+.ev .data{border:1px solid var(--read);color:var(--read);font-size:.6rem;padding:0 5px;letter-spacing:.1em;text-transform:uppercase}
+.ev b{font-weight:500}
+.ev .sub{display:block;color:var(--ink2);font-size:.9rem}
+.ev .in{display:block;color:#7ed07a;font-size:.85rem;font-family:var(--f-mono)}
+.ev .open{justify-self:start;text-align:left;font:inherit;font-size:.85rem;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:var(--dim);font-size:.92rem}
+
+/* ---------- the minutes (notebook) ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;align-items:start}
+.cover-side{background:var(--bg2);border:1px solid var(--line);padding:22px 24px;display:grid;gap:14px}
+.cover-side h2{font-size:1.8rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem;background:var(--bg3);color:var(--ink);border:1px solid var(--line)}
+.entries{display:grid;gap:14px}
+.note{background:#f4f1ea;color:#1b1b1b;border:1px solid #c8c2b4;padding:16px 18px;display:grid;gap:8px;
+  background-image:repeating-linear-gradient(transparent 0 27px,rgba(0,0,0,.07) 27px 28px)}
+.note header{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.note h3{font-size:1.2rem;font-weight:500}
+.note .d{font-family:var(--f-mono);font-size:.7rem;color:#555;white-space:nowrap}
+.note dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.note dt{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#555;padding-top:5px}
+.note dd{margin:0}
+.note.example{opacity:.8;border-style:dashed}
+.note .del{font:inherit;font-size:.85rem;background:none;border:0;color:#555;text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#8a1d1d}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- small print ---------- */
+.smallprint{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border:1px solid var(--line);background:var(--bg2)}
+.sp{padding:12px 14px;border-right:1px solid var(--line2);font-size:.86rem;line-height:1.4;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:last-child{border-right:0}
+.sp .nm{font-size:1rem;color:var(--ink)}
+.st{display:inline-block;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;padding:1px 6px;border-radius:2px;margin-right:4px}
+.st.att{color:#7ed07a}.st.con{color:var(--amber)}
+@media (max-width:900px){.smallprint{grid-template-columns:repeat(2,1fr)}.sp:nth-child(2n){border-right:0}.sp{border-bottom:1px solid var(--line2)}}
+@media (max-width:520px){.smallprint{grid-template-columns:1fr}.sp{border-right:0}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(560px,100vw);background:var(--bg2);color:var(--ink);overflow:auto;border-left:1px solid var(--line);box-shadow:-10px 0 30px rgba(0,0,0,.5)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:20px 22px 14px;border-bottom:3px solid var(--g)}
+.sheet-top .plate-ic{width:44px;height:44px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-mono)}
+.sheet-top .fam{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-size:1.5rem}
+.x{font:inherit;font-size:1.6rem;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:4px}
+.sheet-body p{margin:0}
+.think{border-left:3px solid var(--g);padding:6px 14px;font-style:italic;font-size:1.05rem}
+.think b{display:block;font-style:normal;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:400}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--line);padding:2px 8px;color:var(--ink2);border-radius:2px}
+.tags span.th{border-color:var(--read);color:var(--read)}
+.tags span.ar{border-color:var(--amber);color:var(--amber)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#2a230c;color:var(--ink);border:1px dashed var(--amber);padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-size:1rem;border:1px solid var(--amber);padding:11px 18px;cursor:pointer;background:var(--amber);color:#1a1205;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.4);font-weight:500}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(540px,100vw);background:var(--bg2);color:var(--ink);overflow:auto;border-left:1px solid var(--line);box-shadow:-10px 0 30px rgba(0,0,0,.5)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;border-radius:2px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.82rem;border:1px solid var(--line);padding:8px;background:var(--bg3);color:var(--ink)}
+.fb-copy[hidden]{display:none}
+.dept{background:var(--bg2);border:1px solid var(--line);border-left:6px solid var(--amber);padding:20px 22px;display:grid;gap:10px}
+.dept h2{font-size:1.7rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--bg);
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:28px 28px}
+.intro[hidden]{display:none}
+.intro-card{width:min(840px,100%);background:var(--bg2);color:var(--ink);border:1px solid var(--line);box-shadow:0 0 0 1px #000, 0 30px 60px rgba(0,0,0,.5);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:28px 30px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#2a230c;color:var(--ink);border:1px dashed var(--amber);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.7);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--amber);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(640px,calc(100vw - 32px));background:var(--bg2);color:var(--ink);border:1px solid var(--amber);box-shadow:0 10px 30px rgba(0,0,0,.6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:80px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.tour-card h3{font-size:1.4rem;margin:2px 0 4px;font-weight:500}
+.tour-card p{margin:0;font-size:1rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.tour-dots i.on{background:var(--amber)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--bg);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:#07101b;color:var(--ink);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line)}
+.dash-top .x{color:var(--ink);margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:var(--ink2)}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:var(--bg2);border:1px solid var(--line);padding:12px 14px;display:grid;gap:2px}
+.tl b{font-size:2rem;line-height:1;font-weight:500;font-family:var(--f-mono);color:var(--amber)}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:var(--bg2);border:1px solid var(--line);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-size:1.3rem;font-weight:500}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.dt tr.you td{background:#2a230c}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--bg3);vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--amber)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 7px;color:#0c1522;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.vp{display:inline-block;font-family:var(--f-mono);font-size:.7rem;padding:1px 6px;border:1px solid var(--line);margin-right:4px;color:var(--ink2)}
+.vp.hold{color:var(--hold);border-color:var(--hold)}.vp.raise{color:var(--raise);border-color:var(--raise)}.vp.cut{color:var(--cut);border-color:var(--cut)}
+.you-tag{font-family:var(--f-mono);font-size:.62rem;background:var(--amber);color:#1a1205;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-size:1rem;line-height:1.4;border-left:3px solid var(--amber);padding:4px 10px;margin:6px 0}
+.dv{font-size:1.1rem;font-family:var(--f-mono)}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--line);margin-right:2px;vertical-align:middle;background:transparent}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The Secretary: an original character. Minute book, fountain pen, half-moon spectacles. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="secretary" viewBox="0 0 240 240">
+      <!-- chair back -->
+      <rect x="62" y="118" width="116" height="80" rx="8" fill="#1a2a3e" stroke="#2a3b52" stroke-width="2"/>
+      <!-- body / jacket -->
+      <path d="M70 230 C70 180 90 160 120 160 C150 160 170 180 170 230 Z" fill="#30405a"/>
+      <path d="M104 162 L120 196 L136 162 Z" fill="#e9edf3"/>
+      <path d="M116 162 L120 176 L124 162 Z" fill="#8b1e2d"/>
+      <!-- head -->
+      <ellipse cx="120" cy="112" rx="34" ry="38" fill="#e3c4a5"/>
+      <path d="M86 104 C90 72 150 72 154 104 C150 94 136 88 120 88 C104 88 90 94 86 104 Z" fill="#8a8f98"/>
+      <!-- spectacles -->
+      <circle cx="107" cy="116" r="9" fill="none" stroke="#1b1b1b" stroke-width="2"/>
+      <circle cx="133" cy="116" r="9" fill="none" stroke="#1b1b1b" stroke-width="2"/>
+      <path d="M116 116 L124 116 M98 114 L90 110 M142 114 L150 110" stroke="#1b1b1b" stroke-width="2" fill="none"/>
+      <!-- eyes looking down at the book -->
+      <circle cx="107" cy="119" r="1.6" fill="#1b1b1b"/><circle cx="133" cy="119" r="1.6" fill="#1b1b1b"/>
+      <path d="M112 134 Q120 136 128 134" stroke="#7a4a3a" stroke-width="1.6" fill="none"/>
+      <!-- arms + book -->
+      <path d="M78 200 C84 186 100 182 112 186" stroke="#30405a" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path d="M162 200 C156 186 142 182 130 186" stroke="#30405a" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path d="M84 206 L120 196 L156 206 L156 222 L120 212 L84 222 Z" fill="#e9edf3" stroke="#9aa5b5" stroke-width="1"/>
+      <path d="M120 196 L120 212" stroke="#9aa5b5" stroke-width="1"/>
+      <path d="M90 212 L112 206 M90 216 L112 210 M128 206 L150 212 M128 210 L150 216" stroke="#9aa5b5" stroke-width=".8"/>
+      <!-- pen -->
+      <path d="M150 178 L170 150" stroke="#1b1b1b" stroke-width="4" stroke-linecap="round"/>
+      <path d="M168 153 L174 145" stroke="#c9a24a" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 240 240" aria-hidden="true"><use href="#secretary"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Economics"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>The vote: eight MPC decisions a year, reasons recorded, compared with the committee. Keep it?</label>
+      <div class="seg" id="fbVote"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="change" aria-pressed="false">Keep it, change how</button><button type="button" data-v="drop" aria-pressed="false">Drop it</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="data">Data releases</button><button type="button" data-v="primary">Primary texts</button><button type="button" data-v="competitions">Essay prizes</button><button type="button" data-v="lectures">Lectures</button><button type="button" data-v="podcasts">Podcasts</button><button type="button" data-v="micro">Theme 1 · 3 micro</button><button type="button" data-v="macro">Theme 2 · 4 macro</button><button type="button" data-v="maths">Maths for economists</button><button type="button" data-v="fiscal">Fiscal policy / the Budget</button><button type="button" data-v="university">University and admissions</button><button type="button" data-v="apprentice">Apprenticeships</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the committee room, the screens, the Secretary. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (figures, dates, links, wording, the theme tags)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 240 240" aria-hidden="true"><use href="#secretary"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Economics · The Tenth Chair · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your sixth-form economists.</h2>
+      <p>It is a working copy of the page a pupil would use. The Bank's Monetary Policy Committee has nine members and makes eight decisions a year; the page adds a tenth chair. Before each decision the pupil reads the same releases the committee reads (CPI, labour market, GDP, the Bank's own forecast, all linked to the live ONS and Bank pages), votes, and writes their reasons. After the announcement the page shows how the committee split. Around that sits the briefing pack: 53 free things to enter, watch, listen to, read, do and apply for, every one tagged to an Edexcel A theme, with the primary data and texts first. Everything saves to the department, and there is a teacher dashboard that shows the votes and the reasoning.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about. Cast a vote; it is the point of the page.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <span class="badge"><i></i>Economics · Beyond the Classroom · Year 12 and 13</span>
+    <h1 class="head" id="gateH">The Tenth Chair<em>the Monetary Policy Committee has nine members. This page adds one.</em></h1>
+    <div class="gate-sec">
+      <svg viewBox="0 0 240 240" aria-hidden="true"><use href="#secretary"/></svg>
+      <p>Eight times a year the Bank of England's committee reads the data, argues, and votes on Bank Rate. Before each decision you read the same data, vote, and write your reasons. After the announcement you see how the real committee split. The rest of the page is the briefing pack: free lectures, podcasts, data releases, texts, competitions and university programmes, every one tagged to the Edexcel themes. What you do here saves to the department, so your name only needs typing once.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Take the chair</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the Economics department.</b> This is the working pupil page: sign in with any name, read the screens, cast the 5 November vote, mark papers read, write a minute. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" id="fbOpen2">Feedback</button></div>
+  </div>
+  <div class="ticker" aria-label="Latest figures" id="ticker"></div>
+  <header class="top">
+    <div>
+      <h1 class="head">The Tenth Chair <span>Economics · Beyond the Classroom · the committee's data, the committee's calendar, your vote</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE COMMITTEE ROOM ===== -->
+  <section class="room" aria-label="The committee room">
+    <div class="table-wrap">
+      <svg class="tbl" viewBox="0 0 720 420" role="img" aria-labelledby="tblT">
+        <title id="tblT">The committee table: nine members of the Monetary Policy Committee and a tenth chair, yours</title>
+        <rect x="0" y="0" width="720" height="420" fill="#0b1727"/>
+        <!-- room: panelling lines -->
+        <g stroke="#13223a" stroke-width="1"><line x1="0" y1="60" x2="720" y2="60"/><line x1="0" y1="380" x2="720" y2="380"/></g>
+        <!-- table -->
+        <ellipse cx="360" cy="215" rx="252" ry="120" class="wood"/>
+        <ellipse cx="360" cy="215" rx="238" ry="106" class="felt"/>
+        <ellipse cx="360" cy="215" rx="238" ry="106" class="felt-edge"/>
+        <!-- papers and cups on the table -->
+        <g class="papers"><circle cx="250" cy="268" r="6" class="cup"/><circle cx="250" cy="268" r="4" fill="#5a3b1c"/><circle cx="470" cy="270" r="6" class="cup"/><circle cx="470" cy="270" r="4" fill="#5a3b1c"/><rect x="352" y="152" width="16" height="6" rx="2" class="gavel" transform="rotate(-20 360 155)"/></g>
+        <!-- chairs: nine members + the tenth chair. Positioned around the ellipse. -->
+        <g id="chairs"></g>
+        <!-- captions -->
+        <text x="360" y="32" class="caption big" text-anchor="middle">MONETARY POLICY COMMITTEE · BANK OF ENGLAND</text>
+        <text x="360" y="48" class="caption" text-anchor="middle" id="tblSub">nine members · eight decisions a year · and the tenth chair</text>
+        <g class="legend" transform="translate(16,396)">
+          <rect x="0" y="-9" width="12" height="12" fill="#3a4454" stroke="#8b97a8"/><text x="18" y="1">ballot: hold</text>
+          <rect x="112" y="-9" width="12" height="12" fill="#5a2a24" stroke="#e0604f"/><text x="130" y="1">ballot: raise</text>
+          <rect x="236" y="-9" width="12" height="12" fill="#24395a" stroke="#5b9cf6"/><text x="254" y="1">ballot: cut</text>
+          <rect x="350" y="-9" width="12" height="12" fill="#3b2d0a" stroke="#f3b23b" stroke-width="2"/><text x="368" y="1">the tenth chair (you)</text>
+        </g>
+      </svg>
+      <div class="room-cap" id="roomCap"></div>
+    </div>
+    <div class="screens" id="screens" aria-label="The briefing pack: latest figures"></div>
+  </section>
+
+  <!-- ===== THE VOTE ===== -->
+  <section class="vote" id="vote" aria-labelledby="voteH"></section>
+
+  <!-- ===== THE SECRETARY, PROGRESS, FETCH ===== -->
+  <section class="crew" aria-label="The Secretary, your progress, and fetch a paper">
+    <div class="sec">
+      <svg class="sec-img" id="secImg" viewBox="0 0 240 240" aria-hidden="true"><use href="#secretary"/></svg>
+      <div class="bubble" role="status" aria-live="polite"><span class="nm">The Secretary · minutes</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card dist-card">
+        <h2 class="head">Briefing pack read</h2>
+        <div class="dist"><div class="pct" id="pctVal">0<small>%</small></div>
+          <div><div class="bar" aria-hidden="true"><i id="bar"></i></div><p class="small" id="coverTxt" style="margin:8px 0 0"></p></div></div>
+        <div class="stretches" id="palette" aria-label="Sections of the pack with at least one paper read"></div>
+        <div class="votes-line" id="votesLine"></div>
+      </div>
+      <div class="card pick-card">
+        <h2 class="head">Fetch a paper</h2>
+        <p class="small" style="margin:0">Say how long you have. The Secretary brings one paper you have not read, from a section you have not opened where possible.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">10 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Fetch</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE AGENDA (half term) ===== -->
+  <section class="agenda" aria-labelledby="htLabel">
+    <span class="eyebrow" id="htEyebrow"></span>
+    <h2 class="head" id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE PACK ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 class="head" id="tableH">The briefing pack</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a section"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one section"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE CALENDAR ===== -->
+  <section class="almanac" aria-labelledby="yearH">
+    <div class="atop"><span class="sub">October 2026 – August 2027</span><h2 class="head" id="yearH">The committee's calendar, and yours</h2><span class="sub">Decision days in amber · data releases in blue · "check" = date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== THE MINUTES ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side">
+      <span class="tape" id="nbCover">The minutes</span>
+      <h2 class="head" id="nbH">One minute per paper</h2>
+      <p>Not a summary. What the paper said, one thing you took from it, and the question it left you with. The minutes save to the department as you write and copy out as text for a personal statement, an interview or a reference.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbWhat">Paper</label><input id="nbWhat" list="whatList" placeholder="lecture, episode, release, text…" required><datalist id="whatList"></datalist></div>
+        </div>
+        <div class="field"><label for="nbLearned">What I took from it</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">The question it left me with (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">Minute it</button><button class="btn ghost" type="button" id="copyBtn">Copy the minutes as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your minutes as text"></textarea>
+      </form>
+    </div>
+    <div class="entries" id="entries"></div>
+  </section>
+
+  <!-- ===== SMALL PRINT ===== -->
+  <div class="smallprint" id="smallprint" aria-label="Sources for the committee room"></div>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="head">What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; each pupil's vote for every MPC decision with their written reasons, and whether they landed with the majority once the result is in; who tapped <b>I want to enter</b> for each prize (your list for Fitzwilliam, which caps entries per school); how many of the half-term agenda each pupil has done; how much of the pack each has read and which sections they have not opened; each set of minutes as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. After each decision you enter the result in one line and every pupil's chair is compared. The screens are updated by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Economics: the papers and their theme tags, the agenda, the vote options, the Secretary's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+/* Six sections of the briefing pack. */
+const FAM = {
+  enter:{label:"Enter", verb:"Essay prizes and competitions", place:"Submissions", the:"the Submissions section", no:1},
+  watch:{label:"Watch", verb:"Lectures and talks", place:"Evidence sessions", the:"the Evidence sessions", no:2},
+  listen:{label:"Listen", verb:"Podcasts", place:"The wires", the:"the wires", no:3},
+  read:{label:"Read", verb:"Data releases, reports and texts", place:"The data room", the:"the data room", no:4},
+  do:{label:"Do", verb:"Models, tools and practice", place:"The models", the:"the models", no:5},
+  apply:{label:"Apply", verb:"University, summer schools and apprenticeships", place:"Appointments", the:"the Appointments section", no:6}
+};
+
+/* The nine members, as the Bank lists them (checked 7 October 2026). Chairs show the published split, not who sat where. */
+const MEMBERS = [
+  {i:"AB", n:"Andrew Bailey", r:"Governor"},
+  {i:"CL", n:"Clare Lombardelli", r:"Deputy Governor, Monetary Policy"},
+  {i:"SB", n:"Sarah Breeden", r:"Deputy Governor, Financial Stability"},
+  {i:"DR", n:"Sir Dave Ramsden", r:"Deputy Governor, Markets and Banking"},
+  {i:"HP", n:"Huw Pill", r:"Chief Economist"},
+  {i:"SD", n:"Swati Dhingra", r:"External member"},
+  {i:"MG", n:"Megan Greene", r:"External member"},
+  {i:"CM", n:"Catherine L. Mann", r:"External member"},
+  {i:"AT", n:"Alan Taylor", r:"External member"}
+];
+
+/* Where the design comes from, and how sure we are. att = attested in a source we link to; con = a conceit, labelled as one. */
+const SMALLPRINT = [
+  {nm:"Nine members, eight decisions", txt:`"The Monetary Policy Committee (MPC) is made up of nine members – the Governor, the three Deputy Governors for Monetary Policy, Financial Stability and Markets and Banking, our Chief Economist and four external members appointed directly by the Chancellor." It "meets eight times a year to decide what level of Bank Rate is needed to return inflation to – or keep it at – the 2% target over time." <span class="st att">attested</span> <a href="https://www.bankofengland.co.uk/about/people/monetary-policy-committee" target="_blank" rel="noopener">Bank of England, MPC page</a>; <a href="https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" target="_blank" rel="noopener">Bank Rate page</a>.`},
+  {nm:"The tenth chair", txt:`There is no tenth chair. The vote you cast here is yours alone and changes nothing; the committee's real votes are published in the minutes on the day, with each member's name against them. The chairs above show the published split, not who sat where. <span class="st con">conceit</span>`},
+  {nm:"The figures on the screens", txt:`Taken from the ONS and the Bank's own releases on the dates shown on each screen, and updated by the department after each release. If a screen's date is old, the figure is old: click through to the source. <span class="st att">attested</span>`},
+  {nm:"Why a vote at all", txt:`The Bank ran a schools competition on exactly this basis, Target Two Point Zero, from 2000 to 2017, and then stopped. The exercise was good; the competition is not coming back. This page does the exercise without the competition. <span class="st att">attested</span> <a href="https://www.bankofengland.co.uk/education" target="_blank" rel="noopener">Bank of England education</a>.`}
+];
+
+/* ======================================================================
+   EDIT AFTER EACH DATA RELEASE AND EACH DECISION
+   BRIEFING: the screens. Change the figure, the period it covers and the
+   date you took it. Links are to the live "latest" pages, so they stay right.
+   MEETINGS: one row per decision in the school year. Before a meeting,
+   leave `actual` as null. After the announcement, fill it in:
+     actual:{bps:0, rate:3.75, split:"6–3", note:"three voted to raise to 4%", url:"…minutes…"}
+   bps = the change in basis points (0 hold, +25 raise, -25 cut).
+   Pupils can vote until midnight on the eve of the decision date.
+   ====================================================================== */
+const BRIEFING = {
+  asOf:"2026-10-07",
+  screens:[
+    {k:"Bank Rate", v:"3.75", u:"%", p:"since the 17 September decision, held 6–3; three members voted to raise to 4%", n:"Next decision <b>Thu 5 Nov 2026</b>, noon", url:"https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate", cls:""},
+    {k:"CPI inflation", v:"3.1", u:"%", p:"12 months to August 2026 · CPIH 3.3% · core CPI 2.6% · target 2%", n:"ONS, released 16 Sep · next <b>Wed 21 Oct</b>", url:"https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest", cls:"up"},
+    {k:"Unemployment", v:"4.9", u:"%", p:"May to July 2026, up 0.2 points on the year · regular pay growth 3.5%", n:"ONS, released 15 Sep · next <b>Tue 20 Oct</b>", url:"https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest", cls:"up"},
+    {k:"GDP growth", v:"+0.4", u:"%", p:"July 2026 on the month; 0.4% in the three months to July; 0.4% in 2026 Q2", n:"ONS, released 11 Sep · next <b>Thu 15 Oct</b>", url:"https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest", cls:"dn"},
+    {k:"Bank's own forecast", v:"≈3¾", u:"%", p:"CPI expected to rise to around 3¾% in 2026 Q4 and slightly above 4% in 2027 Q1, then fall back", n:"MPC summary, 17 Sep 2026", url:"https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026", cls:"target"}
+  ],
+  tickerExtra:"THE TENTH CHAIR · read the pack · cast your vote · write your reasons"
+};
+const MEETINGS = [
+  {id:"m2026-09", date:"2026-09-17", mpr:false, actual:{bps:0, rate:3.75, split:"6–3", note:"six voted to hold; three voted to raise Bank Rate by 0.25 points to 4%", url:"https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026"}},
+  {id:"m2026-11", date:"2026-11-05", mpr:true,  actual:null},
+  {id:"m2026-12", date:"2026-12-17", mpr:false, actual:null},
+  {id:"m2027-02", date:"2027-02-04", mpr:true,  actual:null},
+  {id:"m2027-03", date:"2027-03-18", mpr:false, actual:null},
+  {id:"m2027-04", date:"2027-04-29", mpr:true,  actual:null},
+  {id:"m2027-06", date:"2027-06-17", mpr:false, actual:null},
+  {id:"m2027-07", date:"2027-07-29", mpr:true,  actual:null}
+];
+const BALLOT = [
+  {bps:-50, lab:"−0.50", sub:"cut", cls:"cut"},
+  {bps:-25, lab:"−0.25", sub:"cut", cls:"cut"},
+  {bps:0,   lab:"hold", sub:"no change", cls:"hold"},
+  {bps:25,  lab:"+0.25", sub:"raise", cls:"raise"},
+  {bps:50,  lab:"+0.50", sub:"raise", cls:"raise"}
+];
+
+/* The papers. mins drives the Fetch buckets: quick <= 20, evening <= 180, long > 180.
+   th = Edexcel A (9EC0) theme(s): 1 markets and market failure; 2 the UK economy; 3 business behaviour and the labour market; 4 a global perspective. */
+const ITEMS = [
+  // ---- 1 Enter · Submissions
+  {s:"YEY",g:"enter",short:"Young Economist of the Year (RES)",name:"Young Economist of the Year (Royal Economic Society, via Discover Economics)",mins:600,t:"1,000 words, a video or a deck",th:"1–4",
+   what:"Answer one of five set questions as a blog of up to 1,000 words, a five-minute video or podcast, or a short slide deck. Years 10–13, individuals or groups; you submit online yourself. The 2026 round launched 23 March and closed 29 June, with the final in October; 2026 questions included dynamic pricing, free trade, and AI and growth. Winners have visited HM Treasury and 10 Downing Street. Expect the same pattern in 2027; confirm in March.",
+   think:"Pick the question nearest a theme you have finished. The judges read for an argument with one piece of real data in it, not for a survey of everything you know.",tags:["free","Years 10–13","enter yourself","Mar–Jun","check dates"],url:"https://www.discovereconomics.co.uk/young-economist-of-the-year-2026",lt:"Discover Economics"},
+  {s:"FCDO",g:"enter",short:"FCDO Next Generation Economics",name:"FCDO Next Generation Economics Competition (Foreign, Commonwealth and Development Office, with LSE)",mins:600,t:"a 1,000-word letter",th:"4",
+   what:"A letter of up to 1,000 words answering one of four questions on development and international economics; 2026 asked about protectionism, creative destruction, women's economic participation and sustainable development. Ages 14–18 at UK schools, Under 16 and Under 18 categories; you email the entry on the official template. Prizes to £350; the top eight visit the FCDO and LSE. Harvard referencing; AI may not write it. 2026 ran 21 May to 28 June; GOV.UK says it returns in 2027.",
+   think:"It is a letter to a minister. Say what you would do, what it costs, and who loses; the Theme 4 evaluation marks are for the third of those.",tags:["free","ages 14–18","enter yourself","May–Jun","Theme 4","check dates"],url:"https://www.gov.uk/guidance/fcdo-next-generation-economics-competition",lt:"GOV.UK"},
+  {s:"Fitz",g:"enter",short:"Gerald O'Connell Essay Competition (Fitzwilliam, Cambridge)",name:"Gerald O'Connell Essay Competition in Economics (Fitzwilliam College, Cambridge)",mins:600,t:"1,000 words + research log",th:"1 · 3",
+   what:"Up to 1,000 words with a research log, for Year 12 at UK state schools. 2026 asked you to describe a time market forces failed, estimate the losses and say what protected people. £200 first prize. No generative AI. Questions published in the autumn; the 2026 deadline was 6pm, 27 February. Up to five entries per school, so tell the department you are entering.",
+   think:"The research log is marked. Keep it from day one: what you read, what you found, what you dropped and why.",tags:["free","Year 12","state schools","school passes on","late Feb","check dates"],url:"https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026",lt:"Fitzwilliam"},
+  {s:"Mar",g:"enter",short:"Marshall Society Essay Competition (Cambridge)",name:"Marshall Society Essay Competition (Cambridge University Economics Society)",mins:600,t:"1,500 words",th:"2 · 4",
+   what:"Up to 1,500 words on one of six questions; 2026 included tariffs, central banks and energy shocks, and Britain leaving the gold standard in 1931. Years 12 and 13, submitted online over the summer; 2026 deadline 30 August, results mid-September. £100 first prize. AI for research only, declared.",
+   think:"One of the six is always about a central bank. You will have voted six times by then; use what you learned about why committees split.",tags:["free","Y12–13","enter yourself","summer · due late Aug","check dates"],url:"https://marshallsoc.org/marshall-society-essay-competition-2026/",lt:"Marshall Society"},
+  {s:"OES",g:"enter",short:"Oxford Economics Society essay competition",name:"Oxford Economics Society Sixth Form Essay Competition",mins:600,t:"2,000 words",th:"3 · 4",
+   what:"Up to 2,000 words on one of three questions; 2026 asked about oil shocks, whether the CMA should approve mergers more readily, and lessons from 2008. Years 12 and 13; one entry each through the society's portal. 2026 deadline 11.59pm, 14 August. £100 first prize.",
+   think:"Two thousand words is long enough to be wrong at length. Pick a side by the end of the first page and spend the rest defending it against the best objection.",tags:["free","Y12–13","enter yourself","summer · due mid-Aug","check dates"],url:"https://oxfordeconsoc.org/essay-competition",lt:"Oxford Econ Soc"},
+  {s:"KEL",g:"enter",short:"King's Entrepreneurship Lab essay prize (Cambridge)",name:"Entrepreneurship Essay Competition (King's Entrepreneurship Lab, King's College, Cambridge)",mins:600,t:"1,000 words",th:"3",
+   what:"Up to 1,000 words on one of four questions about entrepreneurship. UK Years 11–13, through the E-Lab online form. £1,500 first prize, two runners-up at £750. No generative AI. 2026 deadline 9pm, 5 August, with a prize ceremony at King's in December.",
+   think:"Theme 3 in disguise: objectives of firms, barriers to entry, the economics of a start-up that has no price-setting power. Use the diagrams; they will not expect them.",tags:["free","Years 11–13","enter yourself","summer · due early Aug","Theme 3","check dates"],url:"https://www.kingselab.org/essay-competition",lt:"King's E-Lab"},
+
+  // ---- 2 Watch · Evidence sessions
+  {s:"RES",g:"watch",short:"RES Annual Public Lecture · Is Economics broken? (3 Nov)",name:"Royal Economic Society Annual Public Lecture 2026: Dharshini David, 'Is Economics broken?'",mins:90,t:"90m · live stream",th:"2 · 4",
+   what:"The Royal Economic Society's annual lecture for sixth formers, running since 2001. 2026: Dharshini David of BBC News, 'Is Economics broken?', Tuesday 3 November, 2–3.30pm, streamed live; in-person places are full. Recordings of past lectures are on the same page: Jagjit Chadha on central banking (2022), capitalism and carbon (2023), valuing care work (2024).",
+   think:"Two days before the 5 November decision. Watch for what she says about forecasting, then look at the Bank's own forecast on the screens above and decide whether she is being fair.",tags:["free","3 Nov 2–3.30pm","live stream","recordings"],url:"https://res.org.uk/committees/pd-education-committee/annual-public-lecture/",lt:"RES lecture"},
+  {s:"Gre",g:"watch",short:"Gresham College · Daunton and Rau",name:"Gresham College economics and finance lectures",mins:60,t:"60m each",th:"1 · 2 · 4",
+   what:"Free recorded university lectures: Martin Daunton's The Economy of Modern Britain and Economic History: From the Empire to the Cold War, and Raghavendra Rau's Big Ideas in Finance and Exploring Human Behaviour in Finance. Live schools-only online talks at 2–3pm in term time, booked by the department through schools@gresham.ac.uk.",
+   think:"Daunton for Theme 2, Rau for behavioural economics in Theme 1 and the financial sector in Theme 4. One lecture, one minute in the minutes.",tags:["free","university lectures","Theme 2 · 4"],url:"https://www.gresham.ac.uk/schools-and-colleges/economics",lt:"Gresham Economics"},
+  {s:"HEp",g:"watch",short:"Cambridge HE+ Economics",name:"Cambridge HE+ Economics modules",mins:90,t:"3 modules",th:"1",
+   what:"Modules written for sixth formers by Cambridge academics and students, with reading, audio, video and questions: Behavioural Economics, Rationality, and Indifference Curves. The last is first-year university material.",
+   think:"Do Rationality alongside Theme 1 rational decision making, then Behavioural Economics, and ask which of the two your textbook believes.",tags:["free","Cambridge","Theme 1","Y13 for indifference curves"],url:"https://myheplus.com/subject/economics",lt:"HE+ Economics"},
+  {s:"LSE",g:"watch",short:"LSE Player",name:"LSE Player: public lectures and the LSE IQ podcast",mins:75,t:"60–90m",th:"1–4",
+   what:"Over 5,000 recordings of LSE public events, plus the LSE IQ podcast. Search by the topic you are studying: inflation, trade, inequality, housing.",
+   think:"Research lectures. Expect to lose the thread for a few minutes; write down the question from the floor that the speaker could not answer.",tags:["free","research lectures","search by topic"],url:"https://www.lse.ac.uk/lse-player",lt:"LSE Player"},
+  {s:"Duf",g:"watch",short:"Esther Duflo · Social experiments to fight poverty",name:"Esther Duflo: Social experiments to fight poverty",mins:16,t:"16m",th:"4",
+   what:"Duflo, who shared the 2019 Nobel prize for this work, on randomised trials in development: bed nets, immunisation, deworming, and what each tells a government about where to spend.",
+   think:"Pick one trial and say what it tells a government about where to spend. Then say what a critic would say about scaling it up to a country.",tags:["TED","free","Theme 4.3"],url:"https://www.ted.com/talks/esther_duflo_social_experiments_to_fight_poverty",lt:"ted.com"},
+  {s:"Ari",g:"watch",short:"Dan Ariely · Are we in control of our own decisions?",name:"Dan Ariely: Are we in control of our own decisions?",mins:17,t:"17m",th:"1",argue:true,
+   what:"Default options, decoy prices and why the shape of a choice changes the choice. A clear introduction to behavioural economics. Watch it knowing that a 2012 paper Ariely co-authored on honesty was retracted in 2021 after the data he supplied were found not to be genuine; the examples in this talk are not that study, but the question of what evidence stands up is the point of behavioural economics.",
+   think:"Which example shows the power of a default, and how could a government use it as a nudge? Then: which of his claims would you want to see replicated before you believed it?",tags:["TED","free","Theme 1","argue with it"],url:"https://www.ted.com/talks/dan_ariely_are_we_in_control_of_our_own_decisions",lt:"ted.com"},
+  {s:"Sut",g:"watch",short:"Rory Sutherland · Life lessons from an ad man",name:"Rory Sutherland: Life lessons from an ad man",mins:16,t:"16m",th:"3",
+   what:"An advertising executive on perceived value: the same product, a different story, a different price.",
+   think:"Theme 3 non-price competition: how does advertising shift demand without changing the product? Draw the diagram, then say what it does to the price elasticity.",tags:["TED","free","Theme 3"],url:"https://www.ted.com/talks/rory_sutherland_life_lessons_from_an_ad_man",lt:"ted.com"},
+  {s:"Ros",g:"watch",short:"Hans Rosling · The magic washing machine",name:"Hans Rosling: The magic washing machine",mins:9,t:"9m",th:"2 · 4",
+   what:"Rosling on energy, income and the washing machine: who has one, who does not, and what it buys in time.",
+   think:"What does his argument say about the link between GDP, energy use and living standards? Then find the same picture in Our World in Data and check him.",tags:["TED","free","Theme 2 · 4","9 min"],url:"https://www.ted.com/talks/hans_rosling_the_magic_washing_machine",lt:"ted.com"},
+  {s:"Raw",g:"watch",short:"Kate Raworth · thrive, not grow",name:"Kate Raworth: A healthy economy should be designed to thrive, not grow",mins:16,t:"16m",th:"2",argue:true,
+   what:"Raworth's doughnut: a social floor and an ecological ceiling, and an argument against growth as the objective.",
+   think:"Theme 2 treats growth as a macroeconomic objective. Use her model to argue against it, then write the reply a mainstream economist would give. This talk is on the list to be argued with.",tags:["TED","free","Theme 2","argue with it"],url:"https://www.ted.com/talks/kate_raworth_a_healthy_economy_should_be_designed_to_thrive_not_grow",lt:"ted.com"},
+  {s:"Maz",g:"watch",short:"Mariana Mazzucato · What is economic value?",name:"Mariana Mazzucato: What is economic value, and who creates it?",mins:19,t:"19m",th:"4",argue:true,
+   what:"Mazzucato argues that some activity, much of it financial, extracts value rather than creating it, and that how we measure value decides who gets rewarded.",
+   think:"Theme 4 financial sector: choose one financial market activity and argue both sides. This talk is on the list to be argued with.",tags:["TED","free","Theme 4.4","argue with it"],url:"https://www.ted.com/talks/mariana_mazzucato_what_is_economic_value_and_who_creates_it",lt:"ted.com"},
+  {s:"Wil",g:"watch",short:"Richard Wilkinson · How inequality harms societies",name:"Richard Wilkinson: How economic inequality harms societies",mins:17,t:"17m",th:"4",argue:true,
+   what:"Charts of inequality against health, trust, violence and more, across rich countries. The correlations are strong; whether they are causes is contested.",
+   think:"Theme 4.2 poverty and inequality: his charts show correlation. What else could explain the pattern, and what data would test it?",tags:["TED","free","Theme 4.2","argue with it"],url:"https://www.ted.com/talks/richard_wilkinson_how_economic_inequality_harms_societies",lt:"ted.com"},
+  {s:"Moy",g:"watch",short:"Dambisa Moyo · Economic growth has stalled",name:"Dambisa Moyo: Economic growth has stalled. Let's fix it",mins:14,t:"14m",th:"4",
+   what:"Moyo on why growth has slowed in rich countries and the choice between state-led and market-led models.",
+   think:"Theme 4.5 role of the state: where does the UK sit on her spectrum between state and market, and would you move it? One reason each way.",tags:["TED","free","Theme 4.5"],url:"https://www.ted.com/talks/dambisa_moyo_economic_growth_has_stalled_let_s_fix_it",lt:"ted.com"},
+  {s:"Har",g:"watch",short:"Tim Harford · Trial, error and the God complex",name:"Tim Harford: Trial, error and the God complex",mins:18,t:"18m",th:"1 · 3",
+   what:"Harford on why complex problems get solved by trial and error rather than by anyone who claims to understand them.",
+   think:"Theme 1 economic systems: why does he think planned solutions fail, and does the same argument apply to government intervention in Theme 3? Then read Hayek in the data room; Harford is making his argument.",tags:["TED","free","Theme 1 · 3"],url:"https://www.ted.com/talks/tim_harford_trial_error_and_the_god_complex",lt:"ted.com"},
+
+  // ---- 3 Listen · The wires
+  {s:"IFSp",g:"listen",short:"IFS podcasts with A-level questions",name:"IFS podcasts with A-level questions (Institute for Fiscal Studies)",mins:40,t:"30–40m + questions",th:"2 · 4",
+   what:"Episodes of the IFS podcast with question sets written for A-level economics: immigration and the public finances, land value tax, the minimum wage, student loans, fiscal rules, regional inequality. Updated September 2026.",
+   think:"Pick one on your current theme, answer the questions in the minutes, then write the one question the IFS did not ask.",tags:["free","IFS","questions included","start here"],url:"https://ifs.org.uk/level-post-16-resources/podcasts-level-questions",lt:"IFS podcasts"},
+  {s:"MoL",g:"listen",short:"More or Less (BBC Radio 4)",name:"More or Less (BBC Radio 4, Tim Harford)",mins:28,t:"28m",th:"2",
+   what:"Checks the numbers in the news: GDP, inflation, unemployment and the claims politicians make about them.",
+   think:"Theme 2 measures of economic performance. Each episode, note one number that was being used wrongly and how.",tags:["free","BBC","Theme 2"],url:"https://timharford.com/etc/more-or-less/",lt:"More or Less"},
+  {s:"50T",g:"listen",short:"50 Things That Made the Modern Economy",name:"50 Things That Made the Modern Economy (BBC, Tim Harford)",mins:9,t:"9m each",th:"1 · 3",
+   what:"Short episodes, each on one invention or idea and its economic effect: the plough, barcodes, limited liability, the shipping container.",
+   think:"Nine minutes. One episode, then one sentence on which market it changed and whether anyone lost.",tags:["free","BBC","9 min"],url:"https://www.bbc.co.uk/programmes/p04b1g3c",lt:"BBC"},
+  {s:"Fre",g:"listen",short:"Freakonomics Radio",name:"Freakonomics Radio",mins:50,t:"50m",th:"1 · 3",
+   what:"Weekly, about 50 minutes; applied microeconomics and behavioural economics. Recent episodes on prediction markets and AI.",
+   think:"American, and fond of the counter-intuitive. Ask of every episode: what is the incentive, and who set it?",tags:["free","weekly","Theme 1 · 3"],url:"https://freakonomics.com/series/freakonomics-radio/",lt:"Freakonomics"},
+  {s:"PM",g:"listen",short:"Planet Money (NPR)",name:"Planet Money (NPR)",mins:25,t:"25m",th:"1 · 4",
+   what:"US-based but strong on markets, sanctions, housing policy and game theory. The main episodes are free; Planet Money+ is a paid extra and not needed.",
+   think:"When they explain a US market, write down the UK equivalent and whether it works the same way.",tags:["free","NPR","Theme 1 · 4"],url:"https://www.npr.org/podcasts/510289/planet-money",lt:"Planet Money"},
+  {s:"RFp",g:"listen",short:"Resolution Foundation podcast and Top of the Charts",name:"Resolution Foundation: podcast and the Top of the Charts email",mins:45,t:"45m · weekly email",th:"2 · 4",added:"2026-10-07",
+   what:"An independent think-tank on living standards for low-to-middle income households: a podcast of its events, free reports, and a weekly email, Top of the Charts, that rounds up the week's best economics research with the charts.",
+   think:"Sign up for Top of the Charts. One chart a week, read properly, is a year's worth of Theme 4.2 evidence by June.",tags:["free","think-tank","Theme 2 · 4.2","weekly email"],url:"https://www.resolutionfoundation.org/",lt:"Resolution Foundation"},
+
+  // ---- 4 Read · The data room
+  {s:"MIN",g:"read",short:"MPC Monetary Policy Summary and minutes",name:"Bank of England: Monetary Policy Summary and minutes of the MPC meeting",mins:30,t:"the summary, 10 pages",th:"2",added:"2026-10-07",
+   what:"Published at noon on every decision day: the decision, the vote with each member's name against it, and the committee's reasoning. The September 2026 summary records a 6–3 vote to hold at 3.75%, with three members voting to raise. This is the document your vote is compared with.",
+   think:"Before you vote, read the last summary. Find the paragraph where the minority explain themselves. Then decide whether you are in the six or the three, and say why in your reasons.",tags:["free","Bank of England","Theme 2","read before you vote"],url:"https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026",lt:"September 2026 summary"},
+  {s:"MPR",g:"read",short:"Monetary Policy Report (quarterly)",name:"Bank of England: Monetary Policy Report",mins:90,t:"quarterly · Feb, Apr/May, Jul/Aug, Nov",th:"2",added:"2026-10-07",
+   what:"The Bank's quarterly forecast: the fan charts for inflation and GDP, what has changed since last time, and the committee's view of the risks. The July 2026 report expected CPI to rise to 3.2% in Q4; by September the committee had raised that to around 3¾%. The next report comes with the 5 November decision.",
+   think:"Read section 1 only. Find the fan chart for CPI, write down where the central line is in two years, and ask why the fan is as wide as it is.",tags:["free","Bank of England","Theme 2","fan charts"],url:"https://www.bankofengland.co.uk/monetary-policy-report/2026/july-2026",lt:"July 2026 report"},
+  {s:"OBR",g:"read",short:"OBR Economic and Fiscal Outlook",name:"Office for Budget Responsibility: Economic and Fiscal Outlook",mins:60,t:"executive summary",th:"2 · 4",added:"2026-10-07",
+   what:"The official forecast the Chancellor must use. The March 2026 outlook had growth slowing from 1.4% in 2025 to 1.1% in 2026, and borrowing falling from 5.2% of GDP in 2024–25 to 4.3%. A new one comes with the autumn Budget.",
+   think:"Read the executive summary and the chart of borrowing. Then ask: what has to be true about growth for the borrowing numbers to come out, and what happens if it is not?",tags:["free","OBR","Theme 2.6 · 4","fiscal policy"],url:"https://obr.uk/efo/economic-and-fiscal-outlook-march-2026/",lt:"OBR, March 2026"},
+  {s:"CPI",g:"read",short:"ONS · Consumer price inflation (monthly)",name:"ONS: Consumer price inflation, UK (monthly bulletin)",mins:25,t:"monthly · 7am",th:"2",added:"2026-10-07",
+   what:"The inflation release the committee reads, published at 7am on the dates on the screens. August 2026: CPI 3.1%, CPIH 3.3%, core CPI 2.6%, with transport (motor fuels) the largest upward contribution. Next release Wednesday 21 October.",
+   think:"On release day, read the 'main points' and the contributions chart. Write down which division moved the number and whether that is something Bank Rate can touch.",tags:["free","ONS","Theme 2","release day"],url:"https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest",lt:"ONS CPI"},
+  {s:"LAB",g:"read",short:"ONS · Labour market overview (monthly)",name:"ONS: Labour market overview, UK (monthly bulletin)",mins:25,t:"monthly · 7am",th:"2 · 3",added:"2026-10-07",
+   what:"Unemployment, employment, vacancies and pay. May–July 2026: unemployment 4.9%, up 0.2 points on the year; employment rate 75.1%; regular pay growth 3.5%. Next release Tuesday 20 October.",
+   think:"Pay growth minus inflation is the real wage. Work it out from the release, then say what it means for the committee's worry about second-round effects.",tags:["free","ONS","Theme 2 · 3","release day"],url:"https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/bulletins/uklabourmarket/latest",lt:"ONS labour market"},
+  {s:"GDP",g:"read",short:"ONS · GDP monthly estimate",name:"ONS: GDP monthly estimate, UK",mins:20,t:"monthly · 7am",th:"2",added:"2026-10-07",
+   what:"Monthly output. July 2026: +0.4% on the month after +0.3% in June and no growth in May; 0.4% over three months; services contributed the growth. Next release Thursday 15 October.",
+   think:"Three months of monthly numbers is noise; the three-month figure is the one to quote. Which sector moved it, and is that sector interest-rate sensitive?",tags:["free","ONS","Theme 2","release day"],url:"https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/latest",lt:"ONS GDP"},
+  {s:"OWID",g:"read",short:"Our World in Data · economic growth",name:"Our World in Data: Economic Growth",mins:30,t:"57 charts, open data",th:"2 · 4",added:"2026-10-07",
+   what:"Interactive charts on GDP per capita over centuries (Maddison Project, World Bank, Penn World Table), all open access under a Creative Commons licence with the data downloadable.",
+   think:"Open the long-run GDP per capita chart, add the UK and two countries from Theme 4.3, and write down the year each one reached the UK's 1950 level.",tags:["free","open data","Theme 2 · 4.3","charts you may reuse"],url:"https://ourworldindata.org/economic-growth",lt:"Our World in Data"},
+  {s:"GB",g:"read",short:"IFS Green Budget 2026",name:"IFS Green Budget 2026 (Institute for Fiscal Studies)",mins:60,t:"one chapter",th:"2 · 4",added:"2026-10-07",
+   what:"The IFS's independent assessment of the economy and the public finances before the Budget, published 20 August 2026, with a presentation event on 14 October. Chapters on the fiscal rules, the tax options and the spending pressures the Chancellor faces.",
+   think:"Read the chapter on the fiscal rules. Then write the Chancellor a one-paragraph brief: what you would do and what the IFS would say about it.",tags:["free","IFS","Theme 2.6 · 4.5","before the Budget"],url:"https://ifs.org.uk/green-budget",lt:"IFS Green Budget"},
+  {s:"EO",g:"read",short:"Economics Observatory",name:"Economics Observatory",mins:15,t:"15m articles",th:"1–4",
+   what:"Question-and-answer articles on current UK and world economics, written by academic economists, funded by the ESRC with the IFS and the Resolution Foundation. Creative Commons, so the charts can be used in class.",
+   think:"Type a Theme 2 question into its search box. Read the answer, then find the chart it rests on and check the source of the chart.",tags:["free","academic","charts you may reuse"],url:"https://www.economicsobservatory.com/",lt:"economicsobservatory.com"},
+  {s:"ER",g:"read",short:"IFS articles from Economic Review",name:"IFS articles written for Economic Review",mins:20,t:"20m articles",th:"2 · 4",
+   what:"Free IFS articles written for A-level students: universal basic income, minimum wages, why Britain isn't getting richer, net zero, the ageing population, the energy price cap. Economic Review itself is a paid school-library subscription; these are the free ones.",
+   think:"Written for you, which is rare. Read 'why Britain isn't getting richer', then put its argument against the OBR growth forecast.",tags:["free","IFS","written for A level"],url:"https://ifs.org.uk/level-post-16-resources/economic-review",lt:"IFS Economic Review"},
+  {s:"FT",g:"read",short:"Financial Times for schools",name:"Financial Times for schools (free school subscription)",mins:20,t:"daily",th:"1–4",
+   what:"A free digital FT subscription for schools with 16–19 students, with teaching materials for Economics. The school registers; you then get your own login. Ask the department.",
+   think:"Read the Lex column once a week. It is one firm, one page, Theme 3 every time.",tags:["free via school","daily","ask for a login"],url:"https://qualifications.pearson.com/en/news-policy/subject-updates/economics/FT-for-schools.html",lt:"FT for schools"},
+  {s:"BoE",g:"read",short:"Bank of England explainers",name:"Bank of England explainers",mins:10,t:"10m each",th:"2",
+   what:"Short explainers on inflation, interest rates, GDP, money and what the Bank does.",
+   think:"Read 'how does raising interest rates lower inflation?' before your first vote, and 'what is quantitative tightening?' before your second.",tags:["free","Bank of England","Theme 2","10 min"],url:"https://www.bankofengland.co.uk/explainers",lt:"BoE explainers"},
+  {s:"Smi",g:"read",short:"Adam Smith · Wealth of Nations, Book I, chapters 1–3",name:"Adam Smith, An Inquiry into the Nature and Causes of the Wealth of Nations (1776), Book I, chapters 1–3",mins:60,t:"three short chapters",th:"1 · 3",added:"2026-10-07",
+   what:"The pin factory, the division of labour and why it is limited by the extent of the market, in Smith's own words. Cannan's 1904 edition of the fifth edition (1789), free on Econlib.",
+   think:"Count the operations in the pin factory. Then find a modern firm that has gone the other way and un-divided its labour, and ask what Smith would say.",tags:["free","primary text","Theme 1 · 3","1776"],url:"https://www.econlib.org/library/Smith/smWN.html",lt:"Econlib"},
+  {s:"Key",g:"read",short:"Keynes · General Theory, chapter 12",name:"J. M. Keynes, The General Theory of Employment, Interest and Money (1936), chapter 12: The State of Long-term Expectation",mins:60,t:"one chapter",th:"2",added:"2026-10-07",
+   what:"The chapter with 'animal spirits' and the newspaper beauty contest: why investment depends on expectations that cannot be reduced to arithmetic. Keynes died in 1946, so the text is out of copyright in the UK; full text, chapter by chapter, at marxists.org.",
+   think:"Find the beauty-contest paragraph. Then explain how it bears on a committee trying to steer the economy with one interest rate.",tags:["free","primary text","Theme 2","1936"],url:"https://www.marxists.org/reference/subject/economics/keynes/general-theory/",lt:"full text"},
+  {s:"Hay",g:"read",short:"Hayek · The Use of Knowledge in Society",name:"F. A. Hayek, 'The Use of Knowledge in Society', American Economic Review, September 1945",mins:45,t:"12 pages",th:"1",added:"2026-10-07",
+   what:"The argument that the knowledge an economy needs 'never exists in concentrated or integrated form' and that prices are how dispersed knowledge gets used. Full text on Econlib.",
+   think:"Theme 1 economic systems. State Hayek's argument in three sentences, then say what it implies about a nine-person committee setting the price of money.",tags:["free","primary text","Theme 1","1945"],url:"https://www.econlib.org/library/Essays/hykKnw.html",lt:"Econlib"},
+  {s:"B1",g:"read",short:"Harford · The Undercover Economist",name:"Tim Harford, The Undercover Economist",mins:600,t:"a book",th:"1 · 3",
+   what:"Pricing, market power and information through everyday examples: coffee shops, supermarkets, second-hand cars. School library.",
+   think:"Read the chapter on price discrimination, then find three examples of it on your way home.",tags:["library","book","Theme 1 · 3"],url:"",lt:""},
+  {s:"B2",g:"read",short:"Chang · 23 Things They Don't Tell You About Capitalism",name:"Ha-Joon Chang, 23 Things They Don't Tell You About Capitalism",mins:600,t:"a book",th:"3 · 4",argue:true,
+   what:"Twenty-three short chapters that argue with free-market assumptions. School library. Read it as a list of evaluation points for Themes 3 and 4, and argue back.",
+   think:"Pick one 'thing' and write the reply a free-market economist would give. Then decide who wins.",tags:["library","book","argue with it"],url:"",lt:""},
+  {s:"B3",g:"read",short:"Banerjee & Duflo · Poor Economics",name:"Abhijit Banerjee and Esther Duflo, Poor Economics",mins:600,t:"a book",th:"4",
+   what:"How poor households make decisions, from the two economists behind the Duflo talk. School library.",
+   think:"Pairs with the Duflo talk. One chapter, then one minute in the minutes: what the data showed that the theory did not predict.",tags:["library","book","Theme 4.3"],url:"",lt:""},
+  {s:"B4",g:"read",short:"Raworth · Doughnut Economics",name:"Kate Raworth, Doughnut Economics",mins:600,t:"a book",th:"2",argue:true,
+   what:"The book behind the Raworth talk: an argument against growth as the objective. School library. On the list to be argued with.",
+   think:"Read it with the OBR forecast beside you. Which of her objections to growth would an OBR economist accept, and which not?",tags:["library","book","Theme 2","argue with it"],url:"",lt:""},
+
+  // ---- 5 Do · The models
+  {s:"t2u",g:"do",short:"tutor2u Economics free library",name:"tutor2u Economics free library",mins:20,t:"notes, videos, quizzes",th:"1–4",
+   what:"Free study notes, short topic videos, quizzes and revision livestreams, including Edexcel Economics (A) topic trackers. The shop is paid; the library is free.",
+   think:"Use it to check a topic before you read anything harder on it. It is the floor, not the ceiling.",tags:["free","Edexcel A","revision"],url:"https://www.tutor2u.net/free/economics",lt:"tutor2u free"},
+  {s:"BtC",g:"do",short:"IFS Be the Chancellor",name:"IFS Be the Chancellor",mins:45,t:"45m",th:"2 · 4",
+   what:"An interactive budget tool with a classroom activity by a practising teacher: taxation, spending, borrowing, and what each choice does to the others.",
+   think:"Set a budget that meets the fiscal rules, then one that you would actually want. Write down the difference and who pays for it.",tags:["free","IFS","Theme 2.6 · 4.5"],url:"https://ifs.org.uk/level-post-16-resources/be-chancellor-classroom-activity",lt:"Be the Chancellor"},
+  {s:"NR",g:"do",short:"NRICH Maths for Economists",name:"NRICH: Maths for Economists",mins:40,t:"ten problems",th:"1 · 3",
+   what:"About ten problems with an economic application: overbooking, debt, production functions. Recommended by Cambridge for economics applicants; useful if you are not taking Further Maths.",
+   think:"Do the overbooking problem. It is expected value, and expected value is what an interviewer will reach for.",tags:["free","Cambridge","for applicants"],url:"https://nrich.maths.org/7321",lt:"NRICH"},
+  {s:"CORE",g:"do",short:"CORE Econ · The Economy 2.0",name:"CORE Econ: The Economy 2.0",mins:120,t:"a university textbook",th:"1–4",
+   what:"A free, open-access university introductory textbook in micro and macro editions, built on real data. For strong Year 13s and anyone applying for economics.",
+   think:"Read the macro unit on inflation and unemployment before your third vote. It will change how you write your reasons.",tags:["free","university textbook","Year 13 · applicants"],url:"https://www.core-econ.org/",lt:"CORE Econ"},
+
+  // ---- 6 Apply · Appointments
+  {s:"ST",g:"apply",short:"Sutton Trust UK Summer Schools",name:"Sutton Trust UK Summer Schools",mins:900,t:"a week in the summer",th:"",
+   what:"Free residential summer schools at leading universities in over 40 subjects, for Year 12 at state schools, prioritising first-generation, FSM-eligible and other widening-participation pupils. Applications usually open in the new year; check the subject list for economics.",
+   think:"Check the criteria with your teacher before Christmas. If you qualify, this is the single best line on a personal statement that the page can offer.",tags:["free","Year 12","state schools","applications in the new year","check dates"],url:"https://www.suttontrust.com/our-programmes/uk-summer-schools/",lt:"Sutton Trust"},
+  {s:"Un",g:"apply",short:"UNIQ (Oxford)",name:"UNIQ: Oxford's free access programme for Year 12",mins:900,t:"a week in July",th:"",added:"2026-10-07",
+   what:"Free residential and online programmes at Oxford for UK state-school pupils in Year 12, prioritising those from backgrounds under-represented at Oxford. Applications for 2027 open in December. Check the course list for Economics and Management, PPE, and History and Economics.",
+   think:"The application asks what you have read and done. By December the minutes on this page are your answer.",tags:["free","Year 12","state schools","opens Dec","check dates"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  {s:"DEv",g:"apply",short:"Discover Economics events and apprenticeships",name:"Discover Economics: events listing (Royal Economic Society)",mins:60,t:"listings",th:"",
+   what:"Free events for students: university workshops, insight days (FCA), talks by Bank of England economists, and information sessions on degree apprenticeships such as the University of Kent Professional Economist apprenticeship.",
+   think:"The degree apprenticeship route into the Government Economic Service is real and paid. If university is not your plan, this is the list to watch.",tags:["free","events","apprenticeships","check each half term"],url:"https://www.discovereconomics.co.uk/event",lt:"Discover Economics events"},
+  {s:"OxEM",g:"apply",short:"Oxford · Economics and Management (admissions)",name:"University of Oxford: Economics and Management BA (course page)",mins:30,t:"course page",th:"",added:"2026-10-07",
+   what:"The official course page: A*AA with Mathematics at grade A or above, the TSA, what the course covers, and what tutors look for. PPE and History and Economics have their own pages on the same site.",
+   think:"Read the 'selection criteria' section. Then look at your minutes and ask which entries show the things it lists.",tags:["free","admissions","Maths A required"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/economics-and-management",lt:"Oxford course page"},
+  {s:"CamE",g:"apply",short:"Cambridge · Economics (admissions)",name:"University of Cambridge: Economics BA (course page)",mins:30,t:"course page",th:"",added:"2026-10-07",
+   what:"The official course page: A*A*A with Mathematics required and Further Mathematics strongly recommended by many colleges, the admissions assessment, and the course structure.",
+   think:"If you are not taking Further Maths, read this page now, not in Year 13, and talk to the department about the NRICH problems and the maths you can do on your own.",tags:["free","admissions","Maths required · FM recommended"],url:"https://www.undergraduate.study.cam.ac.uk/courses/economics-ba-hons",lt:"Cambridge course page"}
+];
+
+/* The year as a calendar. m = month (YYYY-MM). s links to a paper; mpc marks a decision day; data marks a release. */
+const YEAR = [
+  {m:"2026-10",when:"Wed 14 Oct",what:"IFS Green Budget 2026 presented",sub:"The IFS on the economy and the public finances before the Budget.",s:"GB",check:false},
+  {m:"2026-10",when:"Thu 15 Oct, 7am",what:"ONS GDP monthly estimate (August)",sub:"Read the three-month figure, not the month.",s:"GDP",data:true,check:false},
+  {m:"2026-10",when:"Tue 20 Oct, 7am",what:"ONS labour market overview",sub:"Unemployment and pay growth to August.",s:"LAB",data:true,check:false},
+  {m:"2026-10",when:"Wed 21 Oct, 7am",what:"ONS consumer price inflation (September)",sub:"The last inflation number before the 5 November vote.",s:"CPI",data:true,check:false},
+  {m:"2026-11",when:"Tue 3 Nov, 2–3.30pm",what:"RES Annual Public Lecture: Is Economics broken? (Dharshini David)",sub:"Live stream; the department shows it.",s:"RES",check:false},
+  {m:"2026-11",when:"Thu 5 Nov, noon",what:"MPC decision and Monetary Policy Report",sub:"Your vote closes at midnight on 4 November.",s:"MIN",mpc:true,check:false},
+  {m:"2026-11",when:"November",what:"Autumn Budget and a new OBR forecast",sub:"Date set by the Treasury; check.",s:"OBR",check:true},
+  {m:"2026-12",when:"December",what:"UNIQ 2027 applications open",sub:"Oxford's free Year 12 programme. 2026 window was mid-Dec to mid-Jan.",s:"Un",check:true},
+  {m:"2026-12",when:"Thu 17 Dec, noon",what:"MPC decision",sub:"Your vote closes at midnight on 16 December.",s:"MIN",mpc:true,check:false},
+  {m:"2027-01",when:"January",what:"Sutton Trust summer school applications",sub:"Usually open in the new year; check the subject list.",s:"ST",check:true},
+  {m:"2027-02",when:"Thu 4 Feb, noon",what:"MPC decision and Monetary Policy Report",sub:"Your vote closes at midnight on 3 February.",s:"MIN",mpc:true,check:false},
+  {m:"2027-02",when:"Late February",what:"Fitzwilliam Gerald O'Connell essay deadline",sub:"2026 deadline was 6pm, 27 February. Up to five entries per school.",s:"Fitz",check:true},
+  {m:"2027-03",when:"Thu 18 Mar, noon",what:"MPC decision",sub:"Your vote closes at midnight on 17 March.",s:"MIN",mpc:true,check:false},
+  {m:"2027-03",when:"Late March",what:"Young Economist of the Year 2027 launches",sub:"2026 launched 23 March, closed 29 June.",s:"YEY",check:true},
+  {m:"2027-04",when:"Thu 29 Apr, noon",what:"MPC decision and Monetary Policy Report",sub:"Your vote closes at midnight on 28 April.",s:"MIN",mpc:true,check:false},
+  {m:"2027-05",when:"May–June",what:"FCDO Next Generation Economics Competition",sub:"2026 ran 21 May to 28 June.",s:"FCDO",check:true},
+  {m:"2027-06",when:"Thu 17 Jun, noon",what:"MPC decision",sub:"Your vote closes at midnight on 16 June. The last of the school year.",s:"MIN",mpc:true,check:false},
+  {m:"2027-06",when:"Late June",what:"Young Economist of the Year deadline",sub:"2026 deadline was 29 June.",s:"YEY",check:true},
+  {m:"2027-07",when:"July",what:"UNIQ and Sutton Trust residentials run",sub:"If you applied in the winter.",s:"Un",check:true},
+  {m:"2027-07",when:"Thu 29 Jul, noon",what:"MPC decision and Monetary Policy Report",sub:"In the holidays. Vote from home if you want the full record.",s:"MIN",mpc:true,check:false},
+  {m:"2027-08",when:"Early August",what:"King's E-Lab essay deadline",sub:"2026 deadline was 9pm, 5 August.",s:"KEL",check:true},
+  {m:"2027-08",when:"Mid August",what:"Oxford Economics Society essay deadline",sub:"2026 deadline was 14 August.",s:"OES",check:true},
+  {m:"2027-08",when:"Late August",what:"Marshall Society essay deadline",sub:"2026 deadline was 30 August.",s:"Mar",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"],["2027-08","August","holidays"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three items are wanted by, and
+      the three papers (s = card code from ITEMS) with one line each.
+   2. To add a paper: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three items from the department for this half term. Do them, mark them read, minute each one.",
+  items:[
+    {s:"MIN",step:"Read, then vote",txt:"Read the September Monetary Policy Summary, especially the paragraph where the three who voted to raise explain themselves. Then cast your 5 November vote above, with reasons."},
+    {s:"IFSp",step:"Listen",txt:"One IFS podcast on a topic from your current theme. Answer its questions in the minutes, and add the one question the IFS did not ask."},
+    {s:"CPI",step:"Read on the day",txt:"Wednesday 21 October, 7am: the September inflation figure. Read the bulletin that day, write down which division moved the number, and change your vote if it changes your mind."}
+  ]
+};
+const COMPILED="2026-10-07";           // papers without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-econ-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+const MBY = Object.fromEntries(MEETINGS.map(m=>[m.id,m]));
+
+/* ---------- state ---------- */
+const KEY_BASE="econ-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},votes:{},fam:"all",bucket:"quick",at:"read",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // papers added after this date get a NEW marker this visit
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function fmtDM(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}); }catch(e){ return iso; } }
+
+/* ---------- the pack: how much read ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function pack(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  return {c,t,N,k,pct};
+}
+
+/* ---------- the votes ---------- */
+const bpsWord=b=> b===0?"hold":(b>0?"raise":"cut");
+const bpsLabel=b=> b===0?"hold":(b>0?"+":"−")+(Math.abs(b)/100).toFixed(2);
+function openMeeting(){ const t=today(); return MEETINGS.find(m=>t<m.date)||null; }
+function meetingStatus(m){ const t=today(); if(t<m.date) return (openMeeting()===m)?"open":"upcoming"; return m.actual?"decided":"awaiting"; }
+function voteStats(){
+  const cast=MEETINGS.filter(m=>state.votes[m.id]&&m.id!=="m2026-09").length;
+  const decided=MEETINGS.filter(m=>m.actual&&state.votes[m.id]);
+  const matched=decided.filter(m=>Math.sign(m.actual.bps)===Math.sign(state.votes[m.id].bps)).length;
+  return {cast, decided:decided.length, matched};
+}
+function wordCount(s){ return (s||"").trim().split(/\s+/).filter(Boolean).length; }
+
+/* ---------- the Secretary talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const P=pack(); const n=P.N; const V=voteStats(); const om=openMeeting();
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}. I take the minutes. Nine members, eight decisions a year, and a tenth chair which is yours. ${ITEMS.length} papers in the pack, all free. ${om?`The next decision is ${fmtDM(om.date)}; your vote is open.`:"No vote is open at the moment."} The agenda for this half term is below.`;
+  if(!n && !V.cast) return `Back, ${firstName()}. Nothing minuted, nothing voted. ${om?`A vote is open for ${fmtDM(om.date)}. Read the last summary first; it is in the data room.`:"The agenda has three items on it."}`;
+  if(om && !state.votes[om.id]) return `${firstName()}. ${n} paper${n===1?"":"s"} read, ${P.pct}% of the pack. You have not voted for ${fmtDM(om.date)}. The committee will not wait, and neither will I.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${n} read, ${V.cast} vote${V.cast===1?"":"s"} cast${V.decided?`, ${V.matched} of ${V.decided} with the majority`:""}. ${ht} of ${HALFTERM.items.length} on the agenda. Minuted. Not finished.`;
+  if(P.k<6) return `${firstName()}. Agenda done; ${n} papers; ${V.cast} votes. You have not opened ${ORDER.filter(g=>!P.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")}. A member who reads one section of the pack votes on one section of the economy.`;
+  return `${firstName()}. ${n} papers, all six sections opened, ${V.cast} votes${V.decided?`, ${V.matched} of ${V.decided} with the majority`:""}. The minority is sometimes right; the minutes record both. Carry on.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const P=pack(); const V=voteStats();
+  const votes=MEETINGS.filter(m=>state.votes[m.id]).map(m=>({id:m.id,date:m.date,bps:state.votes[m.id].bps,why:state.votes[m.id].why,at:state.votes[m.id].at,
+    actual:m.actual?m.actual.bps:null, match:m.actual?Math.sign(m.actual.bps)===Math.sign(state.votes[m.id].bps):null}));
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Economics",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           pack:{pct:P.pct, sections:P.k},
+           mpc:{cast:V.cast, decided:V.decided, matched:V.matched, votes},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="econ-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!state.votes) state.votes={};
+  if(!FAM[state.at]) state.at="read";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="The minutes · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("econ-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Taking the chair…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the committee room ---------- */
+function renderTicker(){
+  const parts=BRIEFING.screens.map(s=>`<span>${esc(s.k)} <b class="${s.cls==="up"?"up":s.cls==="dn"?"dn":""}">${esc(s.v)}${esc(s.u)}</b></span>`);
+  const om=openMeeting();
+  if(om) parts.push(`<span>NEXT DECISION <b>${esc(fmtDM(om.date).toUpperCase())}</b></span>`);
+  parts.push(`<span>${esc(BRIEFING.tickerExtra)}</span>`);
+  const run=parts.join("");
+  $("ticker").innerHTML=`<div class="run">${run}${run}</div>`;
+}
+function renderScreens(){
+  $("screens").innerHTML=BRIEFING.screens.map(s=>`<a class="scr ${s.cls==="target"?"target":""}" href="${esc(s.url)}" target="_blank" rel="noopener">
+      <span class="k">${esc(s.k)}</span><span class="v">${esc(s.v)}<small>${esc(s.u)}</small></span>
+      <span class="p">${esc(s.p)}</span>
+      <span class="n">${s.n}</span></a>`).join("")+
+    `<p class="small" style="margin:0">Screens last updated by the department on ${fmtDM(BRIEFING.asOf)}. Each one opens the live source.</p>`;
+}
+/* Chairs around the table: nine members round the far side and the ends, the tenth chair at the near side.
+   The published split is shown as ballot papers on the felt, not on the chairs: the Bank names who voted which way in the minutes, and this page does not guess. */
+function renderChairs(){
+  const cx=360, cy=215, rx=278, ry=142;
+  const a0=Math.PI*0.72, a1=Math.PI*2.28;          // 130° → 410°: round the back, leaving the near side for the tenth chair
+  const angles=[]; for(let i=0;i<9;i++) angles.push(a0+(a1-a0)*i/8);
+  let h="";
+  angles.forEach((a,i)=>{ const x=cx+rx*Math.cos(a), y=cy+ry*Math.sin(a); const m=MEMBERS[i];
+    h+=`<g class="chair" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><title>${esc(m.n)}, ${esc(m.r)}</title><rect x="-22" y="-16" width="44" height="32"/><text x="0" y="0">${esc(m.i)}</text></g>`; });
+  // ballot papers on the felt: the last decided split, unattributed
+  const lastDecided=[...MEETINGS].reverse().find(m=>m.actual);
+  if(lastDecided){ const sp=(lastDecided.actual.split||"").split(/[–-]/).map(x=>parseInt(x,10));
+    const maj=sp[0]||9, min=Math.max(0,9-maj); const majW=bpsWord(lastDecided.actual.bps);
+    const note=lastDecided.actual.note||""; const minW=/raise/.test(note)?"raise":(/cut/.test(note)?"cut":majW);
+    const seq=[]; for(let i=0;i<9;i++) seq.push(i<maj?majW:minW);
+    const fill={hold:"#8b97a8",raise:"#e0604f",cut:"#5b9cf6"};
+    h+=`<g class="ballots"><title>The published split, ${esc(lastDecided.actual.split)}: not attributed to seats</title>`;
+    seq.forEach((v,i)=>{ const x=cx-4*34+i*34, y=cy-28; h+=`<g transform="translate(${x},${y}) rotate(${(i%2?3:-3)})"><rect x="-12" y="-16" width="24" height="32" rx="2" fill="#e9edf3" stroke="#9aa5b5" stroke-width=".6"/><rect x="-8" y="-11" width="16" height="6" rx="1" fill="${fill[v]}"/><line x1="-8" y1="1" x2="8" y2="1" stroke="#9aa5b5" stroke-width=".8"/><line x1="-8" y1="6" x2="8" y2="6" stroke="#9aa5b5" stroke-width=".8"/><line x1="-8" y1="11" x2="4" y2="11" stroke="#9aa5b5" stroke-width=".8"/></g>`; });
+    h+=`<text x="${cx}" y="${cy+22}" class="caption" text-anchor="middle">${esc(fmtDM(lastDecided.date))} · ${esc(lastDecided.actual.split)} · ballots, not seats</text></g>`; }
+  // the tenth chair, and the pupil's own ballot
+  const om=openMeeting(); let yv="";
+  const show = om && state.votes[om.id] ? state.votes[om.id] : (lastDecided && state.votes[lastDecided.id] ? state.votes[lastDecided.id] : null);
+  if(show) yv="v-"+bpsWord(show.bps);
+  const label = IDENTITY ? (IDENTITY.cand.split(/\s+/).map(w=>w[0]).join("").slice(0,3).toUpperCase()) : "YOU";
+  h+=`<g class="chair you ${yv} ${show?"":"empty"}" transform="translate(360,372)"><title>The tenth chair: ${esc(IDENTITY?IDENTITY.cand:"you")}</title><rect x="-28" y="-16" width="56" height="32"/><text x="0" y="0">${esc(label)}</text></g>`;
+  if(show){ const fill={hold:"#8b97a8",raise:"#e0604f",cut:"#5b9cf6"}[bpsWord(show.bps)];
+    h+=`<g transform="translate(360,300) rotate(2)"><title>Your ballot: ${esc(bpsLabel(show.bps))}</title><rect x="-17" y="-17" width="34" height="34" rx="2" fill="#fff3d6" stroke="#f3b23b" stroke-width="1.2"/><rect x="-9" y="-12" width="18" height="6" rx="1" fill="${fill}"/><text x="0" y="8" style="font-family:var(--f-mono);font-size:9px;fill:#1a1205" text-anchor="middle">${esc(bpsLabel(show.bps))}</text></g>`; }
+  $("chairs").innerHTML=h;
+  let cap="";
+  if(lastDecided) cap+=`<span><b>Last decision, ${fmtDM(lastDecided.date)}:</b> Bank Rate ${lastDecided.actual.bps===0?"held at":"moved to"} ${lastDecided.actual.rate}% · ${esc(lastDecided.actual.split)} · ${esc(lastDecided.actual.note)}</span>`;
+  if(show) cap+=`<span><b>Your chair:</b> ${bpsLabel(show.bps)}${om&&state.votes[om.id]?` for ${fmtDM(om.date)}`:""}</span>`;
+  else if(om) cap+=`<span><b>Your chair:</b> empty until you vote for ${fmtDM(om.date)}</span>`;
+  $("roomCap").innerHTML=cap;
+}
+
+/* ---------- the vote ---------- */
+let voteDraft={bps:null, why:""};
+function renderVote(){
+  const om=openMeeting(); const V=voteStats();
+  const box=$("vote");
+  let head="";
+  if(om){
+    const mine=state.votes[om.id]; const sel = mine ? mine.bps : voteDraft.bps; const why = mine ? mine.why : voteDraft.why;
+    const dayBefore=new Date(om.date+"T12:00:00"); dayBefore.setDate(dayBefore.getDate()-1);
+    head=`<div class="vh"><div><span class="when">The vote · decision ${fmtLong(om.date)}, noon${om.mpr?" · with a Monetary Policy Report":""}</span><h2 class="head" id="voteH">What should Bank Rate be on ${fmtDM(om.date)}?</h2></div>
+      <span class="when">closes midnight ${fmtLong(dayBefore.toISOString().slice(0,10))}</span></div>
+      <p class="lede">Bank Rate is ${esc(BRIEFING.screens[0].v)}%. The target is 2% CPI inflation. Read the screens, read the last summary, then vote. The committee publishes each member's vote with their reasons; so does this page, to your department. You can change your vote until it closes.</p>
+      <div class="ballot" role="group" aria-label="Your vote">${BALLOT.map(b=>`<button type="button" class="${b.cls}" data-bps="${b.bps}" aria-pressed="${sel===b.bps}"><span>${b.lab}</span><small>${b.sub}</small></button>`).join("")}</div>
+      <div class="field"><label for="voteWhy">Your reasons, for the minutes</label><textarea id="voteWhy" placeholder="Inflation is… The labour market is… The risk I weigh most is… so I vote to…">${esc(why||"")}</textarea></div>
+      <div class="meta"><span>words: <b id="voteWords">${wordCount(why)}</b> · the minutes want fifty or more</span>
+        ${mine?`<span class="cast">✓ Cast ${fmtDate(mine.at.slice(0,10))}: <b>${bpsLabel(mine.bps)}</b> · you can change it until it closes</span>`:""}
+        <button type="button" class="btn" id="voteBtn">${mine?"Change my vote":"Cast my vote"}</button></div>`;
+  } else {
+    const nxt=MEETINGS.find(m=>meetingStatus(m)==="awaiting");
+    head=`<div class="vh"><div><span class="when">The vote</span><h2 class="head" id="voteH">${nxt?`Decision day: ${fmtDM(nxt.date)}`:"No vote open"}</h2></div></div>
+      <p class="lede">${nxt?"Votes closed at midnight. The committee announces at noon; the department enters the result and your chair is compared with theirs.":"Decisions for this year are all in. Your record is below."}</p>`;
+  }
+  // the record
+  const rows=MEETINGS.map(m=>{
+    const st=meetingStatus(m); const mine=state.votes[m.id]; const isPast=m.id==="m2026-09";
+    let right="";
+    if(st==="open") right=`<span class="st">open · closes eve of ${fmtDate(m.date)}</span>`;
+    else if(st==="upcoming") right=`<span class="st">opens after the previous decision</span>`;
+    else if(st==="awaiting") right=`<span class="st">awaiting the result</span>`;
+    else right=`<span class="st">decided</span>`;
+    let mid="";
+    if(m.actual){ mid+=`<span class="mine"><i class="${bpsWord(m.actual.bps)}">committee</i>${bpsLabel(m.actual.bps)} · ${m.actual.rate}% · ${esc(m.actual.split)}${m.actual.url?` · <a href="${esc(m.actual.url)}" target="_blank" rel="noopener">minutes ↗</a>`:""}</span>`; }
+    if(mine){ const match=m.actual?Math.sign(m.actual.bps)===Math.sign(mine.bps):null;
+      mid+=`<span class="mine"><i class="${bpsWord(mine.bps)}">you</i>${bpsLabel(mine.bps)}${match===null?"":match?` · <span class="match yes">with the majority</span>`:` · <span class="match no">in the minority</span>`}</span>`; }
+    else if(isPast) mid+=`<span class="mine small">before this page began · no vote</span>`;
+    else if(st==="upcoming") mid+=`<span class="mine small">not yet open</span>`;
+    else if(st!=="open") mid+=`<span class="mine small">no vote cast</span>`;
+    const why = mine&&mine.why ? `<div class="why">${esc(mine.why)}</div>` : "";
+    return `<div class="row ${st}${m.actual&&mine?" now":""}"><span class="d">${esc(fmtDate(m.date))}<b>${m.mpr?"decision + Monetary Policy Report":"decision"}</b></span><span class="mids">${mid}</span>${right}${why}</div>`;
+  }).join("");
+  box.innerHTML=head+`<div><span class="eyebrow">Your voting record · ${V.cast} cast${V.decided?` · ${V.matched} of ${V.decided} decided with the majority`:""}</span></div><div class="record">${rows}</div>`;
+  if(om){
+    $("voteWhy").addEventListener("input",e=>{ voteDraft.why=e.target.value; $("voteWords").textContent=wordCount(e.target.value); });
+    box.querySelectorAll(".ballot button").forEach(b=>b.addEventListener("click",()=>{ voteDraft.bps=Number(b.dataset.bps); voteDraft.why=$("voteWhy").value; box.querySelectorAll(".ballot button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); }));
+    $("voteBtn").addEventListener("click",()=>{
+      const mine=state.votes[om.id]; const bps = voteDraft.bps!==null ? voteDraft.bps : (mine?mine.bps:null); const why=$("voteWhy").value.trim();
+      if(bps===null){ say("Choose a line on the ballot first. Abstention is not an option the Bank offers."); return; }
+      if(wordCount(why)<20){ say("The minutes record reasons. Fewer than twenty words is a show of hands; give me a paragraph."); $("voteWhy").focus(); return; }
+      state.votes[om.id]={bps, why, at:new Date().toISOString()}; voteDraft={bps:null,why:""};
+      save(); renderVote(); renderChairs(); renderMeter();
+      const majoritySide = bpsWord(bps);
+      say(pick([`Minuted: ${bpsLabel(bps)} for ${fmtDM(om.date)}. The committee announces at noon that day; we shall see which of you was right.`,
+                `${firstName()} votes to ${majoritySide==="hold"?"hold":majoritySide}. Reasons recorded. In September three members wanted a rise; you now know where you would have sat.`,
+                `Your chair is filled for ${fmtDM(om.date)}. Change it if the data change your mind; that is what the 21 October release is for.`]));
+    });
+  }
+}
+
+/* ---------- papers ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${it.argue?" argue":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", read":""}${isNew?", new":""}">
+    <span class="no">paper ${String(it.n).padStart(2,"0")} · ${esc(it.s)}${it.th?` · theme ${esc(it.th)}`:""}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="stamp" aria-hidden="true">✓</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="zone${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic">${FAM[g].no}</div><div><span class="nm">${FAM[g].place}</span><span class="verb">${FAM[g].label} · ${FAM[g].verb}</span></div>
+        <span class="n">${done} / ${list.length}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · the agenda · if you do nothing else";
+  $("htLabel").textContent="The "+HALFTERM.label+" agenda";
+  $("htDue").textContent="wanted by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">${i+1} · ${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · read":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>∑</i>Whole pack <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=>`<div class="sp"><span class="nm">${x.nm}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const P=pack(); const V=voteStats();
+  $("pctVal").innerHTML=P.pct+"<small>%</small>";
+  $("bar").style.setProperty("--w",P.pct+"%");
+  let w;
+  if(!P.N) w="Nothing read yet. Each paper you mark read fills a little of the bar, and lights its section below.";
+  else if(P.k<6) w=`${P.N} of ${ITEMS.length} papers read. ${P.k} of 6 sections opened; not yet into ${ORDER.filter(g=>!P.c[g]).map(g=>FAM[g].the).join(", ")}.`;
+  else w=`${P.N} of ${ITEMS.length} papers read, and all six sections opened.`;
+  $("coverTxt").textContent=w;
+  $("palette").innerHTML=ORDER.map(g=>`<span class="swatch${P.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}: ${P.c[g]} of ${P.t[g]}">${P.c[g]?P.c[g]:FAM[g].no}</span>`).join("");
+  $("votesLine").innerHTML=`<span>votes cast <b>${V.cast}</b> of ${MEETINGS.length-1}</span><span>decided <b>${V.decided}</b></span><span>with the majority <b>${V.matched}</b></span>`;
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short.split(" · ")[0].split(" (")[0])}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">Site ↗</a>`:"");
+        return `<div class="ev${y.mpc?" mpc":""}" data-g="${g}"><span class="when">${esc(y.when)}${y.mpc?'<span class="check" style="border-color:var(--amber);color:var(--amber)">decision</span>':""}${y.data?'<span class="data">data</span>':""}${y.check?'<span class="check">check</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Read.</span>`}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderTicker();renderScreens();renderChairs();renderVote();renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${FAM[it.g].no}</div>
+      <div><div class="fam">${FAM[it.g].place} · ${FAM[it.g].label} · paper ${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>The Secretary's note</b>${esc(it.think)}</div>
+      <div class="tags">${it.th?`<span class="th">Edexcel theme ${esc(it.th)}</span>`:""}${it.tags.map(t=>`<span class="${t==="argue with it"?"ar":""}">${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Read ✓ (undo)":"Mark it read"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Minute it</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department registers you; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=pack();
+  if(was) delete state.done[sym]; else state.done[sym]=true;
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const P=pack(); const g=BY[sym].g;
+    if(before.c[g]===0 && P.k>1) say(`First paper from ${FAM[g].the}. ${P.k} of 6 sections open. Members who read across the pack vote better; that is not a rule, it is an observation.`);
+    else if(before.c[g]===0) say(`First paper read: ${BY[sym].short}. Minute it before the thought goes; they do.`);
+    else if(P.c[g]===P.t[g]) say(`That is the whole of ${FAM[g].the} read. Few members manage that before a meeting.`);
+    else say(pick([`Read. ${P.N} papers; ${P.pct}% of the pack.`,`Into the minutes with it. A tick is not a thought.`,`${BY[sym].short}: read. ${P.N} so far.`,`Another from ${FAM[g].the}. There are sections you have not opened; I can see them from here.`])); }
+  else say("Unmarked. Struck from the record.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  const P=pack();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${P.c[g]?`${P.c[g]} of ${P.t[g]} read here.`:"Nothing read here yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbLearned").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+});
+
+/* ---------- fetch a paper: pick one for me ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"about ten minutes",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have read everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a section the pupil has not opened, two times in three
+  const P=pack(); const fresh=pool.filter(i=>!P.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". One moment.");
+  $("pickBtn").disabled=true;
+  const img=$("secImg"); img.classList.remove("shuffle"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("shuffle");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("shuffle");
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, from ${FAM[choice.g].the}.`;
+    say(`This one. ${choice.short}: ${choice.t}, ${FAM[choice.g].the}.${!P.c[choice.g]?" A section you have not opened.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1600);
+});
+
+/* ---------- the minutes ---------- */
+function renderNotes(){
+  const box=$("entries");
+  if(!state.notes.length){
+    box.innerHTML=`<article class="note example" aria-label="Example minute">
+      <header><h3>Bank of England: Monetary Policy Summary, September 2026</h3><span class="d">example</span></header>
+      <dl><dt>Took</dt><dd>Six held, three wanted a rise to 4%. The three argued that with CPI heading for 4% in Q1 and pay growth at 3.5%, waiting risked second-round effects. The six argued that GDP was weak and the energy shock would fade on its own. Both sides used the same numbers.</dd>
+      <dt>Question</dt><dd>If both sides read the same data, what exactly are they disagreeing about: the forecast, or how much a year of 4% inflation costs compared with a year of lost growth?</dd></dl>
+    </article><p class="small">Your minutes are empty. Read one paper, then write the first entry.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>`<article class="note">
+      <header><h3>${esc(n.what)}</h3><span class="d">${esc(fmtDate(n.date))}</span></header>
+      <dl><dt>Took</dt><dd>${esc(n.learned)}</dd>${n.q?`<dt>Question</dt><dd>${esc(n.q)}</dd>`:""}</dl>
+      <div><button type="button" class="del" data-i="${i}">Strike it out</button></div>
+    </article>`).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to strike it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Strike it out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,what:$("nbWhat").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  $("nbWhat").value=""; $("nbLearned").value=""; $("nbQ").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Minuted.";
+  say(pick(["Minuted. That is the part a university reads; the ticks are for me.","Recorded. Keep the question line; the next essay starts there.","Good. One minute like that per paper and you will have something to say in an interview that the interviewer has not heard."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const V=voteStats();
+  const votesTxt=MEETINGS.filter(m=>state.votes[m.id]).map(m=>`${fmtDate(m.date)}: voted ${bpsLabel(state.votes[m.id].bps)}${m.actual?` (committee ${bpsLabel(m.actual.bps)}, ${m.actual.split})`:""}\n${state.votes[m.id].why}`).join("\n\n");
+  const txt=`Economics minutes – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)}\nPaper: ${n.what}\nTook: ${n.learned}${n.q?`\nQuestion: ${n.q}`:""}`).join("\n\n")+(votesTxt?`\n\n— MPC votes (${V.cast} cast) —\n\n${votesTxt}`:"");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied, votes included."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length, votes=Object.keys(s.votes||{}).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} read, ${notes} minute${notes===1?"":"s"}, ${votes} vote${votes===1?"":"s"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today(); if(!state.votes) state.votes={};
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/economics.html";
+const TOUR=[
+  {sel:".table-wrap", h:"The committee room", p:"Nine members of the Monetary Policy Committee, as the Bank lists them, and a tenth chair for the pupil. The last decision's split is shown as ballot papers on the table, not on the chairs: the Bank publishes who voted which way in the minutes, and the page does not guess. The pupil's own ballot appears once they have voted."},
+  {sel:"#screens", h:"The screens", p:"The figures the committee reads: Bank Rate, CPI, unemployment and pay, GDP, and the Bank's own forecast, each dated and each opening the live ONS or Bank release. The department updates the numbers after each release by editing one block; the links never need touching."},
+  {sel:".vote", h:"The vote", p:"Before each of the eight decisions the pupil chooses cut, hold or raise and writes their reasons; the page wants fifty words and refuses fewer than twenty. They can change the vote until midnight on the eve of the decision, which is what the 21 October inflation release is for. Six decisions fall in term time, two in the holidays."},
+  {sel:".record", h:"The voting record", p:"Every vote with its reasons, and once the department enters the result, whether the pupil was with the majority or in the minority. By June a pupil has six reasoned positions on monetary policy in their own words. That is the Theme 2 evaluation practice, and it is what the department reads."},
+  {sel:".sec", h:"The Secretary", p:"An invented character who takes the minutes. It greets each pupil by name, reacts to what they do, and will not record a vote without reasons. Its voice is dry and it does not flatter."},
+  {sel:".dist-card", h:"Pack read, votes cast", p:"Progress is how much of the briefing pack the pupil has read, how many of the six sections they have opened, and how many votes they have cast and matched. Ten TED talks and nothing from the data room leaves the Secretary unimpressed, and it says so."},
+  {sel:".agenda", h:"The agenda", p:"Three things from the department each half term, with a date. This half term: read the September summary and vote; one IFS podcast with its questions; read the 21 October inflation release on the day. You change these by editing one block; pupils keep everything they have done."},
+  {sel:"#zone-read", h:"The data room", p:"Nineteen papers, the primary sources first: the MPC summary and minutes, the Monetary Policy Report, the OBR outlook, the three ONS releases, Our World in Data, the IFS Green Budget, then Smith's pin factory, Keynes's chapter 12 and Hayek's 1945 essay in the original. Every card carries its Edexcel theme. The TED talks are in the Evidence sessions, four of them marked 'argue with it', Ariely with the retraction noted."},
+  {sel:".almanac", h:"The calendar", p:"October to August: decision days in amber, ONS release days in blue, the RES lecture, the Budget, UNIQ, the essay deadlines. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"The minutes", p:"One entry per paper: what it was, one thing they took from it, the question it left them with. Saves to the department as they write; copies out as text, votes and reasons included, for a personal statement or a reference."},
+  {sel:"#smallprint", h:"The small print", p:"Where the design comes from and how sure we are: the Bank's own description of the committee, the conceit of the tenth chair labelled as a conceit, and the Bank's old Target Two Point Zero competition, which did this exercise for schools from 2000 to 2017 and then stopped."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, their votes and reasons, the entry list, agenda completion, pack read, and their minutes. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("econ-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["MIN","IFSp","CPI","BoE","Ros","OWID"],picks:3,notes:[{what:"Bank of England: Monetary Policy Summary and minutes of the MPC meeting",learned:"The three who voted to raise did not dispute the forecast; they disputed the cost of waiting. Their paragraph is about pay settlements being set in the autumn with 4% inflation in view.",q:"If the disagreement is about costs rather than forecasts, is it an economic disagreement or a political one?"},{what:"Our World in Data: Economic Growth",learned:"On the Maddison data China reached the UK's 1950 GDP per capita in about 2006, India in about 2015. Rosling's washing-machine line sits almost exactly on the UK 1950 level.",q:"Why does the washing-machine line fall where it does: price of the machine, price of electricity, or something about households?"}],interest:["Fitz","YEY"],votes:{"m2026-11":{bps:25,why:"CPI is 3.1% and the Bank itself expects over 4% in Q1. Regular pay is growing 3.5% with productivity flat, so real unit labour costs are rising. GDP is weak but positive; a quarter point will not tip it into recession. The risk I weigh most is that pay settlements this autumn are set with 4% in view, and that is harder to undo than a quarter point. I vote to raise by 0.25."}},last:"2026-10-06"},
+  {name:"Ben Carter",cls:"12A",done:["Ari","Sut"],picks:0,notes:[{what:"Dan Ariely: Are we in control of our own decisions?",learned:"The organ-donation example is about defaults, not preferences: the countries with high consent rates have opt-out forms.",q:""}],interest:[],votes:{},last:"2026-10-02"},
+  {name:"Chloe Nguyen",cls:"12B",done:["MIN","IFSp","CPI","LAB","GDP","MPR","ER","Hay"],picks:3,notes:[{what:"F. A. Hayek, 'The Use of Knowledge in Society', American Economic Review, September 1945",learned:"Hayek's point is not that planners are stupid; it is that the knowledge is not available to anyone in one place. Prices carry it. The MPC sets one price, the price of money, with nine people and a forecast.",q:"Does Hayek's argument say the committee should not exist, or only that it should be humble about what it knows?"},{what:"ONS: Labour market overview, UK (monthly bulletin)",learned:"Regular pay 3.5%, CPI 3.1%: real pay is growing 0.4%. That is not a wage-price spiral, whatever the three say.",q:"How much of the 3.5% is the minimum wage rise, which the committee cannot influence?"}],interest:["Mar"],votes:{"m2026-11":{bps:0,why:"The headline is 3.1% but core is 2.6% and the rise is motor fuel, which Bank Rate does not touch. Real pay is growing 0.4%, which is not a spiral. GDP was flat in May and the three-month figure is being carried by services. The Bank's own forecast has inflation falling back after Q1 without a rise. The risk I weigh most is tightening into an energy shock that will fade on its own, as in 2022. I vote to hold."}},last:"2026-10-06"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],votes:{},last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["MIN","MPR","OBR","GB","Key","CORE","BtC","Mar","OES"],picks:2,notes:[{what:"J. M. Keynes, The General Theory of Employment, Interest and Money (1936), chapter 12: The State of Long-term Expectation",learned:"The beauty contest: investors are not guessing what a firm is worth but what others will think it is worth. So a rate rise works partly through what firms think other firms will do, which no model has.",q:"If expectations are self-referential, is forward guidance a tool or a performance?"},{what:"IFS Green Budget 2026 (Institute for Fiscal Studies)",learned:"The fiscal rules chapter: the headroom is small and depends on the OBR's productivity assumption, which has been revised down in most recent forecasts.",q:"Is a fiscal rule that depends on a productivity forecast a rule at all?"}],interest:["Mar","OES","Un"],votes:{"m2026-11":{bps:25,why:"The committee's own forecast has inflation above 4% in Q1 and the minority already wants a rise. Fiscal policy is loosening into the Budget according to the IFS, which pushes the same way as the energy shock. Growth at 0.4% a quarter is not strong but it is not the 2022 picture either. The risk I weigh most is credibility: a committee that forecasts 4% and does nothing teaches firms to set prices for 4%. I vote to raise by 0.25 now rather than 0.50 later."}},last:"2026-10-05"},
+  {name:"Finn Murphy",cls:"13A",done:["Har","50T","t2u"],picks:1,notes:[],interest:["KEL"],votes:{},last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["MIN","CPI","MoL","Duf","EO"],picks:2,notes:[{what:"Esther Duflo: Social experiments to fight poverty",learned:"The bed-net trial: a small charge collapses take-up but free distribution does not stop people using them. So the 'people value what they pay for' argument fails for this good.",q:"Does it fail for all goods or only for ones with benefits to other people?"}],interest:["FCDO","Un"],votes:{"m2026-11":{bps:-25,why:"Unemployment is 4.9% and rising, the employment rate is falling, and GDP was flat in May. The inflation is motor fuel and energy, an external shock, and core is 2.6%. The committee is forecasting 4% but it forecast 3.2% in July and was wrong in the other direction then too. The risk I weigh most is a labour market that is already turning, with policy still restrictive at 3.75%. I vote to cut by 0.25."}},last:"2026-10-06"},
+  {name:"Harry Singh",cls:"12B",done:["BoE"],picks:0,notes:[],interest:[],votes:{},last:"2026-10-03"}
+];
+function pOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const pct=Math.round(done.length/ITEMS.length*100);
+  return {pct,k,c}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),votes:state.votes||{},last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const om=openMeeting(); const omId=om?om.id:"m2026-11";
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const voted=rows.filter(r=>r.votes&&r.votes[omId]);
+  const tally={cut:0,hold:0,raise:0}; voted.forEach(r=>tally[bpsWord(r.votes[omId].bps)]++);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${voted.length}</b><span>voted for ${om?fmtDd(om.date):"5 Nov"}</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 on the agenda</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>prize / programme interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>minutes written</span></div>
+    </div>
+    <div class="dcard"><h3>The vote for ${om?fmtDM(om.date):"5 November 2026"}: ${voted.length} cast · ${tally.cut} cut · ${tally.hold} hold · ${tally.raise} raise</h3>
+      <p class="small">Each pupil's position and reasons, as they wrote them. After the announcement you enter the result in one line at the top of the file and this table shows who was with the majority. This is the column a reference is written from.</p>
+      <table class="dt"><tr><th>Pupil</th><th>Vote</th><th>Reasons</th></tr>
+      ${voted.map(r=>{ const v=r.votes[omId]; return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${esc(r.cls)}</span></td><td><span class="vp ${bpsWord(v.bps)}">${esc(bpsLabel(v.bps))}</span></td><td>${esc(v.why)}</td></tr>`; }).join("")||'<tr><td colspan="3">Nobody has voted yet.</td></tr>'}</table></div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. Fitzwilliam caps entries at five per school, so this is your list.</p>
+        <table class="dt"><tr><th>Prize / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which sections get read</h3><p class="small">Papers read across all pupils, by section. Tells you where to point the next half term's agenda.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Papers</th><th>Sections</th><th>Votes</th><th>Agenda</th><th class="hide-m">Minutes</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const P=pOf(r.done); const grey=ORDER.filter(g=>!P.c[g]).map(g=>FAM[g].place); const nv=Object.keys(r.votes||{}).length;
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td>${ORDER.map(g=>`<span class="sw${P.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}"></span>`).join("")} <span class="small">${grey.length&&grey.length<6?`not yet: ${grey.join(", ")}`:grey.length===6?"":"all six"}</span></td>
+        <td>${nv?Object.values(r.votes).map(v=>`<span class="vp ${bpsWord(v.bps)}">${esc(bpsLabel(v.bps))}</span>`).join(""):"–"}</td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"entry":"entries"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Minutes</h3><p class="small">Each pupil's minutes in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Took: ${esc(n.learned)}${n.q?`<br>Question: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV, votes and reasons included; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",vote:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const vv=e.target.closest("#fbVote button"); if(vv){ FB.vote=vv.dataset.v; document.querySelectorAll("#fbVote button").forEach(b=>b.setAttribute("aria-pressed",String(b===vv))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"economics-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,vote:FB.vote,look:FB.look,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,votes:state.votes,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-econ-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-econ-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Minuted."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.vote=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbVote button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the Economics page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nThe vote: ${rec.vote||"–"}\nThe look: ${rec.look||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to enter, watch, hear, read, do and apply for · six sections of one briefing pack · "+(MEETINGS.length-1)+" votes";
+$("tableEyebrow").textContent="Six sections · "+ITEMS.length+" papers · every one tagged to an Edexcel A theme";
+$("foot").innerHTML="Compiled 30 September 2026, additions and the committee room 7 October 2026 · links checked then · Edexcel A-level Economics A (9EC0): Theme 1 markets and market failure, Theme 2 the UK economy, Theme 3 business behaviour and the labour market, Theme 4 a global perspective · free at the point of use unless the card says otherwise<br>Decision dates from the Bank's published MPC calendar for 2026 and 2027. Figures on the screens from the ONS and the Bank, dated on each screen. Sources for the committee room are in the small print above. The Secretary is an invented character.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
