@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Philosophy Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE WALK — Philosophy, Beyond the Classroom
+   A footpath map on cream paper. Six stretches, one route. Each stretch
+   is a place a philosopher is known to have walked. The guide is Atma,
+   Schopenhauer's poodle. Progress is distance walked: the pencil route is
+   inked in as the pupil passes waymarks.
+   ====================================================================== */
+:root{
+  --paper:#f3ecdc; --paper2:#eadfc7; --paper3:#e0d3b6; --ink:#22201c; --ink2:#4a463f; --pencil:#8f887b; --rule:#cfc3a6;
+  --enter:#b5542f;  /* 1 Athens, outside the walls — terracotta */
+  --watch:#6f7a3a;  /* 2 the Peripatos — olive */
+  --listen:#4a6b8a; /* 3 Copenhagen — slate */
+  --read:#7a3b4f;   /* 4 Königsberg — plum */
+  --do:#2f7f7a;     /* 5 Sils Maria — lake */
+  --apply:#c25a7c;  /* 6 Kyoto — cherry */
+  --f-text:"EB Garamond",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-text);font-size:1.08rem;line-height:1.5;
+  background-image:
+    radial-gradient(ellipse at 10% 0%,rgba(255,255,255,.55),transparent 55%),
+    radial-gradient(ellipse at 90% 100%,rgba(120,90,40,.10),transparent 50%);
+}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.1;letter-spacing:-.005em}
+.head{font-family:var(--f-text);font-weight:500}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.small{font-size:.9rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--ink);padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.35)}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block}
+.btn{font:inherit;font-size:1rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:10px 18px;cursor:pointer;border-radius:3px;letter-spacing:.01em}
+.btn:hover{background:#000}
+.btn.big{font-size:1.1rem;padding:12px 22px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--g,var(--ink));color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--listen);outline-offset:2px}
+.field{display:grid;gap:4px}
+.field label{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field textarea{font:inherit;font-size:1.05rem;background:rgba(255,255,255,.6);border:0;border-bottom:1.5px solid var(--ink);padding:8px 6px;color:var(--ink);width:100%;border-radius:0}
+.field textarea{min-height:84px;resize:vertical;line-height:1.45}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#8a1d1d;min-height:1.3em;font-size:.95rem}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;gap:34px}
+hr.rule{border:0;border-top:1px solid var(--rule);margin:0}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(720px,100%);background:rgba(255,255,255,.45);border:1px solid var(--ink);padding:34px 36px;display:grid;gap:18px;box-shadow:0 1px 0 var(--ink), 8px 8px 0 var(--paper3)}
+.gate-card h1{font-size:clamp(2.6rem,6vw,4rem);font-weight:500}
+.gate-card h1 em{font-style:italic;font-weight:400;color:var(--ink2)}
+.gate-card p{margin:0}
+.gate-atma{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.gate-atma svg{width:120px;height:auto}
+@media (max-width:560px){.gate-atma{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid var(--ink);padding-bottom:14px}
+.top h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.top h1 span{display:block;font-size:1.05rem;font-style:italic;font-weight:400;color:var(--ink2);margin-top:4px;letter-spacing:0}
+.strap{font-size:.98rem;color:var(--ink2);margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:.95rem}
+.who b{font-weight:500}
+.who button{font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:var(--pencil)}
+.saved.ok{color:#2b6a3f}.saved.bad{color:#8a1d1d}
+
+/* ---------- the map ---------- */
+.map-wrap{position:relative;border:1px solid var(--ink);background:var(--paper2);padding:0;overflow:hidden;box-shadow:inset 0 0 0 6px var(--paper), inset 0 0 0 7px var(--rule)}
+.map-wrap svg.map{display:block;width:100%;height:auto}
+.map-wrap .hot{cursor:pointer}
+.map-wrap .hot:hover .vig,.map-wrap .hot:focus-visible .vig{stroke-width:2.6}
+.map-wrap .hot .num circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.5}
+.map-wrap .hot .num text{font-family:var(--f-mono);font-size:15px;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.map-wrap .hot.lit .num circle{fill:var(--g);stroke:var(--g)}
+.map-wrap .hot.lit .num text{fill:#fff}
+.map-wrap .hot .lab{font-family:var(--f-text);font-size:19px;fill:var(--ink);font-style:italic}
+.map-wrap .hot .fam{font-family:var(--f-mono);font-size:11px;letter-spacing:1.6px;fill:var(--ink2);text-transform:uppercase}
+.map-wrap .hot .wash{fill:var(--g);opacity:0;transition:opacity .5s}
+.map-wrap .hot.has .wash{opacity:.10}
+.map-wrap .route-pencil{fill:none;stroke:var(--pencil);stroke-width:2;stroke-dasharray:2 7;stroke-linecap:round;opacity:.9}
+.map-wrap .route-ink{fill:none;stroke:var(--g);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--k,0));transition:stroke-dashoffset .9s ease}
+.map-wrap .contour{fill:none;stroke:var(--pencil);stroke-width:.7;opacity:.45}
+.map-wrap .water{fill:none;stroke:var(--listen);stroke-width:.9;opacity:.5}
+.map-wrap .vig{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.map-wrap .cnt{font-family:var(--f-mono);font-size:12px;fill:var(--g);letter-spacing:.5px}
+.map-wrap .compass text{font-family:var(--f-mono);font-size:10px;fill:var(--ink2);text-anchor:middle}
+.map-wrap .scale text{font-family:var(--f-mono);font-size:10px;fill:var(--ink2)}
+.walker{transition:transform .9s ease}
+.walker .fig{fill:var(--ink)}
+.map-wrap .title text{font-family:var(--f-text);fill:var(--ink)}
+@media (prefers-reduced-motion:reduce){.map-wrap .route-ink,.walker,.map-wrap .hot .wash{transition:none}}
+
+/* small print under the map */
+.smallprint{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;border:1px solid var(--ink);border-top:0;background:rgba(255,255,255,.35)}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);font-size:.86rem;line-height:1.4;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:last-child{border-right:0}
+.sp .nm{font-family:var(--f-text);font-size:1rem;color:var(--ink);font-style:italic}
+.sp .nm b{font-style:normal;font-weight:500;color:var(--g);font-family:var(--f-mono);font-size:.78rem;margin-right:6px}
+.st{display:inline-block;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;padding:1px 6px;border-radius:2px;margin-right:4px}
+.st.att{color:#2b6a3f}.st.rep{color:#8a5a12}.st.leg{color:#8a1d1d}
+@media (max-width:900px){.smallprint{grid-template-columns:repeat(2,1fr)}.sp:nth-child(2n){border-right:0}.sp{border-bottom:1px solid var(--rule)}}
+@media (max-width:520px){.smallprint{grid-template-columns:1fr}.sp{border-right:0}}
+
+/* ---------- Atma + progress + ask the dog ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.atma{display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:end}
+.atma-img{width:190px;height:auto;transform-origin:50% 90%}
+.atma-img.trot{animation:trot 1.7s ease-in-out}
+@keyframes trot{0%{transform:translateX(0)}30%{transform:translateX(60px) scaleX(1)}50%{transform:translateX(90px) scaleX(-1)}80%{transform:translateX(20px) scaleX(-1)}100%{transform:translateX(0) scaleX(1)}}
+.bubble{position:relative;background:rgba(255,255,255,.7);border:1px solid var(--ink);padding:16px 18px;border-radius:3px;min-height:110px;display:grid;align-content:start;gap:6px}
+.bubble:before{content:"";position:absolute;left:-10px;bottom:22px;width:16px;height:16px;background:rgba(255,255,255,.7);border-left:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:rotate(45deg)}
+.bubble .nm{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.bubble #bubbleTxt{font-size:1.1rem;line-height:1.4}
+.side{display:grid;gap:16px}
+.card{background:rgba(255,255,255,.45);border:1px solid var(--ink);padding:18px 20px;display:grid;gap:12px}
+.card h2{font-size:1.5rem}
+.dist{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.dist .pct{font-size:3rem;font-weight:500;line-height:1}
+.dist .pct small{font-size:1.2rem;color:var(--ink2);font-weight:400}
+.ruler{position:relative;height:18px;border-bottom:1.5px solid var(--ink);background:
+  repeating-linear-gradient(to right,var(--ink) 0 1px,transparent 1px 10%)}
+.ruler i{position:absolute;left:0;top:6px;height:12px;width:var(--w,0%);background:var(--ink);transition:width .8s ease;opacity:.85}
+.stretches{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:30px;height:30px;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--f-mono);font-size:.78rem;color:var(--pencil);background:transparent}
+.swatch.got{background:var(--g);color:#fff;border-color:var(--g)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:3px;overflow:hidden}
+.seg button{font:inherit;font-size:.95rem;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:8px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.atma{grid-template-columns:1fr;justify-items:center}.bubble:before{display:none}}
+
+/* ---------- the route card (half term) ---------- */
+.routecard{background:rgba(255,255,255,.5);border:1px solid var(--ink);padding:22px 24px;display:grid;gap:10px;position:relative}
+.routecard:after{content:"";position:absolute;right:18px;top:-8px;width:70px;height:18px;background:rgba(220,200,150,.6);transform:rotate(3deg);border:1px solid rgba(0,0,0,.1)}
+.routecard h2{font-size:1.8rem}
+.routecard .due{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.routecard .lede{margin:0;color:var(--ink2)}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px}
+.leg{border-top:3px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-mono);font-size:.85rem}
+.leg.done .lno{background:var(--g);color:#fff}
+.leg .step{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- stretches and waymarks ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-size:1.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.92rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-family:var(--f-mono);font-size:.72rem;color:var(--g,var(--ink2))}
+.chip b{font-weight:400;color:var(--ink2);font-family:var(--f-mono);font-size:.75rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:var(--paper)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:12px}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:8px}
+.zone-head .ic{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--g);display:grid;place-items:center;color:var(--g);font-family:var(--f-mono);font-size:1rem}
+.zone-head .nm{display:block;font-size:1.45rem;font-style:italic}
+.zone-head .verb{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.zone-head .n{font-family:var(--f-mono);font-size:.8rem;color:var(--g)}
+.zone.flash .zone-head{animation:flash 2.2s ease}
+@keyframes flash{0%,100%{background:transparent}20%{background:rgba(0,0,0,.06)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:rgba(255,255,255,.5);border:1px solid var(--ink);padding:12px 14px 12px 14px;cursor:pointer;display:grid;gap:4px;align-content:start;min-height:104px;border-radius:2px;color:var(--ink)}
+.rec:hover{background:rgba(255,255,255,.85)}
+.rec .no{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;color:var(--g)}
+.rec .nm{font-size:1.05rem;line-height:1.25}
+.rec .t{font-family:var(--f-mono);font-size:.72rem;color:var(--ink2)}
+.rec .stamp{position:absolute;right:10px;top:10px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--g);display:none;place-items:center;color:var(--g);font-size:.95rem}
+.rec.done{background:rgba(255,255,255,.3);border-style:solid}
+.rec.done .nm{color:var(--ink2)}
+.rec.done .stamp{display:grid;background:var(--g);color:#fff}
+.rec.done:after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--g)}
+.rec.new:before{content:"new";position:absolute;right:10px;bottom:10px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--enter);padding:1px 6px}
+.rec.flash{animation:flash 3s ease}
+
+/* ---------- the almanac (year) ---------- */
+.almanac{border:1px solid var(--ink);background:rgba(255,255,255,.4)}
+.atop{padding:18px 22px;border-bottom:1px solid var(--ink);display:grid;gap:4px}
+.atop h2{font-size:1.9rem}
+.atop .sub{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.month{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-size:1.25rem;font-style:italic;display:flex;justify-content:space-between;align-items:baseline}
+.month .mh small{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-style:normal}
+.month.quiet .mh{color:var(--ink2)}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.95rem}
+.ev .when{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:var(--ink2);display:flex;gap:8px;align-items:center}
+.ev .check{border:1px solid #8a5a12;color:#8a5a12;font-size:.6rem;padding:0 5px;letter-spacing:.1em;text-transform:uppercase}
+.ev b{font-weight:500}
+.ev .sub{display:block;color:var(--ink2);font-size:.9rem}
+.ev .in{display:block;color:#2b6a3f;font-size:.85rem;font-family:var(--f-mono)}
+.ev .open{justify-self:start;font:inherit;font-size:.85rem;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:var(--pencil);font-size:.92rem}
+
+/* ---------- the walker's notebook ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;align-items:start}
+.cover-side{background:rgba(255,255,255,.5);border:1px solid var(--ink);padding:22px 24px;display:grid;gap:14px}
+.cover-side h2{font-size:1.8rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem}
+.entries{display:grid;gap:14px}
+.note{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:16px 18px;display:grid;gap:8px;
+  background-image:repeating-linear-gradient(transparent 0 27px,rgba(0,0,0,.06) 27px 28px)}
+.note header{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.note h3{font-size:1.2rem;font-weight:500}
+.note .d{font-family:var(--f-mono);font-size:.7rem;color:var(--ink2);white-space:nowrap}
+.note dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.note dt{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);padding-top:5px}
+.note dd{margin:0}
+.note.example{opacity:.75;border-style:dashed}
+.note .del{font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#8a1d1d}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(34,32,28,.45);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(560px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:20px 22px 14px;border-bottom:3px solid var(--g)}
+.sheet-top .plate-ic{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-mono)}
+.sheet-top .fam{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-size:1.5rem}
+.x{font:inherit;font-size:1.6rem;line-height:1;background:none;border:0;color:var(--ink);cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:4px}
+.sheet-body p{margin:0}
+.think{border-left:3px solid var(--g);padding:6px 14px;font-style:italic;font-size:1.05rem}
+.think b{display:block;font-style:normal;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:400}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--rule);padding:2px 8px;color:var(--ink2);border-radius:2px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink2);border-top:1px solid var(--ink);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-size:1rem;border:1px solid var(--ink);padding:11px 18px;cursor:pointer;background:var(--ink);color:var(--paper);border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(540px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.82rem;border:1px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.dept{background:rgba(255,255,255,.5);border:1px solid var(--ink);border-left:6px solid var(--read);padding:20px 22px;display:grid;gap:10px}
+.dept h2{font-size:1.7rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--paper2);
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.7),transparent 50%),radial-gradient(ellipse at 90% 100%,rgba(120,90,40,.14),transparent 50%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(820px,100%);background:rgba(255,255,255,.6);color:var(--ink);border:1px solid var(--ink);box-shadow:0 1px 0 var(--ink), 8px 8px 0 var(--paper3);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:28px 30px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(34,32,28,.66);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--enter);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(620px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.25);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:80px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-size:1.4rem;margin:2px 0 4px;font-weight:500}
+.tour-card p{margin:0;font-size:1rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:var(--paper);margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:var(--paper2)}
+.dash-top .badge{color:var(--paper);border-color:var(--paper)}.dash-top .badge i{background:var(--paper)}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:12px 14px;display:grid;gap:2px}
+.tl b{font-size:2rem;line-height:1;font-weight:500}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-size:1.3rem;font-weight:500}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--paper3);vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 7px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.62rem;background:var(--ink);color:var(--paper);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-size:1rem;line-height:1.4;border-left:3px solid var(--ink);padding:4px 10px;margin:6px 0}
+.dv{font-size:1.1rem}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--ink);margin-right:2px;vertical-align:middle;background:transparent}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- Atma, drawn once and reused: a black standard poodle, facing left, mid-stride -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="atma" viewBox="0 0 240 200">
+      <!-- shadow -->
+      <ellipse cx="120" cy="186" rx="80" ry="6" fill="#000" opacity=".12"/>
+      <!-- back legs (bracelets) -->
+      <path d="M162 128 l6 30 M190 126 l2 32" stroke="#1a1917" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="170" cy="166" r="12" fill="#1a1917"/><circle cx="194" cy="166" r="12" fill="#1a1917"/>
+      <path d="M170 176 l-4 8 M194 176 l2 8" stroke="#1a1917" stroke-width="6" stroke-linecap="round"/>
+      <!-- front legs -->
+      <path d="M78 130 l-10 30 M98 132 l-2 30" stroke="#1a1917" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="66" cy="168" r="12" fill="#1a1917"/><circle cx="96" cy="170" r="12" fill="#1a1917"/>
+      <path d="M62 178 l-6 6 M96 180 l0 6" stroke="#1a1917" stroke-width="6" stroke-linecap="round"/>
+      <!-- body: clipped close with a puff on the hips -->
+      <ellipse cx="130" cy="112" rx="62" ry="30" fill="#1a1917"/>
+      <circle cx="180" cy="110" r="30" fill="#1a1917"/>
+      <!-- tail pompom -->
+      <path d="M204 92 q14 -22 10 -40" stroke="#1a1917" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <circle cx="214" cy="46" r="14" fill="#1a1917"/>
+      <!-- neck and head with topknot and ears -->
+      <path d="M86 100 q-10 -24 -4 -46" stroke="#1a1917" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <circle cx="74" cy="48" r="26" fill="#1a1917"/>
+      <circle cx="80" cy="22" r="17" fill="#1a1917"/>
+      <ellipse cx="94" cy="66" rx="12" ry="24" fill="#1a1917"/>
+      <!-- muzzle -->
+      <path d="M52 50 q-18 2 -24 10 q6 8 22 8 z" fill="#1a1917"/>
+      <circle cx="29" cy="59" r="4" fill="#333"/>
+      <!-- eye: patient, unimpressed -->
+      <ellipse cx="60" cy="46" rx="4.5" ry="4" fill="#f3ecdc"/><circle cx="59" cy="47" r="2.3" fill="#000"/>
+      <path d="M53 40 q7 -4 14 0" stroke="#f3ecdc" stroke-width="1.6" fill="none" opacity=".7"/>
+      <!-- collar -->
+      <path d="M62 72 q22 10 36 2" stroke="#b5542f" stroke-width="5" fill="none"/>
+      <circle cx="80" cy="80" r="4" fill="#d9b56a"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 240 200" aria-hidden="true"><use href="#atma"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Philosophy"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="primary">Primary texts</button><button type="button" data-v="competitions">Essay prizes</button><button type="button" data-v="lectures">Lectures</button><button type="button" data-v="podcasts">Podcasts</button><button type="button" data-v="thought">Thought experiments</button><button type="button" data-v="applied">Applied ethics</button><button type="button" data-v="religion">Metaphysics of God</button><button type="button" data-v="mind">Metaphysics of Mind</button><button type="button" data-v="university">University and admissions</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the footpath map, the six stretches, Atma. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (sources, dates, links, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 240 200" aria-hidden="true"><use href="#atma"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Philosophy · The Walk · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your sixth-form philosophers.</h2>
+      <p>It is a working copy of the page a pupil would use: 48 free things to enter, watch, listen to, read, do and apply for, laid out as a footpath in six stretches, each a place a philosopher is known to have walked. The pupil inks the route in as they go; Atma, Schopenhauer's poodle, keeps count and fetches things. Every anecdote on the page carries its source and a label (attested, reported, legend). Everything a pupil does saves to the department, and there is a teacher dashboard so you can see who has done what.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <span class="badge" style="justify-self:start"><i></i>Philosophy · Beyond the classroom</span>
+    <h1 class="head" id="gateH">The Walk<br><em>six stretches, one route</em></h1>
+    <div class="gate-atma">
+      <svg viewBox="0 0 240 200" aria-hidden="true"><use href="#atma"/></svg>
+      <p>A footpath through free things for A-level Philosophy: essay prizes, lectures, podcasts, the texts themselves, thought experiments and summer schools. Each stretch of the route is a place a philosopher is known to have walked. You ink the route in as you go. The dog is Atma, Schopenhauer's poodle, and it keeps count. Everything you do saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Set off</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the Philosophy department.</b> This is the working pupil page: sign in with any name, mark waymarks passed, write in the notebook, ask the dog. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Philosophy · Beyond the classroom</span>
+      <h1 class="head">The Walk<span>A-level Philosophy · six stretches, one route</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE MAP ===== -->
+  <section aria-label="The route: six places to click">
+    <div class="map-wrap">
+      <svg class="map" viewBox="0 0 1400 600" role="group" aria-label="A footpath map in six stretches">
+        <defs>
+          <filter id="paperShade" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="1.2"/></filter>
+        </defs>
+        <!-- contours -->
+        <g class="contour" aria-hidden="true">
+          <path d="M-10 120 C 120 80, 260 170, 420 110 S 700 40, 860 120 S 1180 190, 1410 100"/>
+          <path d="M-10 160 C 140 120, 280 210, 430 150 S 690 90, 850 160 S 1170 230, 1410 140"/>
+          <path d="M-10 460 C 160 420, 300 520, 520 470 S 820 420, 1000 500 S 1260 520, 1410 440"/>
+          <path d="M-10 500 C 170 470, 320 550, 540 510 S 840 470, 1010 540 S 1270 560, 1410 490"/>
+          <path d="M520 20 C 560 80, 640 110, 700 60"/><path d="M1180 420 C 1240 380, 1300 400, 1340 360"/>
+        </g>
+        <!-- water: the Ilissus (left), the Pregel (middle), Lake Silvaplana, the Kyoto canal (right) -->
+        <g class="water" aria-hidden="true">
+          <path d="M20 490 q60 -20 120 0 t120 0"/><path d="M20 502 q60 -20 120 0 t120 0"/>
+          <path d="M700 470 q50 -14 100 0 t100 0 t100 0"/><path d="M700 482 q50 -14 100 0 t100 0 t100 0"/>
+        </g>
+        <!-- compass and scale -->
+        <g class="compass" transform="translate(1330,70)" aria-hidden="true">
+          <circle r="26" fill="none" stroke="var(--ink)" stroke-width="1"/>
+          <path d="M0 -24 L6 0 L0 6 L-6 0 Z" fill="var(--ink)"/><path d="M0 24 L6 0 L0 -6 L-6 0 Z" fill="none" stroke="var(--ink)" stroke-width="1"/>
+          <text y="-32">N</text>
+        </g>
+        <g class="scale" transform="translate(40,572)" aria-hidden="true">
+          <path d="M0 0 h160" stroke="var(--ink)" stroke-width="1"/><path d="M0 -5 v10 M80 -5 v10 M160 -5 v10" stroke="var(--ink)" stroke-width="1"/>
+          <text x="0" y="-9">one waymark</text><text x="120" y="-9">·  all free</text>
+        </g>
+        <g class="title" aria-hidden="true">
+          <text x="40" y="52" font-size="30" font-style="italic">The Walk</text>
+          <text x="40" y="74" font-size="12" font-family="IBM Plex Mono, monospace" letter-spacing="1.5">SIX STRETCHES · ONE ROUTE</text>
+        </g>
+
+        <!-- The route, in six stretches. Pencil underneath; ink on top, revealed by --k (0..1). -->
+        <g id="route">
+          <path id="seg-enter"  class="route-pencil" d="M70 330 C 110 300, 150 270, 210 280 S 290 330, 340 300"/>
+          <path id="seg-watch"  class="route-pencil" d="M340 300 C 380 280, 420 230, 470 220 S 560 240, 600 210"/>
+          <path id="seg-listen" class="route-pencil" d="M600 210 C 640 190, 690 190, 730 240 S 790 330, 840 320"/>
+          <path id="seg-read"   class="route-pencil" d="M840 320 C 890 310, 930 350, 980 340 S 1050 290, 1090 300"/>
+          <path id="seg-do"     class="route-pencil" d="M1090 300 C 1130 320, 1150 270, 1190 250 S 1240 240, 1260 270"/>
+          <path id="seg-apply"  class="route-pencil" d="M1260 270 C 1270 310, 1250 350, 1230 390 S 1200 440, 1210 470"/>
+          <path data-g="enter"  class="route-ink" id="ink-enter"  pathLength="1" d="M70 330 C 110 300, 150 270, 210 280 S 290 330, 340 300"/>
+          <path data-g="watch"  class="route-ink" id="ink-watch"  pathLength="1" d="M340 300 C 380 280, 420 230, 470 220 S 560 240, 600 210"/>
+          <path data-g="listen" class="route-ink" id="ink-listen" pathLength="1" d="M600 210 C 640 190, 690 190, 730 240 S 790 330, 840 320"/>
+          <path data-g="read"   class="route-ink" id="ink-read"   pathLength="1" d="M840 320 C 890 310, 930 350, 980 340 S 1050 290, 1090 300"/>
+          <path data-g="do"     class="route-ink" id="ink-do"     pathLength="1" d="M1090 300 C 1130 320, 1150 270, 1190 250 S 1240 240, 1260 270"/>
+          <path data-g="apply"  class="route-ink" id="ink-apply"  pathLength="1" d="M1260 270 C 1270 310, 1250 350, 1230 390 S 1200 440, 1210 470"/>
+        </g>
+
+        <!-- 1 Athens: outside the walls. City wall, a plane tree, the river below. -->
+        <g class="hot" data-g="enter" data-f="enter" tabindex="0" role="button" aria-label="Stretch 1, outside the walls of Athens: competitions and prizes">
+          <rect class="wash" x="30" y="350" width="220" height="200" rx="8"/>
+          <g class="vig" transform="translate(50,370)">
+            <path d="M0 60 h40 v-18 h10 v18 h14 v-18 h10 v18 h14 v-18 h10 v18 h12 v30 h-110 z"/>
+            <path d="M0 60 v30"/>
+            <path d="M136 90 v-50 q30 -40 60 -10 q-6 30 -34 24 q-10 14 -26 10 z" />
+            <path d="M136 92 l0 -40 M150 60 l-8 -16 M144 70 l12 -8"/>
+          </g>
+          <g class="num" transform="translate(100,360)"><circle r="14"/><text>1</text></g>
+          <text class="lab" x="48" y="492">Outside the walls</text>
+          <text class="fam" x="48" y="508">Athens · Enter</text>
+          <text class="cnt" id="cnt-enter" x="48" y="524"></text>
+        </g>
+
+        <!-- 2 The Peripatos: a colonnade -->
+        <g class="hot" data-g="watch" data-f="watch" tabindex="0" role="button" aria-label="Stretch 2, the Peripatos of the Lyceum: lectures and talks">
+          <rect class="wash" x="330" y="50" width="230" height="170" rx="8"/>
+          <g class="vig" transform="translate(360,80)">
+            <path d="M0 20 h170 l-10 -14 h-150 z"/>
+            <path d="M14 20 v60 M44 20 v60 M74 20 v60 M104 20 v60 M134 20 v60 M164 20 v60"/>
+            <path d="M8 20 h12 M38 20 h12 M68 20 h12 M98 20 h12 M128 20 h12 M158 20 h12"/>
+            <path d="M-6 80 h186"/>
+          </g>
+          <g class="num" transform="translate(445,66)"><circle r="14"/><text>2</text></g>
+          <text class="lab" x="348" y="182">The Peripatos</text>
+          <text class="fam" x="348" y="198">The Lyceum · Watch</text>
+          <text class="cnt" id="cnt-watch" x="348" y="214"></text>
+        </g>
+
+        <!-- 3 Copenhagen: rooftops, a spire with a spiral stair, a street lamp -->
+        <g class="hot" data-g="listen" data-f="listen" tabindex="0" role="button" aria-label="Stretch 3, Copenhagen: podcasts">
+          <rect class="wash" x="600" y="30" width="210" height="170" rx="8"/>
+          <g class="vig" transform="translate(620,48)">
+            <path d="M0 100 h170"/>
+            <path d="M6 100 v-40 l20 -14 l20 14 v40 M52 100 v-30 l16 -10 l16 10 v30"/>
+            <path d="M110 100 v-50 h24 v50 M122 50 v-26 l8 -8 M122 24 q10 -4 2 -12 q-10 -4 -2 -14"/>
+            <path d="M156 100 v-36 M150 64 h12 M156 64 q-6 -8 0 -12 q6 4 0 12" />
+          </g>
+          <g class="num" transform="translate(705,46)"><circle r="14"/><text>3</text></g>
+          <text class="lab" x="618" y="164">Copenhagen</text>
+          <text class="fam" x="618" y="180">Kierkegaard · Listen</text>
+          <text class="cnt" id="cnt-listen" x="618" y="196"></text>
+        </g>
+
+        <!-- 4 Königsberg: bridge over the Pregel, a clock face -->
+        <g class="hot" data-g="read" data-f="read" tabindex="0" role="button" aria-label="Stretch 4, Königsberg: reading">
+          <rect class="wash" x="830" y="370" width="230" height="170" rx="8"/>
+          <g class="vig" transform="translate(850,390)">
+            <path d="M0 60 h180"/>
+            <path d="M10 60 q30 -40 60 0 M70 60 q30 -40 60 0 M130 60 q20 -28 40 0"/>
+            <path d="M0 40 h180"/>
+            <path d="M8 40 v20 M62 40 v20 M124 40 v20 M172 40 v20"/>
+            <circle cx="150" cy="16" r="14"/><path d="M150 16 v-9 M150 16 l6 4"/>
+            <path d="M136 30 v10 M164 30 v10"/>
+          </g>
+          <g class="num" transform="translate(945,382)"><circle r="14"/><text>4</text></g>
+          <text class="lab" x="848" y="492">Königsberg</text>
+          <text class="fam" x="848" y="508">Kant · Read</text>
+          <text class="cnt" id="cnt-read" x="848" y="524"></text>
+        </g>
+
+        <!-- 5 Sils Maria: peaks, the lake, the pyramidal rock -->
+        <g class="hot" data-g="do" data-f="do" tabindex="0" role="button" aria-label="Stretch 5, Sils Maria: thought experiments and practice">
+          <rect class="wash" x="1080" y="40" width="210" height="190" rx="8"/>
+          <g class="vig" transform="translate(1100,60)">
+            <path d="M0 90 l40 -60 l24 30 l30 -50 l40 60 l30 -30 l16 50"/>
+            <path d="M58 46 l6 -6 l6 10 M94 10 l8 -8 l8 14"/>
+            <path d="M0 110 h180 M10 118 h160"/>
+            <path d="M120 110 l18 -30 l18 30 z"/>
+          </g>
+          <g class="num" transform="translate(1190,50)"><circle r="14"/><text>5</text></g>
+          <text class="lab" x="1098" y="192">Sils Maria</text>
+          <text class="fam" x="1098" y="208">Nietzsche · Do</text>
+          <text class="cnt" id="cnt-do" x="1098" y="224"></text>
+        </g>
+
+        <!-- 6 Kyoto: the canal, a stone bridge, a cherry tree -->
+        <g class="hot" data-g="apply" data-f="apply" tabindex="0" role="button" aria-label="Stretch 6, Kyoto, the Philosopher's Path: university and summer schools">
+          <rect class="wash" x="1170" y="380" width="210" height="200" rx="8"/>
+          <g class="vig" transform="translate(1180,400)">
+            <path d="M40 0 q20 60 0 120 M60 0 q20 60 0 120"/>
+            <path d="M24 56 h52 M24 70 h52 M28 56 v14 M72 56 v14"/>
+            <path d="M126 120 v-44"/>
+            <circle cx="112" cy="58" r="18"/><circle cx="142" cy="52" r="20"/><circle cx="128" cy="34" r="16"/>
+            <path d="M0 120 h170"/>
+          </g>
+          <g class="num" transform="translate(1290,392)"><circle r="14"/><text>6</text></g>
+          <text class="lab" x="1188" y="548">Kyoto</text>
+          <text class="fam" x="1188" y="564">Nishida · Apply</text>
+          <text class="cnt" id="cnt-apply" x="1188" y="580"></text>
+        </g>
+
+        <!-- The walker and the dog, moved along the route by progress -->
+        <g class="walker" id="walker" aria-hidden="true">
+          <g class="fig" transform="translate(-9,-30)">
+            <circle cx="9" cy="5" r="4.5"/><path d="M9 10 v14 M9 14 l-6 8 M9 14 l6 6 M9 24 l-5 10 M9 24 l5 10" stroke="var(--ink)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M16 20 l10 -10" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <g class="fig" transform="translate(16,-14)">
+            <ellipse cx="6" cy="6" rx="7" ry="4"/><circle cx="-2" cy="3" r="3.2"/><path d="M2 10 v4 M9 10 v4" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M12 4 q4 -4 2 -7" stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <!-- the small print: where each stretch comes from, and how sure we are -->
+    <div class="smallprint" id="smallprint" aria-label="Sources for the six stretches"></div>
+  </section>
+
+  <!-- ===== ATMA, DISTANCE, ASK THE DOG ===== -->
+  <section class="crew" aria-label="Atma, your distance, and ask the dog">
+    <div class="atma">
+      <svg class="atma-img" id="atmaImg" viewBox="0 0 240 200" aria-hidden="true"><use href="#atma"/></svg>
+      <div class="bubble" role="status" aria-live="polite"><span class="nm">Atma · Schopenhauer's poodle</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card dist-card">
+        <h2 class="head">Distance walked</h2>
+        <div class="dist"><div class="pct" id="pctVal">0<small>%</small></div>
+          <div><div class="ruler" aria-hidden="true"><i id="ruler"></i></div><p class="small" id="coverTxt" style="margin:8px 0 0"></p></div></div>
+        <div class="stretches" id="palette" aria-label="Stretches with at least one waymark passed"></div>
+      </div>
+      <div class="card pick-card">
+        <h2 class="head">Ask the dog</h2>
+        <p class="small" style="margin:0">Say how long you have. Atma goes up the path and comes back with one thing you have not done, and prefers stretches you have not set foot on.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">10 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Fetch</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE ROUTE CARD (half term) ===== -->
+  <section class="routecard" aria-labelledby="htLabel">
+    <span class="eyebrow" id="htEyebrow"></span>
+    <h2 class="head" id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE STRETCHES ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 class="head" id="tableH">The whole route</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a stretch"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one stretch"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE ALMANAC ===== -->
+  <section class="almanac" aria-labelledby="yearH">
+    <div class="atop"><span class="sub">October 2026 – July 2027</span><h2 class="head" id="yearH">The almanac</h2><span class="sub">Deadlines, openings, windows · "check" = date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== THE WALKER'S NOTEBOOK ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side">
+      <span class="tape" id="nbCover">The walker's notebook</span>
+      <h2 class="head" id="nbH">One entry per waymark</h2>
+      <p>Date it. Say what it was. One thing you took from it, and the question it left you with. A notebook like this is where a personal statement, a Think essay and a reference come from; nobody can write those for you from a list of ticks.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbWhat">What</label><input id="nbWhat" list="whatList" placeholder="lecture, episode, text, case…" required><datalist id="whatList"></datalist></div>
+        </div>
+        <div class="field"><label for="nbLearned">What I took from it</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">The question it left me with (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">Write it in</button><button class="btn ghost" type="button" id="copyBtn">Copy the notebook as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your notebook as text"></textarea>
+      </form>
+    </div>
+    <div class="entries" id="entries"></div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="head">What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each prize (your entry list for the Ethics Cup, PERC and #PhilosophyMatters, which go through school); how many of the half-term route card each pupil has done; how far along the route each has walked and which stretches they have not touched; each notebook as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Philosophy: the six stretches and their sources, the route card, the dates, Atma's lines, the AQA tagging, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+/* Six stretches of the route, west to east. */
+const FAM = {
+  enter:{label:"Enter", verb:"Essay prizes and competitions", place:"Outside the walls", the:"the stretch outside the walls", where:"Athens", who:"Socrates", no:1},
+  watch:{label:"Watch", verb:"Lectures and talks", place:"The Peripatos", the:"the Peripatos", where:"The Lyceum, Athens", who:"Aristotle", no:2},
+  listen:{label:"Listen", verb:"Podcasts", place:"Copenhagen", the:"the Copenhagen stretch", where:"Copenhagen", who:"Kierkegaard", no:3},
+  read:{label:"Read", verb:"The texts, and about them", place:"Königsberg", the:"the Königsberg stretch", where:"Königsberg", who:"Kant", no:4},
+  do:{label:"Do", verb:"Thought experiments and cases", place:"Sils Maria", the:"the Sils Maria stretch", where:"The Engadin", who:"Nietzsche", no:5},
+  apply:{label:"Apply", verb:"University and summer schools", place:"Kyoto", the:"the Kyoto stretch", where:"Kyoto", who:"Nishida", no:6}
+};
+/* Where each stretch comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer; leg = a story with no good source. Shown under the map. */
+const SMALLPRINT = [
+  {g:"enter", txt:`Socrates leaves the city for once and walks with Phaedrus along the Ilissus; the countryside, he says, has nothing to teach him, but people do. <span class="st att">attested</span> Plato, <i>Phaedrus</i> 227a–230e.`},
+  {g:"watch", txt:`Aristotle's school took its name from the <i>peripatos</i>, the covered walk of the Lyceum. That he taught while walking: <span class="st rep">reported</span> Diogenes Laertius, <i>Lives</i> 5.2.`},
+  {g:"listen", txt:`"Above all, do not lose your desire to walk… I have walked myself into my best thoughts." <span class="st att">attested</span> Kierkegaard, letter to Henriette Lund, 1847 (<i>Letters and Documents</i>, trans. Hong).`},
+  {g:"read", txt:`Kant walked at the same hour every day. That his neighbours set their clocks by him: <span class="st rep">reported</span> Heine, <i>On the History of Religion and Philosophy in Germany</i> (1834). That he missed the walk only to read Rousseau's <i>Émile</i>: <span class="st leg">legend</span>.`},
+  {g:"do", txt:`The thought of eternal recurrence came on a walk by Lake Silvaplana in August 1881, "by a mighty pyramidal block of stone". <span class="st att">attested</span> Nietzsche, <i>Ecce Homo</i>, on <i>Thus Spoke Zarathustra</i> §1.`},
+  {g:"apply", txt:`The canal path Nishida Kitarō walked to work; named <i>Tetsugaku no michi</i>, the Philosopher's Path, in 1972. <span class="st att">attested</span> the naming; <span class="st rep">reported</span> the daily walk.`}
+];
+// mins drives the "Ask the dog" buckets: quick <= 20, evening <= 180, long > 180
+const ITEMS = [
+  // ---- 1 Enter · outside the walls
+  {s:"Thk",g:"enter",short:"Think Essay Prize (RIP)",name:"Think Essay Prize (Royal Institute of Philosophy)",mins:600,t:"1,200 words",
+   what:"Up to 1,200 words on one of six set questions, submitted online by you; no school entry needed. Ages 15–18. The 2026 set included whether God can be known, moral responsibility in a determined universe and machine consciousness. The winning essay is published in the journal Think. Any use of AI disqualifies the entry. The 2027 round is expected to open in the autumn with an April deadline.",
+   think:"Pick the question that is closest to a unit you have already done, then argue the side you find harder to hold. The judges have read the easy side.",tags:["free","ages 15–18","enter yourself","opens Nov · due Apr","check dates"],url:"https://royalinstitutephilosophy.org/news/think-essay-prize/",lt:"RIP page"},
+  {s:"PERC",g:"enter",short:"Practical Ethics and Responsibility Competition (Oxford)",name:"Practical Ethics and Responsibility Competition (Uehiro Oxford Institute)",mins:900,t:"a video, as a team",
+   what:"A school team makes a short video about an ethical problem and how responsibility comes into it. Years 11–13, UK schools. Past finalists asked whether we have free will and whether we would owe anything to a conscious AI. The top five teams go to a final in Oxford; travel is paid, and each finalist school gets £250. Entries for the 2027 round are due Monday 4 January 2027.",
+   think:"Responsibility is the word in the title. Decide what you mean by it in the first thirty seconds, or the judges will do it for you.",tags:["free","Years 11–13","school enters","due 4 Jan 2027"],url:"https://www.uehiro.ox.ac.uk/perc",lt:"Uehiro PERC"},
+  {s:"EC",g:"enter",short:"The Ethics Cup (St Andrews)",name:"The Ethics Cup (University of St Andrews; formerly the John Stuart Mill Cup)",mins:1200,t:"a day, as a team",
+   what:"Teams discuss a published set of real ethical cases with another team. Marks go for careful reasoning and for responding to the other side, not for winning. Regionals in January 2027: University of Warwick, 7 January (registration closes 23 October 2026); Dean Close School, Cheltenham, 20 January. Final at St Andrews in the spring. £90 per school, which the department pays if it enters a team.",
+   think:"The scoring rewards changing your mind in public when the other side has a point. Practise saying 'that is right, and it changes my view because…' out loud.",tags:["school enters","£90 per school","Warwick 7 Jan","register by 23 Oct"],url:"https://ethicscup.wp.st-andrews.ac.uk/registration/",lt:"Ethics Cup"},
+  {s:"PM",g:"enter",short:"#PhilosophyMatters prize (BPA)",name:"#PhilosophyMatters student prize (British Philosophical Association and Association of Philosophy Teachers)",mins:40,t:"70 words",
+   what:"Complete the sentence 'Philosophy matters to me because…' in no more than 70 more words. For pupils aged 16+ studying A-level Philosophy. Your teacher submits all the entries in one document. Prizes of £75 and £50. The 2026 deadline was noon on 2 March; confirm the 2027 date in the new year.",
+   think:"Seventy words is an argument with one premise. Find the premise first; the sentence writes itself after that.",tags:["free","ages 16+","teacher submits","early March","check dates"],url:"https://bpa.ac.uk/philosophymatters-2026-student-prizes/",lt:"BPA page"},
+  {s:"Tri",g:"enter",short:"Trinity College Philosophy Essay Prize",name:"Philosophy Essay Prize (Trinity College, Cambridge)",mins:900,t:"2,000 words",
+   what:"Up to 2,000 words on one of three set questions, for Year 12, submitted online. The 2025 questions included 'Does everything have an explanation?' First prize £600, split between you and the school. Trinity says information for 2027 will be posted in February 2027; the prize did not appear on the 2026 list, so check then whether it is running.",
+   think:"Trinity's questions are one line long on purpose. Spend the first page saying what the question could mean and which meaning you are answering.",tags:["free","Year 12","enter yourself","check Feb 2027"],url:"https://www.trin.cam.ac.uk/undergraduate/essay-prizes/philosophy/",lt:"Trinity"},
+  {s:"JL",g:"enter",short:"John Locke Institute Global Essay Prize",name:"John Locke Institute Global Essay Prize (Philosophy category)",mins:900,t:"2,000 words",
+   what:"Up to 2,000 words on one of three set philosophy questions. Entries usually open in the spring with a deadline at the end of June. Entry is free; a late-entry fee has applied in past rounds, so enter on time. Run by a private institute rather than a university or learned society, and widely entered.",
+   think:"The field is large. An essay that takes one of the three questions and refuses to be general about it stands out more than one that knows everything.",tags:["free entry","enter yourself","spring · due late June","check dates and fee"],url:"https://www.johnlockeinstitute.com/essay-competition",lt:"John Locke Institute"},
+
+  // ---- 2 Watch · the Peripatos
+  {s:"Brf",g:"watch",short:"RIP Philosophy Briefings (15 min)",name:"Royal Institute of Philosophy: Philosophy Briefings",mins:15,t:"15m each",
+   what:"Fifteen-minute video masterclasses written for A-level students by academic philosophers: Cartesian dualism, the problem of evil, Kant, utilitarianism, Aristotle's virtue ethics, and topics in epistemology.",
+   think:"Watch the one for the topic you are on now, before the lesson rather than after. Write down one objection the speaker raises and whether your textbook has it.",tags:["free","15 min","written for A level","start here"],url:"https://royalinstitutephilosophy.org/events/philosophy-briefings/",lt:"Briefings"},
+  {s:"Mil",g:"watch",short:"Oxford · General Philosophy (Millican)",name:"Oxford: General Philosophy (Peter Millican)",mins:30,t:"41 short episodes",
+   what:"The eight-lecture first-year Oxford course, recorded in 41 short episodes: scepticism, induction, Descartes, perception and primary and secondary qualities, mind and body, free will and personal identity, working through Hobbes, Locke, Berkeley and Hume.",
+   think:"Start with the episodes on perception and scepticism; they are the Epistemology paper taught by someone who wrote on Hume for a living. Year 13: the mind episodes.",tags:["free","university lectures","Epistemology · Mind"],url:"https://podcasts.ox.ac.uk/series/general-philosophy",lt:"Oxford podcasts"},
+  {s:"Tal",g:"watch",short:"Oxford · Philosophy for Beginners & A Romp Through Ethics (Talbot)",name:"Oxford Continuing Education: Philosophy for Beginners and A Romp Through Ethics (Marianne Talbot)",mins:60,t:"60m each",
+   what:"Two short introductory lecture series: logic and argument, ethics, metaphysics and epistemology, mind and consciousness; and a separate series on ethical theories and metaethics.",
+   think:"The ethics series goes with the Moral Philosophy paper. Listen for the point where she says a theory 'has to say' something; that is where essay questions come from.",tags:["free","university lectures","Year 12 autumn"],url:"https://podcasts.ox.ac.uk/series/philosophy-beginners",lt:"Philosophy for Beginners"},
+  {s:"Cam",g:"watch",short:"Cambridge · sixth-form conference recordings",name:"Cambridge Faculty of Philosophy: podcasts and sixth-form conference recordings",mins:45,t:"45m",
+   what:"Recordings of the Cambridge Sixth Form Philosophy Conference (2016, 2017 and 2019), including Richard Holton on free will and neuroscience, plus Moral Sciences Club talks on epistemology, ethics and mind.",
+   think:"The sixth-form conference talks are pitched at you. The Moral Sciences Club ones are pitched at the faculty; try one in Year 13 and see how much you can follow.",tags:["free","university","Year 13 for the hard ones"],url:"https://www.phil.cam.ac.uk/podcasts-link/podcasts-philosophy",lt:"Cambridge podcasts"},
+  {s:"Gre",g:"watch",short:"Gresham College · schools talks & The Origins of Atheism",name:"Gresham College schools talks and religion collection",mins:60,t:"60m",
+   what:"Free university lectures. The schools-only live talk this term is Professor Robin May, 'Should We Manipulate People's Emotions?', Wednesday 14 October 2026, 2–3pm, booked by the department. The religion collection includes Alec Ryrie's series The Origins of Atheism, which gives the history behind the Metaphysics of God paper.",
+   think:"Ryrie's argument is that unbelief came from feeling before it came from argument. Decide whether that is a point against the arguments for God, or beside them.",tags:["free","14 Oct 2–3pm (school books)","God paper"],url:"https://www.gresham.ac.uk/schools-and-colleges/religion",lt:"Gresham"},
+  {s:"CC",g:"watch",short:"Crash Course Philosophy",name:"Crash Course Philosophy",mins:10,t:"10m each",
+   what:"Forty-six short videos presented by Hank Green on an introductory university course: arguments, epistemology, philosophy of religion, mind, free will and ethics. Quick, American, and not written to the AQA specification.",
+   think:"Revision only, and check the terms against the specification afterwards. Where the video and your notes disagree, your notes are right and the disagreement is worth a minute.",tags:["free","revision","check terminology"],url:"https://www.youtube.com/playlist?list=PL8dPuuaLjXtNgK6MZucdYldNkMybYIHKR",lt:"YouTube playlist"},
+  {s:"RIPL",g:"watch",short:"RIP London Lectures & YouTube",name:"Royal Institute of Philosophy London Lectures and YouTube channel",mins:60,t:"60m",
+   what:"Weekly lectures at Senate House in London, with past series and the annual lectures on the Institute's YouTube channel. The autumn 2026 series is 'Children in Philosophy', including Carina Prunkl, 'Learning to think with AI', on 12 November. In person for the live ones; the channel is for everyone.",
+   think:"These are research lectures, so expect to lose the thread for a few minutes at a time. Note the question in the discussion that the speaker could not answer.",tags:["free","research lectures","Year 13","YouTube"],url:"https://royalinstitutephilosophy.org/events/london-lectures/",lt:"RIP London Lectures"},
+  {s:"WiP",g:"watch",short:"Wireless Philosophy (Wi-Phi)",name:"Wireless Philosophy (Wi-Phi)",mins:8,t:"8m each",
+   what:"Short animated videos written and voiced by academic philosophers, founded by philosophers at Yale and MIT. Series on epistemology (Gettier cases, scepticism), the arguments for God, personal identity and the mind.",
+   think:"Watch the Gettier video, then write your own Gettier case in three sentences without using a barn, a sheep or a stopped clock.",tags:["free","academic","8 min"],url:"https://www.wi-phi.com/",lt:"wi-phi.com"},
+  {s:"Cha",g:"watch",short:"David Chalmers · How do you explain consciousness?",name:"David Chalmers: How do you explain consciousness?",mins:18,t:"18m",
+   what:"Chalmers sets out why he thinks consciousness is a 'hard problem' for physicalism, and floats panpsychism.",
+   think:"Which physicalist theory on the Metaphysics of Mind list does his argument damage most, and which does it leave alone? One sentence each.",tags:["TED","free","Mind"],url:"https://www.ted.com/talks/david_chalmers_how_do_you_explain_consciousness",lt:"ted.com"},
+  {s:"Seth",g:"watch",short:"Anil Seth · Your brain hallucinates your conscious reality",name:"Anil Seth: Your brain hallucinates your conscious reality",mins:17,t:"17m",
+   what:"A neuroscientist argues that what we perceive is the brain's best guess at the causes of its signals.",
+   think:"Is Seth closer to direct realism or indirect realism? Give one reason, then say what a direct realist would need to concede to agree with him.",tags:["TED","free","Epistemology · perception"],url:"https://www.ted.com/talks/anil_seth_your_brain_hallucinates_your_conscious_reality",lt:"ted.com"},
+  {s:"Mary",g:"watch",short:"TED-Ed · Mary's Room",name:"Eleanor Nelsen (TED-Ed): Mary's Room: A philosophical thought experiment",mins:5,t:"5m",
+   what:"Frank Jackson's knowledge argument in five minutes: Mary knows every physical fact about colour and has never seen it.",
+   think:"Write the knowledge argument as numbered premises, then give the ability knowledge reply. Then say which premise the reply actually denies.",tags:["TED-Ed","free","Mind","5 min"],url:"https://www.ted.com/talks/eleanor_nelsen_mary_s_room_a_philosophical_thought_experiment",lt:"ted.com"},
+  {s:"Trol",g:"watch",short:"TED-Ed · Would you sacrifice one to save five?",name:"Eleanor Nelsen (TED-Ed): Would you sacrifice one person to save five?",mins:5,t:"5m",
+   what:"The trolley problem, the switch case and the footbridge case, in five minutes.",
+   think:"How do an act utilitarian and a Kantian answer the switch and the footbridge? Which theory explains the difference between the two cases better, and is that a point in its favour?",tags:["TED-Ed","free","Moral Philosophy","5 min"],url:"https://www.ted.com/talks/eleanor_nelsen_would_you_sacrifice_one_person_to_save_five",lt:"ted.com"},
+  {s:"Sing",g:"watch",short:"Peter Singer · Effective altruism",name:"Peter Singer: The why and how of effective altruism",mins:17,t:"17m",
+   what:"Singer argues from utilitarian premises to a duty to give, and to give where it does most good. On the route to be argued with.",
+   think:"Which objection to utilitarianism on the specification does most damage to his case: the demandingness one, or one of the others? Say why that one and not the rest.",tags:["TED","free","Moral Philosophy","argue with it"],url:"https://www.ted.com/talks/peter_singer_the_why_and_how_of_effective_altruism",lt:"ted.com"},
+  {s:"San",g:"watch",short:"Michael Sandel · The lost art of democratic debate",name:"Michael Sandel: The lost art of democratic debate",mins:19,t:"19m",
+   what:"Sandel uses Aristotle's idea that things have a purpose (the flute goes to the best player) to argue about justice.",
+   think:"Link what Sandel does with purpose to Aristotle's function argument in virtue ethics. Does the function argument need Aristotle's biology, or does it survive without it?",tags:["TED","free","Moral Philosophy"],url:"https://www.ted.com/talks/michael_sandel_the_lost_art_of_democratic_debate",lt:"ted.com"},
+  {s:"Gal",g:"watch",short:"Julia Galef · Why you think you're right",name:"Julia Galef: Why you think you're right -- even if you're wrong",mins:11,t:"11m",
+   what:"Soldier mindset against scout mindset: motivated reasoning and what it does to belief.",
+   think:"Is Galef describing a condition for knowledge, or a good habit for forming beliefs? Put your answer next to the tripartite definition and see where it fits, if it fits.",tags:["TED","free","Epistemology"],url:"https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong",lt:"ted.com"},
+  {s:"App",g:"watch",short:"Kwame Anthony Appiah · Is religion good or bad?",name:"Kwame Anthony Appiah: Is religion good or bad? (This is a trick question)",mins:14,t:"14m",
+   what:"Appiah argues that 'religion' is not one thing, so the question in the title cannot be answered as asked.",
+   think:"If 'religion' is not one thing, is 'God' one thing? What does that do to arguments that depend on a single concept of God with the omni-attributes?",tags:["TED","free","God paper"],url:"https://www.ted.com/talks/kwame_anthony_appiah_is_religion_good_or_bad_this_is_a_trick_question",lt:"ted.com"},
+  {s:"dB",g:"watch",short:"Alain de Botton · Atheism 2.0",name:"Alain de Botton: Atheism 2.0",mins:19,t:"19m",
+   what:"De Botton wants religious practice without belief in God. On the route to be argued with.",
+   think:"What would a verificationist say his religious sentences mean? And would a believer or an atheist object to his position first?",tags:["TED","free","religious language","argue with it"],url:"https://www.ted.com/talks/alain_de_botton_atheism_2_0",lt:"ted.com"},
+
+  // ---- 3 Listen · Copenhagen
+  {s:"IOT",g:"listen",short:"In Our Time · Philosophy archive",name:"BBC In Our Time: Philosophy archive",mins:45,t:"45m",
+   what:"Three academics and Melvyn Bragg on one thinker or problem for 45 minutes. The archive covers most of the named philosophers on the specification: Descartes, Hume, Kant, Mill, Berkeley, Aquinas, Anselm and more.",
+   think:"Search for the philosopher you are on this week. Listen for the one point the three guests disagree about and write that down; agreement is not worth a note.",tags:["free","BBC","45 min","archive"],url:"https://www.bbc.co.uk/programmes/p01f0vzr",lt:"In Our Time"},
+  {s:"PB",g:"listen",short:"Philosophy Bites",name:"Philosophy Bites",mins:18,t:"15–20m",
+   what:"Short interviews with leading philosophers on one topic each, running since 2007; more than 400 episodes across ethics, mind, knowledge and religion.",
+   think:"Search the back catalogue for your current unit. These are philosophers explaining their own positions; quote one by name in your next essay.",tags:["free","interviews","15–20 min"],url:"https://philosophybites.com/",lt:"philosophybites.com"},
+  {s:"HoP",g:"listen",short:"History of Philosophy without any gaps",name:"History of Philosophy without any gaps (Peter Adamson)",mins:22,t:"20m each",
+   what:"Philosophy in chronological order, one short episode at a time, by a professor at LMU Munich and King's College London. The episodes on Anselm, Aquinas and the early moderns go with the God and Epistemology papers.",
+   think:"Try the Anselm episode before you meet the ontological argument in class. Then see whether the textbook version is the same argument.",tags:["free","chronological","20 min"],url:"https://historyofphilosophy.net/",lt:"historyofphilosophy.net"},
+  {s:"HiP",g:"listen",short:"Hi-Phi Nation (Barry Lam)",name:"Hi-Phi Nation (Barry Lam, Vassar College)",mins:45,t:"45m",
+   what:"A story-led philosophy podcast from an academic philosopher: each episode follows a real case and brings the philosophy in behind it. Episodes on personal identity, moral luck, punishment and the mind.",
+   think:"This one argues through a story. Afterwards, write down the argument as premises and conclusion, and see what the story smuggled in.",tags:["free","narrative","Mind · Moral Philosophy"],url:"https://hiphination.org/",lt:"hiphination.org"},
+  {s:"Elu",g:"listen",short:"Elucidations (University of Chicago)",name:"Elucidations (University of Chicago)",mins:40,t:"40m",
+   what:"An interview podcast from the University of Chicago with academic philosophers on their own work: episodes on functionalism, free will, moral realism and knowledge.",
+   think:"Harder than Philosophy Bites and longer. Pick an episode on a theory you already know and count how many of the objections you learned the guest actually takes seriously.",tags:["free","interviews","Year 13"],url:"https://elucidations.now.sh/",lt:"Elucidations"},
+
+  // ---- 4 Read · Königsberg
+  {s:"EMT",g:"read",short:"Early Modern Texts (the set authors, free)",name:"Early Modern Texts, ed. Jonathan Bennett: Descartes, Locke, Berkeley, Hume, Kant, Mill",mins:60,t:"a passage at a time",
+   what:"Free, lightly modernised versions of the texts behind most of the course: Descartes's Meditations, Locke's Essay, Berkeley's Three Dialogues, Hume's Enquiry, Kant's Groundwork, Mill's Utilitarianism. The spelling and sentences are brought up to date; the arguments are left alone.",
+   think:"Read the passage your lesson is about in the author's own words: the wax, the missing shade of blue, the first formulation. Then write down the one thing the textbook summary left out.",tags:["free","primary texts","all four papers"],url:"https://www.earlymoderntexts.com/texts",lt:"earlymoderntexts.com"},
+  {s:"Rus",g:"read",short:"Russell · The Problems of Philosophy (free)",name:"Bertrand Russell, The Problems of Philosophy (1912)",mins:240,t:"a short book",
+   what:"Short and free of jargon. The first two chapters, on appearance and reality and on the existence of matter, are the perception topic; the chapter on knowledge by acquaintance goes with it. Free on Project Gutenberg, or ask the library for a copy.",
+   think:"Chapter 1 ends with Russell unsure the table exists. Decide whether his doubt is Descartes's doubt, and whether it needs the same answer.",tags:["free online","primary text","Epistemology","short"],url:"https://www.gutenberg.org/ebooks/5827",lt:"Gutenberg"},
+  {s:"Ans",g:"read",short:"Anselm · Proslogion 2–4, with Gaunilo",name:"Anselm, Proslogion chapters 2–4, with Gaunilo's reply (Internet Medieval Sourcebook, Fordham)",mins:30,t:"30m",
+   what:"The ontological argument in Anselm's own words, with Gaunilo's reply on behalf of the fool and his lost island, and Anselm's answer. Two or three pages.",
+   think:"Say in one sentence what Gaunilo thinks Anselm has done wrong, then say whether Anselm's reply (islands are not the sort of thing that must exist) is an answer or a dodge.",tags:["free","primary text","God paper","30 min"],url:"https://sourcebooks.fordham.edu/source/anselm.asp",lt:"Fordham sourcebook"},
+  {s:"Aq",g:"read",short:"Aquinas · the Five Ways (ST Ia q.2 a.3)",name:"Aquinas, Summa Theologiae Ia, question 2, article 3: the Five Ways (New Advent)",mins:30,t:"30m",
+   what:"One article, about two pages: the five arguments for the existence of God, in the translation of the English Dominicans. The first three Ways are the ones on the specification.",
+   think:"The Third Way is the one students most often misreport. Read it and check whether the textbook has the step from 'possible not to be' to 'at some time was not' the way Aquinas does.",tags:["free","primary text","God paper","30 min"],url:"https://www.newadvent.org/summa/1002.htm",lt:"New Advent"},
+  {s:"Pla",g:"read",short:"Plato · Meno 97a–98b and Theaetetus 201c–210d",name:"Plato, Meno 97a–98b and Theaetetus 201c–210d (Perseus Digital Library)",mins:45,t:"45m",
+   what:"Where the idea that knowledge is true belief with an account comes from, and where Plato himself fails to make it work. Read on the Perseus site, Greek and English side by side if you want them.",
+   think:"Read the Meno passage before the Gettier cases. Then ask: did Plato ever hold the tripartite definition, or did he try it and give it up?",tags:["free","primary text","Epistemology","45 min"],url:"https://www.perseus.tufts.edu/hopper/",lt:"Perseus"},
+  {s:"RIPg",g:"read",short:"RIP A-level guides (one per paper)",name:"Royal Institute of Philosophy A-level guides",mins:90,t:"a guide each",
+   what:"Free PDF guides to the four areas of the course, written for AQA by university philosophers: Moral Philosophy (Michael Lacewing), Epistemology (Duncan Pritchard), Metaphysics of God (Clare Carlisle) and Metaphysics of Mind (Amy Kind).",
+   think:"Read the guide for the paper you are on alongside your notes, not instead of them. Each author ends up favouring a view; work out which.",tags:["free","written for AQA","all four papers"],url:"https://royalinstitutephilosophy.org/news/a-level-guides/",lt:"RIP guides"},
+  {s:"SEP",g:"read",short:"Stanford Encyclopedia of Philosophy",name:"Stanford Encyclopedia of Philosophy",mins:40,t:"the first sections",
+   what:"The standard free reference, peer-reviewed and written by specialists. Heavy going in full, but the opening sections of entries such as 'Ontological Arguments', 'Functionalism' or 'The Analysis of Knowledge' are within reach in Year 13.",
+   think:"Read the first two sections of an entry on something you have finished in class. Note one distinction it draws that your course does not.",tags:["free","academic reference","Year 13"],url:"https://plato.stanford.edu/",lt:"plato.stanford.edu"},
+  {s:"IEP",g:"read",short:"Internet Encyclopedia of Philosophy",name:"Internet Encyclopedia of Philosophy",mins:30,t:"30m",
+   what:"Free, peer-reviewed reference entries pitched a level below the Stanford Encyclopedia; the better first stop in Year 12. Entries on every named philosopher and most of the theories on the course.",
+   think:"Use it when a textbook paragraph will not come clear. Then go back to the textbook and see whether the paragraph was wrong or you were.",tags:["free","academic reference","Year 12"],url:"https://iep.utm.edu/",lt:"iep.utm.edu"},
+  {s:"Aeon",g:"read",short:"Aeon · philosophy essays",name:"Aeon",mins:20,t:"20m",
+   what:"Free long-form essays and short films by academics, filed by area: ethics, knowledge, philosophy of mind, philosophy of religion, metaphysics.",
+   think:"An Aeon essay is a philosopher writing for people outside the subject. Find the sentence where they state their thesis and ask whether the rest of the piece earns it.",tags:["free","essays","20 min"],url:"https://aeon.co/philosophy",lt:"aeon.co"},
+  {s:"PE",g:"read",short:"Practical Ethics blog (Oxford)",name:"Practical Ethics blog (Uehiro Oxford Institute)",mins:12,t:"12m",
+   what:"Short posts by Oxford ethicists on cases in the news. Useful for applied ethics and for anyone making a PERC video.",
+   think:"Take a post and name the normative theory doing the work underneath it. Then ask whether the writer would accept the label.",tags:["free","applied ethics","short"],url:"https://blog.uehiro.ox.ac.uk/",lt:"Practical Ethics"},
+  {s:"PN",g:"read",short:"Philosophy Now",name:"Philosophy Now",mins:25,t:"25m",
+   what:"Bi-monthly magazine for a general readership. Four articles a month are free online; full access needs a subscription (student and school rates exist). Ask whether the department takes a copy.",
+   think:"Magazine philosophy is allowed to be entertaining; your essays are not. Read for the ideas and translate the tone out before anything goes in the notebook.",tags:["4 free articles a month","magazine","subscription for the rest"],url:"https://philosophynow.org/",lt:"philosophynow.org",cost:"4 free articles a month; subscription for the rest"},
+  {s:"CamL",g:"read",short:"Cambridge · suggested preliminary reading",name:"Cambridge Faculty of Philosophy: suggested preliminary reading for prospective students",mins:20,t:"a list",
+   what:"The reading Cambridge suggests to people thinking of applying for Philosophy, with free online links where they exist.",
+   think:"Pick one title from the list and read it over a holiday. If you ever apply, this is the list the interviewer assumes you have seen.",tags:["free","university list","Year 12–13"],url:"https://www.phil.cam.ac.uk/prosp-students/Reading_list_for_prospective_students",lt:"Cambridge list"},
+  {s:"PQ",g:"read",short:"The Philosopher Queens (Buxton & Whiting)",name:"The Philosopher Queens, ed. Rebecca Buxton and Lisa Whiting",mins:300,t:"a book",
+   what:"Short chapters on women philosophers left out of most histories: Hypatia, Mary Astell, Anscombe, Murdoch, Arendt and others. On the St Anne's College (Oxford) list.",
+   think:"Read the Anscombe chapter and then look up 'Modern Moral Philosophy' (1958). She is where the modern revival of virtue ethics starts, and the course does not say so.",tags:["book","ask the library","off the specification"],url:"",lt:""},
+  {s:"Bak",g:"read",short:"At the Existentialist Café (Bakewell)",name:"At the Existentialist Café, by Sarah Bakewell",mins:600,t:"a book",
+   what:"A readable history of existentialism and phenomenology: Husserl, Heidegger, Sartre, Beauvoir, Merleau-Ponty. Off the specification, and on the St Anne's College list.",
+   think:"The course never mentions phenomenology. Read the Husserl chapter and ask what it would say to the indirect realist about perception.",tags:["book","ask the library","off the specification"],url:"",lt:""},
+
+  // ---- 5 Do · Sils Maria
+  {s:"BG",g:"do",short:"Battleground God",name:"Battleground God (Philosophy Experiments)",mins:15,t:"15m",
+   what:"An online test of whether your beliefs about God are consistent with each other; it hands out 'direct hits' and 'bullets bitten' as you go. One of 27 free experiments on the site, several of them on moral intuitions.",
+   think:"Take the hit it gave you and write down which two of your answers it says conflict. Then decide which one you would give up, and why that one.",tags:["free","interactive","God paper","15 min"],url:"https://www.philosophyexperiments.com/god/",lt:"Battleground God"},
+  {s:"ECc",g:"do",short:"Ethics Cup case sets",name:"Ethics Cup case sets",mins:60,t:"an hour, with someone",
+   what:"The past case sets are free to download from the Ethics Cup site whether or not the school enters a team. Each is a real ethical case written for structured discussion.",
+   think:"Take one case and a friend. Take opposite sides for ten minutes, then swap and argue the other side better than they did. Write up where you ended, not where you began.",tags:["free","discussion","Moral Philosophy","do it with a friend"],url:"https://ethicscup.wp.st-andrews.ac.uk/case-set-2025/",lt:"Case set"},
+  {s:"Hert",g:"do",short:"Hertford College Super-Curricular Challenge",name:"Hertford College (Oxford) Super-Curricular Challenge",mins:180,t:"a few evenings",
+   what:"A structured challenge from an Oxford college: read, listen, visit, then share what you found. Works for any subject, with suggested philosophy reading and podcasts.",
+   think:"Do the challenge on a question rather than a thinker. 'Is there anything it is like to be a bat?' gives you more to read than 'Nagel'.",tags:["free","self-directed","any year"],url:"https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/",lt:"Hertford challenge"},
+
+  // ---- 6 Apply · Kyoto
+  {s:"Un",g:"apply",short:"UNIQ (Oxford) · PPE or Theology and Religion",name:"UNIQ (University of Oxford)",mins:2000,t:"a week",
+   what:"A free residential at Oxford in the summer of Year 12 for pupils at UK state schools who meet the selection criteria. Oxford has no single-honours Philosophy course, so the UNIQ courses closest to this subject are Philosophy, Politics and Economics, and Theology and Religion. The 2026 window was 15 December 2025 to 13 January 2026; confirm the 2027 dates.",
+   think:"Apply in December. The form asks why the subject; your notebook is the answer, and a page of ticks is not.",tags:["free","Year 12","Oxford","Dec–Jan","check dates"],url:"https://www.uniq.ox.ac.uk/key-dates",lt:"UNIQ"},
+  {s:"OxA",g:"apply",short:"Oxford · how Philosophy is studied there",name:"Oxford Faculty of Philosophy: undergraduate admissions",mins:20,t:"20m",
+   what:"Oxford teaches Philosophy only in joint courses: with Politics and Economics, with Theology, with Physics, with Mathematics, with Psychology and Linguistics, and within Classics. This page says what each one involves and how applications work.",
+   think:"Read it to find out which other subject you would want to study alongside this one for three years. That decision is worth making in Year 12, not in October of Year 13.",tags:["free","Year 12–13","joint courses only"],url:"https://www.philosophy.ox.ac.uk/undergraduate-admissions",lt:"Oxford Philosophy"},
+  {s:"CamA",g:"apply",short:"Cambridge · the Philosophy Tripos",name:"Cambridge Faculty of Philosophy: prospective undergraduates",mins:20,t:"20m",
+   what:"Cambridge teaches Philosophy as a single-honours degree, the Philosophy Tripos. This page says what is studied in each year, how the course is taught, and what the admissions process looks like.",
+   think:"Compare the first-year papers here with the AQA course. What is on theirs that is not on yours? That gap is your wider reading list.",tags:["free","Year 12–13","single honours"],url:"https://www.phil.cam.ac.uk/prosp-students/prosp-ugrad",lt:"Cambridge Philosophy"}
+];
+
+/* The year as an almanac. m = month (YYYY-MM). s links to an item; url is for events with no item. */
+const YEAR = [
+  {m:"2026-10",when:"Wed 14 Oct, 2–3pm",what:"Gresham schools talk: Should We Manipulate People's Emotions? (Robin May)",sub:"Livestream, booked by the department.",s:"Gre",check:false},
+  {m:"2026-10",when:"Fri 23 Oct",what:"Ethics Cup: Warwick regional registration closes",sub:"The department decides whether to enter a team (£90).",s:"EC",check:false},
+  {m:"2026-11",when:"November",what:"Think Essay Prize 2027 expected to open",sub:"Six questions; 1,200 words; April deadline last year.",s:"Thk",check:true},
+  {m:"2026-11",when:"Thu 12 Nov",what:"RIP London Lecture: Learning to think with AI (Carina Prunkl)",sub:"Senate House, London, in person; later on the RIP YouTube channel.",s:"RIPL",check:false},
+  {m:"2026-12",when:"Mid-Dec to mid-Jan",what:"UNIQ applications",sub:"PPE, or Theology and Religion. 2026 window was 15 Dec – 13 Jan.",s:"Un",check:true},
+  {m:"2027-01",when:"Mon 4 Jan",what:"PERC entry deadline",sub:"Team videos finished before the Christmas holiday.",s:"PERC",check:false},
+  {m:"2027-01",when:"Thu 7 Jan",what:"Ethics Cup: Warwick regional",sub:"Only if a team has been registered.",s:"EC",check:false},
+  {m:"2027-02",when:"February",what:"Trinity posts its 2027 essay prize information",sub:"Check whether the Philosophy prize is running.",s:"Tri",check:true},
+  {m:"2027-03",when:"Early March",what:"#PhilosophyMatters deadline",sub:"70 words; your teacher submits all entries together. 2026 deadline was 2 March.",s:"PM",check:true},
+  {m:"2027-03",when:"March",what:"PERC final in Oxford",sub:"Travel funded for finalist teams. 2026 final was 24 March.",s:"PERC",check:true},
+  {m:"2027-04",when:"April",what:"Think Essay Prize deadline",sub:"No AI. 2026 deadline was 20 April.",s:"Thk",check:true},
+  {m:"2027-04",when:"Spring",what:"John Locke Institute prize opens",sub:"Deadline usually the end of June; enter on time to avoid a late fee.",s:"JL",check:true},
+  {m:"2027-05",when:"May",what:"Trinity Philosophy Essay Prize deadline, if it runs",sub:"Last shown deadline was 30 May 2025.",s:"Tri",check:true},
+  {m:"2027-06",when:"Late June",what:"John Locke Institute deadline",sub:"2,000 words; Philosophy category.",s:"JL",check:true},
+  {m:"2027-07",when:"July",what:"UNIQ residentials run",sub:"Late June to mid July.",s:"Un",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three picks are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three waymarks from the department for this half term. Pass them, mark them, write each one up in the notebook.",
+  items:[
+    {s:"Brf",step:"Watch",txt:"Watch the Royal Institute of Philosophy briefing (15 min) on the topic you are studying now, and write down one objection it raises that your notes do not have."},
+    {s:"Gre",step:"Watch",txt:"Gresham's schools talk, Should We Manipulate People's Emotions?, Wednesday 14 October, 2–3pm. The department books the livestream; you turn up with a question."},
+    {s:"ECc",step:"Do",txt:"Download an Ethics Cup case and argue it with a friend, opposite sides, ten minutes each way, before the Warwick registration date on 23 October."}
+  ]
+};
+const COMPILED="2026-10-07";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-phil-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+
+/* ---------- state ---------- */
+const KEY_BASE="phil-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",at:"enter",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- the walk: how far along ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function walk(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  return {c,t,N,k,pct};
+}
+
+/* ---------- the dog talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const W=walk(); const n=W.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}. Atma. He walked me two hours a day, whatever the weather, and I expect no less of you. Six stretches, ${ITEMS.length} waymarks, all free. The route card for this half term is below; start there.`;
+  if(!n) return `Back, ${firstName()}. You have not moved. The route card has three things on it. Walk one tonight.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${n} waymark${n===1?"":"s"} passed, ${W.pct}% of the route, ${ht} of ${HALFTERM.items.length} on the route card. Adequate. Not finished.`;
+  if(W.k<6) return `${firstName()}. Route card done; ${n} waymarks. You have not set foot on ${ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")}. A walk that avoids whole stretches is a stroll.`;
+  return `${firstName()}. ${n} waymarks, all six stretches underfoot, ${W.pct}% of the route. He used to say a man can do what he wills but cannot will what he wills. You appear to have willed this anyway. Carry on.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const W=walk();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Philosophy",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           walk:{pct:W.pct, stretches:W.k},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="phil-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="enter";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="The walker's notebook · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("phil-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Setting off…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- waymark cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", passed":""}${isNew?", new":""}">
+    <span class="no">waymark ${String(it.n).padStart(2,"0")} · ${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="stamp" aria-hidden="true">✓</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="zone${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic">${FAM[g].no}</div><div><span class="nm">${FAM[g].place}</span><span class="verb">${FAM[g].where} · ${FAM[g].label} · ${FAM[g].verb}</span></div>
+        <span class="n">${done} / ${list.length}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · the route card · if you do nothing else";
+  $("htLabel").textContent="The "+HALFTERM.label+" route card";
+  $("htDue").textContent="wanted by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">${i+1} · ${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · passed":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>∞</i>Whole route <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=>`<div class="sp" data-g="${x.g}"><span class="nm"><b>${FAM[x.g].no}</b>${FAM[x.g].place}</span><span>${x.txt}</span></div>`).join("");
+}
+/* Put the walker on the route: fraction f of the whole walk, split evenly over six stretches. */
+function placeWalker(){
+  const W=walk();
+  // stretch-by-stretch fraction: each stretch counts 1/6 of the route, filled by its own completion
+  let f=0; ORDER.forEach(g=>{ f += (W.t[g]?W.c[g]/W.t[g]:0)/6; });
+  const segs=ORDER.map(g=>$("seg-"+g));
+  let idx=Math.min(5,Math.floor(f*6)); let local=(f*6)-idx; if(f>=1){ idx=5; local=1; }
+  const p=segs[idx]; if(!p||!p.getTotalLength) return;
+  const pt=p.getPointAtLength(p.getTotalLength()*local);
+  $("walker").setAttribute("transform",`translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`);
+}
+function renderMeter(){
+  const W=walk();
+  $("pctVal").innerHTML=W.pct+"<small>%</small>";
+  $("ruler").style.setProperty("--w",W.pct+"%");
+  let w;
+  if(!W.N) w="Pencil route. Each waymark you pass inks in a little of it, in the colour of that stretch.";
+  else if(W.k<6) w=`${W.N} of ${ITEMS.length} waymarks passed. ${W.k} of 6 stretches underfoot; not yet on ${ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].the).join(", ")}.`;
+  else w=`${W.N} of ${ITEMS.length} waymarks passed, and all six stretches underfoot.`;
+  $("coverTxt").textContent=w;
+  $("palette").innerHTML=ORDER.map(g=>`<span class="swatch${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}: ${W.c[g]} of ${W.t[g]}">${W.c[g]?W.c[g]:FAM[g].no}</span>`).join("");
+  /* ink the route */
+  ORDER.forEach(g=>{ const k=W.t[g]?W.c[g]/W.t[g]:0;
+    const p=$("ink-"+g); if(p) p.style.setProperty("--k",k.toFixed(3));
+    const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot) hot.classList.toggle("has",W.c[g]>0);
+    const c=$("cnt-"+g); if(c) c.textContent=W.c[g]?`${W.c[g]} / ${W.t[g]} passed`:""; });
+  placeWalker();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short.split(" · ")[0].split(" (")[0])}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">Site ↗</a>`:"");
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Read.</span>`}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${FAM[it.g].no}</div>
+      <div><div class="fam">${FAM[it.g].place} · ${FAM[it.g].label} · waymark ${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Atma's note</b>${esc(it.think)}</div>
+      <div class="tags">${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Passed ✓ (undo)":"Mark it passed"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it up</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department registers you; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=walk();
+  if(was) delete state.done[sym]; else state.done[sym]=true;
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const W=walk(); const g=BY[sym].g;
+    if(before.c[g]===0 && W.k>1) say(`First step on ${FAM[g].the}. ${W.k} of 6 stretches now. Good; I dislike going back for people.`);
+    else if(before.c[g]===0) say(`First waymark: ${BY[sym].short}. Write it up before the thought goes; they do.`);
+    else if(W.c[g]===W.t[g]) say(`That is the whole of ${FAM[g].the} walked. ${FAM[g].who} would have taken longer.`);
+    else say(pick([`Passed. ${W.N} waymarks; ${W.pct}% of the route.`,`Into the notebook with it. A tick is not a thought.`,`${BY[sym].short}: done. ${W.N} so far.`,`Another on ${FAM[g].the}. There are stretches you have not touched; I can smell them from here.`])); }
+  else say("Unmarked. We go back a few paces.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const W=walk();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${W.c[g]?`${W.c[g]} of ${W.t[g]} passed here.`:"Nothing passed here yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbLearned").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- ask the dog: pick one for me ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"about ten minutes",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a stretch the pupil has not set foot on, two times in three
+  const W=walk(); const fresh=pool.filter(i=>!W.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". Wait there.");
+  $("pickBtn").disabled=true;
+  const img=$("atmaImg"); img.classList.remove("trot"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("trot");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("trot");
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, on ${FAM[choice.g].the}.`;
+    say(`This. ${choice.short}: ${choice.t}, ${FAM[choice.g].the}.${!W.c[choice.g]?" A stretch you have not walked.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1700);
+});
+
+/* ---------- the walker's notebook ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function renderNotes(){
+  const box=$("entries");
+  if(!state.notes.length){
+    box.innerHTML=`<article class="note example" aria-label="Example entry">
+      <header><h3>Anselm, Proslogion 2–4, with Gaunilo</h3><span class="d">example</span></header>
+      <dl><dt>Took</dt><dd>Gaunilo's island is not quite a parody: he says the argument proves too much, and Anselm's reply is that only a greatest conceivable being, not a greatest conceivable island, has to exist. Whether that reply works depends on whether 'greatest conceivable' is a coherent description at all.</dd>
+      <dt>Question</dt><dd>Is 'that than which nothing greater can be conceived' a description of anything, or a rule for stopping descriptions?</dd></dl>
+    </article><p class="small">Your notebook is empty. Pass one waymark, then write the first entry.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>`<article class="note">
+      <header><h3>${esc(n.what)}</h3><span class="d">${esc(fmtDate(n.date))}</span></header>
+      <dl><dt>Took</dt><dd>${esc(n.learned)}</dd>${n.q?`<dt>Question</dt><dd>${esc(n.q)}</dd>`:""}</dl>
+      <div><button type="button" class="del" data-i="${i}">Tear it out</button></div>
+    </article>`).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to tear it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Tear it out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,what:$("nbWhat").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  $("nbWhat").value=""; $("nbLearned").value=""; $("nbQ").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Written in.";
+  say(pick(["In the notebook. That is the part a university reads; the ticks are for me.","Written up. Keep the question line; the next essay starts there.","Good. One entry like that per waymark and you will have something to say in an interview."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Philosophy walker's notebook – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)}\nWhat: ${n.what}\nTook: ${n.learned}${n.q?`\nQuestion: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} passed, ${notes} notebook ${notes===1?"entry":"entries"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/philosophy.html";
+const TOUR=[
+  {sel:".map-wrap", h:"This is the route", p:"One footpath in six stretches, each a place a philosopher is known to have walked: outside the walls of Athens for essay prizes, the Peripatos for lectures, Copenhagen for podcasts, Königsberg for reading, Sils Maria for thought experiments, Kyoto for university. Click a number and the page takes you there. The pencil route is inked in, stretch by stretch, as the pupil passes waymarks."},
+  {sel:"#smallprint", h:"The small print", p:"Every anecdote the design rests on carries its source and a label: attested, reported or legend. Heine's story about Kant's neighbours is marked reported; the Rousseau story is marked legend. Pupils see how sure we are, and so do you."},
+  {sel:".atma", h:"Atma", p:"Schopenhauer's poodle, which is documented: two hours a day in Frankfurt, every poodle called Atma. It greets each pupil by name and reacts to what they do. Its voice is dry and it does not flatter."},
+  {sel:".dist-card", h:"Distance walked", p:"Progress is how far along the route the pupil has walked and how many of the six stretches they have set foot on. Twelve TED talks and nothing else leaves five stretches untouched; the dog says so."},
+  {sel:".pick-card", h:"Ask the dog", p:"A pupil says how long they have and Atma fetches one thing they have not done, leaning towards stretches they have not walked."},
+  {sel:".routecard", h:"The route card", p:"Three things from the department each half term, with a date they are wanted by. You change these by editing one block at the top of the file; pupils keep everything they have done."},
+  {sel:"#zone-read", h:"The waymarks", p:"All 48 things, one card each, every one tagged to an AQA 7172 theme. On the Königsberg stretch the primary texts come first: Early Modern Texts, Russell, Anselm with Gaunilo, Aquinas's Five Ways, the Plato passages behind the tripartite definition. A card opens to say what it is, Atma's note on what to do with it, and a link to the source itself."},
+  {sel:".almanac", h:"The almanac", p:"October to July: the Gresham talk, Ethics Cup registration, Think opening, PERC, #PhilosophyMatters, Trinity, John Locke, UNIQ. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"The walker's notebook", p:"One entry per waymark: what it was, one thing they took from it, the question it left them with. It saves to the department as they write and copies out as text for a personal statement or a reference."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, route-card completion, distance walked, and their notebooks. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("phil-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Brf","Gre","ECc","Ans","Mary","PB"],picks:3,notes:[{what:"Anselm, Proslogion chapters 2–4, with Gaunilo's reply (Internet Medieval Sourcebook, Fordham)",learned:"Anselm's reply to Gaunilo is that an island is not the kind of thing that has to exist, only the greatest conceivable being is. So the argument only works if 'greatest conceivable being' is a coherent description.",q:"Can you describe something that has to exist, or only stipulate it?"},{what:"Eleanor Nelsen (TED-Ed): Mary's Room: A philosophical thought experiment",learned:"The ability reply says Mary gains know-how, not a new fact. But she seems to learn what red is like, which sounds like a fact about experience.",q:"Is 'what it is like' a fact at all?"}],interest:["Thk","EC"],last:"2026-10-05"},
+  {name:"Ben Carter",cls:"12A",done:["Brf","Trol"],picks:1,notes:[{what:"Eleanor Nelsen (TED-Ed): Would you sacrifice one person to save five?",learned:"The Kantian can explain the footbridge case (using a person as a means) but struggles to say why pulling the switch is different; the utilitarian says the same about both and most people do not.",q:""}],interest:[],last:"2026-10-02"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Brf","Gre","ECc","Mil","Seth","EMT","IOT"],picks:3,notes:[{what:"Oxford: General Philosophy (Peter Millican)",learned:"Millican's point about Berkeley: the argument from the relativity of perception only shows that some qualities are mind-dependent unless you add a premise that nothing could resemble an idea but an idea.",q:"Is that extra premise obviously true or just assumed?"},{what:"Early Modern Texts, ed. Jonathan Bennett: Descartes, Locke, Berkeley, Hume, Kant, Mill",learned:"Read Meditation 2 on the wax. Descartes says the wax is known by the intellect, not the senses or imagination, because the senses give only changing qualities.",q:"Does 'known by the intellect' mean known a priori, or just known by judgement?"}],interest:["Thk"],last:"2026-10-04"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["Aq","SEP","Cha","HoP","RIPg","CamA","Tri"],picks:1,notes:[{what:"Aquinas, Summa Theologiae Ia, question 2, article 3: the Five Ways (New Advent)",learned:"The Third Way as Aquinas writes it does move from 'each thing can fail to exist' to 'at some time nothing existed', which looks like the quantifier shift the textbook accuses it of. But the Latin has 'at some time' for each thing, so the charge might be unfair.",q:"Is the quantifier-shift objection an objection to Aquinas or to a summary of him?"}],interest:["Tri","Thk"],last:"2026-10-05"},
+  {name:"Finn Murphy",cls:"13A",done:["Sing","BG"],picks:0,notes:[],interest:["EC"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Brf","HiP","Gal","CC"],picks:1,notes:[{what:"Hi-Phi Nation (Barry Lam, Vassar College)",learned:"The episode on moral luck: two drivers equally careless, one kills a child. We blame them differently though the only difference is luck. Kant says the good will is all that matters, so he should say they are equally blameworthy.",q:"Is our ordinary blame wrong, or is Kant?"}],interest:["Un","PERC"],last:"2026-10-06"},
+  {name:"Harry Singh",cls:"12B",done:["IEP"],picks:0,notes:[],interest:[],last:"2026-10-03"}
+];
+function wOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const pct=Math.round(done.length/ITEMS.length*100);
+  return {pct,k,c}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 on the route card</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>prize / summer school interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>notebook entries written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. The Ethics Cup, PERC and #PhilosophyMatters go through school, so this is your list.</p>
+        <table class="dt"><tr><th>Prize / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which stretches get walked</h3><p class="small">Waymarks passed across all pupils, by stretch. Tells you where to point the next half term's route card.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Waymarks</th><th>Distance</th><th>Route card</th><th class="hide-m">Notebook</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const W=wOf(r.done); const grey=ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].place);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td><span class="dv">${W.pct}%</span> ${ORDER.map(g=>`<span class="sw${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}"></span>`).join("")} <span class="small">${grey.length&&grey.length<6?`not yet: ${grey.join(", ")}`:grey.length===6?"":"all six"}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"entry":"entries"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Notebooks</h3><p class="small">Each pupil's notebook in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Took: ${esc(n.learned)}${n.q?`<br>Question: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"philosophy-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,look:FB.look,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-phil-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-phil-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the Philosophy page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nThe look: ${rec.look||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to enter, watch, hear, read, do and apply for · six stretches of one route";
+$("tableEyebrow").textContent="Six stretches · "+ITEMS.length+" waymarks";
+$("foot").innerHTML="Compiled 30 September 2026, additions 7 October 2026 · links checked then · AQA A-level Philosophy (7172): Epistemology, Moral Philosophy, Metaphysics of God, Metaphysics of Mind · free at the point of use unless the card says otherwise<br>Sources for the six stretches and for the dog are in the small print under the map. Atma: Schopenhauer walked two hours a day in Frankfurt with a poodle; each in turn was called Atma, from the Sanskrit <i>ātman</i> (Safranski, <i>Schopenhauer and the Wild Years of Philosophy</i>).";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+renderSmallprint();
+addEventListener("resize",()=>{ if(IDENTITY) placeWalker(); });
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
