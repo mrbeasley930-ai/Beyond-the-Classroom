@@ -1,0 +1,33 @@
+name: French news rack
+
+# Pulls the French news feeds every morning and commits data/french-news.json,
+# which the French "Le Kiosque" page reads. Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "40 5 * * *"     # 05:40 UTC daily = 06:40 UK in summer, 05:40 in winter
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: french-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the feeds
+        run: python3 tools/fetch_french_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "kiosque-bot"
+          git config user.email "kiosque-bot@users.noreply.github.com"
+          git add data/french-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "Kiosque: headlines $(date -u +%Y-%m-%d)" && git push; fi
