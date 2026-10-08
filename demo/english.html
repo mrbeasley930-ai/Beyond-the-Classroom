@@ -1,0 +1,1604 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Language and Literature Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=IM+Fell+English+SC&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE SCRIPTORIUM — English Language and Literature, Beyond the Classroom
+   The inside of James Murray's tin shed, where the Oxford English
+   Dictionary was put together from slips posted in by volunteer readers.
+   Six bays of pigeonholes, one hole per item. Each thing a pupil does
+   files a slip in its hole; each slip they write goes in the slip box.
+   The guide is Mr Hapgood, an invented junior assistant.
+   ====================================================================== */
+:root{
+  --night:#221e19; --night2:#2d2720; --oak:#5a3d24; --oak2:#3f2a18; --oak3:#7a5534; --iron:#38433f; --iron2:#2c3532;
+  --paper:#f3ead5; --paper2:#e9dcc0; --paper3:#d9c8a4; --ink:#1f1a14; --ink2:#4f4536; --faded:#8b7e66; --rule:#cdbb95;
+  --brass:#c9a24f; --brass2:#8e6d28;
+  --enter:#a8362a;  /* 1 the Appeal — red ink */
+  --watch:#2e5a7a;  /* 2 Trench's papers — blue-black */
+  --listen:#56743a; /* 3 the dialect correspondents — green */
+  --read:#6f4585;   /* 4 the readers — violet ink */
+  --do:#a8721a;     /* 5 the shed — ochre */
+  --apply:#2b786e;  /* 6 the pillar box — teal */
+  --f-text:"Old Standard TT",Georgia,"Times New Roman",serif;
+  --f-sc:"IM Fell English SC",Georgia,serif;
+  --f-hand:"Kalam","Segoe Print","Bradley Hand",cursive;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--f-text);font-size:1.05rem;line-height:1.55;
+  background-image:
+    radial-gradient(ellipse at 20% -10%,rgba(255,214,140,.16),transparent 55%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 22px);
+}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:400;line-height:1.12}
+.head{font-family:var(--f-text)}
+.sc{font-family:var(--f-sc);letter-spacing:.04em}
+.eyebrow{font-family:var(--f-sc);font-size:.92rem;letter-spacing:.06em;color:var(--brass)}
+.small{font-size:.9rem;color:var(--ink2)}
+.on-dark .small,.on-dark.small{color:#cbbd9d}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-sc);font-size:.88rem;letter-spacing:.05em;color:var(--brass);border:1px solid var(--brass2);padding:3px 12px;border-radius:2px;background:rgba(0,0,0,.18)}
+.badge i{width:7px;height:7px;background:var(--brass);display:inline-block;transform:rotate(45deg)}
+.paper .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.paper .badge i{background:var(--ink2)}
+.btn{font:inherit;font-size:1rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:9px 18px;cursor:pointer;border-radius:2px}
+.btn:hover{background:#000}
+.btn.big{font-size:1.1rem;padding:12px 22px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--g,var(--ink));color:#fff}
+.btn.brass{background:var(--brass);border-color:var(--brass2);color:var(--ink)}
+.btn.brass:hover{background:#d8b363}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.field{display:grid;gap:3px}
+.field label{font-family:var(--f-sc);font-size:.88rem;letter-spacing:.04em;color:var(--ink2)}
+.field input,.field textarea{font:inherit;font-size:1.05rem;background:rgba(255,255,255,.55);border:0;border-bottom:1.5px solid var(--ink);padding:7px 6px;color:var(--ink);width:100%;border-radius:0}
+.field textarea{min-height:78px;resize:vertical;line-height:1.45}
+.field .hand{font-family:var(--f-hand);font-size:1.12rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#8a1d1d;min-height:1.3em;font-size:.95rem}
+.wrap{max-width:1260px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.wrap>*{min-width:0}
+.paper{background:var(--paper);color:var(--ink);background-image:radial-gradient(ellipse at 0 0,rgba(255,255,255,.5),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(140,100,40,.12),transparent 55%)}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(760px,100%);border:1px solid var(--ink);padding:32px 34px;display:grid;gap:16px;box-shadow:0 0 0 6px var(--paper2),0 0 0 7px var(--ink2),14px 16px 0 rgba(0,0,0,.35);position:relative}
+.gate-card h1{font-size:clamp(2.6rem,6.2vw,4.1rem)}
+.gate-card h1 em{display:block;font-size:.42em;font-style:italic;color:var(--ink2);margin-top:6px}
+.gate-card p{margin:0}
+.gate-guide{display:grid;grid-template-columns:118px minmax(0,1fr);gap:18px;align-items:center}
+.gate-guide svg{width:118px;height:auto}
+.gate-card .slipmark{position:absolute;right:22px;top:-14px;background:var(--paper);border:1px solid var(--ink2);padding:4px 10px;font-family:var(--f-hand);font-size:.95rem;transform:rotate(2.5deg);color:var(--ink2)}
+@media (max-width:560px){.gate-guide{grid-template-columns:1fr;justify-items:center}.two{grid-template-columns:1fr}.gate-card{padding:26px 20px}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid var(--brass2);padding-bottom:14px}
+.top h1{font-size:clamp(2.3rem,5vw,3.5rem);color:var(--paper)}
+.top h1 span{display:block;font-size:1.02rem;font-style:italic;color:#cbbd9d;margin-top:4px}
+.strap{font-size:.98rem;color:#cbbd9d;margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:.95rem}
+.who button{font:inherit;font-size:.86rem;background:none;border:0;color:#cbbd9d;text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-sc);font-size:.82rem;letter-spacing:.04em;color:var(--faded)}
+.saved.ok{color:#8fc39b}.saved.bad{color:#ff9d8a}
+
+/* ---------- the shed ---------- */
+.shed{position:relative;border:1px solid #000;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.45);background:var(--iron2)}
+.shed svg.wall{display:block;width:100%;height:auto}
+.shed .hot{cursor:pointer}
+.shed .hot .bayframe{fill:var(--oak2);stroke:#1a120a;stroke-width:2}
+.shed .hot:hover .bayframe,.shed .hot:focus-visible .bayframe{stroke:var(--brass);stroke-width:3}
+.shed .hot.lit .bayframe{stroke:var(--g);stroke-width:4}
+.shed .hole{fill:#160f08;stroke:var(--oak3);stroke-width:1.2}
+.shed .slip{fill:var(--paper);stroke:#6e5a3b;stroke-width:.6}
+.shed .slipedge{fill:var(--g)}
+.shed .slipcode{font-family:var(--f-hand);font-size:9.5px;fill:var(--ink)}
+.shed .holecode{font-family:var(--f-sc);font-size:9px;fill:#9b7b52;letter-spacing:.3px}
+.shed .holehit{fill:transparent;cursor:pointer}
+.shed .holehit:hover{fill:rgba(201,162,79,.18)}
+.shed .lblplate{fill:var(--brass);stroke:var(--brass2);stroke-width:1.2}
+.shed .lbltxt{font-family:var(--f-sc);font-size:15px;fill:var(--ink);text-anchor:middle}
+.shed .lblno{font-family:var(--f-text);font-size:13px;fill:var(--ink);text-anchor:middle;font-weight:700}
+.shed .baysub{font-family:var(--f-text);font-style:italic;font-size:14px;fill:#e7d9b8;text-anchor:middle}
+.shed .baycnt{font-family:var(--f-sc);font-size:13px;fill:var(--brass);text-anchor:middle;letter-spacing:.4px}
+.shed .corr{stroke:rgba(255,255,255,.05);stroke-width:7}
+.shed .corr2{stroke:rgba(0,0,0,.18);stroke-width:3}
+.shed .beam{fill:#2a1b0e}
+.shed .tabletop{fill:var(--oak3)}
+.shed .tablefront{fill:var(--oak)}
+.shed .tabletxt{font-family:var(--f-sc);fill:var(--brass);letter-spacing:3px;text-anchor:middle}
+.shed .loose{fill:var(--paper);stroke:#6e5a3b;stroke-width:.7}
+.shed .floor{fill:#3a2716}
+.shed .lamp{fill:var(--brass)}
+.shed .glow{fill:url(#lampGlow)}
+.slipin{animation:slipin .6s ease-out}
+@keyframes slipin{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.slipin{animation:none}}
+.shed .spare{fill:#1d140b;stroke:#5e4128;stroke-width:1}
+@media (max-width:760px){.shed{overflow-x:auto;-webkit-overflow-scrolling:touch}.shed svg.wall{min-width:900px}.shed-key .swipe{display:inline}}
+.shed-key .swipe{display:none;color:var(--brass)}
+.shed-key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px;background:var(--night2);border:1px solid #000;border-top:0;font-size:.88rem;color:#cbbd9d}
+.shed-key b{color:var(--paper);font-weight:400}
+
+/* small print under the shed */
+.smallprint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #000;border-top:0}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.86rem;line-height:1.42;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-family:var(--f-text);font-size:1rem;color:var(--ink);font-style:italic}
+.sp .nm b{font-style:normal;color:var(--g);font-family:var(--f-sc);font-size:.9rem;margin-right:6px}
+.sp.wide{grid-column:1/-1;border-right:0;background:rgba(0,0,0,.03)}
+.st{display:inline-block;font-family:var(--f-sc);font-size:.74rem;letter-spacing:.06em;border:1px solid currentColor;padding:0 6px;border-radius:2px;margin-right:3px;white-space:nowrap}
+.st.att{color:#2b6a3f}.st.rep{color:#8a5a12}.st.leg{color:#8a1d1d}.st.inv{color:#4a4a8a}
+@media (max-width:900px){.smallprint{grid-template-columns:1fr 1fr}.sp:nth-child(3n){border-right:1px solid var(--rule)}.sp:nth-child(2n){border-right:0}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}.sp{border-right:0!important}}
+
+/* ---------- Hapgood + progress + fetch ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.guide{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;align-items:end}
+.guide-img{width:170px;height:auto;transform-origin:50% 100%}
+.guide-img.fetch{animation:fetch 1.7s ease-in-out}
+@keyframes fetch{0%{transform:translateX(0)}35%{transform:translateX(70px) scaleX(-1)}55%{transform:translateX(80px) scaleX(-1) translateY(-6px)}80%{transform:translateX(16px)}100%{transform:none}}
+.bubble{position:relative;border:1px solid var(--ink);padding:16px 18px;border-radius:2px;min-height:118px;display:grid;align-content:start;gap:6px;box-shadow:6px 6px 0 rgba(0,0,0,.35)}
+.bubble:before{content:"";position:absolute;left:-10px;bottom:24px;width:16px;height:16px;background:var(--paper);border-left:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:rotate(45deg)}
+.bubble .nm{font-family:var(--f-sc);font-size:.88rem;letter-spacing:.04em;color:var(--ink2)}
+.bubble #bubbleTxt{font-size:1.1rem;line-height:1.42}
+.side{display:grid;gap:16px}
+.card{border:1px solid var(--ink);padding:18px 20px;display:grid;gap:12px;box-shadow:6px 6px 0 rgba(0,0,0,.35)}
+.card h2{font-size:1.5rem}
+.count{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.count .pct{font-size:3rem;line-height:1}
+.count .pct small{font-size:1.2rem;color:var(--ink2)}
+.stack{position:relative;height:22px;border:1px solid var(--ink);background:repeating-linear-gradient(90deg,transparent 0 9.9%,rgba(0,0,0,.25) 9.9% 10%)}
+.stack i{position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:repeating-linear-gradient(90deg,var(--paper2) 0 3px,var(--ink2) 3px 4px);transition:width .8s ease}
+.bays{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:32px;height:32px;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--f-sc);font-size:.9rem;color:var(--faded);background:transparent}
+.swatch.got{background:var(--g);color:#fff;border-color:var(--g)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden}
+.seg button{font:inherit;font-size:.95rem;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:8px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.guide{grid-template-columns:1fr;justify-items:center}.bubble:before{display:none}}
+
+/* ---------- wanted (half term) ---------- */
+.wanted{border:1px solid var(--ink);padding:22px 24px;display:grid;gap:10px;position:relative;box-shadow:0 0 0 5px var(--paper2),0 0 0 6px var(--ink2),10px 12px 0 rgba(0,0,0,.35)}
+.wanted .rubric{font-family:var(--f-sc);font-size:1rem;letter-spacing:.2em;text-align:center;color:var(--ink2);border-bottom:1px double var(--ink);padding-bottom:6px}
+.wanted h2{font-size:1.9rem;text-align:center}
+.wanted .due{font-family:var(--f-sc);text-align:center;color:var(--enter);letter-spacing:.05em}
+.wanted .lede{margin:0;color:var(--ink2);text-align:center}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:6px}
+.leg{border-top:3px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:28px;height:28px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-sc);font-size:.95rem}
+.leg.done .lno{background:var(--g);color:#fff}
+.leg .step{font-family:var(--f-sc);font-size:.88rem;letter-spacing:.04em;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- bays and slips ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-size:2rem;color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.92rem;border:1px solid var(--brass2);background:rgba(0,0,0,.2);color:var(--paper);padding:5px 12px;cursor:pointer;border-radius:2px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-family:var(--f-sc);font-size:.88rem;color:var(--brass)}
+.chip b{font-weight:400;color:#cbbd9d;font-size:.8rem}
+.chip[aria-pressed="true"]{background:var(--brass);color:var(--ink);border-color:var(--brass)}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:var(--ink)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:14px;padding:18px 20px;border:1px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.3)}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.zone-head .ic{width:46px;height:46px;border:1.5px solid var(--g);display:grid;place-items:center;color:var(--g);font-family:var(--f-sc);font-size:1.2rem}
+.zone-head .nm{display:block;font-size:1.5rem;font-style:italic}
+.zone-head .def{display:block;font-size:.95rem;color:var(--ink2)}
+.zone-head .def b{font-weight:700;font-style:normal;color:var(--ink)}
+.zone-head .n{font-family:var(--f-sc);font-size:.95rem;color:var(--g)}
+.zone.flash{animation:flash 2.2s ease}
+@keyframes flash{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.3)}20%{box-shadow:0 0 0 4px var(--g),6px 6px 0 rgba(0,0,0,.3)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:#fffaf0;border:1px solid #9c8a68;border-top:4px solid var(--g);padding:10px 13px 12px;cursor:pointer;display:grid;gap:3px;align-content:start;min-height:112px;border-radius:0;color:var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.12)}
+.rec:hover{background:#fff;transform:translateY(-1px)}
+.rec .no{font-family:var(--f-sc);font-size:.8rem;letter-spacing:.03em;color:var(--g)}
+.rec .nm{font-size:1.04rem;line-height:1.25}
+.rec .t{font-size:.84rem;color:var(--ink2);font-style:italic}
+.rec .th{font-family:var(--f-sc);font-size:.76rem;color:var(--faded)}
+.rec .stamp{position:absolute;right:8px;top:6px;font-family:var(--f-sc);font-size:.72rem;letter-spacing:.08em;color:var(--g);border:1.5px solid var(--g);padding:1px 5px;transform:rotate(-6deg);display:none;background:#fffaf0}
+.rec.done{background:var(--paper2)}
+.rec.done .stamp{display:block}
+.rec.new:before{content:"new";position:absolute;right:8px;bottom:8px;font-family:var(--f-sc);font-size:.72rem;letter-spacing:.06em;color:#fff;background:var(--enter);padding:0 6px}
+.rec.flash{animation:recflash 3s ease}
+@keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--brass)}}
+
+/* ---------- the day book (year) ---------- */
+.daybook{border:1px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.3)}
+.atop{padding:18px 22px;border-bottom:1px solid var(--ink);display:grid;gap:4px}
+.atop h2{font-size:2rem}
+.atop .sub{font-family:var(--f-sc);font-size:.88rem;letter-spacing:.03em;color:var(--ink2)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.month{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 16px;display:grid;gap:10px;align-content:start;background-image:repeating-linear-gradient(transparent 0 27px,rgba(31,26,20,.06) 27px 28px)}
+.month .mh{font-size:1.25rem;font-style:italic;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.month .mh small{font-family:var(--f-sc);font-size:.8rem;color:var(--ink2);font-style:normal}
+.month.quiet .mh{color:var(--faded)}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.95rem}
+.ev .when{font-family:var(--f-sc);font-size:.85rem;color:var(--ink2);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid #8a5a12;color:#8a5a12;font-size:.72rem;padding:0 5px;letter-spacing:.06em}
+.ev .urgent{border:1px solid var(--enter);background:var(--enter);color:#fff;font-size:.72rem;padding:0 5px;letter-spacing:.06em}
+.ev b{font-weight:700}
+.ev .sub{display:block;color:var(--ink2);font-size:.9rem}
+.ev .in{display:block;color:#2b6a3f;font-size:.88rem;font-family:var(--f-sc)}
+.ev .open{justify-self:start;font:inherit;font-size:.88rem;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:var(--faded);font-size:.92rem}
+
+/* ---------- the slip box ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px;align-items:start}
+.cover-side{border:1px solid #000;padding:22px 24px;display:grid;gap:14px;box-shadow:6px 6px 0 rgba(0,0,0,.3)}
+.cover-side h2{font-size:1.8rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-sc);font-size:.92rem;letter-spacing:.04em;color:var(--ink2)}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.entries{display:grid;gap:16px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:#cbbd9d}
+.entries-h h3{font-size:1.4rem;color:var(--paper)}
+/* a quotation slip, 6 × 4 */
+.note{position:relative;background:#fbf5e6;color:var(--ink);border:1px solid #a8956f;padding:14px 18px 14px;display:grid;gap:6px;aspect-ratio:auto;min-height:190px;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(var(--r,0deg))}
+.note:nth-child(2n){--r:-.5deg}.note:nth-child(3n){--r:.6deg}
+.note .hw{display:flex;justify-content:space-between;gap:10px;align-items:baseline;border-bottom:1px solid #b9a783;padding-bottom:4px}
+.note .hw b{font-family:var(--f-hand);font-size:1.4rem;font-weight:700;line-height:1.1}
+.note .hw .d{font-family:var(--f-hand);font-size:.95rem;color:var(--ink2);white-space:nowrap}
+.note .src{font-family:var(--f-hand);font-size:.98rem;color:var(--ink2)}
+.note .quo{font-family:var(--f-hand);font-size:1.08rem;line-height:1.35}
+.note .why{font-size:.98rem;line-height:1.45}
+.note .why i,.note .qy i{font-family:var(--f-sc);font-style:normal;font-size:.84rem;color:var(--g,var(--ink2));margin-right:4px}
+.note .qy{font-size:.95rem;color:var(--ink2)}
+.note[data-g]{border-top:5px solid var(--g)}
+.note.example{opacity:.85;border-style:dashed}
+.note .del{justify-self:start;font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#8a1d1d}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(10,8,6,.6);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(570px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.35)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:20px 22px 14px;border-bottom:4px solid var(--g)}
+.sheet-top .plate-ic{width:44px;height:44px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-sc);font-size:1.1rem}
+.sheet-top .fam{font-family:var(--f-sc);font-size:.86rem;letter-spacing:.03em;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-size:1.5rem}
+.x{font:inherit;font-size:1.7rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-sc);font-size:.88rem;letter-spacing:.04em;color:var(--ink2);display:block;margin-bottom:3px}
+.sheet-body p{margin:0}
+.think{border-left:3px solid var(--g);padding:6px 14px;font-style:italic;font-size:1.05rem;background:rgba(0,0,0,.03)}
+.think b{display:block;font-style:normal;font-family:var(--f-sc);font-size:.88rem;letter-spacing:.04em;color:var(--ink2);margin-bottom:3px;font-weight:400}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-sc);font-size:.82rem;border:1px solid var(--rule);padding:1px 8px;color:var(--ink2);border-radius:2px}
+.tags span.th{border-color:var(--g);color:var(--g)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-size:.84rem;color:#a99b7d;border-top:1px solid var(--brass2);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-size:1rem;border:1px solid var(--ink);padding:11px 18px;cursor:pointer;background:var(--ink);color:var(--paper);border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(540px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.82rem;border:1px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.dept{background:var(--paper);color:var(--ink);border:1px solid #000;border-left:6px solid var(--read);padding:20px 22px;display:grid;gap:10px}
+.dept h2{font-size:1.7rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+.intro .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.intro .badge i{background:var(--ink2)}
+.fb-fab{background:var(--brass);color:var(--ink);border-color:var(--brass2)}
+.fb .badge,.dept .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--paper2);
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.7),transparent 50%),radial-gradient(ellipse at 90% 100%,rgba(120,90,40,.14),transparent 50%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(820px,100%);background:rgba(255,255,255,.6);color:var(--ink);border:1px solid var(--ink);box-shadow:0 1px 0 var(--ink), 8px 8px 0 var(--paper3);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:28px 30px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(34,32,28,.66);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--enter);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(620px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.25);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:70px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-size:1.4rem;margin:2px 0 4px;font-weight:500}
+.tour-card p{margin:0;font-size:1rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:var(--paper);margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:var(--paper2)}
+.dash-top .badge{color:var(--paper);border-color:var(--paper)}.dash-top .badge i{background:var(--paper)}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:12px 14px;display:grid;gap:2px}
+.tl b{font-size:2rem;line-height:1;font-weight:500}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-size:1.3rem;font-weight:500}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--paper3);vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 7px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.62rem;background:var(--ink);color:var(--paper);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-size:1rem;line-height:1.4;border-left:3px solid var(--ink);padding:4px 10px;margin:6px 0}
+.dv{font-size:1.1rem}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--ink);margin-right:2px;vertical-align:middle;background:transparent}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+
+<!-- Mr Hapgood, drawn once and reused: an invented junior assistant in shirtsleeves, holding up a slip -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hapgood" viewBox="0 0 200 270">
+      <ellipse cx="100" cy="262" rx="62" ry="6" fill="#000" opacity=".25"/>
+      <!-- legs and boots -->
+      <path d="M78 178 L74 252 L92 252 L98 182 Z" fill="#4b4a4f"/>
+      <path d="M104 182 L110 252 L128 252 L124 178 Z" fill="#4b4a4f"/>
+      <path d="M68 250 h26 v8 h-30 q0 -6 4 -8z M108 250 h26 q6 2 6 8 h-32z" fill="#1b1612"/>
+      <!-- shirt body and sleeves -->
+      <path d="M62 96 q38 -16 76 0 l8 86 h-92 z" fill="#f4efe4" stroke="#b9ae98" stroke-width="1"/>
+      <!-- left arm (viewer's left) hanging, holding a pen -->
+      <path d="M62 98 q-16 30 -14 78 l14 2 q0 -40 10 -66 z" fill="#f4efe4" stroke="#b9ae98" stroke-width="1"/>
+      <rect x="49" y="118" width="16" height="7" rx="2" fill="#1b1612" transform="rotate(8 57 121)"/>
+      <circle cx="55" cy="182" r="8" fill="#e5c39c"/>
+      <path d="M50 186 l-8 18" stroke="#1b1612" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- right arm raised, holding up a slip -->
+      <path d="M136 98 q22 6 30 -30 l-12 -6 q-8 22 -24 20 z" fill="#f4efe4" stroke="#b9ae98" stroke-width="1"/>
+      <rect x="146" y="74" width="16" height="7" rx="2" fill="#1b1612" transform="rotate(-62 154 77)"/>
+      <circle cx="162" cy="58" r="8" fill="#e5c39c"/>
+      <g transform="rotate(-8 170 40)">
+        <rect x="150" y="14" width="46" height="31" fill="#fbf5e6" stroke="#6e5a3b" stroke-width="1"/>
+        <path d="M155 22 h20 M155 29 h34 M155 35 h30 M155 40 h22" stroke="#6e5a3b" stroke-width="1.2"/>
+      </g>
+      <!-- waistcoat -->
+      <path d="M70 100 q30 -8 60 0 l4 78 h-68 z" fill="#5a3d24"/>
+      <path d="M100 98 v80" stroke="#3f2a18" stroke-width="1.5"/>
+      <circle cx="104" cy="118" r="2" fill="#c9a24f"/><circle cx="104" cy="134" r="2" fill="#c9a24f"/><circle cx="104" cy="150" r="2" fill="#c9a24f"/><circle cx="104" cy="166" r="2" fill="#c9a24f"/>
+      <path d="M104 142 q14 4 20 -2" stroke="#c9a24f" stroke-width="1.4" fill="none"/>
+      <!-- collar and tie -->
+      <path d="M86 86 l14 14 l14 -14 v-8 h-28 z" fill="#fff" stroke="#b9ae98" stroke-width="1"/>
+      <path d="M96 94 l4 -3 l4 3 l-2 12 h-4 z" fill="#1f2a3a"/>
+      <!-- head -->
+      <rect x="92" y="70" width="16" height="12" fill="#e5c39c"/>
+      <ellipse cx="100" cy="52" rx="24" ry="27" fill="#e5c39c"/>
+      <!-- hair, parted, and side whiskers -->
+      <path d="M76 50 q-2 -30 26 -30 q24 0 22 28 q-4 -14 -14 -18 q-8 8 -30 10 q-2 4 -4 10z" fill="#3b2617"/>
+      <path d="M77 52 q-2 14 4 24 l4 -2 q-4 -10 -2 -20z M123 52 q2 14 -4 24 l-4 -2 q4 -10 2 -20z" fill="#3b2617"/>
+      <!-- pen behind the ear -->
+      <path d="M118 44 l22 -18" stroke="#1b1612" stroke-width="2.4" stroke-linecap="round"/><path d="M138 27 l5 -4" stroke="#c9a24f" stroke-width="2.4"/>
+      <!-- face: level, attentive -->
+      <ellipse cx="91" cy="52" rx="2.6" ry="2.4" fill="#1b1612"/><ellipse cx="109" cy="52" rx="2.6" ry="2.4" fill="#1b1612"/>
+      <path d="M85 45 q6 -3 11 0 M104 45 q6 -3 11 0" stroke="#3b2617" stroke-width="1.6" fill="none"/>
+      <path d="M100 55 q-3 8 0 10" stroke="#b98d66" stroke-width="1.4" fill="none"/>
+      <path d="M92 68 q8 3 16 0" stroke="#7a4a35" stroke-width="1.6" fill="none"/>
+      <!-- spectacles -->
+      <circle cx="91" cy="52" r="6.5" fill="none" stroke="#6b5236" stroke-width="1.2"/><circle cx="109" cy="52" r="6.5" fill="none" stroke="#6b5236" stroke-width="1.2"/><path d="M97.5 52 h5" stroke="#6b5236" stroke-width="1.2"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#hapgood"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. Head of English"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="primary">Primary texts</button><button type="button" data-v="competitions">Writing prizes</button><button type="button" data-v="language">Language data and puzzles</button><button type="button" data-v="lectures">Lectures</button><button type="button" data-v="podcasts">Podcasts</button><button type="button" data-v="poetry">Poetry</button><button type="button" data-v="plays">Plays</button><button type="button" data-v="prose">Prose</button><button type="button" data-v="c04">Independent study (C04)</button><button type="button" data-v="university">University and admissions</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the shed, the pigeonholes, Mr Hapgood. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label>The slip box (headword, the line, why it matters, query). Keep it?</label>
+      <div class="seg" id="fbSlip"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="simpler" aria-pressed="false">Make it simpler</button><button type="button" data-v="drop" aria-pressed="false">Plain notebook</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (set texts, dates, links, component tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#hapgood"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>English Language and Literature · The Scriptorium · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your Language and Literature sixth form.</h2>
+      <p>It is a working copy of the page a pupil would use: 61 free things to enter, watch, listen to, read, do and apply for, each tagged to an H474 component. It is laid out as James Murray's Scriptorium, the shed where the Oxford English Dictionary was built from quotation slips sent in by volunteer readers. Each thing a pupil does files a slip in its pigeonhole. Each slip they write (headword, source, the line itself, why it matters) goes in their slip box, and the department can read it. Every historical claim on the page carries its source and a label.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper" id="gateForm" autocomplete="off">
+    <span class="slipmark">No. 1 · slip box open</span>
+    <span class="badge" style="justify-self:start"><i></i>English Language and Literature · Beyond the classroom</span>
+    <h1 class="head" id="gateH">The Scriptorium<em>six bays of pigeonholes, one slip at a time</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#hapgood"/></svg>
+      <p>Free things for A-level English Language and Literature: prizes, lectures, podcasts, the texts themselves, language puzzles and data, and the way into university. The page is laid out as the shed where the Oxford English Dictionary was put together from slips that volunteer readers posted in. Each thing you do files a slip in its pigeonhole. Each slip you write goes in your slip box. Mr Hapgood, the junior assistant, keeps the shed. Everything you do saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Open the shed</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the English department.</b> This is the working pupil page: sign in with any name, file things as done, write a slip, ask Mr Hapgood to fetch one. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>English Language and Literature · Beyond the classroom</span>
+      <h1 class="head">The Scriptorium<span>A-level English Language and Literature · OCR H474 · six bays, one slip box</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE SHED ===== -->
+  <section aria-label="The pigeonhole wall: six bays to click">
+    <div class="shed">
+      <svg class="wall" id="wall" viewBox="0 0 1400 660" role="group" aria-label="The inside of a tin shed: a wall of pigeonholes in six bays, and a sorting table">
+        <defs>
+          <pattern id="corr" width="16" height="660" patternUnits="userSpaceOnUse">
+            <rect width="16" height="660" fill="#38433f"/><line x1="4" y1="0" x2="4" y2="660" class="corr"/><line x1="12" y1="0" x2="12" y2="660" class="corr2"/>
+          </pattern>
+          <radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd68c" stop-opacity=".38"/><stop offset="1" stop-color="#ffd68c" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1400" height="660" fill="url(#corr)"/>
+        <!-- roof: purlins and a tie beam -->
+        <rect class="beam" x="0" y="0" width="1400" height="22"/>
+        <rect class="beam" x="0" y="40" width="1400" height="12" opacity=".9"/>
+        <path d="M0 22 L120 40 M1400 22 L1280 40" stroke="#2a1b0e" stroke-width="10"/>
+        <!-- lamps -->
+        <g aria-hidden="true">
+          <circle class="glow" cx="470" cy="80" r="190"/><circle class="glow" cx="930" cy="80" r="190"/>
+          <path d="M470 52 v18 M930 52 v18" stroke="#1a120a" stroke-width="2"/>
+          <path class="lamp" d="M456 70 h28 l-6 14 h-16z"/><path class="lamp" d="M916 70 h28 l-6 14 h-16z"/>
+        </g>
+        <g id="bays"></g>
+        <!-- the sorting table -->
+        <g aria-hidden="true">
+          <rect class="floor" x="0" y="600" width="1400" height="60"/>
+          <path d="M0 620 H1400 M0 642 H1400" stroke="#2a1b0e" stroke-width="1.5"/>
+          <path d="M120 560 v70 M1280 560 v70 M700 560 v70" stroke="#2a1b0e" stroke-width="16"/>
+          <path class="tabletop" d="M40 486 L1360 486 L1380 506 L20 506 Z"/>
+          <rect class="tablefront" x="20" y="506" width="1360" height="56"/>
+          <path d="M20 506 H1380" stroke="#2a1b0e" stroke-width="2"/>
+          <text class="tabletxt" x="700" y="542" font-size="20" id="tableTxt">THE SCRIPTORIUM</text>
+          <!-- loose slips, an inkwell and a pen -->
+          <rect class="loose" x="180" y="470" width="58" height="30" transform="rotate(-6 209 485)"/>
+          <rect class="loose" x="220" y="474" width="58" height="30" transform="rotate(4 249 489)"/>
+          <rect class="loose" x="560" y="472" width="58" height="30" transform="rotate(-2 589 487)"/>
+          <rect class="loose" x="1010" y="471" width="58" height="30" transform="rotate(7 1039 486)"/>
+          <rect class="loose" x="1060" y="476" width="58" height="30" transform="rotate(-4 1089 491)"/>
+          <rect x="820" y="470" width="20" height="18" fill="#1b1612"/><rect x="824" y="464" width="12" height="7" fill="#2b2521"/>
+          <path d="M846 470 l40 -22" stroke="#1b1612" stroke-width="3" stroke-linecap="round"/>
+          <rect x="360" y="466" width="70" height="22" fill="#6e3b22"/><rect x="364" y="462" width="62" height="6" fill="#8a5332"/>
+        </g>
+      </svg>
+    </div>
+    <div class="shed-key" aria-hidden="true"><span class="swipe">Swipe the wall sideways to see all six bays.</span><span><b>Click a bay</b> to go to its list.</span><span><b>Click a pigeonhole</b> to open that item.</span><span>A slip in a hole means you have done it.</span></div>
+    <!-- the small print: where each bay comes from, and how sure we are -->
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six bays"></div>
+  </section>
+
+  <!-- ===== HAPGOOD, SLIPS FILED, FETCH ===== -->
+  <section class="crew" aria-label="Mr Hapgood, slips filed, and fetch me one">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 270" aria-hidden="true"><use href="#hapgood"/></svg>
+      <div class="bubble paper" role="status" aria-live="polite"><span class="nm">Mr Hapgood · junior assistant (invented)</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper count-card">
+        <h2 class="head">Slips filed</h2>
+        <div class="count"><div class="pct" id="pctVal">0<small>%</small></div>
+          <div><div class="stack" aria-hidden="true"><i id="stack"></i></div><p class="small" id="coverTxt" style="margin:8px 0 0"></p></div></div>
+        <div class="bays" id="palette" aria-label="Bays with at least one slip filed"></div>
+      </div>
+      <div class="card paper pick-card">
+        <h2 class="head">Fetch me one</h2>
+        <p class="small" style="margin:0">Say how long you have. Mr Hapgood goes to the wall and brings back one thing you have not done, and prefers bays you have not started.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Fetch</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WANTED (half term) ===== -->
+  <section class="wanted paper" aria-labelledby="htLabel">
+    <span class="rubric" id="htEyebrow"></span>
+    <h2 class="head" id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE BAYS ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 class="head" id="tableH">The whole wall</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a bay"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one bay"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE DAY BOOK ===== -->
+  <section class="daybook paper" aria-labelledby="yearH">
+    <div class="atop"><span class="sub">October 2026 – July 2027</span><h2 class="head" id="yearH">The day book</h2><span class="sub">Deadlines, openings, windows · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== THE SLIP BOX ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper">
+      <span class="tape" id="nbCover">The slip box</span>
+      <h2 class="head" id="nbH">Write a slip</h2>
+      <p>The dictionary's readers posted in one slip per quotation: the word, the source and the line itself, so that the editors could see the word at work. Do the same for anything you watch, hear or read. Take the line that made you stop, say where it came from and why it matters. A box of slips like this is where a personal statement, an essay prize entry and your independent study come from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Headword (the word, phrase or idea)</label><input id="nbHw" class="hand" placeholder="e.g. code-switching" required></div>
+        </div>
+        <div class="field"><label for="nbWhat">From</label><input id="nbWhat" list="whatList" placeholder="talk, episode, text, poem, puzzle…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">The line itself (copy it exactly; optional for a puzzle or data)</label><textarea id="nbQuo" class="hand"></textarea></div>
+        <div class="field"><label for="nbLearned">Why it matters</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">The query it leaves you with (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">File the slip</button><button class="btn ghost" type="button" id="copyBtn">Copy all my slips as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your slips as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3 class="head">Your slips</h3><span id="slipCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2 class="head">What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each prize (your entry list for the Linguistics Olympiad and the Campion Prize, which go through school); how many of the half-term wanted list each pupil has done; how much of the wall each has filed and which bays they have not touched; each pupil's slip box in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for English: the items, the component tags, the wanted list, the dates, Mr Hapgood's lines, the slip box fields, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+(function(){
+/* Six bays of pigeonholes, left to right. */
+const FAM = {
+  enter:{label:"Enter", verb:"Prizes and competitions", place:"The Appeal", the:"the Appeal bay", def:"<b>enter</b>, <i>v.</i> To put one's name down for a contest; to send in work to be judged.", no:1},
+  watch:{label:"Watch", verb:"Lectures and talks", place:"The Philological Society", the:"the Society's bay", def:"<b>watch</b>, <i>v.</i> To attend to a lecture or talk, as it is given or afterwards.", no:2},
+  listen:{label:"Listen", verb:"Podcasts and radio", place:"The dialect correspondents", the:"the dialect bay", def:"<b>listen</b>, <i>v.</i> To give ear to speech, in all its varieties.", no:3},
+  read:{label:"Read", verb:"The texts, and about them", place:"The readers", the:"the readers' bay", def:"<b>read</b>, <i>v.</i> To take in the sense of a text; to go back to the source.", no:4},
+  do:{label:"Do", verb:"Puzzles, data and practice", place:"The sorting table", the:"the sorting-table bay", def:"<b>do</b>, <i>v.</i> To work a problem through for oneself; to sort the evidence.", no:5},
+  apply:{label:"Apply", verb:"University and summer schools", place:"The pillar box", the:"the pillar-box bay", def:"<b>apply</b>, <i>v.</i> To make a formal request for a place.", no:6}
+};
+/* Where each bay comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer; leg = a story with no good source; inv = made up for this page. */
+const SMALLPRINT = [
+  {g:"enter", txt:`In spring 1879 James Murray, the new editor, issued "An Appeal to the English-Speaking and English-Reading Public", asking volunteers to read books and send in quotations. It went out in three editions in 1879–80. <span class="st att">attested</span> OUP blog, "The history of the OED Appeals" (2012).`},
+  {g:"watch", txt:`The dictionary began with a talk. Richard Chenevix Trench read two papers to the Philological Society on 5 and 19 November 1857, published as <i>On Some Deficiencies in our English Dictionaries</i>; the Society then planned a new dictionary. <span class="st att">attested</span> the pamphlet's title page; Hertford College OED project.`},
+  {g:"listen", txt:`Speech got a dictionary of its own. Joseph Wright's <i>English Dialect Dictionary</i> (six volumes, 1898–1905) drew on earlier glossaries and on hundreds of volunteer correspondents reporting the words people used. <span class="st att">attested</span> VARIENG, University of Helsinki, "Wright's English Dialect Dictionary computerised".`},
+  {g:"read", txt:`In 1888 Murray named some 300 readers; by 1892 he wrote of "our 1500 readers". About five million quotations were gathered for the first edition. W. C. Minor, an American surgeon confined in Broadmoor, sent 12,000 in 1899 alone. <span class="st att">attested</span> Hertford College OED project; OUP Archives. The "professor and the madman" telling: <span class="st rep">reported</span> Simon Winchester (1998).`},
+  {g:"do", txt:`Murray's first Scriptorium was a corrugated-iron shed at Mill Hill School; from 1885 a second stood in the garden of Sunnyside, 78 Banbury Road, Oxford. <span class="st att">attested</span> Murray Scriptorium project; Oxfordshire Blue Plaques. Sunk into the ground after a neighbour objected: <span class="st rep">reported</span> Gilliver, <i>The Making of the OED</i> (2016). 1,029 pigeonholes: <span class="st rep">reported</span>, original source not found.`},
+  {g:"apply", txt:`So much post came to 78 Banbury Road that the Post Office put a pillar box outside the house. It is still in use. <span class="st att">attested</span> Murray Scriptorium project; Oxfordshire Blue Plaques.`},
+  {g:"", wide:true, txt:`<b>About this page.</b> The drawing is not a reconstruction of the shed. Mr Hapgood <span class="st inv">invented</span> never worked for Murray, and nothing he says is a quotation. The bay definitions are written for this page in the dictionary's manner; they are not OED entries. The dictionary's slips were 6 × 4 inches <span class="st att">attested</span> OUP blog, and the slips in your slip box are drawn to that shape.`}
+];
+// mins drives "Fetch me one": quick <= 20, evening <= 180, long > 180
+// th = the H474 component the item serves most (C01–C04), or All / Applying
+const ITEMS = [
+  // ---- 1 Enter · the Appeal
+  {s:"UK",g:"enter",short:"UK Linguistics Olympiad (Advanced)",name:"UK Linguistics Olympiad (UKLO), Advanced level",mins:240,t:"one paper, sat in school",th:"All",
+   what:"Puzzles built from real languages you have never seen: you work out how the language works from the data. No knowledge of linguistics is needed. Advanced is the level for Years 12–13. The school enters you. Advanced entries close on Monday 2 November 2026; the paper is sat in school in the week of 9–13 November; results are published on 7 December. The best go on to Round 2 on Wednesday 3 February 2027.",
+   think:"Do one Advanced problem from the past papers (sorting table) before you put your name down. If you enjoyed twenty minutes of being stuck, enter.",tags:["Years 12–13","school enters","entries by Mon 2 Nov","paper 9–13 Nov","start here"],url:"https://www.uklo.org/2027calendar/",lt:"UKLO calendar"},
+  {s:"Tri",g:"enter",short:"Gould Prize (Trinity, Cambridge)",name:"Gould Prize for Essays in English Literature (Trinity College, Cambridge)",mins:900,t:"1,500–2,500 words",th:"All",
+   what:"An essay of 1,500–2,500 words on one of Trinity's set questions, for Year 12, submitted online by you. First prize £600 and second £400, each split between you and the school. No help from school and no AI. Trinity posts the 2027 questions in February 2027; the 2026 deadline was 12 noon on 31 July.",
+   think:"This one is yours alone. Start the essay from a line you have already copied onto a slip and thought about, rather than from the question.",tags:["free","Year 12","enter yourself","Feb – 31 Jul","check dates"],url:"https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/",lt:"Trinity"},
+  {s:"Pet",g:"enter",short:"Thomas Campion English Prize (Peterhouse)",name:"Thomas Campion English Prize (Peterhouse, Cambridge)",mins:900,t:"an essay",th:"All",
+   what:"An English essay on a set question, for Year 12, submitted as a PDF. First prize £500; winners and commended entrants are invited to Peterhouse. Questions come out in the spring with a deadline in March or April, and the teacher confirms the entry a few days later. Schools are normally limited to two entries.",
+   think:"Two entries per school, so the department chooses. Tap the button early and show your teacher a few of your slips.",tags:["free","Year 12","two per school","spring","check dates"],url:"https://www.pet.cam.ac.uk/essay-prizes",lt:"Peterhouse"},
+  {s:"Orw",g:"enter",short:"Orwell Youth Prize: Acts of Courage",name:"Orwell Youth Prize 2027: 'Acts of Courage' (Orwell Foundation)",mins:900,t:"up to 1,500 words",th:"C04 Independent study",
+   what:"Up to 1,500 words for Years 12–13, in any form: essay, journalism, short story, poem. The theme is 'Acts of Courage'. Submit a PDF online with your name nowhere on it. Send a draft by Wednesday 3 March 2027 and you get written feedback; the final deadline is Wednesday 28 April 2027.",
+   think:"Send the draft by 3 March. The written feedback is worth more than the prize. Orwell's 'Politics and the English Language' in the readers' bay is the house style.",tags:["free","Years 12–13","enter yourself","draft 3 Mar","final 28 Apr"],url:"https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/",lt:"Orwell Youth Prize"},
+  {s:"Foy",g:"enter",short:"Foyle Young Poets of the Year",name:"Foyle Young Poets of the Year Award (Poetry Society)",mins:600,t:"up to three poems",th:"C02 Poetry and plays",
+   what:"Up to three original poems, each no more than 40 lines, for anyone aged 11–17 on the closing date (most of Year 12, few of Year 13). 100 winners a year, 15 of them top winners, with publication and mentoring. AI-written poems are not allowed. The 2026 round closed at midnight on 31 July; 2027 is expected to follow the same pattern.",
+   think:"Read last year's winning poems on the Foyle site before you write. Then write about something only you have seen.",tags:["free","aged 11–17","enter yourself","due 31 Jul","check dates"],url:"https://foyleyoungpoets.org/rules/",lt:"Foyle rules"},
+  {s:"Tow",g:"enter",short:"Christopher Tower Poetry Competition",name:"Christopher Tower Poetry Competition (Christ Church, Oxford)",mins:600,t:"one poem",th:"C02 Poetry and plays",
+   what:"Christ Church's poetry competition for 16–18-year-olds educated in the UK, free to enter. The 2027 theme is 'The Deep'. Entries close at 12 noon on Thursday 18 February 2027. Enter online from the Christ Church page.",
+   think:"'The Deep' will bring in a great deal of sea. Look for another kind of depth: a voice, a mine, a memory, the history of a word.",tags:["free","ages 16–18","enter yourself","due 18 Feb 2027"],url:"https://www.chch.ox.ac.uk/towerpoetry",lt:"Christ Church"},
+  {s:"YWS",g:"enter",short:"Young Walter Scott Prize",name:"Young Walter Scott Prize for historical fiction",mins:900,t:"800–2,000 words",th:"C03 Prose and writing",
+   what:"A short story set in a time before you were born, for UK residents aged 11–19. The word range in past rounds was 800–2,000. Entries go by post and need an adult's endorsement. The deadline in past rounds has been 31 October; check the current terms on the site before you start.",
+   think:"About three weeks. Take a moment from the context of your Component 03 novel and tell it in a voice the novel leaves out.",tags:["free","ages 11–19","enter yourself","by post","due 31 Oct · check"],url:"https://www.walterscottprize.co.uk/competitions-for-young-writers/",lt:"Walter Scott Prize"},
+  {s:"Est",g:"enter",short:"Estelle English Prize (Queens', Cambridge)",name:"Estelle English Prize (Queens' College, Cambridge)",mins:900,t:"up to 2,500 words",th:"All",
+   what:"An essay of up to 2,500 words, footnotes included, on one of three set questions, for Year 12. The essay must not be mainly about material studied in class or used for coursework. £500 to the winner. Send it by post or as one scanned PDF by email, with the college's cover sheet. The 2026 deadline was 5pm on Friday 3 July.",
+   think:"The rule against class material helps you: it makes you read beyond the course, and your slip box is where that reading will show.",tags:["free","Year 12","enter yourself","early July","check dates"],url:"https://www.queens.cam.ac.uk/applying-here/access-and-outreach/competitions/",lt:"Queens'"},
+  {s:"Gir",g:"enter",short:"Girton Humanities Writing Competition",name:"Girton College Humanities Writing Competition (Cambridge)",mins:900,t:"about 1,800 words",th:"C03 Prose and writing",
+   what:"An essay or a creative piece responding to one of five objects from the Lawrence Room, Girton's museum. For Year 12 at UK schools. The 2026–27 round launches this autumn. Last year the limit was 1,800 words and the deadline 5pm on 20 March.",
+   think:"It takes creative work, which suits a course that asks you to read as a writer and write as a reader. Choose the object first, and only then decide between essay and story.",tags:["free","Year 12","enter yourself","launches autumn","check dates"],url:"https://www.girton.cam.ac.uk/humanities-writing-competition",lt:"Girton"},
+  {s:"QCW",g:"enter",short:"Queen's Commonwealth Writing Competition",name:"Queen's Commonwealth Writing Competition (Royal Commonwealth Society)",mins:600,t:"an essay or piece",th:"C04 Independent study",
+   what:"The Royal Commonwealth Society's writing competition on a set theme, formerly the Queen's Commonwealth Essay Competition. The senior category is for ages 14–18. The 2026 round ran from 4 March to 30 April on the theme 'Common Ground: Better Together'. The 2027 round has not been announced.",
+   think:"The theme arrives in March. Treat the senior essay as practice for the non-fiction writing in your independent study.",tags:["free","ages 14–18","enter yourself","Mar–Apr","check dates"],url:"https://www.royalcwsociety.org/writing-competition",lt:"Royal Commonwealth Society"},
+
+  // ---- 2 Watch · the Philological Society
+  {s:"GrN",g:"watch",short:"Gresham · The Powers of the Novel (Mullan)",name:"Gresham College: The Powers of the Novel (John Mullan)",mins:60,t:"nine recorded lectures",th:"C03 Prose and writing",
+   what:"Nine free lectures on how novels work: plotting, coincidence, villains, endings, the supernatural. 'Coincidences in the Novel' and 'Fiction and the Supernatural' both take in Charlotte Brontë; 'Crime in Fiction' includes McEwan.",
+   think:"Watch the lecture closest to your Component 03 novel. Copy one claim Mullan makes about how novels work onto a slip, then test it on one chapter.",tags:["free","university lectures","Component 03"],url:"https://www.gresham.ac.uk/watch-now/series/novel-powers",lt:"Powers of the Novel"},
+  {s:"GrJ",g:"watch",short:"Gresham · rhetoric, poems and plays (Jack)",name:"Gresham College: Belinda Jack's lectures on rhetoric, poems and plays",mins:60,t:"two series",th:"C02 Poetry and plays",
+   what:"Two series. Rhetoric and the Life of Literature takes one device per text: personification in Shakespeare's sonnets, simile in Frost, hyperbole in Hard Times. The Mysteries of Writing Poems and Plays covers Plath, Eliot, Ibsen, Chekhov, Beckett and Stoppard.",
+   think:"One device at a time is how Component 02 Section A wants you to work. Choose one of her devices and find three examples of it in your set collection.",tags:["free","university lectures","Component 02"],url:"https://www.gresham.ac.uk/schools-and-colleges/english",lt:"Gresham English"},
+  {s:"EmS",g:"watch",short:"Oxford · Approaching Shakespeare (Smith)",name:"Oxford: Approaching Shakespeare (Emma Smith)",mins:50,t:"one play per lecture",th:"C02 Poetry and plays",
+   what:"Recorded Oxford lectures, one play each, each built round a critical question. The Othello lecture is on race and what it means in the play.",
+   think:"If you study Othello, start there. If you study a modern play, listen anyway: write her opening question on a slip and ask it of your own play.",tags:["free","university lectures","Component 02"],url:"https://podcasts.ox.ac.uk/series/approaching-shakespeare",lt:"Approaching Shakespeare"},
+  {s:"OxE",g:"watch",short:"Oxford English Faculty podcasts",name:"Oxford English Faculty podcasts",mins:50,t:"400+ recordings",th:"All",
+   what:"Over 400 recordings, including the Professor of Poetry lectures (A. E. Stallings, Alice Oswald) and the faculty's taster lectures for applicants.",
+   think:"Read three poems by a Professor of Poetry before you listen to their lecture. You will hear a poet explain choices you have already noticed.",tags:["free","university lectures","Year 13 applicants"],url:"https://podcasts.ox.ac.uk/units/faculty-english-language-and-literature",lt:"Oxford English podcasts"},
+  {s:"BLe",g:"watch",short:"British Library · YA Crime Fiction Fest",name:"British Library online school events: Young Adult Crime Fiction Fest",mins:90,t:"online, live",th:"C03 Prose and writing",
+   what:"A free online event for Years 9–13 with crime writers, on Friday 20 and Monday 23 November 2026. The department books it for a class.",
+   think:"Listen for how the writers talk about holding information back from the reader. That is the craft Component 03 Section B narrative writing is marked on.",tags:["free","online","department books","20 and 23 Nov"],url:"https://events.bl.uk/whats-on/online-school-events",lt:"BL school events"},
+  {s:"Yal",g:"watch",short:"Yale · Introduction to Theory of Literature (Fry)",name:"Yale Open Courses: Introduction to Theory of Literature, ENGL 300 (Paul Fry)",mins:600,t:"26 lectures, with transcripts",th:"All",
+   what:"A full undergraduate course in literary theory, recorded at Yale and free to watch, with a transcript for every lecture: formalism, structuralism, psychoanalytic, Marxist, feminist and postcolonial criticism, and more.",
+   think:"This is university level. Start with the lectures on formalism; they are where the close reading and stylistics you already do come from.",tags:["free","university lectures","stretch"],url:"https://oyc.yale.edu/english/engl-300",lt:"Yale Open Courses"},
+  {s:"Lyi",g:"watch",short:"Lyiscott · 3 ways to speak English (4 min)",name:"Jamila Lyiscott (TED): 3 ways to speak English",mins:10,t:"4 min",th:"C01 Non-fiction and spoken",
+   what:"A spoken-word poem in three varieties of English, performed at TED.",
+   think:"Mark each point where she switches variety and what signals it: lexis, grammar, pronunciation. Compare with how voice works in Jacob Sam-La Rose's Breaking Silence or Malika Booker's Pepper Seed.",tags:["TED","free","4 min","start here"],url:"https://www.ted.com/talks/jamila_lyiscott_3_ways_to_speak_english",lt:"ted.com"},
+  {s:"McW",g:"watch",short:"McWhorter · Txtng is killing language. JK!!!",name:"John McWhorter (TED): Txtng is killing language. JK!!!",mins:20,t:"14 min",th:"C01 Non-fiction and spoken",
+   what:"A linguist argues that texting is a new kind of written speech, not a decline in writing.",
+   think:"McWhorter calls texting 'fingered speech'. List three features of spontaneous speech in the Paxman–Dizzee Rascal interview in the anthology. Which would appear in a text message, and which would not?",tags:["TED","free","14 min"],url:"https://www.ted.com/talks/john_mcwhorter_txtng_is_killing_language_jk",lt:"ted.com"},
+  {s:"Cur",g:"watch",short:"Curzan · What makes a word \"real\"?",name:"Anne Curzan (TED): What makes a word \"real\"?",mins:20,t:"17 min",th:"C01 Non-fiction and spoken",
+   what:"A historian of English, who sits on a dictionary's usage panel, on who decides what counts as a word.",
+   think:"Find one word in the Sophie Arthur blog or the Lucy Mangan review in the anthology that a 1990 dictionary would not have had, and explain how it came into use.",tags:["TED","free","17 min"],url:"https://www.ted.com/talks/anne_curzan_what_makes_a_word_real",lt:"ted.com"},
+  {s:"Bor",g:"watch",short:"Boroditsky · How language shapes thought",name:"Lera Boroditsky (TED): How language shapes the way we think",mins:20,t:"14 min",th:"All",
+   what:"A cognitive scientist on evidence that the language you speak affects how you think about space, time and blame. It is on this list to be argued with: read Pinker's The Language Instinct (readers' bay) for the other side.",
+   think:"How strong is her evidence that language shapes thought? Name one finding a sceptic would challenge and say why.",tags:["TED","free","14 min","argue with it"],url:"https://www.ted.com/talks/lera_boroditsky_how_language_shapes_the_way_we_think",lt:"ted.com"},
+  {s:"Pin",g:"watch",short:"Pinker · What our language habits reveal",name:"Steven Pinker (TED): What our language habits reveal",mins:20,t:"17 min",th:"C02 Poetry and plays",
+   what:"Pinker on what everyday language shows about the mind, including why people speak indirectly: veiled bribes, polite requests, threats dressed as hints.",
+   think:"Use Pinker's account of indirect speech to explain two moments in your Component 02 play where a character says one thing and means another. Iago is the obvious case.",tags:["TED","free","17 min"],url:"https://www.ted.com/talks/steven_pinker_what_our_language_habits_reveal",lt:"ted.com"},
+  {s:"Adi",g:"watch",short:"Adichie · The danger of a single story",name:"Chimamanda Ngozi Adichie (TED): The danger of a single story",mins:20,t:"19 min",th:"C03 Prose and writing",
+   what:"A novelist on what happens when one story about a people or a place is the only one told.",
+   think:"Adichie credits Chinua Achebe with changing what she thought books could contain. Whose single story does the narrative voice of your Component 03 novel challenge, and whose does it repeat?",tags:["TED","free","19 min"],url:"https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story",lt:"ted.com"},
+  {s:"Kay",g:"watch",short:"Sarah Kay · If I should have a daughter …",name:"Sarah Kay (TED): If I should have a daughter …",mins:20,t:"18 min",th:"C02 Poetry and plays",
+   what:"A spoken-word poet performs and talks about writing poems to be heard.",
+   think:"Her poem is written to be heard. Which phonological and structural features make it work aloud, and would it work as well on the page? Use the Component 02 terms repetition, pattern-making and deviation.",tags:["TED","free","18 min"],url:"https://www.ted.com/talks/sarah_kay_if_i_should_have_a_daughter",lt:"ted.com"},
+  {s:"Col",g:"watch",short:"Billy Collins · Everyday moments, caught in time",name:"Billy Collins (TED): Everyday moments, caught in time",mins:20,t:"15 min",th:"C02 Poetry and plays",
+   what:"A former US Poet Laureate reads poems set to animations.",
+   think:"Pick one poem and say what the animation adds and what it closes off. Then write 100 words on how one image works in a poem from your set collection.",tags:["TED","free","15 min"],url:"https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time",lt:"ted.com"},
+
+  // ---- 3 Listen · the dialect correspondents
+  {s:"WoM",g:"listen",short:"Word of Mouth (Radio 4)",name:"Word of Mouth (BBC Radio 4, Michael Rosen)",mins:30,t:"30 min episodes",th:"C01 Non-fiction and spoken",
+   what:"Half-hour programmes on words and how people use them: accents, slang, naming, political language. Michael Rosen and a guest take one question each time.",
+   think:"Pick any episode. Note one claim about spoken language that you could test against a spoken text in the anthology, and test it.",tags:["free","30 min","start here"],url:"https://www.bbc.co.uk/programmes/b006qtnz",lt:"Word of Mouth"},
+  {s:"Lng",g:"listen",short:"Lingthusiasm",name:"Lingthusiasm (Gretchen McCulloch and Lauren Gawne)",mins:45,t:"monthly episodes",th:"All",
+   what:"A monthly linguistics podcast by two linguists that assumes no prior knowledge; one idea per episode, with a transcript for every episode on the site. Bonus episodes are on a paid Patreon; the main feed is free.",
+   think:"Find an episode on a term you have met in class (register, pragmatics, prosody) and write a slip on one example they use that your textbook does not.",tags:["free","transcripts"],url:"https://lingthusiasm.com/",lt:"Lingthusiasm"},
+  {s:"LxV",g:"listen",short:"Lexicon Valley (McWhorter)",name:"Lexicon Valley (John McWhorter)",mins:30,t:"short episodes",th:"C01 Non-fiction and spoken",
+   what:"Short episodes on words, grammar and usage, mostly about American English. The episodes are free; a paid tier adds bonus segments.",
+   think:"McWhorter is a descriptivist: he describes how people speak rather than how they should. Listen for one place where he and Orwell's essay would disagree.",tags:["free episodes","optional paid tier"],url:"https://lexiconvalley.supportingcast.fm/",lt:"Lexicon Valley"},
+  {s:"IOT",g:"listen",short:"In Our Time · Culture archive",name:"BBC In Our Time: Culture archive",mins:45,t:"45 min",th:"All",
+   what:"Forty-five-minute discussions with three academics. The archive has episodes on many set writers and on poetic forms.",
+   think:"Search the archive for your set poet, playwright or novelist. Copy the one sentence an academic says that you would most like to argue with.",tags:["free","45 min","university"],url:"https://www.bbc.co.uk/programmes/p01drwny",lt:"In Our Time"},
+  {s:"DID",g:"listen",short:"Desert Island Discs archive",name:"Desert Island Discs archive (BBC Radio 4)",mins:45,t:"45 min",th:"C01 Non-fiction and spoken",
+   what:"The anthology's Liz Carr interview (text 19) comes from here, and the archive holds decades more examples of the interview as a genre.",
+   think:"Listen to another interview and compare how the presenter steers the talk: questions, back-channelling, topic shifts. Which choices are the same as in the Liz Carr text?",tags:["free","45 min"],url:"https://www.bbc.co.uk/programmes/b006qnmr",lt:"Desert Island Discs"},
+  {s:"TAL",g:"listen",short:"This American Life",name:"This American Life",mins:60,t:"an hour",th:"C01 Non-fiction and spoken",
+   what:"The source of anthology text 12, 'Three miles'. A free archive of crafted spoken narrative.",
+   think:"Try another episode and notice what is scripted and what is not. Where does the presenter's planned speech end and the interviewee's spontaneous speech begin?",tags:["free","1 hour"],url:"https://www.thisamericanlife.org/",lt:"This American Life"},
+  {s:"Alu",g:"listen",short:"The Allusionist",name:"The Allusionist (Helen Zaltzman)",mins:30,t:"short episodes",th:"C01 Non-fiction and spoken",
+   what:"A fortnightly podcast about words and language: where words come from, how they change, who gets to use them. Still running, with a long free archive.",
+   think:"Pick an episode on a single word. Write a slip for that word in the dictionary's way: earliest use, how the meaning moved, a line where you heard it used today.",tags:["free","still running"],url:"https://www.theallusionist.org/",lt:"The Allusionist"},
+  {s:"ShU",g:"listen",short:"Shakespeare Unlimited (Folger)",name:"Shakespeare Unlimited (Folger Shakespeare Library)",mins:35,t:"about 35 min",th:"C02 Poetry and plays",
+   what:"The Folger's podcast: interviews with actors, directors and scholars about Shakespeare in performance, history and culture. Still running, with a large archive.",
+   think:"Search the archive for Othello. Note one thing a director says about staging a scene that changes how you read the lines.",tags:["free","Othello"],url:"https://www.folger.edu/podcasts/shakespeare-unlimited/",lt:"Folger podcasts"},
+  {s:"Bkl",g:"listen",short:"Backlisted",name:"Backlisted",mins:60,t:"an hour",th:"C03 Prose and writing",
+   what:"A podcast that brings neglected books back into print and into conversation: two hosts and a guest on one book each episode. Free, with an optional paid Patreon.",
+   think:"For reading beyond the syllabus. Choose an episode on a book you have not heard of, read the first chapter, and write a slip on its opening line.",tags:["free","beyond the syllabus"],url:"https://www.backlisted.fm/",lt:"Backlisted"},
+
+  // ---- 4 Read · the readers
+  {s:"Fol",g:"read",short:"Folger Shakespeare · the plays, free",name:"Folger Shakespeare: every play and poem, free to read and download",mins:120,t:"full texts",th:"C02 Poetry and plays",
+   what:"The Folger editions of all of Shakespeare, to read online or download as PDF, Word or plain text, for non-commercial use.",
+   think:"Read Othello's first and last speeches side by side on screen. What has happened to his syntax?",tags:["free","primary text","Othello"],url:"https://www.folger.edu/explore/shakespeares-works/",lt:"Folger"},
+  {s:"FF",g:"read",short:"Bodleian First Folio",name:"Bodleian Library: the First Folio (1623), digital facsimile",mins:30,t:"the book itself",th:"C02 Poetry and plays",
+   what:"Every page of the Bodleian's copy of the 1623 First Folio, photographed, with transcribed text and downloads, free under an open licence.",
+   think:"Find Othello in the Folio. Compare one page with your edition: spelling, punctuation, line breaks. Every one of those is an editor's decision.",tags:["free","primary text","1623"],url:"https://firstfolio.bodleian.ox.ac.uk/",lt:"First Folio"},
+  {s:"Joh",g:"read",short:"Johnson's Dictionary Online (1755)",name:"Johnson's Dictionary Online: Samuel Johnson's Dictionary of the English Language (1755)",mins:20,t:"look up a word",th:"All",
+   what:"A searchable digital edition of Johnson's 1755 dictionary, with images of the pages. The dictionary Murray's was built to replace.",
+   think:"Look up a word from your set text in Johnson and in a modern dictionary. Johnson also gives quotations, like the OED's readers did; which writers does he trust?",tags:["free","primary text"],url:"https://johnsonsdictionaryonline.com/",lt:"Johnson's Dictionary"},
+  {s:"OED",g:"read",short:"The Oxford English Dictionary",name:"Oxford English Dictionary (online)",mins:20,t:"look up a word",th:"All",
+   what:"The dictionary the shed made. Full access needs a subscription, but many public libraries give it free with a library card (Coventry does; ask whether yours does). The Word of the Day on the home page is free to everyone.",
+   think:"Look up one word from your set text and read its earliest quotations. What did it mean when your writer used it?",tags:["library card","Word of the Day free"],url:"https://www.oed.com/",lt:"OED"},
+  {s:"EDA",g:"read",short:"Emily Dickinson Archive",name:"Emily Dickinson Archive (Harvard and partners)",mins:30,t:"manuscripts",th:"C02 Poetry and plays",
+   what:"Images of Dickinson's manuscripts, open access, with transcriptions from the main editions. You can see the dashes, variants and line breaks that printed editions tidy up.",
+   think:"If you study Dickinson: find one of your poems in manuscript. What does the printed version change, and does it matter for your reading?",tags:["free","primary text","manuscripts"],url:"https://www.edickinson.org/",lt:"Dickinson Archive"},
+  {s:"Gut",g:"read",short:"Project Gutenberg",name:"Project Gutenberg",mins:120,t:"79,000 free books",th:"C03 Prose and writing",
+   what:"Over 79,000 out-of-copyright books, free with no registration: Blake's Songs, Jane Eyre, The Importance of Being Earnest, The Great Gatsby and the novels their writers read.",
+   think:"Read another novel by your set writer, or one they read. Jane Eyre readers: try Brontë's Villette, which turns the governess story inside out.",tags:["free","primary texts"],url:"https://www.gutenberg.org/",lt:"Gutenberg"},
+  {s:"DL",g:"read",short:"British Library · Discovering Literature",name:"British Library: Discovering Literature",mins:30,t:"articles",th:"All",
+   what:"Free articles on writers, style and context, including Blake and the Brontës. Only part of the Library's digital collection is back after the 2023 cyber-attack.",
+   think:"Read the article on your set writer and copy one piece of context you did not know. Then ask whether it changes a reading or only decorates one.",tags:["free","context"],url:"https://www.bl.uk/discovering-literature",lt:"Discovering Literature"},
+  {s:"TMB",g:"read",short:"Oxford · Ten-Minute Book Club",name:"Oxford English Faculty: Ten-Minute Book Club",mins:15,t:"10 min each",th:"All",
+   what:"Short extracts chosen by Oxford academics, each readable in about ten minutes, with a short introduction.",
+   think:"Read one a week. Each time, copy the sentence that made you want to read on.",tags:["free","10 min"],url:"https://www.english.ox.ac.uk/ten-minute-book-club",lt:"Ten-Minute Book Club"},
+  {s:"PEL",g:"read",short:"Orwell · Politics and the English Language",name:"George Orwell, 'Politics and the English Language' (1946)",mins:40,t:"an essay",th:"C04 Independent study",
+   what:"Orwell's essay on plain writing and its six rules, free on the Orwell Foundation site. A prescriptive argument about style.",
+   think:"Test one of his rules against a speech in the anthology: Gillard, Edward VIII or Roxane Gay. Then test it against your own non-fiction writing.",tags:["free","primary text"],url:"https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/",lt:"Orwell essay"},
+  {s:"eMag",g:"read",short:"emagazine (EMC)",name:"emagazine (English and Media Centre)",mins:20,t:"articles",th:"All",
+   what:"The English and Media Centre's magazine for A-level English students, including Language and Literature. A paid school subscription; ask the library for the school login.",
+   think:"Search for your set text or your independent study topic. Note who wrote the article and whether they are a teacher, a student or an academic.",tags:["school subscription"],url:"https://www.englishandmedia.co.uk/emagazine/",lt:"emagazine"},
+  {s:"Cry",g:"read",short:"Crystal · How Language Works",name:"David Crystal, How Language Works",mins:600,t:"a book",th:"All",
+   what:"Short sections on every part of language, readable in any order; a reference for the terms the course uses. On St Anne's College's linguistics reading list.",
+   think:"Dip in when a term comes up in class. Each time, write a slip with the term, Crystal's example and one of your own from the anthology.",tags:["library","book"],url:"",lt:""},
+  {s:"LI",g:"read",short:"Pinker · The Language Instinct",name:"Steven Pinker, The Language Instinct",mins:900,t:"a book",th:"All",
+   what:"A readable argument that the capacity for language is built into the brain. On St Anne's College's linguistics reading list.",
+   think:"Read it against Boroditsky's talk in the Society's bay. Who has the better evidence, and what would settle it?",tags:["library","book","argue with it"],url:"",lt:""},
+
+  // ---- 5 Do · the sorting table
+  {s:"UKp",g:"do",short:"UKLO past papers",name:"UK Linguistics Olympiad past papers",mins:20,t:"20 min a problem",th:"All",
+   what:"Every past paper since 2010 at every level, with answers, including Advanced and Round 2.",
+   think:"Start with one Advanced problem. Write down the rule you think the data follows before you look at the answer.",tags:["free","start here"],url:"https://www.uklo.org/past-exam-papers/",lt:"UKLO papers"},
+  {s:"Sty",g:"do",short:"Nottingham Stylistics Toolkit",name:"The Nottingham Stylistics Toolkit (University of Nottingham)",mins:40,t:"worked examples",th:"C02 Poetry and plays",
+   what:"Definitions, explanations and downloadable activities in stylistics, the discipline Component 02 draws on.",
+   think:"Take one tool (deixis, foregrounding, modality) and apply it to one poem from your set collection. File the slip with the line and the label.",tags:["free","university"],url:"https://www.nottingham.ac.uk/stylisticstoolkit",lt:"Stylistics Toolkit"},
+  {s:"PS",g:"do",short:"EMC Poetry Station",name:"EMC Poetry Station",mins:15,t:"short films",th:"C02 Poetry and plays",
+   what:"Free films of poems read aloud, many by the poets. Includes Blake, Carol Ann Duffy and Jacob Sam-La Rose; no Dickinson, Booker or Asghar.",
+   think:"Watch a poet read their own poem. Mark where their pauses fall against the line breaks on the page.",tags:["free","poets reading"],url:"https://poetrystation.org.uk/",lt:"Poetry Station"},
+  {s:"ND",g:"do",short:"EMC · New Directions (language diversity)",name:"EMC Free: New Directions, a language diversity research pack",mins:120,t:"244 pages",th:"C04 Independent study",
+   what:"A free 244-page pack by Amanda Cole and Dan Clayton (EMC and the University of Essex): research summaries from over 40 linguists on regional variation, ethnicity, gender, World Englishes and technology, with activities.",
+   think:"Useful for your independent study. Choose one summary, find the linguist's original paper, and note one thing the summary leaves out.",tags:["free","research"],url:"https://www.englishandmedia.co.uk/publications-magazines/20710/new-directions-language-diversity-research-and-resource-pack-download-emc-free/",lt:"New Directions"},
+  {s:"Ngr",g:"do",short:"Google Books Ngram Viewer",name:"Google Books Ngram Viewer",mins:20,t:"20 min",th:"All",
+   what:"Charts how often a word or phrase appears in printed books from 1800 to 2022.",
+   think:"Chart two words that compete for one meaning, such as wireless and radio. When does one overtake the other, and what was happening at the time?",tags:["free","data"],url:"https://books.google.com/ngrams/",lt:"Ngram Viewer"},
+  {s:"Cor",g:"do",short:"English-Corpora.org (BNC, COCA)",name:"English-Corpora.org: the British National Corpus, COCA and others",mins:40,t:"an hour of searching",th:"C01 Non-fiction and spoken",
+   what:"Large collections of real English, searchable for frequency, collocation and change over time. Free with limits: about 20 searches a day.",
+   think:"Search a word from an anthology text in the spoken section of the BNC. Which words does it keep company with in speech, and are they the same in writing?",tags:["free with limits","data"],url:"https://www.english-corpora.org/",lt:"English-Corpora.org"},
+  {s:"IDEA",g:"do",short:"International Dialects of English Archive",name:"IDEA: International Dialects of English Archive",mins:30,t:"recordings",th:"C01 Non-fiction and spoken",
+   what:"Free recordings of English accents from around the world, including dozens from England, many reading the same passage. Made for actors.",
+   think:"Choose two speakers from different parts of England reading the same passage. Note three differences in pronunciation and what a listener might assume from each.",tags:["free","recordings"],url:"https://www.dialectsarchive.com/",lt:"IDEA"},
+  {s:"ABB",g:"do",short:"Accent Bias Britain",name:"Accent Bias Britain (research project)",mins:40,t:"a report",th:"C04 Independent study",
+   what:"A research project on prejudice about accents in British hiring, with its 2020 report free to download.",
+   think:"Read the findings and design a small survey of your own on one accent. That is an independent study topic.",tags:["free","research"],url:"https://accentbiasbritain.org/",lt:"Accent Bias Britain"},
+  {s:"HE",g:"do",short:"Cambridge HE+ English",name:"Cambridge HE+ English",mins:240,t:"a fortnight",th:"C02 Poetry and plays",
+   what:"Modules written by Cambridge academics and students, including Introduction to Poetry and Reading Uncertain Genders, with questions to work through.",
+   think:"Do Introduction to Poetry over a fortnight before you start your set collection. Keep a slip for each question you answer.",tags:["free","university"],url:"https://myheplus.com/subject/english",lt:"HE+ English"},
+  {s:"Her",g:"do",short:"Hertford College Super-Curricular Challenge",name:"Hertford College (Oxford) Super-Curricular Challenge",mins:600,t:"weeks",th:"All",
+   what:"A structured challenge from an Oxford college: read, listen and visit, then share what you found.",
+   think:"Do it over a half term. The 'share what you found' step is good practice for an interview.",tags:["free","Oxford"],url:"https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/",lt:"Hertford challenge"},
+
+  // ---- 6 Apply · the pillar box
+  {s:"Un",g:"apply",short:"UNIQ (Oxford)",name:"UNIQ (University of Oxford)",mins:120,t:"apply in Dec–Jan",th:"Applying",
+   what:"A free residential at Oxford in the summer of Year 12 for UK state-school pupils who meet the criteria, with support afterwards. Courses have included English and Linguistics. Applications for 2027 open in December; last year's closed on 13 January.",
+   think:"Apply in December. The form asks why the subject; your slip box is the answer.",tags:["free","Year 12","Dec–Jan","check dates"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  {s:"OxA",g:"apply",short:"Oxford · English Language and Literature",name:"Oxford: English Language and Literature (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Oxford's English degree covers language as well as literature from Old English to now. There is no admissions test. Applicants send one marked analytical essay of up to 2,000 words. For 2027 entry: apply by 15 October 2026, written work by 10 November 2026.",
+   think:"Year 12: read the first-year papers and see how much language there is. Year 13: the written work is due on 10 November.",tags:["free","Year 12–13","no test","written work"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/english-language-and-literature",lt:"Oxford English"},
+  {s:"CamA",g:"apply",short:"Cambridge · English",name:"Cambridge: English (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Most colleges set no admissions assessment for English; applicants send two pieces of written work. The typical offer is A*AA, and English Language and Literature A level is accepted.",
+   think:"Check the college you are thinking of, because a few differ. Then choose your two pieces of written work in Year 12, not in October of Year 13.",tags:["free","Year 12–13","written work"],url:"https://www.undergraduate.study.cam.ac.uk/courses/english",lt:"Cambridge English"},
+  {s:"Eng4",g:"apply",short:"UCL, KCL, Durham, Warwick · English",name:"English degrees at UCL, King's College London, Durham and Warwick",mins:40,t:"40 min",th:"Applying",
+   what:"Four more English departments. Typical offers for 2027 entry: UCL AAA, King's AAA, Durham A*AA, Warwick AAA or A*AB. UCL, Durham and Warwick say they accept English Language and Literature.",
+   think:"Compare the first-year modules of two of these with Oxford's. Which ones teach language, and which are literature only?",tags:["free","Year 12–13"],url:"https://www.ucl.ac.uk/study/prospective-students/undergraduate/courses/english-ba",lt:"UCL",
+   more:[{lt:"King's",url:"https://www.kcl.ac.uk/study/undergraduate/courses/english-ba"},{lt:"Durham",url:"https://www.durham.ac.uk/study/courses/english-literature-q300/"},{lt:"Warwick",url:"https://warwick.ac.uk/study/undergraduate/courses/ba-english-literature"}]},
+  {s:"Ling",g:"apply",short:"Linguistics degrees",name:"Linguistics degrees: UCL, Lancaster, Cambridge, Oxford",mins:40,t:"40 min",th:"Applying",
+   what:"For pupils who like the language side best. UCL Linguistics (AAB), Lancaster Linguistics (AAB) and Cambridge Linguistics (A*AA; some colleges set an assessment). Oxford has no single-honours Linguistics: it is studied with Modern Languages, or in Psychology, Philosophy and Linguistics, which sets the TARA test.",
+   think:"Linguistics degrees ask for evidence that you enjoy working from data. The Olympiad and the sorting table are that evidence.",tags:["free","Year 12–13"],url:"https://www.ucl.ac.uk/study/prospective-students/undergraduate/courses/linguistics-ba",lt:"UCL",
+   more:[{lt:"Lancaster",url:"https://lancaster.ac.uk/study/undergraduate/courses/linguistics-ba-hons-q100"},{lt:"Cambridge",url:"https://www.undergraduate.study.cam.ac.uk/courses/linguistics"},{lt:"Oxford",url:"https://www.ling-phil.ox.ac.uk/studying-linguistics-oxford"}]},
+  {s:"Lan",g:"apply",short:"Lancaster · free online courses",name:"Lancaster University: free online courses in Shakespeare's Language and Corpus Linguistics",mins:600,t:"weeks",th:"Applying",
+   what:"Two FutureLearn courses from Lancaster's linguistics department, Shakespeare's Language and Corpus Linguistics. Free to join; FutureLearn may limit how long free access lasts. No start dates were published when this page was made.",
+   think:"Shakespeare's Language suits Othello. Corpus Linguistics is how university linguists work; do a week of it and you will know whether you want to.",tags:["free to join","online","check dates"],url:"https://lancaster.ac.uk/linguistics/free-online-courses",lt:"Lancaster"}
+];
+
+/* The year as a day book. m = month (YYYY-MM). s links to an item; url is for events with no item. */
+const YEAR = [
+  {m:"2026-10",when:"Thu 15 Oct",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants. Oxford English written work follows on 10 November.",s:"OxA",check:false},
+  {m:"2026-10",when:"31 Oct",what:"Young Walter Scott Prize deadline",sub:"Entries by post. Date from past rounds; check the current terms.",s:"YWS",check:true},
+  {m:"2026-11",when:"Mon 2 Nov",what:"UKLO Advanced entries close",sub:"The school enters you. Tap \"I want to enter\" on the Olympiad card before half term.",s:"UK",check:false,urgent:true},
+  {m:"2026-11",when:"9–13 Nov",what:"UKLO Advanced Round 1",sub:"Sat in school during the week.",s:"UK",check:false},
+  {m:"2026-11",when:"Tue 10 Nov",what:"Oxford English written work due",sub:"Year 13 applicants: one marked essay, up to 2,000 words.",s:"OxA",check:false},
+  {m:"2026-11",when:"Fri 20 and Mon 23 Nov",what:"British Library Young Adult Crime Fiction Fest",sub:"Online, Years 9–13. The department books it.",s:"BLe",check:false},
+  {m:"2026-11",when:"Autumn",what:"Girton Humanities Writing Competition opens",sub:"Five museum objects; essay or creative piece.",s:"Gir",check:true},
+  {m:"2026-12",when:"Mon 7 Dec",what:"UKLO Round 1 results",sub:"The best go on to Round 2 in February.",s:"UK",check:false},
+  {m:"2026-12",when:"December",what:"UNIQ applications open",sub:"English and Linguistics have been among the courses.",s:"Un",check:true},
+  {m:"2027-01",when:"Mid-January",what:"UNIQ applications close",sub:"Last year's closed on 13 January.",s:"Un",check:true},
+  {m:"2027-02",when:"Wed 3 Feb",what:"UKLO Round 2",sub:"For those invited from Round 1.",s:"UK",check:false},
+  {m:"2027-02",when:"Thu 18 Feb, noon",what:"Christopher Tower Poetry Competition closes",sub:"Theme: 'The Deep'. Ages 16–18.",s:"Tow",check:false},
+  {m:"2027-02",when:"February",what:"Trinity posts the Gould Prize questions",sub:"Deadline last year was 31 July.",s:"Tri",check:true},
+  {m:"2027-03",when:"Wed 3 Mar",what:"Orwell Youth Prize: drafts for feedback",sub:"Send a draft and get written feedback before the final deadline.",s:"Orw",check:false},
+  {m:"2027-03",when:"March–April",what:"Thomas Campion Prize deadline",sub:"Two entries per school; the department chooses.",s:"Pet",check:true},
+  {m:"2027-03",when:"About 20 Mar",what:"Girton Humanities Writing Competition closes",sub:"Last year: 5pm, 20 March.",s:"Gir",check:true},
+  {m:"2027-03",when:"March",what:"Queen's Commonwealth Writing Competition opens",sub:"Theme announced then; senior category 14–18.",s:"QCW",check:true},
+  {m:"2027-04",when:"Wed 28 Apr",what:"Orwell Youth Prize final deadline",sub:"Up to 1,500 words; no name on the entry.",s:"Orw",check:false},
+  {m:"2027-04",when:"Late April",what:"Queen's Commonwealth Writing Competition closes",sub:"Last year: 30 April.",s:"QCW",check:true},
+  {m:"2027-07",when:"Early July",what:"Estelle English Prize deadline",sub:"Last year: 5pm, Friday 3 July.",s:"Est",check:true},
+  {m:"2027-07",when:"July",what:"UNIQ residentials",sub:"Summer of Year 12.",s:"Un",check:true},
+  {m:"2027-07",when:"31 Jul",what:"Gould Prize and Foyle Young Poets deadlines",sub:"Both followed this date last year.",s:"Tri",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three items are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three things from the department for this half term. Do them, file them, and write a slip for each.",
+  items:[
+    {s:"Lyi",step:"Watch",txt:"Watch Jamila Lyiscott's '3 ways to speak English' (4 min). Mark each switch of variety and what signals it, then write a slip."},
+    {s:"WoM",step:"Listen",txt:"One episode of Word of Mouth. Note one claim about spoken language that you could test against a spoken text in the anthology."},
+    {s:"UKp",step:"Do",txt:"Try one problem from a UKLO Advanced past paper. If you liked it, tap \"I want to enter\" on the Olympiad card: the school's entries close on 2 November and the paper is sat the week after."}
+  ]
+};
+const COMPILED="2026-10-08";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-ell-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);
+
+/* ---------- state ---------- */
+const KEY_BASE="ell-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",at:"enter",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the slip just filed, for the drop-in animation
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- the wall: how many slips filed ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function filed(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  return {c,t,N,k,pct};
+}
+
+/* ---------- Mr Hapgood talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const F=filed(); const n=F.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `Good afternoon, ${firstName()}. Hapgood, junior assistant. Six bays, ${ITEMS.length} pigeonholes, all of them empty and all of them free. This half term's wanted list is below the wall; start there. One slip per quotation, please, and say where it came from.`;
+  if(!n) return `${firstName()}. The pigeonholes are as you left them, which is to say empty. Three things on the wanted list. One will do for tonight.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${n} slip${n===1?"":"s"} filed, ${F.pct}% of the wall, ${ht} of ${HALFTERM.items.length} on the wanted list. Respectable. Not complete.`;
+  if(F.k<6) return `${firstName()}. Wanted list done; ${n} slips filed. Nothing yet in ${ORDER.filter(g=>!F.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")}. A reader who only reads one kind of book sends in one kind of slip.`;
+  return `${firstName()}. ${n} slips, something in every bay, ${F.pct}% of the wall. That is a reader's record. Keep the slip box going; that is where the useful part is.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const F=filed();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"English Language and Literature",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           wall:{pct:F.pct, bays:F.k},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="ell-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="enter";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="The slip box · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("ell-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the pigeonhole wall (drawn from ITEMS) ---------- */
+const BAY={x0:30,y:66,w:210,gap:14,h:400};
+function bayX(i){ return BAY.x0+i*(BAY.w+BAY.gap); }
+function buildWall(){
+  const t=totals();
+  $("bays").innerHTML=ORDER.map((g,i)=>{
+    const x=bayX(i), y=BAY.y, w=BAY.w, list=ITEMS.filter(it=>it.g===g);
+    const cols=3, rows=Math.ceil(list.length/cols);
+    const ax=x+10, ay=y+52, aw=w-20, ah=270;
+    const hw=(aw-(cols-1)*5)/cols, hh=Math.min(50,(ah-(Math.max(rows,5)-1)*5)/Math.max(rows,5));
+    const holes=list.map((it,k)=>{ const c=k%cols, r=Math.floor(k/cols);
+      const hx=ax+c*(hw+5), hy=ay+r*(hh+5);
+      return `<g class="ph" data-s="${it.s}">
+        <rect class="hole" x="${hx.toFixed(1)}" y="${hy.toFixed(1)}" width="${hw.toFixed(1)}" height="${hh.toFixed(1)}"/>
+        <text class="holecode" x="${(hx+hw/2).toFixed(1)}" y="${(hy+hh-5).toFixed(1)}" text-anchor="middle">${esc(it.s)}</text>
+        <g class="slipg" id="slip-${it.s}"></g>
+        <rect class="holehit" x="${hx.toFixed(1)}" y="${hy.toFixed(1)}" width="${hw.toFixed(1)}" height="${hh.toFixed(1)}" data-s="${it.s}"><title>${esc(it.short)}</title></rect>
+      </g>`; }).join("");
+    const spareN=cols*Math.max(rows,5)-list.length;
+    const spares=Array.from({length:spareN},(_,j)=>{ const k=list.length+j, c=k%cols, r=Math.floor(k/cols);
+      return `<rect class="spare" x="${(ax+c*(hw+5)).toFixed(1)}" y="${(ay+r*(hh+5)).toFixed(1)}" width="${hw.toFixed(1)}" height="${hh.toFixed(1)}"/>`; }).join("");
+    return `<g class="hot" data-g="${g}" data-f="${g}" tabindex="0" role="button" aria-label="Bay ${FAM[g].no}, ${FAM[g].place}: ${FAM[g].label}, ${FAM[g].verb.toLowerCase()}">
+      <rect class="bayframe" x="${x}" y="${y}" width="${w}" height="${BAY.h}" rx="3"/>
+      <rect x="${x+6}" y="${y+6}" width="${w-12}" height="${BAY.h-12}" fill="none" stroke="#7a5534" stroke-width="1" opacity=".6"/>
+      <rect class="lblplate" x="${x+28}" y="${y+14}" width="${w-56}" height="28" rx="2"/>
+      <circle cx="${x+34}" cy="${y+28}" r="2" fill="#5a4318"/><circle cx="${x+w-34}" cy="${y+28}" r="2" fill="#5a4318"/>
+      <text class="lbltxt" x="${x+w/2}" y="${y+33}">${FAM[g].no} · ${FAM[g].label.toUpperCase()}</text>
+      ${spares}${holes}
+      <text class="baysub" x="${x+w/2}" y="${y+BAY.h-48}">${esc(FAM[g].place)}</text>
+      <text class="baycnt" id="cnt-${g}" x="${x+w/2}" y="${y+BAY.h-26}">0 of ${t[g]}</text>
+      <g class="tick-${g}"></g>
+    </g>`;
+  }).join("");
+  $("tableTxt").textContent=`THE SCRIPTORIUM · ${ITEMS.length} PIGEONHOLES · ALL FREE`;
+}
+/* put a slip in each hole that has been done */
+function fillWall(){
+  ITEMS.forEach(it=>{
+    const g=$("slip-"+it.s); if(!g) return;
+    const hole=g.parentNode.querySelector(".hole");
+    const x=+hole.getAttribute("x"), y=+hole.getAttribute("y"), w=+hole.getAttribute("width"), h=+hole.getAttribute("height");
+    if(!state.done[it.s]){ g.innerHTML=""; return; }
+    if(g.childNodes.length) return;
+    const tilt=((it.n*37)%7-3)*.8;
+    g.innerHTML=`<g transform="rotate(${tilt.toFixed(1)} ${(x+w/2).toFixed(1)} ${(y+h/2).toFixed(1)})" class="${JUST===it.s&&!reduceMotion()?"slipin":""}" data-g="${it.g}">
+      <rect class="slip" x="${(x+5).toFixed(1)}" y="${(y-7).toFixed(1)}" width="${(w-10).toFixed(1)}" height="${(h+1).toFixed(1)}"/>
+      <rect class="slipedge" x="${(x+5).toFixed(1)}" y="${(y-7).toFixed(1)}" width="${(w-10).toFixed(1)}" height="4"/>
+      <path d="M${(x+10).toFixed(1)} ${(y+6).toFixed(1)} h${(w-26).toFixed(1)} M${(x+10).toFixed(1)} ${(y+12).toFixed(1)} h${(w-20).toFixed(1)}" stroke="#9c8a68" stroke-width=".8"/>
+      <text class="slipcode" x="${(x+w/2).toFixed(1)}" y="${(y+h-8).toFixed(1)}" text-anchor="middle">${esc(it.s)} ✓</text></g>`;
+  });
+  JUST=null;
+}
+
+/* ---------- item cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", filed":""}${isNew?", new":""}">
+    <span class="no">No. ${String(it.n).padStart(2,"0")} · ${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">Filed</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic">${FAM[g].no}</div><div><span class="nm">${FAM[g].place} · ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} filed</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="WANTED · "+HALFTERM.label.toUpperCase()+" · IF YOU DO NOTHING ELSE";
+  $("htLabel").textContent="Three slips wanted this half term";
+  $("htDue").textContent="by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · filed":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>all</i>Whole wall <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}"><span class="nm"><b>${FAM[x.g].no}</b>${FAM[x.g].place}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const F=filed();
+  $("pctVal").innerHTML=F.pct+"<small>%</small>";
+  $("stack").style.setProperty("--w",F.pct+"%");
+  let w;
+  if(!F.N) w="Every pigeonhole is empty. Each thing you do files a slip in its hole, edged in the colour of its bay.";
+  else if(F.k<6) w=`${F.N} of ${ITEMS.length} filed. ${F.k} of 6 bays started; nothing yet in ${ORDER.filter(g=>!F.c[g]).map(g=>FAM[g].the).join(", ")}.`;
+  else w=`${F.N} of ${ITEMS.length} filed, with something in all six bays.`;
+  $("coverTxt").textContent=w;
+  $("palette").innerHTML=ORDER.map(g=>`<span class="swatch${F.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}: ${F.c[g]} of ${F.t[g]}">${F.c[g]?F.c[g]:FAM[g].no}</span>`).join("");
+  ORDER.forEach(g=>{ const c=$("cnt-"+g); if(c) c.textContent=`${F.c[g]} of ${F.t[g]} filed`; });
+  fillWall();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short.split(" · ")[0].split(" (")[0])}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">Site ↗</a>`:"");
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}${y.urgent?'<span class="urgent">soon</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Read, and write slips.</span>`}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${FAM[it.g].no}</div>
+      <div><div class="fam">${FAM[it.g].place} · ${FAM[it.g].label} · No. ${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Mr Hapgood's note</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Filed ✓ (undo)":"File it: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write a slip</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department registers you; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=filed();
+  if(was) delete state.done[sym]; else { state.done[sym]=true; JUST=sym; }
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const F=filed(); const g=BY[sym].g;
+    if(before.c[g]===0 && F.k>1) say(`First slip in ${FAM[g].the}. ${F.k} of 6 bays now in use. That is a wider reader than most.`);
+    else if(before.c[g]===0) say(`First slip filed: ${BY[sym].short}. Now write it up in the slip box, while you still have the line in your head.`);
+    else if(F.c[g]===F.t[g]) say(`Every hole in ${FAM[g].the} has a slip. I shall have to find you more pigeonholes.`);
+    else say(pick([`Filed. ${F.N} slips; ${F.pct}% of the wall.`,`In the hole it goes. A tick is not a quotation, mind: write the slip.`,`${BY[sym].short}: filed. ${F.N} so far.`,`Another in ${FAM[g].the}. There are bays you have not touched; I keep the dust off them for you.`])); }
+  else say("Taken out again. The hole is empty.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const F=filed();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${F.c[g]?`${F.c[g]} of ${F.t[g]} filed here.`:"Nothing filed here yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const hh=e.target.closest(".holehit"); if(hh){ openSheet(hh.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbHw").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- fetch me one ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left on the wall that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a bay the pupil has not started, two times in three
+  const F=filed(); const fresh=pool.filter(i=>!F.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". One moment.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("fetch"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("fetch");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("fetch");
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, from ${FAM[choice.g].the}.`;
+    say(`This one. ${choice.short}: ${choice.t}, from ${FAM[choice.g].the}.${!F.c[choice.g]?" A bay you have not started.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1700);
+});
+
+/* ---------- the slip box ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function slipHTML(n,i,example){
+  const it=n.s?BY[n.s]:null;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:""}${example?' aria-label="Example slip"':""}>
+      <div class="hw"><b>${esc(n.hw||"(no headword)")}</b><span class="d">${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="src">${esc(n.what)}</div>
+      ${n.quo?`<div class="quo">“${esc(n.quo)}”</div>`:""}
+      <div class="why"><i>why</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>query</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">Throw it out</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("slipCount").textContent=state.notes.length?`${state.notes.length} slip${state.notes.length===1?"":"s"}`:"";
+  if(!state.notes.length){
+    box.innerHTML=slipHTML({hw:"mind-forg'd",what:"William Blake, Songs of Experience, 'London' (Project Gutenberg)",s:"Gut",
+      quo:"In every voice: in every ban, / The mind-forg'd manacles I hear",
+      learned:"Blake's own compound. The chains are made by minds, so what holds London down is ideas people accept as well as laws. He hears them rather than sees them: the oppression is in speech, in every cry and every ban.",
+      q:"Whose minds forged them: the people in power, or the people who wear them?"},0,true)+`<p class="small" style="color:#cbbd9d">Your slip box is empty. Do one thing on the wall, then write the first slip.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>slipHTML(n,i,false)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to throw it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Throw it out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value.trim(),what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; if(!state.done[match.s]) JUST=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbHw","nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbQ").placeholder="";
+  $("copyMsg").textContent="Filed in the slip box.";
+  say(pick(["Into the slip box. That is the part a university reads; the pigeonholes are for me.","Filed. Keep the query line: the next essay starts there.","Good slip. Headword, source, the line itself. The dictionary was built from five million of those."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`English Language and Literature slip box – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${n.hw||""} · ${fmtDate(n.date)}\nFrom: ${n.what}${n.quo?`\nLine: "${n.quo}"`:""}\nWhy it matters: ${n.learned}${n.q?`\nQuery: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} passed, ${notes} notebook ${notes===1?"entry":"entries"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/english.html";
+const TOUR=[
+  {sel:".shed", h:"This is the wall", p:"James Murray's Scriptorium: six bays of pigeonholes, one hole for each of the 61 items. Click a bay and the page goes to its list; click a pigeonhole and that item opens. When a pupil does something, a slip drops into its hole, edged in the colour of the bay."},
+  {sel:"#smallprint", h:"The small print", p:"Each bay is named after part of the dictionary's history: the 1879 Appeal, Trench's papers to the Philological Society, Wright's dialect correspondents, the readers, the shed, the pillar box outside Murray's house. Every claim carries a source and a label: attested, reported or invented."},
+  {sel:".guide", h:"Mr Hapgood", p:"An invented junior assistant, and the page says so. He greets each pupil by name, reacts to what they do and keeps them to the house rule: one slip per quotation, and say where it came from."},
+  {sel:".count-card", h:"Slips filed", p:"Progress is how much of the wall a pupil has filed and how many of the six bays they have started. Eight TED talks and nothing else leaves five bays empty, and Mr Hapgood says so."},
+  {sel:".pick-card", h:"Fetch me one", p:"A pupil says how long they have and Mr Hapgood brings back one thing they have not done, leaning towards bays they have not started."},
+  {sel:".wanted", h:"Wanted this half term", p:"Three things from the department each half term, with a date. This half term: Lyiscott's talk, one Word of Mouth episode, and a UKLO past-paper problem ahead of the Olympiad entry date on 2 November. You change these by editing one block at the top of the file."},
+  {sel:"#zone-read", h:"The items", p:"All 61, one card each, every one tagged to an H474 component. The readers' bay starts with the texts themselves: the Folger plays, the Bodleian First Folio, Johnson's Dictionary, the OED, the Dickinson manuscripts, Gutenberg. A card opens to say what it is, a note on what to do with it, and the link."},
+  {sel:".daybook", h:"The day book", p:"October to July: UKLO entries (2 November) and Round 1, Oxford written work, the Tower Prize (18 February), Orwell drafts and deadline, Campion, Girton, Estelle, Gould, Foyle, UNIQ. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"The slip box", p:"The heart of it. For anything they do, a pupil writes a slip: a headword, where it came from, the line itself copied exactly, why it matters, and the query it leaves. It saves to the department as they write and copies out as text."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, wanted-list completion, how much of the wall they have filed, and every slip they have written. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("ell-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Lyi","WoM","UKp","McW","Cor","Fol"],picks:3,notes:[
+    {hw:"code-switching",what:"Jamila Lyiscott (TED): 3 ways to speak English",quo:"",learned:"She moves between three varieties and each switch is marked by grammar as much as accent (copula deletion in one, standard agreement in another). The switching is the argument: each variety is chosen for an audience.",q:"Is a switch inside one sentence the same thing as a switch between sections?"},
+    {hw:"fingered speech",what:"John McWhorter (TED): Txtng is killing language. JK!!!",quo:"",learned:"Texting has the loose structure of talk, so marking it by the rules of writing misses what it is. The Paxman–Dizzee Rascal interview has the same features: short turns, ellipsis, overlap.",q:"Does a text conversation have turn-taking if replies come hours later?"}],interest:["UK"],last:"2026-10-06"},
+  {name:"Ben Carter",cls:"12A",done:["Lyi","Adi"],picks:1,notes:[
+    {hw:"single story",what:"Chimamanda Ngozi Adichie (TED): The danger of a single story",quo:"",learned:"Jane Eyre tells Bertha's story only through Rochester and Jane. The novel challenges one single story, about plain governesses, while repeating another.",q:""}],interest:[],last:"2026-10-03"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Lyi","WoM","UKp","FF","Fol","EmS","Sty"],picks:3,notes:[
+    {hw:"Moor",what:"Bodleian Library: the First Folio (1623), digital facsimile",quo:"The Tragedie of Othello, the Moore of Venice",learned:"The Folio spells it 'Moore'. My edition modernises to 'Moor' throughout. The spelling does not change the meaning, but the title page shows how the play named him first, before any character speaks.",q:"What else has my edition tidied up that I have been analysing as Shakespeare's choice?"},
+    {hw:"foregrounding",what:"The Nottingham Stylistics Toolkit (University of Nottingham)",quo:"",learned:"Foregrounding is either deviation (breaking a pattern) or parallelism (making an extra one). Most of what I call 'effective language' in essays is one of the two, and naming which is more precise.",q:"Can a whole poem be foregrounded against the rest of the collection?"}],interest:["UK","Pet"],last:"2026-10-05"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["OxA","CamA","Yal","Joh","OED","Tri","Gut"],picks:1,notes:[
+    {hw:"mind-forg'd",what:"William Blake, Songs of Experience, 'London' (Project Gutenberg)",quo:"In every voice: in every ban, / The mind-forg'd manacles I hear",learned:"Blake's compound puts the chains in the mind. He hears them rather than sees them, so the oppression is in speech: every cry, every ban.",q:"Whose minds forged them: the people in power, or the people who wear them?"}],interest:["Tri","Est"],last:"2026-10-06"},
+  {name:"Finn Murphy",cls:"13A",done:["Kay","Col"],picks:0,notes:[],interest:["Tow"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Lyi","Alu","IDEA","Ngr"],picks:1,notes:[
+    {hw:"wireless",what:"Google Books Ngram Viewer",quo:"",learned:"I charted 'radio' against 'wireless' in the British English corpus and then the American one. The lines cross at different points, so the change was not one event. Useful context for any text that uses the older word.",q:"Is the change in speech earlier than the change in print?"}],interest:["Un","Orw"],last:"2026-10-07"},
+  {name:"Harry Singh",cls:"12B",done:["TMB"],picks:0,notes:[],interest:[],last:"2026-10-02"}
+];
+function wOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const pct=Math.round(done.length/ITEMS.length*100);
+  return {pct,k,c}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const thCount={}; rows.forEach(r=>r.done.forEach(s=>{ const t=BY[s]&&BY[s].th; if(t) thCount[t]=(thCount[t]||0)+1; }));
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 on the wanted list</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>prize / summer school interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>slips written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. The Linguistics Olympiad and the Campion Prize go through school, so this is your list.</p>
+        <table class="dt"><tr><th>Prize / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which bays get used</h3><p class="small">Items filed across all pupils, by bay, and by H474 component. Tells you where to point the next half term's wanted list.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Filed</th><th>Wall</th><th>Wanted list</th><th class="hide-m">Slips</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const W=wOf(r.done); const grey=ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].label);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td><span class="dv">${W.pct}%</span> ${ORDER.map(g=>`<span class="sw${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}"></span>`).join("")} <span class="small">${grey.length&&grey.length<6?`not yet: ${grey.join(", ")}`:grey.length===6?"":"all six"}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"slip":"slips"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Slip boxes</h3><p class="small">Each pupil's slips in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.hw||"")}</b> · <span class="small">${esc(n.what)}</span>${n.quo?`<br><i>“${esc(n.quo)}”</i>`:""}<br>Why it matters: ${esc(n.learned)}${n.q?`<br>Query: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",slip:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const sl=e.target.closest("#fbSlip button"); if(sl){ FB.slip=sl.dataset.v; document.querySelectorAll("#fbSlip button").forEach(b=>b.setAttribute("aria-pressed",String(b===sl))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"english-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,look:FB.look,slip:FB.slip,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,slipsN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-ell-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-ell-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.slip=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbSlip button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the English Language and Literature page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nThe look: ${rec.look||"–"}\nThe slip box: ${rec.slip||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to enter, watch, hear, read, do and apply for · six bays of one wall";
+$("tableEyebrow").textContent="Six bays · "+ITEMS.length+" pigeonholes";
+$("foot").innerHTML="Compiled 30 September 2026, additions 8 October 2026 · links checked then · OCR A-level English Language and Literature (EMC), H474: 01 non-fiction and spoken texts, 02 poetry and plays, 03 prose and writing, 04 independent study · free at the point of use unless the card says otherwise<br>Sources for the six bays are in the small print under the wall. Mr Hapgood is invented. The Scriptorium was James Murray's workroom for the Oxford English Dictionary, first at Mill Hill School and from 1885 at 78 Banbury Road, Oxford.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildWall();
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
