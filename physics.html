@@ -143,6 +143,41 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
 }
 @media screen and (max-width:720px){ .hero{grid-template-columns:1fr} .picks{grid-template-columns:1fr} .ev{grid-template-columns:90px 32px 1fr} }
 </style>
+<!-- physics-news-static -->
+<style>
+.pn{display:none}
+@media screen{
+  .pn{display:grid;gap:14px;margin:26px 0 30px;padding:22px 24px 20px;border-radius:10px;background:var(--hero-bg);color:var(--hero-ink)}
+  .pn-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:flex-end;justify-content:space-between}
+  .pn-head h2{font-size:24px;display:flex;align-items:center;gap:10px}
+  .pn-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:#FFB3A6;border:1px solid #FFB3A6;border-radius:3px;padding:1px 7px}
+  .pn-live i{width:7px;height:7px;border-radius:50%;background:#FF5A3C;animation:pnblink 1.2s steps(1) infinite}
+  @keyframes pnblink{0%,55%{opacity:1}56%,100%{opacity:.25}}
+  .pn .eyebrow,.pn-when,.pn-note{color:var(--hero-muted)}
+  .pn-when{font-family:var(--f-mono);font-size:12px}
+  .pn-note{margin:0;font-size:14px;max-width:80ch}
+  .pn-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .pn-card{display:grid;gap:6px;align-content:start;background:#fff;color:var(--ink);border-radius:6px;padding:12px 14px 12px;text-decoration:none;border-top:4px solid var(--lv,#56646F);transition:transform .12s,box-shadow .12s}
+  .pn-card:hover,.pn-card:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(0,0,0,.6)}
+  .pn-card .m{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .pn-card .src{font-family:var(--f-display);font-weight:700;font-size:13px;color:var(--ink)}
+  .pn-card .lv{color:var(--lv);border:1.5px solid var(--lv);border-radius:3px;padding:0 5px;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+  .pn-card b{font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.25}
+  .pn-card .tg{display:flex;flex-wrap:wrap;gap:4px}
+  .pn-card .tg span{font-family:var(--f-mono);font-size:10.5px;background:var(--soft);border-radius:3px;padding:1px 6px;color:var(--muted)}
+  .pn-card .go{font-size:13px;font-weight:600;color:var(--watch)}
+  .pn-filters{display:flex;flex-wrap:wrap;gap:6px}
+  .pn-filters button{font:inherit;font-size:13px;font-family:var(--f-display);font-weight:500;background:transparent;color:var(--hero-ink);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 11px;cursor:pointer}
+  .pn-filters button[aria-pressed="true"]{background:var(--hero-ink);color:var(--hero-bg);border-color:var(--hero-ink)}
+  .pn-filters button b{font-family:var(--f-mono);font-weight:400;font-size:11px;opacity:.7}
+  .pn-more{justify-self:start;font:inherit;font-weight:600;font-size:14px;background:var(--hero-ink);color:var(--hero-bg);border:0;border-radius:6px;padding:8px 16px;cursor:pointer}
+  .pn-foot{margin:0;font-size:12.5px;color:var(--hero-muted)}
+  .pn-foot b{color:var(--hero-ink);font-weight:600}
+  .pn :focus-visible{outline:3px solid #FFB3A6;outline-offset:2px}
+}
+@media screen and (max-width:720px){ .pn{padding:18px 16px} .pn-list{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .pn-live i{animation:none} .pn-card{transition:none} }
+</style>
 </head><body>
 
 <section class="page" style="--h1:25pt">
@@ -164,6 +199,19 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
     <p class="lede">Three picks from the department for this half term. Do them, and write a line in the notebook for each.</p>
     <div class="picks"><div class="pick" data-g="watch"><a href="https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole"><span class="sym">Gz</span></a><div><div class="step">Watch · Ghez</div><p>Watch Andrea Ghez's TED talk on the supermassive black hole (16 min) and write down which equation from the gravitational fields topic she is using.</p></div></div><div class="pick" data-g="do"><a href="https://www.bpho.org.uk/Papers/SPC/"><span class="sym">Bt</span></a><div><div class="step">Past papers · BPhO past papers and Upgrade…</div><p>Do one past Senior Physics Challenge paper (Y12) or Physics Challenge paper (Y13) with the mark scheme beside you.</p></div></div><div class="pick" data-g="watch"><a href="https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/physics-and-astronomy/outreach-and-schools-liaison/outreach-for-secondary-schools/iop-public-lecture-series"><span class="sym">Uo</span></a><div><div class="step">Lecture list · University of Birmingham…</div><p>Go to a free University of Birmingham physics lecture: Tuesday 6 October or Tuesday 3 November, 7.30pm.</p></div></div></div>
   </div>
+
+<!-- physics-news-static -->
+  <section class="pn" id="news" aria-labelledby="pnH">
+    <div class="pn-head">
+      <div><div class="eyebrow">New stories every morning</div><h2 id="pnH">Physics in the news <span class="pn-live"><i></i>LIVE</span></h2></div>
+      <span class="pn-when" id="pnWhen"></span>
+    </div>
+    <p class="pn-note">This week's physics stories from eleven sources, collected automatically every morning. Pick one, read it, and write a line in your lab book: what was found, and the physics behind it. Each story is tagged to the parts of the AQA course it seems to touch; the tags come from keywords, so some will be wrong.</p>
+    <div class="pn-filters" id="pnFilters" role="group" aria-label="Show stories for one part of the course"></div>
+    <div class="pn-list" id="pnList"><p class="pn-note">Loading this week's stories…</p></div>
+    <button type="button" class="pn-more" id="pnMore" hidden>Show more stories</button>
+    <p class="pn-foot" id="pnFoot"></p>
+  </section>
 
   <div class="table-head">
     <h2>The control panel</h2>
@@ -983,6 +1031,42 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
     if(touch) t.addEventListener('click',e=>{ if(!t.classList.contains('open')){ e.preventDefault(); tiles.forEach(x=>x.classList.remove('open')); const r=t.getBoundingClientRect(); t.classList.toggle('flip', r.left+300>innerWidth-16); t.classList.add('open'); } });
   });
   document.addEventListener('click',e=>{ if(!e.target.closest('.tile')) tiles.forEach(x=>x.classList.remove('open')); });
+})();
+</script>
+<!-- physics-news-static -->
+<script>
+(function(){
+  const URL="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/data/physics-news.json";
+  const LV={"way in":["Way in","#0F7A4A"],"magazine":["Magazine","#1F4FD8"],"research":["Research","#D1341B"]};
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  let D=null, th="all", show=6;
+  function list(){ if(th==="all") return D.stories; if(th==="beyond") return D.stories.filter(s=>!s.th.length); return D.stories.filter(s=>s.th.includes(th)); }
+  function card(s){ const lv=LV[s.level]||["","#56646F"];
+    return `<a class="pn-card" href="${esc(s.url)}" target="_blank" rel="noopener" style="--lv:${lv[1]}">
+      <span class="m"><span class="src">${esc(s.src)}</span>${lv[0]?`<span class="lv">${lv[0]}</span>`:""}<span>${esc(day(s.date))}</span></span>
+      <b>${esc(s.title)}</b>
+      <span class="tg">${(s.th.length?s.th:["Beyond the spec"]).map(t=>`<span>${esc(t)}</span>`).join("")}</span>
+      <span class="go">Read the story ↗</span></a>`; }
+  function render(){
+    const counts={}; D.stories.forEach(s=>s.th.forEach(t=>counts[t]=(counts[t]||0)+1));
+    const beyond=D.stories.filter(s=>!s.th.length).length;
+    let h=`<button type="button" data-t="all" aria-pressed="${th==="all"}">All <b>${D.stories.length}</b></button>`;
+    (D.themes||[]).forEach(t=>{ if(counts[t]) h+=`<button type="button" data-t="${esc(t)}" aria-pressed="${th===t}">${esc(t)} <b>${counts[t]}</b></button>`; });
+    if(beyond) h+=`<button type="button" data-t="beyond" aria-pressed="${th==="beyond"}">Beyond the spec <b>${beyond}</b></button>`;
+    $("pnFilters").innerHTML=h;
+    const l=list(); $("pnList").innerHTML=l.slice(0,show).map(card).join("")||'<p class="pn-note">Nothing tagged to this part of the course this week.</p>';
+    $("pnMore").hidden=l.length<=show;
+    try{ $("pnWhen").textContent="Collected "+new Date(D.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+    const src=D.sources||[];
+    $("pnFoot").innerHTML=`Sources: ${src.filter(x=>x.ok).map(x=>esc(x.src)).join(" · ")}. <b>Way in</b>: written for anyone. <b>Magazine</b>: science journalism. <b>Research</b>: written close to the paper, so harder going. The stories are chosen by the sources, not checked by the department. If a site asks you to sign in or pay, pick another story.`;
+  }
+  $("pnFilters").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; th=b.dataset.t; show=6; render(); });
+  $("pnMore").addEventListener("click",()=>{ show+=9; render(); });
+  fetch(URL+"?d="+new Date().toISOString().slice(0,10),{cache:"no-cache"}).then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(j=>{ if(!j||!Array.isArray(j.stories)||!j.stories.length) throw 0; D=j; render(); })
+    .catch(()=>{ $("pnList").innerHTML='<p class="pn-note">The news could not be loaded just now. Everything else on this page works; try again later.</p>'; });
 })();
 </script>
 </body></html>

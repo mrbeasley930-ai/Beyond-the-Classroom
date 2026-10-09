@@ -163,6 +163,17 @@ def main():
             continue
         seen.add(k); seen.add(t)
         uniq.append(h)
+    # newest first, but take turns between sources so one busy feed cannot fill the top of the list
+    queues = {}
+    for h in uniq:
+        queues.setdefault(h["src"], []).append(h)
+    order = sorted(queues, key=lambda k: queues[k][0]["date"], reverse=True)
+    mixed = []
+    while any(queues.values()):
+        for k in order:
+            if queues[k]:
+                mixed.append(queues[k].pop(0))
+    uniq = mixed
     data = {
         "made": now.isoformat(timespec="minutes"),
         "themes": list(THEMES.keys()),
