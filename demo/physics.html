@@ -335,6 +335,49 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
 .nbq{font-family:var(--f-hand);font-size:1.15rem;line-height:1.35;border-left:3px solid var(--do);padding:4px 10px;margin:4px 0}
 @media (max-width:700px){.dt .hide-m{display:none}}
 
+/* ---------- the ticker-timer: physics in the news ---------- */
+.news-hot{cursor:pointer}
+.news-hot .halo{fill:transparent;pointer-events:all;stroke:#fff;stroke-width:0;opacity:0;transition:all .2s}
+.news-hot:hover .halo,.news-hot:focus-visible .halo,.news-hot.lit .halo{stroke:var(--hazard);stroke-width:5;opacity:1}
+.news-hot .lbl{font-family:var(--f-sign);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;fill:#fff;paint-order:stroke;stroke:#1E2430;stroke-width:4px}
+.news-hot .lblbg{fill:#1E2430}
+@keyframes lamp{0%,55%{opacity:1}56%,100%{opacity:.2}}
+.live-lamp{animation:lamp 1.2s steps(1) infinite}
+@keyframes buzz{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+.tt-arm{animation:buzz .12s linear infinite}
+.ticker{display:grid;gap:16px}
+.tk-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;justify-content:space-between}
+.tk-when{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.nfilters{display:flex;flex-wrap:wrap;gap:8px}
+.nchip{font:inherit;font-family:var(--f-sign);font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.88rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid #B9B2A2;background:#FFFDF5;color:var(--ink);padding:5px 10px;border-radius:4px;cursor:pointer;box-shadow:0 2px 0 #CFC7B5}
+.nchip b{font-family:var(--f-mono);font-weight:400;color:var(--muted);font-size:.72rem;letter-spacing:0}
+.nchip[aria-pressed="true"]{background:#1E2430;color:#fff;border-color:#1E2430;box-shadow:none;transform:translateY(1px)}
+.nchip[aria-pressed="true"] b{color:#B9C0CC}
+.tape-list{display:grid;gap:14px}
+.tape{position:relative;background-color:#FFFDF5;padding:24px 22px 16px;box-shadow:0 8px 16px -14px rgba(0,0,0,.6);
+  background-image:radial-gradient(circle,#1E2430 0 2px,transparent 2.5px);background-repeat:repeat-x;background-size:var(--dot,24px) 12px;background-position:10px 6px;
+  clip-path:polygon(0 0,100% 0,98.8% 50%,100% 100%,0 100%,1.2% 50%)}
+.tape.read{background-color:#EAF5EE}
+.tape .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.tape .src{font-family:var(--f-sign);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:.88rem;color:var(--ink)}
+.lvl{border:1.5px solid currentColor;border-radius:3px;padding:0 5px;font-size:.64rem;text-transform:uppercase;letter-spacing:.08em}
+.lvl.way{color:#1B7F52} .lvl.mag{color:#2457C5} .lvl.res{color:#B8322B}
+.tape h3{font-family:var(--f-body);font-weight:600;font-size:1.08rem;line-height:1.3;margin:6px 0 4px;max-width:70ch}
+.tape p.d{margin:0;color:#3B4450;font-size:.93rem;max-width:80ch}
+.tape .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ttag{font-family:var(--f-mono);font-size:.68rem;background:#EFE9DB;border-radius:3px;padding:1px 6px;color:#3B4450}
+.ttag.beyond{background:#E9E2F6}
+.tape .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tape .acts .btn{padding:7px 14px;font-size:.92rem}
+.stamp{position:absolute;right:22px;top:14px;transform:rotate(-7deg);font-family:var(--f-sign);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--do);border:2.5px solid var(--do);border-radius:4px;padding:0 8px;font-size:.9rem;opacity:.85}
+.tw{display:grid;gap:10px;margin-top:12px;padding-top:12px;border-top:1px dashed #CFC7B5}
+.tw .wc{font-family:var(--f-mono);font-size:.74rem;color:var(--enter);min-height:1em}
+.tw-mine{font-family:var(--f-hand);font-size:1.3rem;line-height:1.3;color:#1F4FD8;margin:10px 0 0;max-width:70ch}
+.tw-mine.q{color:var(--muted)}
+.tk-foot{font-size:.84rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin:0}
+@media (prefers-reduced-motion:reduce){.live-lamp,.tt-arm{animation:none}}
+@media (max-width:560px){.tape{padding:24px 16px 14px;clip-path:none}.stamp{top:auto;bottom:14px}.nfilters{gap:6px}.nchip{font-size:.76rem;padding:3px 8px}}
+
 /* ---------- backup to file ---------- */
 .bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
   padding:10px 16px;font-weight:700;font-size:.95rem;text-align:center;color:#fff;background:#B42318;border-bottom:3px solid #7A1A10}
@@ -445,7 +488,7 @@ body.bk-on{padding-bottom:96px}
       <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
     <div class="field"><label>More of…</label>
       <div class="fb-chips" id="fbMore">
-        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="talks">Talks and lectures</button><button type="button" data-v="local">Local events</button><button type="button" data-v="reading">Reading</button><button type="button" data-v="problems">Problem practice</button><button type="button" data-v="placements">Placements</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="talks">Talks and lectures</button><button type="button" data-v="local">Local events</button><button type="button" data-v="reading">Reading</button><button type="button" data-v="problems">Problem practice</button><button type="button" data-v="placements">Placements</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button><button type="button" data-v="news">Physics in the news</button>
       </div></div>
     <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange" class="plain"></textarea></div>
     <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack" class="plain"></textarea></div>
@@ -609,6 +652,22 @@ body.bk-on{padding-bottom:96px}
         <g><rect x="1066" y="92" width="8" height="160" fill="#8C949C"/><rect x="1046" y="248" width="48" height="6" fill="#3B4450"/><rect x="1050" y="92" width="40" height="8" fill="#3B4450"/>
           <g class="pend"><line x1="1070" y1="100" x2="1070" y2="200" stroke="#1E2430" stroke-width="1.5"/><circle cx="1070" cy="206" r="10" fill="#C8392D" stroke="#7A1F1A" stroke-width="2"/></g></g>
         <g transform="translate(392 105) scale(.8)"><g class="tech-wrap"><use href="#technician"/></g></g>
+
+        <g class="news-hot" id="newsHot" tabindex="0" role="button" aria-label="7, In the news: the ticker-timer. This week's physics stories">
+          <rect class="halo" x="900" y="208" width="200" height="186" rx="6"/>
+          <rect x="964" y="226" width="64" height="24" rx="3" fill="#3B4450"/>
+          <rect x="969" y="231" width="30" height="9" rx="1" fill="#1E2430"/>
+          <rect class="tt-arm" x="982" y="214" width="4" height="14" fill="#8C949C"/>
+          <circle class="live-lamp" cx="1016" cy="236" r="4" fill="#C8392D"/>
+          <text x="1016" y="248" text-anchor="middle" font-size="6" font-family="IBM Plex Mono" fill="#F7F3E8">LIVE</text>
+          <path d="M1028 240q16 2 20 10" fill="none" stroke="#C8392D" stroke-width="2"/><path d="M1028 244q12 2 16 6" fill="none" stroke="#1E2430" stroke-width="2"/>
+          <path d="M952 246H1004Q1013 246 1013 256V336Q1013 350 1027 355L1090 378" fill="none" stroke="#C9C2B0" stroke-width="13" stroke-linejoin="round"/>
+          <path d="M952 246H1004Q1013 246 1013 256V336Q1013 350 1027 355L1090 378" fill="none" stroke="#FFFDF5" stroke-width="11" stroke-linejoin="round"/>
+          <g fill="#1E2430"><circle cx="958" cy="246" r="1.5"/><circle cx="968" cy="246" r="1.5"/><circle cx="976" cy="246" r="1.5"/>
+            <circle cx="1013" cy="262" r="1.6"/><circle cx="1013" cy="268" r="1.6"/><circle cx="1013" cy="276" r="1.6"/><circle cx="1013" cy="286" r="1.6"/><circle cx="1013" cy="298" r="1.6"/><circle cx="1013" cy="312" r="1.6"/><circle cx="1013" cy="328" r="1.6"/>
+            <circle cx="1036" cy="358" r="1.6"/><circle cx="1056" cy="365" r="1.6"/><circle cx="1080" cy="374" r="1.6"/></g>
+          <rect class="lblbg" x="906" y="362" width="98" height="24" rx="3"/><text class="lbl" x="955" y="379" text-anchor="middle">7 · News</text>
+        </g>
         <path d="M0 400h1200" stroke="#F2B705" stroke-width="4" stroke-dasharray="30 18" opacity=".7"/>
       </svg>
       <div class="bubble" id="bubble" aria-live="polite"><b>Technician</b><span id="bubbleTxt">…</span></div>
@@ -650,6 +709,19 @@ body.bk-on{padding-bottom:96px}
       </div>
     </div>
   </header>
+
+
+  <section aria-labelledby="newsH" id="news" class="ticker">
+    <div class="sec-head">
+      <span class="station-no">Station 7 · the ticker-timer · new stories every morning</span>
+      <h2 class="sign" id="newsH">Physics in the news</h2>
+      <p class="lede">This week's physics stories from eleven sources, collected automatically every morning: the BBC, The Conversation, Quanta, Physics World, Science News, CERN, ESA, NASA, the American Physical Society's <i>Physics</i> magazine and Phys.org. Read one, open the full story, then press <b>Log it</b> and write two sentences: what was found, and the physics behind it. It saves to the department and goes into your lab book. Each story is tagged to the parts of the AQA course it seems to touch. The tags come from keywords, so some will be wrong; finding a better link to the course is part of the exercise.</p>
+    </div>
+    <div class="tk-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show stories for one part of the course"></div><span class="tk-when" id="newsWhen"></span></div>
+    <div class="tape-list" id="newsList"></div>
+    <div><button type="button" class="btn ghost" id="newsMore" hidden>Show more stories</button></div>
+    <p class="tk-foot" id="newsFoot"></p>
+  </section>
 
   <section aria-labelledby="startH">
     <div class="sec-head">
@@ -727,7 +799,7 @@ body.bk-on{padding-bottom:96px}
   </section>
 
   <footer>
-    Compiled 30 September 2026 by the Physics department. Every link was checked on that date. Everything here is free to you; where a competition has a fee the school pays it. The four books are in the library or on request.
+    Compiled 30 September 2026 by the Physics department. Every link was checked on that date. Everything here is free to you; where a competition has a fee the school pays it. The four books are in the library or on request. The ticker-timer (Station 7) refreshes itself every morning; its stories come from the sources named under it and are not checked by the department.
   </footer>
 </div>
 
@@ -942,7 +1014,7 @@ const ORDER = Object.keys(FAM);
 /* ---------- state ---------- */
 const KEY_BASE="phys-beyond-demo";
 let KEY=KEY_BASE;
-const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",lastVisit:null,savedAt:null});
+const blank=()=>({done:{},notes:[],news:{},interest:{},fam:"all",bucket:"quick",lastVisit:null,savedAt:null});
 let state=blank();
 let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
 
@@ -978,6 +1050,7 @@ function summary(){
            doneN:done.length, total:ITEMS.length, done, fams,
            notesN:state.notes.length, notes:state.notes,
            interest,
+           newsN:Object.keys(state.news||{}).length, news:Object.values(state.news||{}),
            halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
            lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
 }
@@ -1079,7 +1152,7 @@ function renderYear(){
     <div class="what"><b>${esc(y.what)}${y.check?'<span class="check">check</span>':""}</b><span>${esc(y.sub)}</span></div>
     <button type="button" class="open" data-s="${it.s}"><i>${esc(it.s)}</i>Open</button></div>`;}).join("");
 }
-function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();}
 
 /* ---------- detail card ---------- */
 let lastFocus=null, openSym=null;
@@ -1302,6 +1375,7 @@ const BK=(function(){
 /* ---------- guided tour (demo only) ---------- */
 const TOUR=[
   {sel:".room", h:"This is the lab", p:"Every family of things to do is a piece of apparatus: competitions in the trophy cabinet, problems on the whiteboard, talks on the screen, podcasts on the radio, reading on the shelf, placements on the noticeboard. Click any of them and the page takes you there. I talk in the bubble: I greet pupils by name and react to what they do."},
+  {sel:"#news", h:"Physics in the news", p:"Station 7, the ticker-timer, is new since the first version. Every morning the page collects this week's physics stories from eleven sources (BBC, Physics World, Quanta, CERN, ESA, NASA and others) and tags each to the AQA sections it seems to touch. A pupil reads one and writes two sentences: what was found, and the physics behind it. That saves to the department and into their lab book. Nobody has to update it."},
   {sel:".inst[data-label='Experiments logged']", h:"The dial", p:"Every thing a pupil ticks moves the needle, coloured by station. The note under the number tracks the three half-term picks."},
   {sel:".inst[data-label='Ask the technician']", h:"Pick one for me", p:"A pupil says how much time they have and I choose something they have not done yet: a ten-minute talk, an evening's past paper, or a programme that takes weeks. Try it after the tour."},
   {sel:".clip", h:"The clipboard", p:"Three picks from the department each half term, with a wanted-by date. You change these six weeks at a time by editing one block at the top of the file; pupils keep everything they have done."},
@@ -1339,6 +1413,7 @@ addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
 
 /* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE_NEWS={"Amara Okafor": [{"id": "d1", "d": "2026-10-07", "src": "The Conversation", "title": "Nobel physics prize awarded for discovery of ‘ghostly messengers’ from the cosmos", "th": ["Particles & quantum"], "txt": "IceCube uses a cubic kilometre of Antarctic ice to catch the flashes of light made when high-energy neutrinos hit a nucleus. Neutrinos hardly interact with anything, which is why the detector has to be so big and why they can reach us straight from distant galaxies.", "q": "How do they work out which direction the neutrino came from?"}], "Chloe Nguyen": [{"id": "d2", "d": "2026-10-08", "src": "Physics World", "title": "Nuclear clocks finally see the light", "th": ["Waves & light", "Nuclear"], "txt": "Two teams have built clocks that tick on a transition in the thorium-229 nucleus instead of an electron transition in an atom. The energy gap is small enough to reach with an ultraviolet laser, and E = hf gives the frequency they lock on to.", "q": "Why would a nucleus be less disturbed by stray fields than the electrons around it?"}, {"id": "d3", "d": "2026-10-08", "src": "ESA", "title": "Solar Orbiter tracks origin of mysterious magnetic switchbacks", "th": ["Fields", "Astrophysics"], "txt": "The solar wind carries sudden S-shaped kinks in the Sun's magnetic field called switchbacks, and Solar Orbiter has traced where they start. Charged particles spiral along field lines, so knowing the field's shape helps predict space weather.", "q": ""}], "Esha Patel": [{"id": "d4", "d": "2026-10-09", "src": "Physics World", "title": "Fastest star in the Milky Way feels the rotation of our central black hole", "th": ["Further mechanics & thermal", "Fields", "Astrophysics"], "txt": "A star flung out from near the black hole at the centre of the galaxy is moving fast enough that its path carries information about how the black hole spins. It links to gravitational fields: the speed needed to escape depends on GM/r.", "q": "How can a star's path show the spin of something it never touched?"}]};
 const SAMPLE=[
   {name:"Amara Okafor",cls:"12A",done:["Gz","BP","Bm","Is","Cx","PW"],picks:3,notes:[{what:"Andrea Ghez: The hunt for a supermassive black hole",learned:"Kepler's third law gives the mass inside S0-2's orbit: about four million suns.",q:"Why does the orbit precess?"},{what:"BPhO SPC 2025 paper",learned:"Got 3 of the 5 questions out; the capacitor one needed the exponential, not the linear approximation.",q:"When is the linear approximation good enough?"}],interest:["SPC","Ast"],last:"2026-10-05"},
   {name:"Ben Carter",cls:"12A",done:["Gz","SS"],picks:1,notes:[{what:"Sixty Symbols: Planck constant",learned:"h sets the scale where quantum effects show; it is tiny in J s but not in eV s.",q:""}],interest:[],last:"2026-10-02"},
@@ -1351,9 +1426,9 @@ const SAMPLE=[
 ];
 function fmtD(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
 function dashRows(){
-  const rows=SAMPLE.map(p=>({...p,you:false}));
+  const rows=SAMPLE.map(p=>({...p,news:SAMPLE_NEWS[p.name]||[],you:false}));
   if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
-    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,news:Object.values(state.news||{}),interest:Object.keys(state.interest),last:today(),you:true}); }
   return rows;
 }
 function renderDash(){
@@ -1372,6 +1447,7 @@ function renderDash(){
       <div class="tl"><b>${picksDone}</b><span>finished all 3 half-term picks</span></div>
       <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>competition / placement interests</span></div>
       <div class="tl"><b>${nbLines}</b><span>lab book lines written</span></div>
+      <div class="tl"><b>${rows.reduce((a,r)=>a+r.news.length,0)}</b><span>news stories logged</span></div>
     </div>
     <div class="dash-cols">
       <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. This is what you register from.</p>
@@ -1387,6 +1463,8 @@ function renderDash(){
         <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
         <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"line":"lines"}</td>
         <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtD(r.last)}</td></tr>`).join("")}</table></div>
+    <div class="dcard"><h3>Physics in the news</h3><p class="small">Every story a pupil has logged from the ticker-timer, with the two sentences they wrote.</p>
+      <table class="dt"><tr><th>Pupil</th><th>Story</th><th>What they wrote</th></tr>${rows.flatMap(r=>r.news.map(n=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${fmtD(n.d)}</span></td><td><b>${esc(n.title)}</b><br><span class="small">${esc(n.src)} · ${esc((n.th||[]).join(", ")||"Beyond the spec")}</span></td><td>${esc(n.txt)}${n.q?`<br><span class="small">Question: ${esc(n.q)}</span>`:""}</td></tr>`)).join("")||'<tr><td colspan="3">Nothing logged yet.</td></tr>'}</table></div>
     <div class="dcard"><h3>Lab books</h3><p class="small">Each pupil's lab book in full, copyable as text. Three shown here.</p>
       <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.what)}</b><br>Learned: ${esc(n.learned)}${n.q?`<br>Question: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
     <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
@@ -1410,7 +1488,7 @@ $("fbForm").addEventListener("submit",async e=>{
   const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
   const rec={kind:"feedback",page:"physics-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,more:[...FB.more],
     change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
-    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,newsN:newsCount(),interest:Object.keys(state.interest)}:null,
     sent:new Date().toISOString(), ua:navigator.userAgent};
   $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
   const key="sc-phys-feedback::"+name+"::"+rec.sent;
@@ -1425,9 +1503,103 @@ $("fbForm").addEventListener("submit",async e=>{
 (async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;
   const b=$("fbComment"); b.hidden=false; b.addEventListener("click",()=>{ fbShow(false); try{ c.openComposer({element:document.querySelector(".room")}); }catch(e){} }); }catch(e){} })();
 
+/* ---------- the ticker-timer: physics in the news ---------- */
+const NEWS_URL="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/data/physics-news.json";
+const LEVEL={"way in":["way","Way in"],"magazine":["mag","Magazine"],"research":["res","Research"]};
+let NEWS=null, NEWS_ERR=false, newsTh="all", newsShow=10, newsOpen=null;
+function newsCount(){ return Object.keys(state.news||{}).length; }
+function fmtNewsDate(iso){ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } }
+const wordCount=t=>(String(t).trim().match(/\S+/g)||[]).length;
+function newsStory(id){ const s=NEWS&&NEWS.stories.find(x=>x.id===id); if(s) return s;
+  const m=(state.news||{})[id]; return m?{id,src:m.src,title:m.title,url:m.url,th:m.th||[],date:m.d,desc:"",level:""}:null; }
+function newsFiltered(){
+  if(newsTh==="read") return Object.values(state.news||{}).sort((a,b)=>String(b.d).localeCompare(String(a.d))).map(n=>newsStory(n.id)).filter(Boolean);
+  const list=NEWS.stories;
+  if(newsTh==="beyond") return list.filter(s=>!s.th.length);
+  if(newsTh!=="all") return list.filter(s=>s.th.includes(newsTh));
+  return list;
+}
+function tapeHTML(s,i){
+  const mine=(state.news||{})[s.id]; const lv=LEVEL[s.level];
+  const dot=12+((i*4)%32);   // the dots spread out down the list, like the tape behind an accelerating trolley
+  return `<article class="tape${mine?" read":""}" style="--dot:${dot}px" data-nid="${esc(s.id)}">
+    ${mine?'<span class="stamp">Logged</span>':""}
+    <div class="meta"><span class="src">${esc(s.src)}</span>${lv?`<span class="lvl ${lv[0]}">${lv[1]}</span>`:""}<span>${esc(fmtNewsDate(s.date))}</span></div>
+    <h3>${esc(s.title)}</h3>
+    ${s.desc?`<p class="d">${esc(s.desc)}</p>`:""}
+    <div class="tags">${s.th.length?s.th.map(t=>`<span class="ttag">${esc(t)}</span>`).join(""):'<span class="ttag beyond">Beyond the spec</span>'}</div>
+    ${mine&&newsOpen!==s.id?`<p class="tw-mine">${esc(mine.txt)}</p>${mine.q?`<p class="tw-mine q">? ${esc(mine.q)}</p>`:""}`:""}
+    <div class="acts"><a class="btn ghost" href="${esc(s.url)}" target="_blank" rel="noopener">Open the story ↗</a>
+      ${newsOpen===s.id?"":(mine?'<button type="button" class="btn ghost" data-nact="write">Edit what I wrote</button>':'<button type="button" class="btn" data-nact="write">Log it</button>')}</div>
+    ${newsOpen===s.id?`<form class="tw" data-nform="${esc(s.id)}" autocomplete="off">
+      <div class="field"><label for="nw-${esc(s.id)}">Two sentences: what was found, and the physics behind it</label><textarea id="nw-${esc(s.id)}" required>${mine?esc(mine.txt):""}</textarea></div>
+      <div class="field"><label for="nq-${esc(s.id)}">One question it raised (optional)</label><textarea id="nq-${esc(s.id)}">${mine?esc(mine.q||""):""}</textarea></div>
+      <span class="wc" id="nwc-${esc(s.id)}" aria-live="polite"></span>
+      <div class="acts"><button class="btn big" type="submit">Log it</button><button type="button" class="btn ghost" data-nact="cancel">Cancel</button></div>
+    </form>`:""}
+  </article>`;
+}
+function renderNews(){
+  const box=$("newsList"); if(!box) return;
+  if(!NEWS){ $("newsFilters").innerHTML=""; $("newsMore").hidden=true;
+    box.innerHTML=`<p class="small">${NEWS_ERR?"The ticker-timer could not reach this week's stories. Everything else in the lab works; try again later.":"Warming up the ticker-timer…"}</p>`; return; }
+  const counts={}; NEWS.stories.forEach(s=>s.th.forEach(t=>counts[t]=(counts[t]||0)+1));
+  const beyond=NEWS.stories.filter(s=>!s.th.length).length;
+  let h=`<button type="button" class="nchip" data-nt="all" aria-pressed="${newsTh==="all"}">All stories <b>${NEWS.stories.length}</b></button>`;
+  (NEWS.themes||[]).forEach(t=>{ if(counts[t]) h+=`<button type="button" class="nchip" data-nt="${esc(t)}" aria-pressed="${newsTh===t}">${esc(t)} <b>${counts[t]}</b></button>`; });
+  if(beyond) h+=`<button type="button" class="nchip" data-nt="beyond" aria-pressed="${newsTh==="beyond"}">Beyond the spec <b>${beyond}</b></button>`;
+  h+=`<button type="button" class="nchip" data-nt="read" aria-pressed="${newsTh==="read"}">Logged by you <b>${newsCount()}</b></button>`;
+  $("newsFilters").innerHTML=h;
+  try{ $("newsWhen").textContent="Collected "+new Date(NEWS.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+  const list=newsFiltered();
+  box.innerHTML=list.length?list.slice(0,newsShow).map(tapeHTML).join(""):`<p class="small">${newsTh==="read"?"Nothing logged yet. Pick a story and press Log it.":"Nothing tagged to this part of the course this week. Try All stories."}</p>`;
+  $("newsMore").hidden=list.length<=newsShow;
+  const src=NEWS.sources||[]; const ok=src.filter(x=>x.ok).length;
+  $("newsFoot").innerHTML=`Sources (${ok} of ${src.length} answered this morning): ${src.map(x=>esc(x.src)+(x.ok?"":" (no answer today)")).join(" · ")}. <b>Way in</b>: written for anyone. <b>Magazine</b>: science journalism. <b>Research</b>: written close to the paper, so harder going, and nearest to what physicists read. The stories are chosen by the sources, not checked by the department. If a site asks you to sign in or pay, pick another story.`;
+}
+async function loadNews(){
+  try{ const r=await fetch(NEWS_URL+"?d="+today(),{cache:"no-cache"}); if(!r.ok) throw 0;
+    const j=await r.json(); if(!j||!Array.isArray(j.stories)) throw 0; NEWS=j; }catch(e){ NEWS_ERR=true; }
+  renderNews();
+}
+function goNews(){
+  const el=$("news"); if(!el) return;
+  el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  const hot=$("newsHot"); hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200);
+  const n=newsCount();
+  say(NEWS?`Station 7, the ticker-timer: ${NEWS.stories.length} physics stories from this week. ${n?`You have logged ${n}.`:"Read one and log it."}`:"Station 7, the ticker-timer: this week's physics news.", 9000);
+}
+$("newsHot").addEventListener("click",goNews);
+$("newsHot").addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); goNews(); } });
+$("newsFilters").addEventListener("click",e=>{ const b=e.target.closest(".nchip"); if(!b) return; newsTh=b.dataset.nt; newsShow=10; newsOpen=null; renderNews(); });
+$("newsMore").addEventListener("click",()=>{ newsShow+=10; renderNews(); });
+$("newsList").addEventListener("click",e=>{
+  const b=e.target.closest("[data-nact]"); if(!b) return;
+  const id=b.closest(".tape").dataset.nid;
+  if(b.dataset.nact==="cancel"){ newsOpen=null; renderNews(); return; }
+  newsOpen=id; renderNews(); const t=$("nw-"+id); if(t) t.focus();
+  say(pick(["What did they find, and which bit of the course explains it? Two sentences.","Say what was measured or seen, then name the physics: a law, an equation, a topic.","If you can name the equation it uses, you have understood it."]), 9000);
+});
+$("newsList").addEventListener("submit",e=>{
+  const f=e.target.closest("form[data-nform]"); if(!f) return; e.preventDefault();
+  const id=f.dataset.nform, s=newsStory(id); if(!s) return;
+  const txt=$("nw-"+id).value.trim(), q=$("nq-"+id).value.trim();
+  if(wordCount(txt)<15){ $("nwc-"+id).textContent="A little more: at least 15 words, so it says what was found and the physics behind it."; return; }
+  if(!state.news) state.news={};
+  const was=state.news[id];
+  state.news[id]={id,d:was?was.d:today(),src:s.src,title:s.title,url:s.url,th:s.th||[],txt,q};
+  const k=state.notes.findIndex(n=>n.news===id);
+  if(k>=0){ state.notes[k].learned=txt; state.notes[k].q=q; }
+  else state.notes.unshift({date:today(),what:"In the news: "+s.title+" ("+s.src+")",learned:txt,q,news:id});
+  newsOpen=null; save(); renderNews(); renderNotes();
+  const n=newsCount();
+  say(was?"Updated, here and in your lab book.":pick([`Logged, and it is in your lab book. ${n} ${n===1?"story":"stories"} so far.`,"Good. That is the answer to “What have you read recently?” at an interview.",`Logged. ${n} on the ticker-timer now.`]), 9000);
+});
+
 /* ---------- init ---------- */
 $("strap").textContent=ITEMS.length+" things to watch, solve, read and enter · all free to you";
 $("nbDate").value=today();
+loadNews();
 $("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
 $("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
 (function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
