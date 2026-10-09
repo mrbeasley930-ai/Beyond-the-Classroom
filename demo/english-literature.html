@@ -1,0 +1,1678 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Literature Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Saira+Stencil+One&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE LIGHTHOUSE — English Literature, Beyond the Classroom
+   A lighthouse at night. Six floors from the store room up to the lantern,
+   one floor per family. Each thing a pupil does lights a window on its
+   floor; the beam reaches further out to sea as the light grows.
+   The keeper's log is the notebook. The keeper is invented.
+   ====================================================================== */
+:root{
+  --night:#0d1726; --night2:#14213a; --sea:#0f2a3d; --sea2:#123850; --stone:#d9d3c4; --stone2:#b9b19e; --band:#a8322b;
+  --paper:#f4efe2; --paper2:#e8e0cb; --ink:#13202f; --ink2:#44505e; --faded:#7d8794; --rule:#c9bfa6;
+  --lamp:#ffd77a; --lamp2:#f4b942; --brass:#c9a24f; --brass2:#8e6d28;
+  --read:#b5772a;    /* 1 the store room — lamp oil */
+  --listen:#3f8f63;  /* 2 the fog-signal room — green */
+  --do:#7e62b0;      /* 3 the workshop — violet */
+  --watch:#3a78ae;   /* 4 the watch room — blue */
+  --enter:#c8452f;   /* 5 the gallery — red, like the band on the tower */
+  --apply:#d9a21b;   /* 6 the lantern — lamp gold */
+  --f-text:"Spectral",Georgia,"Times New Roman",serif;
+  --f-sten:"Saira Stencil One","Arial Narrow",Impact,sans-serif;
+  --f-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --f-mono:ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--f-text);font-size:1.05rem;line-height:1.55;
+  background-image:radial-gradient(ellipse at 75% -10%,rgba(255,215,122,.10),transparent 50%),linear-gradient(180deg,#0b1422 0,#0d1726 40%,#0f1d30 100%);}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:400;line-height:1.12}
+.sten{font-family:var(--f-sten);letter-spacing:.06em;text-transform:uppercase}
+.eyebrow{font-family:var(--f-sten);font-size:.85rem;letter-spacing:.12em;color:var(--lamp2);text-transform:uppercase}
+.small{font-size:.9rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-sten);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lamp);border:1px solid rgba(255,215,122,.5);padding:3px 12px;border-radius:2px;background:rgba(0,0,0,.25)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--lamp);display:inline-block;box-shadow:0 0 8px var(--lamp)}
+.paper .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.paper .badge i{background:var(--band);box-shadow:none}
+.btn{font:inherit;font-size:1rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:9px 18px;cursor:pointer;border-radius:3px}
+.btn:hover{background:#000}
+.btn.big{font-size:1.1rem;padding:12px 22px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--g,var(--ink));color:#fff}
+.btn.lamp{background:var(--lamp2);border-color:#a8781a;color:var(--ink)}
+.btn.lamp:hover{background:var(--lamp)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--lamp);outline-offset:2px}
+.field{display:grid;gap:3px}
+.field label{font-family:var(--f-sten);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field textarea{font:inherit;font-size:1.05rem;background:rgba(255,255,255,.6);border:0;border-bottom:1.5px solid var(--ink);padding:7px 6px;color:var(--ink);width:100%;border-radius:0}
+.field textarea{min-height:78px;resize:vertical;line-height:1.45}
+.field .hand{font-family:var(--f-hand);font-size:1.3rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#8a1d1d;min-height:1.3em;font-size:.95rem}
+.wrap{max-width:1260px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.wrap>*{min-width:0}
+.paper{background:var(--paper);color:var(--ink);background-image:radial-gradient(ellipse at 0 0,rgba(255,255,255,.55),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(120,100,60,.10),transparent 55%)}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(780px,100%);border-top:10px solid var(--band);padding:30px 34px;display:grid;gap:16px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px #000;position:relative;border-radius:2px}
+.gate-card h1{font-size:clamp(2.6rem,6.4vw,4.3rem);font-family:var(--f-sten);letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.gate-card h1 em{display:block;font-family:var(--f-text);text-transform:none;letter-spacing:0;font-size:.36em;font-style:italic;color:var(--ink2);margin-top:8px;line-height:1.3}
+.gate-card p{margin:0}
+.gate-guide{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.gate-guide svg{width:120px;height:auto}
+.gate-card .lightchar{position:absolute;right:20px;top:-26px;background:var(--ink);color:var(--lamp);padding:4px 10px;font-family:var(--f-sten);font-size:.8rem;letter-spacing:.1em}
+@media (max-width:560px){.gate-guide{grid-template-columns:1fr;justify-items:center}.two{grid-template-columns:1fr}.gate-card{padding:26px 20px}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid rgba(255,215,122,.35);padding-bottom:14px}
+.top h1{font-family:var(--f-sten);font-size:clamp(2.4rem,5.4vw,3.8rem);letter-spacing:.04em;text-transform:uppercase;color:var(--paper);line-height:1}
+.top h1 span{display:block;font-family:var(--f-text);text-transform:none;letter-spacing:0;font-size:1.02rem;font-style:italic;color:#b8c2cf;margin-top:8px}
+.strap{font-size:.98rem;color:#b8c2cf;margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:.95rem}
+.who button{font:inherit;font-size:.86rem;background:none;border:0;color:#b8c2cf;text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-sten);font-size:.75rem;letter-spacing:.08em;color:var(--faded)}
+.saved.ok{color:#8fd3a5}.saved.bad{color:#ff9d8a}
+
+/* ---------- the lighthouse ---------- */
+.scene{position:relative;border:1px solid #000;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.5);background:#08111e}
+.scene svg.view{display:block;width:100%;height:auto}
+.scene .hot{cursor:pointer}
+.scene .hot .floor{stroke:#0b1422;stroke-width:1.5}
+.scene .hot:hover .floor,.scene .hot:focus-visible .floor{stroke:var(--lamp);stroke-width:3}
+.scene .hot.lit .floor{stroke:var(--g);stroke-width:4}
+.scene .plate{fill:#0b1422;stroke:var(--g);stroke-width:1.5}
+.scene .hot:hover .plate,.scene .hot:focus-visible .plate{fill:#13243d}
+.scene .platetxt{font-family:var(--f-sten);font-size:15px;letter-spacing:1.5px;fill:var(--paper)}
+.scene .platesub{font-family:var(--f-text);font-style:italic;font-size:13px;fill:#b8c2cf}
+.scene .platecnt{font-family:var(--f-sten);font-size:12px;letter-spacing:1px;fill:var(--g)}
+.scene .leader{stroke:var(--g);stroke-width:1.2;stroke-dasharray:3 3;opacity:.8}
+.scene .pane{fill:#1b2533;stroke:#5c6878;stroke-width:1}
+.scene .pane.on{fill:var(--g);stroke:#fff6d8;stroke-width:1.2;filter:url(#glow)}
+.scene .panehit{fill:transparent;cursor:pointer}
+.scene .panehit:hover{fill:rgba(255,215,122,.28)}
+.scene .beam{transition:opacity .8s ease}
+.scene .rangetxt{font-family:var(--f-sten);font-size:12px;letter-spacing:1px;fill:#93a4b8}
+.scene .shoretxt{font-family:var(--f-sten);font-size:13px;letter-spacing:1.5px;fill:#c9d3df}
+.scene .chartxt{font-family:var(--f-sten);font-size:16px;letter-spacing:2px;fill:var(--lamp)}
+.scene .chartsub{font-family:var(--f-text);font-style:italic;font-size:13px;fill:#b8c2cf}
+.panein{animation:panein .7s ease-out}
+@keyframes panein{0%{opacity:.2}40%{opacity:1;transform:scale(1.4)}100%{transform:none}}
+.sweep{transform-origin:450px 132px;animation:sweep 9s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.twinkle{animation:tw 4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.35}}
+.waves path{animation:wv 7s ease-in-out infinite alternate}
+@keyframes wv{to{transform:translateX(-26px)}}
+@media (prefers-reduced-motion:reduce){.panein,.sweep,.twinkle,.waves path{animation:none}}
+@media (max-width:760px){.scene{overflow-x:auto;-webkit-overflow-scrolling:touch}.scene svg.view{min-width:920px}.scene-key .swipe{display:inline}}
+.scene-key .swipe{display:none;color:var(--lamp)}
+.scene-key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px;background:var(--night2);border:1px solid #000;border-top:0;font-size:.88rem;color:#b8c2cf}
+.scene-key b{color:var(--paper);font-weight:400}
+
+/* small print */
+.smallprint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #000;border-top:0}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.86rem;line-height:1.42;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-size:1rem;color:var(--ink);font-style:italic}
+.sp .nm b{font-style:normal;color:var(--g);font-family:var(--f-sten);font-size:.85rem;margin-right:6px;letter-spacing:.06em}
+.sp.wide{grid-column:1/-1;border-right:0;background:rgba(0,0,0,.03)}
+.st{display:inline-block;font-family:var(--f-sten);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:0 6px;border-radius:2px;margin-right:3px;white-space:nowrap}
+.st.att{color:#2b6a3f}.st.rep{color:#8a5a12}.st.leg{color:#8a1d1d}.st.inv{color:#4a4a8a}
+@media (max-width:900px){.smallprint{grid-template-columns:1fr 1fr}.sp:nth-child(3n){border-right:1px solid var(--rule)}.sp:nth-child(2n){border-right:0}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}.sp{border-right:0!important}}
+
+/* ---------- keeper + range + climb ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+.guide{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;align-items:end}
+.guide-img{width:170px;height:auto;transform-origin:50% 100%}
+.guide-img.climb{animation:climb 1.7s ease-in-out}
+@keyframes climb{0%{transform:none}30%{transform:translateY(-26px) scale(.9);opacity:.4}55%{transform:translateY(-40px) scale(.8);opacity:0}75%{transform:translateY(-14px) scale(.95);opacity:.6}100%{transform:none;opacity:1}}
+.bubble{position:relative;border-left:6px solid var(--band);padding:16px 18px;border-radius:2px;min-height:118px;display:grid;align-content:start;gap:6px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+.bubble .nm{font-family:var(--f-sten);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.bubble #bubbleTxt{font-size:1.1rem;line-height:1.42}
+.side{display:grid;gap:16px}
+.card{padding:18px 20px;display:grid;gap:12px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-top:5px solid var(--ink)}
+.card h2{font-family:var(--f-sten);font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase}
+.count{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.count .pct{font-family:var(--f-sten);font-size:2.8rem;line-height:1}
+.count .pct small{font-size:1rem;color:var(--ink2);letter-spacing:.06em}
+.rangebar{position:relative;height:22px;border:1px solid var(--ink);background:linear-gradient(90deg,#0f2a3d,#123850);overflow:hidden}
+.rangebar i{position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:linear-gradient(90deg,rgba(255,215,122,.95),rgba(255,215,122,.2));transition:width .8s ease}
+.rangebar b{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.35)}
+.floors{display:flex;gap:6px;flex-wrap:wrap}
+.swatch{width:32px;height:32px;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--f-sten);font-size:.9rem;color:var(--faded);background:transparent;border-radius:50%}
+.swatch.got{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 0 10px var(--g)}
+.charline{font-family:var(--f-sten);letter-spacing:.08em;font-size:.9rem;color:var(--ink)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:3px;overflow:hidden}
+.seg button{font:inherit;font-size:.95rem;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:8px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.guide{grid-template-columns:1fr;justify-items:center}}
+
+/* ---------- orders for the watch (half term) ---------- */
+.orders{padding:22px 24px;display:grid;gap:10px;position:relative;border-top:10px solid var(--band);box-shadow:10px 12px 0 rgba(0,0,0,.45)}
+.orders .rubric{font-family:var(--f-sten);font-size:.85rem;letter-spacing:.2em;text-align:center;color:var(--ink2);border-bottom:1px solid var(--ink);padding-bottom:6px}
+.orders h2{font-size:1.9rem;text-align:center}
+.orders .due{font-family:var(--f-sten);text-align:center;color:var(--enter);letter-spacing:.08em}
+.orders .lede{margin:0;color:var(--ink2);text-align:center}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:6px}
+.leg{border-top:3px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:28px;height:28px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-sten);font-size:.95rem;border-radius:50%}
+.leg.done .lno{background:var(--g);color:#fff}
+.leg .step{font-family:var(--f-sten);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- floors and cards ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-size:2rem;color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:.92rem;border:1px solid rgba(255,215,122,.4);background:rgba(0,0,0,.25);color:var(--paper);padding:5px 12px;cursor:pointer;border-radius:20px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-family:var(--f-sten);font-size:.85rem;color:var(--g,var(--lamp))}
+.chip b{font-weight:400;color:#b8c2cf;font-size:.8rem}
+.chip[aria-pressed="true"]{background:var(--lamp);color:var(--ink);border-color:var(--lamp)}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:var(--ink)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:14px;padding:18px 20px;border-left:8px solid var(--g);box-shadow:6px 6px 0 rgba(0,0,0,.4)}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.zone-head .ic{width:46px;height:46px;border-radius:50%;background:var(--g);display:grid;place-items:center;color:#fff;font-family:var(--f-sten);font-size:1.2rem;box-shadow:0 0 12px var(--g)}
+.zone-head .nm{display:block;font-size:1.5rem;font-style:italic}
+.zone-head .def{display:block;font-size:.95rem;color:var(--ink2)}
+.zone-head .n{font-family:var(--f-sten);font-size:.85rem;letter-spacing:.08em;color:var(--g)}
+.zone.flash{animation:flash 2.2s ease}
+@keyframes flash{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.4)}20%{box-shadow:0 0 0 4px var(--g),6px 6px 0 rgba(0,0,0,.4)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:#fffcf3;border:1px solid #b9b19e;border-top:4px solid var(--g);padding:10px 13px 12px;cursor:pointer;display:grid;gap:3px;align-content:start;min-height:112px;border-radius:2px;color:var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.12)}
+.rec:hover{background:#fff;transform:translateY(-1px)}
+.rec .no{font-family:var(--f-sten);font-size:.72rem;letter-spacing:.08em;color:var(--g)}
+.rec .nm{font-size:1.04rem;line-height:1.25}
+.rec .t{font-size:.84rem;color:var(--ink2);font-style:italic}
+.rec .th{font-family:var(--f-sten);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faded)}
+.rec .stamp{position:absolute;right:8px;top:6px;font-family:var(--f-sten);font-size:.7rem;letter-spacing:.12em;color:#fff;background:var(--g);padding:1px 7px;border-radius:10px;display:none;box-shadow:0 0 8px var(--g)}
+.rec.done{background:var(--paper2)}
+.rec.done .stamp{display:block}
+.rec.new:before{content:"new";position:absolute;right:8px;bottom:8px;font-family:var(--f-sten);font-size:.68rem;letter-spacing:.1em;color:#fff;background:var(--enter);padding:0 6px}
+.rec.flash{animation:recflash 3s ease}
+@keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--lamp)}}
+
+/* ---------- notices to mariners (year) ---------- */
+.notices{border:1px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.4)}
+.atop{padding:18px 22px;border-bottom:1px solid var(--ink);display:grid;gap:4px}
+.atop h2{font-size:2rem}
+.atop .sub{font-family:var(--f-sten);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.month{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-size:1.25rem;font-style:italic;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.month .mh small{font-family:var(--f-sten);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-style:normal}
+.month.quiet .mh{color:var(--faded)}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.95rem}
+.ev .when{font-family:var(--f-sten);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid #8a5a12;color:#8a5a12;font-size:.68rem;padding:0 5px;letter-spacing:.08em}
+.ev .urgent{border:1px solid var(--enter);background:var(--enter);color:#fff;font-size:.68rem;padding:0 5px;letter-spacing:.08em}
+.ev b{font-weight:600}
+.ev .sub{display:block;color:var(--ink2);font-size:.9rem}
+.ev .in{display:block;color:#2b6a3f;font-size:.8rem;font-family:var(--f-sten);letter-spacing:.06em}
+.ev .open{justify-self:start;font:inherit;font-size:.88rem;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:var(--faded);font-size:.92rem}
+
+/* ---------- the keeper's log ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px;align-items:start}
+.cover-side{padding:22px 24px;display:grid;gap:14px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-top:10px solid var(--ink)}
+.cover-side h2{font-size:1.8rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-sten);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem}
+.entries{display:grid;gap:16px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:#b8c2cf}
+.entries-h h3{font-size:1.4rem;color:var(--paper)}
+.note{position:relative;background:#fbf8ee;color:var(--ink);border:1px solid #b9b19e;padding:12px 18px 14px 58px;display:grid;gap:6px;box-shadow:3px 4px 0 rgba(0,0,0,.4);
+  background-image:linear-gradient(90deg,transparent 46px,rgba(200,69,47,.5) 46px,rgba(200,69,47,.5) 47px,transparent 47px),repeating-linear-gradient(transparent 0 29px,rgba(58,120,174,.18) 29px 30px)}
+.note .watchno{position:absolute;left:8px;top:12px;width:32px;font-family:var(--f-sten);font-size:.7rem;letter-spacing:.06em;color:var(--ink2);text-align:center;line-height:1.2}
+.note .hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.note .hd b{font-family:var(--f-hand);font-size:1.55rem;font-weight:700;line-height:1.05}
+.note .hd .d{font-family:var(--f-hand);font-size:1.1rem;color:var(--ink2);white-space:nowrap}
+.note .src{font-family:var(--f-hand);font-size:1.15rem;color:var(--ink2);line-height:1.2}
+.note .quo{font-family:var(--f-hand);font-size:1.3rem;line-height:1.25}
+.note .why{font-size:.98rem;line-height:1.45}
+.note .why i,.note .qy i{font-family:var(--f-sten);font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g,var(--ink2));margin-right:6px}
+.note .qy{font-size:.95rem;color:var(--ink2)}
+.note[data-g]{border-left:6px solid var(--g)}
+.note.example{opacity:.88;border-style:dashed}
+.note .del{justify-self:start;font:inherit;font-size:.85rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#8a1d1d}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(5,10,18,.65);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(570px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.45)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:20px 22px 14px;border-bottom:4px solid var(--g)}
+.sheet-top .plate-ic{width:44px;height:44px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-family:var(--f-sten);font-size:1.1rem}
+.sheet-top .fam{font-family:var(--f-sten);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-size:1.5rem}
+.x{font:inherit;font-size:1.7rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-sten);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:3px}
+.sheet-body p{margin:0}
+.think{border-left:3px solid var(--g);padding:6px 14px;font-style:italic;font-size:1.05rem;background:rgba(0,0,0,.03)}
+.think b{display:block;font-style:normal;font-family:var(--f-sten);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:3px;font-weight:400}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-sten);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);padding:1px 8px;color:var(--ink2);border-radius:2px}
+.tags span.th{border-color:var(--g);color:var(--g)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-size:.84rem;color:#93a0b0;border-top:1px solid rgba(255,215,122,.3);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-size:1rem;border:1px solid var(--ink);padding:11px 18px;cursor:pointer;background:var(--ink);color:var(--paper);border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(540px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.82rem;border:1px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.dept{background:var(--paper);color:var(--ink);border:1px solid #000;border-left:6px solid var(--band);padding:20px 22px;display:grid;gap:10px}
+.dept h2{font-size:1.7rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+.intro .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.intro .badge i{background:var(--ink2)}
+.fb-fab{background:var(--lamp2);color:var(--ink);border-color:#a8781a}
+.fb .badge,.dept .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--paper2);
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.7),transparent 50%),radial-gradient(ellipse at 90% 100%,rgba(120,90,40,.14),transparent 50%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(820px,100%);background:rgba(255,255,255,.6);color:var(--ink);border:1px solid var(--ink);box-shadow:0 1px 0 var(--ink), 8px 8px 0 var(--rule);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:28px 30px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(5,10,18,.7);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--lamp);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(620px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.25);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:70px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-size:1.4rem;margin:2px 0 4px;font-weight:500}
+.tour-card p{margin:0;font-size:1rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:var(--paper);margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:var(--paper2)}
+.dash-top .badge{color:var(--paper);border-color:var(--paper)}.dash-top .badge i{background:var(--paper)}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:12px 14px;display:grid;gap:2px}
+.tl b{font-size:2rem;line-height:1;font-weight:500}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-size:1.3rem;font-weight:500}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--rule);vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 7px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.62rem;background:var(--ink);color:var(--paper);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-size:1rem;line-height:1.4;border-left:3px solid var(--ink);padding:4px 10px;margin:6px 0}
+.dv{font-size:1.1rem}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--ink);margin-right:2px;vertical-align:middle;background:transparent}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The keeper, drawn once and reused: an invented keeper in a navy jumper and cap, holding a storm lantern -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="lanternGlow"><stop offset="0" stop-color="#ffd77a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/></radialGradient>
+    <symbol id="keeper" viewBox="0 0 200 270">
+      <ellipse cx="100" cy="263" rx="62" ry="6" fill="#000" opacity=".3"/>
+      <!-- boots and trousers -->
+      <path d="M76 176 L72 252 L92 252 L98 180 Z" fill="#2b3442"/>
+      <path d="M104 180 L110 252 L130 252 L126 176 Z" fill="#2b3442"/>
+      <path d="M64 248 h30 v10 h-34 q0 -7 4 -10z M108 248 h30 q6 3 6 10 h-36z" fill="#121820"/>
+      <!-- jumper: navy, ribbed -->
+      <path d="M60 96 q40 -18 80 0 l8 86 h-96 z" fill="#1f3354"/>
+      <path d="M64 170 h72" stroke="#16263f" stroke-width="10"/>
+      <path d="M74 110 v60 M86 106 v64 M98 104 v66 M110 104 v66 M122 106 v64" stroke="#2a426a" stroke-width="2" opacity=".7"/>
+      <!-- left arm down, hand in pocket -->
+      <path d="M60 98 q-16 30 -12 74 l15 1 q0 -36 9 -62 z" fill="#1f3354"/>
+      <circle cx="56" cy="176" r="8" fill="#e2b896"/>
+      <!-- right arm out, holding a storm lantern -->
+      <path d="M140 98 q18 22 24 62 l-14 4 q-6 -30 -18 -48 z" fill="#1f3354"/>
+      <circle cx="158" cy="166" r="8" fill="#e2b896"/>
+      <circle cx="160" cy="200" r="34" fill="url(#lanternGlow)"/>
+      <path d="M150 172 q10 -10 20 0" stroke="#3a3a3a" stroke-width="2" fill="none"/>
+      <rect x="149" y="176" width="22" height="6" rx="1" fill="#3a3a3a"/>
+      <rect x="151" y="182" width="18" height="24" rx="3" fill="#ffe7a6" stroke="#3a3a3a" stroke-width="2"/>
+      <path d="M160 186 q-4 8 0 14 q4 -6 0 -14z" fill="#f4a522"/>
+      <rect x="148" y="206" width="24" height="6" rx="1" fill="#3a3a3a"/>
+      <!-- roll neck -->
+      <path d="M82 84 q18 10 36 0 v12 q-18 8 -36 0z" fill="#16263f"/>
+      <!-- head -->
+      <rect x="92" y="70" width="16" height="14" fill="#e2b896"/>
+      <ellipse cx="100" cy="52" rx="24" ry="26" fill="#e2b896"/>
+      <!-- grey hair under the cap, bun behind -->
+      <path d="M76 52 q-4 18 6 26 l4 -4 q-6 -10 -4 -22z M124 52 q4 18 -6 26 l-4 -4 q6 -10 4 -22z" fill="#b8b6b0"/>
+      <circle cx="80" cy="64" r="7" fill="#b8b6b0"/>
+      <!-- peaked cap with a red band -->
+      <path d="M74 40 q26 -22 52 0 v6 h-52z" fill="#13202f"/>
+      <rect x="74" y="42" width="52" height="6" fill="#a8322b"/>
+      <path d="M70 48 q30 8 60 0 l4 4 q-34 10 -68 0z" fill="#0b131d"/>
+      <circle cx="100" cy="36" r="3" fill="#c9a24f"/>
+      <!-- face: steady, lined -->
+      <ellipse cx="91" cy="58" rx="2.4" ry="2.2" fill="#1b1612"/><ellipse cx="109" cy="58" rx="2.4" ry="2.2" fill="#1b1612"/>
+      <path d="M85 53 q6 -2 10 0 M105 53 q6 -2 10 0" stroke="#7c6d5d" stroke-width="1.6" fill="none"/>
+      <path d="M83 60 q-2 2 -4 1 M117 60 q2 2 4 1" stroke="#b98d66" stroke-width="1" fill="none"/>
+      <path d="M100 60 q-3 7 0 9" stroke="#b98d66" stroke-width="1.4" fill="none"/>
+      <path d="M93 72 q7 2 14 0" stroke="#7a4a35" stroke-width="1.6" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#keeper"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. Head of English"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="primary">Primary texts</button><button type="button" data-v="competitions">Essay and writing prizes</button><button type="button" data-v="shakespeare">Shakespeare</button><button type="button" data-v="poetry">Poetry and unseen</button><button type="button" data-v="prose">Prose</button><button type="button" data-v="ww1">WW1 and its aftermath</button><button type="button" data-v="modern">Modern times</button><button type="button" data-v="nea">NEA</button><button type="button" data-v="criticism">Criticism and theory</button><button type="button" data-v="local">Birmingham events</button><button type="button" data-v="university">University and admissions</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the lighthouse, the beam, the keeper. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label>The keeper's log (which text, the line, what it showed me, what I'm still looking for). Keep it?</label>
+      <div class="seg" id="fbSlip"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="simpler" aria-pressed="false">Make it simpler</button><button type="button" data-v="drop" aria-pressed="false">Plain notebook</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (set texts, dates, links, component tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#keeper"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>English Literature · The Lighthouse · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your English Literature sixth form.</h2>
+      <p>It is a working copy of the page a pupil would use: 68 free things to read, listen to, do, watch, enter and apply for, each tagged to a part of AQA 7712 (Love through the ages, WW1 and its aftermath, Modern times, the NEA). It is laid out as a lighthouse at night. Each thing a pupil does lights a window on its floor, and the beam reaches further out to sea as they do more. What they read and think goes in a keeper's log, which the department can read. Every historical claim on the page carries its source and a label.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper" id="gateForm" autocomplete="off">
+    <span class="lightchar">Fl W 10s · 24M</span>
+    <span class="badge" style="justify-self:start"><i></i>English Literature · Beyond the classroom</span>
+    <h1 id="gateH">The Lighthouse<em>six floors, one lamp, and a log to keep</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#keeper"/></svg>
+      <p>Free things for A-level English Literature: prizes, lectures and talks, podcasts, the texts themselves, things to go and do, and the way into university. The page is laid out as a lighthouse. Each thing you do lights a window on its floor, and the more you do, the further your beam reaches out to sea. What you read and think goes in your keeper's log. The keeper will show you round. Everything you do saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Climb the tower</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the English department.</b> This is the working pupil page: sign in with any name, light things as done, write in the log, send the keeper up for something. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>English Literature · Beyond the classroom</span>
+      <h1>The Lighthouse<span>A-level English Literature A · AQA 7712 · six floors, one lamp</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE LIGHTHOUSE ===== -->
+  <section aria-label="The lighthouse: six floors to click">
+    <div class="scene">
+      <svg class="view" id="view" viewBox="0 0 1400 720" role="group" aria-label="A lighthouse on a rock at night, with six floors and a beam over the sea">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060c17"/><stop offset=".7" stop-color="#132845"/><stop offset="1" stop-color="#1d3a5c"/></linearGradient>
+          <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16364f"/><stop offset="1" stop-color="#07141f"/></linearGradient>
+          <linearGradient id="beamG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff2c4" stop-opacity=".85"/><stop offset=".6" stop-color="#ffd77a" stop-opacity=".28"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/></linearGradient>
+          <radialGradient id="lampHalo"><stop offset="0" stop-color="#fff6d8" stop-opacity=".95"/><stop offset=".35" stop-color="#ffd77a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/></radialGradient>
+          <linearGradient id="towerShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+          <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1400" height="470" fill="url(#sky)"/>
+        <g id="stars" aria-hidden="true"></g>
+        <!-- moon -->
+        <circle cx="1240" cy="92" r="30" fill="#e9e4d2" opacity=".9"/><circle cx="1252" cy="84" r="30" fill="#0b1626" opacity=".85"/>
+        <!-- the far shore -->
+        <path d="M1260 470 L1290 440 L1320 446 L1350 420 L1400 428 L1400 470 Z" fill="#0a1522"/>
+        <path d="M1318 446 v-14 M1314 432 h8" stroke="#ffd77a" stroke-width="2" opacity=".7"/>
+        <text class="shoretxt" x="1392" y="408" text-anchor="end">THE FAR SHORE · 24 MILES</text>
+        <!-- sea -->
+        <rect y="470" width="1400" height="250" fill="url(#seaG)"/>
+        <g class="waves" aria-hidden="true" stroke="#2c5674" stroke-width="1.6" fill="none" opacity=".6">
+          <path d="M0 500 q20 -6 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/>
+          <path d="M-20 548 q24 -7 48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0 t48 0" opacity=".8"/>
+          <path d="M0 612 q30 -8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" opacity=".7"/>
+          <path d="M-30 676 q36 -9 72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0 t72 0" opacity=".6"/>
+        </g>
+        <!-- range marks along the horizon -->
+        <g id="ranges" aria-hidden="true"></g>
+        <!-- the beam (drawn by script) -->
+        <g id="beamG2" aria-hidden="true"></g>
+        <!-- the rock -->
+        <path d="M230 720 L250 640 L300 612 L360 600 L540 600 L600 616 L650 646 L690 720 Z" fill="#1a1f26"/>
+        <path d="M262 650 L320 624 L380 612 M560 612 L620 630 L660 668" stroke="#2c333d" stroke-width="3" fill="none"/>
+        <path d="M230 700 q40 -12 80 0 q40 10 80 0 q40 -10 80 0 q40 10 80 0 q40 -10 80 0 q40 10 80 0" stroke="#d7e3ee" stroke-width="2" fill="none" opacity=".35"/>
+        <!-- the tower, the floors and the lantern (drawn by script) -->
+        <g id="tower"></g>
+        <!-- the light's character -->
+        <text class="chartxt" id="charTxt" x="1384" y="560" text-anchor="end"></text>
+        <text class="chartsub" id="charSub" x="1384" y="582" text-anchor="end"></text>
+      </svg>
+    </div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see the beam.</span><span><b>Click a floor</b> to go to its list.</span><span><b>Click a window</b> to open that item.</span><span>A lit window means you have done it. The beam grows with every window.</span></div>
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six floors"></div>
+  </section>
+
+  <!-- ===== KEEPER, RANGE, CLIMB ===== -->
+  <section class="crew" aria-label="The keeper, the range of your light, and send the keeper up">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 270" aria-hidden="true"><use href="#keeper"/></svg>
+      <div class="bubble paper" role="status" aria-live="polite"><span class="nm">Mrs Nancarrow · the keeper (invented)</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper count-card">
+        <h2>The range of your light</h2>
+        <div class="count"><div class="pct" id="nmVal">0<small> MILES</small></div>
+          <div><div class="rangebar" aria-hidden="true"><i id="rangeBar"></i><b style="left:25%"></b><b style="left:50%"></b><b style="left:75%"></b></div><p class="small" id="coverTxt" style="margin:8px 0 0"></p></div></div>
+        <div class="floors" id="palette" aria-label="Floors with at least one window lit"></div>
+        <div class="charline" id="charLine"></div>
+      </div>
+      <div class="card paper pick-card">
+        <h2>Send the keeper up</h2>
+        <p class="small" style="margin:0">Say how long you have. The keeper climbs the tower and comes back down with one thing you have not done, and prefers floors that are still dark.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Go up</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORDERS FOR THE WATCH (half term) ===== -->
+  <section class="orders paper" aria-labelledby="htLabel">
+    <span class="rubric" id="htEyebrow"></span>
+    <h2 id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE FLOORS ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 id="tableH">Every floor</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a floor"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one floor"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== NOTICES TO MARINERS (the year) ===== -->
+  <section class="notices paper" aria-labelledby="yearH">
+    <div class="atop"><span class="sub">October 2026 – July 2027</span><h2 id="yearH">Notices to mariners</h2><span class="sub">Deadlines, openings and events · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== THE KEEPER'S LOG ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper">
+      <span class="tape" id="nbCover">The keeper's log</span>
+      <h2 id="nbH">Write up the watch</h2>
+      <p>Keepers wrote up every watch in the log: the time, the weather, what the light did. Do the same for anything you watch, hear or read. Copy the line that made you stop, say which of your texts it speaks to, and what it showed you. A log like this is where your coursework ideas, an essay prize entry and your personal statement come from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Which of my texts it speaks to</label><input id="nbHw" class="hand" placeholder="e.g. Othello" required></div>
+        </div>
+        <div class="field"><label for="nbWhat">What I watched, heard or read</label><input id="nbWhat" list="whatList" placeholder="talk, lecture, episode, poem, novel…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">The line itself (copy it exactly; optional)</label><textarea id="nbQuo" class="hand"></textarea></div>
+        <div class="field"><label for="nbLearned">What it showed me</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">What I'm still looking for (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">Enter it in the log</button><button class="btn ghost" type="button" id="copyBtn">Copy my whole log as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your log as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3>Your log</h3><span id="logCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2>What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each prize (your list for the Campion Prize and Poetry by Heart, which go through school, and a heads-up on everyone entering the Keats-Shelley, Tower, Orwell and Cambridge prizes on their own); how many of the half-term orders each pupil has done; how far each pupil's light reaches and which floors are still dark; each pupil's log in full, as copyable text for references, personal statements and NEA conversations; who on your form list has not signed in yet; a CSV. Content is updated each half term by editing one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for English: the items, the set-text tags, the half-term orders, the dates, the keeper's lines, the log fields, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+<script>
+(function(){
+/* Six floors, from the rock up to the lamp. */
+const FAM = {
+  read:{label:"Read", verb:"The texts, and about them", place:"The store room", the:"the store room", def:"Where the oil was kept. Reading is what the light burns.", no:1},
+  listen:{label:"Listen", verb:"Podcasts, lectures and radio", place:"The fog-signal room", the:"the fog-signal room", def:"When the light cannot be seen, the station is heard instead.", no:2},
+  do:{label:"Do", verb:"Things to go to, try and make", place:"The workshop", the:"the workshop", def:"Brass to polish, lenses to clean, wicks to trim. The work that keeps a light going.", no:3},
+  watch:{label:"Watch", verb:"Lectures, plays and talks", place:"The watch room", the:"the watch room", def:"The room under the lamp, where the keeper on duty sits and watches.", no:4},
+  enter:{label:"Enter", verb:"Prizes and competitions", place:"The gallery", the:"the gallery", def:"The walkway outside the lantern: out in the weather, in full view.", no:5},
+  apply:{label:"Apply", verb:"University and summer schools", place:"The lantern", the:"the lantern", def:"The lamp itself. Everything below is there so that this can be seen from a long way off.", no:6}
+};
+/* Where each floor's story comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer; leg = a story with no good source; inv = made up for this page. */
+const SMALLPRINT = [
+  {g:"read", txt:`Robert Louis Stevenson came from a family of lighthouse engineers: his grandfather built the Bell Rock light and his father and uncles built dozens more round Scotland. He trained as an engineer before he gave it up to write. <span class="st att">attested</span> Stevenson, <i>Records of a Family of Engineers</i> (1912); Northern Lighthouse Board.`},
+  {g:"listen", txt:`In fog a lighthouse is heard rather than seen: stations carried bells, guns, sirens and diaphones. Ray Bradbury's story "The Fog Horn" (1951) is about the sound one makes across empty sea. <span class="st att">attested</span> Trinity House, fog signals; the story was first published in 1951 as "The Beast from 20,000 Fathoms".`},
+  {g:"do", txt:`John Smeaton's Eddystone tower (finished 1759) set the pattern for stone lighthouses: interlocking granite blocks and a base that widens like a tree trunk. He compared it to an oak in his own account. <span class="st att">attested</span> Smeaton, <i>A Narrative of the Building … of the Edystone Lighthouse</i> (1791). That he took the idea from an oak in the first place: <span class="st rep">reported</span>.`},
+  {g:"watch", txt:`In Virginia Woolf's <i>To the Lighthouse</i> (1927) the Ramsays watch the lighthouse from their holiday house, and the novel ends with the trip out to it. Woolf spent childhood summers at St Ives, across the bay from Godrevy lighthouse. <span class="st att">attested</span> the novel; Woolf, "A Sketch of the Past". That Godrevy is the model for the novel's lighthouse: <span class="st rep">reported</span>; the novel is set in the Hebrides.`},
+  {g:"enter", txt:`On 7 September 1838 Grace Darling, daughter of the Longstone lighthouse keeper on the Farne Islands, rowed out with her father to rescue survivors of the wrecked <i>Forfarshire</i>. Wordsworth wrote a poem about her, "Grace Darling" (1843). <span class="st att">attested</span> RNLI Grace Darling Museum; Wordsworth's poem.`},
+  {g:"apply", txt:`Augustin Fresnel's lens (1822) bent the light from one lamp into a beam that could be seen many miles away; most lighthouses adopted it. A light's range is given in nautical miles, and each light has its own "character", a pattern of flashes that tells a ship which light it is. <span class="st att">attested</span> Trinity House; Admiralty List of Lights.`},
+  {g:"", wide:true, txt:`<b>About this page.</b> The drawing is not any real lighthouse. Mrs Nancarrow <span class="st inv">invented</span> is not based on a real keeper, and nothing she says is a quotation. Women did keep lights, in Britain and more often in the United States <span class="st att">attested</span>. "Your light" in the corner of the picture is written the way the Admiralty List writes a light's character: Fl(4) 20s means four flashes every twenty seconds. Here the number of flashes is the number of floors you have lit, and the range is how much of the tower you have done, out of 24 miles.`}
+];
+// mins drives "Send the keeper up": quick <= 20, evening <= 180, long > 180
+// th = the AQA 7712 component the item serves most
+const ITEMS = [
+  // ---- 1 Read · the store room
+  {s:"Fol",g:"read",short:"Folger Shakespeare · the plays, free",name:"Folger Shakespeare: every play and poem, free to read and download",mins:120,t:"full texts",th:"Love through the ages",
+   what:"The Folger editions of all of Shakespeare, to read online or download, free for non-commercial use. All four of the AQA plays are here: Othello, The Taming of the Shrew, Measure for Measure and The Winter's Tale.",
+   think:"Read the first and last speeches of your play's lovers side by side. What has happened to the way they talk to each other?",tags:["free","primary text","Shakespeare"],url:"https://www.folger.edu/explore/shakespeares-works/",lt:"Folger"},
+  {s:"FF",g:"read",short:"Bodleian First Folio (1623)",name:"Bodleian Library: the First Folio (1623), digital facsimile",mins:30,t:"the book itself",th:"Love through the ages",
+   what:"Every page of the Bodleian's copy of the 1623 First Folio, photographed, with transcriptions, free under an open licence.",
+   think:"Find your play in the Folio and compare one page with your edition: spelling, punctuation, line breaks, stage directions. Each difference is an editor's decision you have been reading without knowing.",tags:["free","primary text","1623"],url:"https://firstfolio.bodleian.ox.ac.uk/",lt:"First Folio"},
+  {s:"Gut",g:"read",short:"Project Gutenberg",name:"Project Gutenberg",mins:120,t:"free books",th:"NEA",
+   what:"Tens of thousands of out-of-copyright books, free with no registration: Jane Eyre, Wuthering Heights, Persuasion, Tess, The Awakening, and the novels and poems their writers read.",
+   think:"Your NEA needs a second text. Read the opening chapter of another novel by your set writer, or one they read, and note what it does that your set text does not.",tags:["free","primary texts","NEA"],url:"https://www.gutenberg.org/",lt:"Gutenberg"},
+  {s:"FWW",g:"read",short:"First World War Poetry Digital Archive",name:"First World War Poetry Digital Archive (University of Oxford)",mins:40,t:"manuscripts and letters",th:"WW1 and its aftermath",
+   what:"Over 7,000 items, free: manuscripts, letters, photographs and audio for Owen, Rosenberg, Graves, Brittain and Edward Thomas, with short tutorials on reading and comparing the poetry.",
+   think:"Find a manuscript draft of an Owen poem you know. What did he cross out, and what does the change do to the line?",tags:["free","primary text","manuscripts"],url:"https://war.web.ox.ac.uk/fwwpda",lt:"WW1 poetry archive"},
+  {s:"WOA",g:"read",short:"Wilfred Owen Association · the poems",name:"Wilfred Owen Association: introductions to the poems",mins:20,t:"short pieces",th:"WW1 and its aftermath",
+   what:"Free short introductions to individual Owen poems by Ken Simcox, a bibliography, and links to the Oxford archive. The Association has no events listed at the moment.",
+   think:"Read the introduction to one poem, then reread the poem. Write down one thing the introduction made you notice, and one thing it missed.",tags:["free","Owen"],url:"https://www.wilfredowen.org.uk/poetry",lt:"Wilfred Owen Association"},
+  {s:"GWI",g:"read",short:"Great Writers Inspire (Oxford)",name:"Great Writers Inspire (University of Oxford)",mins:40,t:"essays and lectures",th:"All",
+   what:"Free lectures, ebooks and short context essays by Oxford academics, written for sixth form to university, on writers including Shakespeare, Charlotte Brontë and Wilfred Owen, with collections on the Victorian Gothic and feminist reading.",
+   think:"Read the essay on your prose writer. Copy one piece of context you did not know, then ask whether it changes a reading or only decorates one.",tags:["free","context"],url:"https://writersinspire.org/",lt:"Great Writers Inspire"},
+  {s:"WMW",g:"read",short:"Writers Make Worlds (Oxford)",name:"Writers Make Worlds (University of Oxford)",mins:40,t:"videos and essays",th:"Modern times",
+   what:"Free resources on over 60 contemporary Black and Asian British writers, including Bernardine Evaristo, Zadie Smith, Andrea Levy, Kazuo Ishiguro, Jackie Kay and Daljit Nagra.",
+   think:"For Modern Times wider reading, or an NEA text: choose one writer you have not read and read the extract on their page.",tags:["free","contemporary","NEA"],url:"https://writersmakeworlds.com/",lt:"Writers Make Worlds"},
+  {s:"DL",g:"read",short:"British Library · Discovering Literature",name:"British Library: Discovering Literature (learning resources)",mins:30,t:"articles",th:"All",
+   what:"Articles by experts on writers and their contexts for Years 10–13. Since the 2023 cyber-attack only a selection is back, reached through the Library's learning resources page.",
+   think:"Look for an article on your set writer. If it is not back yet, try the In Our Time archive in the fog-signal room instead.",tags:["free","partly available"],url:"https://www.bl.uk/about/learn/learning-resources",lt:"British Library"},
+  {s:"TMB",g:"read",short:"Oxford · Ten-Minute Book Club",name:"Oxford English Faculty: Ten-Minute Book Club",mins:15,t:"10 min each",th:"NEA",
+   what:"Short extracts chosen by Oxford academics, each readable in about ten minutes, with a short introduction.",
+   think:"Read one a week. Each time, copy the sentence that made you want to read on. One of them may turn into your NEA text.",tags:["free","10 min","start here"],url:"https://www.english.ox.ac.uk/ten-minute-book-club",lt:"Ten-Minute Book Club"},
+  {s:"Eag",g:"read",short:"Eagleton · How to Read Literature",name:"Terry Eagleton, How to Read Literature",mins:600,t:"a book",th:"All",
+   what:"Short chapters on openings, character, narrative and interpretation. A good first book of criticism for Year 12.",
+   think:"Read the chapter on openings, then reread the first page of your prose text with it beside you.",tags:["library","book"],url:"",lt:""},
+  {s:"Mul",g:"read",short:"Mullan · How Novels Work",name:"John Mullan, How Novels Work",mins:600,t:"a book",th:"Love through the ages",
+   what:"Chapters on narrators, dialogue, time and endings. It goes with Mullan's Gresham lectures in the watch room and with the prose comparison in Paper 1.",
+   think:"Read the chapter on narrators and work out exactly who is telling your set novel, and when they are telling it.",tags:["library","book"],url:"",lt:""},
+  {s:"Fus",g:"read",short:"Fussell · The Great War and Modern Memory",name:"Paul Fussell, The Great War and Modern Memory",mins:600,t:"a book (read a chapter)",th:"WW1 and its aftermath",
+   what:"The standard study of how the First World War changed the way people wrote. Read a chapter, not the whole book.",
+   think:"Fussell argues the war made irony the main way of writing about it. Test that on one poem from Up the Line to Death or Scars Upon My Heart.",tags:["library","book","argue with it"],url:"",lt:""},
+
+  // ---- 2 Listen · the fog-signal room
+  {s:"EmS",g:"listen",short:"Oxford · Approaching Shakespeare (Smith)",name:"Oxford: Approaching Shakespeare (Emma Smith)",mins:50,t:"one play per lecture",th:"Love through the ages",
+   what:"Recorded Oxford lectures, one play each, each built round one critical question. All four AQA plays are in the series: Othello, Measure for Measure, The Winter's Tale and The Taming of the Shrew.",
+   think:"Listen to the lecture on your play. Write her central question at the top of a log entry, then answer it in your own words before you read anyone else.",tags:["free","university lectures","start here"],url:"https://podcasts.ox.ac.uk/series/approaching-shakespeare",lt:"Approaching Shakespeare"},
+  {s:"Stl",g:"listen",short:"Oxford Professor of Poetry · A. E. Stallings",name:"Oxford Professor of Poetry lectures (A. E. Stallings)",mins:50,t:"nine lectures",th:"Love through the ages",
+   what:"Lectures by Oxford's Professor of Poetry (2023–27) on how poems work: allusion, rhyme, repetition and form. The latest was given in May 2026.",
+   think:"Choose the lecture on rhyme or on repetition, then find three examples of it in the love poetry anthology.",tags:["free","university lectures","unseen poetry"],url:"https://podcasts.ox.ac.uk/series/poetry-ae-stallings",lt:"Stallings lectures"},
+  {s:"IOT",g:"listen",short:"In Our Time · the archive",name:"BBC In Our Time: the archive",mins:45,t:"45 min",th:"All",
+   what:"Forty-five-minute discussions with three academics. The archive covers most canonical writers and many of the set texts. New episodes now have a new presenter; Melvyn Bragg's archive is still all there.",
+   think:"Search the archive for your set poet, playwright or novelist. Copy the one sentence an academic says that you would most like to argue with.",tags:["free","45 min","university"],url:"https://www.bbc.co.uk/programmes/b006qykl",lt:"In Our Time"},
+  {s:"PU",g:"listen",short:"Poetry Unbound",name:"Poetry Unbound (Pádraig Ó Tuama, On Being)",mins:15,t:"about 15 min",th:"Love through the ages",
+   what:"A short podcast that takes one poem an episode: a reading, a close look, and the poem again. Still running, with over 200 episodes and a transcript for each.",
+   think:"Treat it as unseen practice. Read the poem on the page first and write three sentences. Then listen, and see what he found that you did not.",tags:["free","15 min","unseen poetry","start here"],url:"https://onbeing.org/series/poetry-unbound/",lt:"Poetry Unbound"},
+  {s:"Vrb",g:"listen",short:"The Verb (BBC Radio 4)",name:"The Verb (BBC Radio 4, Ian McMillan)",mins:45,t:"45 min",th:"Modern times",
+   what:"A weekly programme on poetry and new writing, now on Radio 4, with a long archive. A recent episode looked at Keats's 'To Autumn' with Alice Oswald and Liz Berry.",
+   think:"Pick an episode with a poet you have not heard of and find one of their poems to read cold.",tags:["free","weekly"],url:"https://www.bbc.co.uk/programmes/b006tnsf",lt:"The Verb"},
+  {s:"AGR",g:"listen",short:"A Good Read (BBC Radio 4)",name:"A Good Read (BBC Radio 4)",mins:30,t:"30 min",th:"NEA",
+   what:"Guests bring a favourite book each and argue about the others'. Hundreds of episodes in the archive.",
+   think:"Listen for a book that sounds as if it would pair with one of your set texts. That is how an NEA pairing often starts.",tags:["free","30 min"],url:"https://www.bbc.co.uk/programmes/b006v8jn",lt:"A Good Read"},
+  {s:"LRB",g:"listen",short:"LRB · Close Readings",name:"London Review of Books: Close Readings",mins:60,t:"about an hour",th:"All",
+   what:"Two critics work through an area of literature one book at a time. Some full episodes and extracts of all of them are free; the rest are for subscribers.",
+   think:"For strong readers. Listen to a free episode and note how the two critics disagree. Disagreement is what your Paper 2 essays are marked for.",tags:["some episodes free","stretch"],url:"https://www.lrb.co.uk/podcasts-and-videos/podcasts/close-readings",lt:"Close Readings"},
+  {s:"PA",g:"listen",short:"The Poetry Archive",name:"The Poetry Archive",mins:20,t:"poets reading",th:"Modern times",
+   what:"Over 2,000 free recordings of poets reading their own work. Wilfred Owen and Owen Sheers are both there.",
+   think:"If you study Skirrid Hill, listen to Sheers read. Mark where his pauses fall against the line breaks on the page.",tags:["free","poets reading"],url:"https://poetryarchive.org/",lt:"Poetry Archive"},
+  {s:"VWW",g:"listen",short:"Voices of the First World War",name:"Voices of the First World War (BBC Radio 4 with the Imperial War Museums)",mins:15,t:"short episodes",th:"WW1 and its aftermath",
+   what:"Veterans' recorded memories from the IWM and BBC sound archives, introduced by Dan Snow. The series is complete; the last episodes are from 2018.",
+   think:"Listen to one episode and set a line of testimony beside a line from a war poem on the same subject. What does the poem do with the experience that the speaker does not?",tags:["free","archive"],url:"https://podcasts.apple.com/us/podcast/voices-of-the-first-world-war/id933873773",lt:"Voices of the First World War"},
+  {s:"Atw",g:"listen",short:"Atwood on The Handmaid's Tale",name:"Margaret Atwood on The Handmaid's Tale (UC Berkeley, On the Same Page)",mins:30,t:"interview, with transcript",th:"Modern times",
+   what:"A 2018 interview in which Atwood talks about writing the novel, Gilead, and why the book came back into the news. Free, with a transcript.",
+   think:"Atwood says what she put in the novel had to have happened somewhere already. Pick one detail from the novel and find out whether that is true of it.",tags:["free","Handmaid's Tale"],url:"https://news.berkeley.edu/2018/08/28/podcast-margaret-atwood-handmaids-tale-on-the-same-page/",lt:"Berkeley"},
+  {s:"Bro",g:"listen",short:"Brontë Parsonage · Behind the Glass",name:"Brontë Parsonage Museum: Behind the Glass podcast, and the Brontë novels pages",mins:30,t:"short episodes",th:"Love through the ages",
+   what:"Each episode is built round one object in the Haworth collection. The museum's free pages on the novels include Jane Eyre and Wuthering Heights.",
+   think:"For Jane Eyre: listen for one object that tells you something about the Brontës' daily life, and find the place in the novel where something like it appears.",tags:["free","Brontës"],url:"https://www.bronte.org.uk/museum-and-library/the-museum/behind-the-glass-a-parsonage-podcast",lt:"Behind the Glass",
+   more:[{lt:"The Brontë novels",url:"https://www.bronte.org.uk/the-lives-of-the-brontes/the-bronte-novels"}]},
+  {s:"SBT",g:"listen",short:"Shakespeare Birthplace Trust podcasts",name:"Shakespeare Birthplace Trust: podcasts and online collections",mins:30,t:"short episodes",th:"Love through the ages",
+   what:"Free podcasts from the Trust in Stratford, including Shakespeare Alive and Let's Talk Shakespeare, and its collections online. The A-level visits are paid; the online material is free.",
+   think:"Find an episode on your play or on women in Shakespeare. Note one thing about the play in performance that changes how you read a scene.",tags:["free online"],url:"https://www.shakespeare.org.uk/explore-shakespeare/podcasts/",lt:"SBT podcasts"},
+  {s:"ShU",g:"listen",short:"Shakespeare Unlimited (Folger)",name:"Shakespeare Unlimited (Folger Shakespeare Library)",mins:35,t:"about 35 min",th:"Love through the ages",
+   what:"The Folger's podcast: actors, directors and scholars on Shakespeare in performance and history. Still running, with a large archive.",
+   think:"Search the archive for your play. Note one thing a director says about staging a scene that changes how you read the lines.",tags:["free","still running"],url:"https://www.folger.edu/podcasts/shakespeare-unlimited/",lt:"Folger podcasts"},
+  {s:"Bkl",g:"listen",short:"Backlisted",name:"Backlisted",mins:60,t:"an hour",th:"NEA",
+   what:"Two hosts and a guest on one neglected book each episode. Free, with an optional paid Patreon.",
+   think:"For reading beyond the syllabus. Choose an episode on a book you have not heard of, read its first chapter, and log its opening line.",tags:["free","beyond the syllabus"],url:"https://www.backlisted.fm/",lt:"Backlisted"},
+
+  // ---- 3 Do · the workshop
+  {s:"HE",g:"do",short:"Cambridge HE+ English",name:"Cambridge HE+ English",mins:240,t:"a fortnight",th:"Love through the ages",
+   what:"Modules written by Cambridge academics and students for sixth formers, including Introduction to Poetry and Reading Uncertain Genders, with questions to work through.",
+   think:"Do Introduction to Poetry before you start unseen practice. Reading Uncertain Genders goes well with love and gender in your Love through the ages texts.",tags:["free","university"],url:"https://myheplus.com/subject/english",lt:"HE+ English"},
+  {s:"Her",g:"do",short:"Hertford College Super-Curricular Challenge",name:"Hertford College (Oxford) Super-Curricular Challenge",mins:600,t:"weeks",th:"All",
+   what:"A structured challenge from an Oxford college: read, listen and visit, then share what you found.",
+   think:"Do it over a half term. The 'share what you found' step is good practice for an interview.",tags:["free","Oxford"],url:"https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/",lt:"Hertford challenge"},
+  {s:"YPN",g:"do",short:"Young Poets Network",name:"Young Poets Network (Poetry Society)",mins:60,t:"a challenge at a time",th:"Love through the ages",
+   what:"Free poetry writing challenges through the year from the Poetry Society, for young people up to 25, with guidance pieces by poets.",
+   think:"Writing a poem in a set form teaches you more about that form than reading ten. Try a challenge that uses a form from the anthology.",tags:["free","any time"],url:"https://ypn.poetrysociety.org.uk/",lt:"Young Poets Network"},
+  {s:"SCo",g:"do",short:"Shakespeare's Cosmos · Birmingham, 21 Oct",name:"Shakespeare's Cosmos (University of Birmingham Shakespeare Institute)",mins:150,t:"an evening, in Birmingham",th:"Love through the ages",
+   what:"Researchers from the Shakespeare Institute on astronomy, astrology and the theatre, and how ideas about the moon and stars shaped the women in Shakespeare's plays. Wednesday 21 October 2026, 6–8pm, at The Exchange, Centenary Square. Free, but you need a ticket from the page.",
+   think:"Listen for anything about Desdemona, Hermione or Isabella. Bring one line about the moon or stars from your play.",tags:["free","ticketed","Birmingham","Wed 21 Oct"],url:"https://www.birmingham.ac.uk/events/shakespeares-cosmos",lt:"Book a ticket"},
+  {s:"SMR",g:"do",short:"The Shakespeare Memorial Room",name:"The Shakespeare Memorial Room, Library of Birmingham",mins:60,t:"a visit",th:"Love through the ages",
+   what:"The Victorian room built in 1882 for Birmingham's Shakespeare collection, rebuilt in the golden rotunda on the ninth floor of the Library of Birmingham. The collection is no longer kept in the room. Open Monday–Tuesday 11am–7pm and Wednesday–Saturday 11am–5pm. It is a public library; check opening on the day.",
+   think:"Go with a friend after school. Look at how the room presents Shakespeare and ask what the people who built it in 1882 thought he was for.",tags:["Birmingham","visit","check"],url:"https://www.birmingham.gov.uk/shakespearememorialroom",lt:"Library of Birmingham"},
+  {s:"BLF",g:"do",short:"Birmingham Literature Festival",name:"Birmingham Literature Festival 2026",mins:120,t:"an event",th:"Modern times",
+   what:"Talks and readings across the city, 8–12 October 2026, with a Readers' Day on Saturday 24 October. Not free: under-18 tickets are about £8, with free bus travel offered to ticket holders.",
+   think:"Choose an event with a living writer. Write down the question you would ask them about how they started a book.",tags:["about £8","Birmingham","8–12 Oct, 24 Oct"],url:"https://www.birminghamliteraturefestival.org/",lt:"Festival"},
+  {s:"NEA",g:"do",short:"Choose your NEA pair",name:"AQA 7712: the independent critical study (NEA)",mins:60,t:"an hour",th:"NEA",
+   what:"The AQA page for the NEA: a comparative critical study of two texts on a theme you choose, one of them written before 1900. Your log is where the pairing will come from.",
+   think:"Read the page, then go back through your log and list every text you have written about. Which two of them argue with each other?",tags:["free","NEA","start early"],url:"https://www.aqa.org.uk/subjects/english/a-level/english-7712/specification/subject-content/independent-critical-study-texts-across-time",lt:"AQA NEA page"},
+
+  // ---- 4 Watch · the watch room
+  {s:"NTC",g:"watch",short:"National Theatre Collection",name:"National Theatre Collection (through Drama Online)",mins:180,t:"full productions",th:"Love through the ages",
+   what:"Filmed National Theatre productions, free to UK state schools and colleges, and pupils can watch them at home. They include Othello, Jane Eyre, Frankenstein and A Streetcar Named Desire.",
+   think:"Watch one scene from your set play or novel in production. Write down one choice the director made that your reading had not allowed for.",tags:["free through school","stream at home"],url:"https://www.nationaltheatre.org.uk/learn-explore/national-theatre-collection/",lt:"NT Collection"},
+  {s:"OxW",g:"watch",short:"Oxford Shakespeare webinars (Smith)",name:"Oxford English Faculty and Oxford World's Classics: Shakespeare webinars with Emma Smith",mins:60,t:"monthly, online",th:"Love through the ages",
+   what:"Free monthly online conversations with the editor of each new Oxford edition. Coming up: Pericles on 2 November and A Midsummer Night's Dream on 7 December 2026. Past sessions are recorded, including The Winter's Tale (September 2026) and Measure for Measure (January 2026).",
+   think:"If you study The Winter's Tale or Measure for Measure, watch the recording. Note one decision the editor made about the text.",tags:["free","online","register"],url:"https://www.english.ox.ac.uk/shakespeare-webinar-series",lt:"Oxford webinars"},
+  {s:"CtC",g:"watch",short:"Oxford · Challenging the Canon",name:"Oxford English Faculty: Challenging the Canon",mins:20,t:"short talks",th:"NEA",
+   what:"Short recorded talks by Oxford academics on why a writer or a kind of writing is worth studying: Shakespeare, Dickens, Chaucer, Johnson, postcolonial writing and more.",
+   think:"Listen before you choose your NEA texts. Could you make the same case for your pre-1900 text in two minutes?",tags:["free","short"],url:"https://podcasts.ox.ac.uk/series/challenging-canon",lt:"Challenging the Canon"},
+  {s:"GrN",g:"watch",short:"Gresham · The Powers of the Novel (Mullan)",name:"Gresham College: The Powers of the Novel (John Mullan) and the English collection",mins:60,t:"recorded lectures",th:"Love through the ages",
+   what:"Free recorded lectures on how novels work, among Gresham's English collection, which also has Jonathan Bate on Shakespeare.",
+   think:"Watch the lecture closest to your prose text. Copy one claim Mullan makes about how novels work and test it on one chapter.",tags:["free","university lectures"],url:"https://www.gresham.ac.uk/schools-and-colleges/english",lt:"Gresham English"},
+  {s:"GrB",g:"watch",short:"Gresham · Bate on Wordsworth and Coleridge",name:"Gresham College: Jonathan Bate, 'Wordsworth, Coleridge and the Poetic Revolution'",mins:60,t:"one lecture",th:"Love through the ages",
+   what:"A free lecture on Lyrical Ballads and the change in English poetry around 1800. A companion lecture, 'The Origins of Romanticism', is on the same podcast.",
+   think:"Useful for the Romantic poems in the pre-1900 anthology. What did Wordsworth and Coleridge think poetry had got wrong, and does your anthology show it?",tags:["free","Romantics"],url:"https://podcast.gresham.ac.uk/1904814/episodes/9764928-wordsworth-coleridge-and-the-poetic-revolution",lt:"Gresham podcast",
+   more:[{lt:"The Origins of Romanticism",url:"https://podcast.gresham.ac.uk/1904814/episodes/9764940-the-origins-of-romanticism"}]},
+  {s:"GrE",g:"watch",short:"Gresham · Endersby, Women in Science Fiction",name:"Gresham College: Jim Endersby, 'Women in Science Fiction'",mins:60,t:"one lecture",th:"Modern times",
+   what:"A free lecture on how science fiction has imagined women, from artificial women to The Stepford Wives.",
+   think:"For The Handmaid's Tale: where does Atwood's novel sit in the history Endersby describes?",tags:["free","dystopia"],url:"https://podcast.gresham.ac.uk/1904814/episodes/9764510-women-in-science-fiction",lt:"Gresham podcast"},
+  {s:"Yal",g:"watch",short:"Yale · Introduction to Theory of Literature",name:"Yale Open Courses: Introduction to Theory of Literature, ENGL 300 (Paul Fry)",mins:600,t:"26 lectures, with transcripts",th:"All",
+   what:"A full undergraduate course in literary theory, recorded at Yale and free to watch, with a transcript for every lecture: formalism, psychoanalytic, Marxist, feminist and postcolonial criticism, and more.",
+   think:"This is university level. The Paper 2 and NEA mark schemes reward different interpretations; start with the feminist and Marxist lectures.",tags:["free","university lectures","stretch"],url:"https://oyc.yale.edu/english/engl-300",lt:"Yale Open Courses"},
+  {s:"Adi",g:"watch",short:"Adichie · The danger of a single story",name:"Chimamanda Ngozi Adichie (TED): The danger of a single story",mins:20,t:"18 min",th:"Modern times",
+   what:"A novelist on what happens when one story about a people or a place is the only one told.",
+   think:"Choose one of your Texts in Shared Contexts texts. Whose story does it tell, and whose does it leave out?",tags:["TED","free","18 min"],url:"https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story",lt:"ted.com"},
+  {s:"Cat",g:"watch",short:"Catron · A better way to talk about love",name:"Mandy Len Catron (TED): A better way to talk about love",mins:20,t:"15 min",th:"Love through the ages",
+   what:"A writer on the metaphors we use for love, and how they shape what we expect from it.",
+   think:"Catron says the metaphors we use for love shape how we feel it. Find three metaphors for love in the anthology and say what each one assumes.",tags:["TED","free","15 min","start here"],url:"https://www.ted.com/talks/mandy_len_catron_a_better_way_to_talk_about_love",lt:"ted.com"},
+  {s:"Fis",g:"watch",short:"Fisher · The brain in love",name:"Helen Fisher (TED): The brain in love",mins:20,t:"16 min",th:"Love through the ages",
+   what:"An anthropologist on brain scans of people in love. On this list to be argued with.",
+   think:"Test Fisher's brain-chemistry account against one Love through the ages text. What does the literature show that a scan cannot?",tags:["TED","free","16 min","argue with it"],url:"https://www.ted.com/talks/helen_fisher_the_brain_in_love",lt:"ted.com"},
+  {s:"Hoe",g:"watch",short:"Hoeller · Why love is harder in a second language",name:"Magdalena Hoeller (TED): Why love is harder in a second language",mins:20,t:"16 min",th:"Love through the ages",
+   what:"A researcher on loving across a language barrier: what gets lost, and what gets made up instead.",
+   think:"Where in your Shakespeare play does a difference of language, culture or status make love harder to speak? Give two moments.",tags:["TED","free","16 min"],url:"https://www.ted.com/talks/magdalena_hoeller_why_love_is_harder_in_a_second_language_aug_2025",lt:"ted.com"},
+  {s:"But",g:"watch",short:"Butler · Drawing shows you how it felt",name:"George Butler (TED): News tells you what happened. Drawing shows you how it felt",mins:10,t:"8 min",th:"WW1 and its aftermath",
+   what:"An artist who draws in war zones on what drawing can record that a photograph or report cannot.",
+   think:"Butler draws war as a witness. Compare his claim with a First World War poet's claim to tell the truth about the front. What does each form allow that reporting does not?",tags:["TED","free","8 min"],url:"https://www.ted.com/talks/george_butler_news_tells_you_what_happened_drawing_shows_you_how_it_felt",lt:"ted.com"},
+  {s:"Col",g:"watch",short:"Collins · Everyday moments, caught in time",name:"Billy Collins (TED): Everyday moments, caught in time",mins:20,t:"15 min",th:"Love through the ages",
+   what:"A former US Poet Laureate reads poems set to animations.",
+   think:"Pick one animated poem and explain how its line breaks control the timing. Then do the same for an unseen poem.",tags:["TED","free","15 min","unseen poetry"],url:"https://www.ted.com/talks/billy_collins_everyday_moments_caught_in_time",lt:"ted.com"},
+  {s:"KTW",g:"watch",short:"Thompson Walker · What fear can teach us",name:"Karen Thompson Walker (TED): What fear can teach us",mins:15,t:"11 min",th:"Modern times",
+   what:"A novelist reads fear as a kind of story we tell ourselves about the future.",
+   think:"How does a Modern Times text use a character's fears to imagine a future? The Handmaid's Tale is the obvious case.",tags:["TED","free","11 min"],url:"https://www.ted.com/talks/karen_thompson_walker_what_fear_can_teach_us",lt:"ted.com"},
+  {s:"Shf",g:"watch",short:"Shafak · The politics of fiction",name:"Elif Shafak (TED): The politics of fiction",mins:20,t:"19 min",th:"Love through the ages",
+   what:"A novelist on fiction and identity. Shafak's The Island of Missing Trees is now one of the AQA prose texts. On this list to be argued with.",
+   think:"Shafak says fiction can take us beyond identity politics. Argue for or against, using one of your set texts.",tags:["TED","free","19 min","argue with it"],url:"https://www.ted.com/talks/elif_shafak_the_politics_of_fiction",lt:"ted.com"},
+
+  // ---- 5 Enter · the gallery
+  {s:"YWS",g:"enter",short:"Young Walter Scott Prize",name:"Young Walter Scott Prize for historical fiction",mins:900,t:"800–2,000 words",th:"WW1 and its aftermath",
+   what:"A short story set in a time before you were born, for UK residents aged 11–19, 800–2,000 words. The 2026 closing date is 31 October. Read the entry terms on the page before you start.",
+   think:"There are three weeks. Take a moment from the context of your WW1 or Modern Times texts and tell it in a voice the texts leave out.",tags:["free","ages 11–19","enter yourself","due 31 Oct"],url:"https://www.walterscottprize.co.uk/home/young-walter-scott-prize/",lt:"Walter Scott Prize"},
+  {s:"KSE",g:"enter",short:"Keats-Shelley Young Romantics Essay Prize",name:"Keats-Shelley Young Romantics Essay Prize",mins:600,t:"750–1,000 words",th:"Love through the ages",
+   what:"An essay of 750–1,000 words on one of two questions about the Romantic poets and the ocean, using at least two poems by Keats, Shelley or Byron. For ages 15–18. Open now; closes 10am on Monday 1 February 2027. Free; £700 to the winner.",
+   think:"The pre-1900 anthology has Romantic poems in it. Start from one you already know, then read the sea poems the question names.",tags:["free","ages 15–18","enter yourself","due 1 Feb 2027"],url:"https://keats-shelley.org/prize/young-romantics-essay-prize/",lt:"Keats-Shelley"},
+  {s:"KSP",g:"enter",short:"Keats-Shelley Young Romantics Poetry Prize",name:"Keats-Shelley Young Romantics Poetry Prize",mins:300,t:"one poem, up to 30 lines",th:"Love through the ages",
+   what:"An original poem on the theme 'Oceans', no more than 30 lines. For ages 15–18. Closes 10am on Monday 1 February 2027. Free.",
+   think:"Read Keats's 'On the Sea' first. Then write about a sea that is yours.",tags:["free","ages 15–18","enter yourself","due 1 Feb 2027"],url:"https://keats-shelley.org/prize/young-romantics-poetry-prize/",lt:"Keats-Shelley"},
+  {s:"Tow",g:"enter",short:"Christopher Tower Poetry Competition",name:"Christopher Tower Poetry Competition (Christ Church, Oxford)",mins:600,t:"one poem",th:"Love through the ages",
+   what:"Christ Church's poetry competition for 16–18-year-olds educated in the UK, free to enter. The 2027 theme is 'The Deep'. Entries close at 12 noon on Thursday 18 February 2027.",
+   think:"'The Deep' will bring in a great deal of sea. Look for another kind of depth: a trench, a mine, a memory, a feeling you have not said out loud.",tags:["free","ages 16–18","enter yourself","due 18 Feb 2027"],url:"https://www.chch.ox.ac.uk/towerpoetry",lt:"Christ Church"},
+  {s:"Orw",g:"enter",short:"Orwell Youth Prize: Acts of Courage",name:"Orwell Youth Prize 2027: 'Acts of Courage' (Orwell Foundation)",mins:900,t:"up to 1,500 words",th:"All",
+   what:"Up to 1,500 words for Years 12–13, in any form: essay, journalism, story, poem. The theme is 'Acts of Courage'. Send a draft by Wednesday 3 March 2027 and you get written feedback; the final deadline is Wednesday 28 April 2027.",
+   think:"Send the draft by 3 March: the written feedback is worth having. Courage is all through your texts, from Desdemona to the front line.",tags:["free","Years 12–13","enter yourself","draft 3 Mar","final 28 Apr"],url:"https://www.orwellfoundation.com/the-orwell-youth-prize/about/enter-the-orwell-youth-prize/",lt:"Orwell Youth Prize"},
+  {s:"Gou",g:"enter",short:"Gould Prize (Trinity, Cambridge)",name:"Gould Prize for Essays in English Literature (Trinity College, Cambridge)",mins:900,t:"1,500–2,500 words",th:"All",
+   what:"An essay of 1,500–2,500 words on one of Trinity's set questions, for Year 12, submitted online by you. First prize £600 and second £400, each split between you and the school. No help from school and no AI. The 2027 questions are expected in the spring; the 2026 deadline was 12 noon on 31 July.",
+   think:"This one is yours alone. Start the essay from something in your log that you have already thought about, not from the question.",tags:["free","Year 12","enter yourself","spring – 31 Jul","check dates"],url:"https://www.trin.cam.ac.uk/undergraduate/essay-prizes/english-literature/",lt:"Trinity"},
+  {s:"Wlf",g:"enter",short:"Woolf Essay Prize (Newnham, Cambridge)",name:"Woolf Essay Prize (Newnham College, Cambridge)",mins:900,t:"an essay",th:"Love through the ages",
+   what:"An essay on literature, women's history and society, named after the talks Virginia Woolf gave that became A Room of One's Own. For women in Year 12. The 2027 round opens in February and closes in June.",
+   think:"Read the first chapter of A Room of One's Own before the questions come out. Ask the library for a copy.",tags:["free","women in Year 12","enter yourself","Feb – Jun 2027","check dates"],url:"https://newn.cam.ac.uk/study-here/access-and-outreach/events-and-programmes/woolf-essay-prize",lt:"Newnham"},
+  {s:"Pet",g:"enter",short:"Thomas Campion English Prize (Peterhouse)",name:"Thomas Campion English Prize (Peterhouse, Cambridge)",mins:900,t:"an essay",th:"All",
+   what:"An English essay on a set question, for Year 12. Questions have come out in the new year with a deadline in the spring, and schools have usually been limited to two entries. Peterhouse has not published 2027 details; the department will confirm in January.",
+   think:"Two entries per school, so the department chooses. Tap the button early and show your teacher your log.",tags:["free","Year 12","two per school","spring","check dates"],url:"https://www.pet.cam.ac.uk/essay-prizes",lt:"Peterhouse"},
+  {s:"Est",g:"enter",short:"Estelle English Prize (Queens', Cambridge)",name:"Estelle English Prize (Queens' College, Cambridge)",mins:900,t:"up to 2,500 words",th:"NEA",
+   what:"An essay of up to 2,500 words on one of three set questions, for Year 12. The essay must not be mainly about texts studied in class. £500 to the winner. The 2026 deadline was 5pm on Friday 3 July.",
+   think:"The rule against class texts sends you to your wider reading, which is also where your NEA second text will come from.",tags:["free","Year 12","enter yourself","early July","check dates"],url:"https://www.queens.cam.ac.uk/applying-here/access-and-outreach/competitions/",lt:"Queens'"},
+  {s:"Gir",g:"enter",short:"Girton Humanities Writing Competition",name:"Girton College Humanities Writing Competition (Cambridge)",mins:900,t:"an essay or creative piece",th:"All",
+   what:"An essay or a creative piece responding to an object from the Lawrence Room, Girton's museum. For Year 12. The 2026–27 round launches this autumn; last year the deadline was 5pm on 20 March.",
+   think:"Choose the object first, and only then decide between essay and story.",tags:["free","Year 12","enter yourself","launches autumn","check dates"],url:"https://www.girton.cam.ac.uk/humanities-writing-competition",lt:"Girton"},
+  {s:"Foy",g:"enter",short:"Foyle Young Poets of the Year",name:"Foyle Young Poets of the Year Award (Poetry Society)",mins:600,t:"up to three poems",th:"Love through the ages",
+   what:"Up to three original poems, each no more than 40 lines, for anyone aged 11–17 on the closing date (most of Year 12, few of Year 13). 100 winners a year, with publication and mentoring. AI-written poems are not allowed. The 2026 round closed on 31 July; 2027 is expected to follow the same pattern.",
+   think:"Read last year's winning poems before you write. Then write about something only you have seen.",tags:["free","aged 11–17","enter yourself","due 31 Jul","check dates"],url:"https://foyleyoungpoets.org/rules/",lt:"Foyle rules"},
+  {s:"PbH",g:"enter",short:"Poetry by Heart",name:"Poetry by Heart (national poetry recitation competition)",mins:300,t:"learn and perform",th:"Love through the ages",
+   what:"Learn poems by heart and perform them; the national final is at Shakespeare's Globe. Free for schools and colleges in England; the school registers you. It has a sixteen-plus collection and a First World War showcase. 2026–27 dates are not yet published.",
+   think:"Learning a poem by heart shows you its rhythm in a way that reading it never will. Choose one from the anthology.",tags:["free","school registers","check dates"],url:"https://poetrybyheart.com/",lt:"Poetry by Heart"},
+  {s:"BH",g:"enter",short:"Betty Haigh Shakespeare Prize",name:"Betty Haigh Shakespeare Prize (English Association)",mins:900,t:"1,500 words",th:"Love through the ages",
+   what:"A 1,500-word essay comparing a scene from a Shakespeare tragedy with a film or television adaptation of it, for ages 11–19. The last round we could confirm ran from June to 30 September 2025; no 2026–27 round has been announced.",
+   think:"Othello has several film versions. Choose one scene and compare two of them now, while you wait for the next round.",tags:["free","ages 11–19","no round announced","check"],url:"https://englishassociation.ac.uk/the-betty-haigh-shakespeare-prize/",lt:"English Association"},
+
+  // ---- 6 Apply · the lantern
+  {s:"CmM",g:"apply",short:"Cambridge English · Subject Masterclass",name:"Cambridge Faculty of English: Subject Masterclasses",mins:90,t:"90 min, online or in Cambridge",th:"Applying",
+   what:"A lecture by a Cambridge academic and an introduction to admissions, for A-level English Literature students. Online on Thursday 12 and Thursday 19 November 2026, 6–7.30pm; in person in Cambridge on Saturday 6 February 2027. No fee is shown; check when you book.",
+   think:"Book an online one in November. Write one thing the lecturer does with a text that you have not seen done in class.",tags:["no fee shown","online 12 and 19 Nov","in person 6 Feb"],url:"https://www.english.cam.ac.uk/event/subject-masterclass",lt:"Cambridge English"},
+  {s:"Un",g:"apply",short:"UNIQ English (Oxford)",name:"UNIQ (University of Oxford): English summer school",mins:120,t:"apply in Dec–Jan",th:"Applying",
+   what:"A free residential at Oxford in the summer of Year 12 for UK state-school pupils, with priority for under-represented backgrounds, and support through the application year. English is one of the courses. Applications for 2027 open in December.",
+   think:"Apply in December. The form asks why English; your log is the answer.",tags:["free","Year 12","Dec–Jan","check dates"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ",
+   more:[{lt:"English at UNIQ",url:"https://www.english.ox.ac.uk/summer-schools"}]},
+  {s:"ST",g:"apply",short:"Sutton Trust summer schools",name:"Sutton Trust UK Summer Schools",mins:120,t:"apply in Jan–Mar",th:"Applying",
+   what:"A free residential week at a university in the summer of Year 12, for pupils who have always been at state schools, with priority by background. English courses in 2026 ran at Cambridge, Durham, St Andrews, Edinburgh and Southampton. Last year applications opened on 12 January and closed on 5 March (Cambridge 12 February).",
+   think:"Check the eligibility page now so you know before January whether you can apply.",tags:["free","Year 12","Jan–Mar","check dates"],url:"https://summerschools.suttontrust.com/browse-courses/",lt:"Sutton Trust",
+   more:[{lt:"Eligibility",url:"https://summerschools.suttontrust.com/eligibility/"}]},
+  {s:"OxA",g:"apply",short:"Oxford · English Language and Literature",name:"Oxford: English Language and Literature (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Oxford's English degree runs from Old English to now. There is no admissions test; applicants send one marked analytical essay. For 2027 entry: apply by 15 October 2026, written work by 10 November 2026.",
+   think:"Year 12: read the first-year papers and see how far back they go. Year 13: the written work is due on 10 November.",tags:["free","Years 12–13","written work"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/english-language-and-literature",lt:"Oxford English"},
+  {s:"CamA",g:"apply",short:"Cambridge · English",name:"Cambridge: English (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Most colleges set no admissions assessment for English; applicants send two pieces of written work. A few colleges ask for more. The typical offer for 2027 entry is A*AA.",
+   think:"Check the college you are thinking of. Then choose your two pieces of written work in Year 12, not in October of Year 13.",tags:["free","Years 12–13","written work"],url:"https://www.undergraduate.study.cam.ac.uk/courses/english-ba-hons",lt:"Cambridge English"},
+  {s:"Eng4",g:"apply",short:"UCL, KCL, Durham, Warwick · English",name:"English degrees at UCL, King's College London, Durham and Warwick",mins:40,t:"40 min",th:"Applying",
+   what:"Four more English departments to compare. Typical offers for 2027 entry are around AAA to A*AA; check each page.",
+   think:"Compare the first-year modules of two of these with Oxford's. Which ones keep the pre-1900 writing you have enjoyed?",tags:["free","Years 12–13"],url:"https://www.ucl.ac.uk/study/prospective-students/undergraduate/courses/english-ba",lt:"UCL",
+   more:[{lt:"King's",url:"https://www.kcl.ac.uk/study/undergraduate/courses/english-ba"},{lt:"Durham",url:"https://www.durham.ac.uk/study/courses/english-literature-q300/"},{lt:"Warwick",url:"https://warwick.ac.uk/study/undergraduate/courses/ba-english-literature"}]},
+  {s:"OxX",g:"apply",short:"Oxford English · resources for applicants",name:"Oxford English Faculty: extracurricular resources and inspiration",mins:30,t:"a list to work through",th:"Applying",
+   what:"The faculty's own list for people thinking of applying: Great Writers Inspire, the Professor of Poetry lectures, Approaching Shakespeare, Challenging the Canon, the Ten-Minute Book Club and more.",
+   think:"Several of these are already in the tower. Tick off the ones you have done and see what is left.",tags:["free","Years 12–13"],url:"https://www.english.ox.ac.uk/extracurricular-resources-inspiration",lt:"Oxford English"}
+];
+
+/* The year as notices to mariners. m = month (YYYY-MM). s links to an item. */
+const YEAR = [
+  {m:"2026-10",when:"Thu 15 Oct",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants. Oxford English written work follows on 10 November.",s:"OxA",check:false},
+  {m:"2026-10",when:"Wed 21 Oct, 6pm",what:"Shakespeare's Cosmos, Birmingham",sub:"Free, ticketed. The Exchange, Centenary Square.",s:"SCo",check:false,urgent:true},
+  {m:"2026-10",when:"Sat 24 Oct",what:"Birmingham Literature Festival Readers' Day",sub:"Tickets about £8 for under-18s.",s:"BLF",check:false},
+  {m:"2026-10",when:"Sat 31 Oct",what:"Young Walter Scott Prize closes",sub:"A historical short story, 800–2,000 words.",s:"YWS",check:false,urgent:true},
+  {m:"2026-11",when:"Mon 2 Nov",what:"Oxford Shakespeare webinar: Pericles",sub:"Online with Emma Smith. Register on the faculty page.",s:"OxW",check:false},
+  {m:"2026-11",when:"Tue 10 Nov",what:"Oxford English written work due",sub:"Year 13 applicants: one marked essay.",s:"OxA",check:false},
+  {m:"2026-11",when:"Thu 12 and 19 Nov, 6pm",what:"Cambridge English masterclasses (online)",sub:"A lecture and an introduction to admissions.",s:"CmM",check:false},
+  {m:"2026-12",when:"Mon 7 Dec",what:"Oxford Shakespeare webinar: A Midsummer Night's Dream",sub:"Online with Emma Smith.",s:"OxW",check:false},
+  {m:"2026-12",when:"December",what:"UNIQ applications open",sub:"English is one of the courses.",s:"Un",check:true},
+  {m:"2027-01",when:"Mid-January",what:"UNIQ applications close",sub:"Last year's closed in mid-January.",s:"Un",check:true},
+  {m:"2027-01",when:"January",what:"Sutton Trust summer school applications open",sub:"Last year: 12 January.",s:"ST",check:true},
+  {m:"2027-01",when:"January",what:"Thomas Campion Prize details",sub:"The department checks with Peterhouse and chooses up to two entrants.",s:"Pet",check:true},
+  {m:"2027-02",when:"Mon 1 Feb, 10am",what:"Keats-Shelley Young Romantics prizes close",sub:"Essay and poetry, ages 15–18.",s:"KSE",check:false},
+  {m:"2027-02",when:"Sat 6 Feb",what:"Cambridge English masterclass (in person)",sub:"In Cambridge, 10am–12.35pm.",s:"CmM",check:false},
+  {m:"2027-02",when:"Thu 18 Feb, noon",what:"Christopher Tower Poetry Competition closes",sub:"Theme: 'The Deep'. Ages 16–18.",s:"Tow",check:false},
+  {m:"2027-02",when:"February",what:"Woolf Essay Prize opens",sub:"Women in Year 12. Closes in June.",s:"Wlf",check:true},
+  {m:"2027-03",when:"Wed 3 Mar",what:"Orwell Youth Prize: drafts for feedback",sub:"Send a draft and get written feedback.",s:"Orw",check:false},
+  {m:"2027-03",when:"Early March",what:"Sutton Trust main deadline",sub:"Last year: 5 March.",s:"ST",check:true},
+  {m:"2027-03",when:"About 20 Mar",what:"Girton Humanities Writing Competition closes",sub:"Last year: 5pm, 20 March.",s:"Gir",check:true},
+  {m:"2027-04",when:"Wed 28 Apr",what:"Orwell Youth Prize final deadline",sub:"Up to 1,500 words.",s:"Orw",check:false},
+  {m:"2027-04",when:"Spring",what:"Gould Prize questions out",sub:"Trinity, Cambridge. Deadline expected 31 July.",s:"Gou",check:true},
+  {m:"2027-06",when:"June",what:"Woolf Essay Prize closes",sub:"Last year: 8 June.",s:"Wlf",check:true},
+  {m:"2027-07",when:"Early July",what:"Estelle English Prize deadline",sub:"Last year: 5pm, Friday 3 July.",s:"Est",check:true},
+  {m:"2027-07",when:"July",what:"UNIQ and Sutton Trust summer schools",sub:"Summer of Year 12.",s:"Un",check:true},
+  {m:"2027-07",when:"31 Jul",what:"Gould Prize and Foyle Young Poets deadlines",sub:"Both followed this date last year.",s:"Gou",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three items are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three things from the department for this half term. Do them, light them, and write each one up in your log.",
+  items:[
+    {s:"Cat",step:"Watch",txt:"Watch Mandy Len Catron's 'A better way to talk about love' (15 min). Find three metaphors for love in the anthology and say what each one assumes."},
+    {s:"PU",step:"Listen",txt:"One episode of Poetry Unbound. Read the poem on the page and write three sentences before you listen; then see what he found that you missed."},
+    {s:"EmS",step:"Listen",txt:"Emma Smith's Approaching Shakespeare lecture on your play. Put her central question at the top of a log entry and answer it yourself."}
+  ]
+};
+const COMPILED="2026-10-09";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-elit-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const ORDER = Object.keys(FAM);   // bottom of the tower to the top
+
+/* ---------- state ---------- */
+const KEY_BASE="elit-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},fam:"all",bucket:"quick",at:"read",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the window just lit, for the animation
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- the light: how far it reaches ---------- */
+const RANGE=24;   // nautical miles at 100%
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function light(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  const nm=Math.round(N/ITEMS.length*RANGE*10)/10;
+  const ch = k ? `Fl(${k}) W ${k*5}s ${nm}M` : "Unlit";
+  return {c,t,N,k,pct,nm,ch};
+}
+
+/* ---------- the keeper talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function greeting(){
+  const L=light(); const n=L.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `Evening, ${firstName()}. Mrs Nancarrow, keeper. Six floors, ${ITEMS.length} windows, every one of them dark and every one free. Your orders for this half term are below the tower; start there. Whatever you read, write it up in the log.`;
+  if(!n) return `${firstName()}. Still dark from top to bottom. Three things in your orders. One will do for tonight.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${n} window${n===1?"":"s"} lit and the beam out to ${L.nm} miles. ${ht} of ${HALFTERM.items.length} orders done. Not finished yet.`;
+  if(L.k<6) return `${firstName()}. Orders done; ${n} windows lit, ${L.nm} miles. ${ORDER.filter(g=>!L.c[g]).map(g=>FAM[g].place).slice(0,2).join(" and ")} still dark. A light with dark floors under it doesn't reach as far.`;
+  return `${firstName()}. Something lit on every floor, beam out to ${L.nm} miles. Keep the log going. The log is the part anyone else will read.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const L=light();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"English Literature",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           light:{pct:L.pct, floors:L.k, miles:L.nm, character:L.ch},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="elit-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="read";
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="The keeper's log · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("elit-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Climbing…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the tower (drawn from ITEMS) ---------- */
+const CX=450, LAMP={x:450,y:132}, SHORE=1290, ZERO=520;
+const hwAt=y=>82+(y-232)/(600-232)*(120-82);
+const xOfMiles=m=>ZERO+m/RANGE*(SHORE-ZERO);
+/* each floor: the shape that takes the hover outline, where its windows go, where its plate sits */
+function floorGeom(i){
+  if(i<4){ const yb=600-i*92, yt=yb-92;
+    return {kind:"body",yb,yt,mid:(yb+yt)/2,band:i%2===1,
+      shape:`M${CX-hwAt(yb)} ${yb} L${CX-hwAt(yt)} ${yt} L${CX+hwAt(yt)} ${yt} L${CX+hwAt(yb)} ${yb} Z`,edge:hwAt((yb+yt)/2)}; }
+  if(i===4) return {kind:"gallery",yb:232,yt:174,mid:204,shape:`M${CX-114} 232 L${CX-114} 174 L${CX+114} 174 L${CX+114} 232 Z`,edge:114};
+  return {kind:"lantern",yb:172,yt:96,mid:134,shape:`M${CX-62} 172 L${CX-62} 96 L${CX+62} 96 L${CX+62} 172 Z`,edge:62};
+}
+function paneSpots(i,n){
+  const G=floorGeom(i); const pts=[];
+  const rowsFor=n<=7?1:2, per=Math.ceil(n/rowsFor);
+  let ys;
+  if(G.kind==="body") ys = rowsFor===1?[G.mid-9]:(i===0?[G.yt+12,G.yt+38]:[G.yt+20,G.yt+52]);
+  else if(G.kind==="gallery") ys = rowsFor===1?[192]:[180,203];
+  else ys=[150];
+  for(let r=0;r<rowsFor;r++){
+    const cnt = r<rowsFor-1 ? per : n-per*(rowsFor-1);
+    const step = G.kind==="lantern"?16:(G.kind==="gallery"?15:(per>7?17:20));
+    const w = cnt*step;
+    for(let k=0;k<cnt;k++) pts.push({x:CX-w/2+k*step+(step-14)/2, y:ys[r]});
+  }
+  return pts;
+}
+function buildStars(){
+  let h=""; let seed=7;
+  const rnd=()=>{ seed=(seed*9301+49297)%233280; return seed/233280; };
+  for(let i=0;i<90;i++){ const x=rnd()*1400, y=rnd()*400; if(x>700&&x<1300&&y>60&&y<220) continue;
+    const r=rnd()<.12?1.6:.9; h+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r}" fill="#dfe7f2" opacity="${(.35+rnd()*.5).toFixed(2)}"${rnd()<.2?' class="twinkle"':""}/>`; }
+  $("stars").innerHTML=h;
+}
+function buildRanges(){
+  $("ranges").innerHTML=[6,12,18].map(m=>{ const x=xOfMiles(m);
+    return `<g><path d="M${x} 482 l-6 -14 h12 z" fill="#a8322b"/><rect x="${x-1}" y="458" width="2" height="10" fill="#ccc"/><text class="rangetxt" x="${x}" y="500" text-anchor="middle">${m} MILES</text></g>`; }).join("");
+}
+function buildTower(){
+  const t=totals();
+  let h="";
+  /* base and door */
+  h+=`<rect x="${CX-136}" y="598" width="272" height="14" fill="#8f8a7e"/><rect x="${CX-140}" y="610" width="280" height="8" fill="#5f5b52"/>`;
+  ORDER.forEach((g,i)=>{
+    const G=floorGeom(i);
+    let body="";
+    if(G.kind==="body"){
+      body=`<path class="floor" d="${G.shape}" fill="${G.band?"#a8322b":"#e4dfd2"}"/>
+        <path d="${G.shape}" fill="url(#towerShade)" pointer-events="none"/>
+        <path d="M${CX-hwAt(G.yt)} ${G.yt} H${CX+hwAt(G.yt)}" stroke="#0b1422" stroke-width="2" opacity=".5"/>`;
+      if(i===0) body+=`<path d="M${CX-13} 598 v-14 q13 -12 26 0 v14z" fill="#2b2f36"/><circle cx="${CX+7}" cy="590" r="1.8" fill="#c9a24f"/>`;
+    } else if(G.kind==="gallery"){
+      body=`<path class="floor" d="${G.shape}" fill="#0b1422" fill-opacity=".35"/>
+        <rect x="${CX-82}" y="174" width="164" height="58" fill="#e4dfd2"/>
+        <path d="M${CX-82} 174 h164 v58 h-164z" fill="url(#towerShade)"/>
+        <rect x="${CX-120}" y="224" width="240" height="10" fill="#2b2f36"/>
+        <path d="M${CX-118} 176 H${CX+118}" stroke="#2b2f36" stroke-width="3"/>
+        ${Array.from({length:13},(_,k)=>`<path d="M${CX-114+k*19} 176 V224" stroke="#2b2f36" stroke-width="2"/>`).join("")}`;
+    } else {
+      body=`<path class="floor" d="${G.shape}" fill="#1c2c3e" fill-opacity=".85"/>
+        <circle id="halo" cx="${LAMP.x}" cy="${LAMP.y}" r="20" fill="url(#lampHalo)"/>
+        <rect x="${LAMP.x-10}" y="${LAMP.y-12}" width="20" height="24" rx="4" fill="#ffe7a6" id="lampCore" opacity=".5"/>
+        ${[-40,-20,0,20,40].map(d=>`<path d="M${CX+d} 96 V172" stroke="#2b2f36" stroke-width="2"/>`).join("")}
+        <path d="M${CX-62} 96 H${CX+62} M${CX-62} 172 H${CX+62}" stroke="#2b2f36" stroke-width="3"/>
+        <path d="M${CX-70} 96 Q${CX} 40 ${CX+70} 96 Z" fill="#a8322b"/>
+        <path d="M${CX-70} 96 Q${CX} 40 ${CX+70} 96" fill="none" stroke="#2b2f36" stroke-width="3"/>
+        <rect x="${CX-4}" y="44" width="8" height="18" fill="#2b2f36"/><circle cx="${CX}" cy="42" r="7" fill="#2b2f36"/>`;
+    }
+    const panes=paneSpots(i,ITEMS.filter(it=>it.g===g).length);
+    const list=ITEMS.filter(it=>it.g===g);
+    const win=list.map((it,k)=>{ const p=panes[k];
+      return `<g data-g="${g}"><rect class="pane" id="pane-${it.s}" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" width="14" height="${G.kind==="body"?18:16}" rx="${G.kind==="body"?6:3}"/>
+        <rect class="panehit" x="${(p.x-2).toFixed(1)}" y="${(p.y-2).toFixed(1)}" width="18" height="${G.kind==="body"?22:20}" data-s="${it.s}"><title>${esc(it.short)}</title></rect></g>`; }).join("");
+    /* the label plate on the left with a leader to the floor */
+    const py=G.mid-29, px=40, pw=220;
+    const plate=`<path class="leader" d="M${px+pw} ${G.mid} H${CX-G.edge-4}"/>
+      <rect class="plate" x="${px}" y="${py}" width="${pw}" height="58" rx="3"/>
+      <circle cx="${px+18}" cy="${G.mid}" r="9" style="fill:var(--g)"/><text x="${px+18}" y="${G.mid+5}" text-anchor="middle" font-family="Saira Stencil One, sans-serif" font-size="13" fill="#fff">${FAM[g].no}</text>
+      <text class="platetxt" x="${px+36}" y="${py+21}">${FAM[g].label.toUpperCase()}</text>
+      <text class="platesub" x="${px+36}" y="${py+37}">${esc(FAM[g].place)}</text>
+      <text class="platecnt" id="cnt-${g}" x="${px+36}" y="${py+52}">0 OF ${t[g]} LIT</text>`;
+    h+=`<g class="hot" data-g="${g}" data-f="${g}" tabindex="0" role="button" aria-label="Floor ${FAM[g].no}, ${FAM[g].place}: ${FAM[g].label}, ${FAM[g].verb.toLowerCase()}">${body}${plate}</g><g data-g="${g}">${win}</g>`;
+  });
+  $("tower").innerHTML=h;
+}
+/* light the windows and set the beam */
+function lightTower(){
+  const L=light();
+  ITEMS.forEach(it=>{ const p=$("pane-"+it.s); if(!p) return;
+    const on=!!state.done[it.s]; p.classList.toggle("on",on);
+    p.classList.toggle("panein", on && JUST===it.s && !reduceMotion()); });
+  JUST=null;
+  const halo=$("halo"), core=$("lampCore");
+  if(halo){ halo.setAttribute("r", (18+L.pct*0.75).toFixed(0)); }
+  if(core){ core.setAttribute("opacity", L.N? "1":".45"); }
+  const x=Math.max(ZERO, xOfMiles(L.nm));
+  const spread=10+L.pct*0.42;
+  $("beamG2").innerHTML = L.N ? `<g class="sweep"><path class="beam" d="M${LAMP.x+8} ${LAMP.y-6} L${x.toFixed(0)} ${(LAMP.y-spread).toFixed(0)} L${x.toFixed(0)} ${(LAMP.y+spread).toFixed(0)} L${LAMP.x+8} ${LAMP.y+6} Z" fill="url(#beamG)"/></g>
+     <path d="M${x.toFixed(0)} 470 m-14 0 q14 -5 28 0" stroke="#ffd77a" stroke-width="2" fill="none" opacity=".7"/>` : "";
+  $("charTxt").textContent = "YOUR LIGHT: "+L.ch.toUpperCase();
+  $("charSub").textContent = L.N ? `${L.N} of ${ITEMS.length} windows lit · ${L.k} of 6 floors` : "No windows lit yet";
+}
+
+/* ---------- item cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="${esc(it.short)}, ${FAM[it.g].label}, ${esc(it.t)}${done?", lit":""}${isNew?", new":""}">
+    <span class="no">No. ${String(it.n).padStart(2,"0")} · ${esc(it.s)}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">Lit</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic">${FAM[g].no}</div><div><span class="nm">${FAM[g].place} · ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} lit</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="ORDERS FOR THE WATCH · "+HALFTERM.label.toUpperCase();
+  $("htLabel").textContent="Three things this half term";
+  $("htDue").textContent="by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":i+1}</span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · lit":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>all</i>Every floor <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}"><span class="nm"><b>${FAM[x.g].no}</b>${FAM[x.g].place}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const L=light();
+  $("nmVal").innerHTML=L.nm+"<small> MILES</small>";
+  $("rangeBar").style.setProperty("--w",L.pct+"%");
+  let w;
+  if(!L.N) w=`The lamp is unlit. Each thing you do lights a window on its floor and sends the beam further, up to ${RANGE} miles when every window is lit.`;
+  else if(L.k<6) w=`${L.N} of ${ITEMS.length} windows lit. ${L.k} of 6 floors lit; still dark: ${ORDER.filter(g=>!L.c[g]).map(g=>FAM[g].place.toLowerCase()).join(", ")}.`;
+  else w=`${L.N} of ${ITEMS.length} windows lit, with something on every floor.`;
+  $("coverTxt").textContent=w;
+  $("palette").innerHTML=ORDER.map(g=>`<span class="swatch${L.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}: ${L.c[g]} of ${L.t[g]}">${L.c[g]?L.c[g]:FAM[g].no}</span>`).join("");
+  $("charLine").textContent = L.N ? `Your light: ${L.ch} (${L.k} flash${L.k===1?"":"es"}, one for each lit floor)` : "Your light: unlit";
+  ORDER.forEach(g=>{ const c=$("cnt-"+g); if(c) c.textContent=`${L.c[g]} OF ${L.t[g]} LIT`; });
+  lightTower();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open ${esc(it.short.split(" · ")[0].split(" (")[0])}</button>` : (y.url?`<a class="open" href="${esc(y.url)}" target="_blank" rel="noopener">Site ↗</a>`:"");
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}${y.urgent?'<span class="urgent">soon</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Read, and keep the log.</span>`}</div></div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true">${FAM[it.g].no}</div>
+      <div><div class="fam">${FAM[it.g].place} · ${FAM[it.g].label} · No. ${String(it.n).padStart(2,"0")} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>The keeper's note</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Lit ✓ (undo)":"Light it: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it in the log</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department registers you; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=light();
+  if(was) delete state.done[sym]; else { state.done[sym]=true; JUST=sym; }
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const L=light(); const g=BY[sym].g;
+    if(before.c[g]===0 && L.k>1) say(`First window lit in ${FAM[g].the}. ${L.k} of 6 floors now. Your light is ${L.ch}.`);
+    else if(before.c[g]===0) say(`First window lit: ${BY[sym].short}. The lamp's on. Now write it up in the log while the line is still in your head.`);
+    else if(L.c[g]===L.t[g]) say(`Every window in ${FAM[g].the} is lit. You can see that floor from the shore.`);
+    else say(pick([`Lit. ${L.N} windows; the beam's out to ${L.nm} miles.`,`That's another window. A lit window isn't a log entry, mind: write it up.`,`${BY[sym].short}: lit. ${L.nm} miles now.`,`Another in ${FAM[g].the}. There are floors still dark; I've left the stairs clear for you.`])); }
+  else say("Put out again. That window's dark.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes down to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const L=light();
+  say(`${FAM[g].place}: ${FAM[g].verb.toLowerCase()}. ${L.c[g]?`${L.c[g]} of ${L.t[g]} lit on this floor.`:"Nothing lit on this floor yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const ph=e.target.closest(".panehit"); if(ph){ openSheet(ph.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think; $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbHw").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- send the keeper up ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left in the tower that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a floor the pupil has not lit, two times in three
+  const L=light(); const fresh=pool.filter(i=>!L.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". Wait there.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("climb"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("climb");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("climb");
+    $("pickMsg").textContent=`${choice.short}: ${choice.t}, from ${FAM[choice.g].the}.`;
+    say(`Here. ${choice.short}: ${choice.t}, from ${FAM[choice.g].the}.${!L.c[choice.g]?" That floor's still dark.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1700);
+});
+
+/* ---------- the keeper's log ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function logHTML(n,i,example,num){
+  const it=n.s?BY[n.s]:null;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:""}${example?' aria-label="Example log entry"':""}>
+      <span class="watchno">${example?"EG":"No.<br>"+num}</span>
+      <div class="hd"><b>${esc(n.hw||"(no text named)")}</b><span class="d">${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="src">${esc(n.what)}</div>
+      ${n.quo?`<div class="quo">“${esc(n.quo)}”</div>`:""}
+      <div class="why"><i>showed me</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>still looking for</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">Strike it out</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("logCount").textContent=state.notes.length?`${state.notes.length} entr${state.notes.length===1?"y":"ies"}`:"";
+  if(!state.notes.length){
+    box.innerHTML=logHTML({hw:"Othello",what:"Helen Fisher (TED): The brain in love",s:"Fis",
+      quo:"She loved me for the dangers I had passed, / And I loved her that she did pity them.",
+      learned:"Fisher talks about love as a drive in the brain. Othello's account of how they fell in love is about stories: Desdemona fell for his telling of his life. The play makes love depend on a story, and Iago works by telling Othello a different one.",
+      q:"Is there any love in the play that doesn't need a story told about it?"},0,true,0)+`<p class="small" style="color:#b8c2cf">Your log is empty. Light one window, then write the first entry. (The line above is from Othello, Act 1 Scene 3.)</p>`;
+    return;
+  }
+  const N=state.notes.length;
+  box.innerHTML=state.notes.map((n,i)=>logHTML(n,i,false,N-i)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to strike it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Strike it out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value.trim(),what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; if(!state.done[match.s]) JUST=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbHw","nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbQ").placeholder="";
+  $("copyMsg").textContent="Entered in the log.";
+  say(pick(["In the log. That's the part a university reads; the windows are for me.","Logged. Keep the last line: the next essay starts from what you're still looking for.","Good entry. Date, source, the line itself, what it showed you. That's a proper log."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`English Literature keeper's log – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)} · ${n.hw||""}\nFrom: ${n.what}${n.quo?`\nLine: "${n.quo}"`:""}\nWhat it showed me: ${n.learned}${n.q?`\nStill looking for: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} lit, ${notes} log ${notes===1?"entry":"entries"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/english-literature.html";
+const TOUR=[
+  {sel:".scene", h:"This is the lighthouse", p:"Six floors, from the store room at the bottom to the lantern at the top, one window for each of the 68 items. Click a floor and the page goes to its list; click a window and that item opens. When a pupil does something, its window lights in the floor's colour."},
+  {sel:".scene", h:"The beam", p:"The more windows a pupil lights, the further the beam reaches across the sea, up to 24 miles at the far shore. Bottom right is the pupil's light written the way the Admiralty List writes a lighthouse's character: one flash for each floor they have lit."},
+  {sel:"#smallprint", h:"The small print", p:"Each floor has a piece of lighthouse history with a literary link: the Stevensons, Bradbury's 'The Fog Horn', Smeaton's Eddystone, Woolf's To the Lighthouse, Grace Darling and Wordsworth's poem, Fresnel's lens. Every claim carries a source and a label: attested, reported or invented."},
+  {sel:".guide", h:"The keeper", p:"Mrs Nancarrow, an invented keeper, and the page says so. She greets each pupil by name, reacts to what they do and keeps them to the house rule: whatever you read, write it up in the log."},
+  {sel:".count-card", h:"The range of your light", p:"Progress is in miles, plus how many of the six floors have a lit window. Eight TED talks and nothing else leaves five floors dark, and the keeper says so."},
+  {sel:".pick-card", h:"Send the keeper up", p:"A pupil says how long they have and the keeper climbs the tower and comes back with one thing they have not done, leaning towards floors that are still dark."},
+  {sel:".orders", h:"Orders for the watch", p:"Three things from the department each half term, with a date. This half term: Catron's TED talk on metaphors for love (with the anthology), one Poetry Unbound episode as unseen practice, and Emma Smith's lecture on their Shakespeare play. You change these by editing one block at the top of the file."},
+  {sel:"#zone-read", h:"The items", p:"All 68, one card each, every one tagged to a part of 7712. The store room starts with the texts themselves: the Folger plays, the Bodleian First Folio, Gutenberg, the First World War Poetry Digital Archive. A card opens to say what it is, a note on what to do with it, and the link."},
+  {sel:"#zone-do", h:"Local and practical", p:"The workshop has things to go to in Birmingham (the Shakespeare Institute's free evening on 21 October, the Shakespeare Memorial Room, the Literature Festival) and a card that sends pupils to the AQA NEA page to start thinking about their pairing."},
+  {sel:".notices", h:"Notices to mariners", p:"October to July: Young Walter Scott (31 October), Cambridge masterclasses (12 and 19 November), Keats-Shelley (1 February), Tower (18 February), Orwell drafts and deadline, Woolf, Gould, Foyle, UNIQ and the Sutton Trust. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"The keeper's log", p:"The heart of it. For anything they do, a pupil writes an entry: which of their texts it speaks to, what they watched or read, the line itself, what it showed them, and what they are still looking for. It saves to the department as they write and copies out as text."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, orders completed, how far each light reaches, and every log entry. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("elit-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",done:["Cat","PU","EmS","Fol","HE"],picks:3,notes:[
+    {hw:"Othello",what:"Oxford: Approaching Shakespeare (Emma Smith)",quo:"",learned:"Smith builds the lecture round whether the play is about race or about jealousy, and argues the two cannot be pulled apart: Iago's lies work because of what Venice already thinks about Othello.",q:"Does Desdemona ever see Othello the way Venice does?"},
+    {hw:"the anthology",what:"Mandy Len Catron (TED): A better way to talk about love",quo:"",learned:"Catron says we talk about love as falling and as madness, which makes it something that happens to us. The anthology poems mostly use those metaphors too; the ones that don't (love as work, love as a choice) are the ones that surprised me.",q:"Which poem in the anthology treats love as something you choose?"}],interest:["KSE"],last:"2026-10-07"},
+  {name:"Ben Carter",cls:"12A",done:["Cat","Adi"],picks:1,notes:[
+    {hw:"Jane Eyre",what:"Chimamanda Ngozi Adichie (TED): The danger of a single story",quo:"",learned:"Jane Eyre tells Bertha's story only through Rochester and Jane. The novel argues against one single story, about plain governesses, while repeating another.",q:""}],interest:[],last:"2026-10-03"},
+  {name:"Chloe Nguyen",cls:"12B",done:["Cat","PU","EmS","FF","Fol","NTC","Stl"],picks:3,notes:[
+    {hw:"Othello",what:"Bodleian Library: the First Folio (1623), digital facsimile",quo:"The Tragedie of Othello, the Moore of Venice",learned:"The Folio spells it 'Moore'. My edition modernises to 'Moor'. The title names him by where he comes from before anyone in the play speaks.",q:"What else has my edition tidied up that I have been analysing as Shakespeare's choice?"},
+    {hw:"unseen poetry",what:"Poetry Unbound (Pádraig Ó Tuama, On Being)",quo:"",learned:"I wrote three sentences on the poem before listening. I had the imagery; I missed that the last stanza changes who is being spoken to. He spent half the episode on that turn.",q:"How do I train myself to look for a change of addressee?"}],interest:["Tow","Pet"],last:"2026-10-05"},
+  {name:"Daniel Brooks",cls:"12B",done:[],picks:0,notes:[],interest:[],last:"2026-09-30"},
+  {name:"Esha Patel",cls:"13A",done:["OxA","CamA","Yal","Gut","Gou","FWW","Fus"],picks:1,notes:[
+    {hw:"WW1 and its aftermath",what:"First World War Poetry Digital Archive (University of Oxford)",quo:"",learned:"Owen's draft of 'Anthem for Doomed Youth' has Sassoon's handwriting on it. The title changed after Sassoon's suggestion. The poem I studied as one man's voice was partly a conversation.",q:"Is my NEA about war poetry as a shared act of writing?"}],interest:["Gou","Est"],last:"2026-10-06"},
+  {name:"Finn Murphy",cls:"13A",done:["Col","Fis"],picks:0,notes:[],interest:["Tow"],last:"2026-10-01"},
+  {name:"Grace Adeyemi",cls:"12A",done:["Cat","Atw","GrE","WMW","SCo"],picks:1,notes:[
+    {hw:"The Handmaid's Tale",what:"Margaret Atwood on The Handmaid's Tale (UC Berkeley, On the Same Page)",quo:"",learned:"Atwood says nothing went into the novel that had not already happened somewhere. That changes how I read Gilead: it is a collage of history, not an invention.",q:"Which details in the novel can I trace to a real place and date?"}],interest:["Un","Orw"],last:"2026-10-08"},
+  {name:"Harry Singh",cls:"12B",done:["TMB"],picks:0,notes:[],interest:[],last:"2026-10-02"}
+];
+function wOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const pct=Math.round(done.length/ITEMS.length*100); const nm=Math.round(done.length/ITEMS.length*RANGE*10)/10;
+  return {pct,k,c,nm}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const thCount={}; rows.forEach(r=>r.done.forEach(s=>{ const t=BY[s]&&BY[s].th; if(t) thCount[t]=(thCount[t]||0)+1; }));
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished all 3 half-term orders</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>prize / summer school interests</span></div>
+      <div class="tl"><b>${nbLines}</b><span>log entries written</span></div>
+    </div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. The Campion Prize and Poetry by Heart go through school; the rest pupils enter themselves, so this is who to support.</p>
+        <table class="dt"><tr><th>Prize / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.s}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which floors get used</h3><p class="small">Items lit across all pupils, by floor, and by part of 7712. Tells you where to point the next half term's orders.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Lit</th><th>Light</th><th>Orders</th><th class="hide-m">Log</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const W=wOf(r.done); const grey=ORDER.filter(g=>!W.c[g]).map(g=>FAM[g].label);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td><span class="dv">${W.nm} mi</span> ${ORDER.map(g=>`<span class="sw${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}"></span>`).join("")} <span class="small">${grey.length&&grey.length<6?`not yet: ${grey.join(", ")}`:grey.length===6?"":"all six floors"}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.notes.length} ${r.notes.length===1?"entry":"entries"}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Logs</h3><p class="small">Each pupil's log in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.hw||"")}</b> · <span class="small">${esc(n.what)}</span>${n.quo?`<br><i>“${esc(n.quo)}”</i>`:""}<br>What it showed me: ${esc(n.learned)}${n.q?`<br>Still looking for: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",slip:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const sl=e.target.closest("#fbSlip button"); if(sl){ FB.slip=sl.dataset.v; document.querySelectorAll("#fbSlip button").forEach(b=>b.setAttribute("aria-pressed",String(b===sl))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"english-literature-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,look:FB.look,log:FB.slip,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,logN:state.notes.length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-elit-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-elit-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.slip=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbSlip button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the English Literature page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nThe look: ${rec.look||"–"}\nThe keeper's log: ${rec.log||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to read, hear, do, watch, enter and apply for · six floors of one tower";
+$("tableEyebrow").textContent="Six floors · "+ITEMS.length+" windows";
+$("foot").innerHTML="Compiled 30 September 2026, additions 9 October 2026 · links checked then · AQA A-level English Literature A (7712): Love through the ages; Texts in shared contexts (WW1 and its aftermath, or Modern times: literature from 1945 to the present day); the independent critical study (NEA) · free at the point of use unless the card says otherwise<br>Sources for the six floors are in the small print under the picture. The keeper is invented. The lighthouse in the picture is not a real one.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildStars(); buildRanges(); buildTower(); lightTower();
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
