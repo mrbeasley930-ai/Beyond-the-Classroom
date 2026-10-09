@@ -1,0 +1,1934 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maths Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   HOTEL HILBERT — Maths and Further Maths, Beyond the Classroom
+   Hilbert's hotel has infinitely many rooms and is always full, yet there
+   is always room for one more. Six floors, one per family, plus the
+   Further Maths wing; above the sixth floor the storeys go on shrinking
+   for ever. Each thing a pupil does puts a light on in its room.
+   Reception holds the problem on the desk (one a week). The night porter
+   is invented.
+   ====================================================================== */
+:root{
+  --night:#0f1229; --night2:#171b38; --night3:#20264a; --facade:#272c52; --facade2:#323864;
+  --gold:#d8b25c; --gold2:#a9853a; --gold3:#f2d891;
+  --paper:#f7f0de; --paper2:#ece2c8; --ink:#1b1a2c; --ink2:#4b4a5e; --faded:#85849a; --rule:#cdbf9c;
+  --neon:#ff4f9a; --teal:#2fb8a6;
+  --read:#c27b2c;    /* 1 the library — lamplight */
+  --listen:#3d9a78;  /* 2 the music room — baize green */
+  --watch:#4a80c4;   /* 3 the screening room — projector blue */
+  --do:#8a5cc2;      /* 4 the games room — violet */
+  --enter:#d0463a;   /* 5 the ballroom — red */
+  --apply:#d9a521;   /* 6 the penthouse — gold */
+  --desk:#2fb8a6;    /* reception */
+  --f-deco:"Limelight","Didot","Bodoni 72",Georgia,serif;
+  --f-sans:"Josefin Sans","Futura","Century Gothic","Trebuchet MS",sans-serif;
+  --f-text:"Crimson Pro",Georgia,"Times New Roman",serif;
+  --f-hand:"Patrick Hand","Segoe Print","Bradley Hand",cursive;
+  --f-mono:ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--f-text);font-size:1.12rem;line-height:1.5;
+  background-image:radial-gradient(ellipse at 50% -20%,rgba(216,178,92,.13),transparent 55%),linear-gradient(180deg,#0b0e22 0,#0f1229 40%,#12163a 100%);}
+[data-g="enter"]{--g:var(--enter)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="do"]{--g:var(--do)} [data-g="apply"]{--g:var(--apply)} [data-g="desk"]{--g:var(--desk)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:400;line-height:1.12}
+.deco{font-family:var(--f-deco)}
+.eyebrow{font-family:var(--f-sans);font-weight:600;font-size:.82rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.small{font-size:.95rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-sans);font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold3);border:1px solid rgba(216,178,92,.55);padding:4px 12px 3px;border-radius:2px;background:rgba(0,0,0,.25)}
+.badge i{width:8px;height:8px;background:var(--neon);display:inline-block;transform:rotate(45deg);box-shadow:0 0 8px var(--neon)}
+.paper .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.paper .badge i{box-shadow:none}
+.btn{font:inherit;font-family:var(--f-sans);font-weight:600;font-size:.95rem;letter-spacing:.06em;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:10px 18px 8px;cursor:pointer;border-radius:2px}
+.btn:hover{background:#000}
+.btn.big{font-size:1.05rem;padding:13px 24px 11px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--g,var(--ink));color:#fff}
+.btn.gold{background:var(--gold);border-color:var(--gold2);color:var(--ink)}
+.btn.gold:hover{background:var(--gold3)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold3);outline-offset:2px}
+.field{display:grid;gap:3px}
+.field label{font-family:var(--f-sans);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field textarea,.field select{font:inherit;font-size:1.08rem;background:rgba(255,255,255,.6);border:0;border-bottom:1.5px solid var(--ink);padding:7px 6px;color:var(--ink);width:100%;border-radius:0}
+.field textarea{min-height:84px;resize:vertical;line-height:1.45}
+.field .hand{font-family:var(--f-hand);font-size:1.2rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#8a1d1d;min-height:1.3em;font-size:.98rem}
+.wrap{max-width:1260px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.wrap>*{min-width:0}
+.paper{background:var(--paper);color:var(--ink);background-image:radial-gradient(ellipse at 0 0,rgba(255,255,255,.55),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(120,100,60,.10),transparent 55%)}
+/* art deco corner frame used on the paper cards */
+.frame{position:relative}
+.frame:before{content:"";position:absolute;inset:7px;border:1px solid var(--gold2);pointer-events:none;
+  clip-path:polygon(0 0,28px 0,28px 1px,1px 1px,1px 28px,0 28px,0 calc(100% - 28px),1px calc(100% - 28px),1px calc(100% - 1px),28px calc(100% - 1px),28px 100%,0 100%,0 0,100% 0,100% 28px,calc(100% - 1px) 28px,calc(100% - 1px) 1px,calc(100% - 28px) 1px,calc(100% - 28px) 0,100% 0,100% 100%,calc(100% - 28px) 100%,calc(100% - 28px) calc(100% - 1px),calc(100% - 1px) calc(100% - 1px),calc(100% - 1px) calc(100% - 28px),100% calc(100% - 28px))}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(800px,100%);border-top:10px solid var(--gold);padding:32px 36px;display:grid;gap:16px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px #000;position:relative;border-radius:2px}
+.gate-card h1{font-family:var(--f-deco);font-size:clamp(2.6rem,6.6vw,4.4rem);letter-spacing:.02em;line-height:1}
+.gate-card h1 em{display:block;font-family:var(--f-text);letter-spacing:0;font-size:.36em;font-style:italic;color:var(--ink2);margin-top:10px;line-height:1.3}
+.gate-card p{margin:0}
+.gate-guide{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.gate-guide svg{width:120px;height:auto}
+.gate-card .vac{position:absolute;right:20px;top:-27px;background:#160b18;color:var(--neon);padding:4px 12px;font-family:var(--f-sans);font-weight:700;font-size:.8rem;letter-spacing:.24em;text-shadow:0 0 6px var(--neon);border:1px solid var(--neon)}
+.fmcheck{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--rule);padding:10px 12px;background:rgba(47,184,166,.08)}
+.fmcheck input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--teal);flex:none}
+.fmcheck label{font-size:1.02rem}
+.fmcheck b{font-family:var(--f-sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#1d7d71;display:block}
+@media (max-width:560px){.gate-guide{grid-template-columns:1fr;justify-items:center}.two{grid-template-columns:1fr}.gate-card{padding:28px 20px}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid rgba(216,178,92,.4);padding-bottom:14px}
+.top h1{font-family:var(--f-deco);font-size:clamp(2.4rem,5.6vw,3.9rem);color:var(--gold3);line-height:1;letter-spacing:.02em}
+.top h1 span{display:block;font-family:var(--f-text);letter-spacing:0;font-size:1.08rem;font-style:italic;color:#bcc0d8;margin-top:8px}
+.strap{font-size:1rem;color:#bcc0d8;margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:1rem}
+.who .fmtag{font-family:var(--f-sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);padding:1px 8px 0}
+.who button{font:inherit;font-size:.9rem;background:none;border:0;color:#bcc0d8;text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-sans);font-size:.74rem;letter-spacing:.1em;color:var(--faded)}
+.saved.ok{color:#8fd3a5}.saved.bad{color:#ff9d8a}
+
+/* ---------- the hotel ---------- */
+.scene{position:relative;border:1px solid #000;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.5);background:#0a0c20}
+.scene svg.view{display:block;width:100%;height:auto}
+.scene .hot{cursor:pointer}
+.scene .hot .floor{stroke:#0c0e22;stroke-width:1.5}
+.scene .hot:hover .floor,.scene .hot:focus-visible .floor{stroke:var(--gold3);stroke-width:3}
+.scene .hot.lit .floor{stroke:var(--g);stroke-width:4}
+.scene .plate{fill:#0c0e22;stroke:var(--g);stroke-width:1.5}
+.scene .hot:hover .plate,.scene .hot:focus-visible .plate{fill:#1a1f42}
+.scene .platetxt{font-family:var(--f-sans);font-weight:700;font-size:13px;letter-spacing:2px;fill:var(--paper)}
+.scene .platesub{font-family:var(--f-text);font-style:italic;font-size:13px;fill:#bcc0d8}
+.scene .platecnt{font-family:var(--f-sans);font-weight:600;font-size:11px;letter-spacing:1px;fill:var(--g)}
+.scene .leader{stroke:var(--g);stroke-width:1.2;stroke-dasharray:3 3;opacity:.8}
+.scene .pane{fill:#171a36;stroke:#4a5080;stroke-width:1}
+.scene .pane.on{fill:var(--g);stroke:#fff3d0;stroke-width:1.2;filter:url(#glow)}
+.scene .panehit{fill:transparent;cursor:pointer}
+.scene .panehit:hover{fill:rgba(242,216,145,.3)}
+.scene .roomno{font-family:var(--f-sans);font-size:7px;fill:#8f95c0;pointer-events:none}
+.scene .wingtxt{font-family:var(--f-sans);font-weight:700;font-size:13px;letter-spacing:3px;fill:var(--teal)}
+.scene .neon{font-family:var(--f-sans);font-weight:700;fill:var(--neon)}
+.scene .countTxt{font-family:var(--f-deco);font-size:24px;fill:var(--gold3)}
+.scene .countSub{font-family:var(--f-text);font-style:italic;font-size:14px;fill:#bcc0d8}
+.scene .aleph{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+.scene .crownno{font-family:var(--f-sans);font-size:9px;fill:#8f95c0}
+.panein{animation:panein .7s ease-out}
+@keyframes panein{0%{opacity:.2}40%{opacity:1;transform:scale(1.35)}100%{transform:none}}
+.flicker{animation:flick 7s linear infinite}
+@keyframes flick{0%,41%,43%,45%,100%{opacity:1}42%,44%{opacity:.35}}
+.twinkle{animation:tw 4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.35}}
+.searchl{transform-origin:600px 70px;animation:sl 12s ease-in-out infinite}
+@keyframes sl{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+@media (prefers-reduced-motion:reduce){.panein,.flicker,.twinkle,.searchl{animation:none}}
+.scene-key .swipe{display:none;color:var(--gold3)}
+@media (max-width:760px){.scene{overflow-x:auto;-webkit-overflow-scrolling:touch}.scene svg.view{min-width:940px}.scene-key .swipe{display:inline}}
+.scene-key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px;background:var(--night2);border:1px solid #000;border-top:0;font-size:.92rem;color:#bcc0d8}
+.scene-key b{color:var(--paper);font-weight:400}
+
+/* small print */
+.smallprint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #000;border-top:0}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.92rem;line-height:1.42;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-size:1.04rem;color:var(--ink);font-style:italic}
+.sp .nm b{font-style:normal;color:var(--g);font-family:var(--f-sans);font-weight:700;font-size:.85rem;margin-right:6px;letter-spacing:.06em}
+.sp.wide{grid-column:1/-1;border-right:0;background:rgba(0,0,0,.03)}
+.st{display:inline-block;font-family:var(--f-sans);font-weight:600;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;padding:1px 6px 0;border-radius:2px;margin-right:3px;white-space:nowrap}
+.st.att{color:#2b6a3f}.st.rep{color:#8a5a12}.st.lgd{color:#8a1d1d}.st.inv{color:#4a4a8a}
+.aleph{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-style:normal}
+@media (max-width:900px){.smallprint{grid-template-columns:1fr 1fr}.sp:nth-child(3n){border-right:1px solid var(--rule)}.sp:nth-child(2n){border-right:0}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}.sp{border-right:0!important}}
+
+/* ---------- porter + register + ring ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (min-width:861px){.crew>.guide{position:sticky;top:64px}}
+.guide{display:grid;grid-template-columns:160px minmax(0,1fr);gap:18px;align-items:end}
+.guide-img{width:160px;height:auto;transform-origin:50% 100%}
+.guide-img.lift{animation:lift 1.8s ease-in-out}
+@keyframes lift{0%{transform:none}25%{transform:translateY(-30px);opacity:.5}45%{transform:translateY(-50px);opacity:0}70%{transform:translateY(-20px);opacity:.6}100%{transform:none;opacity:1}}
+.bubble{position:relative;border-left:6px solid var(--gold);padding:16px 18px;border-radius:2px;min-height:122px;display:grid;align-content:start;gap:6px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+.bubble .nm{font-family:var(--f-sans);font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.bubble #bubbleTxt{font-size:1.15rem;line-height:1.42}
+.side{display:grid;gap:16px}
+.card{padding:20px 22px;display:grid;gap:12px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-top:5px solid var(--gold)}
+.card h2{font-family:var(--f-deco);font-size:1.45rem}
+.count{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.count .pct{font-family:var(--f-deco);font-size:3rem;line-height:1}
+.count .pct small{font-family:var(--f-sans);font-size:.9rem;color:var(--ink2);letter-spacing:.08em}
+.occbar{position:relative;height:20px;border:1px solid var(--ink);background:repeating-linear-gradient(90deg,#20264a 0 9px,#272c52 9px 10px);overflow:hidden}
+.occbar i{position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:linear-gradient(90deg,var(--gold3),var(--gold));transition:width .8s ease}
+.keyrack{display:grid;gap:4px;padding:8px 10px;background:#3b2a1a;border:3px solid #23170c;border-radius:2px;box-shadow:inset 0 0 12px rgba(0,0,0,.5)}
+.keyrow{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.keyrow .fl{font-family:var(--f-sans);font-weight:700;font-size:.7rem;color:var(--gold3);width:22px;flex:none}
+.key{width:11px;height:16px;border-radius:2px 2px 5px 5px;background:#1d140a;border:1px solid #6b5333;position:relative;display:inline-block}
+.key.on{background:var(--g);border-color:#fff3d0;box-shadow:0 0 5px var(--g)}
+.key.wing{border-style:dashed}
+.keyrow .gap{width:8px}
+.register{font-family:var(--f-sans);font-size:.85rem;letter-spacing:.06em;color:var(--ink)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden}
+.seg button{font:inherit;font-family:var(--f-sans);font-size:.88rem;background:transparent;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:8px 12px 6px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+.wingonly{display:flex;gap:8px;align-items:center;font-size:.95rem}
+.wingonly input{accent-color:var(--teal);width:18px;height:18px}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.guide{grid-template-columns:1fr;justify-items:center}}
+
+/* ---------- reception: the problem on the desk ---------- */
+.desk{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;align-items:start}
+.probcard{padding:26px 30px 24px;display:grid;gap:12px;border-top:10px solid var(--teal);box-shadow:10px 12px 0 rgba(0,0,0,.45)}
+.probcard .lh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;flex-wrap:wrap}
+.probcard .lh .hh{font-family:var(--f-deco);font-size:1.15rem;letter-spacing:.02em}
+.probcard .lh .wk{font-family:var(--f-sans);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.probcard h2{font-family:var(--f-deco);font-size:1.9rem}
+.probcard .ptag{display:flex;flex-wrap:wrap;gap:6px}
+.probcard .ptag span{font-family:var(--f-sans);font-weight:600;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule);padding:2px 8px 1px;color:var(--ink2)}
+.probcard .ptag span.w{border-color:var(--teal);color:#1d7d71}
+.ptext{font-size:1.18rem;line-height:1.55}
+.ptext p{margin:0 0 .6em}
+.ptext .m{font-family:"Cambria Math","STIX Two Math","Latin Modern Math",var(--f-text);font-style:normal;white-space:nowrap}
+.hintbox{border-left:3px solid var(--teal);padding:4px 12px;font-style:italic;color:var(--ink2)}
+.hintbox[hidden]{display:none}
+.linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer;font-size:.98rem}
+.handedin{font-family:var(--f-sans);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#1d7d71;padding:3px 10px 2px;justify-self:start}
+.bell{width:58px;height:auto}
+.desk-side{display:grid;gap:14px;align-content:start}
+.desk-side h3{font-family:var(--f-deco);font-size:1.35rem;color:var(--gold3)}
+.pigeon{padding:14px 16px;display:grid;gap:6px;border-left:6px solid var(--teal);box-shadow:5px 5px 0 rgba(0,0,0,.4)}
+.pigeon summary{cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:baseline;list-style:none}
+.pigeon summary::-webkit-details-marker{display:none}
+.pigeon summary b{font-family:var(--f-deco);font-weight:400;font-size:1.12rem}
+.pigeon summary span{font-family:var(--f-sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.pigeon .yours{background:rgba(47,184,166,.1);border:1px dashed #1d7d71;padding:8px 10px;font-size:1rem}
+.pigeon .yours i,.pigeon .sol i{font-family:var(--f-sans);font-style:normal;font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:block}
+.pigeon .sol{font-size:1.02rem}
+.pigeon .sol p{margin:0 0 .5em}
+.pigeon .late{font-family:var(--f-sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#8a5a12}
+@media (max-width:900px){.desk{grid-template-columns:1fr}}
+
+/* ---------- reservation (half term) ---------- */
+.orders{padding:24px 26px;display:grid;gap:10px;position:relative;border-top:10px solid var(--gold);box-shadow:10px 12px 0 rgba(0,0,0,.45)}
+.orders .rubric{font-family:var(--f-sans);font-weight:600;font-size:.8rem;letter-spacing:.24em;text-align:center;color:var(--ink2);border-bottom:1px solid var(--ink);padding-bottom:6px}
+.orders h2{font-family:var(--f-deco);font-size:2rem;text-align:center}
+.orders .due{font-family:var(--f-sans);font-weight:600;text-align:center;color:var(--enter);letter-spacing:.1em;font-size:.95rem}
+.orders .lede{margin:0;color:var(--ink2);text-align:center}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:6px}
+.leg{border-top:3px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{width:28px;height:28px;border:1.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-sans);font-weight:700;font-size:.95rem;transform:rotate(45deg)}
+.leg .lno span{transform:rotate(-45deg)}
+.leg.done .lno{background:var(--g);color:#fff}
+.leg .step{font-family:var(--f-sans);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- floors and rooms ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-family:var(--f-deco);font-size:2.1rem;color:var(--gold3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-family:var(--f-sans);font-size:.88rem;border:1px solid rgba(216,178,92,.45);background:rgba(0,0,0,.25);color:var(--paper);padding:6px 12px 4px;cursor:pointer;border-radius:20px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-weight:700;font-size:.85rem;color:var(--g,var(--gold3))}
+.chip b{font-weight:400;color:#bcc0d8;font-size:.8rem}
+.chip.wingchip{border-color:var(--teal)}
+.chip.wingchip i{color:var(--teal)}
+.chip[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:var(--ink)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:14px;padding:18px 20px;border-left:8px solid var(--g);box-shadow:6px 6px 0 rgba(0,0,0,.4)}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.zone-head .ic{width:44px;height:44px;background:var(--g);display:grid;place-items:center;color:#fff;font-family:var(--f-deco);font-size:1.3rem;transform:rotate(45deg);margin:4px}
+.zone-head .ic span{transform:rotate(-45deg)}
+.zone-head .nm{display:block;font-family:var(--f-deco);font-size:1.45rem}
+.zone-head .def{display:block;font-size:1rem;color:var(--ink2);font-style:italic}
+.zone-head .n{font-family:var(--f-sans);font-weight:600;font-size:.8rem;letter-spacing:.1em;color:var(--g)}
+.zone.flash{animation:flash 2.2s ease}
+@media (max-width:600px){.zone{padding:14px 12px}.zone-head{grid-template-columns:auto minmax(0,1fr)}.zone-head .n{grid-column:2}.zone-head .nm{font-size:1.2rem}.zone-head .ic{width:34px;height:34px;font-size:1.05rem}}
+@keyframes flash{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.4)}20%{box-shadow:0 0 0 4px var(--g),6px 6px 0 rgba(0,0,0,.4)}}
+.wingh{font-family:var(--f-sans);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#1d7d71;border-top:1px dashed var(--teal);padding-top:8px;display:flex;gap:10px;align-items:center}
+.wingh small{font-family:var(--f-text);font-weight:400;font-size:.95rem;letter-spacing:0;text-transform:none;color:var(--ink2);font-style:italic}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:#fffcf3;border:1px solid #c9bb95;border-top:4px solid var(--g);padding:10px 13px 12px;cursor:pointer;display:grid;gap:3px;align-content:start;min-height:118px;border-radius:2px;color:var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.12)}
+.rec.w{border-left:3px dashed var(--teal)}
+.rec:hover{background:#fff;transform:translateY(-1px)}
+.rec .no{font-family:var(--f-sans);font-weight:600;font-size:.7rem;letter-spacing:.1em;color:var(--g)}
+.rec .nm{font-size:1.08rem;line-height:1.25}
+.rec .t{font-size:.9rem;color:var(--ink2);font-style:italic}
+.rec .th{font-family:var(--f-sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded)}
+.rec .stamp{position:absolute;right:8px;top:6px;font-family:var(--f-sans);font-weight:700;font-size:.66rem;letter-spacing:.14em;color:#fff;background:var(--g);padding:2px 7px 1px;display:none;box-shadow:0 0 8px var(--g)}
+.rec.done{background:var(--paper2)}
+.rec.done .stamp{display:block}
+.rec.new:before{content:"new";position:absolute;right:8px;bottom:8px;font-family:var(--f-sans);font-weight:700;font-size:.66rem;letter-spacing:.1em;color:#fff;background:var(--enter);padding:1px 6px 0}
+.rec.flash{animation:recflash 3s ease}
+@keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--gold3)}}
+
+/* ---------- what's on (letter board) ---------- */
+.board{background:#121212;border:12px solid #3a2a17;box-shadow:inset 0 0 30px rgba(0,0,0,.9),8px 8px 0 rgba(0,0,0,.4);color:#f2f2ee;
+  background-image:repeating-linear-gradient(180deg,#151515 0 13px,#0d0d0d 13px 15px)}
+.btop{padding:16px 22px 12px;border-bottom:1px solid #444;display:grid;gap:4px;text-align:center}
+.btop h2{font-family:var(--f-sans);font-weight:700;font-size:1.9rem;letter-spacing:.3em;text-transform:uppercase}
+.btop .sub{font-family:var(--f-sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#bbb}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.month{border-right:1px solid #333;border-bottom:1px solid #333;padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-family:var(--f-sans);font-weight:700;font-size:1.05rem;letter-spacing:.24em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #555;padding-bottom:4px}
+.month .mh small{font-size:.66rem;letter-spacing:.1em;color:#aaa;font-weight:400}
+.month.quiet .mh{color:#777}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:1rem}
+.ev .when{font-family:var(--f-sans);font-weight:600;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#ddd;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid #e0b35a;color:#e0b35a;font-size:.64rem;padding:1px 5px 0;letter-spacing:.08em}
+.ev .urgent{border:1px solid var(--neon);background:var(--neon);color:#fff;font-size:.64rem;padding:1px 5px 0;letter-spacing:.08em}
+.ev b{font-weight:600}
+.ev .sub{display:block;color:#bbb;font-size:.94rem}
+.ev .in{display:block;color:#8fd3a5;font-size:.78rem;font-family:var(--f-sans);letter-spacing:.06em}
+.ev .open{justify-self:start;font:inherit;font-size:.92rem;background:none;border:0;padding:0;color:#fff;text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:#888;font-size:.95rem}
+
+/* ---------- hotel notepaper ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px;align-items:start}
+.cover-side{padding:24px 26px;display:grid;gap:14px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-top:10px solid var(--ink)}
+.cover-side h2{font-family:var(--f-deco);font-size:1.9rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-sans);font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem}
+.entries{display:grid;gap:16px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:#bcc0d8}
+.entries-h h3{font-family:var(--f-deco);font-size:1.45rem;color:var(--gold3)}
+.note{position:relative;background:#fdfaf0;color:var(--ink);border:1px solid #c9bb95;padding:44px 20px 14px;display:grid;gap:6px;box-shadow:3px 4px 0 rgba(0,0,0,.4);
+  background-image:repeating-linear-gradient(transparent 0 29px,rgba(74,128,196,.16) 29px 30px)}
+.note:before{content:"HOTEL HILBERT";position:absolute;left:0;right:0;top:10px;text-align:center;font-family:var(--f-deco);font-size:.92rem;letter-spacing:.12em;color:var(--gold2)}
+.note .hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.note .hd b{font-family:var(--f-hand);font-size:1.4rem;font-weight:400;line-height:1.05}
+.note .hd .d{font-family:var(--f-hand);font-size:1.1rem;color:var(--ink2);white-space:nowrap}
+.note .src{font-family:var(--f-hand);font-size:1.15rem;color:var(--ink2);line-height:1.2}
+.note .quo{font-family:var(--f-hand);font-size:1.3rem;line-height:1.25;border-left:3px solid var(--g,var(--gold));padding-left:10px}
+.note .why{font-size:1.02rem;line-height:1.45}
+.note .why i,.note .qy i{font-family:var(--f-sans);font-weight:600;font-style:normal;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g,var(--ink2));margin-right:6px}
+.note .qy{font-size:.98rem;color:var(--ink2)}
+.note[data-g]{border-left:6px solid var(--g)}
+.note.example{opacity:.9;border-style:dashed}
+.note .del{justify-self:start;font:inherit;font-size:.88rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#8a1d1d}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(6,8,20,.68);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(580px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.45)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:22px 22px 14px;border-bottom:4px solid var(--g)}
+.sheet-top .plate-ic{width:40px;height:40px;background:var(--g);color:#fff;display:grid;place-items:center;font-family:var(--f-deco);font-size:1.15rem;transform:rotate(45deg);margin:6px}
+.sheet-top .plate-ic span{transform:rotate(-45deg)}
+.sheet-top .fam{font-family:var(--f-sans);font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-size:1.55rem}
+.x{font:inherit;font-size:1.7rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-sans);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:3px}
+.sheet-body p{margin:0}
+.think{border-left:3px solid var(--g);padding:6px 14px;font-style:italic;font-size:1.08rem;background:rgba(0,0,0,.03)}
+.think b{display:block;font-style:normal;font-family:var(--f-sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:3px;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-sans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule);padding:2px 8px 1px;color:var(--ink2);border-radius:2px}
+.tags span.th{border-color:var(--g);color:var(--g)}
+.tags span.wg{border-color:var(--teal);color:#1d7d71}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-size:.88rem;color:#9599b8;border-top:1px solid rgba(216,178,92,.3);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-sans)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:12px 16px;font-size:.95rem}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-size:1rem;border:1px solid var(--ink);padding:11px 18px;cursor:pointer;background:var(--ink);color:var(--paper);border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(540px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid var(--ink);box-shadow:-10px 0 30px rgba(0,0,0,.15)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-size:1.7rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.82rem;border:1px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.head{font-family:var(--f-deco)}
+.dept{background:var(--paper);color:var(--ink);border:1px solid #000;border-left:6px solid var(--gold);padding:20px 22px;display:grid;gap:10px}
+.dept h2{font-size:1.7rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+.intro .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.intro .badge i{background:var(--ink2)}
+.fb-fab{background:var(--gold);color:var(--ink);border-color:var(--gold2)}
+.fb .badge,.dept .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--paper2);
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.7),transparent 50%),radial-gradient(ellipse at 90% 100%,rgba(120,90,40,.14),transparent 50%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(820px,100%);background:rgba(255,255,255,.6);color:var(--ink);border:1px solid var(--ink);box-shadow:0 1px 0 var(--ink), 8px 8px 0 var(--rule);display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:28px 30px;align-items:center}
+.intro-card svg{width:170px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-size:1.9rem;line-height:1.1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:1px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center}.intro-card svg{width:120px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(5,10,18,.7);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--gold3);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(620px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.25);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:70px;height:auto}
+.tour-card .step{font-family:var(--f-sans);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-size:1.4rem;margin:2px 0 4px;font-family:var(--f-deco)}
+.tour-card p{margin:0;font-size:1rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:7px 12px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.dash-top .x{color:var(--paper);margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:var(--paper2)}
+.dash-top .badge{color:var(--paper);border-color:var(--paper)}.dash-top .badge i{background:var(--paper)}
+.dash-wrap{max-width:1180px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:12px 14px;display:grid;gap:2px}
+.tl b{font-size:2rem;line-height:1;font-weight:500}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:rgba(255,255,255,.55);border:1px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto}
+.dcard h3{font-size:1.3rem;font-family:var(--f-deco)}
+.work{font-family:var(--f-hand);font-size:1.1rem;line-height:1.35;white-space:pre-wrap;border-left:3px solid var(--teal);padding:4px 10px;margin:6px 0;background:rgba(47,184,166,.06)}
+.work .ans{font-family:var(--f-sans);font-size:.85rem;letter-spacing:.06em}
+.work .stk{font-family:var(--f-text);font-size:.95rem;color:#8a5a12;display:block;margin-top:4px}
+.fmt{font-family:var(--f-sans);font-size:.62rem;letter-spacing:.1em;border:1px solid var(--teal);color:#1d7d71;padding:1px 5px 0;margin-left:6px}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--rule);vertical-align:middle;overflow:hidden;margin-right:6px}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 7px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.62rem;background:var(--ink);color:var(--paper);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-size:1rem;line-height:1.4;border-left:3px solid var(--ink);padding:4px 10px;margin:6px 0}
+.dv{font-size:1.1rem}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--ink);margin-right:2px;vertical-align:middle;background:transparent}
+.sw.got{background:var(--g)}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The night porter, drawn once and reused: an invented porter in a burgundy uniform with gold braid, holding up a room key -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="porter" viewBox="0 0 200 270">
+      <ellipse cx="100" cy="263" rx="62" ry="6" fill="#000" opacity=".3"/>
+      <!-- trousers with a gold stripe, shoes -->
+      <path d="M78 176 L74 252 L94 252 L98 180 Z" fill="#1d1d2e"/>
+      <path d="M104 180 L108 252 L128 252 L124 176 Z" fill="#1d1d2e"/>
+      <path d="M80 182 L77 250 M120 182 L123 250" stroke="#d8b25c" stroke-width="2"/>
+      <path d="M66 248 h30 v10 h-34 q0 -7 4 -10z M106 248 h30 q6 3 6 10 h-36z" fill="#0b0b12"/>
+      <!-- tunic: burgundy, double row of brass buttons -->
+      <path d="M60 96 q40 -16 80 0 l8 88 h-96 z" fill="#7a1f33"/>
+      <path d="M100 96 V184" stroke="#5c1525" stroke-width="2"/>
+      <g fill="#f2d891">
+        <circle cx="90" cy="112" r="3"/><circle cx="110" cy="112" r="3"/>
+        <circle cx="90" cy="132" r="3"/><circle cx="110" cy="132" r="3"/>
+        <circle cx="90" cy="152" r="3"/><circle cx="110" cy="152" r="3"/>
+      </g>
+      <path d="M56 176 h88" stroke="#d8b25c" stroke-width="3"/>
+      <!-- epaulettes -->
+      <path d="M58 96 h20 v6 h-22z M122 96 h20 l2 6 h-22z" fill="#d8b25c"/>
+      <!-- left arm down -->
+      <path d="M60 100 q-14 32 -10 74 l14 1 q0 -36 8 -62 z" fill="#7a1f33"/>
+      <path d="M50 168 h14" stroke="#d8b25c" stroke-width="3"/>
+      <circle cx="57" cy="178" r="8" fill="#c99a78"/>
+      <!-- right arm raised, holding a key on a brass fob -->
+      <path d="M140 100 q22 -6 30 -40 l-13 -5 q-8 24 -22 30 z" fill="#7a1f33"/>
+      <path d="M156 62 l14 6" stroke="#d8b25c" stroke-width="3"/>
+      <circle cx="166" cy="52" r="8" fill="#c99a78"/>
+      <path d="M166 44 v-14" stroke="#9a9a9a" stroke-width="3"/>
+      <circle cx="166" cy="26" r="5" fill="none" stroke="#9a9a9a" stroke-width="3"/>
+      <path d="M166 56 q-2 10 0 20" stroke="#6b5333" stroke-width="1.5" fill="none"/>
+      <path d="M158 76 h16 l-2 26 q-6 6 -12 0z" fill="#d8b25c" stroke="#8a6a2a" stroke-width="1.5"/>
+      <text x="166" y="93" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="700" font-size="9" fill="#3b2a1a">∞</text>
+      <!-- collar -->
+      <path d="M84 84 h32 v12 q-16 6 -32 0z" fill="#5c1525"/>
+      <path d="M84 92 q16 6 32 0" stroke="#d8b25c" stroke-width="2" fill="none"/>
+      <!-- head -->
+      <rect x="92" y="70" width="16" height="14" fill="#c99a78"/>
+      <ellipse cx="100" cy="54" rx="23" ry="25" fill="#c99a78"/>
+      <!-- dark hair, greying at the sides -->
+      <path d="M78 50 q-2 14 4 22 l3 -3 q-4 -10 -3 -19z M122 50 q2 14 -4 22 l-3 -3 q4 -10 3 -19z" fill="#8c8c8c"/>
+      <!-- pillbox cap with gold band -->
+      <rect x="80" y="26" width="40" height="16" rx="2" fill="#7a1f33"/>
+      <rect x="80" y="36" width="40" height="5" fill="#d8b25c"/>
+      <path d="M78 42 h44" stroke="#3b0d18" stroke-width="3"/>
+      <!-- face: moustache, half smile -->
+      <ellipse cx="91" cy="56" rx="2.4" ry="2.4" fill="#1b1612"/><ellipse cx="109" cy="56" rx="2.4" ry="2.4" fill="#1b1612"/>
+      <path d="M86 50 q5 -2 9 0 M105 50 q5 -2 9 0" stroke="#3a2a22" stroke-width="2" fill="none"/>
+      <path d="M100 58 q-3 6 0 8" stroke="#9e7353" stroke-width="1.4" fill="none"/>
+      <path d="M88 68 q12 -6 24 0 q-12 -2 -24 0z" fill="#3a2a22"/>
+      <path d="M93 73 q8 3 15 -1" stroke="#7a4a35" stroke-width="1.5" fill="none"/>
+    </symbol>
+    <symbol id="bell" viewBox="0 0 80 60">
+      <rect x="6" y="50" width="68" height="8" rx="2" fill="#3b2a1a"/>
+      <path d="M12 50 q0 -34 28 -34 q28 0 28 34z" fill="#d8b25c" stroke="#8a6a2a" stroke-width="2"/>
+      <path d="M22 44 q2 -18 16 -22" stroke="#f7e6b0" stroke-width="3" fill="none" opacity=".8"/>
+      <rect x="37" y="8" width="6" height="8" fill="#8a6a2a"/><circle cx="40" cy="7" r="5" fill="#d8b25c" stroke="#8a6a2a" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#porter"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 class="head" id="fbH">What would you want from this?</h2>
+    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. Head of Maths"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="problems">Weekly problems</button><button type="button" data-v="olympiad">UKMT and olympiad</button><button type="button" data-v="step">STEP and TMUA preparation</button><button type="button" data-v="pure">Pure</button><button type="button" data-v="stats">Statistics</button><button type="button" data-v="mech">Mechanics</button><button type="button" data-v="corepure">Core Pure</button><button type="button" data-v="fs">Further Statistics</button><button type="button" data-v="fm">Further Mechanics</button><button type="button" data-v="history">History of maths</button><button type="button" data-v="coding">Maths and coding</button><button type="button" data-v="local">Birmingham events</button><button type="button" data-v="university">University and admissions</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the hotel, the Further Maths wing, the porter. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label>The problem on the desk (one a week, answer plus working, solution the week after). Keep it?</label>
+      <div class="seg" id="fbSlip"><button type="button" data-v="weekly" aria-pressed="false">Weekly</button><button type="button" data-v="fortnightly" aria-pressed="false">Fortnightly</button><button type="button" data-v="dept" aria-pressed="false">We'd set our own</button><button type="button" data-v="drop" aria-pressed="false">Leave it out</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (problems, solutions, dates, links, course tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card">
+    <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#porter"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Maths and Further Maths · Hotel Hilbert · demo</span>
+      <h2 class="head" id="introH">A demo of a web page for your Maths and Further Maths sixth form.</h2>
+      <p>It is a working copy of the page a pupil would use: 65 free things to read, listen to, watch, do, enter and apply for, each tagged to a part of the course, with 15 of them in a Further Maths wing (Core Pure, Further Statistics, the admissions tests). It is laid out as Hilbert's hotel, which is full and always has room for one more. Each thing a pupil does puts the light on in its room. There is a problem on the reception desk every week: pupils hand in an answer and their working, and the department can read it. Every historical claim on the page carries its source and a label.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <button type="button" class="btn big" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper frame" id="gateForm" autocomplete="off">
+    <span class="vac">VACANCY</span>
+    <span class="badge" style="justify-self:start"><i></i>Maths and Further Maths · Beyond the classroom</span>
+    <h1 id="gateH">Hotel Hilbert<em>infinitely many rooms, every one taken, and always room for you</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#porter"/></svg>
+      <p>Free things for A-level Maths and Further Maths: competitions, lectures and talks, podcasts, books, problems to work on, and the way into a maths degree. The page is laid out as a hotel. Each floor is one kind of thing, and each thing is a room; do it and the light goes on in its room. There is a problem on the reception desk every week, and hotel notepaper for anything you work out. The night porter will show you round. Everything you do saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <div class="fmcheck"><input type="checkbox" id="gFm"><label for="gFm"><b>Further Maths</b>I take Further Maths. (The Further Maths wing is open to everyone; this tells the porter where to start you.)</label></div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big" type="submit" id="gGo">Check in</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <div><b>Demo for the Maths department.</b> This is the working pupil page: sign in with any name, put the lights on in a few rooms, hand in the problem on the desk, ring for the porter. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Maths and Further Maths · Beyond the classroom</span>
+      <h1>Hotel Hilbert<span>A-level Mathematics and Further Mathematics · six floors, a Further Maths wing, and <i class="aleph">ℵ₀</i> more above</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="fmtag" id="fmTag" hidden>Further Maths</span><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE HOTEL ===== -->
+  <section aria-label="The hotel: reception and six floors to click">
+    <div class="scene">
+      <svg class="view" id="view" viewBox="0 0 1400 800" role="group" aria-label="An art deco hotel at night: reception, six floors, a Further Maths wing, and storeys above that shrink for ever">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05061a"/><stop offset=".65" stop-color="#151a44"/><stop offset="1" stop-color="#262a5a"/></linearGradient>
+          <linearGradient id="facadeG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1c2044"/><stop offset=".5" stop-color="#2d3363"/><stop offset="1" stop-color="#1c2044"/></linearGradient>
+          <linearGradient id="wingG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#202850"/><stop offset="1" stop-color="#18203f"/></linearGradient>
+          <linearGradient id="searchG" gradientUnits="userSpaceOnUse" x1="0" y1="74" x2="0" y2="-140"><stop offset="0" stop-color="#f2d891" stop-opacity=".22"/><stop offset="1" stop-color="#f2d891" stop-opacity="0"/></linearGradient>
+          <radialGradient id="lobbyGlow" cx=".5" cy=".7"><stop offset="0" stop-color="#ffdb8a" stop-opacity=".9"/><stop offset="1" stop-color="#c97d2a" stop-opacity=".35"/></radialGradient>
+          <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="neonF" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1400" height="740" fill="url(#sky)"/>
+        <!-- searchlights behind the spire -->
+                <g id="stars" aria-hidden="true"></g>
+        <!-- moon -->
+        <circle cx="180" cy="96" r="30" fill="#ece6d2" opacity=".92"/><circle cx="192" cy="88" r="30" fill="#0a0c24" opacity=".85"/>
+        <!-- distant city -->
+        <path d="M0 740 V660 h40 v-30 h30 v40 h26 v-60 h34 v50 h24 v-24 h30 v64 h20 v-90 h28 v70 h14 V740z" fill="#0b0d26"/>
+        <path d="M1150 740 V650 h26 v-40 h30 v60 h20 v-80 h34 v50 h30 v-30 h28 v60 h22 v-46 h30 V740z" fill="#0b0d26"/>
+        <!-- the hotel, floors, crown and wing (drawn by script) -->
+        <g id="hotel"></g>
+        <!-- street -->
+        <rect y="720" width="1400" height="20" fill="#2a2a33"/>
+        <rect y="740" width="1400" height="60" fill="#121218"/>
+        <path d="M0 770 H1400" stroke="#d8b25c" stroke-width="2" stroke-dasharray="40 30" opacity=".5"/>
+        <!-- lamp post -->
+        <g aria-hidden="true"><rect x="276" y="600" width="6" height="120" fill="#1a1a22"/><path d="M266 600 h26 l-6 -18 h-14z" fill="#1a1a22"/><circle cx="279" cy="596" r="9" fill="#ffe7a6" filter="url(#glow)"/></g>
+        <!-- the taxi -->
+        <g aria-hidden="true" id="taxi">
+          <path d="M930 742 v-26 q4 -22 26 -24 l14 -18 h62 l18 18 q24 2 28 22 v28z" fill="#151515" stroke="#333" stroke-width="1.5"/>
+          <path d="M978 678 h46 l12 14 h-70z" fill="#2c3550"/>
+          <rect x="992" y="666" width="22" height="9" rx="2" fill="#ffd77a" filter="url(#glow)"/>
+          <text x="1003" y="673.5" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="700" font-size="7" fill="#151515">TAXI</text>
+          <circle cx="962" cy="744" r="12" fill="#0a0a0a" stroke="#555" stroke-width="2"/><circle cx="1050" cy="744" r="12" fill="#0a0a0a" stroke="#555" stroke-width="2"/>
+          <rect x="986" y="722" width="40" height="13" fill="#f2f2ee" stroke="#000"/>
+          <text x="1006" y="732.5" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="700" font-size="11" fill="#111">1729</text>
+          <circle cx="1072" cy="722" r="4" fill="#ffe7a6"/>
+        </g>
+        <!-- count, top right -->
+        <text class="countTxt" id="countTxt" x="1384" y="44" text-anchor="end"></text>
+        <text class="countSub" id="countSub" x="1384" y="66" text-anchor="end"></text>
+      </svg>
+    </div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see the wing.</span><span><b>Click a floor</b> to go to its rooms.</span><span><b>Click a window</b> to open that room.</span><span><b>Click reception</b> for the problem on the desk.</span><span>A lit window means you have done it. Dashed rooms are the Further Maths wing.</span></div>
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six floors"></div>
+  </section>
+
+  <!-- ===== PORTER, REGISTER, RING ===== -->
+  <section class="crew" aria-label="The porter, your rooms, and ring for the porter">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 270" aria-hidden="true"><use href="#porter"/></svg>
+      <div class="bubble paper" role="status" aria-live="polite"><span class="nm">Mr Dimitriou · night porter (invented)</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper count-card">
+        <h2>Your rooms</h2>
+        <div class="count"><div class="pct" id="roomVal">0<small> ROOMS</small></div>
+          <div><div class="occbar" aria-hidden="true"><i id="occBar"></i></div><p class="small" id="coverTxt" style="margin:8px 0 0"></p></div></div>
+        <div class="keyrack" id="keyrack" aria-label="The key board: one key per room, lit when you have done it"></div>
+        <div class="register" id="register"></div>
+      </div>
+      <div class="card paper pick-card">
+        <h2>Ring for the porter</h2>
+        <p class="small" style="margin:0">Say how long you have. The porter takes the lift and comes back with the key to one room you have not been in, usually on a floor you have not tried.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn" id="pickBtn">Ring</button>
+        </div>
+        <label class="wingonly"><input type="checkbox" id="wingOnly"> Only the Further Maths wing</label>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECEPTION: THE PROBLEM ON THE DESK ===== -->
+  <section class="desk" id="desk" aria-labelledby="probH">
+    <div class="probcard paper frame" id="probCard"></div>
+    <div class="desk-side">
+      <span class="eyebrow">Reception · the pigeonholes</span>
+      <h3>Earlier problems, with the porter's solutions</h3>
+      <p class="small" style="color:#bcc0d8;margin:0">Each solution goes up the morning after the week closes. You can still hand in an earlier problem; it is marked late.</p>
+      <div id="pastProbs" style="display:grid;gap:12px"></div>
+    </div>
+  </section>
+
+  <!-- ===== RESERVATION (half term) ===== -->
+  <section class="orders paper frame" aria-labelledby="htLabel">
+    <span class="rubric" id="htEyebrow"></span>
+    <h2 id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE FLOORS ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 id="tableH">Every floor</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a floor"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one floor"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== WHAT'S ON (the year) ===== -->
+  <section class="board" aria-labelledby="yearH">
+    <div class="btop"><span class="sub">October 2026 – July 2027</span><h2 id="yearH">What's on</h2><span class="sub">Deadlines, openings and events · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== HOTEL NOTEPAPER ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper frame">
+      <span class="tape" id="nbCover">Hotel notepaper</span>
+      <h2 id="nbH">Write it down before it goes</h2>
+      <p>Every room has a pad by the bed. Use it for anything you watch, hear, read or work out: what it was, the one idea worth keeping (an equation is fine), what you worked out from it, and what you still want to know. These pages are where a personal statement, an interview answer and an essay prize entry come from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Part of the course</label>
+            <select id="nbHw" required>
+              <option value="">Choose…</option>
+              <option>Pure</option><option>Statistics</option><option>Mechanics</option>
+              <option>Core Pure</option><option>Further Statistics</option><option>Further Mechanics</option>
+              <option>Proof</option><option>Problem solving</option><option>Beyond the specification</option><option>Applying</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="nbWhat">What I watched, heard, read or tried</label><input id="nbWhat" list="whatList" placeholder="talk, lecture, episode, chapter, problem…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">The idea in one line (an equation is fine; optional)</label><textarea id="nbQuo" class="hand" style="min-height:60px"></textarea></div>
+        <div class="field"><label for="nbLearned">What I worked out from it</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">What I still want to know (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn" type="submit">Put it on the pad</button><button class="btn ghost" type="button" id="copyBtn">Copy all my notes as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your notes as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3>Your notepaper</h3><span id="logCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2>What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in and whether they take Further Maths; who tapped <b>I want to enter</b> for each competition (your list for the UKMT entries, and a heads-up on everyone entering the essay prize or applying for summer schools on their own); how many of the half-term booking each pupil has done; how many rooms each pupil has lit, on which floors, and how much of the Further Maths wing; <b>every answer and every page of working handed in for the problem on the desk</b>, with where they got stuck; each pupil's notepaper in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. The weekly problems and the half-term booking are edited in one block at the top of the file; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Maths: the items, the course tags, the problems and how often they come, the dates, the porter's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+<script>
+(function(){
+/* Six floors, from the library up to the penthouse. Reception (the problem on the desk) is the ground floor. */
+const FAM = {
+  read:{label:"Read", verb:"Books, magazines and free texts", place:"The Library", the:"the library", def:"Leather chairs, green lamps, and more books than anyone has finished.", no:1},
+  listen:{label:"Listen", verb:"Podcasts and radio", place:"The Music Room", the:"the music room", def:"Where the hotel keeps its wireless and its piano. Mathematics you can take for a walk.", no:2},
+  watch:{label:"Watch", verb:"Lectures, talks and videos", place:"The Screening Room", the:"the screening room", def:"Velvet seats and a projector. Mathematicians explaining what they do.", no:3},
+  do:{label:"Do", verb:"Problems to work on, and things to go to", place:"The Games Room", the:"the games room", def:"Card tables and a chessboard. Where you stop watching and start working.", no:4},
+  enter:{label:"Enter", verb:"Competitions and prizes", place:"The Ballroom", the:"the ballroom", def:"The biggest room in the hotel, and the one where everyone can see you.", no:5},
+  apply:{label:"Apply", verb:"Admissions tests, summer schools and degrees", place:"The Penthouse", the:"the penthouse", def:"The top of the six floors, with the view of where you go next.", no:6}
+};
+/* Where each floor's story comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer; leg = a story with no good source; inv = made up for this page. */
+const SMALLPRINT = [
+  {g:"read", txt:`Euclid's <i>Elements</i> (about 300 BC) set out geometry as definitions, axioms and proofs, and was still the standard school geometry text in Britain in the nineteenth century. <span class="st att">attested</span> the text survives; Heath's translation (1908). That it has had more editions than any book except the Bible: <span class="st rep">reported</span>, often repeated, never counted.`},
+  {g:"listen", txt:`String lengths in the ratios 2 : 1, 3 : 2 and 4 : 3 give the octave, the fifth and the fourth. <span class="st att">attested</span> in Greek sources from the 5th century BC on. The story that Pythagoras worked this out from the sound of blacksmiths' hammers: <span class="st lgd">legend</span>, first told by Nicomachus about 600 years later, and the physics does not work.`},
+  {g:"watch", txt:`On 8 August 1900, at the International Congress of Mathematicians in Paris, David Hilbert gave a talk on the problems mathematics should solve next. The printed version lists 23 problems; in the lecture itself he had time for 10. <span class="st att">attested</span> the published address (1900; English translation, <i>Bulletin of the AMS</i>, 1902).`},
+  {g:"do", txt:`John Conway's Game of Life, a grid of cells that live or die by three simple rules, first reached the public in Martin Gardner's "Mathematical Games" column in <i>Scientific American</i>, October 1970. <span class="st att">attested</span> the column. Players are still finding new patterns in it.`},
+  {g:"enter", txt:`In 1535 Niccolò Tartaglia and Antonio Fiore held a public contest in Venice: thirty problems each, all leading to cubic equations. Tartaglia found a general method and solved all of Fiore's; Fiore solved few or none of his. <span class="st att">attested</span> but from one side only, Tartaglia's own account in <i>Quesiti et inventioni diverse</i> (1546).`},
+  {g:"apply", txt:`On 16 January 1913 Srinivasa Ramanujan, a clerk in Madras with no degree, wrote to G. H. Hardy at Cambridge with pages of his own results. Hardy brought him to Trinity College in 1914. <span class="st att">attested</span> the letter is printed in Hardy's <i>Ramanujan</i> (1940) and in Berndt and Rankin, <i>Ramanujan: Letters and Commentary</i> (1995).`},
+  {g:"", wide:true, txt:`<b>About this page.</b> Hilbert used the hotel with infinitely many rooms in his Göttingen lectures "Über das Unendliche" in the winter of 1924–25 <span class="st att">attested</span> (the lecture notes are printed in Ewald and Sieg, eds, <i>David Hilbert's Lectures on the Foundations of Arithmetic and Logic 1917–1933</i>, 2013). George Gamow made it famous in <i>One Two Three … Infinity</i> (1947) <span class="st att">attested</span>. The taxi is number 1729: Hardy wrote that he arrived to visit Ramanujan in a cab with that number, said it seemed a dull one, and was told it is the smallest number that is the sum of two cubes in two different ways, 1³ + 12³ = 9³ + 10³ <span class="st att">attested</span> Hardy's obituary of Ramanujan (1921). Mr Dimitriou <span class="st inv">invented</span> is not based on anyone, and the building is not a real hotel. Room numbers are floor then room: 304 is the fourth room on the third floor; rooms numbered 50 and above on a floor are in the Further Maths wing.`}
+];
+// mins drives "Ring for the porter": quick <= 20, evening <= 180, long > 180
+// th = the part of the A-level course the item serves most. w:true = the Further Maths wing.
+const ITEMS = [
+  // ---- 1 Read · the library
+  {s:"Plus",g:"read",short:"Plus magazine",name:"Plus magazine (University of Cambridge)",mins:20,t:"one article: 15 min",th:"Beyond the specification",
+   what:"Free online articles from Cambridge's Millennium Mathematics Project: maths in medicine, climate, games and current research, written for people who have done A-level maths or are doing it now.",
+   think:"Search Plus for one topic you are being taught this term. Write down one thing the article does with it that your textbook does not.",tags:["free","Years 12–13"],url:"https://plus.maths.org/content/",lt:"plus.maths.org"},
+  {s:"Chk",g:"read",short:"Chalkdust magazine",name:"Chalkdust: a magazine for the mathematically curious",mins:30,t:"an issue: an evening",th:"Beyond the specification",
+   what:"A magazine written by maths students and researchers at UCL, two issues a year, the whole archive free online. Articles, puzzles, a crossnumber and a lot of jokes. The latest is Issue 23 (spring 2026).",
+   think:"Do the crossnumber with a friend. Keep a list of every A-level technique you needed for it.",tags:["free","puzzles"],url:"https://chalkdustmagazine.com/",lt:"Chalkdust"},
+  {s:"HEp",g:"read",short:"Cambridge HE+ Maths",name:"Cambridge HE+: Mathematics",mins:40,t:"a list to work through",th:"Beyond the specification",
+   what:"Cambridge's starting points for anyone thinking about a maths degree: links to NRICH, Underground Mathematics, STEP support, Plus and recorded lectures, sorted into topics.",
+   think:"Pick one of the topic strands and do everything in it over a fortnight. Then write down which bit you would want to study further.",tags:["free","Years 12–13"],url:"https://www.myheplus.com/subject/mathematics",lt:"HE+ Maths"},
+  {s:"TRA",g:"read",short:"Tom Rocks Maths · past essays",name:"Tom Rocks Maths essay competition: the published entries",mins:30,t:"30 min",th:"Beyond the specification",
+   what:"Every year's shortlisted essays are published. Read three before you write your own: they show how far 2,000 words can take one idea.",
+   think:"Which of the essays you read explained the maths best, and how did it do it? Steal the method, not the topic.",tags:["free","model essays"],url:"https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition",lt:"Competition page"},
+  {s:"HP",g:"read",short:"Matt Parker · Humble Pi",name:"Matt Parker, Humble Pi: A Comedy of Maths Errors (2019)",mins:400,t:"a book",th:"Beyond the specification",
+   what:"Bridges that wobbled, spreadsheets that broke economies, and planes that ran out of fuel because of unit conversions. Real mistakes caused by maths. A good first book.",
+   think:"Choose one mistake from the book and find the A-level topic it belongs to. Write the two-line calculation someone should have done.",tags:["library","first book"]},
+  {s:"KY",g:"read",short:"Kit Yates · The Maths of Life and Death",name:"Kit Yates, The Maths of Life and Death (2019)",mins:400,t:"a book",th:"Statistics",
+   what:"Exponential growth in epidemics, statistics misused in court cases, screening tests that mislead. Maths where the stakes are high.",
+   think:"Yates explains the prosecutor's fallacy. Write it out as a conditional probability with a tree diagram, using numbers you choose.",tags:["library","statistics"]},
+  {s:"SSF",g:"read",short:"Simon Singh · Fermat's Last Theorem",name:"Simon Singh, Fermat's Last Theorem (1997)",mins:500,t:"a book",th:"Proof",
+   what:"The 358-year story of one problem, from Fermat's note in a margin to Andrew Wiles's proof in 1994. The best account of what research mathematicians actually do.",
+   think:"Singh describes proof by infinite descent. Use the same idea to prove that √2 is irrational, and compare it with the proof you were taught.",tags:["library","proof"]},
+  {s:"SIP",g:"read",short:"Steven Strogatz · Infinite Powers",name:"Steven Strogatz, Infinite Powers: The Story of Calculus (2019)",mins:500,t:"a book",th:"Pure",
+   what:"Calculus from Archimedes to GPS, written by a mathematician who can explain it. Reads alongside the Pure course.",
+   think:"Strogatz says calculus is about slicing things into infinitely many pieces and putting them back together. Find two places in the course where you do exactly that.",tags:["library","calculus"]},
+  {s:"Pol",g:"read",short:"George Pólya · How to Solve It",name:"George Pólya, How to Solve It (1945)",mins:300,t:"a short book",th:"Problem solving",
+   what:"A short classic on how to attack a problem you do not know how to do: understand it, make a plan, carry it out, look back. Still the book most problem-solvers recommend.",
+   think:"Use Pólya's four steps on this week's problem on the desk. Write down what you did at each step.",tags:["library","problem solving"]},
+  {s:"GHH",g:"read",short:"G. H. Hardy · A Mathematician's Apology",name:"G. H. Hardy, A Mathematician's Apology (1940)",mins:150,t:"a short book",th:"Proof",
+   what:"Hardy's defence of pure mathematics, written near the end of his life, with two proofs he thought beautiful: Euclid's proof that there are infinitely many primes and the irrationality of √2.",
+   think:"Hardy said real mathematics is useless. Find one piece of 'useless' number theory that now runs something you use every day, and argue with him.",tags:["library","argue with it"]},
+  {s:"Sik",g:"read",w:true,short:"Stephen Siklos · Advanced Problems in Mathematics",name:"Stephen Siklos, Advanced Problems in Mathematics: Preparing for University (2nd edn)",mins:600,t:"free book, weeks",th:"Problem solving",
+   what:"STEP questions with comments and full solutions, by the man who ran STEP for years. Free to read online or download (Open Book Publishers, CC BY).",
+   think:"Do one question a week. Before you look at the solution, write down where you got stuck; then read the comments on that question first.",tags:["free","STEP","Further Maths"],url:"https://www.openbookpublishers.com/books/10.11647/obp.0181",lt:"Free PDF"},
+  {s:"KH",g:"read",w:true,short:"Kevin Houston · How to Think Like a Mathematician",name:"Kevin Houston, How to Think Like a Mathematician (2009)",mins:600,t:"a book, weeks",th:"Proof",
+   what:"How to read, write and build proofs: the gap between A-level and a first-year university course, explained by someone who teaches first-years.",
+   think:"Take a proof by induction from Core Pure and rewrite it the way Houston says a proof should be written. What did you add?",tags:["library","proof","Further Maths"]},
+  {s:"VCA",g:"read",w:true,short:"Tristan Needham · Visual Complex Analysis",name:"Tristan Needham, Visual Complex Analysis (25th anniversary edition, 2023)",mins:900,t:"a big book, dip in",th:"Core Pure",
+   what:"Complex numbers as pictures: multiplication as rotation and scaling, functions as transformations of the plane. Dense in places; chapter 1 fits Core Pure 1 exactly.",
+   think:"Read chapter 1 and then draw what multiplying by 1 + i does to the unit square. Check it with the modulus–argument form.",tags:["library","complex numbers","Further Maths"]},
+
+  // ---- 2 Listen · the music room
+  {s:"MoL",g:"listen",short:"More or Less (BBC Radio 4)",name:"More or Less (BBC Radio 4)",mins:30,t:"30 min",th:"Statistics",
+   what:"Tim Harford's programme checks the numbers in the news: polls, averages, risks, records. Free as a podcast, with a long archive.",
+   think:"Pick an episode and write down the statistical mistake it found. Which part of the Statistics course would have caught it?",tags:["free","weekly"],url:"https://www.bbc.co.uk/programmes/b006qshd",lt:"More or Less"},
+  {s:"IOT",g:"listen",short:"In Our Time · science archive",name:"BBC In Our Time: the science archive",mins:45,t:"45 min",th:"Beyond the specification",
+   what:"Forty-five minutes, three academics, one subject. Search the archive for calculus, Fermat's Last Theorem, Euler, Gauss, prime numbers, zero, infinity, probability.",
+   think:"Listen to the episode on a mathematician you have heard of. Write down one result of theirs that you use in the course.",tags:["free","archive"],url:"https://www.bbc.co.uk/programmes/p01gyd7j",lt:"In Our Time Science"},
+  {s:"MoM",g:"listen",short:"Maths on the Move (Plus podcast)",name:"Maths on the Move: the Plus podcast",mins:30,t:"30 min",th:"Beyond the specification",
+   what:"Short interviews with mathematicians about their own work, from the Plus team at Cambridge.",
+   think:"After an episode, write one sentence on what the researcher is trying to find out, in words a Year 9 would follow.",tags:["free","research"],url:"https://plus.maths.org/content/",lt:"Plus / Maths on the Move"},
+  {s:"NPo",g:"listen",short:"The Numberphile podcast",name:"The Numberphile podcast",mins:60,t:"an hour",th:"Beyond the specification",
+   what:"Long interviews with mathematicians about how they got into maths and what they work on. The episode with Grant Sanderson of 3Blue1Brown is a good start.",
+   think:"Most guests describe one moment when maths clicked for them. Write down yours.",tags:["free","interviews"],url:"https://www.numberphile.com/",lt:"numberphile.com"},
+  {s:"IOTi",g:"listen",w:true,short:"In Our Time · Imaginary Numbers",name:"BBC In Our Time: Imaginary Numbers (2010)",mins:45,t:"45 min",th:"Core Pure",
+   what:"Marcus du Sautoy, Ian Stewart and Caroline Series on how mathematicians came to accept √−1, from the Renaissance cubic formula to Gauss.",
+   think:"They say the cubic formula forced people to use complex numbers even when the answers were real. Find a cubic where that happens and show it.",tags:["free","complex numbers","Further Maths"],url:"https://www.bbc.co.uk/programmes/b00tt6b2",lt:"BBC Sounds"},
+
+  // ---- 3 Watch · the screening room
+  {s:"Hot",g:"watch",short:"The Infinite Hotel Paradox (TED-Ed)",name:"Jeff Dekofsky (TED-Ed): The Infinite Hotel Paradox",mins:6,t:"6 min",th:"Beyond the specification",
+   what:"The hotel this page is built on: how a full hotel with infinitely many rooms still has room for one more guest, then infinitely many more.",
+   think:"Write down the rule that moves every guest when one new guest arrives, then the rule for infinitely many. Why does the argument fail for the real numbers?",tags:["free","TED-Ed","start here"],url:"https://www.ted.com/talks/jeff_dekofsky_the_infinite_hotel_paradox",lt:"Watch"},
+  {s:"MiF",g:"watch",short:"Eduardo Sáenz de Cabezón · Math is forever",name:"Eduardo Sáenz de Cabezón (TED): Math is forever",mins:10,t:"10 min",th:"Proof",
+   what:"Why a theorem, once proved, stays proved, when scientific theories get replaced.",
+   think:"He says theorems last where scientific theories do not. Write out one proof from the Pure course (for example, the irrationality of √2) and explain what makes it permanent.",tags:["free","TED"],url:"https://www.ted.com/talks/eduardo_saenz_de_cabezon_math_is_forever",lt:"Watch"},
+  {s:"BT",g:"watch",short:"Does math have a major flaw? (TED-Ed)",name:"Jacqueline Doan and Alex Kazachek (TED-Ed): Does math have a major flaw?",mins:5,t:"5 min",th:"Proof",
+   what:"The Banach–Tarski paradox: cut a ball into finitely many pieces and reassemble them into two balls the same size as the first.",
+   think:"The result depends on an axiom. What is an axiom, and how is it different from an assumption you would test in a Statistics hypothesis test?",tags:["free","TED-Ed"],url:"https://www.ted.com/talks/jacqueline_doan_and_alex_kazachek_does_math_have_a_major_flaw",lt:"Watch"},
+  {s:"MC",g:"watch",short:"Mona Chalabi · 3 ways to spot a bad statistic",name:"Mona Chalabi (TED): 3 ways to spot a bad statistic",mins:12,t:"12 min",th:"Statistics",
+   what:"A data journalist's three questions to ask of any number in the news.",
+   think:"Apply her three questions to one claim you find in the news this week. Which sampling method from the Statistics course would have produced better data?",tags:["free","TED"],url:"https://www.ted.com/talks/mona_chalabi_3_ways_to_spot_a_bad_statistic",lt:"Watch"},
+  {s:"SZ",g:"watch",short:"Sharon Zicherman · What you miss when you focus on the average",name:"Sharon Zicherman (TED): What you miss when you focus on the average",mins:6,t:"6 min",th:"Statistics",
+   what:"Why the mean on its own can hide the thing you most need to know.",
+   think:"Sketch two distributions with the same mean and very different spread. When would you report the standard deviation or a percentile instead of the mean?",tags:["free","TED"],url:"https://www.ted.com/talks/sharon_zicherman_what_you_miss_when_you_focus_on_the_average",lt:"Watch"},
+  {s:"KS",g:"watch",short:"Kevin Slavin · How algorithms shape our world",name:"Kevin Slavin (TED): How algorithms shape our world",mins:15,t:"15 min",th:"Beyond the specification",
+   what:"Algorithms that trade shares, price books and plan delivery routes, and what happens when they interact with nobody watching.",
+   think:"Choose one algorithm (a sort, a shortest path, a minimum spanning tree) and describe a real system that uses it. What goes wrong if the input data are bad?",tags:["free","TED"],url:"https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world",lt:"Watch"},
+  {s:"AB",g:"watch",short:"Arthur Benjamin · Teach statistics before calculus!",name:"Arthur Benjamin (TED): Teach statistics before calculus!",mins:3,t:"3 min",th:"Statistics",
+   what:"Three minutes arguing that most people need probability and statistics more than calculus. There to be argued with.",
+   think:"He argues most people will never use calculus. Make the case for one calculus topic from the A-level course that you think everyone should learn.",tags:["free","TED","argue with it"],url:"https://www.ted.com/talks/arthur_benjamin_teach_statistics_before_calculus",lt:"Watch"},
+  {s:"3BC",g:"watch",short:"3Blue1Brown · Essence of calculus",name:"3Blue1Brown (Grant Sanderson): Essence of calculus and the rest of the channel",mins:200,t:"a series: an evening each",th:"Pure",
+   what:"Animated explanations of why the rules of calculus are true, not just how to use them. The calculus series sits alongside differentiation and integration in Pure.",
+   think:"After the video on the chain rule, explain the chain rule to someone in your class without writing any symbols.",tags:["free","video series"],url:"https://www.youtube.com/@3blue1brown/playlists",lt:"3Blue1Brown playlists"},
+  {s:"Nph",g:"watch",short:"Numberphile",name:"Numberphile (Brady Haran)",mins:12,t:"10–15 min each",th:"Beyond the specification",
+   what:"Short videos with working mathematicians, filmed since 2011. Search for whatever you are studying: primes, pi, e, infinity, proof.",
+   think:"Find a Numberphile video on a topic from this term. Write down one thing in it that the course does not cover.",tags:["free","video"],url:"https://www.youtube.com/@numberphile",lt:"Numberphile"},
+  {s:"SuM",g:"watch",short:"Stand-up Maths (Matt Parker)",name:"Stand-up Maths (Matt Parker)",mins:20,t:"20 min each",th:"Beyond the specification",
+   what:"Matt Parker's channel: long, careful, funny investigations, often with a computer and a spreadsheet, of questions nobody else bothered to check.",
+   think:"Pick a video where he estimates something. Redo one of his estimates with your own numbers and see how far you get.",tags:["free","video"],url:"https://www.youtube.com/@standupmaths",lt:"Stand-up Maths"},
+  {s:"Mlg",g:"watch",short:"Mathologer",name:"Mathologer (Burkard Polster)",mins:25,t:"25 min each",th:"Proof",
+   what:"Visual proofs and surprising results, explained by a maths professor at Monash University. Harder than most channels; worth it.",
+   think:"Choose a Mathologer proof and write it out in full in your own words, with the pictures replaced by algebra.",tags:["free","video","proof"],url:"https://www.youtube.com/@Mathologer",lt:"Mathologer"},
+  {s:"Gor",g:"watch",short:"Gresham College · Alain Goriely's lectures",name:"Gresham College: Professor Alain Goriely's 2026–27 lectures",mins:60,t:"an hour each",th:"Mechanics",
+   what:"Free public lectures by the Gresham Professor of Geometry (Oxford). This year: magnets (10 November), waves and the Stradivarius (19 January), linkages (9 March), the gömböc (27 April), sinking (1 June). In London; watch the livestream or the recording.",
+   think:"Watch one and write down every place you recognised a piece of A-level mechanics or a differential equation.",tags:["free","lecture","online"],url:"https://www.gresham.ac.uk/speakers/professor-alain-goriely",lt:"Gresham: Goriely"},
+  {s:"GHp",g:"watch",short:"Sarah Hart · A Mathematician's View of Proof",name:"Gresham College: Sarah Hart, A Mathematician's View of Proof (2024)",mins:60,t:"an hour",th:"Proof",
+   what:"What a proof is, what it is for, and how mathematicians decide one is good, from the former Gresham Professor of Geometry. Her other Gresham lectures (coincidences, paradoxes, algorithms) are on the same site.",
+   think:"Set it beside the proof topic in Pure. Choose one proof she gives and write it out; then say whether it is a proof by deduction, contradiction or exhaustion.",tags:["free","lecture"],url:"https://www.gresham.ac.uk/watch-now/mathematician-proof",lt:"Watch"},
+  {s:"OxP",g:"watch",short:"Oxford Mathematics public lectures",name:"Oxford Mathematics: public lectures on YouTube",mins:60,t:"an hour each",th:"Beyond the specification",
+   what:"Free public lectures, broadcast on YouTube. Coming up: David Rowe, 'On the Origins of Riemann's Hypothesis' (given 28 October; online 18 November, 5pm). The channel also has years of earlier lectures on primes, disease modelling and AI.",
+   think:"Watch the Riemann lecture and write down what the hypothesis says in one sentence. What would it tell you about the primes?",tags:["free","lecture","online"],url:"https://www.maths.ox.ac.uk/events/public-lectures-events/public-lectures",lt:"Oxford public lectures"},
+  {s:"OMC",g:"watch",short:"Oxford Online Maths Club",name:"Oxford Online Maths Club (weekly livestream)",mins:60,t:"an hour a week",th:"Beyond the specification",
+   what:"A free weekly maths club on YouTube for anyone thinking of a maths degree. January to June each episode takes one idea past the A-level specification; June to December the slot becomes the admissions livestream.",
+   think:"From January: watch three episodes and keep notes on the pad. Which idea would you want to spend a whole term on?",tags:["free","weekly","online"],url:"https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club",lt:"Oxford Online Maths Club"},
+  {s:"LA",g:"watch",w:true,short:"3Blue1Brown · Essence of linear algebra",name:"3Blue1Brown: Essence of linear algebra (16 videos)",mins:240,t:"16 videos",th:"Core Pure",
+   what:"Matrices as transformations of space, which is how Core Pure wants you to think about them: determinants as area scale factors, inverses as undoing, eigenvectors as the directions that do not turn.",
+   think:"After the determinant video, take three 2×2 matrices from your notes and predict what each does to the unit square before you multiply.",tags:["free","matrices","Further Maths"],url:"https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",lt:"Playlist"},
+  {s:"DE",g:"watch",w:true,short:"3Blue1Brown · Differential equations",name:"3Blue1Brown: Differential equations (8 videos)",mins:150,t:"8 videos",th:"Core Pure",
+   what:"What a differential equation is a picture of: phase spaces, the heat equation, and e to the power of a matrix. Goes well past Core Pure 2, but the first two videos sit right on it.",
+   think:"Watch the pendulum video, then write the simple harmonic motion equation from Core Pure 2 and say what the phase-space picture of it looks like.",tags:["free","differential equations","Further Maths"],url:"https://www.youtube.com/playlist?list=PLZHQObOWTQDNPOjrT6KVlfJuKtYTftqH6",lt:"Playlist"},
+  {s:"Ox1",g:"watch",w:true,short:"Oxford first-year lectures",name:"Oxford Mathematics: real first-year undergraduate lectures",mins:60,t:"an hour each",th:"Core Pure",
+   what:"Oxford films some of its first-year lectures and puts them online: complex numbers, linear algebra, introductory calculus and more. This is what the first term of a maths degree looks like.",
+   think:"Watch the first complex numbers lecture. List what you already know from Core Pure, and the first thing that was new.",tags:["free","university lectures","Further Maths"],url:"https://www.youtube.com/playlist?list=PL4d5ZtfQonW0A4VHeiY0gSkX1QEraaacE",lt:"Playlist"},
+  {s:"MdS",g:"watch",w:true,short:"Marcus du Sautoy · Symmetry, reality's riddle",name:"Marcus du Sautoy (TED): Symmetry, reality's riddle",mins:18,t:"18 min",th:"Core Pure",
+   what:"Symmetry as the thing mathematicians count, from the Alhambra to the Monster group.",
+   think:"List the symmetries of an equilateral triangle as 2×2 matrices and check they are closed under multiplication. Which Core Pure topic does this use?",tags:["free","TED","matrices","Further Maths"],url:"https://www.ted.com/talks/marcus_du_sautoy_symmetry_reality_s_riddle",lt:"Watch"},
+  {s:"TA",g:"watch",w:true,short:"Tudor Achim · The path to mathematical superintelligence",name:"Tudor Achim (TED): The path to mathematical superintelligence",mins:13,t:"13 min",th:"Proof",
+   what:"A case for machines that check every step of a proof formally. There to be argued with.",
+   think:"Take a proof by induction from Core Pure and list every step a computer would need to check.",tags:["free","TED","argue with it","Further Maths"],url:"https://www.ted.com/talks/tudor_achim_the_path_to_mathematical_superintelligence",lt:"Watch"},
+
+  // ---- 4 Do · the games room
+  {s:"STF",g:"do",short:"STEP Support · Foundation modules",name:"STEP Support Programme (Cambridge): Foundation modules",mins:600,t:"a module a fortnight",th:"Problem solving",
+   what:"Free online modules with hints and full solutions, written for Year 12 to build up to STEP-style problems. Useful for any strong mathematician, not only STEP candidates.",
+   think:"Year 12: do Foundation module 1, hints off, and only open the solution when you have written something down for every part.",tags:["free","Year 12","STEP"],url:"https://step.maths.org/",lt:"step.maths.org"},
+  {s:"UM",g:"do",short:"Underground Mathematics",name:"Underground Mathematics (Cambridge)",mins:30,t:"a problem: 30 min",th:"Pure",
+   what:"Rich problems for each A-level topic, laid out as a tube map of about 30 stations: calculus, trigonometry, sequences, vectors, polynomials. Includes review questions from past admissions papers.",
+   think:"Pick the station you are on in class. Do one problem and one review question there before the end of the week.",tags:["free","Pure"],url:"https://undergroundmathematics.org/",lt:"Underground Maths"},
+  {s:"NR",g:"do",short:"NRICH post-16 problems",name:"NRICH: post-16 problems",mins:30,t:"a problem: 30 min",th:"Problem solving",
+   what:"Problems sorted by A-level topic, from Cambridge's NRICH project, with student solutions published for many of them.",
+   think:"Do a problem, then read the published student solutions. Was there a neater way than yours?",tags:["free"],url:"https://nrich.maths.org/students/post-16",lt:"NRICH post-16"},
+  {s:"UKP",g:"do",short:"UKMT past papers",name:"UKMT past papers and solutions",mins:90,t:"a paper: 90 min",th:"Problem solving",
+   what:"Recent Senior Challenge, Senior Kangaroo, BMO and team papers, free to download with solutions.",
+   think:"Do a Senior Kangaroo paper in an hour. For the two questions you found hardest, write the solution out properly the next day.",tags:["free","competition practice"],url:"https://ukmt.org.uk/competition-papers",lt:"UKMT papers"},
+  {s:"PE",g:"do",short:"Project Euler",name:"Project Euler",mins:600,t:"a problem an evening",th:"Problem solving",
+   what:"Hundreds of problems that need both maths and a short program to solve. The first few can be done by hand; after that the maths decides whether your program runs in a second or a century.",
+   think:"Do problem 1 by hand with the formula for an arithmetic series, then by program. Keep going until the program alone stops being enough.",tags:["free","coding"],url:"https://projecteuler.net/",lt:"projecteuler.net"},
+  {s:"MI",g:"do",short:"Maths Inspiration · Birmingham",name:"Maths Inspiration: live maths lecture show, Crescent Theatre, Birmingham",mins:150,t:"half a day",th:"Beyond the specification",
+   what:"Three speakers in a theatre, for Years 11 and 12: Ben Sparks hosts, with Colin Wright and Zoe Griffiths. Wednesday 18 and Thursday 19 November 2026, morning and afternoon shows. Schools book; there is a charge to the school.",
+   think:"Ask your teacher whether the department is booking. If you go, put the best idea of the day on the pad that evening.",tags:["school trip","Year 12"],url:"https://mathsinspiration.com/autumn-2026",lt:"Maths Inspiration"},
+  {s:"UoB",g:"do",short:"University of Birmingham · Popular Maths Lectures",name:"University of Birmingham: Popular Maths Lectures",mins:90,t:"an evening",th:"Beyond the specification",
+   what:"Free evening lectures for A-level students at the School of Mathematics, Edgbaston, also on Zoom; recordings go on YouTube. The department invites sixth formers each month. 2026–27 dates are not listed yet.",
+   think:"Go to one this year, in person if you can. Afterwards write down one question you would ask the lecturer.",tags:["free","Birmingham","in person or online"],url:"https://www.birmingham.ac.uk/about/college-of-engineering-and-physical-sciences/mathematics/events",lt:"Birmingham maths events"},
+  {s:"AMSP",g:"do",short:"AMSP · Setting Out in Problem Solving",name:"AMSP: Setting Out in Problem Solving (free online session)",mins:120,t:"two hours",th:"Problem solving",
+   what:"A free two-hour online introduction to problem solving for Year 12, also useful for Year 13 sitting admissions tests, from the Advanced Mathematics Support Programme. Free to state schools in England.",
+   think:"Ask your teacher for the next date. Bring one problem you could not do and see whether the session gives you a way in.",tags:["free","Year 12","online"],url:"https://amsp.org.uk/students/",lt:"AMSP students"},
+  {s:"STT",g:"do",w:true,short:"STEP Support · STEP 2 and 3 modules",name:"STEP Support Programme: STEP 2 and STEP 3 modules",mins:900,t:"a module a fortnight",th:"Core Pure",
+   what:"The STEP 2 modules start in September of Year 13 and the STEP 3 modules in January, with hints, full solutions and worked answers to papers from 2019. STEP 3 leans on Further Maths.",
+   think:"Year 13: one module a fortnight, timed. Keep a page of 'tricks I would not have thought of' and read it before every mock.",tags:["free","Year 13","STEP","Further Maths"],url:"https://step.maths.org/",lt:"step.maths.org"},
+  {s:"SeT",g:"do",w:true,short:"Seeing Theory (Brown University)",name:"Seeing Theory: a visual introduction to probability and statistics",mins:60,t:"an hour",th:"Further Statistics",
+   what:"Six interactive chapters, from basic probability to regression, where you change the numbers and watch the distributions move. Archived now, still works.",
+   think:"Use the chapter on probability distributions to see what happens to a Poisson distribution as its mean grows. When does it start to look Normal?",tags:["free","interactive","Further Maths"],url:"https://seeing-theory.brown.edu/",lt:"Seeing Theory"},
+
+  // ---- 5 Enter · the ballroom
+  {s:"SMC",g:"enter",short:"UKMT Senior Mathematical Challenge",name:"UKMT Senior Mathematical Challenge",mins:90,t:"90 min",th:"Problem solving",
+   what:"Sat in school on Wednesday 7 October 2026: 90 minutes, 22 multiple-choice questions and three with a three-digit answer. Results come back through the department; high scorers are invited to the Senior Kangaroo or BMO Round 1. The next one is in October 2027.",
+   think:"Do last year's paper in 90 minutes, no calculator. Then pick the question that annoyed you most and write a full solution.",tags:["school entry","Years 12–13"],url:"https://ukmt.org.uk/senior-challenges/senior-mathematical-challenge",lt:"UKMT SMC"},
+  {s:"BMO",g:"enter",short:"BMO Round 1 and the Senior Kangaroo",name:"British Mathematical Olympiad Round 1, Round 2 and the Senior Kangaroo (UKMT)",mins:210,t:"3½ hours",th:"Proof",
+   what:"BMO1 and the Senior Kangaroo are on Wednesday 18 November 2026, BMO2 on Wednesday 20 January 2027. Entry is by invitation from the SMC score; the school can also make a few discretionary entries. BMO1 is six problems in three and a half hours, with full written proofs.",
+   think:"BMO1 wants proofs, not answers. Take one BMO1 problem from a past paper and write a solution someone else could check line by line.",tags:["school entry","by invitation"],url:"https://ukmt.org.uk/senior-challenges/british-maths-olympiad-round-1",lt:"UKMT BMO1"},
+  {s:"STM",g:"enter",short:"UKMT Senior Team Maths Challenge",name:"UKMT Senior Team Mathematical Challenge",mins:180,t:"an afternoon",th:"Problem solving",
+   what:"Teams of four from Years 12 and 13 (no more than two in Year 13) compete in rounds at regional finals in November. Both nearby finals this year (Birmingham on 11 November, Warwick on 23 November) are full. Registration for 2027–28 opens in September 2027.",
+   think:"Find three friends and try one past relay round against the clock. Then tell your teacher you want a team next year.",tags:["school entry","team"],url:"https://ukmt.org.uk/team-challenges/senior-team-mathematical-challenge",lt:"UKMT STMC"},
+  {s:"MOG",g:"enter",short:"UKMT Mathematical Olympiad for Girls",name:"UKMT Mathematical Olympiad for Girls",mins:150,t:"2½ hours",th:"Proof",
+   what:"Five hard problems needing written solutions, for girls and young women in UK schools. The 2026 paper was on 22 September; the 2027 paper should be in late September. Past papers with solutions are free.",
+   think:"Do one past MOG problem a week this year, written up in full, so you are ready next September.",tags:["school entry","girls"],url:"https://ukmt.org.uk/senior-challenges",lt:"UKMT senior challenges"},
+  {s:"TRM",g:"enter",short:"Tom Rocks Maths essay competition",name:"Tom Rocks Maths essay competition (Oxford)",mins:900,t:"weeks",th:"Beyond the specification",
+   what:"An essay of up to 2,000 words on any maths topic you choose, for students aged 17 and under. The winner gets £100 and entries are published. The 2026 competition closed on 13 April; the 2027 one usually opens in January or February.",
+   think:"Choose your topic now and collect notes on the pad for three months before you start writing.",tags:["free","enter yourself","essay"],url:"https://lifelong-learning.ox.ac.uk/about/tom-rocks-maths-essay-competition",lt:"Competition page"},
+
+  // ---- 6 Apply · the penthouse
+  {s:"TMUA",g:"apply",short:"TMUA · the maths admissions test",name:"TMUA: Test of Mathematics for University Admission (UAT-UK)",mins:600,t:"weeks of practice",th:"Applying",
+   what:"Oxford, Cambridge, Imperial, Warwick, Durham, LSE, UCL and others use it for maths and maths-heavy degrees. 2026–27 sittings: 12–16 October 2026 (booking closed) and 4–8 January 2027 (booking opens 3pm, 26 October). £78 in the UK; full bursaries available.",
+   think:"Year 12: do one practice paper this year, timed and without a calculator, to see what it is like. Year 13: check which sitting your universities accept.",tags:["admissions test","£78, bursaries"],url:"https://esat-tmua.ac.uk/about-the-tests/tmua-test/",lt:"UAT-UK TMUA"},
+  {s:"OxL",g:"apply",short:"Oxford TMUA livestream and interview sessions",name:"Oxford Mathematics: the admissions livestream",mins:120,t:"two hours a week",th:"Applying",
+   what:"Weekly two-hour livestreams from June to October on TMUA-style problems, with worksheets a week ahead and every session recorded. Interview advice sessions on 5 and 26 November 2026.",
+   think:"Year 12: watch the summer recordings on algebra and calculus alongside the Pure course. Year 13: the interview sessions in November.",tags:["free","online","Year 13"],url:"https://www.maths.ox.ac.uk/study-here/undergraduate-study/tmua/mat-livestream",lt:"Oxford livestream"},
+  {s:"Un",g:"apply",short:"UNIQ (Oxford) · Mathematics",name:"UNIQ: Oxford's free summer schools (Mathematics is one of the courses)",mins:60,t:"application: an hour",th:"Applying",
+   what:"Free residential summer schools for Year 12 at UK state schools, prioritising students from groups under-represented at Oxford. Applications for 2027 open in December; check the eligibility criteria.",
+   think:"Read the eligibility criteria now. If you meet them, put the December opening in your diary.",tags:["free","Year 12","eligibility"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  {s:"ST",g:"apply",short:"Sutton Trust summer schools",name:"Sutton Trust summer schools",mins:60,t:"application: an hour",th:"Applying",
+   what:"Free week-long summer schools at leading universities for Year 12 students who meet the criteria, in over 40 subjects. Last year applications opened on 12 January and closed on 5 March.",
+   think:"Check the criteria and the subject list in January. Maths, engineering and economics courses all count.",tags:["free","Year 12","eligibility"],url:"https://summerschools.suttontrust.com/",lt:"Sutton Trust"},
+  {s:"NRP",g:"apply",short:"Nuffield Research Placements",name:"Nuffield Research Placements (STEM Learning)",mins:90,t:"application: an evening",th:"Applying",
+   what:"Summer research projects in universities and industry for Year 12, including maths and data projects; free to the pupil and aimed at widening participation. Applications usually open in the autumn term.",
+   think:"Read the eligibility rules. If you meet them, apply in the autumn and ask for a maths or data project.",tags:["free","Year 12","eligibility"],url:"https://www.stem.org.uk/nuffield-research-placements",lt:"Nuffield placements"},
+  {s:"I2S",g:"apply",short:"In2Science UK · In2STEM",name:"In2Science UK: In2STEM work experience",mins:90,t:"application: an evening",th:"Applying",
+   what:"One to two weeks of work experience with researchers plus online workshops, free, with a travel and lunch bursary. Eligibility criteria apply. Last year applications ran from December to April.",
+   think:"Check the eligibility criteria in December.",tags:["free","Year 12","eligibility"],url:"https://in2scienceuk.org/students/",lt:"In2Science"},
+  {s:"MCa",g:"apply",short:"Maths Careers (IMA)",name:"mathscareers.org.uk: the 16–19 section",mins:30,t:"30 min",th:"Applying",
+   what:"The Institute of Mathematics and its Applications' site on what maths graduates go on to do, with profiles of people in actuarial work, data science, engineering, finance, medicine and research.",
+   think:"Read three profiles of jobs you had not heard of. Which of them uses the Statistics part of the course most?",tags:["free","careers"],url:"https://www.mathscareers.org.uk/16-19/",lt:"Maths Careers"},
+  {s:"CamO",g:"apply",short:"Cambridge Maths · open days and taster lectures",name:"Cambridge Mathematics: open days, virtual open day and taster lectures",mins:60,t:"an hour online",th:"Applying",
+   what:"Cambridge's maths faculty runs open days in July (last year 9–10 July) with a course talk and a taster lecture, and keeps a playlist of taster lectures and a virtual open day online all year.",
+   think:"Watch one taster lecture this term. Was it closer to the A-level course or to the Oxford first-year lectures?",tags:["free","Year 12"],url:"https://www.maths.cam.ac.uk/undergrad/admissions/openday",lt:"Cambridge maths open days"},
+  {s:"OxM",g:"apply",w:true,short:"Oxford · Mathematics",name:"Oxford: Mathematics (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Typical offer A*A*A, with the A*s in Maths and Further Maths. All applicants sit the TMUA in October (the MAT has gone). For 2027 entry, applications close on 15 October 2026.",
+   think:"Year 12: read the first-year course list and compare it with Core Pure. Which first-year course would you most want to take?",tags:["free","Years 12–13","TMUA","Further Maths"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/mathematics",lt:"Oxford Maths"},
+  {s:"CaM",g:"apply",w:true,short:"Cambridge · Mathematics",name:"Cambridge: Mathematics (undergraduate course)",mins:20,t:"20 min",th:"Applying",
+   what:"Typical offer A*A*A with Maths and Further Maths, plus STEP: usually grade 1 in STEP 2 and STEP 3. All applicants now also sit the TMUA. Some colleges make a different offer with one STEP paper.",
+   think:"Look at a STEP 2 paper now, in Year 12, so it is not a surprise in Year 13.",tags:["free","Years 12–13","TMUA","STEP","Further Maths"],url:"https://www.undergraduate.study.cam.ac.uk/courses/mathematics",lt:"Cambridge Maths"},
+  {s:"WID",g:"apply",w:true,short:"Warwick, Imperial, Durham · Mathematics",name:"Mathematics at Warwick, Imperial and Durham",mins:40,t:"40 min",th:"Applying",
+   what:"Warwick: A*A* in Maths and Further Maths plus an A, and the TMUA (or STEP grade 2). Imperial: A*A*A and the TMUA; UCAS deadline 13 January 2027. Durham: A*A*A, with a lower offer for a good TMUA or STEP result.",
+   think:"Make a table of what each wants (grades, TMUA, STEP) and when. Which test do you need, and in which sitting?",tags:["free","Years 12–13","Further Maths"],url:"https://warwick.ac.uk/study/undergraduate/courses/mathsbsc/",lt:"Warwick",
+   more:[{lt:"Imperial",url:"https://www.imperial.ac.uk/study/courses/undergraduate/mathematics-bsc/"},{lt:"Durham",url:"https://www.durham.ac.uk/study/courses/mathematics-g100/"}]},
+  {s:"STEP",g:"apply",w:true,short:"STEP · Sixth Term Examination Papers",name:"STEP: entry and papers (OCR / Cambridge)",mins:30,t:"30 min to read",th:"Applying",
+   what:"STEP 2 and STEP 3 are sat in June of Year 13 as part of a Cambridge offer, and some other universities give a lower offer for a good grade. The school's exams officer enters you, for a fee per paper; there are no late entries. 2027 dates are not out yet: last year the papers were in early June.",
+   think:"If you are applying to Cambridge, tell the exams officer in the spring term, before the entry window closes.",tags:["Year 13","fee per paper","Further Maths"],url:"https://www.undergraduate.study.cam.ac.uk/apply/after/sixth-term-exam-STEP",lt:"Cambridge on STEP"}
+];
+
+/* The problem on the desk: one a week. Edit or add below; each runs from `from` to `to` (inclusive).
+   The porter's solution appears the day after `to`. Answers are in this file, so anyone who reads the
+   page source can see them; the department sees who handed in what, and when. */
+const PROBLEMS = [
+  {id:"p01",from:"2026-10-05",to:"2026-10-18",title:"The coach party",th:"Beyond the specification",src:"A version of Hilbert's own example",
+   txt:`<p>Hotel Hilbert has rooms numbered 1, 2, 3, … and every one is taken.</p>
+<p>(a) A coach arrives with infinitely many passengers, in seats 1, 2, 3, …. Give a rule that moves every guest already in the hotel to a new room and puts every passenger in a room, with no one sharing.</p>
+<p>(b) Now infinitely many coaches arrive, numbered 1, 2, 3, …, each with infinitely many passengers. Give a rule that fits everyone in.</p>`,
+   hint:"For (b), think about prime numbers and the fact that every whole number factorises into primes in only one way.",
+   sol:`<p>(a) Move the guest in room <span class="m">n</span> to room <span class="m">2n</span>. That frees every odd room. Put passenger <span class="m">k</span> in room <span class="m">2k − 1</span>.</p>
+<p>(b) Move the guest in room <span class="m">n</span> to room <span class="m">2<sup>n</sup></span>. Put passenger <span class="m">k</span> from coach <span class="m">c</span> in room <span class="m">3<sup>c</sup> × 5<sup>k</sup></span>. Two people never share, because a number factorises into primes in only one way: from the room number you can read off whether it is a 2 or a 3-and-5 number, and then <span class="m">n</span>, or <span class="m">c</span> and <span class="m">k</span>. Many rooms are left empty, which is allowed.</p>
+<p>The argument fails for the real numbers because they cannot be listed 1st, 2nd, 3rd, …: Cantor's diagonal argument (1891).</p>`},
+  {id:"p02",from:"2026-10-19",to:"2026-11-01",title:"Half-term: three in a row",th:"Proof",src:"A classic",
+   txt:`<p>Prove that <span class="m">n³ − n</span> is divisible by 6 for every integer <span class="m">n</span>.</p>
+<p>Then, for the second week of half term: prove that <span class="m">n⁵ − n</span> is divisible by 30 for every integer <span class="m">n</span>.</p>`,
+   hint:"Factorise first. For the second part, you need divisibility by 2, 3 and 5 separately; for 5, think about the five possible remainders.",
+   sol:`<p><span class="m">n³ − n = (n − 1)n(n + 1)</span>, the product of three consecutive integers. One of any three consecutive integers is a multiple of 3, and at least one is even, so the product is divisible by 2 × 3 = 6.</p>
+<p><span class="m">n⁵ − n = (n − 1)n(n + 1)(n² + 1)</span>, which is divisible by 6 by the first part. For 5: if <span class="m">n</span> leaves remainder 0, 1 or 4 on division by 5, one of <span class="m">n</span>, <span class="m">n − 1</span>, <span class="m">n + 1</span> is a multiple of 5. If the remainder is 2 or 3, then <span class="m">n²</span> leaves remainder 4, so <span class="m">n² + 1</span> is a multiple of 5. Since 2, 3 and 5 are different primes, the product is divisible by 30. (This is proof by exhaustion over the remainders.)</p>`},
+  {id:"p03",from:"2026-11-02",to:"2026-11-08",title:"Ninety-nine fractions",th:"Pure",src:"A classic",
+   txt:`<p>Find the exact value of</p>
+<p class="m" style="text-align:center">1/(1×2) + 1/(2×3) + 1/(3×4) + … + 1/(99×100).</p>
+<p>Extension: find a formula for <span class="m">1/(1×2×3) + 1/(2×3×4) + … + 1/(N(N+1)(N+2))</span>.</p>`,
+   hint:"Write 1/(n(n+1)) as the difference of two simpler fractions (partial fractions), then write out the first few terms.",
+   sol:`<p><span class="m">1/(n(n+1)) = 1/n − 1/(n+1)</span>. Written out, almost everything cancels (the sum telescopes): <span class="m">(1 − ½) + (½ − ⅓) + … + (1/99 − 1/100) = 1 − 1/100 = 99/100</span>.</p>
+<p>Extension: <span class="m">1/(n(n+1)(n+2)) = ½[1/(n(n+1)) − 1/((n+1)(n+2))]</span>, so the sum telescopes to <span class="m">½[½ − 1/((N+1)(N+2))] = ¼ − 1/(2(N+1)(N+2))</span>. Core Pure calls this the method of differences.</p>`},
+  {id:"p04",from:"2026-11-09",to:"2026-11-15",title:"Who shares a birthday?",th:"Statistics",src:"The birthday problem, a classic",
+   txt:`<p>Ignore 29 February and assume all 365 birthdays are equally likely.</p>
+<p>(a) What is the smallest number of people you need in a room for the probability that at least two of them share a birthday to be more than ½?</p>
+<p>(b) How many other people do you need for the probability that at least one of them shares <em>your</em> birthday to be more than ½?</p>`,
+   hint:"Work out the probability that nobody shares, then subtract from 1. A spreadsheet or calculator table helps for (a).",
+   sol:`<p>(a) The probability that <span class="m">n</span> people all have different birthdays is <span class="m">(365/365)(364/365)…((366 − n)/365)</span>. This first drops below ½ at <span class="m">n = 23</span> (it is about 0.493), so the answer is <b>23</b>: the chance of a shared birthday is then about 0.507.</p>
+<p>(b) Each other person misses your birthday with probability 364/365, so you need <span class="m">1 − (364/365)ⁿ > ½</span>, that is <span class="m">n > ln 2 ÷ ln(365/364) ≈ 252.7</span>. The answer is <b>253</b>. The two answers are so different because in (a) any pair will do, and 23 people make 253 pairs.</p>`},
+  {id:"p05",from:"2026-11-16",to:"2026-11-22",title:"Its own reflection",th:"Core Pure",w:true,src:"Written for this page",
+   txt:`<p>Find every complex number <span class="m">z</span> such that <span class="m">z² = z*</span>, where <span class="m">z*</span> is the complex conjugate of <span class="m">z</span>.</p>
+<p>Show them on an Argand diagram. What shape do they make?</p>`,
+   hint:"Write z in modulus–argument form, z = r(cos θ + i sin θ), and compare the moduli first.",
+   sol:`<p>Let <span class="m">z = re<sup>iθ</sup></span>. Then <span class="m">z² = r²e<sup>2iθ</sup></span> and <span class="m">z* = re<sup>−iθ</sup></span>. Comparing moduli, <span class="m">r² = r</span>, so <span class="m">r = 0</span> or <span class="m">r = 1</span>. If <span class="m">r = 1</span>, then <span class="m">e<sup>3iθ</sup> = 1</span>, so <span class="m">θ = 0, 2π/3, 4π/3</span>.</p>
+<p>There are four solutions: <span class="m">0, 1, −½ + (√3/2)i, −½ − (√3/2)i</span>. The three non-zero ones are the cube roots of unity, the corners of an equilateral triangle inscribed in the unit circle, with 0 at its centre.</p>`},
+  {id:"p06",from:"2026-11-23",to:"2026-11-29",title:"The bouncing ball",th:"Mechanics",src:"A classic",
+   txt:`<p>A ball is dropped from a height of 10 m. Each time it hits the ground it bounces back up to 4/5 of the height it fell from.</p>
+<p>(a) How far does the ball travel, up and down, before it comes to rest?</p>
+<p>(b) Taking <span class="m">g = 9.8</span> m s<sup>−2</sup> and ignoring air resistance, how long does it bounce for? It bounces infinitely many times: is the answer infinite?</p>`,
+   hint:"(a) is a geometric series. For (b), work out the time to fall from height h, and notice what happens to the time when the height is multiplied by 4/5.",
+   sol:`<p>(a) 10 m down, then up and down 8 m, 6.4 m, …: total <span class="m">10 + 2(8 + 6.4 + …) = 10 + 2 × 8/(1 − 0.8) = 10 + 80 = <b>90 m</b></span>.</p>
+<p>(b) Falling from rest through height <span class="m">h</span> takes <span class="m">t = √(2h/g)</span>, so each bounce height multiplied by 0.8 multiplies the time by <span class="m">q = √0.8 ≈ 0.894</span>. With <span class="m">t₀ = √(20/9.8) ≈ 1.429</span> s, the total time is <span class="m">t₀(1 + 2q/(1 − q)) ≈ 1.429 × 17.94 ≈ <b>25.6 s</b></span>. Infinitely many bounces, finite time: the same idea as Zeno's paradoxes.</p>`},
+  {id:"p07",from:"2026-11-30",to:"2026-12-06",title:"Three turns and home",th:"Core Pure",w:true,src:"Written for this page",
+   txt:`<p>Find a 2 × 2 matrix <span class="m">A</span> with real entries such that <span class="m">A³ = I</span> but <span class="m">A ≠ I</span>.</p>
+<p>Can you find one whose entries are all integers? Describe what your matrix does to the plane.</p>`,
+   hint:"Which transformation of the plane, done three times, gets you back where you started?",
+   sol:`<p>A rotation through 120° about the origin, done three times, is a full turn: <span class="m">A = [[cos 120°, −sin 120°], [sin 120°, cos 120°]] = [[−½, −√3/2], [√3/2, −½]]</span>.</p>
+<p>With integer entries, <span class="m">A = [[0, −1], [1, −1]]</span> works: <span class="m">A² = [[−1, 1], [−1, 0]]</span> and <span class="m">A³ = I</span>. It is not a rotation; it permutes the three vectors <span class="m">(1, 0)</span>, <span class="m">(0, 1)</span>, <span class="m">(−1, −1)</span> in a cycle. Its determinant is 1, as it must be, since <span class="m">(det A)³ = 1</span>.</p>`},
+  {id:"p08",from:"2026-12-07",to:"2026-12-13",title:"Three points on a circle",th:"Statistics",src:"A classic",
+   txt:`<p>Three points are chosen independently and at random on a circle.</p>
+<p>What is the probability that the triangle they make contains the centre of the circle?</p>`,
+   hint:"The triangle misses the centre exactly when all three points lie in one half of the circle.",
+   sol:`<p>The triangle contains the centre unless all three points lie in some semicircle. For each point in turn, the chance that the other two both lie in the semicircle running clockwise from it is <span class="m">½ × ½ = ¼</span>, and at most one of the three points can be the 'first' point of such a semicircle. So the probability that all three lie in a semicircle is <span class="m">3 × ¼ = ¾</span>, and the answer is <b>¼</b>.</p>
+<p>The same argument for <span class="m">n</span> points gives <span class="m">n/2<sup>n−1</sup></span> for lying in a semicircle.</p>`},
+  {id:"p09",from:"2026-12-14",to:"2027-01-03",title:"Christmas: the twelve days",th:"Pure",src:"Written for this page",
+   txt:`<p>In the song, on the first day you get 1 gift; on the second, 2 + 1; on the third, 3 + 2 + 1; and so on to the twelfth day.</p>
+<p>(a) How many gifts are there altogether over the twelve days?</p>
+<p>(b) Find and prove a formula for the total after <span class="m">n</span> days. (Further Maths: prove it by induction.)</p>
+<p>(c) On which day does the running total first pass 100?</p>`,
+   hint:"The gifts on day k are the k-th triangular number, k(k+1)/2. Add these up.",
+   sol:`<p>Day <span class="m">k</span> brings <span class="m">k(k + 1)/2</span> gifts. The total after <span class="m">n</span> days is <span class="m">Σ k(k + 1)/2 = n(n + 1)(n + 2)/6</span> (use the formulas for Σk and Σk², or induction: adding day <span class="m">n + 1</span> gives <span class="m">n(n+1)(n+2)/6 + (n+1)(n+2)/2 = (n+1)(n+2)(n+3)/6</span>).</p>
+<p>(a) <span class="m">12 × 13 × 14/6 = <b>364</b></span>, one for each day of the year bar one. (c) After 7 days the total is 84; after 8 it is 120, so <b>day 8</b>.</p>`}
+];
+
+/* What's on, as the hotel's letter board. m = month (YYYY-MM). s links to an item. */
+const YEAR = [
+  {m:"2026-10",when:"12–16 Oct",what:"TMUA, October sitting",sub:"Oxford applicants must sit this one. Booking has closed.",s:"TMUA",check:false},
+  {m:"2026-10",when:"Thu 15 Oct",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants, through UCAS.",s:"OxM",check:false,urgent:true},
+  {m:"2026-10",when:"Mon 26 Oct, 3pm",what:"TMUA January booking opens",sub:"For the 4–8 January sitting.",s:"TMUA",check:false},
+  {m:"2026-11",when:"Thu 5 and 26 Nov",what:"Oxford interview advice livestreams",sub:"For Year 13 maths applicants.",s:"OxL",check:false},
+  {m:"2026-11",when:"Tue 10 Nov",what:"Gresham: Building with Magnets",sub:"Alain Goriely. Livestream or recording.",s:"Gor",check:false},
+  {m:"2026-11",when:"Wed 18 Nov",what:"BMO Round 1 and Senior Kangaroo",sub:"In school, by invitation from the SMC.",s:"BMO",check:false},
+  {m:"2026-11",when:"Wed 18 Nov, 5pm",what:"Oxford lecture online: the Riemann Hypothesis",sub:"David Rowe, on YouTube.",s:"OxP",check:false},
+  {m:"2026-11",when:"18 and 19 Nov",what:"Maths Inspiration, Crescent Theatre",sub:"Years 11 and 12. Schools book.",s:"MI",check:false},
+  {m:"2026-12",when:"December",what:"UNIQ applications open",sub:"Mathematics is one of the courses.",s:"Un",check:true},
+  {m:"2026-12",when:"December",what:"In2Science applications open",sub:"Last year they opened in December.",s:"I2S",check:true},
+  {m:"2027-01",when:"4–8 Jan",what:"TMUA, January sitting",sub:"For universities that accept it: check each one.",s:"TMUA",check:false},
+  {m:"2027-01",when:"Wed 13 Jan, 6pm",what:"UCAS deadline for most courses",sub:"Including Imperial, Warwick, Durham.",s:"WID",check:false},
+  {m:"2027-01",when:"Tue 19 Jan",what:"Gresham: waves and the Stradivarius",sub:"Alain Goriely.",s:"Gor",check:false},
+  {m:"2027-01",when:"Wed 20 Jan",what:"BMO Round 2",sub:"For those invited after BMO1.",s:"BMO",check:false},
+  {m:"2027-01",when:"January",what:"Oxford Online Maths Club restarts",sub:"Thursdays, 5pm.",s:"OMC",check:true},
+  {m:"2027-01",when:"January",what:"Sutton Trust applications open",sub:"Last year: 12 January.",s:"ST",check:true},
+  {m:"2027-02",when:"Jan–Feb",what:"Tom Rocks Maths essay competition opens",sub:"Last year it closed on 13 April.",s:"TRM",check:true},
+  {m:"2027-03",when:"Early March",what:"Sutton Trust deadline",sub:"Last year: 5 March.",s:"ST",check:true},
+  {m:"2027-03",when:"Tue 9 Mar",what:"Gresham: how to draw a straight line",sub:"Alain Goriely, on linkages.",s:"Gor",check:false},
+  {m:"2027-03",when:"Spring term",what:"STEP entries through the exams officer",sub:"Year 13 with STEP in their offer. No late entries.",s:"STEP",check:true},
+  {m:"2027-04",when:"Mid-April",what:"Tom Rocks Maths deadline",sub:"Last year: 13 April.",s:"TRM",check:true},
+  {m:"2027-04",when:"Tue 27 Apr",what:"Gresham: the gömböc",sub:"Alain Goriely.",s:"Gor",check:false},
+  {m:"2027-06",when:"Tue 1 Jun",what:"Gresham: thinking about sinking",sub:"Alain Goriely.",s:"Gor",check:false},
+  {m:"2027-06",when:"Early June",what:"STEP 2 and STEP 3",sub:"Last year's papers were in the first fortnight of June.",s:"STEP",check:true},
+  {m:"2027-07",when:"Early July",what:"Cambridge open days",sub:"Last year: 9 and 10 July.",s:"CamO",check:true},
+  {m:"2027-07",when:"July",what:"UNIQ and Sutton Trust summer schools",sub:"Summer of Year 12.",s:"Un",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three items are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   3. The problem on the desk: add to PROBLEMS above, one per week.
+   Nothing else needs touching.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1 and half term",
+  until:"2026-10-30",
+  lede:"Three things from the department before you come back after half term. Do them, put the lights on, and write each one up on the notepaper.",
+  items:[
+    {s:"Hot",step:"Watch",txt:"Watch The Infinite Hotel Paradox (6 min), then try this week's problem on the desk, which is the same hotel with a coach party."},
+    {s:"GHp",step:"Watch",txt:"Sarah Hart's lecture on proof (an hour). Write out one proof she gives, and say what kind of proof it is."},
+    {s:"STF",step:"Do",txt:"Year 12: STEP Support Foundation module 1. Year 13: the first STEP 2 module (in the Further Maths wing). Hints off for the first attempt."}
+  ]
+};
+const COMPILED="2026-10-09";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-maths-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+const ORDER = Object.keys(FAM);   // bottom of the hotel to the top
+/* room numbers: floor then room; the wing starts at 51 */
+ORDER.forEach(g=>{ let a=0,b=0; ITEMS.filter(i=>i.g===g).forEach(i=>{ i.room = FAM[g].no*100 + (i.w ? 50 + (++b) : (++a)); }); });
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; if(!it.tags) it.tags=[]; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const PBY = Object.fromEntries(PROBLEMS.map(p=>[p.id,p]));
+
+/* ---------- state ---------- */
+const KEY_BASE="maths-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},probs:{},fm:false,wingOnly:false,fam:"all",bucket:"quick",at:"read",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the window just lit, for the animation
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const plural=(n,w,ws)=>n+" "+(n===1?w:(ws||w+"s"));
+
+/* ---------- occupancy ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function hotel(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  const wingT=ITEMS.filter(i=>i.w).length, wingD=ITEMS.filter(i=>i.w&&state.done[i.s]).length;
+  return {c,t,N,k,pct,wingT,wingD};
+}
+
+/* ---------- the problem on the desk: which one is current ---------- */
+function currentProblem(){
+  const d=today();
+  return PROBLEMS.find(p=>p.from<=d&&d<=p.to) || [...PROBLEMS].reverse().find(p=>p.from<=d) || PROBLEMS[0];
+}
+const solved=p=> p.to < today();   // the solution goes up the day after the week closes
+function probsDone(){ return Object.keys(state.probs).filter(id=>PBY[id]).length; }
+
+/* ---------- the porter talks ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+function greeting(){
+  const H=hotel(); const n=H.N; const P=currentProblem(); const handed=!!state.probs[P.id];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `Good evening, ${firstName()}. Mr Dimitriou, night porter. We have infinitely many rooms, every one of them taken, and we still found you one. Six floors, ${ITEMS.length} rooms you can use${state.fm?", and the Further Maths wing on the right is yours as well":", and a Further Maths wing on the right that anyone may walk through"}. There is a problem on the reception desk this week. Start there, or with your booking under the desk.`;
+  if(!n && !handed) return `${firstName()}. Every light off so far. The problem on the desk is "${P.title}"; that would be a good first evening.`;
+  if(!handed) return `${firstName()}. ${plural(n,"room")} lit. This week's problem on the desk, "${P.title}", hasn't been handed in yet.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${plural(n,"room")} lit and this week's problem handed in. ${ht} of ${HALFTERM.items.length} in your booking done.`;
+  if(H.k<6) return `${firstName()}. ${plural(n,"room")} lit. ${ORDER.filter(g=>!H.c[g]).map(g=>FAM[g].place).slice(0,2).join(" and ")} still dark. Ring if you want me to take you up.`;
+  if(state.fm && H.wingD===0) return `${firstName()}. Something lit on every floor. Nothing yet in the Further Maths wing, which I'd have thought was your side of the building.`;
+  return `${firstName()}. A light on every floor. Keep the notepaper going: that's the part anyone else will read.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const H=hotel();
+  const probs=PROBLEMS.filter(p=>state.probs[p.id]).map(p=>Object.assign({id:p.id,title:p.title,from:p.from,to:p.to},state.probs[p.id]));
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Maths", fm:!!state.fm,
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           hotel:{pct:H.pct, floors:H.k, rooms:H.N, wing:{done:H.wingD,total:H.wingT}},
+           probsN:probs.length, probs,
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="maths-beyond-demo-who";
+async function signIn(cls,cand,fm){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(typeof fm==="boolean" && fm) state.fm=true;
+  if(!FAM[state.at]) state.at="read";
+  if(!state.probs) state.probs={};
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("fmTag").hidden=!state.fm;
+  $("wingOnly").checked=!!state.wingOnly;
+  $("nbCover").textContent="Hotel notepaper · "+cand;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("maths-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Checking in…"; signIn(cls,cand,$("gFm").checked);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the hotel (drawn from ITEMS) ---------- */
+const CX=600, HW=240, WX0=850, WX1=1122, WCX=(WX0+WX1)/2, GROUND=640, LOBBY_B=720;
+const FH=[70,64,58,53,48,44];            // floor heights, library to penthouse
+const ROOF=GROUND-FH.reduce((a,b)=>a+b,0);
+function floorBand(i){ let yb=GROUND; for(let k=0;k<i;k++) yb-=FH[k]; return {yb, yt:yb-FH[i], mid:yb-FH[i]/2, h:FH[i]}; }
+function arch(x,y,w,h){ const r=w/2; return `M${x} ${y+h} V${y+r*.8} A${r} ${r*.8} 0 0 1 ${x+w} ${y+r*.8} V${y+h} Z`; }
+function windowsFor(list,cx,span,band){
+  const n=list.length; if(!n) return [];
+  const step=Math.min(30, span/n), w=16, h=Math.min(26,band.h-22);
+  const x0=cx-n*step/2+(step-w)/2, y=band.mid-h/2+3;
+  return list.map((it,k)=>({it,x:x0+k*step,y,w,h}));
+}
+let _seed=11; const rnd=()=>{ _seed=(_seed*9301+49297)%233280; return _seed/233280; };
+function buildStars(){
+  let h=""; _seed=7;
+  for(let i=0;i<110;i++){ const x=rnd()*1400, y=rnd()*420; if(x>330&&x<870&&y>40) continue;
+    const r=rnd()<.12?1.6:.9; h+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r}" fill="#e3e6f6" opacity="${(.35+rnd()*.5).toFixed(2)}"${rnd()<.2?' class="twinkle"':""}/>`; }
+  $("stars").innerHTML=h;
+}
+function buildHotel(){
+  const t=totals(); let h="";
+  _seed=29;
+  /* ---- the crown: storeys above the sixth, each smaller than the last, for ever ---- */
+  let y=ROOF, ch=36, hw=HW-14, k=0, crown="";
+  while(ch>0.6){
+    const yt=y-ch;
+    crown+=`<rect x="${(CX-hw).toFixed(1)}" y="${yt.toFixed(1)}" width="${(2*hw).toFixed(1)}" height="${ch.toFixed(1)}" fill="url(#facadeG)" stroke="#0c0e22" stroke-width=".8"/>`;
+    crown+=`<path d="M${(CX-hw-2).toFixed(1)} ${y.toFixed(1)} H${(CX+hw+2).toFixed(1)}" stroke="#a9853a" stroke-width="${Math.max(.4,ch/16).toFixed(2)}"/>`;
+    if(ch>4){ const n=Math.max(2,Math.floor(2*hw/22)), st=2*hw/n, ww=Math.max(1.2,st*.38), wh=ch*.5;
+      for(let j=0;j<n;j++){ const lit=rnd()<.34; crown+=`<rect x="${(CX-hw+j*st+(st-ww)/2).toFixed(1)}" y="${(yt+ch*.28).toFixed(1)}" width="${ww.toFixed(1)}" height="${wh.toFixed(1)}" fill="${lit?"#f2d891":"#151833"}" opacity="${lit?.8:1}"/>`; } }
+    if(k<5) crown+=`<text class="crownno" x="${(CX-hw-8).toFixed(1)}" y="${(yt+ch*.68).toFixed(1)}" text-anchor="end" font-size="${Math.max(6,10-k).toFixed(0)}">${7+k}</text>`;
+    y=yt; ch*=0.78; hw*=0.8; k++;
+  }
+  crown+=`<text class="crownno" x="${(CX-hw-10).toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="end">…</text>`;
+  crown+=`<path d="M${CX-5} ${y.toFixed(1)} L${CX} 74 L${CX+5} ${y.toFixed(1)} Z" fill="#a9853a"/><circle cx="${CX}" cy="74" r="3" fill="#f2d891" filter="url(#glow)"/>`;
+  crown+=`<text class="aleph" x="${CX}" y="60" text-anchor="middle" font-size="24" fill="#f2d891">ℵ₀</text>`;
+  h+=`<g aria-hidden="true">${crown}</g>`;
+
+  /* ---- the Further Maths wing: building, roof sign and ground floor ---- */
+  h+=`<g aria-hidden="true"><rect x="${WX0-4}" y="${ROOF-8}" width="${WX1-WX0+8}" height="${LOBBY_B-ROOF+8}" fill="url(#wingG)" stroke="#0c0e22"/>
+      <rect x="${WX0-8}" y="${ROOF-12}" width="${WX1-WX0+16}" height="6" fill="#a9853a"/>
+      <text class="wingtxt" x="${WCX}" y="${ROOF-24}" text-anchor="middle" filter="url(#neonF)">FURTHER MATHS WING</text>
+      <rect x="${WCX-26}" y="${GROUND+14}" width="52" height="66" fill="#3b2a1a" stroke="#a9853a"/><rect x="${WCX-20}" y="${GROUND+20}" width="40" height="60" fill="url(#lobbyGlow)" opacity=".55"/>
+      <path d="M${WCX-50} ${GROUND+10} h100 l-8 -10 h-84z" fill="#2fb8a6" opacity=".85"/>
+      ${[0,1].map(j=>`<rect x="${WX0+18+j*36}" y="${GROUND+22}" width="22" height="40" fill="url(#lobbyGlow)" opacity=".4"/><rect x="${WX1-40-j*36}" y="${GROUND+22}" width="22" height="40" fill="url(#lobbyGlow)" opacity=".4"/>`).join("")}</g>`;
+
+  /* ---- the vacancy sign: always lit ---- */
+  const VX=1150;
+  h+=`<g aria-hidden="true"><path d="M${WX1} 400 H${VX}" stroke="#555" stroke-width="3"/><path d="M${WX1} 620 H${VX}" stroke="#555" stroke-width="3"/>
+      <rect x="${VX}" y="372" width="40" height="276" rx="4" fill="#160b18" stroke="#3a1f33" stroke-width="2"/>
+      <g class="flicker" filter="url(#neonF)">${"VACANCY".split("").map((ch,j)=>`<text class="neon" x="${VX+20}" y="${404+j*36}" text-anchor="middle" font-size="26">${ch}</text>`).join("")}</g>
+      <text x="${VX+20}" y="668" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="700" font-size="11" fill="#ff8fbf"><tspan class="aleph" font-size="13">ℵ₀</tspan> ROOMS</text></g>`;
+
+  /* ---- reception (ground floor): click for the problem on the desk ---- */
+  const lob=`<path class="floor" d="M${CX-250} ${GROUND} H${CX+250} V${LOBBY_B} H${CX-250} Z" fill="#2b2f55"/>
+      ${[-200,-140,-80,80,140,200].map(d=>`<path d="${arch(CX+d-20,GROUND+16,40,64)}" fill="url(#lobbyGlow)" opacity=".85"/><path d="M${CX+d} ${GROUND+22} V${LOBBY_B}" stroke="#a9853a" stroke-width="1" opacity=".6"/>`).join("")}
+      <rect x="${CX-34}" y="${GROUND+26}" width="68" height="54" fill="#ffe2a0" opacity=".9"/>
+      <path d="M${CX-34} ${GROUND+26} h68 M${CX} ${GROUND+26} V${LOBBY_B} M${CX-34} ${GROUND+26} l34 54 l34 -54" stroke="#3b2a1a" stroke-width="2.5" fill="none"/>
+      <path d="M${CX-140} ${GROUND+20} H${CX+140} l-16 -18 H${CX-124} Z" fill="#7a1f33" stroke="#d8b25c" stroke-width="1.5"/>
+      <text x="${CX}" y="${GROUND+15}" text-anchor="middle" font-family="Limelight, serif" font-size="15" fill="#f2d891" letter-spacing="2">HOTEL HILBERT</text>
+      <path d="M${CX-250} ${GROUND} H${CX+250}" stroke="#d8b25c" stroke-width="3"/>`;
+  const lpy=(GROUND+LOBBY_B)/2-21, px=24, pw=220;
+  const lplate=`<path class="leader" d="M${px+pw} ${(GROUND+LOBBY_B)/2} H${CX-254}"/>
+      <rect class="plate" x="${px}" y="${lpy}" width="${pw}" height="42" rx="2"/>
+      <text class="platetxt" x="${px+12}" y="${lpy+17}">0 · RECEPTION</text>
+      <text class="platecnt" id="cnt-desk" x="${px+pw-8}" y="${lpy+17}" text-anchor="end"></text>
+      <text class="platesub" x="${px+12}" y="${lpy+34}">the problem on the desk</text>`;
+  h+=`<g class="hot" data-g="desk" data-f="desk" tabindex="0" role="button" aria-label="Reception: the problem on the desk">${lob}${lplate}</g>`;
+
+  /* ---- the six floors ---- */
+  ORDER.forEach((g,i)=>{
+    const B=floorBand(i);
+    const main=ITEMS.filter(it=>it.g===g&&!it.w), wing=ITEMS.filter(it=>it.g===g&&it.w);
+    let body=`<path class="floor" d="M${CX-HW} ${B.yb} H${CX+HW} V${B.yt} H${CX-HW} Z" fill="url(#facadeG)"/>
+      <path class="floor" d="M${WX0} ${B.yb} H${WX1} V${B.yt} H${WX0} Z" fill="url(#wingG)"/>
+      <path d="M${CX-HW-3} ${B.yt} H${CX+HW+3} M${WX0} ${B.yt} H${WX1}" stroke="#a9853a" stroke-width="2"/>
+      ${[-180,-120,-60,0,60,120,180].map(d=>`<path d="M${CX+d} ${B.yt+3} V${B.yb}" stroke="#3a4074" stroke-width="1" opacity=".5"/>`).join("")}`;
+    if(!wing.length) body+=[-60,-20,20,60].map(d=>`<path d="${arch(WCX+d-8,B.mid-10,16,22)}" fill="#12152c" stroke="#2a2f55"/>`).join("");
+    const py=B.mid-21, px=24, pw=220;
+    const plate=`<path class="leader" d="M${px+pw} ${B.mid} H${CX-HW-4}"/>
+      <rect class="plate" x="${px}" y="${py}" width="${pw}" height="42" rx="2"/>
+      <text class="platetxt" x="${px+12}" y="${py+17}">${FAM[g].no} · ${FAM[g].label.toUpperCase()}</text>
+      <text class="platesub" x="${px+12}" y="${py+34}">${esc(FAM[g].place.toLowerCase())}</text>
+      <text class="platecnt" id="cnt-${g}" x="${px+pw-8}" y="${py+34}" text-anchor="end">0 / ${t[g]}</text>`;
+    h+=`<g class="hot" data-g="${g}" data-f="${g}" tabindex="0" role="button" aria-label="Floor ${FAM[g].no}, ${FAM[g].place}: ${FAM[g].label}, ${FAM[g].verb.toLowerCase()}">${body}${plate}</g>`;
+    const wins=windowsFor(main,CX,2*HW-40,B).concat(windowsFor(wing,WCX,WX1-WX0-30,B));
+    h+=`<g data-g="${g}">${wins.map(W=>`<path class="pane" id="pane-${W.it.s}" d="${arch(W.x,W.y,W.w,W.h)}"${W.it.w?' stroke-dasharray="3 2"':""}/>
+      <rect class="panehit" x="${(W.x-3).toFixed(1)}" y="${(W.y-3).toFixed(1)}" width="${W.w+6}" height="${W.h+6}" data-s="${W.it.s}"><title>Room ${W.it.room}: ${esc(W.it.short)}</title></rect>`).join("")}</g>`;
+  });
+  $("hotel").innerHTML=h;
+}
+/* put the lights on */
+function lightHotel(){
+  const H=hotel();
+  ITEMS.forEach(it=>{ const p=$("pane-"+it.s); if(!p) return;
+    const on=!!state.done[it.s]; p.classList.toggle("on",on);
+    p.classList.toggle("panein", on && JUST===it.s && !reduceMotion()); });
+  JUST=null;
+  $("countTxt").textContent = `${H.N} ${H.N===1?"ROOM":"ROOMS"} LIT`;
+  $("countSub").textContent = H.N ? `${H.N} of ${ITEMS.length} · ${H.k} of 6 floors · vacancies: still ℵ₀` : `Every room dark · vacancies: ℵ₀`;
+  const P=currentProblem(); const c=$("cnt-desk"); if(c) c.textContent = state.probs[P.id] ? "✓ IN" : "OPEN";
+}
+
+/* ---------- item cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${it.w?" w":""}${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="Room ${it.room}, ${esc(it.short)}, ${FAM[it.g].label}${it.w?", Further Maths wing":""}, ${esc(it.t)}${done?", lit":""}${isNew?", new":""}">
+    <span class="no">Room ${it.room}${it.w?" · FM wing":""}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">Lit</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const main=list.filter(i=>!i.w), wing=list.filter(i=>i.w);
+    const off = (state.fam!=="all" && state.fam!=="wing" && g!==state.fam) || (state.fam==="wing" && !wing.length) ? " off":"";
+    const showMain = state.fam!=="wing";
+    return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic"><span>${FAM[g].no}</span></div><div><span class="nm">${FAM[g].place} · ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} lit</span></div>
+      ${showMain?`<div class="recs">${main.map(it=>recHTML(it)).join("")}</div>`:""}
+      ${wing.length?`<div class="wingh">Further Maths wing <small>Core Pure, Further Statistics, Further Mechanics, and the tests that need them. Anyone may walk through.</small></div><div class="recs">${wing.map(it=>recHTML(it)).join("")}</div>`:""}</div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function fmtShort(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="YOUR BOOKING · "+HALFTERM.label.toUpperCase();
+  $("htLabel").textContent="Three things this half term";
+  $("htDue").textContent="by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true"><span>${d?"✓":i+1}</span></span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · lit":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals(); const wingN=ITEMS.filter(i=>i.w).length;
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>all</i>Every floor <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].no}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  h+=`<button type="button" class="chip wingchip" data-f="wing" aria-pressed="${state.fam==="wing"}"><i>FM</i>Further Maths wing <b>${wingN}</b></button>`;
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=`<button type="button" class="chip go" data-g="desk" data-go="desk"><i>0</i>Reception</button>`+ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].no}</i>${FAM[g].place}</button>`).join("");
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}"><span class="nm"><b>${FAM[x.g].no}</b>${FAM[x.g].place}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const H=hotel();
+  $("roomVal").innerHTML=H.N+`<small> ${H.N===1?"ROOM":"ROOMS"}</small>`;
+  $("occBar").style.setProperty("--w",H.pct+"%");
+  let w;
+  if(!H.N) w=`No lights on yet. Each thing you do puts the light on in its room. There are ${ITEMS.length} rooms on the six floors; the hotel above them goes on for ever.`;
+  else if(H.k<6) w=`${H.N} of ${ITEMS.length} rooms lit, on ${H.k} of 6 floors. Still dark: ${ORDER.filter(g=>!H.c[g]).map(g=>FAM[g].place.toLowerCase()).join(", ")}.`;
+  else w=`${H.N} of ${ITEMS.length} rooms lit, with something on every floor.`;
+  $("coverTxt").textContent=w;
+  $("keyrack").innerHTML=[...ORDER].reverse().map(g=>{
+    const main=ITEMS.filter(i=>i.g===g&&!i.w), wing=ITEMS.filter(i=>i.g===g&&i.w);
+    const key=it=>`<span class="key${it.w?" wing":""}${state.done[it.s]?" on":""}" data-g="${g}" title="Room ${it.room}: ${esc(it.short)}"></span>`;
+    return `<div class="keyrow"><span class="fl">${FAM[g].no}</span>${main.map(key).join("")}${wing.length?`<span class="gap"></span>${wing.map(key).join("")}`:""}</div>`;
+  }).join("");
+  const pd=probsDone();
+  $("register").textContent=`Guest register: ${plural(H.N,"room")} on ${H.k} of 6 floors · Further Maths wing ${H.wingD} of ${H.wingT} · ${plural(pd,"problem")} handed in`;
+  ORDER.forEach(g=>{ const c=$("cnt-"+g); if(c) c.textContent=`${H.c[g]} / ${H.t[g]}`; });
+  lightHotel();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh">${name}<small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"watch"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open room ${it.room}</button>` : "";
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}${y.urgent?'<span class="urgent">soon</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Keep working through the games room.</span>`}</div></div>`;
+  }).join("");
+}
+
+/* ---------- reception: the problem on the desk ---------- */
+function probForm(p,pre){
+  const mine=state.probs[p.id]||{};
+  return `<form class="probform" data-pid="${p.id}" autocomplete="off" style="display:grid;gap:10px">
+      <div class="field"><label for="${pre}Ans">My answer</label><input id="${pre}Ans" class="hand" value="${esc(mine.ans||"")}" placeholder="the answer, or 'see working'"></div>
+      <div class="field"><label for="${pre}Work">My working (enough for someone else to follow)</label><textarea id="${pre}Work" class="hand" style="min-height:120px" required>${esc(mine.work||"")}</textarea></div>
+      <div class="field"><label for="${pre}Stuck">Where I got stuck (optional)</label><textarea id="${pre}Stuck" style="min-height:56px">${esc(mine.stuck||"")}</textarea></div>
+      <div class="copyrow"><button class="btn" type="submit">${mine.d?"Hand in again":"Hand it in at the desk"}</button><span class="small" id="${pre}Msg" aria-live="polite"></span></div>
+    </form>`;
+}
+function renderDesk(){
+  const P=currentProblem(); const mine=state.probs[P.id]; const d=today();
+  const live = P.from<=d && d<=P.to;
+  $("probCard").innerHTML=`<div class="lh"><span style="display:flex;gap:12px;align-items:center"><svg class="bell" viewBox="0 0 80 60" aria-hidden="true"><use href="#bell"/></svg><span class="hh">Hotel Hilbert · Reception</span></span>
+      <span class="wk">${live?"This week":"Most recent"} · ${fmtShort(P.from)} – ${fmtShort(P.to)}</span></div>
+    <span class="eyebrow" style="color:#1d7d71">The problem on the desk</span>
+    <h2 id="probH">${esc(P.title)}</h2>
+    <div class="ptag"><span>${esc(P.th)}</span>${P.w?'<span class="w">Further Maths wing</span>':""}<span>${esc(P.src)}</span></div>
+    <div class="ptext">${P.txt}</div>
+    <div><button type="button" class="linkbtn" id="hintBtn" aria-expanded="false">A hint from the porter</button></div>
+    <div class="hintbox" id="hintBox" hidden>${esc(P.hint)}</div>
+    ${mine?`<span class="handedin">Handed in ${esc(fmtShort(mine.d))}${mine.late?" (late)":""}</span>`:""}
+    ${solved(P)?`<div class="pigeon paper" style="box-shadow:none"><div class="sol"><i>The porter's solution</i>${P.sol}</div></div>`:`<p class="small" style="margin:0">The porter's solution goes up on ${fmtLong(addDays(P.to,1))}. Your teacher sees what you hand in.</p>`}
+    ${probForm(P,"pc")}`;
+  const past=PROBLEMS.filter(p=>p.id!==P.id && p.to<d).reverse();
+  $("pastProbs").innerHTML = past.length ? past.map(p=>{ const m=state.probs[p.id];
+    return `<details class="pigeon paper"><summary><b>${esc(p.title)}</b><span>${fmtShort(p.from)} – ${fmtShort(p.to)} · ${m?(m.late?"handed in late":"handed in"):"not handed in"}</span></summary>
+      <div class="ptext" style="font-size:1.04rem">${p.txt}</div>
+      ${m?`<div class="yours"><i>What you handed in, ${esc(fmtShort(m.d))}</i>${m.ans?`<b>${esc(m.ans)}</b><br>`:""}${esc(m.work)}</div>`:""}
+      <div class="sol"><i>The porter's solution</i>${p.sol}</div>
+      ${probForm(p,"pp"+p.id)}
+    </details>`; }).join("") : `<p class="small" style="color:#bcc0d8;margin:0">None yet: this is the first week. Next week's problem appears on Monday.</p>`;
+}
+function addDays(iso,n){ const t=new Date(iso+"T12:00:00"); t.setDate(t.getDate()+n); return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0"); }
+document.addEventListener("submit",e=>{
+  const f=e.target.closest(".probform"); if(!f) return; e.preventDefault();
+  const p=PBY[f.dataset.pid]; if(!p) return;
+  const q=sel=>f.querySelector(sel);
+  const ans=q("input").value.trim(), ta=f.querySelectorAll("textarea"), work=ta[0].value.trim(), stuck=ta[1].value.trim();
+  const msg=f.querySelector("[aria-live]");
+  if(work.length<30){ msg.textContent="Show a bit more working: at least a couple of lines."; say("Working, please. An answer on its own I can't check, and neither can your teacher."); return; }
+  const was=state.probs[p.id];
+  state.probs[p.id]={d:today(),ans,work,stuck,late:today()>p.to};
+  save(); renderDesk(); renderMeter();
+  say(was?`Updated. The new version of "${p.title}" is the one your teacher sees.`:pick([`Handed in. I'll put it in the pigeonhole for the department. The solution goes up after the week closes.`,`Thank you. "${p.title}" is on the desk with your name on it.`,`In the pigeonhole. If you got stuck, say so in the box; that's useful to your teacher too.`]));
+});
+document.addEventListener("click",e=>{
+  if(e.target.id==="hintBtn"){ const b=$("hintBox"); b.hidden=!b.hidden; e.target.setAttribute("aria-expanded",String(!b.hidden)); if(!b.hidden) say("Just the one hint. The rest is up to you."); }
+});
+
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderDesk();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true"><span>${FAM[it.g].no}</span></div>
+      <div><div class="fam">Room ${it.room} · ${FAM[it.g].place}${it.w?" · Further Maths wing":""} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>The porter's note</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.w?'<span class="wg">Further Maths wing</span>':""}${it.tags.filter(t=>t!=="Further Maths").map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Lit ✓ (undo)":"Lights on: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it on the notepaper</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department has your name; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=hotel();
+  if(was) delete state.done[sym]; else { state.done[sym]=true; JUST=sym; }
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const H=hotel(); const it=BY[sym]; const g=it.g;
+    if(it.w && before.wingD===0) say(`First light in the Further Maths wing: room ${it.room}. It's a quieter side of the building, but the view is better.`);
+    else if(before.c[g]===0 && H.k>1) say(`First light on in ${FAM[g].the}, room ${it.room}. That's ${H.k} of 6 floors with somebody home.`);
+    else if(before.c[g]===0) say(`Room ${it.room}, lights on. Your first. Now put it on the notepaper while you still remember it.`);
+    else if(H.c[g]===H.t[g]) say(`Every room in ${FAM[g].the} is lit. You can see that floor from the street.`);
+    else say(pick([`Room ${it.room}: lights on. ${plural(H.N,"room")} now.`,`Another one. A lit room isn't a page of notes, mind: write it up.`,`${it.short}: lit. Still vacancies, of course. There always are.`,`Room ${it.room}. There are floors still dark; the lift is working.`])); }
+  else say("Lights off again in that room.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes down to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  if(g==="desk"){ const el=$("desk"); el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"}); const P=currentProblem();
+    say(state.probs[P.id]?`You've handed in "${P.title}". The earlier ones are in the pigeonholes on the right.`:`This week's problem: "${P.title}". Working as well as an answer, please.`); return; }
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  const hot=document.querySelector(`.hot[data-f="${g}"]`); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const H=hotel();
+  say(`Floor ${FAM[g].no}, ${FAM[g].place.toLowerCase()}: ${FAM[g].verb.toLowerCase()}. ${H.c[g]?`${H.c[g]} of ${H.t[g]} rooms lit.`:"Nothing lit on this floor yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const ph=e.target.closest(".panehit"); if(ph){ openSheet(ph.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think;
+    const o=[...$("nbHw").options].find(o=>o.value===it.th||(it.th==="Further Statistics"&&o.value==="Further Statistics")); if(o) $("nbHw").value=o.value;
+    $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbQuo").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- ring for the porter ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("wingOnly").addEventListener("change",e=>{ state.wingOnly=e.target.checked; saveLocal(); $("pickMsg").textContent=""; });
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]&&(!state.wingOnly||i.w));
+  const where=state.wingOnly?" in the Further Maths wing":"";
+  if(!pool.length){ $("pickMsg").textContent="You have done everything"+where+" that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left"+where+" that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a floor the pupil has not lit, two times in three
+  const H=hotel(); const fresh=pool.filter(i=>!H.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+where+". One moment; I'll take the lift.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("lift"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("lift");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("lift");
+    $("pickMsg").textContent=`Room ${choice.room}: ${choice.short}, ${choice.t}.`;
+    say(`Your key: room ${choice.room}, ${FAM[choice.g].the}${choice.w?", Further Maths wing":""}. ${choice.short}, ${choice.t}.${!H.c[choice.g]?" Nobody's been up to that floor yet.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1800);
+});
+
+/* ---------- hotel notepaper ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function noteHTML(n,i,example){
+  const it=n.s?BY[n.s]:null;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:""}${example?' aria-label="Example page of notes"':""}>
+      <div class="hd"><b>${esc(n.what)}</b><span class="d">${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="src">${esc(n.hw||"")}${it?` · room ${it.room}`:""}</div>
+      ${n.quo?`<div class="quo">${esc(n.quo)}</div>`:""}
+      <div class="why"><i>what I worked out</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>still want to know</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">Tear it off</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("logCount").textContent=state.notes.length?plural(state.notes.length,"page"):"";
+  if(!state.notes.length){
+    box.innerHTML=noteHTML({hw:"Proof",what:"Eduardo Sáenz de Cabezón (TED): Math is forever",s:"MiF",
+      quo:"If √2 = p/q in lowest terms, then p² = 2q², so p is even, so q is even. Contradiction.",
+      learned:"He says a theorem stays true for ever once it is proved. The √2 proof works for any whole number that is not a perfect square, because the step 'p² is a multiple of n, so p is' only needs n to have a prime factor that appears an odd number of times.",
+      q:"Is there a quick way to tell whether a number like √2 + √3 is irrational?"},0,true)+`<p class="small" style="color:#bcc0d8">Your notepaper is blank. Put one light on, then write the first page.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>noteHTML(n,i,false)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to tear it off"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Tear it off"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value,what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; if(!state.done[match.s]) JUST=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbHw").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="On the pad.";
+  say(pick(["On the pad. That's the part a university reads; the lights are for me.","Good page. Keep the last line: the next thing you read should answer it.","Noted. What it was, the idea, what you made of it. That'll do nicely."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Maths notes – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)} · ${n.hw||""}\nFrom: ${n.what}${n.quo?`\nThe idea: ${n.quo}`:""}\nWhat I worked out: ${n.learned}${n.q?`\nStill want to know: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} rooms lit, ${notes} ${notes===1?"page":"pages"} of notes)?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/maths.html";
+const TOUR=[
+  {sel:".scene", h:"This is the hotel", p:"Hilbert's hotel: infinitely many rooms, all taken, and always room for one more. Reception on the ground floor, then six floors from the library to the penthouse, one window for each of the 65 items. Click a floor and the page goes to its rooms; click a window and that item opens. When a pupil does something, the light goes on in its room."},
+  {sel:".scene", h:"The Further Maths wing", p:"The building on the right holds 15 rooms for Further Maths: 3Blue1Brown on linear algebra and differential equations, Oxford's first-year lectures, Needham on complex numbers, Seeing Theory, the STEP 2 and 3 modules, and the Oxford, Cambridge, Warwick, Imperial and Durham requirements. Anyone can walk through. Pupils tick a box at sign-in if they take Further Maths, so you can see who does."},
+  {sel:"#smallprint", h:"The small print", p:"Each floor has a piece of history: Euclid, the Pythagoras hammer story (labelled a legend), Hilbert's 1900 problems, Conway's Game of Life, the Tartaglia–Fiore cubic contest, Ramanujan's letter to Hardy, and the taxi numbered 1729. Every claim carries a source and a label: attested, reported, legend or invented."},
+  {sel:".guide", h:"The night porter", p:"Mr Dimitriou, an invented porter, and the page says so. He greets each pupil by name, reacts to what they do, and asks for working as well as answers."},
+  {sel:".count-card", h:"Your rooms", p:"Progress is rooms lit, how many of the six floors have a light on, and how much of the Further Maths wing. The key board shows one key per room. The joke stays: however many rooms a pupil lights, the vacancy sign stays on."},
+  {sel:".pick-card", h:"Ring for the porter", p:"A pupil says how long they have and the porter takes the lift and comes back with the key to one room they have not been in, leaning towards floors that are still dark. Further Maths pupils can ask for the wing only."},
+  {sel:"#desk", h:"The problem on the desk", p:"A new problem every Monday: this week Hilbert's own coach party, then n³ − n, a telescoping sum, the birthday problem, a complex-number problem for the wing, a bouncing ball, a matrix with A³ = I, three points on a circle, and the twelve days of Christmas. Pupils hand in an answer, their working, and where they got stuck. The porter's solution goes up the day after the week closes."},
+  {sel:".orders", h:"Your booking", p:"Three things from the department each half term, with a date. This half term: the Infinite Hotel video, Sarah Hart's Gresham lecture on proof, and the first STEP Support module. You change these by editing one block at the top of the file."},
+  {sel:"#zone-do", h:"The games room", p:"Where pupils stop watching and start working: STEP Support, Underground Mathematics, NRICH, UKMT past papers, Project Euler, the AMSP problem-solving session, the University of Birmingham's Popular Maths lectures and Maths Inspiration at the Crescent Theatre on 18 and 19 November."},
+  {sel:"#zone-apply", h:"The penthouse", p:"The TMUA (October and January sittings, with booking dates), the Oxford livestream and interview sessions, UNIQ, Sutton Trust, Nuffield and In2Science placements, and in the wing the current requirements for Oxford, Cambridge (including STEP), Warwick, Imperial and Durham."},
+  {sel:".board", h:"What's on", p:"October to July: TMUA dates, Oxbridge and UCAS deadlines, BMO1 and the Kangaroo (18 November), BMO2 (20 January), Gresham's five Goriely lectures, Oxford's Riemann Hypothesis lecture, STEP entries and papers. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"Hotel notepaper", p:"For anything they do, a pupil writes a page: what it was, the idea in one line (an equation is fine), what they worked out, and what they still want to know, tagged to a part of the course. It saves to the department as they write and copies out as text."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, rooms lit, and every answer and page of working handed in for the problem on the desk. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("maths-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[
+  {name:"Amara Okafor",cls:"12A",fm:true,done:["Hot","GHp","STF","LA","Plus"],picks:3,interest:["BMO"],last:"2026-10-08",
+   probs:{p01:{d:"2026-10-06",ans:"(a) n → 2n, passenger k → 2k − 1. (b) n → 2^n, coach c seat k → 3^c 5^k",work:"(a) Doubling frees all the odd rooms and there are infinitely many of them, one for each passenger.\n(b) Powers of 2 for the guests already in. Coach c, seat k goes to 3^c × 5^k. Different (c,k) give different numbers because prime factorisation is unique, and none of them is a power of 2.",stuck:""}},
+   notes:[{hw:"Proof",what:"Gresham College: Sarah Hart, A Mathematician's View of Proof (2024)",quo:"There are infinitely many primes: multiply them all and add 1.",learned:"The proof doesn't say the new number is prime, only that its prime factors are not on the list. I had always thought N + 1 itself was prime. 2×3×5×7×11×13 + 1 = 30031 = 59 × 509.",q:"Are there infinitely many primes of the form 4k + 3? Can the same trick prove it?"}]},
+  {name:"Ben Carter",cls:"12A",fm:false,done:["Hot","MC"],picks:1,interest:[],last:"2026-10-05",
+   probs:{p01:{d:"2026-10-07",ans:"move everyone up by 1 then the next passenger in room 1",work:"Guest in room n moves to room n+1. Passenger 1 goes in room 1. Then do it again for passenger 2, and so on.",stuck:"This takes forever, it never finishes. Not sure if that is allowed."}},
+   notes:[]},
+  {name:"Chloe Nguyen",cls:"12B",fm:true,done:["Hot","GHp","STF","UM","NR","Chk","DE"],picks:3,interest:["TRM","Un"],last:"2026-10-08",
+   probs:{p01:{d:"2026-10-05",ans:"(a) 2n and 2k−1 (b) see working",work:"(a) as in the video.\n(b) Guests go to the even rooms 2n. Passenger k from coach c goes to room 2^(c) × (2k − 1) ... wait that is even. Use odd rooms only for the coaches: write each odd room as... Instead: guests to 2^n, coach c seat k to p_c^k where p_c is the (c+1)th prime (3, 5, 7, ...).",stuck:"Is it allowed to leave lots of rooms empty?"}},
+   notes:[{hw:"Pure",what:"Underground Mathematics (Cambridge)",quo:"",learned:"The 'Can you find…' problems on polynomials made me build a cubic with given turning points. Integrating a quadratic with roots at the turning points was quicker than solving simultaneous equations.",q:""}]},
+  {name:"Daniel Brooks",cls:"12B",fm:false,done:[],picks:0,interest:[],last:"2026-09-30",probs:{},notes:[]},
+  {name:"Esha Patel",cls:"13A",fm:true,done:["TMUA","OxL","OxM","CaM","STT","Sik","STEP"],picks:1,interest:["STEP","BMO"],last:"2026-10-08",
+   probs:{p01:{d:"2026-10-06",ans:"(a) n→2n, k→2k−1 (b) n→2^n, (c,k)→3^c 5^k",work:"Injective maps from N and N×N into N. Unique factorisation makes (c,k) → 3^c 5^k injective and its image misses the powers of 2.",stuck:""}},
+   notes:[{hw:"Applying",what:"STEP Support Programme: STEP 2 and STEP 3 modules",quo:"",learned:"Module 1 kept asking for a sketch before any algebra. Three of the five parts were easier once I had drawn y = f(x) and y = f(x)² on the same axes.",q:"How long should I spend on a question before switching in the exam?"}]},
+  {name:"Finn Murphy",cls:"13A",fm:false,done:["MoL","AB"],picks:0,interest:[],last:"2026-10-01",probs:{},notes:[]},
+  {name:"Grace Adeyemi",cls:"12A",fm:false,done:["Hot","KY","MoL","SeT"],picks:1,interest:["NRP"],last:"2026-10-07",
+   probs:{p01:{d:"2026-10-08",ans:"(a) 2n / 2k − 1",work:"Everyone in room n goes to 2n, which empties every odd room. Passenger k takes the k-th odd room, 2k − 1.",stuck:"Couldn't do (b). I tried giving each coach every 10th room but there aren't enough coaches' worth."}},
+   notes:[{hw:"Statistics",what:"Kit Yates, The Maths of Life and Death (2019)",quo:"P(evidence | innocent) ≠ P(innocent | evidence)",learned:"With a test that is 99% accurate and a condition in 1 in 1000 people, a positive result is still more likely to be wrong than right: about 1 in 11 positives are true.",q:"What does the Large Data Set look like if you condition on one variable?"}]},
+  {name:"Harry Singh",cls:"12B",fm:true,done:["3BC"],picks:0,interest:[],last:"2026-10-02",probs:{},notes:[]}
+];
+function wOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const k=ORDER.filter(g=>c[g]).length; const wing=done.filter(s=>BY[s]&&BY[s].w).length;
+  return {k,c,wing}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,fm:!!state.fm,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes,interest:Object.keys(state.interest),probs:state.probs,last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length; const WT=ITEMS.filter(i=>i.w).length;
+  const P=currentProblem();
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0);
+  const handed=rows.filter(r=>r.probs&&r.probs[P.id]);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const thCount={}; rows.forEach(r=>r.done.forEach(s=>{ const t=BY[s]&&BY[s].th; if(t) thCount[t]=(thCount[t]||0)+1; }));
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,3);
+  const max=Math.max(1,...ORDER.map(famCount));
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${rows.filter(r=>r.fm).length}</b><span>take Further Maths</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${handed.length}</b><span>handed in this week's problem</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished the half-term booking</span></div>
+      <div class="tl"><b>${nbLines}</b><span>pages of notes written</span></div>
+    </div>
+    <div class="dcard"><h3>The problem on the desk: ${esc(P.title)}</h3><p class="small">Every answer and every page of working handed in, with where each pupil got stuck. ${handed.length} of ${signed} have handed in. This is the part you would read before the lesson.</p>
+      <div class="dash-cols">${handed.map(r=>{ const m=r.probs[P.id]; return `<div><b>${esc(r.name)}</b>${r.you?'<span class="you-tag">you</span>':""} <span class="small">· ${esc(r.cls)} · ${fmtDd(m.d)}</span>${r.fm?'<span class="fmt">FM</span>':""}
+        <div class="work">${m.ans?`<span class="ans">ANSWER: ${esc(m.ans)}</span>\n`:""}${esc(m.work)}${m.stuck?`<span class="stk">Stuck: ${esc(m.stuck)}</span>`:""}</div></div>`; }).join("")}</div>
+      <p class="small"><b>Not handed in:</b> ${rows.filter(r=>!(r.probs&&r.probs[P.id])).map(r=>esc(r.name)).join(", ")||"nobody"}</p></div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. UKMT competitions and STEP go through school; the rest pupils apply for themselves, so this is who to support.</p>
+        <table class="dt"><tr><th>Competition / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.room}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which floors get used</h3><p class="small">Rooms lit across all pupils, by floor, and by part of the course. Tells you where to point the next half term's booking.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>Every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Rooms</th><th>Floors</th><th class="hide-m">FM wing</th><th>Booking</th><th class="hide-m">Problems</th><th class="hide-m">Notes</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${rows.map(r=>{ const W=wOf(r.done); const pn=Object.keys(r.probs||{}).length;
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}${r.fm?'<span class="fmt">FM</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span>${r.done.length} / ${N}</td>
+        <td>${ORDER.map(g=>`<span class="sw${W.c[g]?" got":""}" data-g="${g}" title="${FAM[g].place}"></span>`).join("")} <span class="small">${W.k}/6</span></td>
+        <td class="hide-m">${W.wing} / ${WT}</td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${pn}</td><td class="hide-m">${r.notes.length}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${BY[s]?BY[s].room:esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Notepaper</h3><p class="small">Each pupil's notes in full, copyable as text. Three shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><b>${esc(n.hw||"")}</b> · <span class="small">${esc(n.what)}</span>${n.quo?`<br><i>${esc(n.quo)}</i>`:""}<br>What I worked out: ${esc(n.learned)}${n.q?`<br>Still want to know: ${esc(n.q)}`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",slip:"",more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  const u=e.target.closest("#fbUse button"); if(u){ FB.use=u.dataset.v; document.querySelectorAll("#fbUse button").forEach(b=>b.setAttribute("aria-pressed",String(b===u))); return; }
+  const dv=e.target.closest("#fbDiv button"); if(dv){ FB.look=dv.dataset.v; document.querySelectorAll("#fbDiv button").forEach(b=>b.setAttribute("aria-pressed",String(b===dv))); return; }
+  const sl=e.target.closest("#fbSlip button"); if(sl){ FB.slip=sl.dataset.v; document.querySelectorAll("#fbSlip button").forEach(b=>b.setAttribute("aria-pressed",String(b===sl))); return; }
+  const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"maths-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,look:FB.look,problem:FB.slip,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,probsN:Object.keys(state.probs).length,interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-maths-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-maths-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.slip=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbSlip button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the Maths page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nThe look: ${rec.look||"–"}\nThe problem on the desk: ${rec.problem||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to read, hear, watch, do, enter and apply for · a problem on the desk every week";
+$("tableEyebrow").textContent="Six floors · "+ITEMS.length+" rooms · "+ITEMS.filter(i=>i.w).length+" of them in the Further Maths wing";
+$("foot").innerHTML="Compiled 30 September 2026, additions and link checks 9 October 2026 · A-level Mathematics, and Edexcel A-level Further Mathematics (Core Pure 1 and 2, Further Statistics 1, Further Mechanics 1) · free at the point of use unless the card says otherwise<br>Sources for the six floors are in the small print under the picture. The porter is invented. The hotel in the picture is not a real one. The problems on the desk are classics or written for this page; their solutions are in the page.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildStars(); buildHotel(); lightHotel();
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
