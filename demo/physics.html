@@ -479,7 +479,7 @@ body.bk-on{padding-bottom:96px}
   <div class="fb-top"><span class="plate"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
   <form id="fbForm" class="fb-body" autocomplete="off">
     <h2 class="sign" id="fbH">What would you want from this?</h2>
-    <p class="small">Goes straight to Simon. Nothing is shown to pupils.</p>
+    <p class="small">If the Send button does not work for you, send your comments and changes to Simon directly. Nothing here is shown to pupils.</p>
     <div class="two">
       <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
       <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. HoD Physics"></div>
@@ -510,6 +510,7 @@ body.bk-on{padding-bottom:96px}
         <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
         <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed.</li>
       </ol>
+      <p class="send-note" style="margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
       <button type="button" class="btn big" id="introGo">Start the demo</button>
     </div>
   </div>
@@ -533,6 +534,7 @@ body.bk-on{padding-bottom:96px}
 
 <div class="wrap" id="app" hidden>
   <div class="demo">
+    <p class="send-note" style="grid-column:1/-1;margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
     <div><b>Demo for the Physics department.</b> This is the working pupil page: sign in with any name, tick things, write in the lab book, ask the technician to pick. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
     <div class="demo-btns"><button type="button" class="btn" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn big" id="fbOpen2">Feedback</button></div>
   </div>
