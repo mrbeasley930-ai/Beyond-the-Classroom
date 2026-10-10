@@ -60,6 +60,13 @@ THEMES = {
     "Historiography": r"historians?\b|historiograph|\barchives?\b|myths?\b|memory|interpretation|revisionis|manuscript|primary source|the evidence|rewrit",
 }
 _rx = {k: re.compile(v, re.I) for k, v in THEMES.items()}
+# the years each tag covers, used for On this day so a 1992 bridge in Kolkata is not tagged to the East India Company
+YEARS = {
+    "1H Russia 1855–1917": (1850, 1917), "1H Soviet Union 1917–64": (1917, 1964),
+    "2S Britain 1951–79": (1945, 1979), "2S Britain 1979–2007": (1979, 2007),
+    "NEA: Tudors": (1485, 1603), "NEA: Stuarts": (1603, 1714), "NEA: East India Company": (1600, 1858),
+    "NEA: French Revolution": (1688, 1871), "NEA: Franchise": (1800, 1928), "NEA: Ireland": (1798, 1922),
+}
 
 # for general feeds: the headline has to look like history
 HIST = re.compile(r"histor|centur|\bwar\b|wars\b|empire|imperial|revolution|archive|museum|ancient|medieval|victorian|tudor|stuart|georgian|edwardian|soviet|\btsar|\bkings?\b|queens?\b|monarch|\b1[0-9]{3}s?\b|\b20[0-2]0s\b|fascis|nazi|colonial|slavery|holocaust|cold war|\bera\b|dynasty|\bdig\b|archaeolog|heritage|anniversary", re.I)
@@ -174,7 +181,8 @@ def on_this_day(now):
             continue
         if OTD_SKIP.search(text):  # crimes against individuals and children are not for this board
             continue
-        th = tag(text)  # the event text only: page extracts drag in false matches
+        # the event text only (page extracts drag in false matches), and only tags whose period the year falls in
+        th = [t for t in tag(text) if YEARS.get(t, (-9999, 9999))[0] <= (year or 0) <= YEARS.get(t, (-9999, 9999))[1]]
         out.append({"id": "otd-" + hashlib.sha1((str(year) + text).encode("utf-8")).hexdigest()[:8],
                     "year": year, "text": text, "url": link, "th": th})
     # on the course first, then the rest by year
