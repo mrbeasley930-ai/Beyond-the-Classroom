@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supercurricular Passport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Layout: a passport. Navy cover band with the pupil's points, three big tabs, and a stamp page of subjects. */
+:root {
+  --bg: #eef2f8; --card: #ffffff; --ink: #16233f; --soft: #56637d; --line: #d6deea;
+  --navy: #1b2d55; --navy-ink: #ffffff; --gold: #e2b33d; --gold-soft: #fff3d1; --gold-ink: #3d2c00;
+  --ok: #2f7a3a; --ok-soft: #e4f2e5; --wait: #8a5a00; --wait-soft: #fdf0d6; --no: #a3352a; --no-soft: #fae6e3;
+  --f-lit: #6a44b8; --f-lit-soft: #eee8fa; --f-hum: #b0452c; --f-hum-soft: #f9e9e4;
+  --f-arts: #b8306f; --f-arts-soft: #f9e5ef; --f-stem: #0d6f86; --f-stem-soft: #e0f1f5;
+  --f-life: #4a7a12; --f-life-soft: #ebf3df;
+  --f-display: "Young Serif", Georgia, serif;
+  --f-body: "Lexend", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1524; --card: #18213a; --ink: #eef2f8; --soft: #a9b4c8; --line: #2b3655;
+    --navy: #0b1530; --navy-ink: #ffffff; --gold: #f0c35a; --gold-soft: #3a3016; --gold-ink: #fff2cc;
+    --ok: #8fd39a; --ok-soft: #1c3322; --wait: #f2c26b; --wait-soft: #3a2f17; --no: #f3a197; --no-soft: #3d2320;
+    --f-lit: #b9a1f2; --f-lit-soft: #2b2447; --f-hum: #f0a18c; --f-hum-soft: #3d2620;
+    --f-arts: #f19bc4; --f-arts-soft: #40213a; --f-stem: #7fd0e2; --f-stem-soft: #173840;
+    --f-life: #a9d46e; --f-life-soft: #263519; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.5; }
+button, input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.cover { background: var(--navy); color: var(--navy-ink); padding: 22px 16px 26px; }
+.cover-in { max-width: 860px; margin: 0 auto; display: grid; gap: 14px; }
+.cover-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; opacity: .9; }
+.cover-top button { background: transparent; border: 1px solid rgba(255,255,255,.4); color: var(--navy-ink); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 14px; }
+.cover h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; margin: 0; }
+.cover h1 span { color: var(--gold); }
+.scores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.score { background: rgba(255,255,255,.08); border-radius: 14px; padding: 12px; }
+.score b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 34px; line-height: 1.1; color: var(--gold); font-variant-numeric: tabular-nums; }
+.score span { font-size: 14px; }
+.sync { font-size: 13px; opacity: .85; }
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 18px 16px 70px; display: grid; gap: 20px; }
+.tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; position: sticky; top: 0; z-index: 3; background: var(--bg); padding: 10px 0; }
+.tab { min-height: 58px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); font-weight: 600; font-size: 16px; cursor: pointer; padding: 8px; }
+.tab[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+
+h2 { font-family: var(--f-display); font-weight: 400; font-size: 28px; margin: 0; }
+.sub { margin: -10px 0 0; color: var(--soft); }
+.panel { display: grid; gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 12px; }
+.step { display: grid; gap: 10px; }
+.step > label, .step > .q { font-weight: 600; font-size: 18px; display: flex; gap: 10px; align-items: baseline; }
+.num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--navy-ink); font-size: 15px; flex: none; }
+.hint { font-size: 15px; color: var(--soft); margin: -4px 0 0; }
+select, input[type=text], input[type=date], textarea { width: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--card); }
+select:focus, input:focus, textarea:focus { border-color: var(--navy); outline: none; }
+textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { border: 2px solid var(--line); background: var(--card); border-radius: 999px; padding: 10px 14px; cursor: pointer; font-weight: 500; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; }
+.opt .pts { font-size: 13px; background: var(--gold-soft); color: var(--gold-ink); border-radius: 999px; padding: 2px 8px; font-weight: 600; }
+.opt[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+.opt[aria-pressed="true"] .pts { background: var(--gold); color: var(--gold-ink); }
+.subjbtn[aria-pressed="true"] { background: var(--fam); border-color: var(--fam); color: #fff; }
+.count { font-size: 14px; color: var(--soft); }
+.count.ok { color: var(--ok); }
+.btn { border: 0; border-radius: 12px; padding: 14px 20px; font-weight: 600; font-size: 17px; cursor: pointer; background: var(--navy); color: var(--navy-ink); }
+.btn.gold { background: var(--gold); color: var(--gold-ink); }
+.btn.ghost { background: transparent; border: 2px solid var(--line); color: var(--ink); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.err { color: var(--no); font-size: 15px; min-height: 1em; margin: 0; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--navy); color: var(--navy-ink); padding: 14px 20px; border-radius: 14px; font-weight: 600; z-index: 20; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: calc(100% - 32px); text-align: center; }
+
+/* Stamps */
+.stamps { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.stamp { border: 2px dashed var(--line); border-radius: 14px; padding: 12px 8px; text-align: center; min-height: 92px; display: grid; place-items: center; gap: 2px; color: var(--soft); font-size: 14px; }
+.stamp b { font-size: 15px; }
+.stamp.on { border: 3px solid var(--fam); background: var(--fam-soft); color: var(--fam); transform: rotate(-2deg); }
+.stamp.on:nth-child(even) { transform: rotate(2deg); }
+.stamp .n { font-family: var(--f-display); font-size: 24px; line-height: 1; }
+
+/* Entries */
+.entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.entry { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--fam, var(--navy)); border-radius: 14px; padding: 14px 16px; display: grid; gap: 6px; }
+.entry h3 { margin: 0; font-size: 18px; line-height: 1.3; }
+.meta { font-size: 14px; color: var(--soft); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.entry p { margin: 0; }
+.entry .lbl { font-size: 13px; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: .05em; }
+.status { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; font-weight: 600; border-radius: 999px; padding: 4px 10px; justify-self: start; }
+.status.wait { background: var(--wait-soft); color: var(--wait); }
+.status.ok { background: var(--ok-soft); color: var(--ok); }
+.status.star { background: var(--gold); color: var(--gold-ink); }
+.status.no { background: var(--no-soft); color: var(--no); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.linkbtn { background: none; border: 0; color: var(--soft); text-decoration: underline; cursor: pointer; padding: 4px 0; font-size: 14px; }
+.empty { background: var(--card); border: 2px dashed var(--line); border-radius: 16px; padding: 20px; color: var(--soft); margin: 0; }
+
+/* What's on */
+.ev { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; }
+.tile { border: 2px solid var(--fam); border-radius: 10px; text-align: center; overflow: hidden; align-self: start; }
+.tile .mo { background: var(--fam); color: #fff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 2px 0; }
+.tile .dy { font-family: var(--f-display); font-size: 24px; padding: 2px 0 4px; }
+.ev h3 { margin: 0; font-size: 17px; line-height: 1.3; }
+.ev p { margin: 4px 0 0; font-size: 15px; }
+.ev .row { margin-top: 8px; }
+.ev a { color: var(--navy); font-weight: 600; font-size: 15px; }
+@media (prefers-color-scheme: dark) { .ev a { color: var(--gold); } }
+.month { font-family: var(--f-display); font-size: 22px; margin: 6px 0 -4px; }
+
+.points-key { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; font-size: 15px; }
+.points-key div { background: var(--bg); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; gap: 8px; }
+.points-key b { color: var(--wait); }
+
+/* Gate */
+.gate { position: fixed; inset: 0; z-index: 50; background: var(--navy); display: grid; place-items: center; padding: 20px; overflow: auto; }
+.gate-card { background: var(--card); color: var(--ink); border-radius: 18px; max-width: 440px; width: 100%; padding: 26px; display: grid; gap: 12px; border-top: 8px solid var(--gold); }
+.gate-card h1 { font-family: var(--f-display); font-weight: 400; font-size: 30px; margin: 0; line-height: 1.1; }
+.gate-card p { margin: 0; color: var(--soft); }
+.gate-card label { font-weight: 600; }
+
+@media (max-width: 560px) {
+  .tab { font-size: 14px; min-height: 54px; }
+  .score b { font-size: 28px; }
+  .score span { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <form class="gate-card" id="gateForm" novalidate>
+    <div style="font-size:13px;font-weight:600;color:var(--soft);letter-spacing:.05em;text-transform:uppercase">Years 7 and 8</div>
+    <h1>My Supercurricular Passport</h1>
+    <p>Collect points and subject stamps for the learning you do outside lessons. Sign in so your passport follows you to any computer.</p>
+    <label for="g-cls">Your form</label>
+    <input id="g-cls" type="text" autocomplete="off" placeholder="e.g. 7A">
+    <label for="g-cand">Your first name and the first letter of your surname</label>
+    <input id="g-cand" type="text" autocomplete="off" placeholder="e.g. Livia C">
+    <p class="err" id="g-err"></p>
+    <button class="btn gold" id="g-go" type="submit">Open my passport</button>
+    <p style="font-size:14px">Use the same form and name every time, so all your points stay together.</p>
+  </form>
+</div>
+
+<header class="cover">
+  <div class="cover-in">
+    <div class="cover-top"><span id="who">Supercurricular Passport</span><button type="button" id="switch">Not you? Switch</button></div>
+    <h1>My <span>Supercurricular</span> Passport</h1>
+    <div class="scores">
+      <div class="score"><b id="s-pts">0</b><span>points so far</span></div>
+      <div class="score"><b id="s-wait">0</b><span>points waiting to be checked</span></div>
+      <div class="score"><b id="s-stamps">0</b><span>subject stamps</span></div>
+    </div>
+    <div class="sync" id="sync">Not signed in</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab" type="button" data-tab="log" id="t-log">Log something</button>
+    <button class="tab" type="button" data-tab="passport" id="t-passport">My passport</button>
+    <button class="tab" type="button" data-tab="whatson" id="t-whatson">What's on</button>
+  </nav>
+
+  <!-- LOG -->
+  <section class="panel" id="p-log">
+    <h2 id="logTitle">Log something you did</h2>
+    <p class="sub">It takes about two minutes. A teacher checks each entry, then your points are added.</p>
+    <form class="card" id="logForm" novalidate>
+      <div class="step">
+        <label for="f-event"><span class="num">1</span>What did you do?</label>
+        <select id="f-event"></select>
+        <input id="f-title" type="text" placeholder="Name it, e.g. 'Visited Thinktank' or 'Read The Odyssey retold by Rosemary Sutcliff'" hidden>
+      </div>
+      <div class="step">
+        <div class="q"><span class="num">2</span>What kind of thing was it?</div>
+        <div class="opts" id="f-kind"></div>
+      </div>
+      <div class="step">
+        <div class="q"><span class="num">3</span>Which subject was it about?</div>
+        <p class="hint">Pick one or two.</p>
+        <div class="opts" id="f-subj"></div>
+      </div>
+      <div class="step">
+        <label for="f-date"><span class="num">4</span>When did you do it?</label>
+        <input id="f-date" type="date">
+      </div>
+      <div class="step">
+        <label for="f-learned"><span class="num">5</span>What did you find out?</label>
+        <p class="hint">Write at least two sentences. You could start: "I found out that…" or "The most surprising thing was…"</p>
+        <textarea id="f-learned"></textarea>
+        <span class="count" id="c-learned">0 words, aim for 20 or more</span>
+      </div>
+      <div class="step">
+        <label for="f-next"><span class="num">6</span>What would you like to find out next? <span style="font-weight:400;color:var(--soft);font-size:15px">(optional)</span></label>
+        <textarea id="f-next" style="min-height:70px" placeholder="It made me wonder…"></textarea>
+      </div>
+      <p class="err" id="f-err"></p>
+      <div class="row">
+        <button class="btn gold" type="submit" id="f-save">Add to my passport</button>
+        <button class="btn ghost" type="button" id="f-cancel" hidden>Cancel editing</button>
+      </div>
+    </form>
+    <div class="card">
+      <h2 style="font-size:22px">How points work</h2>
+      <div class="points-key" id="pointsKey"></div>
+      <p style="margin:0;font-size:15px;color:var(--soft)">A really thoughtful write-up can earn a gold star from your teacher, worth 2 extra points.</p>
+    </div>
+  </section>
+
+  <!-- PASSPORT -->
+  <section class="panel" id="p-passport" hidden>
+    <h2>My passport</h2>
+    <p class="sub">Every subject you explore earns a stamp. Try to fill the page!</p>
+    <div class="stamps" id="stamps"></div>
+    <h2 style="font-size:24px">Everything I've done</h2>
+    <ul class="entries" id="entries"></ul>
+  </section>
+
+  <!-- WHAT'S ON -->
+  <section class="panel" id="p-whatson" hidden>
+    <h2>What's on</h2>
+    <p class="sub">Ideas for things to watch, visit and take part in. Updated every week.</p>
+    <div id="events"><p class="empty">Loading…</p></div>
+  </section>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ===== Settings ===== */
+var CLOUD = { endpoint: "https://vestigia-store.mrbeasley930.workers.dev", book: "scpass-y78-2627" };
+var CHECKS_KEY = "scpass-y78-2627-checks::STAFF::checks";
+var EVENTS_KEY = "scdiary::STAFF::events";
+var LS = "scpass-y78-2627";
+var KINDS = [
+  { id: "watch", label: "Watched or listened", pts: 1 },
+  { id: "read",  label: "Read something", pts: 2 },
+  { id: "visit", label: "Visited somewhere", pts: 3 },
+  { id: "part",  label: "Took part", pts: 3 },
+  { id: "make",  label: "Made or created", pts: 3 }
+];
+var STAR_BONUS = 2;
+var FAMILIES = [
+  { key: "lit", subjects: ["Classics","English","Languages"] },
+  { key: "hum", subjects: ["History","Geography","RE","Politics","Economics"] },
+  { key: "arts", subjects: ["Art","Drama","Music"] },
+  { key: "stem", subjects: ["Maths","Science","Computing","Design & Technology"] },
+  { key: "life", subjects: ["PSHE","Careers","Sport"] }
+];
+var SUBJECTS = []; var FAM_OF = {};
+FAMILIES.forEach(function(f){ f.subjects.forEach(function(s){ SUBJECTS.push(s); FAM_OF[s] = f.key; }); });
+var LABEL = { "PSHE": "Wellbeing (PSHE)", "RE": "Religion (RE)" };
+var FORMAT_TO_KIND = { home: "watch", visit: "visit", school: "part", week: "part" };
+var NOT_Y78 = /sixth form|year 12|year 13/i;
+var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+/* ===== State ===== */
+var IDENTITY = null, STATE = { entries: [] }, CHECKS = {}, EVENTS = [];
+var editing = null;
+var form = { kind: null, subj: [] };
+
+function $(id){ return document.getElementById(id); }
+function el(t, c, txt){ var e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; }
+function pad(n){ return (n < 10 ? "0" : "") + n; }
+function iso(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+function parse(s){ var p = s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+function nice(s){ var d = parse(s); return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear(); }
+function words(s){ return (s || "").trim().split(/\s+/).filter(Boolean).length; }
+function label(s){ return LABEL[s] || s; }
+function kindOf(id){ for (var i = 0; i < KINDS.length; i++) if (KINDS[i].id === id) return KINDS[i]; return KINDS[0]; }
+function setFam(node, subj){ var f = FAM_OF[subj] || "lit"; node.style.setProperty("--fam", "var(--f-" + f + ")"); node.style.setProperty("--fam-soft", "var(--f-" + f + "-soft)"); }
+function today(){ return iso(new Date()); }
+function uid(){ return "e" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+function key(){ return CLOUD.book + "::" + IDENTITY.cls + "::" + IDENTITY.cand; }
+function lsKey(){ return LS + "_" + IDENTITY.cls + "_" + IDENTITY.cand; }
+function toast(msg){ var t = el("div", "toast", msg); t.setAttribute("role", "status"); document.body.appendChild(t); setTimeout(function(){ t.remove(); }, 3200); }
+
+/* ===== Cloud ===== */
+function getKey(k){
+  return fetch(CLOUD.endpoint + "?key=" + encodeURIComponent(k)).then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){ return j && j.data ? j.data : null; }).catch(function(){ return null; });
+}
+function statusOf(e){ var c = CHECKS[e.id]; return c ? c.s : "wait"; }
+function pointsOf(e){ var s = statusOf(e); var base = e.pts || kindOf(e.kind).pts; if (s === "ok") return base; if (s === "star") return base + STAR_BONUS; return 0; }
+function summary(){
+  var conf = 0, wait = 0, subj = {};
+  STATE.entries.forEach(function(e){
+    var s = statusOf(e);
+    if (s === "wait") wait += kindOf(e.kind).pts; else conf += pointsOf(e);
+    if (s !== "no") (e.subjects || []).forEach(function(x){ subj[x] = (subj[x] || 0) + 1; });
+  });
+  return { conf: conf, wait: wait, subj: subj };
+}
+function blob(){
+  var s = summary();
+  return { name: IDENTITY.cand, form: IDENTITY.cls, entries: STATE.entries, claimed: s.conf + s.wait, subjects: Object.keys(s.subj),
+    text: STATE.entries.map(function(e){ return e.date + " · " + e.title + " (" + (e.subjects || []).join(", ") + ")"; }).join("\n"),
+    savedAt: new Date().toISOString(), state: STATE };
+}
+var saveTimer = null;
+function save(){
+  try { localStorage.setItem(lsKey(), JSON.stringify(STATE)); } catch (e) {}
+  setSync("saving"); clearTimeout(saveTimer);
+  saveTimer = setTimeout(function(){
+    fetch(CLOUD.endpoint, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: key(), cls: IDENTITY.cls, cand: IDENTITY.cand, book: CLOUD.book, data: blob(), savedAt: new Date().toISOString() }) })
+      .then(function(r){ setSync(r.ok ? "cloud" : "offline"); }).catch(function(){ setSync("offline"); });
+  }, 400);
+}
+function setSync(s){
+  var m = { saving: "Saving…", cloud: "Saved. Your passport is up to date.", offline: "Saved on this computer only. It will save online next time you open it with internet." };
+  $("sync").textContent = m[s] || "";
+}
+
+/* ===== Sign in ===== */
+function normName(s){ return s.trim().replace(/\s+/g, " ").toLowerCase().replace(/(^|\s)\S/g, function(c){ return c.toUpperCase(); }).replace(/\.$/, ""); }
+$("gateForm").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var cls = ($("g-cls").value || "").trim().toUpperCase().replace(/\s+/g, "");
+  var cand = normName($("g-cand").value || "");
+  var err = $("g-err");
+  if (!/^[A-Z0-9]{1,8}$/.test(cls)) { err.textContent = "Type your form, for example 7A."; return; }
+  if (!/^[A-Za-z][A-Za-z'\- ]{1,30} [A-Za-z]$/.test(cand)) { err.textContent = "Type your first name, a space, then the first letter of your surname, for example Livia C."; return; }
+  err.textContent = "";
+  IDENTITY = { cls: cls, cand: cand };
+  try { localStorage.setItem(LS + "_last", JSON.stringify(IDENTITY)); } catch (e) {}
+  $("g-go").textContent = "Opening…";
+  Promise.all([getKey(key()), getKey(CHECKS_KEY)]).then(function(r){
+    var remote = r[0], checks = r[1];
+    var local = null; try { local = JSON.parse(localStorage.getItem(lsKey()) || "null"); } catch (e) {}
+    STATE = (remote && remote.state) ? remote.state : (local || { entries: [] });
+    if (!STATE.entries) STATE.entries = [];
+    CHECKS = (checks && checks.checks && checks.checks[cls + "::" + cand]) || {};
+    $("gate").hidden = true;
+    $("who").textContent = cand + " · " + cls;
+    setSync(remote ? "cloud" : "offline");
+    renderAll();
+  });
+});
+$("switch").addEventListener("click", function(){ location.reload(); });
+try { var last = JSON.parse(localStorage.getItem(LS + "_last") || "null"); if (last) { $("g-cls").value = last.cls; $("g-cand").value = last.cand; } } catch (e) {}
+
+/* ===== Tabs ===== */
+var tab = "log";
+document.querySelectorAll(".tab").forEach(function(b){ b.addEventListener("click", function(){ showTab(b.dataset.tab); }); });
+function showTab(t){
+  tab = t;
+  document.querySelectorAll(".tab").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.tab === t)); });
+  ["log","passport","whatson"].forEach(function(x){ $("p-" + x).hidden = x !== t; });
+  window.scrollTo({ top: 0 });
+}
+
+/* ===== Log form ===== */
+function eventOptions(){
+  var sel = $("f-event"); sel.textContent = "";
+  var o = el("option", null, "Choose from What's on, or 'Something else'…"); o.value = ""; sel.appendChild(o);
+  var t = today();
+  var past = EVENTS.filter(function(e){ return e.start && e.start <= t && !NOT_Y78.test(e.ages || ""); })
+    .sort(function(a, b){ return a.start < b.start ? 1 : -1; });
+  if (past.length) {
+    var g = document.createElement("optgroup"); g.label = "From What's on";
+    past.forEach(function(e){ var op = el("option", null, e.title); op.value = e.id; g.appendChild(op); });
+    sel.appendChild(g);
+  }
+  var other = el("option", null, "Something else (type it in)"); other.value = "__other"; sel.appendChild(other);
+}
+function kindButtons(){
+  var box = $("f-kind"); box.textContent = "";
+  KINDS.forEach(function(k){
+    var b = el("button", "opt"); b.type = "button"; b.id = "k-" + k.id;
+    b.appendChild(document.createTextNode(k.label));
+    b.appendChild(el("span", "pts", k.pts + (k.pts === 1 ? " point" : " points")));
+    b.setAttribute("aria-pressed", String(form.kind === k.id));
+    b.onclick = function(){ form.kind = k.id; kindButtons(); };
+    box.appendChild(b);
+  });
+}
+function subjButtons(){
+  var box = $("f-subj"); box.textContent = "";
+  SUBJECTS.forEach(function(s){
+    var b = el("button", "opt subjbtn", label(s)); b.type = "button"; b.id = "sb-" + s.replace(/\W/g, "");
+    setFam(b, s);
+    var on = form.subj.indexOf(s) >= 0;
+    b.setAttribute("aria-pressed", String(on));
+    b.onclick = function(){
+      var i = form.subj.indexOf(s);
+      if (i >= 0) form.subj.splice(i, 1);
+      else { if (form.subj.length >= 2) form.subj.shift(); form.subj.push(s); }
+      subjButtons();
+    };
+    box.appendChild(b);
+  });
+}
+function pointsKey(){
+  var box = $("pointsKey"); box.textContent = "";
+  KINDS.forEach(function(k){ var d = el("div"); d.appendChild(el("span", null, k.label)); d.appendChild(el("b", null, k.pts + (k.pts === 1 ? " point" : " points"))); box.appendChild(d); });
+}
+$("f-event").addEventListener("change", function(){
+  var v = this.value;
+  $("f-title").hidden = v !== "__other";
+  var ev = EVENTS.filter(function(e){ return e.id === v; })[0];
+  if (ev) {
+    form.kind = FORMAT_TO_KIND[ev.format] || form.kind;
+    form.subj = (ev.depts || []).filter(function(s){ return SUBJECTS.indexOf(s) >= 0; }).slice(0, 2);
+    var end = ev.end && ev.end < today() ? ev.end : (ev.start <= today() ? today() : ev.start);
+    $("f-date").value = ev.end ? end : ev.start;
+    kindButtons(); subjButtons();
+  }
+  if (v === "__other") $("f-title").focus();
+});
+$("f-learned").addEventListener("input", function(){
+  var n = words(this.value), c = $("c-learned");
+  c.textContent = n + (n === 1 ? " word" : " words") + (n >= 20 ? ", great" : ", aim for 20 or more");
+  c.className = "count" + (n >= 20 ? " ok" : "");
+});
+function resetForm(){
+  editing = null; form = { kind: null, subj: [] };
+  $("logForm").reset(); $("f-title").hidden = true; $("f-date").value = today(); $("f-date").max = today();
+  $("c-learned").textContent = "0 words, aim for 20 or more"; $("c-learned").className = "count";
+  $("f-save").textContent = "Add to my passport"; $("f-cancel").hidden = true; $("logTitle").textContent = "Log something you did";
+  kindButtons(); subjButtons(); $("f-err").textContent = "";
+}
+$("f-cancel").addEventListener("click", resetForm);
+$("logForm").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  var err = $("f-err"), v = $("f-event").value, title = "", eventId = null;
+  if (!v) { err.textContent = "Step 1: choose what you did, or pick 'Something else'."; return; }
+  if (v === "__other") { title = $("f-title").value.trim(); if (title.length < 4) { err.textContent = "Step 1: type a short name for what you did."; return; } }
+  else { var e = EVENTS.filter(function(x){ return x.id === v; })[0]; title = e ? e.title : v; eventId = v; }
+  if (!form.kind) { err.textContent = "Step 2: choose what kind of thing it was."; return; }
+  if (!form.subj.length) { err.textContent = "Step 3: choose at least one subject."; return; }
+  var date = $("f-date").value;
+  if (!date) { err.textContent = "Step 4: choose the date you did it."; return; }
+  if (date > today()) { err.textContent = "Step 4: you can only log things you have already done."; return; }
+  var learned = $("f-learned").value.trim();
+  if (words(learned) < 12) { err.textContent = "Step 5: write a bit more about what you found out (at least two sentences)."; return; }
+  err.textContent = "";
+  var entry = { id: editing || uid(), eventId: eventId, title: title, kind: form.kind, pts: kindOf(form.kind).pts, subjects: form.subj.slice(),
+    date: date, learned: learned, next: $("f-next").value.trim(), loggedAt: new Date().toISOString() };
+  if (editing) STATE.entries = STATE.entries.map(function(x){ return x.id === editing ? entry : x; });
+  else STATE.entries.unshift(entry);
+  save();
+  toast(editing ? "Changes saved." : "Added to your passport. " + entry.pts + (entry.pts === 1 ? " point is" : " points are") + " waiting to be checked.");
+  resetForm(); renderAll(); showTab("passport");
+});
+
+/* ===== Passport ===== */
+function renderScores(){
+  var s = summary();
+  $("s-pts").textContent = s.conf; $("s-wait").textContent = s.wait; $("s-stamps").textContent = Object.keys(s.subj).length;
+  var box = $("stamps"); box.textContent = "";
+  SUBJECTS.forEach(function(sub){
+    var n = s.subj[sub] || 0, st = el("div", "stamp" + (n ? " on" : ""));
+    setFam(st, sub);
+    if (n) st.appendChild(el("div", "n", String(n)));
+    st.appendChild(el("b", null, label(sub)));
+    st.appendChild(el("span", null, n ? (n === 1 ? "activity" : "activities") : "not yet"));
+    box.appendChild(st);
+  });
+}
+function renderEntries(){
+  var ul = $("entries"); ul.textContent = "";
+  if (!STATE.entries.length) { var p = el("p", "empty", "Nothing here yet. Use 'Log something' to add the first thing you've done."); ul.appendChild(p); return; }
+  STATE.entries.slice().sort(function(a, b){ return a.date < b.date ? 1 : -1; }).forEach(function(e){
+    var li = el("li", "entry"); setFam(li, (e.subjects || [])[0]);
+    var s = statusOf(e), c = CHECKS[e.id] || {};
+    var st = { wait: ["status wait", "Waiting to be checked"], ok: ["status ok", "Checked: +" + pointsOf(e) + " points"],
+      star: ["status star", "Gold star: +" + pointsOf(e) + " points"], no: ["status no", "Not counted. Have a word with your teacher."] }[s];
+    li.appendChild(el("span", st[0], st[1]));
+    li.appendChild(el("h3", null, e.title));
+    var m = el("div", "meta");
+    m.appendChild(el("span", null, nice(e.date)));
+    m.appendChild(el("span", null, kindOf(e.kind).label));
+    m.appendChild(el("span", null, (e.subjects || []).map(label).join(", ")));
+    li.appendChild(m);
+    li.appendChild(el("span", "lbl", "What I found out"));
+    li.appendChild(el("p", null, e.learned));
+    if (e.next) { li.appendChild(el("span", "lbl", "What I'd like to find out next")); li.appendChild(el("p", null, e.next)); }
+    if (c.note) { li.appendChild(el("span", "lbl", "Teacher's comment")); li.appendChild(el("p", null, c.note)); }
+    if (s === "wait") {
+      var row = el("div", "row");
+      var ed = el("button", "linkbtn", "Edit"); ed.type = "button"; ed.onclick = function(){ startEdit(e); };
+      var del = el("button", "linkbtn", "Delete"); del.type = "button";
+      del.onclick = function(){
+        if (del.dataset.sure) { STATE.entries = STATE.entries.filter(function(x){ return x.id !== e.id; }); save(); renderAll(); toast("Deleted."); }
+        else { del.dataset.sure = "1"; del.textContent = "Tap again to delete"; }
+      };
+      row.appendChild(ed); row.appendChild(del); li.appendChild(row);
+    }
+    ul.appendChild(li);
+  });
+}
+function startEdit(e){
+  resetForm(); editing = e.id;
+  var sel = $("f-event");
+  if (e.eventId && sel.querySelector('option[value="' + e.eventId + '"]')) sel.value = e.eventId;
+  else { sel.value = "__other"; $("f-title").hidden = false; $("f-title").value = e.title; }
+  form.kind = e.kind; form.subj = (e.subjects || []).slice();
+  $("f-date").value = e.date; $("f-learned").value = e.learned; $("f-next").value = e.next || "";
+  $("f-learned").dispatchEvent(new Event("input"));
+  $("f-save").textContent = "Save changes"; $("f-cancel").hidden = false; $("logTitle").textContent = "Edit your entry";
+  kindButtons(); subjButtons(); showTab("log");
+}
+
+/* ===== What's on ===== */
+function renderEvents(){
+  var box = $("events"); box.textContent = "";
+  var t = today();
+  var list = EVENTS.filter(function(e){ return !NOT_Y78.test(e.ages || "") && (!e.start || (e.end || e.start) >= t); })
+    .sort(function(a, b){ if (!a.start) return 1; if (!b.start) return -1; var as = a.start < t ? t : a.start, bs = b.start < t ? t : b.start; return as < bs ? -1 : as > bs ? 1 : 0; });
+  if (!list.length) { box.appendChild(el("p", "empty", "The list couldn't be loaded just now. Check your internet connection and open the page again.")); return; }
+  var lastMonth = "";
+  list.forEach(function(e){
+    var d = e.start ? parse(e.start < t ? t : e.start) : null;
+    var m = d ? MONTHS[d.getMonth()] : "Dates to come";
+    if (m !== lastMonth) { box.appendChild(el("h3", "month", m)); lastMonth = m; }
+    var card = el("div", "ev"); setFam(card, (e.depts || [])[0]);
+    var tile = el("div", "tile");
+    tile.appendChild(el("div", "mo", d ? MON[d.getMonth()] : "TBC"));
+    tile.appendChild(el("div", "dy", d ? String(d.getDate()) : "?"));
+    card.appendChild(tile);
+    var b = el("div");
+    b.appendChild(el("h3", null, e.title));
+    var info = [];
+    if (e.end && e.end !== e.start) info.push("Until " + nice(e.end));
+    if (e.place) info.push(e.place);
+    if (e.cost) info.push(e.cost);
+    if (info.length) b.appendChild(el("div", "meta", info.join(" · ")));
+    if (e.note) b.appendChild(el("p", null, e.note));
+    var row = el("div", "row");
+    if (e.url) { var a = el("a", null, "Find out more"); a.href = e.url; a.target = "_blank"; a.rel = "noopener"; row.appendChild(a); }
+    if (e.start && e.start <= t) {
+      var lg = el("button", "linkbtn", "I did this: log it"); lg.type = "button";
+      lg.onclick = function(){ resetForm(); $("f-event").value = e.id; $("f-event").dispatchEvent(new Event("change")); showTab("log"); };
+      row.appendChild(lg);
+    }
+    b.appendChild(row); card.appendChild(b); box.appendChild(card);
+  });
+}
+
+function renderAll(){ eventOptions(); renderScores(); renderEntries(); renderEvents(); }
+
+/* ===== Start ===== */
+showTab("log"); pointsKey(); resetForm();
+getKey(EVENTS_KEY).then(function(d){ EVENTS = (d && d.events) || []; renderAll(); });
+window.__passport = { state: function(){ return STATE; }, blob: function(){ return blob(); } };
+})();
+</script>
+</body>
+</html>
