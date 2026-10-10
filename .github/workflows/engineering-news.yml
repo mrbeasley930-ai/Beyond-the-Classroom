@@ -1,0 +1,33 @@
+name: Engineering pit wall news
+
+# Pulls the engineering and motorsport-engineering feeds every morning and commits data/engineering-news.json,
+# which the Engineering garage page reads. Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "10 6 * * *"     # 06:10 UTC daily, after the French rack (05:40) and the Physics ticker (05:55)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: engineering-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the feeds
+        run: python3 tools/fetch_engineering_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "pitwall-bot"
+          git config user.email "pitwall-bot@users.noreply.github.com"
+          git add data/engineering-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "Pit wall: engineering stories $(date -u +%Y-%m-%d)" && git pull --rebase && git push; fi
