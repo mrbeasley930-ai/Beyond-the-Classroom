@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Commonplace Book</title>
+<meta name="description" content="Tom's supercurricular commonplace book for an Oxford Classics application: six heads, dated entries filed under the three UCAS questions, and the statement workbench.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4ECDA; --paper2:#EADFC6; --card:#FBF6EA; --ink:#2A2016; --ink2:#5C4F3F; --line:#CBB999; --rule:#D9CBAE;
+  --read:#7A2E2E; --lang:#1F3A66; --voices:#2E6B66; --places:#5B6B2F; --prizes:#9A6B12; --oxford:#5B3A7A;
+  --ok:#1B7F52; --bad:#B42318; --shadow:0 18px 40px -22px rgba(40,25,10,.55);
+}
+:root:not([data-theme="light"]){} /* single light theme: this is a paper book */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#2B2219 radial-gradient(1200px 600px at 50% -10%,#4A3A2A,#2B2219 70%);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.5}
+button{font:inherit;cursor:pointer}
+a{color:var(--oxford)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;line-height:1.1;margin:0}
+.hand{font-family:"Caveat",cursive}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.85rem}
+[hidden]{display:none!important}
+.sr{position:absolute;left:-9999px}
+
+/* ---------- gate: the closed book ---------- */
+#gate{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+.cover{width:min(560px,100%);background:#4A1F1F linear-gradient(135deg,#5A2727,#3E1818 60%,#4A1F1F);border-radius:8px 18px 18px 8px;box-shadow:var(--shadow),inset 0 0 0 10px rgba(0,0,0,.12);padding:46px 36px 40px;color:#F4E8D0;position:relative}
+.cover:before{content:"";position:absolute;left:22px;top:0;bottom:0;width:2px;background:rgba(0,0,0,.35)}
+.plate{background:#E9DCC0;color:var(--ink);border:3px double #9A7B3A;padding:18px 20px;text-align:center;margin:0 10px 26px}
+.plate h1{font-size:2.3rem;font-weight:600;letter-spacing:.02em}
+.plate .sub{font-size:1rem;color:var(--ink2);margin-top:4px}
+.cover label{display:block;font-size:.95rem;margin:0 10px 6px;color:#E9DCC0}
+.cover input{width:calc(100% - 20px);margin:0 10px 14px;font:inherit;font-size:1.1rem;padding:12px 14px;border:1.5px solid #B99C62;border-radius:6px;background:#F6EEDC;color:var(--ink)}
+.cover .go{display:block;width:calc(100% - 20px);margin:0 10px;padding:14px;border:0;border-radius:6px;background:#D4B06A;color:#2A2016;font-weight:700;font-size:1.05rem}
+.cover .err{color:#F7C6C0;margin:8px 10px 0;min-height:1.4em;font-size:.95rem}
+.cover .fine{font-size:.85rem;color:#D8C7A8;margin:18px 10px 0}
+
+/* ---------- the open book ---------- */
+#app{max-width:1180px;margin:0 auto;padding:18px 16px 60px}
+.book{background:var(--paper);border-radius:6px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.book:before{content:"";position:absolute;left:0;top:0;bottom:0;width:14px;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0));pointer-events:none}
+.pg{padding:26px clamp(16px,4vw,46px)}
+.pg+.pg{border-top:1px solid var(--rule)}
+.pg h2{font-size:1.9rem;font-weight:600}
+.pg h2 small{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;color:var(--ink2);font-weight:400;margin-top:2px}
+
+header.top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;justify-content:space-between}
+header.top h1{font-size:2.6rem;font-weight:600}
+header.top .who{color:var(--ink2);font-size:.95rem}
+.saved{font-size:.85rem;color:var(--ink2)}
+.saved.ok{color:var(--ok)} .saved.bad{color:var(--bad);font-weight:600}
+.linkbtn{background:none;border:0;padding:0;color:var(--oxford);text-decoration:underline;font-size:.9rem}
+
+/* margin voice */
+.margin{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;margin-top:18px;padding:14px 16px;border-left:3px solid var(--line);background:rgba(255,255,255,.35)}
+.margin .ic{width:52px;height:52px;border-radius:50%;background:#2A2016;color:#F4ECDA;display:grid;place-items:center;font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700}
+.margin p{margin:0;font-family:"Caveat",cursive;font-size:1.45rem;line-height:1.25;color:#3A2E22}
+.margin small{display:block;font-family:"Source Serif 4",serif;font-size:.8rem;color:var(--ink2);margin-top:4px}
+
+/* ribbons / progress */
+.ribbons{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.ribbon{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;text-align:left;color:var(--ink)}
+.ribbon i{display:block;width:12px;height:38px;border-radius:2px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%)}
+.ribbon b{display:block;font-family:"Cormorant Garamond",serif;font-size:1.2rem;line-height:1}
+.ribbon span{font-size:.8rem;color:var(--ink2)}
+.ribbon[aria-pressed="true"]{outline:2px solid var(--c);outline-offset:1px}
+.meter{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-top:14px}
+.bar{height:12px;background:var(--paper2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:var(--w,0%);background:linear-gradient(90deg,var(--read),var(--lang),var(--voices),var(--places),var(--prizes),var(--oxford));transition:width .5s}
+.meter .n{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:700;white-space:nowrap}
+.meter .n small{font-size:.85rem;font-family:"Source Serif 4",serif;font-weight:400;color:var(--ink2);margin-left:6px}
+
+/* the card for the half term */
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
+.card .eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.card h3{font-size:1.5rem;margin:4px 0 2px}
+.card .due{font-size:.9rem;color:var(--ink2)}
+.legs{display:grid;gap:10px;margin-top:12px}
+.leg{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:10px 12px;border:1px dashed var(--line);border-radius:6px;background:rgba(255,255,255,.4)}
+.leg.done{border-style:solid;border-color:var(--ok);background:rgba(27,127,82,.07)}
+.leg .no{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:700}
+.leg.done .no{background:var(--ok)}
+.leg p{margin:4px 0 8px}
+.leg .step{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+
+/* dates */
+.dates{display:grid;gap:6px;margin-top:10px}
+.date{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:baseline;padding:8px 10px;border-bottom:1px solid var(--rule)}
+.date.past{opacity:.5}
+.date.soon{background:rgba(154,107,18,.10)}
+.date .w{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--ink2)}
+.date .w b{display:block;color:var(--ink);font-size:.95rem}
+.date .cnt{font-size:.8rem;color:var(--ink2);white-space:nowrap}
+.date .check{display:inline-block;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-left:6px;color:var(--ink2)}
+.date .in{color:var(--ok);font-size:.8rem;margin-left:8px}
+@media(max-width:600px){.date{grid-template-columns:1fr;gap:2px}}
+
+/* heads and items */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:.9rem;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.head{margin-top:22px}
+.head.off{display:none}
+.head-h{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--c);padding-bottom:4px;margin-bottom:10px}
+.head-h h3{font-size:1.6rem;color:var(--c)}
+.head-h .why{font-size:.9rem;color:var(--ink2);flex:1}
+.head-h .n{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--ink2)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.item{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;padding:10px 12px 10px 14px;color:var(--ink);display:grid;gap:3px;min-height:92px}
+.item:hover{box-shadow:0 10px 20px -14px rgba(0,0,0,.6)}
+.item .code{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink2)}
+.item .nm{font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:600;line-height:1.1}
+.item .t{font-size:.8rem;color:var(--ink2)}
+.item .qs{display:flex;gap:4px;margin-top:2px}
+.item .qs i{font-style:normal;font-size:.68rem;border:1px solid var(--line);border-radius:3px;padding:0 4px;color:var(--ink2)}
+.item.done{background:rgba(27,127,82,.08);border-color:var(--ok)}
+.item .stamp{position:absolute;right:10px;top:8px;color:var(--ok);font-weight:700;display:none}
+.item.done .stamp{display:block}
+.item.new:after{content:"NEW";position:absolute;right:10px;bottom:8px;font-size:.65rem;letter-spacing:.08em;background:var(--prizes);color:#fff;padding:1px 5px;border-radius:3px}
+.item .dl{font-size:.75rem;color:var(--bad);font-weight:600}
+
+/* detail sheet */
+.sheet{position:fixed;inset:0;background:rgba(20,12,6,.55);display:grid;place-items:center;padding:16px;z-index:50}
+.sheet[hidden]{display:none}
+.sheet .in{width:min(720px,100%);max-height:92vh;overflow:auto;background:var(--paper);border-radius:8px;padding:22px 24px;box-shadow:var(--shadow);border-top:8px solid var(--c,var(--ink))}
+.sheet h3{font-size:1.8rem}
+.sheet .meta{font-size:.85rem;color:var(--ink2);margin:2px 0 10px}
+.sheet p{margin:8px 0}
+.sheet .what{font-size:1rem}
+.sheet .do{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.sheet .do b{font-family:"Cormorant Garamond",serif;font-size:1.1rem}
+.sheet .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.btn{border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:6px;padding:9px 14px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ok{background:var(--ok);border-color:var(--ok)}
+.btn.link{background:var(--card);color:var(--ink);border-color:var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.qtag{display:inline-block;font-size:.78rem;border:1px solid var(--line);border-radius:3px;padding:1px 6px;margin-right:4px;color:var(--ink2)}
+
+/* entry form */
+form.entry{display:grid;gap:10px;margin-top:8px}
+form.entry label{display:grid;gap:4px;font-size:.9rem;color:var(--ink2)}
+form.entry input,form.entry textarea,form.entry select{font:inherit;font-size:1rem;padding:9px 10px;border:1px solid var(--line);border-radius:5px;background:#FFFDF7;color:var(--ink);width:100%}
+form.entry textarea{min-height:88px;resize:vertical;background:repeating-linear-gradient(#FFFDF7 0 27px,var(--rule) 27px 28px);line-height:28px;padding-top:4px}
+form.entry .quote{font-style:italic}
+form.entry .qrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+form.entry .qrow label{display:flex;gap:6px;align-items:center;color:var(--ink)}
+form.entry .wc{font-size:.8rem;color:var(--ink2)}
+form.entry .wc.bad{color:var(--bad)}
+
+/* the book of entries */
+.entries{display:grid;gap:12px;margin-top:12px}
+.entry{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px 12px 16px;border-left:5px solid var(--c,var(--ink));display:grid;gap:6px}
+.entry .eh{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:.85rem;color:var(--ink2)}
+.entry .eh b{font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--ink)}
+.entry .quote{font-style:italic;color:#3A2E22;border-left:2px solid var(--rule);padding-left:10px;margin:2px 0}
+.entry .think{white-space:pre-wrap}
+.entry .q{font-size:.95rem;color:var(--ink2)}
+.entry .q:before{content:"Q · ";font-weight:600}
+.entry .tools{display:flex;gap:8px;justify-content:flex-end}
+.entry .tools button{font-size:.8rem;background:none;border:1px solid var(--line);border-radius:4px;padding:3px 8px;color:var(--ink2)}
+.empty{padding:18px;border:1px dashed var(--line);border-radius:6px;color:var(--ink2);text-align:center}
+
+/* statement workbench */
+.wb{display:grid;gap:16px;margin-top:12px}
+.qpanel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px}
+.qpanel h3{font-size:1.45rem}
+.qpanel .ask{font-style:italic;color:#3A2E22;margin:2px 0 6px}
+.qpanel .guide{font-size:.9rem;color:var(--ink2);margin:0 0 10px}
+.qpanel .mat{display:grid;gap:4px;margin:8px 0 10px}
+.qpanel .mat div{font-size:.9rem;padding:4px 8px;border-left:3px solid var(--c);background:rgba(255,255,255,.5)}
+.qpanel .mat div b{font-weight:600}
+.qpanel textarea{width:100%;min-height:140px;font:inherit;font-size:1rem;padding:10px;border:1px solid var(--line);border-radius:5px;background:#FFFDF7;resize:vertical;color:var(--ink)}
+.qpanel .cc{display:flex;justify-content:space-between;font-size:.85rem;color:var(--ink2);margin-top:4px}
+.qpanel .cc .bad{color:var(--bad);font-weight:600}
+.total{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.95rem}
+.total b{font-family:"Cormorant Garamond",serif;font-size:1.5rem}
+
+footer.small{font-size:.85rem;color:var(--ink2);padding:18px clamp(16px,4vw,46px) 26px}
+footer.small details summary{cursor:pointer}
+footer.small ul{columns:2;column-gap:28px;padding-left:18px;margin:8px 0 0}
+@media(max-width:700px){footer.small ul{columns:1}}
+@media print{#gate,.sheet,.chips{display:none!important}body{background:#fff}.book{box-shadow:none}}
+/* ---------- backup to file ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  padding:10px 16px;font-weight:700;font-size:.95rem;text-align:center;color:#fff;background:#B42318;border-bottom:3px solid #7A1A10}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;border-radius:6px;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;justify-items:end;gap:8px;max-width:min(340px,calc(100vw - 32px))}
+.bk-dock[hidden]{display:none}
+body.bk-on{padding-bottom:96px}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-weight:700;font-size:.95rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;
+  background:#B42318;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:var(--card,#fff);color:var(--ink,#111);border:1.5px solid var(--line,#ccc);box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+.bk-msg{background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ccc);border-radius:10px;padding:10px 12px;font-size:.9rem;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.45);display:grid;gap:8px}
+.bk-msg:empty{display:none}
+.bk-msg .bk-row button{font:inherit;font-size:.88rem;font-weight:700;border-radius:6px;padding:6px 12px;cursor:pointer;border:1.5px solid var(--line,#ccc);background:transparent;color:var(--ink,#111)}
+.bk-msg .bk-row button.go{background:#B42318;border-color:#B42318;color:#fff}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- ======================= THE CLOSED BOOK (sign in) ======================= -->
+<section id="gate">
+  <form class="cover" id="gateForm" autocomplete="off">
+    <div class="plate">
+      <h1>The Commonplace Book</h1>
+      <div class="sub">Classics · towards an Oxford application, 2028 entry</div>
+    </div>
+    <label for="gName">Whose book is this?</label>
+    <input id="gName" placeholder="Your name" maxlength="40" required>
+    <input id="gCls" type="hidden" value="TUTEE">
+    <button type="submit" class="go" id="gGo">Open the book</button>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <p class="fine">Everything you write here saves online under your name and follows you between devices. A commonplace book is a notebook of passages copied out and what you make of them. This one is for the year before you apply.</p>
+  </form>
+</section>
+
+<!-- ======================= THE OPEN BOOK ======================= -->
+<main id="app" hidden>
+<div class="book">
+
+  <section class="pg">
+    <header class="top">
+      <div>
+        <h1>The Commonplace Book</h1>
+        <div class="who"><span id="whoName"></span> · <button type="button" class="linkbtn" id="signOut">close the book</button></div>
+      </div>
+      <div class="saved" id="savedMsg">—</div>
+    </header>
+
+    <div class="margin"><div class="ic" aria-hidden="true">¶</div><div><p id="bubbleTxt"></p><small>The margin. Notes from Mr Beasley's side of the desk.</small></div></div>
+
+    <div class="meter"><div class="bar"><i id="barFill"></i></div><div class="n"><span id="pagesN">0</span><small id="pagesTxt">pages</small></div></div>
+    <div class="ribbons" id="ribbons"></div>
+  </section>
+
+  <!-- this half term -->
+  <section class="pg">
+    <div class="card">
+      <div class="eyebrow" id="htEyebrow"></div>
+      <h3 id="htLabel"></h3>
+      <div class="due" id="htDue"></div>
+      <p id="htLede" style="margin:8px 0 0"></p>
+      <div class="legs" id="start"></div>
+    </div>
+  </section>
+
+  <!-- the year -->
+  <section class="pg">
+    <h2>The year to the application <small>Fixed dates first. "Check" means the organiser has not yet published the 2027 date; the date shown follows last year's pattern.</small></h2>
+    <div class="dates" id="dates"></div>
+  </section>
+
+  <!-- the six heads -->
+  <section class="pg" id="headsPg">
+    <h2>Six heads <small>Open a card, do the thing, then press "Done — write it up". Every entry is filed under the UCAS question it will answer. Q1 why this subject · Q2 how your studies have prepared you · Q3 what you have done outside education.</small></h2>
+    <div class="chips" id="filters"></div>
+    <div id="grid"></div>
+  </section>
+
+  <!-- the entries -->
+  <section class="pg">
+    <h2>The book <small>Every entry you have written, newest first. The tracker on Mr Beasley's side shows these in full.</small></h2>
+    <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn ghost" id="looseLeaf">Add a loose leaf (something not on the cards)</button></div>
+    <div class="entries" id="entries"></div>
+  </section>
+
+  <!-- the statement -->
+  <section class="pg">
+    <h2>The statement workbench <small>UCAS asks three questions; the three answers share 4,000 characters, with at least 350 in each. Draft here from your entries. Oxford's own advice: tutors would rather talk about one thing you read in depth than hear a list of titles.</small></h2>
+    <div class="wb" id="wb"></div>
+    <div class="total" id="total" style="margin-top:12px"></div>
+  </section>
+
+</div>
+
+<footer class="small">
+  <p>Compiled <span id="compiledTxt"></span> for one pupil. Free unless the card says otherwise. Links checked on the compile date; dates marked "check" follow the previous year's pattern. Book code <code>sc-tom</code>.</p>
+  <details><summary>Where the facts on this page come from</summary><ul id="sources"></ul></details>
+</footer>
+</main>
+
+<!-- detail sheet -->
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shTitle">
+  <div class="in" id="sheetIn"></div>
+</div>
+
+<script>
+/* ======================================================================
+   THE COMMONPLACE BOOK — Tom · Oxford Classics (2028 entry)
+   Same tracked-page mechanics as the Beyond the Classroom pages
+   (sign-in by name, class store Worker, backup block), one pupil, book sc-tom.
+   ====================================================================== */
+
+const HEADS = {
+  read:  {label:"Texts",    c:"var(--read)",   why:"Read the things themselves, in translation, whole where you can. This is the material for Q1."},
+  lang:  {label:"Language", c:"var(--lang)",   why:"Keep Latin alive after GCSE and begin Greek. Your interview is an aptitude-for-language interview; arrive having already started."},
+  voices:{label:"Voices",   c:"var(--voices)", why:"Lectures and podcasts. One a week. Write down one claim you disagree with each time."},
+  places:{label:"Places",   c:"var(--places)", why:"Go and look. Objects, sites, a play, a lecture hall. Birmingham has more Roman Britain nearby than people think."},
+  prizes:{label:"Prizes",   c:"var(--prizes)", why:"Competitions and summer schools. UNIQ first: it is for state-school Year 12s and the window is December to January."},
+  oxford:{label:"Oxford",   c:"var(--oxford)", why:"The application itself: what the course is, what the tutors say they assess, the written work, the interview, the statement."}
+};
+const ORDER = Object.keys(HEADS);
+const QTEXT = {
+  1:"Why do you want to study this course or subject?",
+  2:"How have your qualifications and studies helped you to prepare for this course or subject?",
+  3:"What else have you done to prepare outside of education, and why are these experiences useful?"
+};
+const QGUIDE = {
+  1:"Two or three things you read, with what you actually thought about them. The Faculty's criteria name intellectual curiosity and motivation; weak evidence of interest in the academic study of the subject is a stated reason for not interviewing.",
+  2:"English, History and Latin GCSE. Say what each taught you that a classicist uses: close reading, argument from sources, how an inflected language works. Mention the essays you will submit as written work.",
+  3:"Lectures, places, Greek begun on your own, summer schools, competitions entered. For each, one line on what it changed in how you think, not that you went."
+};
+
+/* ---------- the cards ----------
+   s code · g head · name · short (card) · t time · what · do (what you actually do) · q (UCAS questions fed) · url · link · cost · when · deadline (ISO) · check (date unconfirmed) · added */
+const ITEMS = [
+/* TEXTS */
+{s:"T01",g:"read",short:"Homer, Odyssey — the whole poem",name:"Homer, Odyssey, translated by A. S. Kline (free)",t:"about 12 hours over a term",
+ what:"The poem every Oxford classicist reads in the first year. Twenty-four books; a book takes half an hour.",
+ do:"One book a sitting. For each book copy out one passage you would want to talk about for five minutes, and say why.",q:[1],url:"https://www.poetryintranslation.com/PITBR/Greek/Odhome.php",link:"Read online"},
+{s:"T02",g:"read",short:"Virgil, Aeneid — all twelve books",name:"Virgil, Aeneid, translated by A. S. Kline (free)",t:"about 10 hours",
+ what:"You know Aeneid 8.478–495 (Mezentius) in Latin. Read the whole poem around it. Books 2, 4, 6 and 12 matter most.",
+ do:"Read it all. Then reread book 8 and write what the Mezentius lines do that you could not see from the extract.",q:[1,2],url:"https://www.poetryintranslation.com/PITBR/Latin/Virgilhome.php",link:"Read online"},
+{s:"T03",g:"read",short:"Tacitus, Annals 1–6: the reign of Tiberius",name:"Tacitus, Annals 1–6, translated by Thomas Gordon (Project Gutenberg, free)",t:"about 8 hours",
+ what:"Your GCSE set text is Annals 4.1 and 4.59 (Sejanus). This is the six books they come from: Tiberius from accession to death. An older translation, but complete and free; the Penguin (Grant) is in most libraries.",
+ do:"Read books 1, 4 and 6 at least. Copy out the sentence where Tacitus tells you what he thinks of Tiberius without saying so.",q:[1,2],url:"https://www.gutenberg.org/ebooks/7959",link:"Read or download"},
+{s:"T04",g:"read",short:"Homer, Iliad — books 1, 6, 9, 16, 22, 24",name:"Homer, Iliad, translated by A. S. Kline (free)",t:"about 5 hours for the six books",
+ what:"The quarrel, Hector and Andromache, the embassy, Patroclus, the duel, Priam and Achilles. Enough to argue about the poem's view of heroism.",
+ do:"Read the six books. Write which of Achilles, Hector or Priam the poem asks you to admire, and the line that decided you.",q:[1],url:"https://www.poetryintranslation.com/PITBR/Greek/Ilhome.php",link:"Read online"},
+{s:"T05",g:"read",short:"Plato, Apology",name:"Plato, Apology, translated by Benjamin Jowett (Project Gutenberg, free)",t:"90 minutes",
+ what:"Socrates on trial. Oxford Classics interviews have a philosophy element (Queen's 2023 report: a question on whether a play can be forged). This is the shortest way in.",
+ do:"Read it in one sitting. Write out Socrates' own definition of wisdom and one objection to it.",q:[1,3],url:"https://www.gutenberg.org/ebooks/1656",link:"Read or download"},
+{s:"T06",g:"read",short:"Sophocles, Oedipus the King",name:"Sophocles, Oedipus the King, translated by F. Storr (Internet Classics Archive, free)",t:"2 hours",
+ what:"The tragedy Aristotle uses as his model. It sits next to anything you study in English about tragic form.",
+ do:"Read it. Then write 150 words on what the play knows that Oedipus does not, and when the audience is let in.",q:[1,2],url:"http://classics.mit.edu/Sophocles/oedipus.html",link:"Read online"},
+{s:"T07",g:"read",short:"Herodotus, Histories book 1 (Croesus and Solon)",name:"Herodotus, The Histories, translated by George Rawlinson (Internet Classics Archive, free)",t:"3 hours for book 1",
+ what:"Where history as a written inquiry starts. Book 1 has Croesus, Solon, Cyrus and the question of whether anyone can be called happy while alive.",
+ do:"Read book 1. Write what Herodotus counts as evidence, with two examples, and compare it with what your History teacher counts.",q:[2],url:"http://classics.mit.edu/Herodotus/history.html",link:"Read online"},
+{s:"T08",g:"read",short:"Thucydides: the funeral oration and the Melian dialogue",name:"Thucydides, History of the Peloponnesian War, translated by Richard Crawley (Internet Classics Archive, free)",t:"2 hours",
+ what:"Book 2, chapters 34–46 (Pericles on Athens) and book 5, chapters 84–116 (Athens to Melos: the strong do what they can). The two passages everyone who studies politics or history meets.",
+ do:"Read both. Write whether the second passage changes how you read the first.",q:[2],url:"http://classics.mit.edu/Thucydides/pelopwar.html",link:"Read online"},
+{s:"T09",g:"read",short:"Plutarch, Life of Caesar — beside Shakespeare",name:"Plutarch, Caesar, translated by John Dryden (Internet Classics Archive, free)",t:"2 hours",
+ what:"Shakespeare's Julius Caesar is built from North's Plutarch. Reading the source next to the play is the kind of thing a Classics and English mind does without being told.",
+ do:"Read the Life. Find three moments Shakespeare kept and one he changed, and say what the change does.",q:[2],url:"http://classics.mit.edu/Plutarch/caesar.html",link:"Read online"},
+{s:"T10",g:"read",short:"Ovid, Metamorphoses — four stories",name:"Ovid, Metamorphoses, translated by A. S. Kline (free)",t:"2 hours",
+ what:"Apollo and Daphne (book 1), Actaeon (3), Orpheus (10), Pygmalion (10). The poem behind more English poetry than any other Latin text; Ted Hughes's Tales from Ovid is in most libraries if you want the comparison.",
+ do:"Read the four. Choose one and write what the transformation is a metaphor for, and whether Ovid agrees with you.",q:[1,2],url:"https://www.poetryintranslation.com/PITBR/Latin/Metamorphhome.php",link:"Read online"},
+{s:"T11",g:"read",short:"Mary Beard, SPQR (library)",name:"Mary Beard, SPQR: A History of Ancient Rome (2015)",t:"a fortnight",
+ what:"The one-volume history of Rome to AD 212. Written to be argued with.",
+ do:"Read it. Note one place where Beard says the sources cannot settle a question, and what she does instead.",q:[1],cost:"Library or second-hand",nolink:true},
+{s:"T12",g:"read",short:"Natalie Haynes, Pandora's Jar (library)",name:"Natalie Haynes, Pandora's Jar: Women in the Greek Myths (2020)",t:"a week",
+ what:"Ten women from Greek myth and what each century has done with them. Classical reception in plain prose; the Mary Renault Prize (Prizes) wants exactly this kind of thinking.",
+ do:"Read three chapters. Write which retelling Haynes is hardest on, and whether she is fair to it.",q:[1],cost:"Library or second-hand",nolink:true},
+{s:"T13",g:"read",short:"Omnibus magazine (Classical Association)",name:"Omnibus, the Classical Association's magazine for sixth formers",t:"an hour an issue",
+ what:"Short articles by academics for sixth formers. The Gladstone essay and Sam Hood translation prizes are set in it. Back issues are sold singly.",
+ do:"Read two issues. Note one article you could use at interview and the author's name.",q:[3],url:"https://classicalassociation.org/omnibus/",link:"Omnibus",cost:"Per issue"},
+{s:"T14",g:"read",short:"Cambridge HE+ Classics: Greece and Persia",name:"HE+ (University of Cambridge): Classics modules",t:"3 hours",
+ what:"University-style modules with readings and questions. Only two Classics modules, both on Greece and Persia; do them both.",
+ do:"Work through both modules and answer the set questions in your own words.",q:[2,3],url:"https://myheplus.com/subject/classics",link:"HE+ Classics"},
+{s:"T15",g:"read",short:"Gildenhard, Aeneid 4.1–299 (free commentary)",name:"Ingo Gildenhard, Virgil, Aeneid 4.1–299: Latin Text, Study Questions, Commentary (Open Book Publishers, free)",t:"over a term, with Mr Beasley",
+ what:"A university commentary on Dido's book, free to read online, with the Latin, study questions and an interpretive essay. This is what an undergraduate commentary looks like.",
+ do:"Read the introduction and the commentary on lines 1–89. Translate lines 1–30 with the notes.",q:[2],url:"https://www.openbookpublishers.com/books/10.11647/obp.0023",link:"Read online"},
+
+/* LANGUAGE */
+{s:"L01",g:"lang",short:"Start Greek: OpenLearn, Getting started on ancient Greek",name:"The Open University, Getting started on ancient Greek (OpenLearn, free, 16 hours)",t:"16 hours; one hour a week from now",
+ what:"Alphabet, pronunciation, Greek words inside English, the first noun cases, the verb 'I am', and how to read. Free; an account lets you keep your progress and take the quizzes.",
+ do:"Alphabet by half term. Finish the course by Easter. Keep a page of every Greek word you can now read in a museum.",q:[3],url:"https://www.open.edu/openlearn/history-the-arts/getting-started-on-ancient-greek/content-section-overview",link:"Start the course"},
+{s:"L02",g:"lang",short:"Language aptitude: the old CLAT papers",name:"Oxford Classics Admissions Test: past papers 2010–2022 and CLAT solutions",t:"45 minutes a paper",
+ what:"The CAT no longer runs (there is no admissions test for Classics now), but its language-aptitude section is the closest thing to the aptitude interview you will have: an invented language, its rules to be worked out from examples. The Faculty says the interview asks you to notice subtle differences in meaning and spot patterns in English.",
+ do:"One paper a month from January. Time yourself. Write down the rule you found and how you found it.",q:[3],url:"https://www.ox.ac.uk/cat",link:"Past papers"},
+{s:"L03",g:"lang",short:"Keep Latin going: Dickinson College Commentaries",name:"Dickinson College Commentaries: Latin texts with vocabulary and notes (free)",t:"an hour a week after the GCSE",
+ what:"Caesar, Ovid, Cicero, Nepos with running vocabulary and notes, built for people one step past where you are.",
+ do:"After the GCSE in June, read Caesar's Gallic War 1.1–7 with the notes, a chapter a week, so that nothing is lost over the summer.",q:[2],url:"https://dcc.dickinson.edu/home-page-latin",link:"DCC Latin"},
+{s:"L04",g:"lang",short:"Scan hexameters with Hypotactic",name:"Hypotactic: scansion of Latin and Greek verse (free)",t:"30 minutes",
+ what:"Every line of the Aeneid marked up. Scan your own lines first, then check.",
+ do:"Scan Aeneid 8.478–495 yourself. Check. Write what the rhythm does in the line that is hardest to scan.",q:[2],url:"https://www.hypotactic.com/",link:"Hypotactic"},
+{s:"L05",g:"lang",short:"Logeion: the dictionary in your pocket",name:"Logeion (University of Chicago): Latin and Greek dictionaries (free)",t:"ongoing",
+ what:"Lewis & Short, Liddell-Scott and more in one search. Use it for every Greek-derived word you meet in English and History this year.",
+ do:"Keep a running page of twenty English words whose Greek you have now checked.",q:[3],url:"https://logeion.uchicago.edu/",link:"Logeion"},
+{s:"L06",g:"lang",short:"Three translations, ten lines",name:"Odyssey 1.1–10 in three translations",t:"1 hour, plus a library visit",
+ what:"Kline online; Emily Wilson (2017) and Robert Fagles (1996) from a library. The same ten lines. Translation is a question Oxford tutors like, and a good thing to be able to talk about with examples.",
+ do:"Set the three side by side. Write what each translator decided about the first word and about 'polytropos', and which you would defend.",q:[1,2],url:"https://www.poetryintranslation.com/PITBR/Greek/Odhome.php",link:"Kline's Odyssey"},
+{s:"L07",g:"lang",short:"Oxford podcasts: What is Translation?",name:"University of Oxford podcasts: What is Translation?",t:"about an hour an episode",
+ what:"Oxford academics on translating, including from Latin and Greek. Pairs with the ten-lines exercise.",
+ do:"Listen to one episode. Note one thing a translator said they lose on purpose.",q:[1,3],url:"https://podcasts.ox.ac.uk/series/what-translation",link:"Listen"},
+{s:"L08",g:"lang",short:"Aeneid 8 in Latin on Perseus",name:"Perseus Digital Library: Latin texts with a word-by-word parser (free)",t:"an hour",
+ what:"Click any word for its form and dictionary entry. Read beyond your set lines in the original.",
+ do:"Read Aeneid 8.470–520 in Latin with the parser, so that you have been past the edge of the GCSE extract on your own.",q:[2],url:"https://www.perseus.tufts.edu/hopper/",link:"Perseus"},
+
+/* VOICES */
+{s:"V01",g:"voices",short:"In Our Time: Tacitus and the Decadence of Rome",name:"BBC Radio 4, In Our Time: Tacitus and the Decadence of Rome",t:"45 minutes",
+ what:"Three academics on your GCSE author. Listen before you go further into the Annals.",
+ do:"Listen. Write one thing said about Tacitus's method that you can test against Annals 4.1.",q:[1,2],url:"https://www.bbc.co.uk/sounds/play/b00cdtxp",link:"BBC Sounds"},
+{s:"V02",g:"voices",short:"In Our Time: The Aeneid",name:"BBC Radio 4, In Our Time: The Aeneid",t:"45 minutes",what:"The poem's politics, its Homer, its ending.",
+ do:"Listen. Note two points you can check against the text when you read it.",q:[1,2],url:"https://www.bbc.co.uk/sounds/play/p003k9c1",link:"BBC Sounds"},
+{s:"V03",g:"voices",short:"In Our Time: Cicero",name:"BBC Radio 4, In Our Time: Cicero",t:"45 minutes",what:"The orator, the politician, the letters.",
+ do:"Listen. Write whether the panel thinks Cicero was a failure, and whether you do.",q:[1],url:"https://www.bbc.co.uk/sounds/play/b09nrsfg",link:"BBC Sounds"},
+{s:"V04",g:"voices",short:"In Our Time: Ovid",name:"BBC Radio 4, In Our Time: Ovid",t:"45 minutes",what:"Exile, the Metamorphoses, Ovid's afterlife.",
+ do:"Listen after reading the four stories (Texts). Note one reading the panel offers that you had not seen.",q:[1],url:"https://www.bbc.co.uk/sounds/play/m000vhk5",link:"BBC Sounds"},
+{s:"V05",g:"voices",short:"In Our Time archive: choose three more",name:"BBC Radio 4, In Our Time: the archive",t:"45 minutes each",
+ what:"Hundreds of episodes. The Odyssey, the Iliad, Socrates, the Oresteia, Thucydides, the Augustan age and Roman Britain are all there.",
+ do:"Choose three on things you have read. One line each on the best point made.",q:[1],url:"https://www.bbc.co.uk/programmes/b006qykl",link:"Archive"},
+{s:"V06",g:"voices",short:"Natalie Haynes Stands Up for the Classics",name:"BBC Radio 4, Natalie Haynes Stands Up for the Classics",t:"28 minutes an episode",
+ what:"One ancient figure an episode, with a guest academic. Funny and accurate.",
+ do:"Two episodes. Note the academic guest each time and one thing they said.",q:[1,3],url:"https://www.bbc.co.uk/sounds/brand/b077x8pc",link:"BBC Sounds"},
+{s:"V07",g:"voices",short:"The Classics Podcast (Classical Association)",name:"The Classics Podcast, the Classical Association",t:"about 40 minutes",
+ what:"Interviews with classicists about their work.",do:"One episode. Write what the guest's research question is in a sentence.",q:[1],url:"https://classicalassociation.org/podcast/",link:"Listen"},
+{s:"V08",g:"voices",short:"Oxford Faculty of Classics podcasts",name:"University of Oxford podcasts: Faculty of Classics",t:"varies",
+ what:"Lectures and talks by the people who would teach you.",do:"One talk. Note the speaker; you may meet the name again on an interview panel.",q:[1,3],url:"https://podcasts.ox.ac.uk/units/faculty-classics",link:"Listen"},
+{s:"V09",g:"voices",short:"Gresham College: Classics for schools",name:"Gresham College: Classics lectures for schools and colleges",t:"an hour",
+ what:"Recorded lectures, including Melissa Lane on Plato's Cave, Socratic expertise and Greek democracy.",
+ do:"One Melissa Lane lecture, with notes. Write the argument in five lines.",q:[1,3],url:"https://www.gresham.ac.uk/schools-and-colleges/classics",link:"Gresham"},
+{s:"V10",g:"voices",short:"The Partial Historians",name:"The Partial Historians: a podcast on Roman history",t:"about an hour",
+ what:"Two Australian academics going through Rome year by year. Good on the sources for the early Republic.",
+ do:"One episode on a year of your choosing. Note which source they trust least and why.",q:[1],url:"https://partialhistorians.com/",link:"Listen"},
+{s:"V11",g:"voices",short:"TED-Ed: how to read the Odyssey (5 min)",name:"Jill Dash, Everything you need to know to read Homer's Odyssey (TED-Ed)",t:"5 minutes",what:"A short way in before book 1. A retelling, not the text.",
+ do:"Watch, then start book 1 the same day.",q:[1],url:"https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey",link:"Watch"},
+{s:"V12",g:"voices",short:"TED-Ed: why read the Aeneid? (5 min)",name:"Mark Robinson, Why should you read Virgil's Aeneid? (TED-Ed)",t:"5 minutes",what:"Short introduction; sits below the level of the poem.",
+ do:"Watch. Write one claim it makes that the poem complicates.",q:[1],url:"https://www.ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid",link:"Watch"},
+{s:"V13",g:"voices",short:"TED-Ed: Herodotus, father of history (5 min)",name:"Mark Robinson, Why is Herodotus called 'The Father of History'? (TED-Ed)",t:"5 minutes",what:"Pairs with Histories book 1.",
+ do:"Watch. Then read book 1 and decide whether 'father of lies' is fairer.",q:[2],url:"https://www.ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history",link:"Watch"},
+{s:"V14",g:"voices",short:"Neil MacGregor: 2,600 years in one object (20 min)",name:"Neil MacGregor, 2600 years of history in one object (TED)",t:"20 minutes",what:"The Cyrus Cylinder, by the former director of the British Museum. How an object carries an argument.",
+ do:"Watch. Choose one object from your next museum visit and do the same for it in a paragraph.",q:[1],url:"https://www.ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object",link:"Watch"},
+{s:"V15",g:"voices",short:"TED-Ed: Plato's Ship of State (5 min)",name:"Michael Vazquez, Plato's infamous Ship of State thought experiment (TED-Ed)",t:"5 minutes",what:"Republic book 6 in five minutes. A thought experiment to argue with at interview.",
+ do:"Watch. Write the strongest objection to Plato you can.",q:[1],url:"https://www.ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment",link:"Watch"},
+{s:"V16",g:"voices",short:"TED-Ed: History vs. Augustus (6 min) — argue with it",name:"Peta Greenfield and Alex Gendler, History vs. Augustus (TED-Ed)",t:"6 minutes",what:"A trial of Augustus. Its evidence is thin in places; that is the point.",
+ do:"Watch. Write which charge the video does not prove, and what Tacitus (Annals 1.1–4) would add.",q:[1,2],url:"https://www.ted.com/talks/peta_greenfield_alex_gendler_history_vs_augustus",link:"Watch"},
+
+/* PLACES */
+{s:"P01",g:"places",short:"BMCA autumn lecture, Tue 13 Oct 2026",name:"Birmingham and Midlands Classical Association: Dr Hannah Cornwell, The Theatre of Diplomacy in Ancient Rome",t:"Tuesday 13 October 2026, 6–7.30pm, Birmingham and Midland Institute, Margaret Street",
+ what:"A university lecture in town, open to the public. Booking via Eventbrite from the Birmingham page.",
+ do:"Go. Ask one question or write down the one you would have asked. Entry: what was the argument, and what did it rest on.",q:[3],url:"https://www.birmingham.ac.uk/events/bmca-autumn-lecture-at-birmingham-and-midland-institute",link:"Details and booking",deadline:"2026-10-13"},
+{s:"P02",g:"places",short:"Cambridge Greek Play: Euripides' Ion, 14–17 Oct 2026",name:"The Cambridge Greek Play 2026: Ion, Arts Theatre Cambridge",t:"14–17 October 2026; free 1pm pre-show talks",
+ what:"Performed in ancient Greek with surtitles, once every three years. Content warning on the play (rape and violence). Tickets from £20; a long day from Birmingham.",
+ do:"If you go: the pre-show talk, then the play. Entry on what hearing the Greek did that reading would not.",q:[3],url:"https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/",link:"Tickets",cost:"From £20",deadline:"2026-10-17"},
+{s:"P03",g:"places",short:"Birmingham Museum & Art Gallery (free)",name:"Birmingham Museum & Art Gallery, Chamberlain Square",t:"half a day",
+ what:"Free. Open Tuesday to Sunday in term time. Find whatever ancient material is on display and the Staffordshire Hoard for what came after Rome.",
+ do:"Choose one object. Do what MacGregor does (Voices): a paragraph on what it tells you and what it cannot.",q:[3],url:"https://www.birminghammuseums.org.uk/bmag",link:"BMAG"},
+{s:"P04",g:"places",short:"Wall Roman Site (Letocetum), Lichfield — free",name:"Wall Roman Site, Letocetum, Watling Street, Lichfield WS14 0AW (English Heritage, free)",t:"half a day; the site is open in daylight hours, the museum on selected days",
+ what:"A Roman posting station and bath-house on Watling Street, twenty minutes from Birmingham. Free, open-air.",
+ do:"Go. Pace out the bath-house. Entry: what a traveller on Watling Street in AD 100 would have found here, from what is left.",q:[3],url:"https://www.english-heritage.org.uk/visit/places/wall-roman-site/",link:"Wall Roman Site"},
+{s:"P05",g:"places",short:"Wroxeter Roman City, Shropshire",name:"Wroxeter Roman City, Viriconium (English Heritage)",t:"a day",
+ what:"The fourth-largest city in Roman Britain; the Old Work is the largest free-standing Roman wall in the country. Paid entry; advance tickets are cheaper.",
+ do:"Go. Entry: the reconstructed town house against what Tacitus says in Agricola 21 about Romanisation.",q:[3],url:"https://www.english-heritage.org.uk/visit/places/wroxeter-roman-city/",link:"Wroxeter",cost:"Paid entry"},
+{s:"P06",g:"places",short:"British Museum: Parthenon galleries and Roman Britain",name:"The British Museum, London (free)",t:"a day in London",
+ what:"Rooms 18 (Parthenon sculptures), 69–70 (Greece and Rome), 49 (Roman Britain). Facilitated school sessions are reduced during building works; the galleries are open.",
+ do:"Two hours in the Parthenon galleries with the Ion-style question: whose are these, and what would Pericles (Voices, Thucydides) have said they were for.",q:[3],url:"https://www.britishmuseum.org/learn/schools/ages-16",link:"British Museum"},
+{s:"P07",g:"places",short:"The Ashmolean, Oxford — on an open day",name:"Ashmolean Museum, University of Oxford (free)",t:"half a day, with the open day",
+ what:"The university's museum, with the cast gallery and the Arundel marbles. Go on the open day and see the Faculty the same day.",
+ do:"Cast gallery first. Entry: one cast, what the original was for, and what a cast can and cannot tell you.",q:[3],url:"https://www.ashmolean.org/secondary-schools",link:"Ashmolean"},
+{s:"P08",g:"places",short:"Oxford open days 2027",name:"University of Oxford undergraduate open days",t:"a day; 2026 dates were 1–2 July and 18 September; 2027 to be announced",
+ what:"No registration for most of it. The Classics Faculty and the colleges run their own sessions. Go to a college talk on the Latin stream.",
+ do:"Go in July 2027. Entry: one thing a tutor said that changed what you will write in Q1.",q:[3],url:"https://www.ox.ac.uk/admissions/undergraduate/visiting-and-outreach/open-days",link:"Open days",check:true},
+{s:"P09",g:"places",short:"Oxford Classical Conversations (ask for one)",name:"Oxford Faculty of Classics outreach: Classical Conversations",t:"an hour, online or in person",
+ what:"An Oxford academic joins a class or group for an hour on a topic the school chooses. Requested by a teacher. Mr Beasley can ask on your behalf, on Tacitus or Virgil.",
+ do:"Ask Mr Beasley to request one. Prepare two questions. Entry: what you asked and what came back.",q:[3],url:"https://clasoutreach.web.ox.ac.uk/classical-conversations",link:"Classical Conversations"},
+{s:"P10",g:"places",short:"BMCA A Level Texts and Topics Conference (KES)",name:"Birmingham and Midlands Classical Association conference for sixth formers, King Edward's School, Birmingham",t:"a day; 2026–27 date to be confirmed",
+ what:"Workshop strands in Latin and Classical Civilisation, free for state-school pupils. In Edgbaston.",
+ do:"Ask Mr Beasley for the date. Go. Entry on the one session that was hardest.",q:[3],url:"https://www.theclassicslibrary.com/bmca-a-level-classics-conference-2026-2/",link:"Conference",check:true},
+{s:"P11",g:"places",short:"Join The Chorus (Classics for All)",name:"Classics for All: The Chorus, a network for classicists aged 16–25",t:"termly online meetings",
+ what:"Guest speakers, student papers, writing for the Rostra blog, free access to Classics for All events. Parental consent needed under 18.",
+ do:"Join. Go to one meeting. Entry: who spoke and the one question asked afterwards that you wish you had asked.",q:[3],url:"https://classicsforall.org.uk/get-involved/chorus",link:"The Chorus"},
+{s:"P12",g:"places",short:"Cambridge Classics: the recorded Oxbridge Classics Open Day",name:"Cambridge Faculty of Classics: schools page, with the recorded joint Oxbridge Classics Open Day",t:"2 hours of recordings",
+ what:"Sample lectures and the admissions talks from both universities, recorded. Cambridge's four-year course also takes people without Latin or Greek; keep it in view.",
+ do:"Watch the admissions session and one sample lecture. Entry: how the two universities describe the course differently.",q:[3],url:"https://www.classics.cam.ac.uk/prospective/schools",link:"Watch"},
+
+/* PRIZES */
+{s:"E01",g:"prizes",short:"UNIQ 2027 — apply in December–January",name:"UNIQ: the University of Oxford's free summer school for state-school Year 12s",t:"a week in Oxford in June or July 2027, free; applications mid-December to mid-January",
+ what:"For UK state-school pupils in the first year of A-levels, prioritising backgrounds under-represented at Oxford, with a strong preference for 7–9 at GCSE. 2026 pattern: opened 15 December, closed midday 13 January, no late applications. Check that Classics is on the 2027 course list when it opens.",
+ do:"Put the opening date in your phone. Apply in the first week. Entry when you have sent it: what you wrote for why Classics.",q:[3],url:"https://www.uniq.ox.ac.uk/key-dates",link:"UNIQ key dates",deadline:"2027-01-13",check:true},
+{s:"E02",g:"prizes",short:"Sutton Trust UK Summer Schools",name:"Sutton Trust UK Summer Schools (free, residential)",t:"applications open early 2027",
+ what:"Free residential summer schools at leading universities for state-school Year 12s. Subject and university lists vary each year.",
+ do:"Check the portal in January; apply if a Classics or ancient history course is listed.",q:[3],url:"https://www.suttontrust.com/our-programmes/uk-summer-schools/",link:"Sutton Trust",check:true},
+{s:"E03",g:"prizes",short:"JACT Greek Summer School 2027 (bursaries)",name:"JACT Greek Summer School, Bryanston School, Dorset: Sunday 25 July to Saturday 7 August 2027",t:"two weeks; applications and bursary forms by 31 March 2027",
+ what:"Two weeks of Greek from scratch, 30+ hours of small-group teaching. Beginners and pupils whose school offers no Greek are prioritised if oversubscribed. 2026 fees: £1,190 resident, £790 non-resident; bursaries exist and the form goes in with the application. For a Latin-stream applicant, two weeks of Greek before the UCAS form is the strongest single line in Q3.",
+ do:"Full 2027 details are published in November; applications open in January. Apply, with the bursary form, by 31 March.",q:[3],url:"https://greeksummerschool.org/",link:"Greek Summer School",cost:"£1,190 resident (2026); bursaries",deadline:"2027-03-31"},
+{s:"E04",g:"prizes",short:"St John's, Oxford: Classics and Ancient History essay",name:"St John's College, Oxford: Classics and Ancient History Essay Competition (Year 12)",t:"2,000 words; deadline late February (2026: 22 February, 4pm)",
+ what:"Open to Year 12 in any UK school; no prior study of Classics needed. A subject exploration day in Oxford follows for entrants (2026: 22 April).",
+ do:"Choose the question in December. Draft by the end of January. Mr Beasley reads it. Send it. This essay can also be one of your two pieces of written work if it is marked.",q:[3],url:"https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/",link:"St John's",deadline:"2027-02-22",check:true},
+{s:"E05",g:"prizes",short:"Fitzwilliam, Cambridge: Ancient World and Classics essay",name:"Fitzwilliam College, Cambridge: Ancient World and Classics Essay Competition (Year 12)",t:"questions published in the autumn; deadline late February (2026: 27 February, 6pm)",
+ what:"Set questions across literature, history, philosophy and archaeology. Prize-giving in Cambridge in May.",
+ do:"Read the questions when they appear. Enter the one closest to something you have read in Texts.",q:[3],url:"https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026",link:"Fitzwilliam",deadline:"2027-02-27",check:true},
+{s:"E06",g:"prizes",short:"Girton, Cambridge: Humanities Writing Competition",name:"Girton College, Cambridge: Humanities Writing Competition (Year 12)",t:"launches in the autumn term",
+ what:"A humanities essay prize; the brief changes each year.",do:"Check the page in November. Enter if a question suits.",q:[3],url:"https://www.girton.cam.ac.uk/humanities-writing-competition",link:"Girton",check:true},
+{s:"E07",g:"prizes",short:"Mary Renault Prize (St Hugh's, Oxford)",name:"St Hugh's College, Oxford: Mary Renault Classical Reception Essay Competition (Years 12–13)",t:"deadline in July (2026: 22 July, 2pm)",
+ what:"An essay on how the ancient world has been received: a novel, a film, a poem, a building. Pandora's Jar (Texts) and Plutarch beside Shakespeare both lead here.",
+ do:"Decide the topic by May. Draft in June. Send before the summer.",q:[3],url:"https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/",link:"St Hugh's",deadline:"2027-07-22",check:true},
+{s:"E08",g:"prizes",short:"Gladstone Memorial Essay Prize (Omnibus) — 7 July 2027",name:"Classical Association: Gladstone Memorial Essay Prizes, set in Omnibus",t:"deadline 2pm, Wednesday 7 July 2027",
+ what:"For under-19s in full-time pre-university education. Titles printed in Omnibus 93 and on the CA site. A teacher confirms the entry.",
+ do:"Write it in the summer term after the GCSE. Mr Beasley signs the form.",q:[3],url:"https://classicalassociation.org/competition/omnibus-competitions/",link:"Omnibus competitions",deadline:"2027-07-07"},
+{s:"E09",g:"prizes",short:"Sam Hood Translation Prize — 7 July 2027",name:"Classical Association: Sam Hood Translation Prize (Latin or Greek passage into English)",t:"deadline 2pm, Wednesday 7 July 2027",
+ what:"A set Latin passage to translate. After a GCSE in June, this is exactly within reach.",
+ do:"Translate the passage in the week after your last exam. Entry: the three hardest decisions you made.",q:[2,3],url:"https://classicalassociation.org/competition/omnibus-competitions/",link:"Omnibus competitions",deadline:"2027-07-07"},
+{s:"E10",g:"prizes",short:"Stephen Spender Prize (poetry in translation)",name:"The Stephen Spender Prize for poetry in translation, sixth-form category",t:"2026 ran 1 May to 31 July",
+ what:"Translate a poem from any language into English with a short commentary. Ten lines of Catullus or Horace would do.",
+ do:"Choose a poem with Mr Beasley in May. Enter by the end of July.",q:[3],url:"https://www.stephen-spender.org/stephen-spender-prize/",link:"Spender Prize",check:true},
+{s:"E11",g:"prizes",short:"ARLT Latin Reading Competition",name:"Association for Latin Teaching: Reading Competition, senior category (Years 12–13)",t:"2025–26 ran 12 November to 27 February",
+ what:"A recorded reading of a set Latin passage, entered through a school or tutor. Reading aloud well is a skill the language interview rewards.",
+ do:"Ask Mr Beasley whether he can enter you. Record in February.",q:[2,3],url:"https://www.arlt.co.uk/event-posts/arlt-reading-competition-2026",link:"ARLT",check:true},
+{s:"E12",g:"prizes",short:"Oxford Classics outreach competitions (spring 2027)",name:"Oxford Faculty of Classics outreach: competitions",t:"announced in the spring",
+ what:"The Faculty's own school competitions; categories change each year.",do:"Check the page in March. Enter anything that fits.",q:[3],url:"https://clasoutreach.web.ox.ac.uk/competitions",link:"Competitions",check:true},
+
+/* OXFORD */
+{s:"O01",g:"oxford",short:"The course page: Classics at Oxford",name:"University of Oxford: Classics (BA), four-year course",t:"30 minutes, then reread every term",
+ what:"One course now, open to everyone. Three streams: dual-language (Latin and Greek) for those with a classical language at A-level; a Latin stream or a Greek stream for those without. No written test. AAA. Two pieces of written work. An interview that, for you, is designed to assess aptitude for learning a classical language. Relevant subjects can help but none is required.",
+ do:"Read it all. Entry: in your own words, what you would be doing in your first year on the Latin stream, and why that is what you want.",q:[1],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/classics",link:"Course page"},
+{s:"O02",g:"oxford",short:"What the tutors say they assess",name:"Faculty of Classics: admissions criteria for Classics and joint schools",t:"20 minutes",
+ what:"Interviews assess analytical and reasoning ability and skill in communication; tutors look for intellectual curiosity and motivation, and want to know whether you would be a good tutorial student. For candidates without Latin or Greek: noticing subtle differences of meaning in English sentences and spotting patterns in familiar English usage. Weak indication of interest in the academic study of the subject is a stated reason for not interviewing.",
+ do:"Read it. Entry: three things in this book so far that are evidence for each criterion, by code.",q:[1],url:"https://classics.web.ox.ac.uk/node/144361",link:"Admissions criteria"},
+{s:"O03",g:"oxford",short:"Written work: bank your essays now",name:"University of Oxford: written work for your application",t:"ongoing; two pieces to the college by 10 November 2027",
+ what:"Two pieces, each under 2,000 words, marked by a teacher and not rewritten afterwards, with a cover sheet saying how they were produced; ideally in areas relevant to Classics; not short timed exercises on a passage. Tutors may use them to start the interview.",
+ do:"Keep every marked English and History essay from now on in one folder. Ask your teachers for one essay on an ancient topic in each subject this year. By October 2027 choose two with Mr Beasley.",q:[2],url:"https://www.ox.ac.uk/admissions/undergraduate/applying-to-oxford/guide/written-work",link:"Written work",deadline:"2027-11-10"},
+{s:"O04",g:"oxford",short:"Interviews: the guidance and the demonstration videos",name:"University of Oxford: interviews (online, December) with demonstration videos and sample questions",t:"an hour",
+ what:"Interviews are online in December, like a short tutorial. Tutors want your reasoning, said aloud. Subject videos show a sample interview with tutor commentary; sample questions come from the interviewers.",
+ do:"Watch the Classics demonstration video in September 2027 and once more in November. Entry: the question you would have answered worst, and what you would say now.",q:[],url:"https://www.ox.ac.uk/admissions/undergraduate/applying-to-oxford/guide/interviews",link:"Interviews"},
+{s:"O05",g:"oxford",short:"What one college's Classics interviews were like (2023)",name:"The Queen's College, Oxford: Classics interview report 2023 (PDF)",t:"15 minutes",
+ what:"A college's own account: a literature interview on an Iliad passage in English with 30 minutes to prepare; a philosophy question (can a play be forged?); a motivation discussion; and, for candidates without Latin or Greek, the language aptitude interview in the Faculty.",
+ do:"Read it. Entry: how you would prepare for the Iliad passage, having read the six books (Texts).",q:[],url:"https://www.queens.ox.ac.uk/wp-content/uploads/2024/01/Classics-interview-report-2023.pdf",link:"Report (PDF)"},
+{s:"O06",g:"oxford",short:"The Faculty's reading advice",name:"Oxford Faculty of Classics outreach: reading",t:"10 minutes",
+ what:"No fixed list. Read widely, think critically about what you read, check what evidence an author uses, start from what you study at school, visit a site or a museum.",
+ do:"Read it. Then look at your entries so far and mark the ones that do what it asks.",q:[1],url:"https://clasoutreach.web.ox.ac.uk/reading",link:"Reading advice"},
+{s:"O07",g:"oxford",short:"Oxford's suggested resources for over-16s (Classics)",name:"University of Oxford: suggested subject resources for students over 16",t:"20 minutes",
+ what:"The University's own list: Archives of Greek and Roman Drama, Classical Art Research Centre, Classics EPQ, Classics for All, Empires of Faith, the Roman Society, Omnibus, the British Museum, In Our Time, Classics Confidential, Classics Outreach.",
+ do:"Open three you have not met. Entry on the one you would go back to.",q:[1],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/suggested-subject-resources",link:"Suggested resources"},
+{s:"O08",g:"oxford",short:"Oxford Classics outreach: learning resources",name:"Oxford Faculty of Classics outreach: learning resources",t:"an hour",
+ what:"Material built from Oxford research for sixth formers.",do:"Work through one resource. Entry: what the research question behind it was.",q:[1],url:"https://clasoutreach.web.ox.ac.uk/learning-resources",link:"Learning resources"},
+{s:"O09",g:"oxford",short:"UCAS: the personal statement",name:"UCAS: writing your personal statement (three questions, 4,000 characters)",t:"20 minutes now; the workbench below from January",
+ what:"Three set questions, a shared limit of 4,000 characters, at least 350 in each. Oxford's deadline for the whole application is 15 October 2027 (check the date when UCAS publishes the 2028-entry cycle).",
+ do:"Read the UCAS page. Then write 350 characters in each box of the workbench, however rough. Replace them every half term.",q:[],url:"https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement",link:"UCAS",deadline:"2027-10-15",check:true},
+{s:"O10",g:"oxford",short:"Classics EPQ (if your school runs the EPQ)",name:"Classics EPQ, Newcastle University: resources for an Extended Project in Classics",t:"a year, if taken",
+ what:"If your sixth form offers the EPQ, a Classics title is the best third 'subject' you can show Oxford. Newcastle's site has topics, sources and guidance.",
+ do:"Ask your school whether the EPQ is available. If it is, choose a title from your Texts entries with Mr Beasley.",q:[2],url:"https://research.ncl.ac.uk/classicsepq/",link:"Classics EPQ"}
+];
+
+/* ---------- the year ---------- */
+const DATES = [
+ {d:"2026-10-13",what:"BMCA autumn lecture, Birmingham and Midland Institute, 6–7.30pm",s:"P01"},
+ {d:"2026-10-14",what:"Cambridge Greek Play, Ion (to 17 October)",s:"P02"},
+ {d:"2026-11-01",what:"JACT Greek Summer School 2027 details published; Fitzwilliam and Girton questions appear in the autumn",s:"E03",check:true},
+ {d:"2026-12-15",what:"UNIQ 2027 applications open (2026 pattern)",s:"E01",check:true},
+ {d:"2027-01-13",what:"UNIQ applications close, midday (2026 pattern). No late entries.",s:"E01",check:true},
+ {d:"2027-02-22",what:"St John's, Oxford essay deadline (2026 date)",s:"E04",check:true},
+ {d:"2027-02-27",what:"Fitzwilliam essay deadline (2026 date); ARLT recordings due",s:"E05",check:true},
+ {d:"2027-03-31",what:"JACT Greek Summer School: applications and bursary forms close",s:"E03"},
+ {d:"2027-04-22",what:"St John's subject exploration day for essay entrants (2026 date)",s:"E04",check:true},
+ {d:"2027-06-01",what:"GCSE Latin examinations (June). After the last paper: Sam Hood passage, Caesar with DCC",s:"E09",check:true},
+ {d:"2027-07-01",what:"Oxford open days (2026 dates: 1–2 July and 18 September)",s:"P08",check:true},
+ {d:"2027-07-07",what:"Gladstone essay and Sam Hood translation deadline, 2pm",s:"E08"},
+ {d:"2027-07-22",what:"Mary Renault Prize deadline (2026 date)",s:"E07",check:true},
+ {d:"2027-07-25",what:"JACT Greek Summer School, Bryanston (to 7 August)",s:"E03"},
+ {d:"2027-09-01",what:"Year 13 begins. Statement final draft; choose the two pieces of written work",s:"O09"},
+ {d:"2027-10-15",what:"UCAS deadline for Oxford, 6pm (check when the 2028-entry dates are published)",s:"O09",check:true},
+ {d:"2027-11-10",what:"Written work must reach the college",s:"O03"},
+ {d:"2027-12-01",what:"Interviews, online, in December",s:"O04",check:true},
+ {d:"2028-01-10",what:"Decisions from Oxford (January)",s:"O01",check:true}
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   HALFTERM: label, the date the three are wanted by, and three cards (s) with one line each.
+   To add a card: add it to ITEMS with added:"YYYY-MM-DD"; a NEW marker shows if Tom last visited before that date.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three things before half term. Each ends with an entry in the book.",
+  items:[
+    {s:"P01",step:"Go",txt:"The BMCA lecture on Tuesday 13 October, 6pm, Margaret Street. Book today. If you cannot go, listen to In Our Time on Tacitus (V01) instead and write that up."},
+    {s:"L01",step:"Begin Greek",txt:"Start the OpenLearn Greek course. The whole alphabet, read and written, by 23 October. Bring the page of letters to the next lesson."},
+    {s:"O01",step:"Read",txt:"Read the Oxford course page and write your first entry: what the Latin stream is, and why it is what you want, in your own words. This becomes the first draft of Q1."}
+  ]
+};
+const COMPILED="2026-10-10";
+
+const SOURCES = [
+ ["University of Oxford: Classics course page (2026 entry onwards)","https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/classics"],
+ ["Faculty of Classics: admissions criteria","https://classics.web.ox.ac.uk/node/144361"],
+ ["University of Oxford: written work","https://www.ox.ac.uk/admissions/undergraduate/applying-to-oxford/guide/written-work"],
+ ["University of Oxford: interviews","https://www.ox.ac.uk/admissions/undergraduate/applying-to-oxford/guide/interviews"],
+ ["University of Oxford: open days","https://www.ox.ac.uk/admissions/undergraduate/visiting-and-outreach/open-days"],
+ ["University of Oxford: suggested subject resources","https://www.ox.ac.uk/admissions/undergraduate/courses/suggested-subject-resources"],
+ ["Oxford Classics outreach: reading","https://clasoutreach.web.ox.ac.uk/reading"],
+ ["Oxford CAT page and past papers","https://www.ox.ac.uk/cat"],
+ ["The Queen's College: Classics interview report 2023","https://www.queens.ox.ac.uk/wp-content/uploads/2024/01/Classics-interview-report-2023.pdf"],
+ ["UNIQ: key dates and criteria","https://www.uniq.ox.ac.uk/key-dates"],
+ ["JACT Greek Summer School","https://greeksummerschool.org/"],
+ ["OpenLearn: Getting started on ancient Greek","https://www.open.edu/openlearn/history-the-arts/getting-started-on-ancient-greek/content-section-overview"],
+ ["UCAS: writing your personal statement","https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement"],
+ ["University of Dundee: the new UCAS personal statement format (three questions)","https://www.dundee.ac.uk/feature/new-ucas-personal-statement-format-2026-entry"],
+ ["Classical Association: Omnibus competitions","https://classicalassociation.org/competition/omnibus-competitions/"],
+ ["St John's College, Oxford: Classics essay competition","https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/"],
+ ["Fitzwilliam College: essay competitions","https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026"],
+ ["St Hugh's College: Mary Renault Prize","https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/"],
+ ["Girton College: Humanities Writing Competition","https://www.girton.cam.ac.uk/humanities-writing-competition"],
+ ["Stephen Spender Prize","https://www.stephen-spender.org/stephen-spender-prize/"],
+ ["ARLT Reading Competition","https://www.arlt.co.uk/event-posts/arlt-reading-competition-2026"],
+ ["Sutton Trust UK Summer Schools","https://www.suttontrust.com/our-programmes/uk-summer-schools/"],
+ ["BMCA autumn lecture 2026","https://www.birmingham.ac.uk/events/bmca-autumn-lecture-at-birmingham-and-midland-institute"],
+ ["Cambridge Greek Play 2026","https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/"],
+ ["English Heritage: Wall Roman Site","https://www.english-heritage.org.uk/visit/places/wall-roman-site/"],
+ ["English Heritage: Wroxeter Roman City","https://www.english-heritage.org.uk/visit/places/wroxeter-roman-city/"],
+ ["Birmingham Museum & Art Gallery","https://www.birminghammuseums.org.uk/bmag"],
+ ["Poetry in Translation (A. S. Kline): Odyssey, Iliad, Aeneid, Metamorphoses","https://www.poetryintranslation.com/"],
+ ["Project Gutenberg: Tacitus (Gordon), Plato Apology (Jowett)","https://www.gutenberg.org/"],
+ ["Internet Classics Archive: Sophocles, Herodotus, Thucydides, Plutarch","http://classics.mit.edu/"],
+ ["Beyond the Classroom: Classical Civilisation and Latin lists, compiled 30 September 2026 (the department's own checked lists)",""]
+];
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-tom", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+
+/* ---------- state ---------- */
+const KEY_BASE="tom-commonplace-v1";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],interest:{},drafts:{1:"",2:"",3:""},fam:"all",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} if(!s.drafts) s.drafts={1:"",2:"",3:""}; return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const words=s=>String(s||"").trim().split(/\s+/).filter(Boolean).length;
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long",year:"numeric"}); }catch(e){ return iso; } }
+function fmtShort(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function daysTo(iso){ const a=new Date(today()+"T12:00:00"), b=new Date(iso+"T12:00:00"); return Math.round((b-a)/86400000); }
+
+/* ---------- progress ---------- */
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function prog(){ const c=counts(), t=totals(); const N=ORDER.reduce((a,g)=>a+c[g],0); const k=ORDER.filter(g=>c[g]).length; return {c,t,N,k,pct:Math.round(N/ITEMS.length*100),pages:state.notes.length}; }
+function qCounts(){ const q={1:0,2:0,3:0}; state.notes.forEach(n=>(n.q||[]).forEach(x=>{ if(q[x]!=null) q[x]++; })); return q; }
+
+/* ---------- the margin ---------- */
+function say(txt){ $("bubbleTxt").textContent=txt; }
+function greeting(){
+  const P=prog(); const ht=HALFTERM.items.filter(x=>state.done[x.s]).length; const q=qCounts();
+  const next=DATES.filter(d=>daysTo(d.d)>=0)[0];
+  if(!NEW_SINCE) return `${firstName()}. This book is yours for the year before you apply. Six heads, ${ITEMS.length} cards, and the three on the card below are where to start. Every entry you write is filed under the UCAS question it will answer; by next October the statement writes itself from here.`;
+  if(!P.pages) return `${firstName()}. Nothing written yet. The card below has three things on it. One entry this week.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${P.pages} ${P.pages===1?"page":"pages"} written, ${P.N} ${P.N===1?"card":"cards"} done, ${ht} of ${HALFTERM.items.length} on this half term's card. ${next?`Next fixed date: ${fmtShort(next.d)}, ${next.what.split(",")[0]}.`:""}`;
+  const thin=[1,2,3].filter(x=>q[x]<3);
+  if(thin.length) return `${firstName()}. Card done. ${P.pages} pages, ${P.N} of ${ITEMS.length} cards. Question ${thin.join(" and ")} ${thin.length===1?"has":"have"} fewer than three entries; choose cards tagged Q${thin[0]} next.`;
+  return `${firstName()}. ${P.pages} pages, ${P.N} cards, all three questions with material. ${next?`Next fixed date: ${fmtShort(next.d)}.`:""} Keep the entries honest; the ones that say what you disagreed with are the ones you will use.`;
+}
+
+/* ---------- what Mr Beasley sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const heads=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].short:s,when:d}));
+  const P=prog(); const q=qCounts();
+  const drafts={}; [1,2,3].forEach(x=>drafts[x]={text:state.drafts[x]||"",chars:(state.drafts[x]||"").length});
+  const deadlines=ITEMS.filter(i=>i.deadline).map(i=>({s:i.s,short:i.short,deadline:i.deadline,done:!!state.done[i.s],check:!!i.check}));
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Classics (Oxford)",
+           doneN:done.length, total:ITEMS.length, done, doneDates:state.done, heads,
+           notesN:state.notes.length, notes:state.notes, qCounts:q,
+           interest, drafts, deadlines,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length, items:HALFTERM.items.map(x=>({s:x.s,step:x.step,short:BY[x.s].short,done:!!state.done[x.s]}))},
+           walk:{pct:P.pct, heads:P.k},
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="tom-commonplace-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!state.drafts) state.drafts={1:"",2:"",3:""};
+  NEW_SINCE=state.lastVisit;
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+"'s book";
+  saveLocal(); renderAll(); BK.start(); mirrorToCloud(); say(greeting());
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- render ---------- */
+function itemHTML(it){
+  const done=state.done[it.s]; const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  const dl=it.deadline && !done && daysTo(it.deadline)>=0 && daysTo(it.deadline)<=60 ? `<span class="dl">${daysTo(it.deadline)===0?"today":daysTo(it.deadline)+" days"}${it.check?" · check":""}</span>`:"";
+  return `<button type="button" class="item${done?" done":""}${isNew?" new":""}" style="--c:${HEADS[it.g].c}" data-s="${it.s}" aria-label="${esc(it.short)}, ${HEADS[it.g].label}${done?", done":""}">
+    <span class="code">${it.s} · ${esc(it.t.split(";")[0].split(",")[0])}</span><span class="nm">${esc(it.short)}</span>
+    <span class="qs">${it.q.map(x=>`<i>Q${x}</i>`).join("")}${it.cost?`<i>${esc(it.cost)}</i>`:""}</span>${dl}<span class="stamp" aria-hidden="true">✓ ${done?fmtShort(done):""}</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const d=list.filter(i=>state.done[i.s]).length;
+    const off= state.fam!=="all" && g!==state.fam ? " off":"";
+    return `<div class="head${off}" id="head-${g}" style="--c:${HEADS[g].c}"><div class="head-h"><h3>${HEADS[g].label}</h3><span class="why">${esc(HEADS[g].why)}</span><span class="n">${d} / ${list.length}</span></div>
+      <div class="items">${list.map(itemHTML).join("")}</div></div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}">All ${ITEMS.length}</button>`;
+  for(const g of ORDER) h+=`<button type="button" class="chip" data-f="${g}" aria-pressed="${state.fam===g}">${HEADS[g].label} ${t[g]}</button>`;
+  $("filters").innerHTML=h;
+}
+function renderRibbons(){
+  const P=prog();
+  $("ribbons").innerHTML=ORDER.map(g=>`<button type="button" class="ribbon" style="--c:${HEADS[g].c}" data-f="${g}" aria-pressed="${state.fam===g}"><i aria-hidden="true"></i><span><b>${HEADS[g].label}</b><span>${P.c[g]} of ${P.t[g]} done</span></span></button>`).join("");
+  $("barFill").style.setProperty("--w",P.pct+"%");
+  $("pagesN").textContent=P.pages;
+  $("pagesTxt").textContent=(P.pages===1?"page":"pages")+" · "+P.N+" of "+ITEMS.length+" cards";
+}
+function renderStart(){
+  $("htEyebrow").textContent=HALFTERM.label+" · this half term";
+  $("htLabel").textContent="The "+HALFTERM.label+" card";
+  $("htDue").textContent="wanted by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{ const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}"><div class="no" aria-hidden="true">${d?"✓":i+1}</div><div><div class="step">${esc(x.step)} · ${HEADS[it.g].label}${d?" · done":""}</div><p>${esc(x.txt)}</p><div class="items" style="grid-template-columns:1fr;max-width:420px">${itemHTML(it)}</div></div></div>`; }).join("");
+}
+function renderDates(){
+  $("dates").innerHTML=DATES.map(d=>{ const n=daysTo(d.d); const it=BY[d.s]; const done=it&&state.done[d.s]; const inn=it&&state.interest[d.s];
+    const cls=n<0?" past":(n<=30?" soon":"");
+    const cnt=n<0?`${-n} days ago`:(n===0?"today":`in ${n} days`);
+    return `<div class="date${cls}"><span class="w">${esc(fmtShort(d.d))}<b>${n<0?"":cnt}</b></span><span>${esc(d.what)}${d.check?'<span class="check">check</span>':""}${done?'<span class="in">✓ done</span>':(inn?'<span class="in">✓ name down</span>':"")}</span>${it?`<button type="button" class="linkbtn" data-open="${d.s}">open ${d.s}</button>`:""}</div>`; }).join("");
+}
+function entryHTML(n){
+  const it=n.s?BY[n.s]:null; const g=n.g||(it?it.g:"read");
+  return `<div class="entry" style="--c:${HEADS[g]?HEADS[g].c:"var(--ink)"}" data-id="${n.id}">
+    <div class="eh"><b>${esc(n.title||(it?it.short:"Loose leaf"))}</b><span>${esc(fmtShort(n.date))}</span><span>${HEADS[g]?HEADS[g].label:""}${n.s?" · "+n.s:""}</span><span>${(n.q||[]).map(x=>`<span class="qtag">Q${x}</span>`).join("")}</span></div>
+    ${n.quote?`<div class="quote">${esc(n.quote)}</div>`:""}
+    <div class="think">${esc(n.think)}</div>
+    ${n.question?`<div class="q">${esc(n.question)}</div>`:""}
+    <div class="tools"><button type="button" data-edit="${n.id}">Edit</button><button type="button" data-del="${n.id}">Remove</button></div></div>`;
+}
+function renderNotes(){
+  const list=[...state.notes].sort((a,b)=>(b.date+b.id).localeCompare(a.date+a.id));
+  $("entries").innerHTML=list.length?list.map(entryHTML).join(""):`<div class="empty">No pages yet. Open a card, do it, press "Done — write it up".</div>`;
+}
+function renderWorkbench(){
+  const q=qCounts();
+  $("wb").innerHTML=[1,2,3].map(x=>{
+    const mats=state.notes.filter(n=>(n.q||[]).includes(x)).sort((a,b)=>a.date.localeCompare(b.date));
+    const txt=state.drafts[x]||""; const len=txt.length;
+    return `<div class="qpanel" style="--c:${["","var(--read)","var(--lang)","var(--prizes)"][x]}"><h3>Question ${x}</h3><p class="ask">${esc(QTEXT[x])}</p><p class="guide">${esc(QGUIDE[x])}</p>
+      <div class="mat">${mats.length?mats.map(n=>`<div><b>${esc(n.title||(n.s&&BY[n.s]?BY[n.s].short:"Loose leaf"))}</b> · ${esc(fmtShort(n.date))}${n.quote?` · <i>${esc(n.quote.slice(0,90))}${n.quote.length>90?"…":""}</i>`:""}</div>`).join(""):`<div style="border-color:var(--line);color:var(--ink2)">No entries filed under Q${x} yet (${q[x]}).</div>`}</div>
+      <label class="sr" for="draft${x}">Draft for question ${x}</label>
+      <textarea id="draft${x}" data-q="${x}" placeholder="Draft here. 350 characters minimum; replace it every half term.">${esc(txt)}</textarea>
+      <div class="cc"><span class="${len&&len<350?"bad":""}">${len} characters${len&&len<350?" (350 minimum)":""}</span><span>${mats.length} ${mats.length===1?"entry":"entries"} filed here</span></div></div>`;
+  }).join("");
+  renderTotal();
+}
+function renderTotal(){
+  const tot=[1,2,3].reduce((a,x)=>a+(state.drafts[x]||"").length,0);
+  $("total").innerHTML=`<span><b class="${tot>4000?"bad":""}" style="${tot>4000?"color:var(--bad)":""}">${tot}</b> of 4,000 characters across the three answers</span>${tot>4000?`<span style="color:var(--bad);font-weight:600">${tot-4000} over</span>`:""}<span style="color:var(--ink2)">Oxford deadline 15 October 2027 (check); written work by 10 November 2027.</span>`;
+}
+function renderAll(){ renderRibbons(); renderStart(); renderDates(); renderFilters(); renderGrid(); renderNotes(); renderWorkbench(); }
+
+/* ---------- filters ---------- */
+document.addEventListener("click",e=>{
+  const f=e.target.closest("[data-f]"); if(f){ state.fam=f.dataset.f; saveLocal(); renderFilters(); renderRibbons(); renderGrid(); if(state.fam!=="all") $("headsPg").scrollIntoView({behavior:"smooth",block:"start"}); return; }
+  const it=e.target.closest(".item[data-s]"); if(it){ openSheet(it.dataset.s); return; }
+  const op=e.target.closest("[data-open]"); if(op){ openSheet(op.dataset.open); return; }
+  const ed=e.target.closest("[data-edit]"); if(ed){ const n=state.notes.find(x=>x.id===ed.dataset.edit); if(n) openEntry(n.s||null,n); return; }
+  const dl=e.target.closest("[data-del]"); if(dl){ const n=state.notes.find(x=>x.id===dl.dataset.del); if(n&&confirm("Remove this page from the book?")){ state.notes=state.notes.filter(x=>x.id!==n.id); save(); renderAll(); say(greeting()); } return; }
+});
+$("looseLeaf").addEventListener("click",()=>openEntry(null,null));
+let _dt=null;
+document.addEventListener("input",e=>{
+  const ta=e.target.closest("textarea[data-q]"); if(!ta) return;
+  state.drafts[ta.dataset.q]=ta.value; const len=ta.value.length;
+  const cc=ta.parentElement.querySelector(".cc span"); if(cc){ cc.textContent=len+" characters"+(len&&len<350?" (350 minimum)":""); cc.className=len&&len<350?"bad":""; }
+  renderTotal(); clearTimeout(_dt); _dt=setTimeout(()=>save(),800);
+});
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null;
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; lastFocus=document.activeElement;
+  const done=state.done[sym]; const inn=state.interest[sym];
+  const dl=it.deadline?`<p class="meta">Date: <b>${esc(fmtLong(it.deadline))}</b>${it.check?' <span class="qtag">check</span>':""}${daysTo(it.deadline)>=0?` · in ${daysTo(it.deadline)} days`:" · passed"}</p>`:"";
+  $("sheetIn").style.setProperty("--c",HEADS[it.g].c);
+  $("sheetIn").innerHTML=`<div class="meta">${it.s} · ${HEADS[it.g].label} · ${esc(it.t)}${it.cost?" · "+esc(it.cost):""}</div><h3 id="shTitle">${esc(it.short)}</h3><p class="meta">${esc(it.name)}</p>
+    <p class="what">${esc(it.what)}</p><div class="do"><b>What you do</b><p style="margin:4px 0 0">${esc(it.do)}</p></div>${dl}
+    <p class="meta">Feeds ${it.q.length?it.q.map(x=>`<span class="qtag">Q${x} ${esc(QTEXT[x].split("?")[0].toLowerCase())}</span>`).join(""):"<span class='qtag'>preparation, not the statement</span>"}</p>
+    <div class="row">${it.url&&!it.nolink?`<a class="btn link" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.link||"Open")} ↗</a>`:""}
+      ${done?`<button type="button" class="btn ok" id="shWrite">Write another page</button><button type="button" class="btn ghost" id="shUndo">Undo done (${esc(fmtShort(done))})</button>`:`<button type="button" class="btn ok" id="shDone">Done — write it up</button>`}
+      ${it.g==="prizes"||it.g==="places"?`<button type="button" class="btn ghost" id="shInt">${inn?"✓ Name down (undo)":"Put my name down"}</button>`:""}
+      <button type="button" class="btn ghost" id="shClose">Close</button></div>`;
+  $("sheet").hidden=false; $("sheetIn").focus();
+  const close=()=>{ $("sheet").hidden=true; if(lastFocus) lastFocus.focus(); };
+  $("shClose").onclick=close;
+  if($("shDone")) $("shDone").onclick=()=>{ close(); openEntry(sym,null); };
+  if($("shWrite")) $("shWrite").onclick=()=>{ close(); openEntry(sym,null); };
+  if($("shUndo")) $("shUndo").onclick=()=>{ delete state.done[sym]; save(); renderAll(); say(greeting()); close(); };
+  if($("shInt")) $("shInt").onclick=()=>{ if(state.interest[sym]) delete state.interest[sym]; else state.interest[sym]=today(); save(); renderAll(); openSheet(sym); };
+}
+$("sheet").addEventListener("click",e=>{ if(e.target===$("sheet")) $("sheet").hidden=true; });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("sheet").hidden) $("sheet").hidden=true; });
+
+/* ---------- the entry form ---------- */
+function openEntry(sym,existing){
+  const it=sym?BY[sym]:null; const n=existing||{};
+  const q=n.q||(it?it.q:[1]);
+  $("sheetIn").style.setProperty("--c",it?HEADS[it.g].c:"var(--ink)");
+  $("sheetIn").innerHTML=`<h3 id="shTitle">${existing?"Edit the page":"A new page"}</h3><p class="meta">${it?esc(it.short)+" · "+HEADS[it.g].label:"A loose leaf: something you did that is not on a card."}</p>
+  <form class="entry" id="entryForm">
+    ${it?"":`<label>What it was<input name="title" value="${esc(n.title||"")}" placeholder="e.g. Lecture at the university on Roman coins" required maxlength="120"></label>
+    <label>Head<select name="g">${ORDER.map(g=>`<option value="${g}"${(n.g||"places")===g?" selected":""}>${HEADS[g].label}</option>`).join("")}</select></label>`}
+    <label>Date<input type="date" name="date" value="${esc(n.date||today())}" required></label>
+    <label>Copied out (a passage, a line, a claim; the commonplace part — optional)<textarea name="quote" class="quote" placeholder="Quote it exactly, with where it comes from.">${esc(n.quote||"")}</textarea></label>
+    <label>What I make of it (at least 30 words; say what you thought, including what you disagreed with) <span class="wc" id="wc"></span><textarea name="think" required>${esc(n.think||"")}</textarea></label>
+    <label>A question it leaves (one line)<input name="question" value="${esc(n.question||"")}" maxlength="200" placeholder="The question you would ask the author, or a tutor."></label>
+    <div class="qrow"><span style="color:var(--ink2);font-size:.9rem">File under</span>
+      ${[1,2,3].map(x=>`<label><input type="checkbox" name="q" value="${x}"${q.includes(x)?" checked":""}> Q${x} ${esc(["","why this subject","how my studies prepared me","what I did outside education"][x])}</label>`).join("")}</div>
+    <div class="row"><button type="submit" class="btn ok">${existing?"Save the page":"Add to the book"}</button><button type="button" class="btn ghost" id="shClose">Cancel</button></div>
+  </form>`;
+  $("sheet").hidden=false;
+  const ta=$("entryForm").querySelector("textarea[name=think]"); const wc=$("wc");
+  const upd=()=>{ const w=words(ta.value); wc.textContent=w+" words"; wc.className="wc"+(w<30?" bad":""); }; upd(); ta.addEventListener("input",upd); ta.focus();
+  $("shClose").onclick=()=>{ $("sheet").hidden=true; };
+  $("entryForm").addEventListener("submit",e=>{
+    e.preventDefault(); const f=new FormData(e.target);
+    if(words(f.get("think"))<30){ upd(); ta.focus(); return; }
+    const qs=f.getAll("q").map(Number);
+    const rec={ id:n.id||(Date.now().toString(36)), s:sym||null, g:sym?it.g:f.get("g"), title:sym?null:String(f.get("title")).trim(),
+      date:f.get("date")||today(), quote:String(f.get("quote")||"").trim(), think:String(f.get("think")).trim(), question:String(f.get("question")||"").trim(), q:qs };
+    if(existing){ Object.assign(existing,rec); } else { state.notes.push(rec); }
+    if(sym && !state.done[sym]) state.done[sym]=rec.date;
+    save(); renderAll(); say(greeting()); $("sheet").hidden=true;
+    if(!existing){ $("entries").scrollIntoView({behavior:"smooth",block:"start"}); }
+  });
+}
+
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} ticked, ${notes} notebook ${notes===1?"line":"lines"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+/* ---------- init ---------- */
+$("compiledTxt").textContent=fmtLong(COMPILED);
+$("sources").innerHTML=SOURCES.map(([t,u])=>`<li>${u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</li>`).join("");
+try{ const w=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); if(w&&w.cand){ $("gName").value=w.cand; signIn(w.cls,w.cand); } }catch(e){}
+</script>
+</body>
+</html>
