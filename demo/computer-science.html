@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Computer Science Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE REPO — Computer Science, Beyond the Classroom
+   The page is the pupil's own code repository on an invented code host,
+   Soho Foundry. Six folders, one per family of thing: listen/, watch/,
+   read/, do/, enter/, apply/. Every thing to do is an open issue; doing
+   it is a commit that closes the issue. Each folder is a branch off main;
+   it is branched at one commit, has a pull request open at half, and is
+   merged into main when every issue in it is closed. Every commit, note
+   and news item lands on the contributions graph for the school year.
+   7 · upstream is computer science in the news, fetched every morning.
+   The guide, Mallard, is an invented rubber duck. Soho Foundry is invented.
+   ====================================================================== */
+:root{
+  --bg:#0b0e13; --ed:#0f1319; --side:#121821; --pane:#161d27; --pane2:#1c2531; --line:#2a3542; --line2:#3a4756;
+  --tx:#e9edf1; --dim:#a3afbb; --faint:#6f7b88;
+  --paper:#f6f7f4; --paper2:#e9ece6; --ink:#12161b; --ink2:#47515c; --rule:#cfd5cc;
+  --duck:#ffd23f; --duck2:#e0a800; --ok:#4ade80; --warn:#f59e0b; --bad:#f87171;
+  --listen:#2dd4bf;   /* listen/ — teal */
+  --watch:#a78bfa;    /* watch/  — violet */
+  --read:#60a5fa;     /* read/   — blue */
+  --do:#fbbf24;       /* do/     — amber */
+  --enter:#f472b6;    /* enter/  — pink */
+  --apply:#fb923c;    /* apply/  — orange */
+  --news:#94a3b8;     /* upstream — slate */
+  --c0:#1a212b; --c1:#14532d; --c2:#1f7a45; --c3:#2fae5f; --c4:#6ee79a;
+  --f-head:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-text:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--f-text);font-size:1.06rem;line-height:1.55;
+  background-image:radial-gradient(ellipse at 50% -20%,rgba(255,210,63,.07),transparent 55%)}
+[data-g="do"]{--g:var(--do)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="enter"]{--g:var(--enter)} [data-g="apply"]{--g:var(--apply)} [data-g="news"]{--g:var(--news)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:700;line-height:1.1}
+.eyebrow{font-family:var(--f-mono);font-weight:500;font-size:.74rem;letter-spacing:.06em;color:var(--duck)}
+.small{font-size:.92rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-weight:500;font-size:.72rem;color:var(--duck);border:1px solid rgba(255,210,63,.5);padding:3px 10px;border-radius:999px;background:rgba(0,0,0,.25)}
+.badge i{width:8px;height:8px;background:var(--ok);display:inline-block;border-radius:50%}
+.paper .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}
+.btn{font:inherit;font-family:var(--f-mono);font-weight:700;font-size:.95rem;background:var(--ink);color:var(--paper);border:2px solid var(--ink);padding:8px 16px;cursor:pointer;border-radius:6px}
+.btn:hover{background:#000}
+.btn.big{font-size:1.05rem;padding:11px 22px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--ink);color:var(--ink)}
+.btn.hv{background:var(--duck);border-color:var(--ink);color:var(--ink)}
+.btn.hv:hover{background:#ffe07a}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--duck);outline-offset:2px}
+.field{display:grid;gap:4px}
+.field label{font-family:var(--f-mono);font-weight:500;font-size:.74rem;color:var(--ink2)}
+.field input,.field textarea,.field select{font:inherit;font-size:1.04rem;background:#fff;border:1.5px solid var(--rule);border-bottom:2px solid var(--ink);padding:8px 9px;color:var(--ink);width:100%;border-radius:6px}
+.field textarea{min-height:84px;resize:vertical;line-height:1.45}
+.field .mono{font-family:var(--f-mono);font-size:.98rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#b4232f;min-height:1.3em;font-size:.98rem}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.wrap>*{min-width:0}
+.paper{background:var(--paper);color:var(--ink)}
+.hz{position:relative}
+.hz:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:8px 8px 0 0;
+  background:linear-gradient(90deg,var(--listen),var(--watch),var(--read),var(--do),var(--enter),var(--apply))}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(820px,100%);padding:38px 36px 30px;display:grid;gap:16px;box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:10px}
+.gate-card h1{font-size:clamp(2.8rem,8vw,5rem);letter-spacing:-.02em;line-height:.95}
+.gate-card h1 code{font-family:var(--f-mono);font-size:.5em;color:var(--ink2);font-weight:500;display:block;margin-bottom:6px;letter-spacing:0}
+.gate-card h1 em{display:block;font-family:var(--f-text);font-weight:400;font-style:italic;font-size:.26em;color:var(--ink2);margin-top:12px;line-height:1.35;letter-spacing:0}
+.gate-card p{margin:0}
+.gate-guide{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.gate-guide svg{width:120px;height:auto}
+.gate-card .passno{position:absolute;right:22px;top:-14px;background:var(--duck);color:var(--ink);padding:3px 12px;font-family:var(--f-mono);font-weight:700;font-size:.76rem;border:2px solid var(--ink);border-radius:6px;transform:rotate(1.5deg)}
+@media (max-width:560px){.gate-guide{grid-template-columns:1fr;justify-items:center}.two{grid-template-columns:1fr}.gate-card{padding:30px 20px 24px}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.top h1{font-size:clamp(2.6rem,6.2vw,4.4rem);color:#fff;letter-spacing:-.02em;line-height:.95}
+.top h1 b{color:var(--duck)}
+.top h1 span{display:block;font-family:var(--f-mono);font-weight:400;font-size:.95rem;color:var(--dim);margin-top:10px;line-height:1.4;letter-spacing:0}
+.strap{font-size:.98rem;color:var(--dim);margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:1rem}
+.who b{font-family:var(--f-mono);font-size:1.05rem}
+.who button{font:inherit;font-size:.9rem;background:none;border:0;color:var(--dim);text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-mono);font-size:.72rem;color:var(--faint)}
+.saved.ok{color:var(--ok)}.saved.bad{color:var(--bad)}
+
+/* ---------- the repo window ---------- */
+.scene{position:relative;border:1px solid #000;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.6);background:var(--bg);border-radius:10px 10px 0 0}
+.scene svg.view{display:block;width:100%;height:auto}
+.scene .hot{cursor:pointer}
+.scene .hot .halo{fill:transparent;stroke:transparent;stroke-width:2;pointer-events:all}
+.scene .hot:hover .halo,.scene .hot:focus-visible .halo{fill:rgba(255,255,255,.05);stroke:var(--g);stroke-dasharray:5 4}
+.scene .hot.lit .halo{stroke:var(--g);stroke-width:3;stroke-dasharray:none;fill:rgba(255,255,255,.07)}
+.scene .mono{font-family:var(--f-mono)}
+.scene .lbl{font-family:var(--f-mono);font-size:13px;fill:var(--tx)}
+.scene .sub{font-family:var(--f-mono);font-size:10.5px;fill:var(--faint)}
+.scene .head{font-family:var(--f-mono);font-size:10.5px;letter-spacing:1.5px;fill:var(--faint)}
+.scene .cmd{font-family:var(--f-mono);font-size:12.5px;fill:var(--dim)}
+.scene .cmd tspan.p{fill:var(--ok)}
+.scene .lane{stroke:var(--g);stroke-width:3;fill:none}
+.scene .lane.off{stroke:var(--line2);stroke-dasharray:4 5;stroke-width:2}
+.scene .node{fill:var(--ed);stroke:var(--g);stroke-width:2.2}
+.scene .node.off{stroke:var(--line2)}
+.scene .node.on{fill:var(--g)}
+.scene .node-hit{fill:transparent;cursor:pointer}
+.scene .node-hit:hover+.ring,.scene .node-hit:focus-visible+.ring{stroke:#fff;stroke-opacity:.9}
+.scene .ring{fill:none;stroke:#fff;stroke-opacity:0;stroke-width:1.5;pointer-events:none}
+.scene .cell{rx:2;ry:2}
+.scene .cell.today{stroke:var(--duck);stroke-width:1.5}
+.pop{animation:pop .6s ease-out;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%{transform:scale(.2)}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+.mergein{animation:draw 1.1s ease-out}
+@keyframes draw{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.pop,.mergein{animation:none}}
+.scene-key .swipe{display:none;color:var(--duck)}
+@media (max-width:760px){.scene{overflow-x:auto;-webkit-overflow-scrolling:touch}.scene svg.view{min-width:1000px}.scene-key .swipe{display:inline}}
+.scene-key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px;background:var(--side);border:1px solid #000;border-top:0;font-size:.9rem;color:var(--dim)}
+.scene-key b{color:#fff;font-weight:700}
+
+/* small print */
+.smallprint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #000;border-top:0;border-radius:0 0 10px 10px;overflow:hidden}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.92rem;line-height:1.45;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-family:var(--f-mono);font-weight:700;font-size:.92rem;color:var(--ink)}
+.sp .nm b{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g);margin-right:7px;border:1px solid #000}
+.sp.wide{grid-column:1/-1;border-right:0;background:#fff}
+.st{display:inline-block;font-family:var(--f-mono);font-weight:700;font-size:.62rem;text-transform:uppercase;border:1.5px solid currentColor;padding:0 5px;border-radius:4px;margin-right:3px;white-space:nowrap}
+.st.att{color:#15703c}.st.rep{color:#8a5a12}.st.lgd{color:#b4232f}.st.inv{color:#3d4fa8}
+@media (max-width:900px){.smallprint{grid-template-columns:1fr 1fr}.sp:nth-child(3n){border-right:1px solid var(--rule)}.sp:nth-child(2n){border-right:0}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}.sp{border-right:0!important}}
+
+/* ---------- the duck, your repo, the cue ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (min-width:861px){.crew>.guide{position:sticky;top:64px}}
+.guide{display:grid;grid-template-columns:140px minmax(0,1fr);gap:18px;align-items:end}
+.guide-img{width:140px;height:auto;transform-origin:50% 100%}
+.guide-img.call{animation:bob 1.6s ease-in-out}
+@keyframes bob{0%,100%{transform:none}25%{transform:translateY(-8px) rotate(-4deg)}50%{transform:none}75%{transform:translateY(-5px) rotate(3deg)}}
+.radio{position:relative;background:var(--pane);color:var(--tx);border:1px solid var(--line2);border-left:5px solid var(--duck);padding:12px 16px 14px;border-radius:8px;min-height:128px;display:grid;align-content:start;gap:8px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+.radio .nm{display:flex;gap:10px;align-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+.radio .av{width:22px;height:22px;border-radius:50%;background:var(--duck);display:inline-grid;place-items:center;color:var(--ink);font-weight:700;font-size:.7rem;flex:none}
+.radio .typing{display:inline-flex;gap:3px;margin-left:auto}
+.radio .typing i{width:5px;height:5px;border-radius:50%;background:var(--faint)}
+.radio.talk .typing i{animation:blink 1s infinite}
+.radio .typing i:nth-child(2){animation-delay:.15s}.radio .typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.radio.talk .typing i{animation:none}}
+.radio #bubbleTxt{font-size:1.12rem;line-height:1.45}
+.side{display:grid;gap:16px}
+.card{padding:24px 22px 20px;display:grid;gap:12px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-radius:10px}
+.card h2{font-size:1.6rem}
+.lapbox{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--ink);color:#fff;padding:12px 14px;border-radius:8px}
+.lapbox .lap{font-family:var(--f-mono);font-weight:700;font-size:2.1rem;line-height:1;color:var(--ok)}
+.lapbox .lap small,.lapbox .pos small{display:block;font-size:.66rem;color:var(--dim);font-weight:500;margin-bottom:5px;font-family:var(--f-mono)}
+.lapbox .pos{font-family:var(--f-mono);font-weight:700;font-size:2.1rem;line-height:1;text-align:right;color:var(--duck)}
+.sectors{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.sec{display:grid;gap:3px;justify-items:center;font-family:var(--f-mono);font-size:.64rem;color:var(--ink2)}
+.sec i{display:block;width:100%;height:12px;border-radius:3px;background:#d7dcd3;border:1px solid #000}
+.sec.s1 i{background:var(--warn)} .sec.s2 i{background:var(--read)} .sec.s3 i{background:var(--ok)}
+.seckey{font-size:.85rem;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 12px}
+.seckey span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:var(--c);border:1px solid #000}
+.revbar{display:grid;gap:4px;padding:8px 10px;background:var(--ink);border-radius:8px}
+.revrow{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.revrow .fl{font-family:var(--f-mono);font-weight:700;font-size:.72rem;color:var(--dim);width:58px;flex:none}
+.rv{width:11px;height:11px;border-radius:50%;background:transparent;border:1.5px solid #4a5563;display:inline-block}
+.rv.on{background:var(--g);border-color:var(--g)}
+.register{font-family:var(--f-mono);font-size:.78rem;color:var(--ink)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-family:var(--f-mono);font-weight:700;font-size:.88rem;background:#fff;color:var(--ink);border:0;border-right:2px solid var(--ink);padding:6px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--duck)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.guide{grid-template-columns:1fr;justify-items:center}}
+
+/* ---------- milestone (half term) ---------- */
+.orders{padding:30px 26px 24px;display:grid;gap:10px;box-shadow:10px 12px 0 rgba(0,0,0,.45);border-radius:10px}
+.orders .rubric{font-family:var(--f-mono);font-size:.78rem;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:6px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.orders h2{font-size:2.1rem}
+.orders .due{font-family:var(--f-mono);font-weight:700;color:#b4232f;font-size:.9rem}
+.orders .lede{margin:0;color:var(--ink2)}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:6px}
+.leg{border-top:4px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{min-width:52px;height:28px;border:2px solid var(--ink);color:var(--ink);display:grid;place-items:center;font-family:var(--f-mono);font-weight:700;font-size:.8rem;border-radius:999px;background:#fff;padding:0 8px}
+.leg.done .lno{background:#8250df;border-color:#8250df;color:#fff}
+.leg .step{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- upstream (news) ---------- */
+.pitwall{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+.pitwall>*{min-width:0}
+.sec-head{display:grid;gap:6px}
+.sec-head h2{font-size:2.3rem;color:#fff}
+.sec-head .lede{margin:0;color:#cfd7df;max-width:90ch}
+.pw-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;justify-content:space-between}
+.pw-when{font-family:var(--f-mono);font-size:.76rem;color:var(--dim)}
+.nfilters{display:flex;flex-wrap:wrap;gap:8px}
+.nchip{font:inherit;font-family:var(--f-mono);font-size:.84rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line2);background:var(--pane);color:var(--tx);padding:4px 11px;border-radius:999px;cursor:pointer}
+.nchip b{font-weight:400;color:var(--dim);font-size:.74rem}
+.nchip[aria-pressed="true"]{background:var(--duck);color:var(--ink);border-color:var(--duck)}
+.nchip[aria-pressed="true"] b{color:var(--ink)}
+.screens{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:14px}
+.story{min-width:0;overflow-wrap:anywhere;grid-template-columns:minmax(0,1fr);position:relative;background:var(--paper);color:var(--ink);border:1px solid #000;border-left:6px solid var(--lv,#94a3b8);border-radius:8px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.story.vd{--lv:#ef4444}.story.sto{--lv:var(--news)}
+.story.read{background:#eef7f0}
+.story .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--ink2)}
+.story .src{font-family:var(--f-head);font-weight:700;font-size:1rem;color:var(--ink)}
+.lvl{border:1.5px solid var(--lv);color:var(--ink2);border-radius:999px;padding:0 7px;font-size:.66rem}
+.story h3{font-family:var(--f-text);font-weight:700;font-size:1.06rem;line-height:1.32;margin:2px 0}
+.story p.d{margin:0;color:var(--ink2);font-size:.92rem}
+.story .stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.ttag{font-family:var(--f-mono);font-size:.68rem;background:#fff;border:1px solid var(--rule);border-radius:999px;padding:0 8px;color:var(--ink2)}
+.ttag.beyond{color:#7b8590;border-style:dashed}
+.story .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.story .acts .btn{padding:6px 12px;font-size:.88rem}
+.story .stampn{position:absolute;right:12px;top:-10px;font-family:var(--f-mono);font-weight:700;font-size:.74rem;color:#fff;background:#8250df;border-radius:999px;padding:1px 9px}
+.tw{display:grid;gap:10px;margin-top:10px;padding:12px;border-radius:8px;background:#fff;color:var(--ink);border:1px solid var(--rule)}
+.tw .wc{font-family:var(--f-mono);font-size:.76rem;color:#b4232f;min-height:1em}
+.tw-mine{font-size:1rem;line-height:1.45;color:#222;margin:6px 0 0;border-left:3px solid #8250df;padding-left:10px}
+.tw-mine.q{color:var(--ink2);border-left-color:var(--rule)}
+.pw-foot{font-size:.86rem;color:var(--dim);border-top:1px solid var(--line);padding-top:10px;margin:0}
+@media (max-width:560px){.screens{grid-template-columns:1fr}.story .stampn{top:auto;bottom:12px}}
+
+/* ---------- the six folders ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-size:2.3rem;color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-family:var(--f-mono);font-size:.86rem;border:1.5px solid var(--line2);background:var(--pane);color:var(--tx);padding:4px 12px;cursor:pointer;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;width:9px;height:9px;border-radius:50%;background:var(--g,var(--duck));display:inline-block}
+.chip b{font-weight:400;color:var(--dim);font-size:.76rem}
+.chip[aria-pressed="true"]{background:var(--g,var(--duck));color:var(--ink);border-color:var(--g,var(--duck))}
+.chip[aria-pressed="true"] b{color:var(--ink)}
+.chip[aria-pressed="true"] i{background:var(--ink)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:14px;padding:18px 20px;border-left:8px solid var(--g);box-shadow:6px 6px 0 rgba(0,0,0,.45);border-radius:10px}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.zone-head .ic{min-width:62px;height:50px;background:var(--ink);border-radius:8px;display:grid;place-items:center;color:var(--g);font-family:var(--f-mono);font-weight:700;font-size:1.25rem;padding:0 10px;line-height:1}
+.zone-head .ic small{display:block;font-size:.55rem;font-weight:500;color:var(--dim);margin-top:3px;text-align:center}
+.zone-head .nm{display:block;font-family:var(--f-head);font-weight:700;font-size:1.5rem}
+.zone-head .nm code{font-family:var(--f-mono);font-size:.8em;background:var(--paper2);padding:0 6px;border-radius:4px}
+.zone-head .def{display:block;font-size:.98rem;color:var(--ink2)}
+.zone-head .n{font-family:var(--f-mono);font-weight:700;font-size:.8rem;color:var(--ink)}
+.zone.flash{animation:flash 2.2s ease}
+@media (max-width:600px){.zone{padding:14px 12px}.zone-head{grid-template-columns:auto minmax(0,1fr)}.zone-head .n{grid-column:2}.zone-head .nm{font-size:1.2rem}}
+@keyframes flash{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.45)}20%{box-shadow:0 0 0 4px var(--g),6px 6px 0 rgba(0,0,0,.45)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rec{position:relative;text-align:left;font:inherit;background:#fff;border:1.5px solid #c4cbc1;border-radius:8px;padding:10px 13px 26px;cursor:pointer;display:grid;gap:4px;align-content:start;min-height:124px;color:var(--ink);box-shadow:2px 3px 0 rgba(0,0,0,.12)}
+.rec:hover{background:#fbfcf9;transform:translateY(-1px)}
+.rec .no{display:flex;gap:6px;align-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--ink2)}
+.rec .no .dot{width:12px;height:12px;border-radius:50%;border:2px solid #1a7f37;display:inline-block}
+.rec .nm{font-family:var(--f-head);font-weight:700;font-size:1.15rem;line-height:1.15}
+.rec .t{font-size:.9rem;color:var(--ink2)}
+.rec .th{font-family:var(--f-mono);font-size:.66rem;color:#6b7580}
+.rec .stamp{position:absolute;right:8px;bottom:8px;font-family:var(--f-mono);font-weight:700;font-size:.7rem;color:#fff;background:#8250df;padding:1px 9px;border-radius:999px;display:none}
+.rec.done{background:var(--paper2)}
+.rec.done .stamp{display:block}
+.rec.done .no .dot{border-color:#8250df;background:#8250df}
+.rec.new:before{content:"NEW";position:absolute;right:10px;top:8px;font-family:var(--f-mono);font-weight:700;font-size:.62rem;color:#fff;background:#b4232f;padding:1px 6px;border-radius:999px}
+.rec.flash{animation:recflash 3s ease}
+@keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--duck)}}
+
+/* ---------- the roadmap (calendar) ---------- */
+.board{background:var(--side);border:1px solid #000;box-shadow:8px 8px 0 rgba(0,0,0,.45);color:var(--tx);border-radius:10px;overflow:hidden}
+.btop{padding:22px 22px 12px;display:grid;gap:4px;position:relative;border-bottom:1px solid var(--line)}
+.btop:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--listen),var(--watch),var(--read),var(--do),var(--enter),var(--apply))}
+.btop h2{font-size:2.1rem}
+.btop .sub{font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.month{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-family:var(--f-head);font-weight:700;font-size:1.2rem;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:4px}
+.month .mh i{font-family:var(--f-mono);font-style:normal;font-weight:500;font-size:.7rem;color:var(--duck);margin-right:8px}
+.month .mh small{font-family:var(--f-mono);font-size:.66rem;color:var(--faint);font-weight:400}
+.month.quiet .mh{color:var(--faint)}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.98rem}
+.ev .when{font-family:var(--f-mono);font-weight:700;font-size:.74rem;color:var(--tx);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid var(--duck);color:var(--duck);font-size:.62rem;padding:0 6px;border-radius:999px;font-weight:500}
+.ev .urgent{background:var(--bad);color:#000;font-size:.62rem;padding:0 6px;border-radius:999px}
+.ev b{font-weight:700}
+.ev .sub{display:block;color:var(--dim);font-size:.92rem}
+.ev .in{display:block;color:var(--ok);font-size:.76rem;font-family:var(--f-mono)}
+.ev .open{justify-self:start;font:inherit;font-size:.9rem;background:none;border:0;padding:0;color:#fff;text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:var(--faint);font-size:.92rem}
+
+/* ---------- commit log (notebook) ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px;align-items:start}
+.cover-side{padding:30px 26px 24px;display:grid;gap:14px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-radius:10px}
+.cover-side h2{font-size:2rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}
+#entryForm{display:grid;gap:12px}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem}
+.entries{display:grid;gap:16px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:var(--dim)}
+.entries-h h3{font-size:1.6rem;color:#fff}
+.note{position:relative;background:var(--pane);color:var(--tx);border:1px solid var(--line2);padding:14px 18px;display:grid;gap:7px;border-radius:8px;border-left:6px solid var(--g,var(--duck))}
+.note .hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;font-family:var(--f-mono);font-size:.78rem;color:var(--dim)}
+.note .hd .hash{color:var(--duck);font-weight:700}
+.note .msg{font-family:var(--f-mono);font-weight:700;font-size:1rem;color:#fff;line-height:1.4}
+.note .src{font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+.note .why{font-size:1rem;line-height:1.5;color:#dfe5ea}
+.note .why i,.note .qy i{font-family:var(--f-mono);font-style:normal;font-size:.68rem;color:var(--faint);display:block}
+.note .qy{font-family:var(--f-mono);font-size:.9rem;color:var(--warn)}
+.note.example{opacity:.9;border-style:dashed}
+.note .del{justify-self:start;font:inherit;font-size:.86rem;background:none;border:0;color:var(--dim);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:var(--bad)}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- issue sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(5,7,10,.74);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(580px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.5)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:22px 22px 14px;border-bottom:5px solid var(--g);background:#fff}
+.sheet-top .plate-ic{min-width:52px;height:46px;background:var(--ink);color:var(--g);display:grid;place-items:center;font-family:var(--f-mono);font-weight:700;font-size:1.05rem;border-radius:8px;padding:0 8px}
+.sheet-top .fam{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2);margin-bottom:6px}
+.sheet-top .fam .st2{display:inline-block;color:#fff;background:#1a7f37;border-radius:999px;padding:0 8px;margin-right:6px;font-weight:700}
+.sheet-top .fam .st2.closed{background:#8250df}
+.sheet-top h3{font-size:1.65rem}
+.x{font:inherit;font-size:1.7rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2);display:block;margin-bottom:3px}
+.sheet-body p{margin:0}
+.think{border:1px solid var(--rule);border-left:4px solid var(--duck);padding:10px 14px;font-size:1.04rem;background:#fff;border-radius:6px}
+.think b{display:flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--ink2);margin-bottom:4px;font-weight:500}
+.think b:before{content:"";width:14px;height:14px;border-radius:50%;background:var(--duck);border:1px solid #000}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1.5px solid var(--rule);padding:1px 8px;color:var(--ink2);border-radius:999px;background:#fff}
+.tags span.th{border-color:var(--ink);color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-size:.88rem;color:var(--faint);border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:2px dashed var(--ink);padding:12px 16px;font-size:.95rem;border-radius:3px}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-family:var(--f-head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:1.05rem;border:2px solid var(--ink);padding:10px 18px;cursor:pointer;background:var(--duck);color:var(--ink);border-radius:3px;box-shadow:4px 4px 0 #000}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(560px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:2px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.35)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:2px solid var(--ink);background:#fff}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-family:var(--f-head);font-weight:700;font-size:1.9rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1.5px solid var(--ink);background:#fff;color:var(--ink);padding:4px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--duck)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.8rem;border:1.5px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.dept{background:var(--paper);color:var(--ink);border:2px solid #000;border-left:10px solid var(--duck);padding:20px 22px;display:grid;gap:10px;border-radius:3px}
+.dept h2{font-family:var(--f-head);font-weight:700;font-size:2rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+.intro .badge,.fb .badge,.dept .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.intro .badge i{box-shadow:none;background:var(--ink2)}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--bg);
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(255,210,63,.12),transparent 55%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(860px,100%);color:var(--ink);border:2px solid #000;box-shadow:10px 10px 0 rgba(0,0,0,.5);display:grid;grid-template-columns:160px minmax(0,1fr);gap:22px;padding:34px 30px 28px;align-items:center;border-radius:4px}
+.intro-card svg{width:160px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-family:var(--f-head);font-weight:700;font-size:2.2rem;line-height:1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:2px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center;padding:30px 18px 22px}.intro-card svg{width:110px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(8,5,5,.72);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--duck);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(640px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:2px solid #000;border-top:6px solid var(--duck);box-shadow:0 10px 30px rgba(0,0,0,.4);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start;border-radius:3px}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:66px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-family:var(--f-head);font-weight:700;font-size:1.55rem;margin:2px 0 4px}
+.tour-card p{margin:0;font-size:.98rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:6px 12px 5px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper2);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:#fff;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px;border-bottom:4px solid var(--duck)}
+.dash-top .x{color:#fff;margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:#d8ccb8}
+.dash-wrap{max-width:1200px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:#fff;border:2px solid var(--ink);padding:12px 14px;display:grid;gap:2px;border-radius:3px}
+.tl b{font-family:var(--f-mono);font-size:1.9rem;line-height:1;font-weight:600}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:#fff;border:2px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto;border-radius:3px}
+.dcard h3{font-family:var(--f-head);font-weight:700;font-size:1.5rem}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--paper2);vertical-align:middle;overflow:hidden;margin-right:6px;border:1px solid var(--rule)}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.66rem;padding:1px 6px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.6rem;background:var(--ink);color:var(--duck);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-family:var(--f-text);font-size:1.18rem;line-height:1.3;border-left:4px solid var(--g,var(--ink));padding:4px 10px;margin:6px 0;color:#2a2a2a}
+.nbq .small{font-family:var(--f-text)}
+.sw{display:inline-block;width:14px;height:10px;border:1px solid #000;margin-right:2px;vertical-align:middle;background:#d7dcd3;border-radius:2px}
+.sw.s1{background:var(--warn)}.sw.s2{background:var(--read)}.sw.s3{background:var(--ok)}
+.lapt{font-family:var(--f-mono);font-weight:600}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- Mallard, drawn once and reused: an invented yellow rubber duck with a pencil behind its head -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="duck" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="188" rx="70" ry="7" fill="#000" opacity=".35"/>
+      <!-- body -->
+      <path d="M34 128 q-6 -42 40 -50 q40 -6 66 8 q30 -18 40 4 q6 14 -8 26 q10 46 -50 64 q-74 16 -88 -52z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="3"/>
+      <!-- tail tuft -->
+      <path d="M176 92 q14 -8 14 -26 q-12 6 -22 18z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="3"/>
+      <!-- wing -->
+      <path d="M82 120 q34 -14 64 6 q-12 30 -46 28 q-20 -4 -18 -34z" fill="#f2bd12" stroke="#1b1b1b" stroke-width="2.5"/>
+      <path d="M96 132 q18 -6 36 2 M98 142 q14 -4 28 2" fill="none" stroke="#1b1b1b" stroke-width="1.6" opacity=".5"/>
+      <!-- head -->
+      <circle cx="68" cy="58" r="36" fill="#ffd23f" stroke="#1b1b1b" stroke-width="3"/>
+      <!-- beak -->
+      <path d="M30 62 q-24 2 -26 12 q14 10 34 4 q6 -8 -8 -16z" fill="#ff8a1f" stroke="#1b1b1b" stroke-width="2.5"/>
+      <path d="M6 73 q14 2 30 -2" fill="none" stroke="#1b1b1b" stroke-width="1.8"/>
+      <!-- eye -->
+      <ellipse cx="60" cy="48" rx="7" ry="9" fill="#1b1b1b"/>
+      <circle cx="58" cy="45" r="2.6" fill="#fff"/>
+      <!-- cheek -->
+      <ellipse cx="80" cy="70" rx="8" ry="5" fill="#ff8a1f" opacity=".35"/>
+      <!-- pencil behind the head -->
+      <path d="M92 20 l34 -12" stroke="#4a9eff" stroke-width="6" stroke-linecap="round"/>
+      <path d="M126 8 l7 -2.5" stroke="#f1c27d" stroke-width="5" stroke-linecap="round"/>
+      <path d="M133 5.5 l3 -1" stroke="#1b1b1b" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#duck"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn hv" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 id="fbH">What would you want from this?</h2>
+    <p class="small">If the Send button does not work for you, send your comments and changes to Simon directly. Nothing here is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. Head of Computer Science"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>Which language do your pupils program in? (The page points them at BIO, Advent of Code and Project Euler in "the language you use in class".)</label>
+      <div class="fb-chips" id="fbLang">
+        <button type="button" data-v="Python">Python</button><button type="button" data-v="C#">C#</button><button type="button" data-v="Java">Java</button><button type="button" data-v="VB.NET">VB.NET</button><button type="button" data-v="C++">C++</button><button type="button" data-v="JavaScript">JavaScript</button><button type="button" data-v="other">Something else</button>
+      </div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="competitions">Competitions</button><button type="button" data-v="programming">Programming practice</button><button type="button" data-v="nea">Programming project (NEA) help</button><button type="button" data-v="cyber">Cyber security</button><button type="button" data-v="ai">AI and ethics</button><button type="button" data-v="theory">Theory and algorithms</button><button type="button" data-v="hardware">Hardware and electronics</button><button type="button" data-v="oxbridge">Oxbridge and TMUA</button><button type="button" data-v="apprenticeships">Degree apprenticeships</button><button type="button" data-v="birmingham">Birmingham events</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the repository, the branches, the contributions graph, the duck. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label>Upstream (computer science news and Computerphile every morning; pupils write two sentences). Keep it?</label>
+      <div class="seg" id="fbSlip" style="flex-wrap:wrap"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="more-research" aria-pressed="false">More research</button><button type="button" data-v="more-cyber" aria-pressed="false">More cyber</button><button type="button" data-v="drop" aria-pressed="false">Leave it out</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (items, dates, links, H446 tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big hv" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card paper hz">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#duck"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Computer Science · The Repo · demo</span>
+      <h2 id="introH">A demo of a web page for your sixth-form computer scientists.</h2>
+      <p>It is a working copy of the page a pupil would use: 58 free things to listen to, watch, read, build, enter and apply for, each tagged to a part of OCR H446. It is laid out as the pupil's own code repository. Six folders, one per kind of thing; every item is an open issue, and doing it closes the issue. Each folder is a branch that merges into main when every issue in it is closed, and everything a pupil does lands on a contributions graph for the school year. Upstream collects computer science news and the latest Computerphile videos every morning, and pupils write two sentences on one that the department can read.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <p class="send-note" style="margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
+      <button type="button" class="btn big hv" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper hz" id="gateForm" autocomplete="off">
+    <span class="passno">git clone · COMPUTER SCIENCE</span>
+    <span class="badge" style="justify-self:start"><i></i>Computer Science · Beyond the classroom</span>
+    <h1 id="gateH"><code>soho.foundry / you /</code>The Repo<em>Your own repository for one school year: six folders, every issue yours to close</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#duck"/></svg>
+      <p>Free things for sixth-form computer scientists: competitions, lectures, talks, podcasts, reading, things to build and practise, and the way into a computing degree or a degree apprenticeship. The page is a code repository. Six folders, and each folder is one kind of thing: listen, watch, read, do, enter, apply. Every thing to do is an open issue; do it and you commit, and the issue closes. Each folder is a branch, and it merges into main when every issue in it is closed. Everything you do goes onto your contributions graph for the year. Upstream brings in computer science news every morning. Mallard, the rubber duck, reviews your work. Everything saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note" style="grid-column:1/-1"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big hv" type="submit" id="gGo">git clone</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <p class="send-note" style="grid-column:1/-1;margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
+    <div><b>Demo for the Computer Science department.</b> This is the working pupil page: sign in with any name, close a few issues, pull a story from upstream, ask Mallard to assign you one. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn hv" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Computer Science · Beyond the classroom</span>
+      <h1>The <b>Repo</b><span id="repoPath">soho.foundry / you / beyond-the-classroom · six folders, one school year, and upstream every morning</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE REPO WINDOW ===== -->
+  <section aria-label="Your repository: six folders, the branch graph, your contributions, and upstream">
+    <div class="scene">
+      <svg class="view" id="view" viewBox="0 0 1400 800" role="group" aria-label="A code editor showing your repository: a file tree of six folders on the left, a branch graph with one branch per folder and one dot per issue, a contributions graph for the school year, and upstream news">
+        <defs>
+          <linearGradient id="winG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10151c"/><stop offset="1" stop-color="#0d1117"/></linearGradient>
+          <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1400" height="800" fill="#0b0e13"/>
+        <!-- the window -->
+        <rect x="20" y="16" width="1360" height="768" rx="10" fill="url(#winG)" stroke="#2a3542"/>
+        <path d="M20 26 q0 -10 10 -10 h1340 q10 0 10 10 v26 h-1360z" fill="#161d27"/>
+        <circle cx="42" cy="34" r="6" fill="#3a4756"/><circle cx="62" cy="34" r="6" fill="#3a4756"/><circle cx="82" cy="34" r="6" fill="#3a4756"/>
+        <text class="mono" x="700" y="39" text-anchor="middle" font-size="12.5" fill="#a3afbb" id="winTitle">beyond-the-classroom — soho.foundry</text>
+        <text class="mono" x="1360" y="39" text-anchor="end" font-size="11" fill="#6f7b88">⎇ main</text>
+        <!-- sidebar -->
+        <rect x="20" y="52" width="250" height="700" fill="#121821"/>
+        <line x1="270" y1="52" x2="270" y2="752" stroke="#2a3542"/>
+        <text class="head" x="38" y="78">EXPLORER</text>
+        <text class="mono" x="38" y="104" font-size="11.5" font-weight="700" fill="#e9edf1">▾ BEYOND-THE-CLASSROOM</text>
+        <g id="tree"></g>
+        <!-- main area -->
+        <rect x="271" y="52" width="1109" height="32" fill="#121821"/>
+        <path d="M286 84 v-24 q0 -4 4 -4 h170 q4 0 4 4 v24z" fill="#0f1319"/>
+        <text class="mono" x="300" y="74" font-size="12" fill="#e9edf1">⎇ git log --graph</text>
+        <text class="mono" x="490" y="74" font-size="12" fill="#6f7b88">contributions</text>
+        <text class="mono" x="610" y="74" font-size="12" fill="#6f7b88">upstream</text>
+        <text class="cmd" x="292" y="110"><tspan class="p">$</tspan> git log --graph --all --oneline</text>
+        <g id="graph"></g>
+        <line x1="286" y1="486" x2="1364" y2="486" stroke="#2a3542"/>
+        <text class="cmd" x="292" y="512"><tspan class="p">$</tspan> git shortlog --since=2026-09-01</text>
+        <text class="mono" id="contribTxt" x="1050" y="512" text-anchor="end" font-size="12" fill="#e9edf1"></text>
+        <g id="contrib"></g>
+        <!-- 7 UPSTREAM -->
+        <g class="hot" data-g="news" data-f="news" id="newsHot" tabindex="0" role="button" aria-label="7, upstream: computer science in the news, fetched every morning">
+          <rect class="halo" x="1078" y="498" width="290" height="208" rx="8"/>
+          <rect x="1086" y="506" width="274" height="192" rx="7" fill="#161d27" stroke="#3a4756"/>
+          <text class="head" x="1102" y="530">7 · UPSTREAM</text>
+          <text class="cmd" x="1102" y="556"><tspan class="p">$</tspan> git fetch upstream</text>
+          <text class="mono" x="1102" y="584" font-size="13" fill="#e9edf1" id="newsCntTxt">fetching…</text>
+          <text class="mono" x="1102" y="606" font-size="11" fill="#6f7b88" id="newsWhenTxt"></text>
+          <text class="mono" x="1102" y="634" font-size="11" fill="#a3afbb">computer science in the news,</text>
+          <text class="mono" x="1102" y="650" font-size="11" fill="#a3afbb">new every morning</text>
+          <text class="mono" x="1102" y="680" font-size="11.5" fill="#ffd23f" id="newsMineTxt">→ pull one, write two sentences</text>
+        </g>
+        <!-- status bar -->
+        <path d="M20 752 h1360 v22 q0 10 -10 10 h-1340 q-10 0 -10 -10z" fill="#232f3d"/>
+        <text class="mono" x="34" y="772" font-size="11.5" fill="#e9edf1" id="statusTxt">⎇ main</text>
+        <text class="mono" x="1366" y="772" text-anchor="end" font-size="11.5" fill="#a3afbb">OCR H446 · UTF-8 · Python</text>
+      </svg>
+    </div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the window sideways to see all of it.</span><span><b>Click a folder</b> to go to that folder's issues.</span><span><b>Click a dot</b> on a branch to open that issue.</span><span>A filled dot is a closed issue. A branch merges into main when every dot is filled.</span><span><b>Click upstream</b> for today's news.</span></div>
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six folders"></div>
+  </section>
+
+  <!-- ===== MALLARD, YOUR REPO, GOOD FIRST ISSUE ===== -->
+  <section class="crew" aria-label="Mallard the duck, your repository, and an issue to start on">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 200" aria-hidden="true"><use href="#duck"/></svg>
+      <div class="radio" id="radio" role="status" aria-live="polite"><span class="nm"><span class="av" aria-hidden="true">M</span>Review comment · Mallard, rubber duck (invented)<span class="typing" aria-hidden="true"><i></i><i></i><i></i></span></span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper hz count-card">
+        <h2>Your repo</h2>
+        <div class="lapbox"><div class="lap" id="lapVal"><small>ISSUES CLOSED</small>0 / 0</div><div class="pos" id="posVal"><small>BRANCHES MERGED</small>0 of 6</div></div>
+        <div class="sectors" id="sectors" aria-label="Six branches"></div>
+        <div class="seckey"><span style="--c:#d7dcd3">no branch</span><span style="--c:var(--warn)">branched</span><span style="--c:var(--read)">pull request open</span><span style="--c:var(--ok)">merged</span></div>
+        <p class="small" id="coverTxt" style="margin:0"></p>
+        <div class="revbar" id="revbar" aria-label="Every issue: one dot per thing, filled when you have closed it"></div>
+        <div class="register" id="register"></div>
+      </div>
+      <div class="card paper hz pick-card">
+        <h2>Good first issue</h2>
+        <p class="small" style="margin:0">Say how long you have. Mallard looks through your open issues and assigns you one, usually in a folder you have not branched yet.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn hv" id="pickBtn">Assign me one</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MILESTONE (half term) ===== -->
+  <section class="orders paper hz" aria-labelledby="htLabel">
+    <span class="rubric"><span id="htEyebrow"></span><span>soho.foundry · milestones</span></span>
+    <h2 id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== UPSTREAM: COMPUTER SCIENCE IN THE NEWS ===== -->
+  <section aria-labelledby="newsH" id="news" class="pitwall">
+    <div class="sec-head">
+      <span class="eyebrow">7 · upstream · $ git fetch upstream · new every morning</span>
+      <h2 id="newsH">Computer science in the news</h2>
+      <p class="lede" id="newsLede">Collected automatically every morning from the BBC technology desk, the National Cyber Security Centre, The Conversation, Quanta Magazine, the Raspberry Pi Foundation, Ars Technica, IEEE Spectrum, MIT News and ScienceDaily, plus the latest Computerphile videos. Read or watch one, then press <b>Pull it</b> and write two sentences: what happened, and the computer science behind it (the hardware, the algorithm, the protocol, the data, the law). It saves to the department and goes into your commit log. Each item is tagged to the parts of H446 it seems to touch. The tags come from keywords, so some will be wrong; finding a better link to the course is part of the exercise.</p>
+    </div>
+    <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show one part of the course"></div><span class="pw-when" id="newsWhen"></span></div>
+    <div class="screens" id="newsList"></div>
+    <div><button type="button" class="btn hv" id="newsMore" hidden>Show more</button></div>
+    <p class="pw-foot" id="newsFoot"></p>
+  </section>
+
+  <!-- ===== THE SIX FOLDERS ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 id="tableH">Every folder</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a folder"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one folder"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE ROADMAP ===== -->
+  <section class="board" id="roadmap" aria-labelledby="yearH">
+    <div class="btop"><span class="sub">ROADMAP.md · October 2026 – July 2027</span><h2 id="yearH">The roadmap</h2><span class="sub">Deadlines, competitions, talks and openings · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== COMMIT LOG ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper hz">
+      <span class="tape" id="nbCover">commits.log</span>
+      <h2 id="nbH">Write a commit</h2>
+      <p>A good commit message says what changed in one line, and the body says why. Write one for anything you watch, read, build or enter: what it was, the idea in one line, what you found out, and what you would try next. These commits are where a personal statement, an interview answer and a reference come from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Part of the course (H446)</label>
+            <select id="nbHw" required>
+              <option value="">Choose…</option>
+              <option>1.1 Processors and devices</option><option>1.2 Software and development</option><option>1.3 Exchanging data</option>
+              <option>1.4 Data types, structures, algorithms</option><option>1.5 Legal, moral, ethical</option>
+              <option>2.1 Computational thinking</option><option>2.2 Problem solving and programming</option><option>2.3 Algorithms</option>
+              <option>Programming project (NEA)</option><option>Beyond the course</option><option>Applying</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="nbWhat">What I watched, read, built or entered</label><input id="nbWhat" list="whatList" placeholder="talk, article, problem, competition…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">Commit message: the idea in one line (optional)</label><input id="nbQuo" class="mono" placeholder="e.g. Hash the password, never store it"></div>
+        <div class="field"><label for="nbLearned">What I found out</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">TODO: what I would try next, or a question it left me with (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn hv" type="submit">Commit</button><button class="btn ghost" type="button" id="copyBtn">Copy all my commits as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your commits as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3>$ git log</h3><span id="logCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2>What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> or <b>I'm interested</b> for each competition and placement (your lists for Bebras, BIO, the Coding Challenge, PCTC and Astro Pi, and a heads-up on who is entering the Cipher Challenge or applying for UNIQ, Nuffield or CyberFirst on their own); how much of the half-term milestone each pupil has done; each pupil's issues closed, branches merged and contributions across the year, so you can see who works steadily and who does it all in one night; <b>every news story each pupil has pulled from upstream, with the two sentences they wrote</b>; each pupil's commit log in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. The milestone is edited in one block at the top of the file; upstream updates itself; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Computer Science: the items, the H446 tags, which news sources upstream reads, the dates, Mallard's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big hv" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+<script>
+(function(){
+/* Six folders, each a branch off main. Upstream (news) is the seventh thing to click. */
+const FAM = {
+  listen:{tree:"podcasts and radio", label:"Listen", verb:"Podcasts and radio", dir:"listen/", letter:"L", def:"Podcasts and radio: computer science on the bus.", no:1},
+  watch:{tree:"talks and lectures", label:"Watch", verb:"Talks, lectures and videos", dir:"watch/", letter:"W", def:"Short talks to argue with, full lectures, a Harvard course, and a day at Bletchley.", no:2},
+  read:{tree:"articles and books", label:"Read", verb:"Articles, books and papers", dir:"read/", letter:"R", def:"Articles on current research, four books, and three primary texts: Lovelace, Dijkstra and the specification.", no:3},
+  do:{tree:"build and practise", label:"Do", verb:"Things to build and practise", dir:"do/", letter:"D", def:"Where you stop reading about it and write the code: problems, simulators, puzzles and a computer built from NAND gates.", no:4},
+  enter:{tree:"competitions", label:"Enter", verb:"Competitions", dir:"enter/", letter:"E", def:"Olympiad, Bebras, codebreaking, and a program that runs on the International Space Station.", no:5},
+  apply:{tree:"placements and degrees", label:"Apply", verb:"Placements, degrees and apprenticeships", dir:"apply/", letter:"A", def:"Summer schools, research placements, a scholarship, and the way into a computing degree or a degree apprenticeship.", no:6}
+};
+/* Where each folder's story comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer (or the person, years later); lgd = a story with no good source; inv = made up for this page. */
+const SMALLPRINT = [
+  {g:"listen", txt:`On 9 September 1947 the operators of the Harvard Mark II taped a moth into the machine's logbook with the note "First actual case of bug being found." <span class="st att">attested</span> the logbook page, now at the Smithsonian's National Museum of American History. That Grace Hopper, who worked on the Mark II, coined the word "bug": <span class="st lgd">legend</span>. Engineers, Edison among them, called faults bugs in the 1870s, which is why the note is a joke.`},
+  {g:"watch", txt:`On 21 June 1948 the Manchester "Baby" ran its first program, written by Tom Kilburn: it found the highest proper factor of 2<sup>18</sup> by trying every number below it, and took 52 minutes. <span class="st att">attested</span> Kilburn's notes and the University of Manchester's records. It was the first program held in an electronic computer's own memory, the stored-program idea you meet in 1.1 as von Neumann architecture.`},
+  {g:"read", txt:`In 1843 Ada Lovelace published a translation of Menabrea's paper on Babbage's Analytical Engine, with Notes of her own longer than the paper. Note G sets out step by step how the engine would calculate Bernoulli numbers. <span class="st att">attested</span> the printed Notes (the link is in read/). Calling her "the first programmer" is <span class="st rep">argued</span>: Babbage had written sequences for the engine earlier, and historians disagree about how much of Note G was hers.`},
+  {g:"do", txt:`Rubber duck debugging: explain your code, line by line, to a rubber duck, and you find the bug yourself before you reach the end. <span class="st att">attested</span> Andrew Hunt and David Thomas, <i>The Pragmatic Programmer</i> (1999), which tells of a programmer who carried a rubber duck for the purpose. Mallard is that duck's job, not a real one's.`},
+  {g:"enter", txt:`In January 1942 the <i>Daily Telegraph</i> challenged readers to solve its crossword in under twelve minutes, after a letter said it was too easy, and a handful did. <span class="st att">attested</span> the newspaper's report. That some of those solvers were then approached to work at Bletchley Park: <span class="st rep">reported</span>, in later accounts by the solvers themselves. The Cipher Challenge prize-giving is at Bletchley Park.`},
+  {g:"apply", txt:`Edsger Dijkstra published his shortest-path algorithm, the one on the H446 specification, in 1959. <span class="st att">attested</span> "A note on two problems in connexion with graphs", <i>Numerische Mathematik</i>. That he worked it out in about twenty minutes in 1956, without pencil or paper, sitting on a café terrace in Amsterdam: <span class="st rep">reported</span>, in his own words in an interview in 2001.`},
+  {g:"", wide:true, txt:`<b>About this page.</b> Soho Foundry, the code host the repository sits on, is <span class="st inv">invented</span>, and so is the editor window. The name comes from the Soho Foundry in Smethwick, which Matthew Boulton and James Watt opened in 1796 to build steam engines <span class="st att">attested</span>. Mallard <span class="st inv">invented</span> is not based on anyone. Your progress is arithmetic: every thing you do closes one issue; a folder's branch is created at the first, has a pull request open at half, and merges into main when every issue in it is closed. The contributions graph counts, for each day, the issues you closed, the commits you wrote and the news you pulled. The stories in upstream are real, collected from the sources named under them.`}
+];
+// mins drives "Good first issue": quick <= 20, evening <= 180, long > 180
+// th = the part of OCR A Level Computer Science (H446) the item serves most.
+const ITEMS = [
+  // ---- listen/
+  {s:"Io",g:"listen",short:"In Our Time · Science",name:"BBC Radio 4: In Our Time, Science archive",mins:45,t:"one episode: 45 min",th:"1.3 Exchanging data",
+   what:"45-minute discussions between three academics, with the whole archive on BBC Sounds. Relevant episodes include Ada Lovelace, Cryptography and Artificial Intelligence.",
+   think:"Listen to the Cryptography episode. Write down which ideas in it you have met in 1.3 (symmetric and asymmetric encryption, hashing) and one you have not.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/p01gyd7j",lt:"In Our Time Science"},
+  {s:"Tp",g:"listen",short:"The Turing Podcast",name:"The Turing Podcast (Alan Turing Institute)",mins:40,t:"one episode: about 40 min",th:"1.5 Legal, moral, ethical",
+   what:"Researchers from the UK's national institute for data science and AI talking about their current projects: cyber defence, weather forecasting, air traffic control. Still producing new series.",
+   think:"Pick an episode about a project that uses AI. Write down what data goes in, what comes out, and one way it could go wrong.",tags:["free","podcast"],url:"https://www.turing.ac.uk/news/turing-podcast",lt:"Turing Podcast"},
+  {s:"Ls",g:"listen",short:"The Life Scientific",name:"BBC Radio 4: The Life Scientific",mins:30,t:"one episode: 28 min",th:"Beyond the course",
+   what:"Jim Al-Khalili interviews one scientist about their life and work. The archive includes computer scientists and AI researchers: search it for 'computer' or 'AI'.",
+   think:"Find one computer scientist in the archive. Note the problem they spent their career on and the point where they say it nearly went wrong.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b015sqc7",lt:"The Life Scientific"},
+  {s:"Cr",g:"listen",short:"CoRecursive",name:"CoRecursive: the stories behind software",mins:60,t:"one episode: about an hour",th:"1.2 Software and development",
+   what:"Adam Gordon Bell interviews programmers about one project each: how a piece of software was built, what broke, and how they fixed it. Some episodes are technical; start with one about a famous bug or outage.",
+   think:"Pick an episode about a bug or an outage. Which stage of the development lifecycle in 1.2 should have caught it, and why didn't it?",tags:["free","podcast"],url:"https://corecursive.com/",lt:"CoRecursive"},
+  // ---- watch/
+  {s:"Gi",g:"watch",short:"Gresham: IT lectures",name:"Gresham College: Information Technology lectures and a schools-only talk",mins:60,t:"one lecture: an hour",th:"1.5 Legal, moral, ethical",
+   what:"Free recorded lectures, mostly by Professor Victoria Baines (cybercrime, encryption, surveillance, data protection, the history of computing) and Professor Yorick Wilks on AI. A live schools-only talk by Victoria Baines, 'Masters of the Cyberverse: Who Owns the Tech You Use, and Who Owns Your Use of it?', is on Wednesday 18 November 2026, 2–3pm; the department gets the link.",
+   think:"Watch 'What's the Problem with Encryption?' or 'How Surveillance Works'. Write down one argument for each side and the H446 law it touches (1.5).",tags:["free","lectures","18 Nov 2026"],url:"https://www.gresham.ac.uk/schools-and-colleges/information-technology",lt:"Gresham IT"},
+  {s:"Gh",g:"watch",short:"Great Ideas from CS",name:"Gresham College: Great Ideas from Computer Science (Professor Richard Harvey)",mins:60,t:"one lecture: an hour",th:"2.3 Algorithms",
+   what:"Six lectures on the core ideas of the subject: algorithms, data, programs, a history of computers, networks, and computer security.",
+   think:"Watch the algorithms lecture. Pick one algorithm he uses and write it as pseudocode, then give its time complexity.",tags:["free","lectures"],url:"https://www.gresham.ac.uk/watch-now/series/great-ideas-computer-science",lt:"Gresham series"},
+  {s:"Ri",g:"watch",short:"The Truth about AI",name:"Royal Institution Christmas Lectures 2023: The Truth about AI (Mike Wooldridge)",mins:180,t:"three lectures: an hour each",th:"1.5 Legal, moral, ethical",
+   what:"Three lectures by Oxford's Professor of Computer Science: how AI works and learns, AI in everyday use, and whether its future is a dream or a nightmare. Free on the Ri site.",
+   think:"Watch the first lecture. Explain in two sentences how the system he shows learns from data, and what it cannot do.",tags:["free","lectures"],url:"https://www.rigb.org/christmas-lectures/watch-2023-christmas-lectures",lt:"Ri 2023 lectures"},
+  {s:"Cp",g:"watch",short:"Computerphile",name:"Computerphile (University of Nottingham academics)",mins:15,t:"one video: 10–20 min",th:"1.4 Data types, structures, algorithms",
+   what:"Short videos where researchers explain one idea each: sorting, recursion, hashing, public-key cryptography, compilers, machine learning. The newest ones also come in through upstream.",
+   think:"Search the channel for the topic you are on in class this week. Write down one thing the video explains better than your notes.",tags:["free","YouTube"],url:"https://www.youtube.com/@Computerphile",lt:"Computerphile"},
+  {s:"Cx",g:"watch",short:"CS50x (Harvard)",name:"CS50x: Harvard's introduction to computer science",mins:900,t:"eleven weeks",th:"2.2 Problem solving and programming",
+   what:"Harvard's first-year course, free online: C, Python, SQL, web programming, algorithms and data structures, and AI, with problem sets and a final project. The certificate costs money; the course does not.",
+   think:"Do week 0 and week 1 and the first problem set. Good preparation for the programming project over the summer of Year 12.",tags:["free","course"],url:"https://cs50.harvard.edu/x/",lt:"CS50x"},
+  {s:"Sl",g:"watch",short:"Strachey Lectures",name:"Oxford Strachey Lectures (University of Oxford podcasts)",mins:60,t:"one lecture: an hour",th:"Beyond the course",
+   what:"Research lectures by leading computer scientists, recorded each term; recent speakers include Shafi Goldwasser on cryptography and machine learning and Kevin Buzzard on whether computers will prove theorems. Research level: for Year 13 applicants to Oxford and Cambridge.",
+   think:"Pick one lecture and write a one-page summary: the question, the answer so far, and what is still open.",tags:["free","research level"],url:"https://podcasts.ox.ac.uk/series/strachey-lectures",lt:"Strachey Lectures"},
+  {s:"Tm",g:"watch",short:"What's an algorithm?",name:"David J. Malan: What's an algorithm? (TED-Ed)",mins:5,t:"5 min",th:"2.3 Algorithms",
+   what:"The phone-book problem, solved three ways, by the man who teaches CS50.",
+   think:"Write his phone-book method as pseudocode. Which searching algorithm from 2.3 is it, and what is its time complexity in Big O notation?",tags:["free","TED"],url:"https://www.ted.com/talks/david_j_malan_what_s_an_algorithm",lt:"Watch"},
+  {s:"Tb",g:"watch",short:"Bias in algorithms",name:"Joy Buolamwini: How I'm fighting bias in algorithms",mins:9,t:"9 min",th:"1.5 Legal, moral, ethical",
+   what:"A researcher finds that face-detection software cannot see her face until she puts on a white mask, and traces the cause to the data it was trained on.",
+   think:"Explain how a training set can produce a biased system, and say who should be accountable when it does.",tags:["free","TED"],url:"https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms",lt:"Watch"},
+  {s:"Tc",g:"watch",short:"Blind faith in big data",name:"Cathy O'Neil: The era of blind faith in big data must end",mins:13,t:"13 min",th:"1.5 Legal, moral, ethical",
+   what:"A mathematician on algorithms that score teachers, set prison sentences and screen job applicants, and why their owners rarely test them.",
+   think:"Pick one algorithm she describes. What data goes in, what is it optimising for, and how would you test it for bias?",tags:["free","TED"],url:"https://www.ted.com/talks/cathy_o_neil_the_era_of_blind_faith_in_big_data_must_end",lt:"Watch"},
+  {s:"Tk",g:"watch",short:"How algorithms shape our world",name:"Kevin Slavin: How algorithms shape our world",mins:15,t:"15 min",th:"1.5 Legal, moral, ethical",
+   what:"Trading algorithms, film recommendations, and the shape of buildings built to make trades faster.",
+   think:"Choose one example from the talk. Which decisions are made by the algorithm and which by people? Who is responsible when it goes wrong?",tags:["free","TED"],url:"https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world",lt:"Watch"},
+  {s:"Ts",g:"watch",short:"AI is weirder than you think",name:"Janelle Shane: The danger of AI is weirder than you think",mins:10,t:"10 min",th:"2.1 Computational thinking",
+   what:"Systems that do exactly what they were told and not what was meant. Set as a pair with Stuart Russell's talk: the two disagree about where the risk lies.",
+   think:"Treat one of her examples as a badly specified problem. Using abstraction and thinking ahead (2.1), rewrite the goal so the system does what was meant.",tags:["free","TED","argue with it"],url:"https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think",lt:"Watch"},
+  {s:"Tr",g:"watch",short:"3 principles for safer AI",name:"Stuart Russell: 3 principles for creating safer AI",mins:17,t:"17 min",th:"1.5 Legal, moral, ethical",
+   what:"An AI researcher argues that machines should be built uncertain about what we want. Set as a pair with Janelle Shane's talk.",
+   think:"Russell and Shane disagree about where the risk from AI lies. Which of them do you find more convincing, and what evidence would change your mind?",tags:["free","TED","argue with it"],url:"https://www.ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai",lt:"Watch"},
+  {s:"Tl",g:"watch",short:"What's wrong with your pa$$w0rd?",name:"Lorrie Faith Cranor: What's wrong with your pa$$w0rd?",mins:17,t:"17 min",th:"1.3 Exchanging data",
+   what:"A study of thousands of real passwords, and what password rules actually do to them.",
+   think:"Why do sites store a hash of a password rather than the password itself (1.3 hashing)? Why does a password policy change what an attacker tries first?",tags:["free","TED"],url:"https://www.ted.com/talks/lorrie_faith_cranor_what_s_wrong_with_your_pa_w0rd",lt:"Watch"},
+  {s:"Ta",g:"watch",short:"All your devices can be hacked",name:"Avi Rubin: All your devices can be hacked",mins:17,t:"17 min",th:"1.3 Exchanging data",
+   what:"Cars, pacemakers and phones, and the attacks researchers have shown on each.",
+   think:"Pick one attack he describes. Which layer of the TCP/IP stack does it use, and what defence from 1.3 would stop it?",tags:["free","TED"],url:"https://www.ted.com/talks/avi_rubin_all_your_devices_can_be_hacked",lt:"Watch"},
+  {s:"Tq",g:"watch",short:"Quantum computing in 10 min",name:"Shohini Ghose: A beginner's guide to quantum computing",mins:10,t:"10 min",th:"1.3 Exchanging data",
+   what:"Qubits, superposition, and what a quantum computer would and would not be good at. Her claim about 'unbreakable encryption' is there to be tested.",
+   think:"Which of the encryption methods in 1.3 would a large quantum computer threaten, and why? Test her claim about unbreakable encryption.",tags:["free","TED","argue with it"],url:"https://www.ted.com/talks/shohini_ghose_quantum_computing_explained_in_10_minutes",lt:"Watch"},
+  {s:"Bp",g:"watch",short:"Bletchley Park and TNMOC",name:"Bletchley Park and The National Museum of Computing",mins:420,t:"a day out",th:"Beyond the course",
+   what:"Two museums on one site in Milton Keynes. Bletchley Park tells the story of the wartime codebreakers; The National Museum of Computing, next door, runs working historic machines, from the rebuilt Bombe and Colossus onwards. Both charge for entry: check prices, and check opening days, because the computing museum is not open every day. The department's enrichment plan includes a trip here.",
+   think:"Find the rebuilt Colossus. Write down what it was built to do and how that differs from a modern general-purpose computer (1.1).",tags:["tickets","Milton Keynes","department trip"],url:"https://www.tnmoc.org/",lt:"TNMOC",more:[{url:"https://www.bletchleypark.org.uk/",lt:"Bletchley Park"}]},
+  // ---- read/
+  {s:"Qm",g:"read",short:"Quanta: Computer Science",name:"Quanta Magazine: Computer Science",mins:20,t:"one article: 20 min",th:"2.3 Algorithms",
+   what:"Free, well-written articles on theoretical computer science, algorithms and AI research. Recommended on Cambridge Computer Science's super-curricular page. New ones also come in through upstream.",
+   think:"Read one article about an algorithm or a proof. Write the problem in one sentence, and what the new result changes.",tags:["free","articles"],url:"https://www.quantamagazine.org/computer-science/",lt:"Quanta CS"},
+  {s:"Cf",g:"read",short:"cs4fn",name:"cs4fn (Queen Mary University of London)",mins:10,t:"an article: 10 min",th:"Beyond the course",
+   what:"Short articles and free downloadable magazines on computer science in everyday life, history and culture. A good place to start.",
+   think:"Read three articles. Pick the one that surprised you most and say which part of H446 it belongs to.",tags:["free","articles"],url:"https://www.cs4fn.blog/",lt:"cs4fn"},
+  {s:"Cl",g:"read",short:"Cambridge's own list",name:"Cambridge Computer Science: super-curricular activities",mins:15,t:"15 min",th:"Applying",
+   what:"The department's own list of what it wants to see from applicants: projects, programming challenges, competitions, reading and YouTube channels.",
+   think:"Tick off what on their list you have done already. Pick one thing you haven't and put it on your roadmap.",tags:["free","Oxbridge"],url:"https://www.cst.cam.ac.uk/admissions/undergraduate/super-curricular-activities",lt:"Cambridge CST"},
+  {s:"He",g:"read",short:"Cambridge HE+",name:"Cambridge HE+ Computer Science",mins:30,t:"30 min",th:"Beyond the course",
+   what:"Cambridge's subject pages for sixth formers, with a featured resource on programming and climate change and links onward to practice sites.",
+   think:"Do the featured resource. Write down one question it raised that the A level does not answer.",tags:["free"],url:"https://www.myheplus.com/subject/computer-science",lt:"HE+ CS"},
+  {s:"Cb",g:"read",short:"The Code Book",name:"Simon Singh: The Code Book",mins:600,t:"a book",th:"1.3 Exchanging data",
+   what:"The history of codes and codebreaking from Mary Queen of Scots to public-key cryptography. On both the Cambridge and St Anne's reading lists. Read it alongside the Cipher Challenge.",
+   think:"When you reach the chapter on public-key cryptography, explain in your own words why the key you publish cannot be used to decrypt (1.3 asymmetric encryption).",tags:["library"]},
+  {s:"To",g:"read",short:"The New Turing Omnibus",name:"A. K. Dewdney: The New Turing Omnibus",mins:600,t:"66 short chapters",th:"2.3 Algorithms",
+   what:"66 short chapters, each on one idea in computer science. On the Cambridge list. Dip in.",
+   think:"Read the chapters on any two algorithms from 2.3. Note one thing each chapter adds to what your textbook says.",tags:["library"]},
+  {s:"Aa",g:"read",short:"Algorithmic Adventures",name:"Juraj Hromkovič: Algorithmic Adventures",mins:900,t:"a book: harder",th:"2.3 Algorithms",
+   what:"What computers can and cannot do: computability, complexity and randomness, for a general reader. On the Cambridge list. Stretch reading for Year 13.",
+   think:"Read the chapter on problems no algorithm can solve. Explain one in two sentences, the way you would at interview.",tags:["library","harder"]},
+  {s:"Qc",g:"read",short:"Computing with Quantum Cats",name:"John Gribbin: Computing with Quantum Cats",mins:600,t:"a book",th:"1.1 Processors and devices",
+   what:"The history and principles of quantum computing. Pairs with Shohini Ghose's talk.",
+   think:"Explain what a qubit can hold that a bit cannot, and why that does not make a quantum computer faster at everything.",tags:["library"]},
+  {s:"Lv",g:"read",short:"Lovelace's Note G",name:"Ada Lovelace: Notes on the Analytical Engine (1843)",mins:40,t:"Note G: 40 min",th:"1.2 Software and development",
+   what:"Lovelace's translation of Menabrea's paper on Babbage's Analytical Engine, with her own Notes, which are longer than the paper. Note G works through, step by step, how the engine would calculate Bernoulli numbers. A primary text, free online.",
+   think:"Read Note G. Find where the same operations are repeated, and say what we would now call it (2.2 iteration).",tags:["free","primary text"],url:"https://www.fourmilab.ch/babbage/sketch.html",lt:"The Notes"},
+  {s:"Ew",g:"read",short:"Go To Considered Harmful",name:"Edsger Dijkstra: 'Go To Statement Considered Harmful' (1968)",mins:15,t:"two pages",th:"2.2 Problem solving and programming",
+   what:"A two-page letter that changed how programs are written: Dijkstra argues that jumps make a program impossible to follow, and that sequence, selection and iteration are enough. From the archive of his manuscripts at the University of Texas.",
+   think:"Summarise his argument in two sentences. Then find a place in your own code where a break or an early return makes it harder to follow, or easier.",tags:["free","primary text"],url:"https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD215.html",lt:"EWD 215"},
+  {s:"Sp",g:"read",short:"The H446 specification",name:"OCR A Level Computer Science (H446) specification",mins:40,t:"the project section: 40 min",th:"Programming project (NEA)",
+   what:"The specification itself. The programming project section sets out what the analysis, design, development and evaluation have to show, with the marking criteria. The Component 01 and 02 content lists are the checklist for everything else.",
+   think:"Read the project marking criteria. Write down three things your project will need to show that a programming exercise in lessons does not.",tags:["free","PDF"],url:"https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf",lt:"H446 specification"},
+  // ---- do/
+  {s:"Ad",g:"do",short:"Ada Computer Science",name:"Ada Computer Science",mins:30,t:"a topic: 30 min",th:"1.4 Data types, structures, algorithms",
+   what:"Free platform from Cambridge Computer Science and the Raspberry Pi Foundation, which replaced Isaac Computer Science in 2023. Explanations and self-marking questions for every A level topic.",
+   think:"Make an account. Pick the topic you are on in class and do ten questions. Write down the one you got wrong and why.",tags:["free","self-marking"],url:"https://adacomputerscience.org/",lt:"Ada Computer Science"},
+  {s:"Bi",g:"do",short:"BIO past problems",name:"British Informatics Olympiad: past problems",mins:60,t:"a problem: an hour",th:"2.2 Problem solving and programming",
+   what:"Olympiad papers and mark schemes from 1995, sorted into beginner, intermediate and advanced problems. The best practice for the real BIO in December.",
+   think:"Solve three beginner problems in the language you use in class. Then time your program on the largest input the problem allows.",tags:["free"],url:"https://www.olympiad.org.uk/problems.html",lt:"BIO problems"},
+  {s:"Ch",g:"do",short:"Christ Church Python Challenges",name:"Christ Church, Oxford: Python Challenges",mins:400,t:"a project: a few weekends",th:"2.2 Problem solving and programming",
+   what:"Five mini-projects for Year 12: computer art, song recognition, reading Wikipedia, walking every street in Oxford, and image processing. Each has three targets, hints and sample solutions. Free software only.",
+   think:"Pick one project and reach the first target without the hints. Keep the code: it is a small version of what the programming project asks for.",tags:["free","Oxford"],url:"https://www.chch.ox.ac.uk/college/outreach/python-challenges",lt:"Python Challenges"},
+  {s:"Ac",g:"do",short:"Advent of Code",name:"Advent of Code",mins:30,t:"a puzzle a day from 1 December",th:"2.2 Problem solving and programming",
+   what:"Daily programming puzzles from 1 December, in any language; since 2025 the run ends in mid-December. Recommended by Cambridge Computer Science.",
+   think:"Do the first five days. Write down which data structure each one needed.",tags:["free","from 1 Dec"],url:"https://adventofcode.com/",lt:"adventofcode.com"},
+  {s:"Bb",g:"do",short:"Bebras past challenges",name:"UK Bebras: past challenges",mins:45,t:"one challenge: 45 min",th:"2.1 Computational thinking",
+   what:"Every previous Bebras challenge, open without a login. Practice for the real one in November.",
+   think:"Do a past Elite challenge in 45 minutes. For the question you found hardest, name the computational thinking idea it was testing (2.1).",tags:["free","no login"],url:"https://www.bebras.uk/",lt:"bebras.uk"},
+  {s:"Lm",g:"do",short:"Little Man Computer",name:"Little Man Computer simulator (Peter Higginson)",mins:30,t:"30 min",th:"1.2 Software and development",
+   what:"A free browser simulator of the Little Man Computer, the assembly language the H446 specification uses. Type a program, step through it, and watch the program counter, the accumulator and memory change at each step.",
+   think:"Write a program that inputs two numbers and outputs the larger. Step through it and write down what is in the program counter and the accumulator after each instruction (1.1 fetch-decode-execute).",tags:["free","in the browser"],url:"https://peterhigginson.co.uk/lmc/",lt:"LMC simulator"},
+  {s:"Lg",g:"do",short:"Learn Git Branching",name:"Learn Git Branching",mins:60,t:"the first levels: an hour",th:"Programming project (NEA)",
+   what:"An interactive tutorial for Git, the version control system: commits, branches, merges and rebasing, drawn as a graph while you type the commands. The department's plan names version control as part of developing the programming project. This page is drawn as a repository for the same reason.",
+   think:"Finish the introduction sequence. Then explain in two sentences why you would make a branch before trying a risky change to your project.",tags:["free","in the browser"],url:"https://learngitbranching.js.org/",lt:"Learn Git Branching"},
+  {s:"Sq",g:"do",short:"SQLBolt",name:"SQLBolt: interactive SQL lessons",mins:60,t:"an hour",th:"1.3 Exchanging data",
+   what:"Short lessons in SQL with an exercise after each, run in the browser: SELECT, WHERE, JOIN, ORDER BY, INSERT, UPDATE, DELETE. Covers what H446 asks you to interpret and modify.",
+   think:"Do the lessons up to JOINs. Then write one query that joins two tables you invent, with a primary key and a foreign key.",tags:["free","in the browser"],url:"https://sqlbolt.com/",lt:"SQLBolt"},
+  {s:"Nt",g:"do",short:"Nand to Tetris",name:"Nand to Tetris: build a computer from logic gates",mins:900,t:"weeks",th:"1.4 Data types, structures, algorithms",
+   what:"A free course in which you build a working computer from NAND gates upwards: logic gates, adders, memory, a CPU, an assembler. The tools are free. Projects 1 and 2 cover the H446 logic gates and the half and full adders.",
+   think:"Do Project 1. Build XOR from NAND gates only and check it against its truth table (1.4 Boolean logic).",tags:["free","course"],url:"https://www.nand2tetris.org/",lt:"nand2tetris.org"},
+  {s:"Pe",g:"do",short:"Project Euler",name:"Project Euler",mins:30,t:"a problem: 30 min",th:"2.3 Algorithms",
+   what:"Hundreds of problems that need both maths and a program. The first ones are short; later ones need a better algorithm than brute force to finish in time. A free account checks your answers.",
+   think:"Solve problems 1 to 5. For one of them write the brute-force version and a faster one, and compare them in Big O notation.",tags:["free"],url:"https://projecteuler.net/",lt:"Project Euler"},
+  // ---- enter/
+  {s:"Bo",g:"enter",short:"British Informatics Olympiad",name:"British Informatics Olympiad (BIO)",mins:600,t:"Round 1: 3 hours, Dec–Jan",th:"2.2 Problem solving and programming",
+   what:"A 3-hour paper of three problems, each solved by writing a program in any language, sat in school. The best scorers go to a final in Cambridge at Easter, and the top four form the UK team for the International Olympiad in Informatics. Free. The school registers in early December; in 2025-26 Round 1 ran from 8 December to 23 January.",
+   think:"Do two past papers in the language you will use. Make sure you can read input and print output exactly as the paper asks: that is where marks go.",tags:["free","through school","Dec–Jan"],url:"https://www.olympiad.org.uk/",lt:"olympiad.org.uk"},
+  {s:"Be",g:"enter",short:"Bebras (Elite)",name:"UK Bebras Challenge: Elite group",mins:45,t:"45 min, 9–20 Nov",th:"2.1 Computational thinking",
+   what:"45 minutes of computational thinking problems online, marked automatically. The Elite group is Years 12 and 13. The window is 9–20 November 2026; the department enrols you, you cannot enter alone.",
+   think:"Try two past challenges first (they are in do/). Then tap the button so the department has your name.",tags:["free","through school","9–20 Nov"],url:"https://www.bebras.uk/",lt:"bebras.uk"},
+  {s:"Rc",g:"enter",short:"RPF Coding Challenge",name:"Raspberry Pi Foundation Coding Challenge (formerly the Oxford University Computing Challenge)",mins:45,t:"45 min, January",th:"2.2 Problem solving and programming",
+   what:"A 45-minute coding challenge, block-based or text-based, at two levels, sat in school. Only open if the school has done Bebras first. The 2027 date is not yet published; it has run in January.",
+   think:"Do Bebras in November, then tap the button: the department gets the invitation through Bebras.",tags:["free","through school","check date"],url:"https://www.bebras.uk/index.php?action=content&id=132",lt:"Coding Challenge"},
+  {s:"Ci",g:"enter",short:"National Cipher Challenge",name:"National Cipher Challenge (University of Southampton)",mins:600,t:"weekly, to January",th:"1.3 Exchanging data",
+   what:"A series of codes to break online over the autumn term, getting harder each week. Enter on your own or as a team. Registration opened on 24 September 2026; the challenges run to January, and the prize-giving is at Bletchley Park in March 2027.",
+   think:"Register and do the first challenge before half term. Write down which cipher it was and how you broke it.",tags:["free","enter yourself","teams"],url:"https://www.cipherchallenge.org/",lt:"cipherchallenge.org"},
+  {s:"Pg",g:"enter",short:"PCTC Gold Rush",name:"Perse Coding Team Challenge: Sixth Form Gold Rush",mins:50,t:"50 min, 15–19 Mar",th:"2.2 Problem solving and programming",
+   what:"50 minutes, on your own, on six questions from the Round 2 paper. Certificates only. 15–19 March 2027; the school registers a supervising teacher at least a week before. The main PCTC team rounds are for Year 11 and below.",
+   think:"Tap the button so the department registers a supervisor in time.",tags:["free","through school","15–19 Mar 2027"],url:"https://pctc.perse.co.uk/",lt:"PCTC"},
+  {s:"Ap",g:"enter",short:"Astro Pi: Mission Space Lab",name:"Astro Pi: Mission Space Lab (ESA and the Raspberry Pi Foundation)",mins:900,t:"a team project: weeks",th:"2.2 Problem solving and programming",
+   what:"Teams of two to six, aged 19 or under, with a teacher as mentor, write a Python program that collects data from the sensors or camera on the Astro Pi computers aboard the International Space Station. One project guide measures the speed of the ISS; teams can design their own. Programs that pass testing run on the ISS in April and May 2027, and teams get their data back. Registration is open until 12:00 CET on Monday 22 February 2027, which is also the deadline for programs.",
+   think:"Read the project guide. Decompose the problem (2.1): what does the program measure, how often, and how will you check the answer is sensible?",tags:["free","teams","22 Feb 2027"],url:"https://astro-pi.org/mission-space-lab/",lt:"Mission Space Lab"},
+  {s:"Co",g:"enter",short:"Coolest Projects",name:"Coolest Projects online showcase (Raspberry Pi Foundation)",mins:600,t:"show something you have made",th:"Programming project (NEA)",
+   what:"A free showcase for young people up to 18 to share something they have made with technology: a game, an app, a website, a piece of hardware. Projects go into an online gallery, get feedback, and everyone gets a certificate. In 2026 entries opened in January and the online deadline was 27 May; 2027 dates are not out yet.",
+   think:"Pick the best thing you have built this year. Write the 100-word description you would enter it with: what it does, who it is for, what was hardest.",tags:["free","enter yourself","check dates"],url:"https://coolestprojects.org/",lt:"Coolest Projects"},
+  // ---- apply/
+  {s:"Un",g:"apply",short:"UNIQ: Computer Science",name:"UNIQ: Computer Science (University of Oxford)",mins:600,t:"online, then a week in Oxford",th:"Applying",
+   what:"A free online programme plus a residential in Oxford, with lectures, programming and problem-solving from the Computer Science department. For Year 12 at UK state schools, with priority for under-represented backgrounds. The 2027 application dates are not yet published; applications have usually opened in the winter.",
+   think:"Read the eligibility criteria now, so you are ready when applications open.",tags:["free","Year 12","check dates"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  {s:"Nu",g:"apply",short:"Nuffield Research Placements",name:"Nuffield Research Placements",mins:900,t:"a summer placement",th:"Applying",
+   what:"A summer research placement with a university or industry team, now run by STEM Learning. Eligibility criteria apply. Named on Cambridge Computer Science's super-curricular page. Applications usually open in the autumn term.",
+   think:"Read the eligibility criteria. If you meet them, tap the button and your teacher will talk to you about applying.",tags:["free","Year 12","eligibility"],url:"https://www.nuffieldfoundation.org/evidence-and-impact/our-programmes/students-teachers/nuffield-research-placements",lt:"Nuffield"},
+  {s:"In",g:"apply",short:"In2STEM",name:"In2STEM (In2Science UK)",mins:900,t:"one to two weeks in summer",th:"Applying",
+   what:"In-person work experience with researchers plus online workshops; free, with a travel and lunch bursary. Eligibility criteria apply. In 2026 applications opened in December and closed in April.",
+   think:"Check the eligibility criteria and put the opening date on your roadmap.",tags:["free","Year 12","eligibility"],url:"https://in2scienceuk.org/our-programmes/in2stem/",lt:"In2STEM"},
+  {s:"Cy",g:"apply",short:"CyberFirst summer course",name:"CyberFirst summer courses (NCSC)",mins:900,t:"a week in late July",th:"1.3 Exchanging data",
+   what:"Week-long cyber security courses for 16–17-year-olds, advertised as free and delivered by QA with universities. The NCSC's 2026 pathway lists some CyberFirst Advanced labs as paid, so check the cost before applying. Courses ran in late July in 2026.",
+   think:"Check the cost and the dates for 2027 before applying. Tap the button and your teacher will help.",tags:["check cost","Year 12"],url:"https://www.qa.com/browse/courses/cyber-security/cyberfirst/",lt:"CyberFirst"},
+  {s:"Tf",g:"apply",short:"TechFirst Scholarship",name:"TechFirst Undergraduate Scholarship (UK Government)",mins:120,t:"an application",th:"Applying",
+   what:"£4,000 a year of your degree, summer placement opportunities and a network, for Year 13 heading for a tech-related course at any UK university. Applications for 2027-28 entry open in autumn 2026; confirm the date on GOV.UK.",
+   think:"Year 13: read the criteria this term and tap the button so your tutor knows.",tags:["free","Year 13"],url:"https://www.gov.uk/guidance/techfirst",lt:"TechFirst"},
+  {s:"Ed",g:"apply",short:"EDT Year in Industry",name:"EDT Year in Industry (Platinum Placements)",mins:900,t:"a paid gap year",th:"Applying",
+   what:"A paid 12-month placement with a STEM employer before university; the service is free to students. Registration of interest for 2027-28 placements opened on 1 October 2026.",
+   think:"Year 13 thinking about a gap year: register interest this term.",tags:["paid placement","Year 13"],url:"https://www.etrust.org.uk/programmes-platinum-placements",lt:"EDT"},
+  {s:"Ox",g:"apply",short:"Oxford: Computer Science",name:"University of Oxford: Computer Science",mins:30,t:"the course page: 30 min",th:"Applying",
+   what:"Offer A*AA, including A*A in Maths and Further Maths if your school offers it. Every applicant sits the TMUA (both papers); for this year's applicants it runs 12–16 October 2026. Applications close at 6pm on 15 October.",
+   think:"Read the first-year course outline. Find two topics you have met in H446 and one you have not, and read about that one.",tags:["Oxbridge","15 Oct"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/computer-science",lt:"Oxford CS",more:[{url:"https://www.cs.ox.ac.uk/admissions/undergraduate/home.html",lt:"Department admissions"}]},
+  {s:"Cm",g:"apply",short:"Cambridge: Computer Science",name:"University of Cambridge: Computer Science",mins:30,t:"the course page: 30 min",th:"Applying",
+   what:"Typical offer A*A*A, with Maths, and Further Maths if your school offers it. Every applicant sits the TMUA; applicants to Peterhouse and Trinity also take the Computer Sciences Aptitude Test (CSAT). Applications close on 15 October.",
+   think:"Read the course page and the department's super-curricular list (in read/). Write down what you would talk about if asked why computer science.",tags:["Oxbridge","15 Oct"],url:"https://www.undergraduate.study.cam.ac.uk/courses/computer-science-ba-hons-meng",lt:"Cambridge CS"},
+  {s:"Ml",g:"apply",short:"Oxford maths livestreams",name:"Oxford Mathematics: admissions test livestreams",mins:120,t:"Thursdays, 5–7pm",th:"Applying",
+   what:"Free livestreams on Thursdays, 5–7pm, on problem-solving with a focus on the TMUA and maths interviews; recordings and weekly worksheets. No registration. Useful wherever your universities set the TMUA.",
+   think:"Watch one session and do the worksheet. Note the kind of question that took you longest.",tags:["free","TMUA"],url:"https://www.maths.ox.ac.uk/r/matlive",lt:"Livestreams"},
+  {s:"Fa",g:"apply",short:"Degree apprenticeships",name:"Degree apprenticeships in software and cyber (GOV.UK)",mins:30,t:"a search: 30 min",th:"Applying",
+   what:"Search the government's apprenticeship service for 'software developer' or 'cyber security' degree apprenticeships: a full degree while working and being paid, with no tuition fees to pay. Large employers open applications in the autumn of Year 13.",
+   think:"Find two computing degree apprenticeships within reach of Birmingham. Note the entry grades, the closing date and what the employer asks for.",tags:["free","Year 13"],url:"https://www.findapprenticeship.service.gov.uk/",lt:"Find an apprenticeship"}
+];
+
+/* The roadmap. m = month (YYYY-MM). s links to an item. */
+const YEAR = [
+  {m:"2026-10",when:"12–16 Oct",what:"TMUA sat by Oxford and Cambridge applicants",sub:"Year 13. Check your own test slot.",s:"Ox",check:false,urgent:true},
+  {m:"2026-10",when:"Thu 15 Oct, 6pm",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants, through UCAS.",s:"Cm",check:false,urgent:true},
+  {m:"2026-10",when:"Wed 14 and 22 Oct",what:"Bebras: coordinator webinars",sub:"For the department; the Elite group enrols through school.",s:"Be",check:false},
+  {m:"2026-10",when:"All term",what:"National Cipher Challenge running",sub:"A new challenge each week until January.",s:"Ci",check:false},
+  {m:"2026-11",when:"9–20 Nov",what:"UK Bebras Challenge",sub:"45 minutes, in school.",s:"Be",check:false},
+  {m:"2026-11",when:"Wed 18 Nov, 2–3pm",what:"Gresham schools-only talk: Victoria Baines",sub:"'Masters of the Cyberverse'. The department gets the link.",s:"Gi",check:false},
+  {m:"2026-12",when:"Early December",what:"BIO: school registration",sub:"Tap 'I want to enter' before the end of November.",s:"Bo",check:true},
+  {m:"2026-12",when:"Tue 1 Dec",what:"Advent of Code begins",sub:"A puzzle a day, to mid-December.",s:"Ac",check:true},
+  {m:"2026-12",when:"Dec – Jan",what:"BIO Round 1, in school",sub:"In 2025-26: 8 December to 23 January.",s:"Bo",check:true},
+  {m:"2027-01",when:"Wed 13 Jan, 6pm",what:"UCAS deadline for most courses",sub:"Computing applicants not applying to Oxford or Cambridge.",s:"",check:false},
+  {m:"2027-01",when:"January",what:"RPF Coding Challenge",sub:"For schools that did Bebras.",s:"Rc",check:true},
+  {m:"2027-01",when:"January",what:"Coolest Projects opens; UNIQ applications",sub:"Both opened in the winter last year.",s:"Co",check:true},
+  {m:"2027-02",when:"Mon 22 Feb, 12:00 CET",what:"Astro Pi: Mission Space Lab programs due",sub:"Registration closes the same day.",s:"Ap",check:false},
+  {m:"2027-03",when:"15–19 Mar",what:"PCTC Sixth Form Gold Rush",sub:"The school registers a supervisor a week before.",s:"Pg",check:false},
+  {m:"2027-03",when:"March",what:"Cipher Challenge prize-giving, Bletchley Park",sub:"For the winners.",s:"Ci",check:false},
+  {m:"2027-04",when:"Easter",what:"BIO final, Cambridge",sub:"For anyone invited after Round 1. 2026: 3–5 April.",s:"Bo",check:true},
+  {m:"2027-04",when:"April",what:"In2STEM applications close",sub:"Last year's pattern.",s:"In",check:true},
+  {m:"2027-04",when:"Apr – May",what:"Mission Space Lab programs run on the ISS",sub:"Data back to teams May–June.",s:"Ap",check:false},
+  {m:"2027-05",when:"Late May",what:"Coolest Projects online deadline",sub:"27 May in 2026.",s:"Co",check:true},
+  {m:"2027-06",when:"June",what:"CyberFirst summer course applications",sub:"Check the cost first.",s:"Cy",check:true},
+  {m:"2027-07",when:"Late July",what:"CyberFirst summer courses",sub:"Week-long.",s:"Cy",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three issues are wanted by, and
+      the three issues (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching. Upstream updates itself.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three issues assigned to you before half term. Close them, and write a commit for each.",
+  items:[
+    {s:"Ci",step:"Enter",txt:"Register for the National Cipher Challenge and do the first challenge before half term."},
+    {s:"Tb",step:"Watch",txt:"Watch Joy Buolamwini's talk on bias in algorithms (9 min) and write down who you think should be accountable when a system is biased."},
+    {s:"Bi",step:"Do",txt:"Try three problems from the BIO beginner set in the language you use in class."}
+  ]
+};
+const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-cs-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+const ORDER = Object.keys(FAM);   // branch order, top to bottom
+/* issue numbers run through the whole repo; pn = folder letter and number within it, e.g. E-03 */
+ORDER.forEach(g=>{ let a=0; ITEMS.filter(i=>i.g===g).forEach(i=>{ i.pn = FAM[g].letter+"-"+String(++a).padStart(2,"0"); }); });
+ITEMS.sort((a,b)=>FAM[a.g].no-FAM[b.g].no);
+ITEMS.forEach((it,i)=>{ it.n=i+1; if(!it.added) it.added=COMPILED; if(!it.tags) it.tags=[]; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+
+/* ---------- state ---------- */
+const KEY_BASE="cs-beyond-demo";
+let KEY=KEY_BASE;
+// done[s] = the date the issue was closed (YYYY-MM-DD)
+const blank=()=>({done:{},notes:[],news:{},interest:{},fam:"all",bucket:"quick",at:"listen",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the issue just closed, for the animation
+let JUST_MERGE=null;  // the branch just merged
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const slug=s=>String(s||"you").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"you";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const plural=(n,w,ws)=>n+" "+(n===1?w:(ws||w+"s"));
+function hash7(s){ let h=2166136261; for(const c of String(s)){ h^=c.charCodeAt(0); h=Math.imul(h,16777619)>>>0; } return h.toString(16).padStart(8,"0").slice(0,7); }
+
+/* ---------- the repo: issues closed, branches merged, contributions ---------- */
+const STATE_NAME=["no branch","branched","PR open","merged"];
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function secState(n,t){ return !n?0 : n>=t?3 : n*2>=t?2 : 1; }   // 0 no branch, 1 branched, 2 PR open, 3 merged
+function repo(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
+  const merged=ORDER.filter(g=>sec[g]===3).length;
+  return {c,t,N,k,pct,sec,merged};
+}
+/* contributions: for each day, issues closed + commits written + news pulled */
+const YEAR0=new Date(2026,7,31);   // Monday 31 August 2026
+const WEEKS=48;
+const isoOf=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+function contribs(){
+  const m={}; const add=d=>{ if(typeof d==="string" && /^\d{4}-\d\d-\d\d/.test(d)){ const k=d.slice(0,10); m[k]=(m[k]||0)+1; } };
+  Object.values(state.done).forEach(add); (state.notes||[]).forEach(n=>add(n.date)); Object.values(state.news||{}).forEach(n=>add(n.d));
+  return m;
+}
+function weekOf(iso){ const d=new Date(iso+"T12:00:00"); return Math.floor((d-YEAR0)/(7*864e5)); }
+function contribStats(){
+  const m=contribs(); const total=Object.values(m).reduce((a,b)=>a+b,0);
+  const wk=new Set(Object.keys(m).map(weekOf).filter(w=>w>=0&&w<WEEKS));
+  let run=0; const tw=weekOf(today());
+  for(let w=tw; w>=0; w--){ if(wk.has(w)) run++; else if(w===tw) continue; else break; }
+  return {m,total,days:Object.keys(m).length,weeks:wk.size,run};
+}
+
+/* ---------- Mallard leaves review comments ---------- */
+let _rt=null;
+function say(txt){ $("bubbleTxt").textContent=txt; const r=$("radio"); r.classList.add("talk"); clearTimeout(_rt); _rt=setTimeout(()=>r.classList.remove("talk"),2600); }
+function greeting(){
+  const G=repo(); const n=G.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}, welcome to your repo. I'm Mallard. I review things. You have ${ITEMS.length} open issues in six folders and no commits yet. Start with the three on the milestone, or press Assign me one and I'll pick one for you.`;
+  if(!n) return `${firstName()}. ${ITEMS.length} open issues, nothing committed. The Buolamwini talk on the milestone is nine minutes.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${plural(n,"issue")} closed, ${G.k} of 6 branches started. ${ht} of ${HALFTERM.items.length} on the milestone done.`;
+  if(G.k<6) return `${firstName()}. ${plural(n,"issue")} closed. No branch yet for ${ORDER.filter(g=>!G.c[g]).map(g=>FAM[g].dir).slice(0,2).join(" or ")}. That's where your open issues are.`;
+  if(G.merged<6) return `${firstName()}. All six branches started: ${n} of ${ITEMS.length} issues closed, ${G.merged} merged. Keep writing commits; that's the part anyone else reads.`;
+  return `${firstName()}. Everything merged into main. Now check your commit log says what you found out, not just what you did.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const G=repo(); const C=contribStats();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Computer Science",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           repo:{pct:G.pct, branches:G.k, closed:G.N, merged:G.merged, states:G.sec, contributions:C.total, activeDays:C.days, activeWeeks:C.weeks, weekRun:C.run},
+           newsN:Object.keys(state.news||{}).length, news:Object.values(state.news||{}),
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="cs-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="listen";
+  if(!state.news) state.news={};
+  Object.keys(state.done).forEach(s=>{ if(state.done[s]===true) state.done[s]=today(); });
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("repoPath").textContent=`soho.foundry / ${slug(cand)} / beyond-the-classroom · six folders, one school year, and upstream every morning`;
+  $("winTitle").textContent=`beyond-the-classroom — soho.foundry/${slug(cand)}`;
+  $("nbCover").textContent=`commits.log · ${cand} · ${cls}`;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("cs-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Cloning…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the window: file tree, branch graph, contributions ---------- */
+const MAIN_Y=134, LANE_Y0=186, LANE_GAP=50, LX0=540, LX1=1300, FORK_X=462;
+const laneY=g=>LANE_Y0+(FAM[g].no-1)*LANE_GAP;
+function laneXs(g){ const list=ITEMS.filter(i=>i.g===g); const sp=Math.min(58,(LX1-LX0-40)/Math.max(1,list.length-1)); return list.map((it,k)=>({it,x:LX0+k*sp})); }
+function buildTree(){
+  const t=totals(); let h="";
+  ORDER.forEach((g,i)=>{ const y=128+i*44;
+    h+=`<g class="hot" data-g="${g}" data-f="${g}" tabindex="0" role="button" aria-label="Folder ${FAM[g].dir}: ${esc(FAM[g].verb)}">
+      <rect class="halo" x="26" y="${y-18}" width="238" height="38" rx="5"/>
+      <path d="M44 ${y-8} h9 l3 3 h12 v13 h-24z" fill="var(--g)" opacity=".9"/>
+      <text class="lbl" x="76" y="${y+3}">${FAM[g].dir}</text>
+      <text class="sub" x="76" y="${y+15}">${esc(FAM[g].tree)}</text>
+      <text class="mono" x="252" y="${y+3}" text-anchor="end" font-size="11.5" fill="#a3afbb" id="tc-${g}">0/${t[g]}</text></g>`; });
+  const y7=128+6*44+14;
+  h+=`<line x1="34" y1="${y7-26}" x2="256" y2="${y7-26}" stroke="#2a3542"/>
+    <g class="hot" data-g="news" data-f="news" tabindex="0" role="button" aria-label="Upstream: computer science in the news">
+      <rect class="halo" x="26" y="${y7-18}" width="238" height="38" rx="5"/>
+      <path d="M48 ${y7-8} l8 8 l-8 8 M58 ${y7-8} l8 8 l-8 8" fill="none" stroke="var(--news)" stroke-width="2.4"/>
+      <text class="lbl" x="76" y="${y7+3}">upstream/</text><text class="sub" x="76" y="${y7+15}">7 · in the news</text></g>
+    <g class="hot" data-g="news" data-f="notebook" tabindex="0" role="button" aria-label="commits.log: your commit log">
+      <rect class="halo" x="26" y="${y7+26}" width="238" height="30" rx="5"/>
+      <text class="mono" x="48" y="${y7+46}" font-size="12" fill="#ffd23f">≡</text><text class="lbl" x="76" y="${y7+46}">commits.log</text>
+      <text class="mono" x="252" y="${y7+46}" text-anchor="end" font-size="11.5" fill="#a3afbb" id="tc-notes">0</text></g>
+    <g class="hot" data-g="news" data-f="roadmap" tabindex="0" role="button" aria-label="ROADMAP.md: the year's dates">
+      <rect class="halo" x="26" y="${y7+60}" width="238" height="30" rx="5"/>
+      <text class="mono" x="48" y="${y7+80}" font-size="12" fill="#60a5fa">M↓</text><text class="lbl" x="76" y="${y7+80}">ROADMAP.md</text></g>
+    <g><text class="mono" x="48" y="${y7+114}" font-size="12" fill="#6f7b88">M↓</text><text class="lbl" x="76" y="${y7+114}" fill="#a3afbb" style="fill:#a3afbb">README.md</text></g>`;
+  $("tree").innerHTML=h;
+}
+function buildGraph(){
+  const G=repo(); let h="";
+  // main
+  h+=`<text class="lbl" x="300" y="${MAIN_Y+4}" font-weight="700">main</text>`;
+  h+=`<line x1="${FORK_X-30}" y1="${MAIN_Y}" x2="1352" y2="${MAIN_Y}" stroke="#e9edf1" stroke-width="3"/>`;
+  h+=`<circle cx="${FORK_X-30}" cy="${MAIN_Y}" r="6" fill="#e9edf1"/><text class="sub" x="${FORK_X-30}" y="${MAIN_Y-12}" text-anchor="middle">init</text>`;
+  ORDER.forEach(g=>{
+    const y=laneY(g); const st=G.sec[g]; const on=st>0; const xs=laneXs(g); const fx=FORK_X+(FAM[g].no-1)*9;
+    const lastX=xs[xs.length-1].x;
+    h+=`<g data-g="${g}">`;
+    h+=`<text class="lbl" x="300" y="${y+1}" fill="var(--g)" style="fill:var(--g)">feature/${g}</text>`;
+    h+=`<text class="sub" x="300" y="${y+14}" id="ls-${g}">${G.c[g]}/${G.t[g]} · ${STATE_NAME[st]}</text>`;
+    h+=`<path class="lane${on?"":" off"}" d="M${fx} ${MAIN_Y} C ${fx} ${y-10}, ${fx+10} ${y}, ${fx+40} ${y} L ${lastX} ${y}"/>`;
+    if(st===3){ const mx=Math.min(1340,lastX+50); const anim=JUST_MERGE===g&&!reduceMotion();
+      h+=`<path class="lane${anim?" mergein":""}" d="M${lastX} ${y} C ${lastX+30} ${y}, ${mx} ${y-10}, ${mx} ${MAIN_Y+6}" ${anim?'stroke-dasharray="200"':""}/>`;
+      h+=`<circle cx="${mx}" cy="${MAIN_Y}" r="7" fill="var(--g)" stroke="#e9edf1" stroke-width="2"/>`; }
+    else if(st===2){ h+=`<rect x="${lastX+16}" y="${y-9}" width="58" height="18" rx="9" fill="none" stroke="var(--g)"/><text class="mono" x="${lastX+45}" y="${y+4}" text-anchor="middle" font-size="10" fill="var(--g)" style="fill:var(--g)">PR open</text>`; }
+    xs.forEach(({it,x})=>{ const d=!!state.done[it.s];
+      h+=`<circle class="node${d?" on":""}${on?"":" off"}${d&&JUST===it.s&&!reduceMotion()?" pop":""}" cx="${x}" cy="${y}" r="7.5"/>
+        <circle class="node-hit" cx="${x}" cy="${y}" r="14" data-s="${it.s}" tabindex="-1"><title>#${it.n} ${it.pn} · ${esc(it.short)}${d?" (closed)":" (open)"}</title></circle><circle class="ring" cx="${x}" cy="${y}" r="12"/>`; });
+    h+=`</g>`;
+  });
+  $("graph").innerHTML=h; JUST=null; JUST_MERGE=null;
+}
+const CELL=12, CGAP=3, CX0=330, CY0=546;
+function buildContrib(){
+  const C=contribStats(); const td=today(); let h="";
+  const lvl=n=>!n?0:n===1?1:n===2?2:n<=4?3:4;
+  const months=["Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul"];
+  let lastM=-1;
+  for(let w=0;w<WEEKS;w++){
+    for(let d=0;d<7;d++){
+      const dt=new Date(YEAR0.getTime()+(w*7+d)*864e5); const iso=isoOf(dt);
+      if(d===0 && dt.getMonth()!==lastM && dt.getDate()<=7){ lastM=dt.getMonth(); const mi=(dt.getMonth()+4)%12; if(mi<11) h+=`<text class="sub" x="${CX0+w*(CELL+CGAP)}" y="${CY0-8}">${months[mi]}</text>`; }
+      const n=C.m[iso]||0; const fut=iso>td;
+      h+=`<rect class="cell${iso===td?" today":""}" x="${CX0+w*(CELL+CGAP)}" y="${CY0+d*(CELL+CGAP)}" width="${CELL}" height="${CELL}" fill="var(--c${lvl(n)})" opacity="${fut?.45:1}"><title>${dt.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}: ${n?plural(n,"contribution"):"no contributions"}</title></rect>`;
+    }
+  }
+  ["Mon","Wed","Fri"].forEach((t,i)=>{ h+=`<text class="sub" x="${CX0-8}" y="${CY0+(i*2)*(CELL+CGAP)+10}" text-anchor="end">${t}</text>`; });
+  const ly=CY0+7*(CELL+CGAP)+18;
+  h+=`<text class="sub" x="${CX0}" y="${ly}" id="runTxt"></text>`;
+  h+=`<text class="sub" x="${CX0+WEEKS*(CELL+CGAP)-110}" y="${ly}" text-anchor="end">less</text>`;
+  for(let i=0;i<5;i++) h+=`<rect x="${CX0+WEEKS*(CELL+CGAP)-104+i*15}" y="${ly-10}" width="12" height="12" rx="2" fill="var(--c${i})"/>`;
+  h+=`<text class="sub" x="${CX0+WEEKS*(CELL+CGAP)-26}" y="${ly}">more</text>`;
+  $("contrib").innerHTML=h;
+  $("contribTxt").textContent=`${plural(C.total,"contribution")} this school year`;
+  $("runTxt").textContent=C.total?`${plural(C.weeks,"active week")} · current run: ${plural(C.run,"week")} in a row`:"Every square is a day. Close an issue, write a commit or pull a story and today's square goes green.";
+}
+function lightRepo(){
+  const G=repo(); const t=totals();
+  ORDER.forEach(g=>{ const el=$("tc-"+g); if(el) el.textContent=`${G.c[g]}/${t[g]}`; });
+  const tn=$("tc-notes"); if(tn) tn.textContent=state.notes.length;
+  buildGraph(); buildContrib();
+  const nn=Object.keys(state.news||{}).length;
+  $("statusTxt").textContent=`⎇ main  ·  ${plural(G.N,"issue")} closed of ${ITEMS.length}  ·  ${G.merged}/6 branches merged  ·  ${plural(state.notes.length,"commit")} in the log  ·  ${nn} pulled from upstream`;
+}
+
+/* ---------- issue cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="Issue ${it.n}, ${esc(it.short)}, ${FAM[it.g].dir}, ${esc(it.t)}${done?", closed":", open"}${isNew?", new":""}">
+    <span class="no"><span class="dot" aria-hidden="true"></span>#${it.n} · ${it.pn}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">closed</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = (state.fam!=="all" && g!==state.fam) ? " off":"";
+    return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic"><span>${FAM[g].letter}<small>${FAM[g].label.toUpperCase()}</small></span></div><div><span class="nm"><code>${FAM[g].dir}</code> ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} closed · ${STATE_NAME[secState(done,list.length)]}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="MILESTONE · "+HALFTERM.label.toUpperCase();
+  $("htLabel").textContent="Three issues this half term";
+  $("htDue").textContent="due "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓ closed":"#"+it.n}</span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].dir)}${d?" · done":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i></i>every folder <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i></i>${FAM[g].dir} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i></i>${FAM[g].dir}</button>`).join("")+`<button type="button" class="chip go" data-g="news" data-go="news"><i></i>upstream/</button>`;
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}"><span class="nm"><b></b>${FAM[x.g].dir}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const G=repo();
+  $("lapVal").innerHTML=`<small>ISSUES CLOSED</small>${G.N} / ${ITEMS.length}`;
+  $("posVal").innerHTML=`<small>BRANCHES MERGED</small>${G.merged} of 6`;
+  $("sectors").innerHTML=ORDER.map(g=>`<span class="sec s${G.sec[g]}" title="${FAM[g].dir}: ${G.c[g]} of ${G.t[g]}, ${STATE_NAME[G.sec[g]]}"><i></i>${g}/</span>`).join("");
+  let w;
+  if(!G.N) w=`Nothing committed yet. Each thing you do closes one of the ${ITEMS.length} issues. A folder's branch starts at the first, has a pull request open at half, and merges into main when every issue is closed.`;
+  else if(G.k<6) w=`${G.N} of ${ITEMS.length} issues closed, on ${G.k} of 6 branches. No branch yet: ${ORDER.filter(g=>!G.c[g]).map(g=>FAM[g].dir).join(", ")}.`;
+  else w=`${G.N} of ${ITEMS.length} issues closed, with every branch started${G.merged?`; ${plural(G.merged,"branch","branches")} merged into main`:""}.`;
+  $("coverTxt").textContent=w;
+  $("revbar").innerHTML=ORDER.map(g=>`<div class="revrow"><span class="fl">${FAM[g].dir}</span>${ITEMS.filter(i=>i.g===g).map(it=>`<span class="rv${state.done[it.s]?" on":""}" data-g="${g}" title="#${it.n}: ${esc(it.short)}"></span>`).join("")}</div>`).join("");
+  const nn=Object.keys(state.news||{}).length; const C=contribStats();
+  $("register").textContent=`soho.foundry/${slug(IDENTITY&&IDENTITY.cand)} · ${plural(G.N,"issue")} closed · ${G.merged}/6 merged · ${plural(state.notes.length,"commit")} · ${nn} from upstream · ${plural(C.total,"contribution")}`;
+  lightRepo();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term],mi)=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh"><span><i>v${m.slice(2).replace("-",".")}</i>${name}</span><small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"apply"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open issue #${it.n}</button>` : "";
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}${y.urgent?'<span class="urgent">soon</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Keep closing issues.</span>`}</div></div>`;
+  }).join("");
+}
+
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();}
+
+/* ---------- issue sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply" || it.s==="Bp");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true"><span>${it.pn}</span></div>
+      <div><div class="fam"><span class="st2${done?" closed":""}">${done?"closed":"open"}</span>#${it.n} · ${FAM[it.g].dir} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Mallard · review comment</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Closed ✓ (reopen)":"Close the issue: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write a commit</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department has your name; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=repo();
+  if(was) delete state.done[sym]; else { state.done[sym]=today(); JUST=sym; }
+  state.at=BY[sym].g;
+  const G=repo(); const g=BY[sym].g;
+  if(!was && G.sec[g]===3 && before.sec[g]!==3) JUST_MERGE=g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const it=BY[sym];
+    if(G.sec[g]===3 && G.merged===6) say(`Everything merged into main. ${G.N} of ${ITEMS.length}. That's a clean repo.`);
+    else if(G.sec[g]===3) say(`feature/${g} merged into main. Every issue in ${FAM[g].dir} closed.`);
+    else if(before.c[g]===0 && G.k>1) say(`New branch: feature/${g}. ${G.k} of 6 branches started, ${plural(G.N,"issue")} closed.`);
+    else if(before.c[g]===0) say(`First commit. Issue #${it.n} closed: ${it.short}. Now write the commit message while you still remember what you found out.`);
+    else if(G.sec[g]===2 && before.sec[g]!==2) say(`Half the issues in ${FAM[g].dir} closed. Pull request open.`);
+    else say(pick([`#${it.n} closed: ${it.short}. ${plural(G.N,"issue")} done.`,`Good. ${G.N} of ${ITEMS.length}. A closed issue isn't a commit message, mind.`,`${it.short}: closed. There are still folders with no branch.`,`#${it.n} closed. Today's square is green.`])); }
+  else say("Reopened. The issue is open again.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Assigned. Your name goes to the department for ${BY[sym].short}; your teacher does the rest.`:`Unassigned from ${BY[sym].short}.`); }
+
+function goZone(g){
+  if(g==="news"){ goNews(); return; }
+  if(g==="notebook"||g==="roadmap"){ const el=$(g); el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    say(g==="notebook"?`commits.log: ${plural(state.notes.length,"commit")} so far. What you found out goes in the body.`:"ROADMAP.md: the year's deadlines. Anything marked check follows last year's pattern."); return; }
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  document.querySelectorAll(`.hot[data-f="${g}"]`).forEach(hot=>{ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); });
+  const G=repo();
+  say(`${FAM[g].dir}: ${FAM[g].verb.toLowerCase()}. ${G.c[g]?`${G.c[g]} of ${G.t[g]} issues closed.`:"No branch yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const ph=e.target.closest(".node-hit"); if(ph){ openSheet(ph.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think;
+    const o=[...$("nbHw").options].find(o=>o.value===it.th); if(o) $("nbHw").value=o.value;
+    $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbQuo").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- good first issue ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have closed everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing open that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a folder the pupil has not branched, two times in three
+  const G=repo(); const fresh=pool.filter(i=>!G.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". Looking through your open issues.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("call"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("call");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("call");
+    $("pickMsg").textContent=`Assigned: #${choice.n} ${choice.short}, ${choice.t}.`;
+    say(`Assigned to you: #${choice.n}, ${choice.short}, ${choice.t}, in ${FAM[choice.g].dir}.${!G.c[choice.g]?" No branch there yet, so this starts one.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1600);
+});
+
+/* ---------- upstream: computer science in the news ---------- */
+const NEWS_URL="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/data/cs-news.json";
+const KIND={video:["vd","Video"],story:["sto","Story"]};
+let NEWS=null, NEWS_ERR=false, newsTh="all", newsShow=12, newsOpen=null;
+function newsCount(){ return Object.keys(state.news||{}).length; }
+function fmtNewsDate(iso){ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } }
+const wordCount=t=>(String(t).trim().match(/\S+/g)||[]).length;
+function newsStory(id){ const s=NEWS&&NEWS.stories.find(x=>x.id===id); if(s) return s;
+  const m=(state.news||{})[id]; return m?{id,src:m.src,title:m.title,url:m.url,th:m.th||[],date:m.d,desc:"",kind:m.kind||"story",level:""}:null; }
+function newsFiltered(){
+  if(newsTh==="read") return Object.values(state.news||{}).sort((a,b)=>String(b.d).localeCompare(String(a.d))).map(n=>newsStory(n.id)).filter(Boolean);
+  const list=NEWS.stories;
+  if(newsTh==="video") return list.filter(s=>s.kind==="video");
+  if(newsTh==="beyond") return list.filter(s=>!s.th.length);
+  if(newsTh!=="all") return list.filter(s=>s.th.includes(newsTh));
+  return list;
+}
+function storyHTML(s){
+  const mine=(state.news||{})[s.id]; const kd=KIND[s.kind]||KIND.story;
+  return `<article class="story ${kd[0]}${mine?" read":""}" data-nid="${esc(s.id)}">
+    ${mine?'<span class="stampn">pulled</span>':""}
+    <div class="meta"><span class="src">${esc(s.src)}</span><span class="lvl">${kd[1]}${s.level?" · "+esc(s.level):""}</span><span>${esc(fmtNewsDate(s.date))}</span></div>
+    <h3>${esc(s.title)}</h3>
+    ${s.desc?`<p class="d">${esc(s.desc)}</p>`:""}
+    <div class="stags">${s.th.length?s.th.map(t=>`<span class="ttag">${esc(t)}</span>`).join(""):'<span class="ttag beyond">Beyond the course</span>'}</div>
+    ${mine&&newsOpen!==s.id?`<p class="tw-mine">${esc(mine.txt)}</p>${mine.q?`<p class="tw-mine q">TODO: ${esc(mine.q)}</p>`:""}`:""}
+    <div class="acts"><a class="btn ghost" href="${esc(s.url)}" target="_blank" rel="noopener">${s.kind==="video"?"Watch on YouTube ↗":"Open the story ↗"}</a>
+      ${newsOpen===s.id?"":(mine?'<button type="button" class="btn ghost" data-nact="write">Edit what I wrote</button>':'<button type="button" class="btn hv" data-nact="write">Pull it</button>')}</div>
+    ${newsOpen===s.id?`<form class="tw" data-nform="${esc(s.id)}" autocomplete="off">
+      <div class="field"><label for="nw-${esc(s.id)}">Two sentences: what happened, and the computer science behind it</label><textarea id="nw-${esc(s.id)}" required>${mine?esc(mine.txt):""}</textarea></div>
+      <div class="field"><label for="nq-${esc(s.id)}">TODO: what you would look up next, or a question it raised (optional)</label><textarea id="nq-${esc(s.id)}">${mine?esc(mine.q||""):""}</textarea></div>
+      <span class="wc" id="nwc-${esc(s.id)}" aria-live="polite"></span>
+      <div class="actions"><button class="btn hv" type="submit">Pull it</button><button type="button" class="btn ghost" data-nact="cancel">Cancel</button></div>
+    </form>`:""}
+  </article>`;
+}
+function renderNews(){
+  const box=$("newsList"); if(!box) return;
+  if(!NEWS){ $("newsFilters").innerHTML=""; $("newsMore").hidden=true;
+    box.innerHTML=`<p class="small" style="color:var(--dim)">${NEWS_ERR?"Upstream could not be reached. Everything else in the repo works; try again later.":"Fetching upstream…"}</p>`; return; }
+  const counts={}; NEWS.stories.forEach(s=>s.th.forEach(t=>counts[t]=(counts[t]||0)+1));
+  const nv=NEWS.stories.filter(s=>s.kind==="video").length;
+  const beyond=NEWS.stories.filter(s=>!s.th.length).length;
+  let h=`<button type="button" class="nchip" data-nt="all" aria-pressed="${newsTh==="all"}">everything <b>${NEWS.stories.length}</b></button>`;
+  if(nv) h+=`<button type="button" class="nchip" data-nt="video" aria-pressed="${newsTh==="video"}">videos <b>${nv}</b></button>`;
+  (NEWS.themes||[]).forEach(t=>{ if(counts[t]) h+=`<button type="button" class="nchip" data-nt="${esc(t)}" aria-pressed="${newsTh===t}">${esc(t)} <b>${counts[t]}</b></button>`; });
+  if(beyond) h+=`<button type="button" class="nchip" data-nt="beyond" aria-pressed="${newsTh==="beyond"}">beyond the course <b>${beyond}</b></button>`;
+  h+=`<button type="button" class="nchip" data-nt="read" aria-pressed="${newsTh==="read"}">pulled by you <b>${newsCount()}</b></button>`;
+  $("newsFilters").innerHTML=h;
+  let when=""; try{ when=new Date(NEWS.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+  $("newsWhen").textContent=when?"Fetched "+when:"";
+  const list=newsFiltered();
+  box.innerHTML=list.length?list.slice(0,newsShow).map(storyHTML).join(""):`<p class="small" style="color:var(--dim)">${newsTh==="read"?"Nothing pulled yet. Pick one and press Pull it.":"Nothing tagged to this part of the course today. Try everything."}</p>`;
+  $("newsMore").hidden=list.length<=newsShow;
+  const src=NEWS.sources||[]; const ok=src.filter(x=>x.ok).length;
+  $("newsFoot").innerHTML=`Sources (${ok} of ${src.length} answered this morning): ${src.map(x=>esc(x.src)+(x.ok?"":" (no answer today)")).join(" · ")}. Stories are chosen by the sources, not checked by the department. If a site asks you to sign in or pay, pick another.`;
+  const c=$("newsCntTxt"); if(c) c.textContent=`${NEWS.stories.length-nv} stories · ${nv} videos`;
+  const w=$("newsWhenTxt"); if(w){ try{ w.textContent="fetched "+new Date(NEWS.made).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit"}); }catch(e){} }
+  const m=$("newsMineTxt"); if(m) m.textContent=newsCount()?`→ ${newsCount()} pulled by you`:"→ pull one, write two sentences";
+}
+async function loadNews(){
+  try{ const r=await fetch(NEWS_URL+"?d="+today(),{cache:"no-cache"}); if(!r.ok) throw 0;
+    const j=await r.json(); if(!j||!Array.isArray(j.stories)) throw 0; NEWS=j; }catch(e){ NEWS_ERR=true; const c=$("newsCntTxt"); if(c) c.textContent="could not fetch today"; }
+  renderNews();
+}
+function goNews(){
+  const el=$("news"); if(!el) return;
+  el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+  const hot=$("newsHot"); hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200);
+  const n=newsCount();
+  say(NEWS?`Upstream: ${NEWS.stories.length} stories and videos fetched this morning. ${n?`You've pulled ${n}.`:"Pick one and write two sentences."}`:"Upstream: computer science in the news, fetched every morning.");
+}
+$("newsFilters").addEventListener("click",e=>{ const b=e.target.closest(".nchip"); if(!b) return; newsTh=b.dataset.nt; newsShow=12; newsOpen=null; renderNews(); });
+$("newsMore").addEventListener("click",()=>{ newsShow+=12; renderNews(); });
+$("newsList").addEventListener("click",e=>{
+  const b=e.target.closest("[data-nact]"); if(!b) return;
+  const id=b.closest(".story").dataset.nid;
+  if(b.dataset.nact==="cancel"){ newsOpen=null; renderNews(); return; }
+  newsOpen=id; renderNews(); const t=$("nw-"+id); if(t) t.focus();
+  say(pick(["What happened, and what's the computer science underneath? Two sentences.","Say what it was, then name the idea: the hardware, the algorithm, the protocol, the data, the law.","If you can say which part of H446 it belongs to, you've understood it."]));
+});
+$("newsList").addEventListener("submit",e=>{
+  const f=e.target.closest("form[data-nform]"); if(!f) return; e.preventDefault();
+  const id=f.dataset.nform, s=newsStory(id); if(!s) return;
+  const txt=$("nw-"+id).value.trim(), q=$("nq-"+id).value.trim();
+  if(wordCount(txt)<15){ $("nwc-"+id).textContent="A little more: at least 15 words, so it says what happened and the computer science behind it."; return; }
+  if(!state.news) state.news={};
+  const was=state.news[id];
+  state.news[id]={id,d:was?was.d:today(),src:s.src,title:s.title,url:s.url,th:s.th||[],kind:s.kind||"story",txt,q};
+  const k=state.notes.findIndex(n=>n.news===id);
+  if(k>=0){ state.notes[k].learned=txt; state.notes[k].q=q; }
+  else state.notes.unshift({date:today(),hw:"Beyond the course",what:(s.kind==="video"?"Watched: ":"In the news: ")+s.title+" ("+s.src+")",learned:txt,q,news:id,tag:(s.th&&s.th[0])||""});
+  newsOpen=null; save(); renderNews(); renderNotes(); renderMeter();
+  const n=newsCount();
+  say(was?"Amended, here and in your commit log.":pick([`Pulled, and it's in your commit log. ${n} so far.`,"Good. That's your answer to 'What have you read about computing lately?'",`Merged. ${n} from upstream now. Today's square is green.`]));
+});
+
+/* ---------- commit log ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function noteHTML(n,i,example){
+  const it=n.s?BY[n.s]:null;
+  const msg=n.quo||n.what;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:(n.news?' data-g="news"':"")}${example?' aria-label="Example commit"':""}>
+      <div class="hd"><span><span class="hash">${hash7((n.date||"")+n.what+(n.learned||""))}</span> · ${esc(IDENTITY?IDENTITY.cand:"you")}</span><span>${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="msg">${esc(msg)}</div>
+      <div class="src">${n.quo?esc(n.what)+" · ":""}${esc(n.hw||"")}${n.tag?" · "+esc(n.tag):""}${it?` · closes #${it.n}`:""}${n.news?" · from upstream":""}</div>
+      <div class="why"><i>what I found out</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>TODO</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">git revert (delete this commit)</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("logCount").textContent=state.notes.length?plural(state.notes.length,"commit"):"";
+  if(!state.notes.length){
+    box.innerHTML=noteHTML({date:today(),hw:"1.5 Legal, moral, ethical",what:"Joy Buolamwini: How I'm fighting bias in algorithms",s:"Tb",
+      quo:"A face detector is only as fair as the faces it was trained on",
+      learned:"The software could not find her face until she wore a white mask, because the training set was mostly lighter-skinned faces. Nobody wrote a biased line of code: the bias came in with the data. She argues the people who choose the training data are accountable, and that systems should be tested on the people they will be used on.",
+      q:"Does the Data Protection Act say anything about automated decisions made from biased data?"},0,true)+`<p class="small" style="color:var(--dim)">No commits yet. Close one issue, then write the first.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>noteHTML(n,i,false)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to delete it"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="git revert (delete this commit)"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes(); renderMeter();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value,what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; const before=repo(); if(!state.done[match.s]){ JUST=match.s; state.done[match.s]=n.date; const G=repo(); if(G.sec[match.g]===3&&before.sec[match.g]!==3) JUST_MERGE=match.g; } state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbHw").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Committed.";
+  say(pick(["Committed. That log is what a university or an employer reads; the dots are for me.","Good commit. Keep the TODO: the next thing you do should answer it.","LGTM. What it was, the idea, what you found out. That's a proper commit."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Computer Science commit log – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)} · ${n.hw||""}${n.tag?" · "+n.tag:""}\nFrom: ${n.what}${n.quo?`\nThe idea: ${n.quo}`:""}\nWhat I found out: ${n.learned}${n.q?`\nTODO: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} issues closed, ${notes} ${notes===1?"commit":"commits"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/computer-science.html";
+const TOUR=[
+  {sel:".scene", h:"This is the repository", p:"The pupil's own code repository on an invented code host. On the left, six folders, one per kind of thing: listen/, watch/, read/, do/, enter/ and apply/. Click a folder and the page goes to its issues. In the middle, one branch per folder, with one dot for every item: 58 in all. Click a dot to open that item."},
+  {sel:".scene", h:"Branches and merges", p:"When a pupil does something, its dot fills in. A folder's branch starts at the first, shows a pull request open at half, and merges into main when every dot in it is filled. Below the branches, the contributions graph: one square for every day of the school year, greener the more a pupil did that day. It shows who works steadily and who does it all in one night."},
+  {sel:"#news", h:"Upstream", p:"Every morning the page collects computer science news from the BBC technology desk, the National Cyber Security Centre, The Conversation, Quanta, the Raspberry Pi Foundation, Ars Technica, IEEE Spectrum, MIT News and ScienceDaily, and the latest Computerphile videos. Each is tagged to the parts of H446 it seems to touch. A pupil reads or watches one and writes two sentences: what happened, and the computer science behind it. That saves to the department. Nobody has to update it."},
+  {sel:"#smallprint", h:"The small print", p:"Each folder carries a piece of computing history with its source and a label: attested, reported, legend or invented. The Mark II moth (and the legend that Grace Hopper coined 'bug'), the Manchester Baby's first program, Lovelace's Note G, rubber duck debugging, the Telegraph crossword and Bletchley, and Dijkstra's twenty minutes on a café terrace."},
+  {sel:".guide", h:"The duck", p:"Mallard, an invented rubber duck, and the page says so. It greets each pupil by name, leaves a review comment on what they do, and keeps asking for the commit message."},
+  {sel:".count-card", h:"Your repo", p:"Issues closed, branches merged, and six branch states: no branch, branched, pull request open, merged. The strip below shows every item."},
+  {sel:".pick-card", h:"Good first issue", p:"A pupil says how long they have and Mallard assigns them one thing they have not done, usually in a folder they have not started."},
+  {sel:".orders", h:"The milestone", p:"Three things from the department each half term, with a date. This half term: register for the Cipher Challenge, Joy Buolamwini's nine-minute talk on bias in algorithms, and three BIO beginner problems. You change these by editing one block at the top of the file."},
+  {sel:"#zone-do", h:"do/", p:"Where pupils stop reading and write code: Ada Computer Science, BIO past problems, the Christ Church Python Challenges, Advent of Code, past Bebras, the Little Man Computer simulator, Learn Git Branching, SQLBolt, Nand to Tetris and Project Euler. Every item carries an H446 tag."},
+  {sel:"#zone-enter", h:"enter/", p:"The British Informatics Olympiad, Bebras (9–20 November), the Raspberry Pi Foundation Coding Challenge, the National Cipher Challenge, the PCTC Gold Rush, Astro Pi Mission Space Lab (a Python program run on the ISS; deadline 22 February) and Coolest Projects. Pupils tap 'I want to enter' and the department has a list."},
+  {sel:"#zone-apply", h:"apply/", p:"UNIQ, Nuffield, In2STEM, CyberFirst, the TechFirst scholarship, the EDT Year in Industry, Oxford and Cambridge Computer Science (TMUA 12–16 October, applications close 15 October), the Oxford TMUA livestreams and degree apprenticeships."},
+  {sel:".board", h:"The roadmap", p:"October to July: the TMUA and the Oxbridge deadline, Bebras, the Gresham schools talk on 18 November, BIO registration and Round 1, Advent of Code, the Astro Pi deadline, PCTC, the Cipher Challenge prize-giving at Bletchley, the BIO final and the summer placements. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"The commit log", p:"For anything they do, a pupil writes a commit: what it was, the idea in one line, what they found out, and a TODO, tagged to a part of H446. Stories pulled from upstream go in too. It saves to the department as they write and copies out as text."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, issues closed and branches merged, contributions across the year, every story pulled with the pupil's sentences, and every commit. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, which language your pupils use, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("cs-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[{"name": "Amara Okafor", "cls": "12A", "done": [["Tb", "2026-09-14"], ["Ci", "2026-09-25"], ["Bi", "2026-09-28"], ["Tm", "2026-09-15"], ["Cp", "2026-09-21"], ["Lm", "2026-09-30"], ["Sq", "2026-10-03"], ["Ad", "2026-10-05"], ["Be", "2026-10-07"], ["Lg", "2026-10-09"]], "picks": 3, "interest": ["Be", "Bo", "Ap"], "last": "2026-10-09", "news": [{"d": "2026-10-09", "kind": "story", "src": "Ars Technica", "title": "Hackers obtain counterfeit TLS certificates for Google and other large services", "th": ["1.3 Networks and the web", "1.3 Security and encryption"], "txt": "Attackers got certificate authorities to issue certificates for domains they did not own, by breaking into the registries that prove who owns a domain. A browser trusts a site because a trusted authority signed its public key, so a fake certificate lets an attacker pretend to be Google even though the encryption itself was never broken.", "q": "How would certificate transparency logs have caught this sooner?"}], "notes": [{"date": "2026-09-14", "hw": "1.5 Legal, moral, ethical", "what": "Joy Buolamwini: How I'm fighting bias in algorithms", "quo": "The bias came in with the training data, not the code", "learned": "The face detector failed on darker skin because the training set was mostly lighter-skinned faces. Nobody wrote a biased instruction. She argues the people choosing the data are accountable and that systems should be tested on the people they will be used on.", "q": "Does the Data Protection Act cover automated decisions made from biased data?"}, {"date": "2026-09-30", "hw": "1.2 Software and development", "what": "Little Man Computer simulator (Peter Higginson)", "quo": "BRP and BRZ are how LMC does selection", "learned": "I wrote the larger-of-two program. Subtracting one from the other and branching on the sign is the comparison; there is no compare instruction. Stepping through showed the PC jumping when the branch is taken.", "q": ""}]}, {"name": "Ben Carter", "cls": "12A", "done": [["Cp", "2026-10-08"], ["Tm", "2026-10-08"], ["Ts", "2026-10-08"]], "picks": 0, "interest": [], "last": "2026-10-08", "news": [], "notes": []}, {"name": "Chloe Nguyen", "cls": "12B", "done": [["Tb", "2026-09-08"], ["Ci", "2026-09-24"], ["Bi", "2026-09-10"], ["Qm", "2026-09-17"], ["Ew", "2026-09-18"], ["Lv", "2026-09-22"], ["Pe", "2026-09-29"], ["Nt", "2026-10-04"], ["Gh", "2026-10-01"], ["Io", "2026-09-12"], ["Cr", "2026-09-26"], ["Tp", "2026-10-06"], ["Ls", "2026-10-09"], ["Cl", "2026-10-02"]], "picks": 3, "interest": ["Bo", "Un", "Rc"], "last": "2026-10-09", "news": [{"d": "2026-10-08", "kind": "video", "src": "Computerphile", "title": "Race Conditions on a Human Scale - Computerphile", "th": ["1.4 / 2.3 Algorithms"], "txt": "Two processes read the same value, both change it, and one write overwrites the other, so the result depends on which finished last. The fix is to make the read-change-write a single step nobody can interrupt, a lock, which is the same idea as record locking in databases in 1.3.", "q": "Is a lock the same thing as the 'isolation' in ACID?"}, {"d": "2026-10-07", "kind": "story", "src": "Quanta", "title": "As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines", "th": ["1.4 / 2.3 Algorithms", "1.5 AI and automation"], "txt": "Mathematicians finished a proof about how hard certain problems are to approximate, partly because an AI system was getting close to it. The result is about complexity: some problems cannot even be solved approximately in polynomial time unless P equals NP.", "q": ""}], "notes": [{"date": "2026-09-18", "hw": "2.2 Problem solving and programming", "what": "Edsger Dijkstra: 'Go To Statement Considered Harmful' (1968)", "quo": "You should be able to say where you are in a program from the code alone", "learned": "His point is that with jumps you cannot describe the state of a running program by pointing at a line, because you do not know how you got there. With sequence, selection and iteration you can. My BIO answer used two breaks inside nested loops and I rewrote it as a function that returns.", "q": "Is an exception just a goto with better manners?"}]}, {"name": "Daniel Brooks", "cls": "12B", "done": [], "picks": 0, "interest": [], "last": "2026-09-29", "news": [], "notes": []}, {"name": "Esha Patel", "cls": "13A", "done": [["Ox", "2026-09-02"], ["Cm", "2026-09-03"], ["Ml", "2026-09-10"], ["Cl", "2026-09-03"], ["Sl", "2026-09-17"], ["Aa", "2026-09-27"], ["Tf", "2026-10-02"], ["Ed", "2026-10-02"], ["Fa", "2026-10-05"], ["Ri", "2026-09-20"], ["Tr", "2026-09-21"], ["Ts", "2026-09-21"], ["Tq", "2026-09-28"]], "picks": 2, "interest": ["Tf", "Ed"], "last": "2026-10-09", "news": [{"d": "2026-10-09", "kind": "story", "src": "BBC Technology", "title": "Anthropic bans users from being 'cruel' to its AI systems", "th": ["1.5 Law and ethics", "1.5 AI and automation"], "txt": "A company has changed its terms of use to bar abusive behaviour towards its AI models. It is a policy decision rather than a technical one, and it raises the 1.5 question of who sets the rules for a system that millions use when no law covers it.", "q": "Would this count as censorship under the 1.5 headings?"}], "notes": [{"date": "2026-09-10", "hw": "Applying", "what": "Oxford Mathematics: admissions test livestreams", "quo": "", "learned": "The TMUA Paper 2 questions are about logic and proof, not calculation: spotting the flaw in an argument, deciding which condition is necessary. I am weakest on 'which of these must be true'. Doing two worksheets a week until 12 October.", "q": "Is there a past paper set with worked solutions?"}]}, {"name": "Finn Murphy", "cls": "13A", "done": [["Ac", "2026-09-05"], ["Pe", "2026-09-06"], ["Bi", "2026-09-06"]], "picks": 1, "interest": ["Bo", "Pg"], "last": "2026-09-07", "news": [], "notes": []}, {"name": "Grace Adeyemi", "cls": "12A", "done": [["Ci", "2026-09-25"], ["Cb", "2026-10-01"], ["Tl", "2026-09-27"], ["Ta", "2026-09-29"], ["Cy", "2026-10-03"], ["Gi", "2026-10-04"]], "picks": 1, "interest": ["Ci", "Cy", "Ap"], "last": "2026-10-08", "news": [{"d": "2026-10-08", "kind": "story", "src": "NCSC", "title": "Incident affecting ASOS customers", "th": ["1.3 Security and encryption"], "txt": "A retailer's customer accounts were accessed and personal details taken, and the NCSC is advising people to change passwords used anywhere else. Reused passwords are the problem: if one site's hashes are cracked, the same password opens other accounts.", "q": "Would the Computer Misuse Act or the Data Protection Act apply to the company here?"}], "notes": [{"date": "2026-09-25", "hw": "1.3 Exchanging data", "what": "National Cipher Challenge (University of Southampton)", "quo": "Frequency analysis beats any substitution cipher", "learned": "Challenge 1A was a Caesar shift; 1B was a general substitution. Counting letters and matching E, T and A got most of it, and the rest came from short words like THE and AND.", "q": "How does a Vigenère cipher stop frequency analysis?"}]}, {"name": "Harry Singh", "cls": "12B", "done": [["Ad", "2026-09-30"]], "picks": 0, "interest": [], "last": "2026-09-30", "news": [], "notes": []}];
+function gOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const t=totals(); const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
+  return {c,k:ORDER.filter(g=>c[g]).length,sec,merged:ORDER.filter(g=>sec[g]===3).length}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function weekBars(dates){ const tw=Math.max(0,weekOf(today())); const per=Array(tw+1).fill(0); dates.forEach(d=>{ const w=weekOf(d); if(w>=0&&w<=tw) per[w]++; });
+  return `<span style="display:inline-flex;gap:2px;vertical-align:middle" title="contributions per week since 31 August">${per.map(n=>`<i style="display:inline-block;width:9px;height:14px;border-radius:2px;border:1px solid #c4cbc1;background:var(--c${!n?0:n===1?1:n===2?2:n<=4?3:4})"></i>`).join("")}</span>`; }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,doneS:p.done.map(x=>x[0]),dates:[...p.done.map(x=>x[1]),...p.notes.map(n=>n.date),...p.news.map(n=>n.d)],you:false}));
+  if(IDENTITY){ const C=contribs(); const dates=[]; Object.entries(C).forEach(([d,n])=>{ for(let i=0;i<n;i++) dates.push(d); });
+    rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,doneS:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),dates,
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes.filter(n=>!n.news),news:Object.values(state.news||{}),interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.doneS.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0), newsN=rows.reduce((a,r)=>a+r.news.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply"||i.s==="Bp");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.doneS.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const thCount={}; rows.forEach(r=>r.doneS.forEach(s=>{ const t=BY[s]&&BY[s].th; if(t) thCount[t]=(thCount[t]||0)+1; }));
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,4);
+  const max=Math.max(1,...ORDER.map(famCount));
+  const grid=[...rows].sort((a,b)=>b.doneS.length-a.doneS.length);
+  const allTh=[...new Set(ITEMS.map(i=>i.th))]; const quiet=allTh.filter(t=>!thCount[t]);
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${newsN}</b><span>stories and videos pulled from upstream</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished the half-term milestone</span></div>
+      <div class="tl"><b>${nbLines}</b><span>commits written</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>names down for competitions and placements</span></div>
+    </div>
+    <div class="dcard"><h3>Upstream: what pupils wrote</h3><p class="small">Every story and video a pupil has pulled, with the two sentences they wrote: what happened, and the computer science behind it. This is the part you would read before the lesson.</p>
+      <table class="dt"><tr><th>Pupil</th><th>Story or video</th><th>What they wrote</th></tr>
+      ${rows.flatMap(r=>r.news.map(n=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${esc(r.cls)} · ${fmtDd(n.d)}</span></td><td><span class="pill" style="background:${n.kind==="video"?"#c2410c":"#475569"}">${n.kind==="video"?"video":"story"}</span> <b>${esc(n.title)}</b><br><span class="small">${esc(n.src)} · ${esc((n.th||[]).join(", ")||"Beyond the course")}</span></td><td>${esc(n.txt)}${n.q?`<br><span class="small">TODO: ${esc(n.q)}</span>`:""}</td></tr>`)).join("")||'<tr><td colspan="3">Nothing pulled yet.</td></tr>'}</table></div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. Bebras, BIO, the Coding Challenge, PCTC and Astro Pi go through school; the Cipher Challenge and the placements pupils apply for themselves, so this is who to support.</p>
+        <table class="dt"><tr><th>Competition / placement</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}" style="background:var(--g);color:#000">${x.c.pn}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which folders get used</h3><p class="small">Items done across all pupils, by folder, and by part of H446. Tells you where to point the next half term's milestone.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}" style="background:var(--g);color:#000">${FAM[g].letter}</span> ${FAM[g].dir} · ${FAM[g].label}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        ${quiet.length?`<p class="small"><b>Nobody has touched yet:</b> ${quiet.map(esc).join(" · ")}</p>`:""}
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>The repos: every pupil</h3><p class="small">The week strip is contributions per week since 31 August. A steady row of green and a single dark-green week tell you different things.</p>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Issues</th><th>Branches</th><th>Contributions by week</th><th>Milestone</th><th class="hide-m">Upstream</th><th class="hide-m">Commits</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${grid.map(r=>{ const G=gOf(r.doneS);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.doneS.length/N*100).toFixed(0)}%"></i></span><span class="lapt">${r.doneS.length} / ${N}</span></td>
+        <td>${ORDER.map(g=>`<span class="sw s${G.sec[g]}" title="${FAM[g].dir}: ${STATE_NAME[G.sec[g]]}"></span>`).join("")} <span class="small">${G.merged} merged</span></td>
+        <td>${weekBars(r.dates)} <span class="small">${r.dates.length}</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.news.length}</td><td class="hide-m">${r.notes.length}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}" style="background:var(--g);color:#000">${BY[s]?BY[s].pn:esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Commit logs</h3><p class="small">Each pupil's commits in full, copyable as text. Four shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><span class="small"><b>${esc(n.hw||"")}</b> · ${esc(n.what)}</span>${n.quo?`<br><code>${esc(n.quo)}</code>`:""}<br>${esc(n.learned)}${n.q?`<br><span class="small">TODO: ${esc(n.q)}</span>`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",news:"",lang:new Set(),more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+function segPick(sel,key,btn){ FB[key]=btn.dataset.v; document.querySelectorAll(sel+" button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn))); }
+function chipPick(set,btn){ const v=btn.dataset.v; if(set.has(v)) set.delete(v); else set.add(v); btn.setAttribute("aria-pressed",String(set.has(v))); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  let b;
+  if((b=e.target.closest("#fbUse button"))){ segPick("#fbUse","use",b); return; }
+  if((b=e.target.closest("#fbDiv button"))){ segPick("#fbDiv","look",b); return; }
+  if((b=e.target.closest("#fbSlip button"))){ segPick("#fbSlip","news",b); return; }
+  if((b=e.target.closest("#fbLang button"))){ chipPick(FB.lang,b); return; }
+  if((b=e.target.closest("#fbMore button"))){ chipPick(FB.more,b); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"cs-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,language:[...FB.lang],look:FB.look,upstream:FB.news,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,newsN:newsCount(),interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-cs-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-cs-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.news=""; FB.lang.clear(); FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbSlip button,#fbLang button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the Computer Science page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nLanguage taught: ${rec.language.join(", ")||"–"}\nThe look: ${rec.look||"–"}\nUpstream: ${rec.upstream||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to listen to, watch, read, build, enter and apply for · computer science in the news, fetched every morning";
+$("tableEyebrow").textContent="Six folders · "+ITEMS.length+" issues · one dot each on the graph";
+$("foot").innerHTML="Compiled 30 September 2026, additions and link checks 10 October 2026 · course tags follow OCR A Level Computer Science (H446): Component 01 (1.1–1.5), Component 02 (2.1–2.3) and the programming project, as set out in the department's curriculum plan · free at the point of use unless the card says otherwise<br>Sources for the six folders are in the small print under the window. Soho Foundry and Mallard are invented; no real company's name or logo is used. Upstream refreshes itself every morning; its stories come from the sources named under it and are not checked by the department. The four books are in the library or on request.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+loadNews();
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildTree(); buildGraph(); buildContrib();
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>

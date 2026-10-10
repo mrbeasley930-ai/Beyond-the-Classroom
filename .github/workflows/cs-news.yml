@@ -1,0 +1,33 @@
+name: Computer Science upstream news
+
+# Pulls the computer science feeds every morning and commits data/cs-news.json,
+# which the Computer Science "Repo" page reads (7 · upstream). Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "55 6 * * *"     # 06:55 UTC daily, after the Music programme (06:40)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cs-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the feeds
+        run: python3 tools/fetch_cs_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "upstream-bot"
+          git config user.email "upstream-bot@users.noreply.github.com"
+          git add data/cs-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "Upstream: computer science stories $(date -u +%Y-%m-%d)" && git pull --rebase && git push; fi
