@@ -1,0 +1,1824 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Music Beyond the Classroom – demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@400;600&family=Noto+Music&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE SCORE — Music, Beyond the Classroom
+   The page is a conductor's full score on a stand in a dark hall. Six
+   staves, one per section of the orchestra, and one per family of thing:
+   woodwind (Listen), brass (Enter), percussion (Do), keyboard and harp
+   (Read), voices (Apply), strings (Watch). Every thing to do is one bar
+   of the score; doing it writes the notes in. Rehearsal letters A–F mark
+   where each section comes in. Progress is bars filled and sections in;
+   the house lights go down as the sections come in. The programme at the
+   back of the score carries this week's broadcasts and music news. The
+   page-turner, Wren Ashby, is invented. The Rea Sinfonia and Bordesley
+   Hall are invented.
+   ====================================================================== */
+:root{
+  --hall:#141010; --hall2:#1c1614; --hall3:#241d1a; --walnut:#3a2a22; --walnut2:#54392c; --brassy:#c9a24a; --brassy2:#9c7a2c;
+  --paper:#f6f1e4; --paper2:#ece4d0; --cream:#fbf8ef; --ink:#1b1714; --ink2:#4c4440; --faded:#8a7f76; --rule:#cfc4ad; --stave:#8c8072; --pencil:#4a4a4a;
+  --gold:#d9b24c; --green:#3b9a62; --amber:#d98f2b;
+  --listen:#2e7d4f;   /* A woodwind — green */
+  --enter:#c48a1f;    /* B brass — gold */
+  --do:#c0552f;       /* C percussion — terracotta */
+  --read:#2f4f9e;     /* D keyboard and harp — ink blue */
+  --apply:#8a3a7a;    /* E voices — plum */
+  --watch:#a4253a;    /* F strings — burgundy */
+  --news:#4d6b8a;     /* the programme — slate */
+  --f-head:"Cormorant Garamond","Times New Roman",Georgia,serif;
+  --f-text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --f-music:"Noto Music","Apple Symbols","Segoe UI Symbol",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--hall);color:var(--paper);font-family:var(--f-text);font-size:1.06rem;line-height:1.5;
+  background-image:radial-gradient(ellipse at 50% -10%,rgba(217,178,76,.14),transparent 50%),linear-gradient(180deg,#120e0e 0,#141010 40%,#1a1412 100%);}
+[data-g="do"]{--g:var(--do)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
+[data-g="read"]{--g:var(--read)} [data-g="enter"]{--g:var(--enter)} [data-g="apply"]{--g:var(--apply)} [data-g="news"]{--g:var(--news)}
+a{color:inherit}
+button{font-family:inherit}
+h1,h2,h3{margin:0;font-weight:600;line-height:1.05}
+.eyebrow{font-family:var(--f-mono);font-weight:500;font-size:.72rem;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.small{font-size:.92rem;color:var(--ink2)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(217,178,76,.55);padding:4px 10px;border-radius:2px;background:rgba(0,0,0,.3)}
+.badge i{width:8px;height:8px;background:var(--gold);display:inline-block;border-radius:50%;box-shadow:0 0 8px var(--gold)}
+.paper .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.paper .badge i{box-shadow:none;background:var(--ink2)}
+.btn{font:inherit;font-family:var(--f-head);font-weight:700;font-size:1.08rem;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:2px solid var(--ink);padding:8px 18px 7px;cursor:pointer;border-radius:2px}
+.btn:hover{background:#000}
+.btn.big{font-size:1.2rem;padding:11px 24px 10px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(0,0,0,.06)}
+.btn.ghost.on{background:var(--ink);color:var(--paper)}
+.btn.g{background:var(--g,var(--ink));border-color:var(--g,var(--ink));color:#fff}
+.btn.hv{background:var(--gold);border-color:var(--brassy2);color:var(--ink)}
+.btn.hv:hover{background:#ecc65e}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.field{display:grid;gap:3px}
+.field label{font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field textarea,.field select{font:inherit;font-size:1.04rem;background:#fff;border:1.5px solid var(--rule);border-bottom:2px solid var(--ink);padding:7px 8px;color:var(--ink);width:100%;border-radius:2px}
+.field textarea{min-height:84px;resize:vertical;line-height:1.45}
+.field .hand{font-family:var(--f-hand);font-size:1.25rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#a1162b;min-height:1.3em;font-size:.98rem}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(12px,3vw,32px) 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.wrap>*{min-width:0}
+/* manuscript paper: cream with faint stave lines */
+.paper{background:var(--paper);color:var(--ink);
+  background-image:repeating-linear-gradient(180deg,transparent 0 26px,rgba(140,128,114,.16) 26px 27px)}
+.hz{position:relative}
+.hz:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--brassy2),var(--gold) 40%,var(--brassy2))}
+
+/* ---------- gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(820px,100%);padding:38px 36px 30px;display:grid;gap:16px;box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 0 1px #000;position:relative;border-radius:2px}
+.gate-card h1{font-family:var(--f-head);font-weight:700;font-size:clamp(3rem,8vw,5.4rem);letter-spacing:.01em;line-height:.9}
+.gate-card h1 em{display:block;font-family:var(--f-text);font-weight:400;font-style:italic;font-size:.28em;color:var(--ink2);margin-top:12px;line-height:1.3}
+.gate-card p{margin:0}
+.gate-guide{display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;align-items:center}
+.gate-guide svg{width:130px;height:auto}
+.gate-card .passno{position:absolute;right:22px;top:-14px;background:var(--gold);color:var(--ink);padding:3px 12px;font-family:var(--f-mono);font-weight:600;font-size:.76rem;letter-spacing:.16em;border:2px solid var(--ink);transform:rotate(1.5deg)}
+@media (max-width:560px){.gate-guide{grid-template-columns:1fr;justify-items:center}.two{grid-template-columns:1fr}.gate-card{padding:30px 20px 24px}}
+
+/* ---------- header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;padding-top:26px;border-bottom:1px solid var(--walnut2);padding-bottom:14px}
+.top h1{font-family:var(--f-head);font-weight:700;font-size:clamp(2.8rem,6.4vw,4.8rem);color:#fff;line-height:.9;letter-spacing:.01em}
+.top h1 b{color:var(--gold);font-weight:700;font-style:italic}
+.top h1 span{display:block;font-family:var(--f-text);font-weight:400;font-style:italic;font-size:1.04rem;color:#cdbfae;margin-top:10px;line-height:1.35}
+.strap{font-size:.98rem;color:#cdbfae;margin-top:6px}
+.who{display:grid;justify-items:end;gap:4px;font-size:1rem}
+.who b{font-family:var(--f-head);font-weight:700;letter-spacing:.04em;font-size:1.25rem}
+.who button{font:inherit;font-size:.9rem;background:none;border:0;color:#cdbfae;text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:var(--faded)}
+.saved.ok{color:#8fe0a8}.saved.bad{color:#ff9d8a}
+
+/* ---------- the score on the stand ---------- */
+.scene{position:relative;border:1px solid #000;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.6);background:#0d0a0a;border-radius:2px 2px 0 0}
+.scene svg.view{display:block;width:100%;height:auto}
+.scene .hot{cursor:pointer}
+.scene .hot .halo{fill:transparent;stroke:transparent;stroke-width:2;pointer-events:all}
+.scene .hot:hover .halo,.scene .hot:focus-visible .halo{stroke:var(--g);stroke-dasharray:6 5}
+.scene .hot.lit .halo{stroke:var(--g);stroke-width:4;stroke-dasharray:none}
+.scene .stl{stroke:var(--stave);stroke-width:.9}
+.scene .stl.dim{stroke-opacity:.45}
+.scene .barl{stroke:#6e6457;stroke-width:1}
+.scene .barl.dbl{stroke-width:2.4}
+.scene .clef{font-family:var(--f-music);fill:#2b2420}
+.scene .stname{font-family:var(--f-head);font-weight:700;font-size:12px;letter-spacing:1.2px;fill:var(--g)}
+.scene .stsub{font-family:var(--f-mono);font-size:8.5px;fill:#6f655a}
+.scene .barno{font-family:var(--f-mono);font-size:8.5px;fill:#8a7f76}
+.scene .rl rect{fill:#fff;stroke:var(--g);stroke-width:1.6}
+.scene .rl text{font-family:var(--f-head);font-weight:700;font-size:13px;fill:var(--g)}
+.scene .hot:hover .rl rect,.scene .hot:focus-visible .rl rect{fill:var(--g)}
+.scene .hot:hover .rl text,.scene .hot:focus-visible .rl text{fill:#fff}
+.scene .rest{font-family:var(--f-music);fill:#a39888}
+.scene .nt{fill:var(--g)}
+.scene .nt path,.scene .nt line{stroke:var(--g)}
+.scene .bar-hit{fill:transparent;cursor:pointer}
+.scene .bar-hit:hover{fill:rgba(217,178,76,.22)}
+.scene .bar-hit.on:hover{fill:rgba(0,0,0,.06)}
+.scene .title{font-family:var(--f-head);font-weight:700;font-size:30px;fill:#1b1714;letter-spacing:1px}
+.scene .sub{font-family:var(--f-text);font-style:italic;font-size:12.5px;fill:#4c4440}
+.scene .tempo{font-family:var(--f-text);font-weight:600;font-style:italic;font-size:12px;fill:#1b1714}
+.scene .mono{font-family:var(--f-mono)}
+.scene .hall{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;fill:#8a7f76}
+.scene .pencil{font-family:var(--f-hand);font-size:15px;fill:var(--pencil)}
+.notein{animation:notein .7s ease-out}
+@keyframes notein{0%{opacity:0;transform:translateY(-6px)}60%{opacity:1;transform:translateY(1px)}100%{transform:none}}
+.lampg{transition:opacity .6s ease}
+@media (prefers-reduced-motion:reduce){.notein{animation:none}}
+.scene-key .swipe{display:none;color:var(--gold)}
+@media (max-width:760px){.scene{overflow-x:auto;-webkit-overflow-scrolling:touch}.scene svg.view{min-width:980px}.scene-key .swipe{display:inline}}
+.scene-key{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px;background:var(--hall2);border:1px solid #000;border-top:0;font-size:.9rem;color:#cdbfae}
+.scene-key b{color:#fff;font-weight:600}
+
+/* small print */
+.smallprint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #000;border-top:0}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.9rem;line-height:1.42;color:var(--ink2);display:grid;gap:4px;align-content:start;background:rgba(255,255,255,.72)}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-family:var(--f-head);font-weight:700;font-size:1.12rem;color:var(--ink);letter-spacing:.04em}
+.sp .nm b{color:var(--g);margin-right:6px;font-family:var(--f-mono);font-size:.78rem;border:1.5px solid var(--g);padding:0 5px;vertical-align:2px}
+.sp.wide{grid-column:1/-1;border-right:0;background:rgba(255,255,255,.86)}
+.st{display:inline-block;font-family:var(--f-mono);font-weight:600;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid currentColor;padding:0 5px;border-radius:2px;margin-right:3px;white-space:nowrap}
+.st.att{color:#1d6b3c}.st.rep{color:#8a5a12}.st.lgd{color:#a1162b}.st.inv{color:#3d4fa8}
+@media (max-width:900px){.smallprint{grid-template-columns:1fr 1fr}.sp:nth-child(3n){border-right:1px solid var(--rule)}.sp:nth-child(2n){border-right:0}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}.sp{border-right:0!important}}
+
+/* ---------- page-turner + progress + the cue ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (min-width:861px){.crew>.guide{position:sticky;top:64px}}
+.guide{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:end}
+.guide-img{width:150px;height:auto;transform-origin:50% 100%}
+.guide-img.call{animation:call 1.8s ease-in-out}
+@keyframes call{0%,100%{transform:none}20%{transform:rotate(-3deg)}40%{transform:rotate(3deg)}60%{transform:rotate(-2deg)}80%{transform:rotate(1deg)}}
+.radio{position:relative;background:var(--cream);color:var(--ink);border:1px solid #000;border-left:6px solid var(--pencil);padding:14px 18px 16px;border-radius:2px;min-height:128px;display:grid;align-content:start;gap:8px;box-shadow:6px 6px 0 rgba(0,0,0,.5);
+  background-image:repeating-linear-gradient(180deg,transparent 0 25px,rgba(140,128,114,.18) 25px 26px)}
+.radio .nm{display:flex;gap:10px;align-items:center;font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.radio .wave{display:inline-flex;gap:2px;align-items:center;height:14px}
+.radio .wave i{width:3px;background:var(--pencil);height:30%;border-radius:1px}
+.radio.talk .wave i{animation:wave .9s ease-in-out infinite}
+.radio .wave i:nth-child(2){animation-delay:.1s}.radio .wave i:nth-child(3){animation-delay:.2s}.radio .wave i:nth-child(4){animation-delay:.3s}.radio .wave i:nth-child(5){animation-delay:.4s}
+@keyframes wave{0%,100%{height:25%}50%{height:100%}}
+@media (prefers-reduced-motion:reduce){.radio.talk .wave i{animation:none;height:60%}}
+.radio #bubbleTxt{font-family:var(--f-hand);font-size:1.42rem;line-height:1.28;color:#2a2a2a}
+.side{display:grid;gap:16px}
+.card{padding:24px 22px 20px;display:grid;gap:12px;box-shadow:6px 6px 0 rgba(0,0,0,.5);border-radius:2px}
+.card h2{font-family:var(--f-head);font-weight:700;font-size:1.7rem;letter-spacing:.02em}
+.lapbox{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--ink);color:#fff;padding:12px 14px;border-radius:2px}
+.lapbox .lap{font-family:var(--f-mono);font-weight:600;font-size:2.2rem;line-height:1;color:var(--gold);letter-spacing:-.02em}
+.lapbox .lap small{display:block;font-size:.64rem;letter-spacing:.14em;color:#cdbfae;font-weight:500;margin-bottom:4px}
+.lapbox .pos{font-family:var(--f-head);font-weight:700;font-style:italic;font-size:2.2rem;line-height:1;text-align:right}
+.lapbox .pos small{display:block;font-family:var(--f-mono);font-style:normal;font-size:.64rem;letter-spacing:.14em;color:#cdbfae;font-weight:500;margin-bottom:4px}
+.sectors{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.sec{display:grid;gap:2px;justify-items:center;font-family:var(--f-mono);font-size:.62rem;color:var(--ink2);letter-spacing:.06em}
+.sec i{display:block;width:100%;height:12px;border-radius:2px;background:#cfc4ad;border:1px solid #000}
+.sec.s1 i{background:var(--amber)} .sec.s2 i{background:var(--green)} .sec.s3 i{background:var(--gold)}
+.seckey{font-size:.85rem;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 12px}
+.seckey span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:var(--c);border:1px solid #000}
+.revbar{display:grid;gap:4px;padding:8px 10px;background:var(--ink);border-radius:2px}
+.revrow{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.revrow .fl{font-family:var(--f-head);font-weight:700;font-size:.8rem;color:#cdbfae;width:20px;flex:none}
+.rv{width:11px;height:11px;border-radius:50%;background:#3a3330;border:1px solid #000;display:inline-block}
+.rv.on{background:var(--g);box-shadow:0 0 6px var(--g)}
+.register{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.04em;color:var(--ink)}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:2px;overflow:hidden}
+.seg button{font:inherit;font-family:var(--f-head);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;background:#fff;color:var(--ink);border:0;border-right:2px solid var(--ink);padding:6px 12px 5px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--gold)}
+.pickmsg{font-style:italic;color:var(--ink2);min-height:1.4em}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+@media (max-width:560px){.guide{grid-template-columns:1fr;justify-items:center}}
+
+/* ---------- rehearsal schedule (half term) ---------- */
+.orders{padding:30px 26px 24px;display:grid;gap:10px;position:relative;box-shadow:10px 12px 0 rgba(0,0,0,.5);border-radius:2px}
+.orders .rubric{font-family:var(--f-mono);font-weight:500;font-size:.74rem;letter-spacing:.2em;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:6px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.orders h2{font-family:var(--f-head);font-weight:700;font-size:2.3rem}
+.orders .due{font-family:var(--f-mono);font-weight:600;color:var(--watch);letter-spacing:.06em;font-size:.88rem}
+.orders .lede{margin:0;color:var(--ink2)}
+.legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:6px}
+.leg{border-top:4px solid var(--g);padding-top:10px;display:grid;gap:8px;align-content:start}
+.leg .lh{display:flex;gap:10px;align-items:center}
+.leg .lno{min-width:52px;height:28px;border:2px solid var(--g);color:var(--ink);display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:.8rem;border-radius:2px;background:#fff}
+.leg.done .lno{background:var(--g);color:#fff}
+.leg .step{font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.leg p{margin:0}
+
+/* ---------- the programme (news) ---------- */
+.pitwall{display:grid;gap:16px}
+.sec-head{display:grid;gap:6px}
+.sec-head h2{font-family:var(--f-head);font-weight:700;font-size:2.5rem;color:#fff}
+.sec-head .lede{margin:0;color:#d8ccb8;max-width:90ch}
+.pw-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;justify-content:space-between}
+.pw-when{font-family:var(--f-mono);font-size:.74rem;color:#cdbfae}
+.nfilters{display:flex;flex-wrap:wrap;gap:8px}
+.nchip{font:inherit;font-family:var(--f-head);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--walnut2);background:var(--hall3);color:#efe6d6;padding:4px 10px;border-radius:2px;cursor:pointer}
+.nchip b{font-family:var(--f-mono);font-weight:400;color:#cdbfae;font-size:.7rem;letter-spacing:0}
+.nchip[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.nchip[aria-pressed="true"] b{color:var(--ink)}
+.nchip.bc{border-color:var(--gold)}
+.screens{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.story{position:relative;background:var(--cream);color:var(--ink);border:1px solid #000;border-top:5px solid var(--lv,#8a7f76);border-radius:2px;padding:14px 16px 14px;display:grid;gap:6px;align-content:start;
+  background-image:repeating-linear-gradient(180deg,transparent 0 25px,rgba(140,128,114,.14) 25px 26px)}
+.story.bc{--lv:var(--gold)}.story.st{--lv:var(--news)}
+.story.read{background-color:#edf4ea}
+.story .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-family:var(--f-mono);font-size:.68rem;color:var(--ink2)}
+.story .src{font-family:var(--f-head);font-weight:700;letter-spacing:.04em;font-size:1.05rem;color:var(--ink)}
+.lvl{border:1.5px solid var(--lv);color:var(--lv);border-radius:2px;padding:0 5px;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em}
+.story.bc .lvl{color:var(--brassy2);border-color:var(--brassy2)}
+.story h3{font-family:var(--f-text);font-weight:600;font-size:1.06rem;line-height:1.3;margin:2px 0}
+.story p.d{margin:0;color:var(--ink2);font-size:.9rem}
+.story .stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.ttag{font-family:var(--f-mono);font-size:.62rem;background:#fff;border:1px solid var(--rule);border-radius:2px;padding:0 6px;color:var(--ink2)}
+.ttag.beyond{color:var(--faded);border-style:dashed}
+.story .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.story .acts .btn{padding:6px 12px 5px;font-size:.95rem}
+.story .stampn{position:absolute;right:14px;top:10px;transform:rotate(-6deg);font-family:var(--f-head);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);border:2.5px solid var(--green);border-radius:2px;padding:0 8px;font-size:.9rem;background:rgba(255,255,255,.7)}
+.tw{display:grid;gap:10px;margin-top:10px;padding:12px;border-radius:2px;background:#fff;color:var(--ink);border:1px solid var(--rule)}
+.tw .wc{font-family:var(--f-mono);font-size:.72rem;color:var(--watch);min-height:1em}
+.tw-mine{font-family:var(--f-hand);font-size:1.3rem;line-height:1.25;color:#2a2a2a;margin:6px 0 0}
+.tw-mine.q{color:var(--ink2)}
+.pw-foot{font-size:.84rem;color:#cdbfae;border-top:1px solid var(--walnut2);padding-top:10px;margin:0}
+@media (max-width:560px){.screens{grid-template-columns:1fr}.story .stampn{top:auto;bottom:12px}}
+
+/* ---------- the six sections ---------- */
+.section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.section-h h2{font-family:var(--f-head);font-weight:700;font-size:2.5rem;color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-family:var(--f-head);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;border:1.5px solid var(--walnut2);background:var(--hall3);color:#efe6d6;padding:4px 12px 3px;cursor:pointer;border-radius:2px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;font-family:var(--f-head);font-weight:700;font-size:.9rem;color:var(--g,var(--gold))}
+.chip b{font-family:var(--f-mono);font-weight:400;color:#cdbfae;font-size:.72rem}
+.chip[aria-pressed="true"]{background:var(--g,var(--gold));color:#fff;border-color:var(--g,var(--gold))}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:#fff}
+.chip[data-f="all"][aria-pressed="true"]{color:var(--ink)}.chip[data-f="all"][aria-pressed="true"] b,.chip[data-f="all"][aria-pressed="true"] i{color:var(--ink)}
+.zones{display:grid;gap:26px}
+.zone{display:grid;gap:14px;padding:18px 20px;border-left:10px solid var(--g);box-shadow:6px 6px 0 rgba(0,0,0,.45);border-radius:2px}
+.zone.off{display:none}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.zone-head .ic{min-width:58px;height:50px;background:#fff;border:2.5px solid var(--g);display:grid;place-items:center;color:var(--g);font-family:var(--f-head);font-weight:700;font-size:1.8rem;border-radius:2px;padding:0 8px;line-height:1}
+.zone-head .ic small{display:block;font-family:var(--f-mono);font-style:normal;font-size:.52rem;letter-spacing:.1em;font-weight:500;color:var(--ink2)}
+.zone-head .nm{display:block;font-family:var(--f-head);font-weight:700;font-size:1.6rem}
+.zone-head .def{display:block;font-size:.98rem;color:var(--ink2)}
+.zone-head .n{font-family:var(--f-mono);font-weight:600;font-size:.78rem;color:var(--ink)}
+.zone.flash{animation:flash 2.2s ease}
+@media (max-width:600px){.zone{padding:14px 12px}.zone-head{grid-template-columns:auto minmax(0,1fr)}.zone-head .n{grid-column:2}.zone-head .nm{font-size:1.25rem}}
+@keyframes flash{0%,100%{box-shadow:6px 6px 0 rgba(0,0,0,.45)}20%{box-shadow:0 0 0 4px var(--g),6px 6px 0 rgba(0,0,0,.45)}}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+/* item cards: one bar of manuscript each */
+.rec{position:relative;text-align:left;font:inherit;background:#fff;border:1.5px solid #bdb39f;border-top:5px solid var(--g);padding:10px 13px 12px 13px;cursor:pointer;display:grid;gap:3px;align-content:start;min-height:122px;border-radius:2px;color:var(--ink);box-shadow:2px 3px 0 rgba(0,0,0,.14)}
+.rec:hover{background:var(--cream);transform:translateY(-1px)}
+.rec .no{font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.06em;color:var(--ink2)}
+.rec .no b{color:var(--g);font-weight:600}
+.rec .nm{font-family:var(--f-head);font-weight:700;font-size:1.25rem;line-height:1.1}
+.rec .t{font-size:.88rem;color:var(--ink2)}
+.rec .th{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faded)}
+.rec .stamp{position:absolute;right:8px;bottom:8px;font-family:var(--f-head);font-weight:700;font-size:.82rem;letter-spacing:.1em;color:#fff;background:var(--g);padding:1px 8px 0;display:none;border-radius:2px}
+.rec.done{background:var(--paper2)}
+.rec.done .stamp{display:block}
+.rec.new:before{content:"NEW";position:absolute;left:auto;right:10px;top:6px;font-family:var(--f-mono);font-weight:600;font-size:.6rem;letter-spacing:.08em;color:#fff;background:var(--watch);padding:1px 5px 0;border-radius:2px}
+.rec.flash{animation:recflash 3s ease}
+@keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--gold)}}
+
+/* ---------- the season (calendar) ---------- */
+.board{background:var(--hall3);border:1px solid #000;box-shadow:8px 8px 0 rgba(0,0,0,.45);color:#efe6d6;border-radius:2px;overflow:hidden}
+.btop{padding:22px 22px 12px;display:grid;gap:4px;position:relative;border-bottom:1px solid var(--walnut2)}
+.btop:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--brassy2),var(--gold) 40%,var(--brassy2))}
+.btop h2{font-family:var(--f-head);font-weight:700;font-size:2.3rem;letter-spacing:.02em}
+.btop .sub{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;color:#cdbfae}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.month{border-right:1px solid var(--walnut2);border-bottom:1px solid var(--walnut2);padding:14px 16px;display:grid;gap:10px;align-content:start}
+.month .mh{font-family:var(--f-head);font-weight:700;font-size:1.3rem;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--walnut2);padding-bottom:4px}
+.month .mh i{font-family:var(--f-mono);font-style:normal;font-weight:600;font-size:.68rem;color:var(--gold);margin-right:8px}
+.month .mh small{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;color:#8a7f76;font-weight:400}
+.month.quiet .mh{color:#8a7f76}
+.evs{display:grid;gap:10px}
+.ev{display:grid;gap:3px;border-left:3px solid var(--g);padding-left:10px;font-size:.98rem}
+.ev .when{font-family:var(--f-mono);font-weight:600;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:#efe6d6;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .check{border:1px solid var(--gold);color:var(--gold);font-size:.6rem;padding:0 5px;letter-spacing:.06em}
+.ev .urgent{border:1px solid var(--watch);background:var(--watch);color:#fff;font-size:.6rem;padding:0 5px;letter-spacing:.06em}
+.ev b{font-weight:600}
+.ev .sub{display:block;color:#cdbfae;font-size:.92rem}
+.ev .in{display:block;color:#8fe0a8;font-size:.74rem;font-family:var(--f-mono)}
+.ev .open{justify-self:start;font:inherit;font-size:.9rem;background:none;border:0;padding:0;color:#fff;text-decoration:underline;cursor:pointer}
+.quiet-note{font-style:italic;color:#8a7f76;font-size:.92rem}
+
+/* ---------- programme notes ---------- */
+.book{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px;align-items:start}
+.cover-side{padding:30px 26px 24px;display:grid;gap:14px;box-shadow:6px 6px 0 rgba(0,0,0,.45);border-radius:2px}
+.cover-side h2{font-family:var(--f-head);font-weight:700;font-size:2.1rem}
+.cover-side p{margin:0;color:var(--ink2)}
+.tape{font-family:var(--f-mono);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+#entryForm{display:grid;gap:12px}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#copyFallback{width:100%;min-height:160px;font-family:var(--f-mono);font-size:.85rem}
+.entries{display:grid;gap:16px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:#cdbfae}
+.entries-h h3{font-family:var(--f-head);font-weight:700;font-size:1.7rem;color:#fff}
+.note{position:relative;background:var(--cream);color:var(--ink);border:1px solid #bdb39f;padding:42px 18px 14px;display:grid;gap:6px;box-shadow:3px 4px 0 rgba(0,0,0,.4);border-radius:2px;
+  background-image:repeating-linear-gradient(180deg,transparent 0 25px,rgba(140,128,114,.14) 25px 26px)}
+.note:before{content:"REA SINFONIA · PROGRAMME NOTE";position:absolute;left:0;right:0;top:0;padding:6px 18px;font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.14em;color:#fff;background:var(--ink)}
+.note .hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.note .hd b{font-family:var(--f-head);font-size:1.35rem;font-weight:700;line-height:1.1;color:var(--ink)}
+.note .hd .d{font-family:var(--f-mono);font-size:.78rem;color:var(--ink2);white-space:nowrap}
+.note .src{font-family:var(--f-mono);font-size:.72rem;color:var(--ink2);letter-spacing:.04em;text-transform:uppercase}
+.note .quo{font-family:var(--f-hand);font-size:1.35rem;line-height:1.25;border-left:3px solid var(--g,var(--gold));padding-left:10px;color:#2a2a2a}
+.note .why{font-family:var(--f-hand);font-size:1.22rem;line-height:1.3;color:#2a2a2a}
+.note .why i,.note .qy i{font-family:var(--f-mono);font-weight:500;font-style:normal;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-right:6px;display:block}
+.note .qy{font-family:var(--f-hand);font-size:1.15rem;color:#4c4440}
+.note[data-g]{border-left:7px solid var(--g)}
+.note.example{opacity:.92;border-style:dashed}
+.note .del{justify-self:start;font:inherit;font-size:.86rem;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer;padding:0}
+.note .del.arm{color:#a1162b}
+@media (max-width:860px){.book{grid-template-columns:1fr}}
+
+/* ---------- detail sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(8,5,5,.74);z-index:44}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(580px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:1px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.5)}
+.sheet[hidden]{display:none}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:22px 22px 14px;border-bottom:5px solid var(--g);background:#fff}
+.sheet-top .plate-ic{min-width:52px;height:46px;background:#fff;border:2.5px solid var(--g);color:var(--g);display:grid;place-items:center;font-family:var(--f-head);font-weight:700;font-size:1.6rem;border-radius:2px;padding:0 6px}
+.sheet-top .fam{font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.sheet-top h3{font-family:var(--f-head);font-weight:700;font-size:1.8rem}
+.x{font:inherit;font-size:1.7rem;line-height:1;background:none;border:0;color:inherit;cursor:pointer;padding:0 4px}
+.sheet-body{padding:18px 22px 40px;display:grid;gap:16px}
+.sheet-body .lab{font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:3px}
+.sheet-body p{margin:0}
+.think{border-left:4px solid var(--g);padding:8px 14px;font-size:1.04rem;background:#fff}
+.think b{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:3px;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;border:1.5px solid var(--rule);padding:1px 7px;color:var(--ink2);border-radius:2px;background:#fff}
+.tags span.th{border-color:var(--g);color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{font-size:.86rem;color:#8a7f76;border-top:1px solid var(--walnut2);padding-top:14px;line-height:1.6}
+
+/* ---------- backup block (BACKUP BLOCK v1) ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  background:#b4001e;color:#fff;font-size:.9rem;font-weight:700;padding:8px 14px;border-bottom:3px solid #000;text-align:center;font-family:var(--f-text)}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;gap:8px;justify-items:end}
+.bk-dock[hidden]{display:none}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;border:2px solid #000;background:#b4001e;color:#fff;padding:9px 16px;cursor:pointer;box-shadow:4px 4px 0 #000}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:#fff;color:#000}
+.bk-msg{max-width:min(380px,calc(100vw - 32px));background:#fff;color:#000;border:2px solid #000;padding:10px 12px;font-size:.88rem;box-shadow:4px 4px 0 #000}
+.bk-msg:empty{display:none}
+.bk-msg .go{background:#1B7F52;color:#fff;border:0;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer}
+.bk-msg button{font:inherit;border:2px solid #000;background:#fff;padding:5px 10px;cursor:pointer;margin-top:6px}
+body.bk-on{padding-bottom:90px}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- demo + feedback ---------- */
+.bk-banner,.bk-dock{display:none!important}
+body.bk-on{padding-bottom:0}
+.demo-btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;background:#fff6c2;color:var(--ink);border:2px dashed var(--ink);padding:12px 16px;font-size:.95rem;border-radius:3px}
+.fb-fab{position:fixed;left:16px;bottom:16px;z-index:15;font:inherit;font-family:var(--f-head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:1.05rem;border:2px solid var(--ink);padding:10px 18px;cursor:pointer;background:var(--gold);color:var(--ink);border-radius:3px;box-shadow:4px 4px 0 #000}
+.fb-fab[hidden]{display:none}
+.fb{position:fixed;z-index:45;right:0;top:0;bottom:0;width:min(560px,100vw);background:var(--paper);color:var(--ink);overflow:auto;border-left:2px solid #000;box-shadow:-10px 0 30px rgba(0,0,0,.35)}
+.fb[hidden]{display:none}
+.fb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:2px solid var(--ink);background:#fff}
+.fb-body{display:grid;gap:14px;padding:18px}
+.fb-body h2{font-family:var(--f-head);font-weight:700;font-size:1.9rem}
+.fb-chips{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chips button{font:inherit;font-size:.88rem;border:1.5px solid var(--ink);background:#fff;color:var(--ink);padding:4px 11px;cursor:pointer;border-radius:999px}
+.fb-chips button[aria-pressed="true"]{background:var(--ink);color:var(--gold)}
+.fb-copy{width:100%;min-height:200px;font-family:var(--f-mono);font-size:.8rem;border:1.5px solid var(--ink);padding:8px;background:#fff}
+.fb-copy[hidden]{display:none}
+.dept{background:var(--paper);color:var(--ink);border:2px solid #000;border-left:10px solid var(--gold);padding:20px 22px;display:grid;gap:10px;border-radius:3px}
+.dept h2{font-family:var(--f-head);font-weight:700;font-size:2rem}
+.dept p{margin:0;color:var(--ink2)}
+@media (max-width:560px){.demo{grid-template-columns:1fr}}
+.intro .badge,.fb .badge,.dept .badge{color:var(--ink2);border-color:var(--ink2);background:transparent}.intro .badge i{box-shadow:none;background:var(--ink2)}
+
+/* ---------- demo intro ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;overflow:auto;background:var(--hall);
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(217,178,76,.16),transparent 55%)}
+.intro[hidden]{display:none}
+.intro-card{width:min(860px,100%);color:var(--ink);border:2px solid #000;box-shadow:10px 10px 0 rgba(0,0,0,.5);display:grid;grid-template-columns:160px minmax(0,1fr);gap:22px;padding:34px 30px 28px;align-items:center;border-radius:4px}
+.intro-card svg{width:160px;height:auto}
+.intro-txt{display:grid;gap:12px}
+.intro-txt h2{font-family:var(--f-head);font-weight:700;font-size:2.2rem;line-height:1}
+.intro-txt p,.intro-txt li{margin:0;font-size:1rem}
+.intro-txt ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.intro-txt .btn{justify-self:start}
+.demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:2px dashed var(--ink);padding:8px 10px}
+@media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center;padding:30px 18px 22px}.intro-card svg{width:110px}.intro-txt .btn{justify-self:stretch}}
+
+/* ---------- tour ---------- */
+.tour-hl{position:fixed;inset:0;z-index:30;background:rgba(8,5,5,.72);pointer-events:none}
+.tour-hl[hidden]{display:none}
+.tour-ring{position:fixed;z-index:30;outline:3px dashed var(--gold);outline-offset:2px;pointer-events:none;transition:all .3s ease}
+.tour-ring[hidden]{display:none}
+.tour-card{position:fixed;z-index:31;left:50%;bottom:24px;transform:translateX(-50%);width:min(640px,calc(100vw - 32px));background:var(--paper);color:var(--ink);border:2px solid #000;border-top:6px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.4);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;align-items:start;border-radius:3px}
+.tour-card[hidden]{display:none}
+.tour-card svg{width:66px;height:auto}
+.tour-card .step{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tour-card h3{font-family:var(--f-head);font-weight:700;font-size:1.55rem;margin:2px 0 4px}
+.tour-card p{margin:0;font-size:.98rem}
+.tour-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tour-nav .btn{font-size:.95rem;padding:6px 12px 5px}
+.tour-nav .skip{margin-left:auto;font:inherit;background:none;border:0;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.tour-dots{display:flex;gap:4px}.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--rule)}.tour-dots i.on{background:var(--ink)}
+@media (max-width:560px){.tour-card{grid-template-columns:1fr;bottom:12px}.tour-card svg{display:none}}
+
+/* ---------- teacher dashboard (demo data) ---------- */
+.dash{position:fixed;inset:0;z-index:46;background:var(--paper2);overflow:auto;color:var(--ink)}
+.dash[hidden]{display:none}
+.dash-top{position:sticky;top:0;z-index:2;background:var(--ink);color:#fff;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px;border-bottom:4px solid var(--gold)}
+.dash-top .x{color:#fff;margin-left:auto}
+.dash-top .dnote{font-size:.88rem;color:#d8ccb8}
+.dash-wrap{max-width:1200px;margin:0 auto;padding:22px clamp(12px,3vw,32px) 60px;display:grid;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tl{background:#fff;border:2px solid var(--ink);padding:12px 14px;display:grid;gap:2px;border-radius:3px}
+.tl b{font-family:var(--f-mono);font-size:1.9rem;line-height:1;font-weight:600}
+.tl span{font-size:.84rem;color:var(--ink2)}
+.dcard{background:#fff;border:2px solid var(--ink);padding:16px 18px;display:grid;gap:10px;min-width:0;overflow-x:auto;border-radius:3px}
+.dcard h3{font-family:var(--f-head);font-weight:700;font-size:1.5rem}
+table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
+.dt th,.dt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+.dt tr.you td{background:#fff6c2}
+.dt .meter{display:inline-block;width:90px;height:8px;background:var(--paper2);vertical-align:middle;overflow:hidden;margin-right:6px;border:1px solid var(--rule)}
+.dt .meter i{display:block;height:100%;background:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.66rem;padding:1px 6px;color:#fff;background:var(--g,#888);margin:1px 2px 1px 0;border-radius:2px}
+.you-tag{font-family:var(--f-mono);font-size:.6rem;background:var(--ink);color:var(--gold);padding:1px 6px;margin-left:6px;vertical-align:middle}
+.dash-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start}
+.nbq{font-family:var(--f-hand);font-size:1.18rem;line-height:1.3;border-left:4px solid var(--g,var(--ink));padding:4px 10px;margin:6px 0;color:#2a2a2a}
+.nbq .small{font-family:var(--f-text)}
+.sw{display:inline-block;width:14px;height:10px;border:1px solid #000;margin-right:2px;vertical-align:middle;background:#cfc4ad;border-radius:2px}
+.sw.s1{background:var(--amber)}.sw.s2{background:var(--green)}.sw.s3{background:var(--gold)}
+.lapt{font-family:var(--f-mono);font-weight:600}
+@media (max-width:700px){.dt .hide-m{display:none}.dash-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- The page-turner, drawn once and reused: an invented page-turner in concert black with a pencil behind one ear and the corner of a page in hand -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="turner" viewBox="0 0 200 270">
+      <ellipse cx="100" cy="263" rx="58" ry="6" fill="#000" opacity=".35"/>
+      <!-- long black skirt and shoes -->
+      <path d="M62 176 L52 254 H148 L138 176 Z" fill="#141414"/>
+      <path d="M70 254 h26 q0 8 -6 8 h-22 q-2 -4 2 -8z M104 254 h26 q4 4 2 8 h-22 q-6 0 -6 -8z" fill="#0a0a0a"/>
+      <!-- black top with a white collar -->
+      <path d="M58 98 q42 -14 84 0 l6 84 h-96 z" fill="#1a1a1a"/>
+      <path d="M86 86 h28 l-4 16 q-10 4 -20 0z" fill="#f6f1e4"/>
+      <path d="M96 100 l4 8 l4 -8" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- left arm down, holding the corner of a sheet -->
+      <path d="M60 102 q-18 32 -6 70 l14 -2 q-6 -30 2 -54z" fill="#1a1a1a"/>
+      <circle cx="66" cy="176" r="7" fill="#d9a98a"/>
+      <path d="M58 160 l34 -12 l12 40 l-34 12z" fill="#fbf8ef" stroke="#cfc4ad" stroke-width="1.5"/>
+      <g stroke="#8c8072" stroke-width="1"><path d="M64 160 l30 -10 M66 166 l30 -10 M68 172 l30 -10 M70 178 l30 -10 M72 184 l30 -10"/></g>
+      <g fill="#1b1714"><ellipse cx="78" cy="163" rx="2.6" ry="1.8"/><ellipse cx="88" cy="166" rx="2.6" ry="1.8"/><ellipse cx="84" cy="176" rx="2.6" ry="1.8"/></g>
+      <!-- right arm bent, hand raised ready to turn -->
+      <path d="M142 102 q22 8 20 36 q-2 14 -14 22 l-10 -8 q8 -8 6 -16 q-2 -12 -14 -14z" fill="#1a1a1a"/>
+      <circle cx="140" cy="150" r="7" fill="#d9a98a"/>
+      <path d="M140 143 l6 -12" stroke="#d9a98a" stroke-width="4" stroke-linecap="round"/>
+      <!-- neck and head -->
+      <rect x="92" y="70" width="16" height="16" fill="#d9a98a"/>
+      <ellipse cx="100" cy="54" rx="22" ry="24" fill="#d9a98a"/>
+      <!-- hair back in a bun -->
+      <path d="M78 54 q-2 -28 22 -30 q24 2 22 30 q-4 -16 -22 -18 q-18 2 -22 18z" fill="#3a2418"/>
+      <circle cx="122" cy="40" r="8" fill="#3a2418"/>
+      <!-- pencil behind the left ear -->
+      <path d="M72 50 l20 -8" stroke="#e0b24a" stroke-width="3.5" stroke-linecap="round"/><path d="M92 42 l4 -1.6" stroke="#2a2a2a" stroke-width="3" stroke-linecap="round"/>
+      <!-- glasses and face -->
+      <g fill="none" stroke="#2a2a2a" stroke-width="1.6"><circle cx="91" cy="56" r="6"/><circle cx="109" cy="56" r="6"/><path d="M97 56 h6"/></g>
+      <ellipse cx="91" cy="57" rx="2.2" ry="2.5" fill="#1b1612"/><ellipse cx="109" cy="57" rx="2.2" ry="2.5" fill="#1b1612"/>
+      <path d="M86 48 q5 -2 9 0 M105 48 q5 -2 9 0" stroke="#3a2418" stroke-width="2" fill="none"/>
+      <path d="M100 60 q-3 6 0 8" stroke="#b07a5c" stroke-width="1.4" fill="none"/>
+      <path d="M93 70 q7 3 14 -1" stroke="#8a4a35" stroke-width="1.8" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="tour-hl" id="tourHl" hidden></div><div class="tour-ring" id="tourRing" hidden></div>
+<div class="tour-card" id="tourCard" role="dialog" aria-live="polite" hidden>
+  <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#turner"/></svg>
+  <div>
+    <span class="step" id="tourStep"></span>
+    <h3 id="tourH"></h3>
+    <p id="tourP"></p>
+    <div class="tour-nav">
+      <button type="button" class="btn ghost" id="tourBack">Back</button>
+      <button type="button" class="btn hv" id="tourNext">Next</button>
+      <span class="tour-dots" id="tourDots" aria-hidden="true"></span>
+      <button type="button" class="skip" id="tourSkip">Skip the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash" id="dash" hidden aria-label="Teacher dashboard, demo data">
+  <div class="dash-top"><span class="badge"><i></i>Department view</span><span class="dnote">Demo data: the pupils below are invented. Your own demo play is the highlighted row and updates as you use the page.</span><button type="button" class="x" id="dashClose" aria-label="Close">×</button></div>
+  <div class="dash-wrap" id="dashBody"></div>
+</div>
+
+<button type="button" class="fb-fab" id="fbOpen" hidden>Feedback for Simon</button>
+<div class="scrim" id="fbScrim" hidden></div>
+<div class="fb" id="fb" role="dialog" aria-modal="true" aria-labelledby="fbH" hidden>
+  <div class="fb-top"><span class="badge"><i></i>Feedback</span><button type="button" class="x" id="fbClose" aria-label="Close">×</button></div>
+  <form id="fbForm" class="fb-body" autocomplete="off">
+    <h2 id="fbH">What would you want from this?</h2>
+    <p class="small">If the Send button does not work for you, send your comments and changes to Simon directly. Nothing here is shown to pupils.</p>
+    <div class="two">
+      <div class="field"><label for="fbName">Your name</label><input id="fbName" required></div>
+      <div class="field"><label for="fbRole">Role</label><input id="fbRole" placeholder="e.g. Head of Music"></div>
+    </div>
+    <div class="field"><label>Would you use this with your sixth form?</label>
+      <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+    <div class="field"><label>Which optional areas of study do you teach? (The page tags everything to AQA 7272; AoS1 is assumed.)</label>
+      <div class="fb-chips" id="fbAos">
+        <button type="button" data-v="AoS2 Pop">AoS2 Pop music</button><button type="button" data-v="AoS3 Media">AoS3 Music for media</button><button type="button" data-v="AoS4 Theatre">AoS4 Music for theatre</button><button type="button" data-v="AoS5 Jazz">AoS5 Jazz</button><button type="button" data-v="AoS6 Traditional">AoS6 Contemporary traditional</button><button type="button" data-v="AoS7 Since 1910">AoS7 Art music since 1910</button><button type="button" data-v="not AQA">We are not on AQA</button>
+      </div></div>
+    <div class="field"><label>More of…</label>
+      <div class="fb-chips" id="fbMore">
+        <button type="button" data-v="performing">Performing opportunities</button><button type="button" data-v="composing">Composing</button><button type="button" data-v="eartraining">Ear training and theory</button><button type="button" data-v="setworks">Set-work listening</button><button type="button" data-v="concerts">Birmingham concerts</button><button type="button" data-v="conservatoire">Conservatoire route</button><button type="button" data-v="degrees">Degrees and admissions</button><button type="button" data-v="production">Production and tech</button><button type="button" data-v="jazz">Jazz</button><button type="button" data-v="theatre">Musical theatre</button><button type="button" data-v="choral">Choral and singing</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+      </div></div>
+    <div class="field"><label>The look: the score, the bars, the page-turner. Keep it?</label>
+      <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
+    <div class="field"><label>The programme (this week's Radio 3 broadcasts and music news every morning; pupils write two sentences). Keep it?</label>
+      <div class="seg" id="fbSlip" style="flex-wrap:wrap"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="more-broadcasts" aria-pressed="false">More broadcasts</button><button type="button" data-v="more-news" aria-pressed="false">More news</button><button type="button" data-v="drop" aria-pressed="false">Leave it out</button></div></div>
+    <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
+    <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (items, dates, links, area-of-study tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="actions"><button class="btn big hv" type="submit" id="fbSend">Send to Simon</button></div>
+    <p class="small" id="fbMsg" aria-live="polite"></p>
+    <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
+  </form>
+</div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
+  <div class="intro-card paper hz">
+    <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#turner"/></svg>
+    <div class="intro-txt">
+      <span class="badge" style="justify-self:start"><i></i>Music · The Score · demo</span>
+      <h2 id="introH">A demo of a web page for your sixth-form musicians.</h2>
+      <p>It is a working copy of the page a pupil would use: 61 free things to hear, watch, read, practise, enter and apply for, each tagged to an area of study of AQA 7272. It is laid out as a full score on a stand. Six staves, one per section of the orchestra, and each section is one kind of thing; every item is one bar, and each thing a pupil does writes the notes into its bar. The programme at the back collects this week's Radio 3 and Radio 4 music programmes and music news every morning, and pupils write two sentences on one that the department can read.</p>
+      <ol>
+        <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
+        <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
+        <li><b>Press Feedback</b> (bottom left) and tell Simon what you would want more of, less of, or changed, and anything you would correct.</li>
+      </ol>
+      <p class="send-note" style="margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
+      <button type="button" class="btn big hv" id="introGo">Start the demo</button>
+    </div>
+  </div>
+</div>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper hz" id="gateForm" autocomplete="off">
+    <span class="passno">STAGE DOOR · MUSIC</span>
+    <span class="badge" style="justify-self:start"><i></i>Music · Beyond the classroom</span>
+    <h1 id="gateH">The Score<em>Rea Sinfonia · one season · you are on the stand, and every bar is yours to fill</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 270" aria-hidden="true"><use href="#turner"/></svg>
+      <p>Free things for sixth-form musicians: competitions, auditions, concerts, podcasts, reading, things to practise and make, and the way into a music degree or a conservatoire. The page is a full score on a stand. Six staves, one per section of the orchestra, and each section is one kind of thing: woodwind listens, brass enters, percussion does, the keyboard reads, the voices apply, the strings watch. Every thing to do is one bar; do it and the notes go in. The programme at the back carries this week's broadcasts and music news. Wren, the page-turner, keeps a pencil in the margin. Everything you do saves to the department.</p>
+    </div>
+    <div class="two">
+      <p class="demo-note" style="grid-column:1/-1"><b>Demo:</b> any form and any name will do. A pupil would type their real form and full name here.</p>
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" value="12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="your name" required></div>
+    </div>
+    <p class="small">On the real page: "Use your full name so your teacher can find you. Your form code is on your timetable."</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big hv" type="submit" id="gGo">Take the stand</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+
+  <div class="demo">
+    <p class="send-note" style="grid-column:1/-1;margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
+    <div><b>Demo for the Music department.</b> This is the working pupil page: sign in with any name, fill a few bars, log a broadcast or a story from the programme, ask Wren for a cue. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn hv" id="fbOpen2">Feedback</button></div>
+  </div>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Music · Beyond the classroom</span>
+      <h1>The <b>Score</b><span>Rea Sinfonia · six sections, one season, and the programme at the back</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE SCORE ===== -->
+  <section aria-label="The score: six sections and the programme to click">
+    <div class="scene">
+      <svg class="view" id="view" viewBox="0 0 1400 780" role="group" aria-label="A conductor's full score on a stand in a dark concert hall: six staves, three systems, rehearsal letters A to F, and the programme folded at the back">
+        <defs>
+          <linearGradient id="hallG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0808"/><stop offset="1" stop-color="#1c1614"/></linearGradient>
+          <linearGradient id="pageG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9f5ea"/><stop offset=".5" stop-color="#f6f1e4"/><stop offset="1" stop-color="#ede5d1"/></linearGradient>
+          <linearGradient id="ledgeG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4a36"/><stop offset="1" stop-color="#2e1f18"/></linearGradient>
+          <radialGradient id="lampG" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#ffe9b0" stop-opacity=".55"/><stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/></radialGradient>
+          <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="8"/></filter>
+        </defs>
+        <!-- the hall -->
+        <rect width="1400" height="780" fill="url(#hallG)"/>
+        <text class="hall" x="40" y="30">BORDESLEY HALL · REA SINFONIA · SEASON 2026–27</text>
+        <g id="houseLights"></g>
+        <text id="lightsTxt" x="1360" y="52" text-anchor="end" class="hall"></text>
+        <!-- the stand lamp and its pool of light -->
+        <path d="M700 36 q0 -16 30 -16 h20" fill="none" stroke="#3a2a22" stroke-width="4"/>
+        <path d="M688 36 h26 l4 10 h-34z" fill="#2b211c"/>
+        <circle cx="701" cy="46" r="4" fill="#ffe9b0" filter="url(#glow)"/>
+        <ellipse cx="700" cy="60" rx="520" ry="80" fill="url(#lampG)"/>
+        <!-- the page -->
+        <rect x="52" y="72" width="1304" height="668" fill="#000" opacity=".4" filter="url(#soft)"/>
+        <rect x="40" y="62" width="1310" height="668" fill="url(#pageG)" stroke="#bdb39f" stroke-width="1"/>
+        <text class="mono" x="60" y="86" font-size="9" letter-spacing="2" fill="#8a7f76">FULL SCORE</text>
+        <text class="mono" x="1330" y="86" font-size="9" letter-spacing="2" fill="#8a7f76" text-anchor="end">1</text>
+        <text class="title" x="695" y="112" text-anchor="middle">BEYOND THE CLASSROOM</text>
+        <text class="sub" x="695" y="130" text-anchor="middle">for sixth-form musician and orchestra · Rea Sinfonia · season 2026–27</text>
+        <text class="tempo" x="232" y="160">Allegro con brio</text>
+        <text class="tempo" x="354" y="160" style="font-style:normal"><tspan class="clef" font-size="13">𝅘𝅥</tspan> = 120</text>
+        <text class="pencil" id="pencilNote" x="1330" y="160" text-anchor="end"></text>
+        <!-- staves, bar lines and bars are drawn by the script -->
+        <g id="systems"></g>
+        <g id="hots"></g>
+        <g id="bars"></g>
+        <!-- 7 THE PROGRAMME: the page corner turned up, bottom right -->
+        <g class="hot" data-g="news" data-f="news" id="newsHot" tabindex="0" role="button" aria-label="The programme: this week's broadcasts and music news">
+          <rect class="halo" x="1150" y="684" width="200" height="48" rx="3"/>
+          <path d="M1350 730 L1350 650 L1270 730 Z" fill="#e3dac4" stroke="#bdb39f" stroke-width="1"/>
+          <path d="M1350 650 L1270 730 L1350 730" fill="#cdbfae" opacity=".6"/>
+          <rect x="1162" y="694" width="150" height="30" rx="2" fill="#fff" stroke="var(--news)" stroke-width="2"/>
+          <text x="1237" y="708" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="700" font-size="14" fill="#1b1714" letter-spacing="1">7 · THE PROGRAMME</text>
+          <text x="1237" y="719" text-anchor="middle" class="mono" font-size="8.5" fill="#4d6b8a" id="newsCntTxt">this week</text>
+        </g>
+        <!-- the ledge of the stand -->
+        <rect x="0" y="738" width="1400" height="42" fill="url(#ledgeG)"/>
+        <rect x="0" y="738" width="1400" height="4" fill="#8a6a4f"/>
+      </svg>
+    </div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the score sideways to see every bar.</span><span><b>Click a section name</b> or a rehearsal letter to go to that section.</span><span><b>Click a bar</b> to open that thing.</span><span><b>Click the page corner</b> for this week's programme.</span><span>A bar with notes in it is one you have done.</span></div>
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six sections"></div>
+  </section>
+
+  <!-- ===== PAGE-TURNER, PROGRESS, THE CUE ===== -->
+  <section class="crew" aria-label="The page-turner, your score, and a cue">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 270" aria-hidden="true"><use href="#turner"/></svg>
+      <div class="radio" id="radio" role="status" aria-live="polite"><span class="nm"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>In the margin · Wren Ashby, page-turner (invented)</span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper hz count-card">
+        <h2>Your score</h2>
+        <div class="lapbox"><div class="lap" id="lapVal"><small>BARS FILLED</small>0 / 0</div><div class="pos" id="posVal"><small>SECTIONS IN</small>0 of 6</div></div>
+        <div class="sectors" id="sectors" aria-label="Six sections"></div>
+        <div class="seckey"><span style="--c:#cfc4ad">tacet</span><span style="--c:var(--amber)">sight-read</span><span style="--c:var(--green)">rehearsed</span><span style="--c:var(--gold)">concert-ready</span></div>
+        <p class="small" id="coverTxt" style="margin:0"></p>
+        <div class="revbar" id="revbar" aria-label="Every bar: one per thing, lit when you have done it"></div>
+        <div class="register" id="register"></div>
+      </div>
+      <div class="card paper hz pick-card">
+        <h2>The cue</h2>
+        <p class="small" style="margin:0">Say how long you have. Wren looks at the bars you have not filled and points at one, usually in a section you have not started.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn hv" id="pickBtn">Give me a cue</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REHEARSAL SCHEDULE (half term) ===== -->
+  <section class="orders paper hz" aria-labelledby="htLabel">
+    <span class="rubric"><span id="htEyebrow"></span><span>REA SINFONIA · THE STAND</span></span>
+    <h2 id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE PROGRAMME: THIS WEEK'S MUSIC ===== -->
+  <section aria-labelledby="newsH" id="news" class="pitwall">
+    <div class="sec-head">
+      <span class="eyebrow">7 · The programme · new every morning</span>
+      <h2 id="newsH">This week's music</h2>
+      <p class="lede" id="newsLede">Two lists, collected automatically every morning. <b>Broadcasts</b>: this week's episodes of Composer of the Week, Record Review, Music Matters, The Early Music Show and Jazz Record Requests on Radio 3, and Add to Playlist and Soul Music on Radio 4, each with a link to listen on BBC Sounds. <b>Stories</b>: music news and reviews from the Guardian (classical, jazz, musicals and the main music desk), OperaWire, WhatsOnStage, The Arts Desk, Pitchfork, NME, Folk Radio UK and MusicRadar. Listen to or read one, then press <b>Heard it</b> and write two sentences: what you heard or read, and the musical feature behind it (texture, harmony, tonality, rhythm, timbre, structure, word-setting). It saves to the department and goes onto a programme note. Each item is tagged to the areas of study it seems to touch. The tags come from keywords, so some will be wrong; finding a better link to the course is part of the exercise.</p>
+    </div>
+    <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show one area of study"></div><span class="pw-when" id="newsWhen"></span></div>
+    <div class="screens" id="newsList"></div>
+    <div><button type="button" class="btn hv" id="newsMore" hidden>Show more</button></div>
+    <p class="pw-foot" id="newsFoot"></p>
+  </section>
+
+  <!-- ===== THE SIX SECTIONS ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 id="tableH">Every section</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a section"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one section"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE SEASON ===== -->
+  <section class="board" aria-labelledby="yearH">
+    <div class="btop"><span class="sub">October 2026 – July 2027</span><h2 id="yearH">The season</h2><span class="sub">Deadlines, auditions, concerts and openings · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== PROGRAMME NOTES ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper hz">
+      <span class="tape" id="nbCover">Programme notes</span>
+      <h2 id="nbH">Write the programme note</h2>
+      <p>Every concert programme has a note on each piece: what it is, what to listen for, and what the writer noticed. Write one for anything you hear, watch, read, make or enter: what it was, the musical feature in one line, what you noticed, and what you would listen to next. These notes are where a personal statement, a conservatoire interview and a university essay come from.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Area of study</label>
+            <select id="nbHw" required>
+              <option value="">Choose…</option>
+              <option>AoS1 Baroque solo concerto</option><option>AoS1 Mozart opera</option><option>AoS1 Chopin, Brahms, Grieg</option><option>AoS1 Western classical 1650–1910</option>
+              <option>AoS2 Pop music</option><option>AoS3 Music for media</option><option>AoS4 Music for theatre</option>
+              <option>AoS5 Jazz</option><option>AoS6 Contemporary traditional</option><option>AoS7 Art music since 1910</option>
+              <option>Performing</option><option>Composing</option><option>Beyond the course</option><option>Applying</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="nbWhat">What I heard, watched, read, made or entered</label><input id="nbWhat" list="whatList" placeholder="piece, episode, talk, chapter, competition…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">The musical feature in one line (optional)</label><textarea id="nbQuo" class="hand" style="min-height:60px"></textarea></div>
+        <div class="field"><label for="nbLearned">What I noticed</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">What I would listen to next, or a question it left me with (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn hv" type="submit">Print the note</button><button class="btn ghost" type="button" id="copyBtn">Copy all my notes as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your programme notes as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3>Your programme notes</h3><span id="logCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+
+  <section class="dept" aria-label="For the department">
+    <h2>What the department would see</h2>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> or <b>I'm interested</b> for each competition, audition and placement (your list for Project Remix, the Rotary heat, a Music for Youth group, and a heads-up on everyone applying to NYO, NYC or a conservatoire on their own); how much of the half-term schedule each pupil has done; each pupil's bars filled and which of the six sections they have used; <b>every broadcast and story each pupil has logged from the programme, with the two sentences they wrote</b>; each pupil's programme notes in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. The schedule is edited in one block at the top of the file; the programme updates itself; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Music: the items, the area-of-study tags, which Radio 3 programmes and news sources the programme reads, the dates, Wren's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <div><button type="button" class="btn big hv" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+<script>
+(function(){
+/* Six sections of the orchestra, in score order from the top of the page. The programme (news) is the seventh thing to click. */
+const FAM = {
+  listen:{label:"Listen", verb:"Podcasts and radio", place:"Woodwind", the:"the woodwind", letter:"A", clef:"\u{1D11E}", def:"The section that carries the tune. Radio 3 and the podcasts: music you can listen to on the bus.", no:1},
+  enter:{label:"Enter", verb:"Competitions and auditions", place:"Brass", the:"the brass", letter:"B", clef:"\u{1D11E}", def:"The fanfare. Competitions, auditions and festivals, from a composing prize to the National Youth Orchestra.", no:2},
+  do:{label:"Do", verb:"Things to practise and make", place:"Percussion", the:"the percussion", letter:"C", clef:"\u{1D125}", def:"The section that keeps time. Ear training, notation, recording, composing: where you stop listening and start making.", no:3},
+  read:{label:"Read", verb:"Scores, guides and books", place:"Keyboard & harp", abbr:"Keyboard", the:"the keyboard", letter:"D", clef:"\u{1D11E}", def:"The continuo. Scores, the examiners' own guides, and the books that give you the history.", no:4},
+  apply:{label:"Apply", verb:"Placements, degrees and conservatoires", place:"Voices", the:"the voices", letter:"E", clef:"\u{1D11E}", def:"The chorus. Free orchestral days, summer schools, Saturday training, and the way into a music degree or a conservatoire.", no:5},
+  watch:{label:"Watch", verb:"Talks, lectures and concerts", place:"Strings", the:"the strings", letter:"F", clef:"\u{1D122}", def:"The biggest section. Talks, lectures, live concerts for £5 or nothing, and the best channels on YouTube.", no:6}
+};
+/* Where each section's story comes from, and how sure we are. att = attested in a source we can point to;
+   rep = reported by a later writer; lgd = a story with no good source; inv = made up for this page. */
+const SMALLPRINT = [
+  {g:"listen", txt:`Composer of the Week began on the BBC Home Service in 1943 as <i>This Week's Composer</i>, five programmes a week on one composer; it took its present name in 1988 and has been presented by Donald Macleod since 1999. <span class="st att">attested</span> the BBC's own programme history. It is the longest-running programme of its kind anywhere.`},
+  {g:"enter", txt:`Purcell's Sonata for trumpet and strings (your AoS1 set work) was written for the natural trumpet, which has no valves and can only play the notes of the harmonic series. <span class="st att">attested</span> the surviving parts. The trumpeter it is usually linked with, John Shore, is credited with inventing the tuning fork in 1711: <span class="st rep">reported</span> by later writers, and the fork survives, but no document from Shore's lifetime says so.`},
+  {g:"do", txt:`Vivaldi taught the violin at the Ospedale della Pietà in Venice, a home for foundling girls whose orchestra was famous across Europe. A French visitor, Charles de Brosses, wrote in 1739 that the girls played every instrument, "the violin, the flute, the organ, the oboe, the cello, the bassoon", and that nothing frightened them. <span class="st rep">reported</span> in his letters, published in 1799. That <i>Il Gardellino</i> was written for them: <span class="st lgd">likely but not proven</span>; it was published in Amsterdam in 1729.`},
+  {g:"read", txt:`Chopin dedicated the second Ballade (AoS1) to Robert Schumann, who had dedicated his <i>Kreisleriana</i> to Chopin. <span class="st att">attested</span> the first edition, 1840. That the Ballade was inspired by a poem of Mickiewicz: <span class="st rep">reported</span> by Schumann, who said Chopin had told him so; Chopin himself never wrote it down.`},
+  {g:"apply", txt:`<i>Le nozze di Figaro</i> (AoS1) was first performed at the Burgtheater in Vienna on 1 May 1786. <span class="st att">attested</span> the theatre's records. The Irish tenor Michael Kelly, who sang Basilio and Curzio, wrote fifty years later that at the first orchestral rehearsal of "Non più andrai" the players stood and cheered Mozart: <span class="st rep">reported</span>, in Kelly's <i>Reminiscences</i> (1826), written with help from a ghostwriter.`},
+  {g:"watch", txt:`Bach's A minor violin concerto (AoS1) survives in a set of parts copied in Leipzig around 1730, when Bach directed the Collegium Musicum, a student ensemble that gave weekly concerts at Zimmermann's coffee house. <span class="st att">attested</span> the manuscript parts and the Leipzig newspapers' notices of the concerts. Whether the concerto was first written earlier, at Cöthen, is <span class="st rep">argued</span> by scholars and not settled.`},
+  {g:"", wide:true, txt:`<b>About this page.</b> The Rea Sinfonia, Bordesley Hall and the score on the stand are <span class="st inv">invented</span>; the orchestra is named after the River Rea, which runs through Birmingham under the streets. Wren Ashby <span class="st inv">invented</span> is not based on anyone. The notes that appear in a bar when you do something are a figure drawn for the page, not a quotation from any piece. Your progress is arithmetic: every thing you do fills one bar; a section is sight-read when you have done one thing in it, rehearsed at half, concert-ready when every bar is full; the house lights go down as the sections come in. The broadcasts and stories in the programme are real, collected from the sources named under them.`}
+];
+// mins drives the cue: quick <= 20, evening <= 180, long > 180
+// th = the area of study of AQA A-level Music (7272) the item serves most.
+const ITEMS = [
+  // ---- A Woodwind · Listen
+  {s:"Cw",g:"listen",short:"Composer of the Week",name:"BBC Radio 3: Composer of the Week",mins:60,t:"one programme: an hour",th:"AoS1 Western classical 1650–1910",
+   what:"Five one-hour programmes a week on one composer, presented by Donald Macleod, with a large archive on BBC Sounds. Recommended by Cambridge HE+. Search the archive for Purcell, Vivaldi, Bach, Mozart, Chopin, Brahms and Grieg, and for the named artists in your optional areas.",
+   think:"Listen to one programme on the composer of a set work you are studying. Write down one thing about their life that explains something in the music, and one thing that does not.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b006tnxf",lt:"Composer of the Week"},
+  {s:"Rr",g:"listen",short:"Record Review",name:"BBC Radio 3: Record Review (Building a Library)",mins:60,t:"one Building a Library: 45–60 min",th:"Performing",
+   what:"Saturday mornings. In Building a Library a critic compares every recording of one piece and picks the best. Hearing the same bars played six different ways is the quickest way to learn what tempo, rubato, balance and articulation do.",
+   think:"Find a Building a Library on a set-work composer. Note two decisions the performers made differently and say which you prefer and why.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b06w2121",lt:"Record Review"},
+  {s:"Mm",g:"listen",short:"Music Matters",name:"BBC Radio 3: Music Matters",mins:45,t:"one episode: 45 min",th:"Beyond the course",
+   what:"Radio 3's weekly magazine on the musical world: composers, performers, new research, arguments about how music is funded and taught.",
+   think:"Listen to one episode and write down one argument in it. Who disagrees, and what would settle it?",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b006tnvx",lt:"Music Matters"},
+  {s:"Ls",g:"listen",short:"The Listening Service",name:"BBC Radio 3: The Listening Service (archive)",mins:30,t:"one episode: 30 min",th:"Beyond the course",
+   what:"Tom Service on how music works, one idea at a time: why we repeat, what a key is, how a film uses classical music. The series finished in 2024; more than a hundred episodes are on BBC Sounds.",
+   think:"Pick an episode on a technique you have met in a set work (ground bass, sonata form, rubato). Then find that technique in the set work and mark the bar.",tags:["free","BBC Sounds","archive"],url:"https://www.bbc.co.uk/programmes/b078n25h",lt:"The Listening Service"},
+  {s:"Em",g:"listen",short:"The Early Music Show",name:"BBC Radio 3: The Early Music Show",mins:60,t:"one programme: an hour",th:"AoS1 Baroque solo concerto",
+   what:"Weekly programme on Baroque and earlier music. The NCEM Young Composers Award winners are broadcast here in November 2026.",
+   think:"Listen to an episode on a Baroque composer or instrument. What did you hear about the natural trumpet, the Baroque flute or gut strings that changes how you hear your set work?",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b006tn49",lt:"Early Music Show"},
+  {s:"Jq",g:"listen",short:"Jazz Record Requests",name:"BBC Radio 3: Jazz Record Requests",mins:60,t:"one programme: an hour",th:"AoS5 Jazz",
+   what:"Radio 3's weekly jazz request programme, presented by Alyn Shipton, with the stories behind the records. The archive on BBC Sounds goes back years.",
+   think:"Listen for one track by Armstrong, Ellington, Parker, Davis, Metheny or Simcock. Describe what the rhythm section does under the solo.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b006tnn9",lt:"Jazz Record Requests"},
+  {s:"Io",g:"listen",short:"In Our Time · culture",name:"BBC In Our Time: Culture archive",mins:45,t:"one episode: 45 min",th:"AoS1 Western classical 1650–1910",
+   what:"Three academics and Melvyn Bragg on one subject for 45 minutes. Relevant episodes include Handel's Messiah, The Baroque Movement, Beethoven, The Waltz, Mathematics and Music, and Wagner.",
+   think:"Listen to The Baroque Movement. Write down two things the Baroque meant outside music, and one way they show in your Baroque set work.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/p01drwny",lt:"In Our Time Culture"},
+  {s:"Pr",g:"listen",short:"BBC Proms",name:"BBC Proms on Radio 3 and iPlayer",mins:90,t:"one Prom: an evening",th:"Beyond the course",
+   what:"Every Prom is broadcast live on Radio 3 and many are filmed for iPlayer. The 2027 season is expected to run from mid-July to mid-September; the programme is announced in the spring.",
+   think:"Over the summer, hear one Prom that includes a piece by a composer from your course and one by a composer you have never heard of. Which would you programme next to each other, and why?",tags:["free","summer"],url:"https://www.bbc.co.uk/proms",lt:"BBC Proms"},
+  {s:"Sp",g:"listen",short:"Switched On Pop",name:"Switched On Pop",mins:40,t:"one episode: 40 min",th:"AoS2 Pop music",
+   what:"Musicologist Nate Sloan and songwriter Charlie Harding take a pop song apart: harmony, structure, production, the hook. Hundreds of episodes.",
+   think:"Find an episode on Beyoncé, Daft Punk or another named artist. Write down one chord progression or production technique they identify, then find it in a track yourself.",tags:["free","podcast"],url:"https://switchedonpop.com/",lt:"Switched On Pop"},
+  {s:"Se",g:"listen",short:"Song Exploder",name:"Song Exploder",mins:25,t:"one episode: 25 min",th:"Composing",
+   what:"A musician takes one of their own songs apart layer by layer and explains how it was made, from the first idea to the mix.",
+   think:"Listen to one episode and list the order the layers were added. Then try that order on a piece of your own in BandLab or MuseScore.",tags:["free","podcast"],url:"https://songexploder.net/",lt:"Song Exploder"},
+  {s:"Sn",g:"listen",short:"Sticky Notes",name:"Sticky Notes: The Classical Music Podcast (Joshua Weilerstein)",mins:50,t:"one episode: 50 min",th:"AoS1 Western classical 1650–1910",
+   what:"A conductor walks through one piece at a time with the recording playing, for newcomers and musicians alike. Recent episodes include Grieg's Peer Gynt and a Shostakovich symphony. Free to listen; some extra episodes are for supporters.",
+   think:"Find an episode on a composer from your course. Write down the moment he stops the recording to point something out, and what the score is doing there.",tags:["free","podcast"],url:"https://stickynotespodcast.libsyn.com/",lt:"Sticky Notes"},
+  {s:"Ap",g:"listen",short:"Add to Playlist",name:"BBC Radio 4: Add to Playlist",mins:30,t:"one episode: 30 min",th:"Beyond the course",
+   what:"Two musicians add five tracks to a playlist, each one linked to the last by something in the music, from a Bach chorale to a grime track. The links are the point.",
+   think:"Listen to one episode and write down the five links. Then make your own chain of three pieces across two areas of study and say what joins them.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/m00106lb",lt:"Add to Playlist"},
+  {s:"Sm",g:"listen",short:"Soul Music",name:"BBC Radio 4: Soul Music",mins:30,t:"one episode: 30 min",th:"Beyond the course",
+   what:"One piece of music per episode, from Fleetwood Mac to Fauré, and the people whose lives it has run through. Good for word-setting and for what music does to listeners.",
+   think:"Pick an episode on a piece you know. Which musical feature do the speakers keep coming back to, even when they do not have the words for it?",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b008mj7p",lt:"Soul Music"},
+  // ---- B Brass · Enter
+  {s:"Rx",g:"enter",short:"CBSO Project Remix",name:"CBSO Project Remix 2027",mins:3000,t:"a project: Jan–Mar 2027",th:"Performing",
+   what:"A free CBSO ensemble for instrumentalists aged 11–18 at around Grade 5 or above, playing new arrangements of dance-based music, coached by orchestra members. Weekday evening rehearsals at the CBSO Centre from January, a tutti day on Sunday 7 March and a concert at Symphony Hall on Sunday 14 March 2027. Not auditioned; places are allocated by instrument. Apply by Sunday 8 November 2026.",
+   think:"Tap 'I'm entering this' so the department knows, then apply online before 8 November. A Symphony Hall concert on your UCAS form is worth the Tuesday evenings.",tags:["free","enter yourself","apply by 8 Nov"],url:"https://cbso.co.uk/take-part/young-people/project-remix",lt:"Project Remix"},
+  {s:"Yc",g:"enter",short:"BBC Young Composer",name:"BBC Young Composer Competition (BBC Radio 3 and the Proms)",mins:3000,t:"a composition: months",th:"Composing",
+   what:"For ages 12–18 in three age categories; any style, any instruments, any way of composing; judged anonymously. Winners get a mentor composer and write a piece for the BBC Concert Orchestra. It runs every other year: the 2025 round was open March to September, so the next is expected in 2027. Confirm on the BBC page.",
+   think:"Your NEA composition is the starting point. Tap 'I'm entering this' and the department will tell you when the 2027 round opens.",tags:["free","enter yourself","expected 2027"],url:"https://www.bbc.co.uk/programmes/articles/4mY3MbSJ5G2LvSbzZPbc85G/bbc-young-composer",lt:"BBC Young Composer"},
+  {s:"Nc",g:"enter",short:"NCEM Young Composers Award",name:"NCEM Young Composers Award (National Centre for Early Music with Radio 3)",mins:3000,t:"a composition: weeks",th:"Composing",
+   what:"Write a 3–4 minute piece for a named early-music group to a set brief; two categories, 18 and under and 19–25. Winners are performed live and broadcast on The Early Music Show. The 2026 winners are premiered by The Gonzaga Band at Royal Birmingham Conservatoire at lunchtime on Tuesday 27 October 2026. The 2027 brief is not yet published; in 2026 registration closed on 2 February and the final was in April.",
+   think:"Go to the 27 October premiere if you can: it is in Birmingham and it is what a winning piece sounds like. Then tap 'I'm entering this' for the 2027 round.",tags:["free","enter yourself","Birmingham"],url:"https://www.youngcomposersaward.co.uk/",lt:"NCEM award"},
+  {s:"Ny",g:"enter",short:"NYO auditions",name:"National Youth Orchestra of Great Britain: auditions",mins:180,t:"an application and an audition",th:"Performing",
+   what:"Ages 13–18, usually around Grade 8 standard, no certificates needed. For the Orchestra of 2027 applications closed in May 2026, with video auditions at the end of May and live auditions in September in London, Birmingham and Manchester; the 2028 round is expected to follow the same pattern. Free to apply and audition, with travel bursaries. Members contribute £2,580 a year; the NYO has bursaries and instalments and says nobody is turned away on financial grounds.",
+   think:"If you are near Grade 8, tap 'I'm entering this' now so the department can help you choose audition pieces before the spring.",tags:["free to apply","enter yourself","expected May 2027"],url:"https://www.nyo.org.uk/get-involved/the-nyo-orchestra",lt:"NYO auditions"},
+  {s:"Nv",g:"enter",short:"National Youth Choir",name:"National Youth Choir (15–18 choir): auditions",mins:120,t:"an online audition",th:"Performing",
+   what:"Singers in Years 11–13. A parent registers on the NYC Singer Portal and books a free 10–15 minute online audition. The 2026 booking window closed on 6 October, with auditions in October and November and a first course in spring 2027; the next window is expected in September 2027. Members pay for residential courses, with income-based help covering up to 100%, travel included.",
+   think:"Year 12 singers: tap 'I'm entering this' so the department reminds you in September 2027, and start choosing two contrasting songs now.",tags:["free to audition","enter yourself","next window Sept 2027"],url:"https://www.nationalyouthchoir.org.uk/how-do-i-join-national-youth-choir",lt:"NYC auditions"},
+  {s:"Ry",g:"enter",short:"Rotary Young Musician",name:"Rotary Young Musician",mins:180,t:"a heat, then finals",th:"Performing",
+   what:"A solo competition for amateur vocalists and instrumentalists aged 17 or under on 31 August 2026, run by Rotary clubs: a local heat (September to December), then district and cluster finals, and a national final on Saturday 24 April 2027. Enter through your local Rotary club, or through school. No entry fee is published; the sponsoring club helps with travel to the later rounds.",
+   think:"Tap 'I want to enter' and the department can find the local heat and the entry form. Prepare a programme of about ten minutes.",tags:["free","Year 12","school can enter you"],url:"https://www.rotarygbi.org/projects/young-people/competitions/rotary-young-musician",lt:"Rotary Young Musician"},
+  {s:"Mf",g:"enter",short:"Music for Youth",name:"Music for Youth: Regional Festivals and the National Festival",mins:3000,t:"a group performance: spring",th:"Performing",
+   what:"Non-competitive festivals for groups of two or more musicians aged 21 or under, in any genre, with written feedback from professional musicians. Regional Festivals run February to April; the National Festival is in Birmingham in July. The school enters the group; a Regional Festival place costs £42 a group. Applications for 2027 open in the autumn.",
+   think:"Got a band, a quartet or a choir? Tap 'I want to enter' and the department can register the group.",tags:["£42 a group","school registers","Birmingham"],url:"https://www.mfy.org.uk/take-part/",lt:"Music for Youth"},
+  {s:"Bi",g:"enter",short:"BBC Introducing",name:"BBC Introducing: upload your own music",mins:60,t:"an upload: an hour",th:"Composing",
+   what:"The BBC's route for unsigned musicians: upload a track you have written and recorded, and it is heard by the BBC Introducing team in your region, who play new music on local radio and pass it up to the national stations. Free. You need to be 16 or over.",
+   think:"Finish one track in BandLab or Audacity to a standard you would let a stranger hear, then upload it. Write down what you changed in the last hour before you sent it.",tags:["free","16 and over","pop and production"],url:"https://www.bbc.co.uk/introducing",lt:"BBC Introducing"},
+  // ---- C Percussion · Do
+  {s:"Mt",g:"do",short:"musictheory.net",name:"musictheory.net: lessons and ear training",mins:10,t:"ten minutes a day",th:"Performing",
+   what:"Free lessons and exercises: intervals, chords, scales and keys, for the listening and dictation parts of the appraising paper.",
+   think:"Ten minutes of interval and chord recognition, four days a week, for a half term. Write down your score on day one and on the last day.",tags:["free","ear training"],url:"https://www.musictheory.net/",lt:"musictheory.net"},
+  {s:"Te",g:"do",short:"teoria · dictation",name:"teoria.com: melodic and two-voice dictation",mins:15,t:"15 min",th:"Performing",
+   what:"Free theory and ear-training exercises including melodic dictation and two-voice dictation with adjustable tempo, which is the skill the appraising paper tests and the one most pupils practise least.",
+   think:"Do three melodic dictations at a slow tempo, then one at full speed. Which interval do you keep getting wrong?",tags:["free","dictation"],url:"https://www.teoria.com/",lt:"teoria.com"},
+  {s:"Om",g:"do",short:"Open Music Theory",name:"Open Music Theory (free online textbook)",mins:30,t:"one chapter: 30 min",th:"AoS1 Western classical 1650–1910",
+   what:"An open, university-level music theory textbook: harmony, counterpoint, form, pop and jazz harmony, with worked examples. Free under a Creative Commons licence.",
+   think:"Read the chapter on the form you are studying (ritornello, sonata, ternary). Then draw a form diagram of a set work with bar numbers.",tags:["free","textbook"],url:"https://openmusictheory.github.io/",lt:"Open Music Theory"},
+  {s:"Al",g:"do",short:"Learning Music (Ableton)",name:"Learning Music (Ableton): beats, chords and song structure in the browser",mins:40,t:"an evening in pieces",th:"AoS2 Pop music",
+   what:"Interactive lessons that run in the browser with nothing to install: beats, scales, chords, basslines, melodies and song structure, then modes, inversions and seventh chords. Free; no experience needed.",
+   think:"Work through chords and basslines, then rebuild the groove of a Daft Punk or Stevie Wonder track from memory. What did you get wrong?",tags:["free","production"],url:"https://learningmusic.ableton.com/",lt:"Learning Music"},
+  {s:"Ms",g:"do",short:"MuseScore Studio",name:"MuseScore Studio: free notation software",mins:120,t:"an evening",th:"Composing",
+   what:"Free notation software that exports audio and parts. Suitable for the NEA composition and for competitions that ask for a score.",
+   think:"Write out eight bars of your composition properly: dynamics, articulation, a tempo marking. Then play it back and fix one thing you only noticed when you heard it.",tags:["free","notation"],url:"https://musescore.org/en",lt:"MuseScore"},
+  {s:"Bl",g:"do",short:"BandLab",name:"BandLab: a free studio in the browser",mins:120,t:"an evening",th:"Composing",
+   what:"A free browser and app DAW for recording and production, with loops, virtual instruments and effects. Useful for pupils working in pop or media styles.",
+   think:"Record a 30-second cue for a film scene you choose, in the manner of Zimmer or Newman. Write down what the harmony does to the picture.",tags:["free","production"],url:"https://www.bandlab.com/",lt:"BandLab"},
+  {s:"Au",g:"do",short:"Audacity",name:"Audacity: free audio editor",mins:30,t:"30 min",th:"Performing",
+   what:"Free software for recording performances and editing takes. The quickest way to hear yourself as an examiner hears you.",
+   think:"Record your performance piece twice. Listen back with the score and mark every place where the two takes differ. Which take would you submit?",tags:["free","recording"],url:"https://www.audacityteam.org/",lt:"Audacity"},
+  {s:"Br",g:"do",short:"BBC Young Composer resources",name:"BBC Young Composer: resources for composing",mins:20,t:"one video: 20 min",th:"Composing",
+   what:"Short videos and articles from composers, including Shiva Feshareki, on getting a piece started and keeping it going.",
+   think:"Watch one video, then spend twenty minutes on a sketch using the method it describes. Keep the sketch even if you hate it.",tags:["free","composing"],url:"https://www.bbc.co.uk/programmes/articles/4JgjWbK9Cbp92M7FxLNZ2kv/resources-for-composing-and-writing-your-own-music",lt:"BBC resources"},
+  {s:"Bc",g:"do",short:"BCMG Composing Lab",name:"BCMG Creative Composing Lab",mins:480,t:"a Sunday, 10am–6pm",th:"Composing",
+   what:"A day writing for players from Birmingham Contemporary Music Group, led by the composer David Horne, for school years 10–13, ending with a performance. Sunday 15 November 2026 and Sunday 14 March 2027 at the CBSO Centre. Places must be booked; BCMG suggests a £12 donation.",
+   think:"Tap 'I'm interested' and the department can book NEA composers on. Bring one idea you are stuck on.",tags:["£12 suggested","Birmingham","book ahead"],url:"https://www.bcmg.org.uk/events/creative-composing-lab-autumn-26",lt:"BCMG lab"},
+  // ---- D Keyboard and harp · Read
+  {s:"Hp",g:"read",short:"Cambridge HE+ Music",name:"Cambridge HE+ Music",mins:40,t:"one module: 40 min",th:"Applying",
+   what:"Modules written for sixth formers: Musical Apologies and Analysing Musical Performances, with links to Composer of the Week and other free sources. Also covers university versus conservatoire.",
+   think:"Do Analysing Musical Performances with two recordings of one of your set works. Which recording would you take into the exam, and why?",tags:["free","degree preparation"],url:"https://myheplus.com/subject/music",lt:"HE+ Music"},
+  {s:"Ma",g:"read",short:"Musical Apologies",name:"Cambridge HE+: Musical Apologies",mins:30,t:"a short read: 30 min",th:"Beyond the course",
+   what:"A written module on how music becomes meaningful, linking historical context, reception, analysis and performance: the four ways of studying a piece that a music degree uses.",
+   think:"Take one set work and write a sentence about it from each of the four angles. Which sentence was hardest to write?",tags:["free"],url:"https://myheplus.com/subject/music/musical-apologies",lt:"Musical Apologies"},
+  {s:"Im",g:"read",short:"IMSLP scores",name:"IMSLP (Petrucci Music Library): free scores",mins:20,t:"20 min",th:"AoS1 Western classical 1650–1910",
+   what:"Free public-domain scores, including the AoS1 set works. Check the edition against the one AQA names for the exam.",
+   think:"Download the score of the set work you are on, print the movement you are studying and annotate every cadence in pencil.",tags:["free","scores"],url:"https://imslp.org/",lt:"imslp.org"},
+  {s:"Ag",g:"read",short:"AQA guide · Baroque concerto",name:"AQA teaching guide: the Baroque solo concerto (AoS1)",mins:45,t:"a guide: 45 min",th:"AoS1 Baroque solo concerto",
+   what:"The exam board's own guide to the Purcell, Vivaldi and Bach set works: the strand's context, the musical elements to listen for, and the vocabulary the examiners use. Written for teachers, which is why it is worth reading.",
+   think:"Read the section on one set work and write out every technical term it uses. Check you can hear each one in the recording.",tags:["free","exam board"],url:"https://filestore.aqa.org.uk/resources/music/AQA-7272-TG-AOS1-BSC.PDF",lt:"AQA guide (PDF)"},
+  {s:"Ro",g:"read",short:"Ross · The Rest Is Noise",name:"Alex Ross, The Rest Is Noise: Listening to the Twentieth Century (2007)",mins:500,t:"a book",th:"AoS7 Art music since 1910",
+   what:"A history of art music since 1900 that reads like a novel: Strauss and Mahler at the start, Shostakovich under Stalin, Messiaen in a prison camp, Reich and the minimalists. School library.",
+   think:"Read the chapter on Shostakovich. Then listen to the symphony it discusses and say where the book changed what you heard.",tags:["library","first book"]},
+  {s:"By",g:"read",short:"Byrne · How Music Works",name:"David Byrne, How Music Works (2012)",mins:400,t:"a book",th:"AoS2 Pop music",
+   what:"The book behind the TED talk: how venues, recording technology and money have shaped music, from the cathedral to the club. School library.",
+   think:"Read the chapter on technology. Pick one recording from your pop area of study and say which of Byrne's technologies made it possible.",tags:["library"]},
+  {s:"Go",g:"read",short:"Goodall · The Story of Music",name:"Howard Goodall, The Story of Music (2013)",mins:500,t:"a book",th:"AoS1 Western classical 1650–1910",
+   what:"A one-volume history of Western music from the first notation to now, by a composer, written for people who do not read music as well as those who do. There is a BBC television series of the same name.",
+   think:"Read the chapter that covers 1650–1750. Write down the three inventions Goodall thinks mattered most, and find one of them in a Baroque set work.",tags:["library"]},
+  // ---- E Voices · Apply
+  {s:"No",g:"apply",short:"NYO Open · free tickets",name:"NYO Open: free orchestral days and Free for Teens tickets",mins:180,t:"a day, or a concert",th:"Performing",
+   what:"The National Youth Orchestra's free scheme for teenagers: Open events where you play alongside NYO musicians, and Free for Teens tickets to NYO concerts for anyone 19 or under. No audition. NYO play Tchaikovsky and Zimmer's Interstellar at Warwick Arts Centre on Wednesday 6 January 2027.",
+   think:"Book a Free for Teens ticket for 6 January and tap 'I'm interested'. Interstellar next to Tchaikovsky is the Music for media area of study in one evening.",tags:["free","no audition"],url:"https://www.nyo.org.uk/get-involved/nyo-open",lt:"NYO Open"},
+  {s:"Ni",g:"apply",short:"NYO Inspire",name:"NYO Inspire",mins:3000,t:"days through the year",th:"Performing",
+   what:"Year-round free orchestral activities with NYO tutors for musicians aged 13–18, primarily from state schools; no audition. Apply through the NYO Musicians' Portal; pupils who apply for the Orchestra and are eligible are considered automatically. Check the page for the 2027 window.",
+   think:"Tap 'I'm interested' and the department will tell you when applications open. You qualify as a state-school pupil.",tags:["free","no audition","state schools"],url:"https://www.nyo.org.uk/get-involved/nyo-inspire",lt:"NYO Inspire"},
+  {s:"St",g:"apply",short:"Sutton Trust · Cambridge",name:"Sutton Trust Summer School: Music at Cambridge",mins:3000,t:"five days in August",th:"Applying",
+   what:"A free residential week in Cambridge for Year 12 pupils at state schools who meet the widening-participation criteria: analysis, history, harmony and counterpoint, and performance. The 2027 window usually opens in the new year. Confirm.",
+   think:"Year 12: check the criteria now and tap 'I'm interested' so the department can remind you when it opens.",tags:["free","Year 12","criteria apply"],url:"https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students/sutton-trust-summer-school",lt:"Sutton Trust"},
+  {s:"Cm",g:"apply",short:"Cambridge taster days",name:"Cambridge Faculty of Music: Subject Masterclass and Taster Days",mins:120,t:"an afternoon",th:"Applying",
+   what:"An online Year 12 Music Subject Masterclass open to all schools, with two taster lectures and a Q&A (the 2026 one was 21 May), and free in-person Taster Days in Cambridge for Years 11–12 from state schools (2026 dates were in March and July). 2027 dates to be published.",
+   think:"Tap 'I'm interested' and the department will put the 2027 dates in the season when they are published.",tags:["free","Year 12"],url:"https://www.mus.cam.ac.uk/applicants/undergraduate/events-for-students",lt:"Cambridge Music events"},
+  {s:"Jb",g:"apply",short:"Junior Conservatoire",name:"Junior Royal Birmingham Conservatoire",mins:3000,t:"thirty Saturdays a year",th:"Performing",
+   what:"Saturday training at the Conservatoire, 9am–5pm, with RBC and CBSO staff, for ages 8–18 by audition. Main auditions in April and May. Fees apply; means-tested bursaries include Music and Dance Scheme grants and Leverhulme scholarships.",
+   think:"If you are serious about performing, tap 'I'm interested' and talk to the department before the April auditions about the bursary.",tags:["auditioned","fees, bursaries","Birmingham"],url:"https://www.bcu.ac.uk/conservatoire/music/juniors",lt:"Junior RBC"},
+  {s:"Ox",g:"apply",short:"Oxford Music",name:"University of Oxford: Music",mins:30,t:"30 min",th:"Applying",
+   what:"Typical offer AAA, with A-level Music (or Grade 7 Theory). No written test. Everyone submits a performance video of up to five minutes with the score, two marked essays of about 1,500 words (on any subject) and one marked harmony or counterpoint exercise, by 10 November 2026; compositions optional. UCAS deadline 15 October 2026, 6pm.",
+   think:"Year 12: read the first-year course and list three topics you have not met. Year 13 applicants: your harmony exercise and essays are due on 10 November.",tags:["admissions"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/music",lt:"Oxford course page"},
+  {s:"Ca",g:"apply",short:"Cambridge Music",name:"University of Cambridge: Music",mins:30,t:"30 min",th:"Applying",
+   what:"Typical offer A*AA, with A-level Music (or Grade 8 Theory at Merit). Some colleges set an admission assessment at interview, and all ask for written work: one or two essays on music history or analysis, plus technical exercises and/or compositions. UCAS deadline 15 October 2026, 6pm.",
+   think:"Read how the Cambridge course balances history, analysis, composition and performance. Which of the four would you want most of, and what would change your mind?",tags:["admissions"],url:"https://www.undergraduate.study.cam.ac.uk/courses/music-ba-hons",lt:"Cambridge course page"},
+  {s:"Uc",g:"apply",short:"UCAS Conservatoires",name:"UCAS Conservatoires: applying to a conservatoire",mins:40,t:"40 min",th:"Applying",
+   what:"Conservatoire performance courses are applied for through UCAS Conservatoires, separately from UCAS Undergraduate, with auditions in the winter. The deadline for most music courses is 1 October: for 2027 entry it has passed; the final date for late applications is 23 September 2027. Audition fees are charged by each conservatoire.",
+   think:"Year 12: if a conservatoire is on your list, the deadline is 1 October 2027, a fortnight into Year 13. Write down which conservatoires audition in Birmingham and what each wants in the audition.",tags:["Year 12 note","deadline 1 Oct"],url:"https://www.ucas.com/article/when-apply-through-ucas-conservatoires",lt:"UCAS Conservatoires dates"},
+  // ---- F Strings · Watch
+  {s:"Sv",g:"watch",short:"Schwarm · Four Seasons",name:"Betsy Schwarm: Why should you listen to Vivaldi's Four Seasons? (TED-Ed)",mins:4,t:"4 min",th:"AoS1 Baroque solo concerto",
+   what:"Four minutes on how Vivaldi makes an orchestra paint a picture, and on the ritornello that keeps coming back.",
+   think:"Compare the ritornello structure she describes in Spring with the first movement of Il Gardellino. What does the soloist do that the tutti does not?",tags:["TED-Ed"],url:"https://www.ted.com/talks/betsy_schwarm_why_should_you_listen_to_vivaldi_s_four_seasons",lt:"Watch on TED"},
+  {s:"Db",g:"watch",short:"Byrne · architecture",name:"David Byrne: How architecture helped music evolve (TED)",mins:16,t:"16 min talk",th:"AoS1 Western classical 1650–1910",
+   what:"Byrne argues that the room shapes the music: Gothic cathedrals got long notes, the opera house got arias, CBGB got punk.",
+   think:"Take one AoS1 set work: where was it first heard, and what in its scoring or texture suits that space?",tags:["TED"],url:"https://www.ted.com/talks/david_byrne_how_architecture_helped_music_evolve",lt:"Watch on TED"},
+  {s:"Mg",g:"watch",short:"Margulis · repetition",name:"Elizabeth Hellmuth Margulis: Why we love repetition in music (TED-Ed)",mins:4,t:"4 min",th:"AoS1 Chopin, Brahms, Grieg",
+   what:"A music psychologist on why hearing something twice changes how we hear it, with an experiment you can try.",
+   think:"Find three different uses of repetition in a Chopin, Brahms or Grieg set work and say what each one does for the listener.",tags:["TED-Ed"],url:"https://www.ted.com/talks/elizabeth_hellmuth_margulis_why_we_love_repetition_in_music",lt:"Watch on TED"},
+  {s:"Mr",g:"watch",short:"Ronson · sampling",name:"Mark Ronson: How sampling transformed music (TED)",mins:17,t:"17 min talk",th:"AoS2 Pop music",
+   what:"A producer on what sampling does to the record it takes from, with examples he plays live.",
+   think:"Choose a track by Daft Punk or Beyoncé that uses a sample. What does the new track change about the original, and why?",tags:["TED"],url:"https://www.ted.com/talks/mark_ronson_how_sampling_transformed_music",lt:"Watch on TED"},
+  {s:"Kf",g:"watch",short:"Ferguson · remix",name:"Kirby Ferguson: Embrace the remix (TED)",mins:9,t:"9 min talk",th:"Composing",
+   what:"The argument that everything is a remix. One-sided on purpose: the set question asks you to argue back.",
+   think:"Bach arranged Vivaldi concertos for keyboard. Is that a remix? Say where borrowing becomes copying. This talk is there to be argued with.",tags:["TED","argue with it"],url:"https://www.ted.com/talks/kirby_ferguson_embrace_the_remix",lt:"Watch on TED"},
+  {s:"Sh",g:"watch",short:"Harris · the bandstand",name:"Stefon Harris: There are no mistakes on the bandstand (TED)",mins:13,t:"13 min talk",th:"AoS5 Jazz",
+   what:"A vibraphonist and his band show, live, how a jazz group listens to itself: a wrong note is only wrong if nobody responds to it.",
+   think:"Find a moment in a Miles Davis or Charlie Parker recording where the rhythm section responds to the soloist. Describe what changes.",tags:["TED"],url:"https://www.ted.com/talks/stefon_harris_there_are_no_mistakes_on_the_bandstand",lt:"Watch on TED"},
+  {s:"Cl",g:"watch",short:"Limb · your brain on improv",name:"Charles Limb: Your brain on improv (TED)",mins:16,t:"16 min talk",th:"AoS5 Jazz",
+   what:"A surgeon puts jazz musicians in a brain scanner and asks them to improvise. Interesting, and to be argued with: a scan is not an analysis.",
+   think:"What can a brain scan tell us about improvisation that an analysis of the notes cannot, and the other way round?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/charles_limb_your_brain_on_improv",lt:"Watch on TED"},
+  {s:"Mp",g:"watch",short:"Applebaum · mad scientist",name:"Mark Applebaum: The mad scientist of music (TED)",mins:17,t:"17 min talk",th:"AoS7 Art music since 1910",
+   what:"A composer who builds his own instruments and writes scores you cannot play asks what counts as music. Another talk to argue with.",
+   think:"Is what Applebaum makes music? Argue your answer with reference to Reich, Messiaen or MacMillan.",tags:["TED","argue with it"],url:"https://www.ted.com/talks/mark_applebaum_the_mad_scientist_of_music",lt:"Watch on TED"},
+  {s:"Ew",g:"watch",short:"Whitacre · virtual choir",name:"Eric Whitacre: A virtual choir 2,000 voices strong (TED)",mins:14,t:"14 min talk",th:"Composing",
+   what:"A choral composer assembles a choir from videos sent in from around the world, and the piece is performed in the talk.",
+   think:"Look at the harmony of the piece sung in the talk. Which chords would you borrow for your own composition, and how would you voice them?",tags:["TED"],url:"https://www.ted.com/talks/eric_whitacre_a_virtual_choir_2_000_voices_strong",lt:"Watch on TED"},
+  {s:"Gc",g:"watch",short:"Gresham College · music",name:"Gresham College: music lectures and schools programme",mins:60,t:"a lecture: an hour",th:"Beyond the course",
+   what:"Free recorded lecture series from the Gresham Professor of Music (currently Milton Mermikides) and others including Jeremy Summerly: Worlds of Music, The Nature of Music, Music and Emotion, film music. Live schools-only online talks at 2–3pm in term time.",
+   think:"Pick a lecture that overlaps with one of your areas of study. Write down the one claim in it you would quote in an essay, with the lecturer's name.",tags:["free","lectures"],url:"https://www.gresham.ac.uk/schools-and-colleges/music",lt:"Gresham Music"},
+  {s:"Rb",g:"watch",short:"Conservatoire lunchtimes",name:"Royal Birmingham Conservatoire: lunchtime concerts and research seminars",mins:60,t:"a lunchtime",th:"Performing",
+   what:"Lunchtime Music on Mondays at 1.05pm by Conservatoire students, plus organ, percussion and chamber recitals, guest masterclasses, and public research seminars on Tuesdays at 3.30pm. In the city centre; check prices when booking.",
+   think:"Go to one lunchtime concert and write a programme note on one piece as if for the audience, then compare it with the printed one.",tags:["Birmingham","most are free"],url:"https://www.bcu.ac.uk/conservatoire/events-calendar",lt:"RBC events"},
+  {s:"Cb",g:"watch",short:"CBSO for £5",name:"CBSO, Symphony Hall and Town Hall: £5 tickets",mins:150,t:"an evening",th:"Beyond the course",
+   what:"CBSO student tickets are £5 and 18–30 tickets £10; B:Music's Birmingham Classical season at Symphony Hall has £5 tickets for students and young people. Monday lunchtime organ concerts with Thomas Trotter at Town Hall and Symphony Hall run from 12 October 2026 to April 2027.",
+   think:"Book a £5 ticket for a concert that includes a set-work composer this half term. Hearing a live orchestra is the best preparation for the listening paper.",tags:["£5","Birmingham"],url:"https://cbso.co.uk/take-part/young-people",lt:"CBSO young people"},
+  {s:"Ex",g:"watch",short:"Ex Cathedra · free Vespers",name:"Ex Cathedra: Venetian Vespers (free), Bach and Monteverdi",mins:90,t:"a lunchtime concert",th:"AoS1 Baroque solo concerto",
+   what:"Birmingham's early-music choir and ensemble. A free, unticketed Venetian Vespers at the Elgar Concert Hall, University of Birmingham, on Friday 22 January 2027 at 1pm; Bach's St Matthew Passion at Symphony Hall on 26 March 2027; Monteverdi Vespers at the Oratory on 29 May 2027.",
+   think:"Go on 22 January. Write down what the cornetts and sackbuts do that modern brass would not, and link it to the natural trumpet in the Purcell.",tags:["free","Birmingham","22 Jan 2027"],url:"https://excathedra.co.uk/diary/",lt:"Ex Cathedra"},
+  {s:"An",g:"watch",short:"Adam Neely",name:"Adam Neely (YouTube)",mins:20,t:"one video: 20 min",th:"AoS5 Jazz",
+   what:"A bassist and composer on harmony, rhythm and the questions behind them: what a key is, why some rhythms feel wrong, how jazz harmony works. Argued with music examples, at the level of the first year of a degree.",
+   think:"Watch a video on harmony or rhythm. Write down one technical term you did not know and find it in a piece from your course.",tags:["free","YouTube"],url:"https://www.youtube.com/@AdamNeely",lt:"Adam Neely"},
+  {s:"Dv",g:"watch",short:"David Bruce Composer",name:"David Bruce Composer (YouTube)",mins:15,t:"one video: 15 min",th:"Composing",
+   what:"A working composer explains how pieces are built: orchestration, harmony, how Reich or Stravinsky get their effects, how to start and finish a composition.",
+   think:"Watch one video on orchestration or on a composer from AoS7. Apply one technique from it to eight bars of your own piece.",tags:["free","YouTube"],url:"https://www.youtube.com/@DBruce",lt:"David Bruce"},
+  {s:"Sw",g:"watch",short:"Sideways · film music",name:"Sideways (YouTube): how film and game music works",mins:20,t:"one video: 20 min",th:"AoS3 Music for media",
+   what:"Video essays on music for film, television and games: how a theme is built, how Zimmer uses texture, why a game score has to loop. Clear and well argued.",
+   think:"Watch a video on a composer from Music for media (Herrmann, Zimmer, Giacchino, Newman, Uematsu). Write down one technique and name the cue it is used in.",tags:["free","YouTube"],url:"https://www.youtube.com/@Sideways440",lt:"Sideways"}
+];
+
+/* The season. m = month (YYYY-MM). s links to an item. */
+const YEAR = [
+  {m:"2026-10",when:"Mon 12 Oct",what:"Thomas Trotter's lunchtime organ concerts begin",sub:"Town Hall and Symphony Hall, Mondays, until April.",s:"Cb",check:false},
+  {m:"2026-10",when:"Thu 15 Oct, 6pm",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants, through UCAS.",s:"Ca",check:false,urgent:true},
+  {m:"2026-10",when:"17 Oct – 1 Nov",what:"National Youth Choir online auditions",sub:"For singers who booked by 6 October.",s:"Nv",check:false},
+  {m:"2026-10",when:"Tue 27 Oct, lunchtime",what:"NCEM Young Composers Award winners premiered",sub:"The Gonzaga Band at Royal Birmingham Conservatoire. Half term.",s:"Nc",check:false},
+  {m:"2026-11",when:"Sun 8 Nov",what:"CBSO Project Remix: apply by today",sub:"Grade 5 and above; concert 14 March.",s:"Rx",check:false,urgent:true},
+  {m:"2026-11",when:"Tue 10 Nov",what:"Oxford Music: written work and video due",sub:"Year 13 Oxford applicants.",s:"Ox",check:false},
+  {m:"2026-11",when:"Sun 15 Nov, 10am–6pm",what:"BCMG Creative Composing Lab",sub:"CBSO Centre. Book a place.",s:"Bc",check:false},
+  {m:"2026-11",when:"November",what:"NCEM winners broadcast on The Early Music Show",sub:"Radio 3.",s:"Em",check:true},
+  {m:"2026-12",when:"December",what:"Rotary Young Musician local heats close",sub:"Heats run September to December; your club sets the date.",s:"Ry",check:true},
+  {m:"2027-01",when:"Wed 6 Jan",what:"NYO: Tchaikovsky and Zimmer's Interstellar, Warwick Arts Centre",sub:"Free for Teens tickets.",s:"No",check:false},
+  {m:"2027-01",when:"Wed 13 Jan, 6pm",what:"UCAS deadline for most courses",sub:"Music applicants not applying to Oxford or Cambridge.",s:"",check:false},
+  {m:"2027-01",when:"Fri 22 Jan, 1pm",what:"Ex Cathedra Venetian Vespers (free)",sub:"Elgar Concert Hall, University of Birmingham.",s:"Ex",check:false},
+  {m:"2027-01",when:"Jan – Feb",what:"NCEM Young Composers Award 2027 brief and registration",sub:"In 2026 registration closed on 2 February.",s:"Nc",check:true},
+  {m:"2027-01",when:"New year",what:"Sutton Trust summer school applications open",sub:"Year 12. Last year's pattern.",s:"St",check:true},
+  {m:"2027-02",when:"Feb – Apr",what:"Music for Youth Regional Festivals",sub:"For a registered group.",s:"Mf",check:true},
+  {m:"2027-03",when:"Sun 14 Mar",what:"Project Remix concert, Symphony Hall",sub:"Also the spring BCMG Composing Lab, same day.",s:"Rx",check:false},
+  {m:"2027-03",when:"March",what:"BBC Young Composer 2027 expected to open",sub:"Every other year; last round March to September 2025.",s:"Yc",check:true},
+  {m:"2027-03",when:"Fri 26 Mar, 2pm",what:"Ex Cathedra: Bach St Matthew Passion, Symphony Hall",sub:"Tickets.",s:"Ex",check:false},
+  {m:"2027-04",when:"April – May",what:"Junior Conservatoire auditions",sub:"Main audition round.",s:"Jb",check:false},
+  {m:"2027-04",when:"Sat 24 Apr",what:"Rotary Young Musician national final",sub:"Venue to be confirmed.",s:"Ry",check:false},
+  {m:"2027-05",when:"May",what:"NYO 2028 applications close; Cambridge Music masterclass",sub:"NYO closed 17 May in 2026; masterclass was 21 May.",s:"Ny",check:true},
+  {m:"2027-05",when:"Sat 29 May",what:"Ex Cathedra: Monteverdi Vespers, the Oratory",sub:"Tickets.",s:"Ex",check:false},
+  {m:"2027-07",when:"Mid-July – mid-Sept",what:"BBC Proms on Radio 3 and iPlayer",sub:"Programme announced in the spring.",s:"Pr",check:true},
+  {m:"2027-07",when:"July",what:"Music for Youth National Festival, Birmingham",sub:"For groups selected at the regionals.",s:"Mf",check:true}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three items are wanted by, and
+      the three items (s = card code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching. The programme updates itself.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three pieces to prepare before half term. Do them, fill the bars, and write a programme note for each.",
+  items:[
+    {s:"Sv",step:"Watch",txt:"Watch Betsy Schwarm on Vivaldi's Four Seasons (4 min), then listen to the first movement of Il Gardellino and note where the ritornello returns."},
+    {s:"Cw",step:"Listen",txt:"Listen to one Composer of the Week programme on the composer of a set work you are studying."},
+    {s:"Cb",step:"Watch",txt:"Book a £5 student ticket for a CBSO concert at Symphony Hall this half term."}
+  ]
+};
+const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-mus-demo", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+const ORDER = Object.keys(FAM);   // score order, top stave to bottom
+/* bar numbers run through the whole score; pn = letter and bar within the section, e.g. B-03 */
+ORDER.forEach(g=>{ let a=0; ITEMS.filter(i=>i.g===g).forEach(i=>{ i.pn = FAM[g].letter+"-"+String(++a).padStart(2,"0"); }); });
+ITEMS.forEach((it,i)=>{ it.n=i+1; it.bar=i+1; if(!it.added) it.added=COMPILED; if(!it.tags) it.tags=[]; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+
+/* ---------- state ---------- */
+const KEY_BASE="mus-beyond-demo";
+let KEY=KEY_BASE;
+const blank=()=>({done:{},notes:[],news:{},interest:{},fam:"all",bucket:"quick",at:"listen",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the bar just filled, for the animation
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const plural=(n,w,ws)=>n+" "+(n===1?w:(ws||w+"s"));
+
+/* ---------- the score: bars filled and sections in ---------- */
+const STATE_NAME=["tacet","sight-read","rehearsed","concert-ready"];
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function secState(n,t){ return !n?0 : n>=t?3 : n*2>=t?2 : 1; }   // 0 tacet, 1 sight-read, 2 rehearsed, 3 concert-ready
+function score(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
+  const ready=ORDER.filter(g=>sec[g]===3).length;
+  return {c,t,N,k,pct,sec,ready};
+}
+
+/* ---------- the page-turner writes in the margin ---------- */
+let _rt=null;
+function say(txt){ $("bubbleTxt").textContent=txt; const r=$("radio"); r.classList.add("talk"); clearTimeout(_rt); _rt=setTimeout(()=>r.classList.remove("talk"),2600); }
+function greeting(){
+  const G=score(); const n=G.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}, welcome to the stand. Wren, page-turner. This is your score: six sections, ${ITEMS.length} bars, every one of them empty. Do a thing and its notes go in. Start with the three pieces the department has set, or press Give me a cue and I'll point at one.`;
+  if(!n) return `${firstName()}. Still ${ITEMS.length} empty bars. The schedule has three short ones; the Vivaldi talk is four minutes.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${plural(n,"bar")} filled, ${G.k} of 6 sections in. ${ht} of ${HALFTERM.items.length} on the schedule done.`;
+  if(G.k<6) return `${firstName()}. ${plural(n,"bar")} filled. Nothing yet from ${ORDER.filter(g=>!G.c[g]).map(g=>FAM[g].the).slice(0,2).join(" or ")}. That is where the empty staves are.`;
+  if(G.ready<6) return `${firstName()}. Every section is in: ${n} of ${ITEMS.length} bars. Keep writing the programme notes; that is the part anyone else reads.`;
+  return `${firstName()}. Every bar full. Concert-ready. Now make sure the programme notes say what you noticed.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const G=score();
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Music",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           score:{pct:G.pct, sections:G.k, bars:G.N, ready:G.ready, states:G.sec},
+           newsN:Object.keys(state.news||{}).length, news:Object.values(state.news||{}),
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="mus-beyond-demo-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="listen";
+  if(!state.news) state.news={};
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("nbCover").textContent="Programme notes · "+cand+" · Rea Sinfonia";
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+  $("fbOpen").hidden=false; if(!$("fbName").value) $("fbName").value=cand;
+  let toured=false; try{ toured=!!localStorage.getItem("mus-demo-toured"); }catch(e){}
+  if(!toured) setTimeout(()=>tourShow(0), 900);
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Opening the score…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the score picture: staves, bars, notes, rehearsal letters, house lights ---------- */
+const PER_SYS=21, SYS_Y=[188,358,528], X0=190, X1=1340, BW=(X1-X0)/PER_SYS, ST_H=12, ST_GAP=27;
+const SUB={ listen:"podcasts and radio", enter:"competitions, auditions", do:"practise and make", read:"scores, guides, books", apply:"placements, degrees", watch:"talks, lectures, concerts" };
+const staveTop=(sys,g)=>SYS_Y[sys]+(FAM[g].no-1)*ST_GAP;
+function noteFigure(it,x,top){
+  /* a figure drawn for the page: two to four note heads with stems, beamed when there are more than two */
+  const i=it.n; const n=2+(i%3); const w=BW-12; const step=w/n;
+  const ys=[]; for(let k=0;k<n;k++){ ys.push(top+((i*7+k*5+(i>>2))%9)*1.5); }
+  const stemTop=Math.min(...ys)-13;
+  let h="";
+  ys.forEach((y,k)=>{ const cx=x+8+k*step+3; h+=`<ellipse cx="${cx.toFixed(1)}" cy="${y.toFixed(1)}" rx="3.4" ry="2.4" transform="rotate(-20 ${cx.toFixed(1)} ${y.toFixed(1)})"/><line x1="${(cx+3).toFixed(1)}" y1="${y.toFixed(1)}" x2="${(cx+3).toFixed(1)}" y2="${stemTop.toFixed(1)}" stroke-width="1.2"/>`; });
+  if(n>2){ const xa=x+8+3+3, xb=x+8+(n-1)*step+3+3; h+=`<path d="M${xa.toFixed(1)} ${stemTop.toFixed(1)} H${xb.toFixed(1)}" stroke-width="3.2"/>`; }
+  else { ys.forEach((y,k)=>{ const cx=x+8+k*step+3; if(k===1) h+=`<path d="M${(cx+3).toFixed(1)} ${stemTop.toFixed(1)} q7 4 5 12" fill="none" stroke-width="1.4"/>`; }); }
+  return h;
+}
+function buildScore(){
+  const t=totals(); const nSys=Math.ceil(ITEMS.length/PER_SYS);
+  let sys="", hots="", bars="";
+  for(let s=0;s<nSys;s++){
+    const y0=SYS_Y[s]; const lastBar=Math.min(PER_SYS, ITEMS.length-s*PER_SYS); const xEnd=X0+lastBar*BW;
+    const yTop=y0, yBot=y0+5*ST_GAP+ST_H;
+    // staves
+    ORDER.forEach(g=>{ const top=staveTop(s,g); const active=ITEMS.some(it=>it.g===g && Math.floor((it.n-1)/PER_SYS)===s);
+      for(let l=0;l<5;l++) sys+=`<line class="stl${active?"":" dim"}" x1="${X0-30}" y1="${top+l*3}" x2="${xEnd}" y2="${top+l*3}"/>`;
+      if(g==="do") sys+=`<rect x="${X0-27}" y="${top+2}" width="3" height="8" fill="#2b2420"/><rect x="${X0-21}" y="${top+2}" width="3" height="8" fill="#2b2420"/>`;
+      else sys+=`<text class="clef" x="${X0-29}" y="${top+(g==="watch"?8:12)}" font-size="${g==="watch"?20:20}">${FAM[g].clef}</text>`;
+      if(s===0) sys+=`<text class="clef" x="${X0-9}" y="${top+6}" font-size="11" font-weight="700">4</text><text class="clef" x="${X0-9}" y="${top+12.4}" font-size="11" font-weight="700">4</text>`;
+    });
+    // the system bracket and bar lines
+    sys+=`<line class="barl dbl" x1="${X0-30}" y1="${yTop}" x2="${X0-30}" y2="${yBot}"/>`;
+    for(let b=0;b<=lastBar;b++){ const x=X0+b*BW; const isEnd = (s===nSys-1 && b===lastBar);
+      sys+=`<line class="barl${isEnd?" dbl":""}" x1="${x.toFixed(1)}" y1="${yTop}" x2="${x.toFixed(1)}" y2="${yBot}"/>`;
+      if(isEnd) sys+=`<line class="barl" x1="${(x-4).toFixed(1)}" y1="${yTop}" x2="${(x-4).toFixed(1)}" y2="${yBot}"/>`;
+      if(b<lastBar) sys+=`<text class="barno" x="${(x+2).toFixed(1)}" y="${yTop-6}">${s*PER_SYS+b+1}</text>`; }
+    // stave names: hot
+    ORDER.forEach(g=>{ const top=staveTop(s,g);
+      hots+=`<g class="hot" data-g="${g}" data-f="${g}" tabindex="${s===0?0:-1}" role="button" aria-label="${FAM[g].letter}, ${FAM[g].place}: ${FAM[g].label.toLowerCase()}. ${esc(FAM[g].verb)}">
+        <rect class="halo" x="48" y="${top-8}" width="104" height="28" rx="3"/>
+        <text class="stname" x="150" y="${top+6}" text-anchor="end">${(FAM[g].abbr||FAM[g].place).toUpperCase()}</text>
+        <text class="stsub" x="150" y="${top+16}" text-anchor="end">${FAM[g].letter} · ${FAM[g].label.toLowerCase()} · <tspan id="cnt-${g}-${s}">0/${t[g]}</tspan></text></g>`; });
+  }
+  // rehearsal letters at the first bar of each section
+  ORDER.forEach(g=>{ const first=ITEMS.find(i=>i.g===g); if(!first) return; const s=Math.floor((first.n-1)/PER_SYS); const x=X0+((first.n-1)%PER_SYS)*BW;
+    hots+=`<g class="hot rl" data-g="${g}" data-f="${g}" tabindex="-1" role="button" aria-label="Rehearsal letter ${FAM[g].letter}, ${FAM[g].place}">
+      <rect class="halo" x="${(x-6).toFixed(1)}" y="${SYS_Y[s]-40}" width="30" height="30" rx="3"/>
+      <rect x="${(x-2).toFixed(1)}" y="${SYS_Y[s]-36}" width="20" height="19" rx="2"/>
+      <text x="${(x+8).toFixed(1)}" y="${SYS_Y[s]-22}" text-anchor="middle">${FAM[g].letter}</text></g>`; });
+  // bars: one per item, on its own stave
+  ITEMS.forEach(it=>{ const s=Math.floor((it.n-1)/PER_SYS); const x=X0+((it.n-1)%PER_SYS)*BW; const top=staveTop(s,it.g);
+    bars+=`<g data-g="${it.g}"><g class="nt" id="nt-${it.s}"></g>
+      <rect class="rest" id="rs-${it.s}" x="${(x+BW/2-4).toFixed(1)}" y="${top+3}" width="8" height="3" fill="#a39888"/>
+      <rect class="bar-hit" id="bh-${it.s}" x="${x.toFixed(1)}" y="${top-9}" width="${BW.toFixed(1)}" height="${ST_H+18}" data-s="${it.s}"><title>bar ${it.n} · ${esc(it.short)}</title></rect></g>`; });
+  $("systems").innerHTML=sys; $("hots").innerHTML=hots; $("bars").innerHTML=bars;
+  let hl="";
+  for(let i=0;i<5;i++){ const x=1130+i*44; hl+=`<g class="lampg" id="hl-${i}"><path d="M${x-10} 22 h20 l4 10 h-28z" fill="#2b211c"/><circle cx="${x}" cy="36" r="5" fill="#ffe9b0" filter="url(#glow)"/><ellipse cx="${x}" cy="60" rx="22" ry="20" fill="#ffe9b0" opacity=".12"/></g>`; }
+  $("houseLights").innerHTML=hl;
+}
+function lightScore(){
+  const G=score();
+  ITEMS.forEach(it=>{ const nt=$("nt-"+it.s), rs=$("rs-"+it.s), bh=$("bh-"+it.s); if(!nt) return;
+    const on=!!state.done[it.s]; const s=Math.floor((it.n-1)/PER_SYS); const x=X0+((it.n-1)%PER_SYS)*BW; const top=staveTop(s,it.g);
+    if(on && !nt.innerHTML) nt.innerHTML=noteFigure(it,x,top);
+    if(!on) nt.innerHTML="";
+    nt.classList.toggle("notein", on && JUST===it.s && !reduceMotion());
+    rs.style.display=on?"none":""; bh.classList.toggle("on",on); });
+  JUST=null;
+  ORDER.forEach(g=>{ for(let s=0;s<3;s++){ const c=$(`cnt-${g}-${s}`); if(c) c.textContent=`${G.c[g]}/${G.t[g]}`; } });
+  const off=Math.min(G.k,5); const allIn=G.k>=6;
+  for(let i=0;i<5;i++){ const el=$("hl-"+i); if(el) el.style.opacity = (allIn || i<off) ? .12 : 1; }
+  $("lightsTxt").textContent = allIn ? "HOUSE LIGHTS DOWN · ALL SIX SECTIONS IN" : `HOUSE LIGHTS · ${G.k} OF 6 SECTIONS IN`;
+  $("lightsTxt").setAttribute("fill", allIn ? "#8fe0a8" : "#8a7f76");
+  $("pencilNote").textContent = G.N ? `${G.N} of ${ITEMS.length} bars` : "every bar empty";
+}
+
+/* ---------- item cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="Bar ${it.n}, ${esc(it.short)}, ${FAM[it.g].place}, ${esc(it.t)}${done?", done":""}${isNew?", new":""}">
+    <span class="no">bar <b>${it.n}</b> · ${it.pn}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">Done</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = (state.fam!=="all" && g!==state.fam) ? " off":"";
+    return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic"><span><small>${FAM[g].label.toUpperCase()}</small>${FAM[g].letter}</span></div><div><span class="nm">${FAM[g].place} · ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} done</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function fmtShort(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="REHEARSAL SCHEDULE · "+HALFTERM.label.toUpperCase();
+  $("htLabel").textContent="Three pieces this half term";
+  $("htDue").textContent="by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓":"No. "+(i+1)}</span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].place)}${d?" · done":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i>all</i>Every section <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i>${FAM[g].letter}</i>${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i>${FAM[g].letter}</i>${FAM[g].place}</button>`).join("")+`<button type="button" class="chip go" data-g="news" data-go="news"><i>7</i>The programme</button>`;
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}"><span class="nm"><b>${FAM[x.g].letter}</b>${FAM[x.g].place}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const G=score();
+  $("lapVal").innerHTML=`<small>BARS FILLED</small>${G.N} / ${ITEMS.length}`;
+  $("posVal").innerHTML=`<small>SECTIONS IN</small>${G.k} of 6`;
+  $("sectors").innerHTML=ORDER.map((g,i)=>`<span class="sec s${G.sec[g]}" title="${FAM[g].place}: ${G.c[g]} of ${G.t[g]}, ${STATE_NAME[G.sec[g]]}"><i></i>${FAM[g].letter} ${FAM[g].place.split(" ")[0].slice(0,4).toUpperCase()}</span>`).join("");
+  let w;
+  if(!G.N) w=`Every bar is empty. Each thing you do fills one bar of the ${ITEMS.length}. A section is sight-read at one bar, rehearsed at half, concert-ready when every bar is full.`;
+  else if(G.k<6) w=`${G.N} of ${ITEMS.length} bars filled, in ${G.k} of 6 sections. Tacet so far: ${ORDER.filter(g=>!G.c[g]).map(g=>FAM[g].place.toLowerCase()).join(", ")}.`;
+  else w=`${G.N} of ${ITEMS.length} bars filled, with every section in${G.ready?`; ${plural(G.ready,"section")} concert-ready`:""}.`;
+  $("coverTxt").textContent=w;
+  $("revbar").innerHTML=ORDER.map(g=>`<div class="revrow"><span class="fl">${FAM[g].letter}</span>${ITEMS.filter(i=>i.g===g).map(it=>`<span class="rv${state.done[it.s]?" on":""}" data-g="${g}" title="bar ${it.n}: ${esc(it.short)}"></span>`).join("")}</div>`).join("");
+  const nn=Object.keys(state.news||{}).length;
+  $("register").textContent=`Rea Sinfonia · ${plural(G.N,"bar")} · ${G.k} of 6 sections · ${plural(state.notes.length,"programme note")} · ${plural(nn,"programme item")} heard`;
+  lightScore();
+}
+function renderYear(){
+  $("year").innerHTML=MONTHS.map(([m,name,term],mi)=>{
+    const evs=YEAR.filter(y=>y.m===m);
+    return `<div class="month${evs.length?"":" quiet"}"><div class="mh"><span><i>${String(mi+1).padStart(2,"0")}</i>${name}</span><small>${term}</small></div>
+      <div class="evs">${evs.length?evs.map(y=>{ const it=y.s?BY[y.s]:null; const g=it?it.g:"apply"; const inn=it&&state.interest[it.s];
+        const btn= it ? `<button type="button" class="open" data-s="${it.s}">Open bar ${it.n}</button>` : "";
+        return `<div class="ev" data-g="${g}"><span class="when">${esc(y.when)}${y.check?'<span class="check">check</span>':""}${y.urgent?'<span class="urgent">soon</span>':""}</span><span><b>${esc(y.what)}</b><span class="sub">${esc(y.sub)}</span>${inn?'<span class="in">✓ your name is down</span>':""}</span>${btn}</div>`; }).join(""):`<span class="quiet-note">Nothing fixed. Keep filling bars.</span>`}</div></div>`;
+  }).join("");
+}
+
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();}
+
+/* ---------- detail sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ask the library or the department for a copy.</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply" || it.s==="Bc");
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true"><span>${FAM[it.g].letter}</span></div>
+      <div><div class="fam">Bar ${it.n} · ${FAM[it.g].place} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Wren's pencil</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Done ✓ (undo)":"Fill the bar: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write a programme note</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department has your name; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=score();
+  if(was) delete state.done[sym]; else { state.done[sym]=true; JUST=sym; }
+  state.at=BY[sym].g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const G=score(); const it=BY[sym]; const g=it.g;
+    if(before.c[g]===0 && G.k===6) say(`That's all six sections in. House lights down. ${G.N} of ${ITEMS.length} bars.`);
+    else if(before.c[g]===0 && G.k>1) say(`First bar in ${FAM[g].the}. ${G.k} of 6 sections in, ${plural(G.N,"bar")} filled.`);
+    else if(before.c[g]===0) say(`Bar ${it.n} filled: ${it.short}. Now write the programme note while you still remember what you noticed.`);
+    else if(G.c[g]===G.t[g]) say(`${FAM[g].place} concert-ready. Every bar in that section is full.`);
+    else say(pick([`Bar ${it.n}: ${it.short}, in. ${plural(G.N,"bar")} filled.`,`Good. ${G.N} of ${ITEMS.length}. A full bar isn't a programme note, mind.`,`${it.short}: done. There are still empty staves in the sections you haven't touched.`,`Bar ${it.n} in. Keep going.`])); }
+  else say("Rubbed out. Bar empty again.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear();
+  say(on?`Noted. Your name goes to the department for ${BY[sym].short}; your teacher does the rest.`:`Taken off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  if(g==="news"){ goNews(); return; }
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  document.querySelectorAll(`.hot[data-f="${g}"]`).forEach(hot=>{ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); });
+  const G=score();
+  say(`Letter ${FAM[g].letter}, ${FAM[g].place.toLowerCase()}: ${FAM[g].verb.toLowerCase()}. ${G.c[g]?`${G.c[g]} of ${G.t[g]} bars filled.`:"Tacet so far."}`);
+}
+
+document.addEventListener("click",e=>{
+  const ph=e.target.closest(".bar-hit"); if(ph){ openSheet(ph.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think;
+    const o=[...$("nbHw").options].find(o=>o.value===it.th); if(o) $("nbHw").value=o.value;
+    $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbQuo").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); goZone(e.target.dataset.f); }
+});
+
+/* ---------- the cue ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have done everything that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("Nothing left that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a section the pupil has not started, two times in three
+  const G=score(); const fresh=pool.filter(i=>!G.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". One moment, I'm looking down the page.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("call"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("call");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("call");
+    $("pickMsg").textContent=`Bar ${choice.n}: ${choice.short}, ${choice.t}.`;
+    say(`Here: bar ${choice.n}, ${choice.short}, ${choice.t}, in ${FAM[choice.g].the}.${!G.c[choice.g]?" Nothing filled in that section yet, so that's where the empty staves are.":""}`);
+    state.at=choice.g; saveLocal();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1800);
+});
+
+/* ---------- the programme: this week's broadcasts and music news ---------- */
+const NEWS_URL="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/data/music-news.json";
+const KIND={broadcast:["bc","Broadcast"],story:["st","Story"]};
+let NEWS=null, NEWS_ERR=false, newsTh="all", newsShow=12, newsOpen=null;
+function newsCount(){ return Object.keys(state.news||{}).length; }
+function fmtNewsDate(iso){ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } }
+const wordCount=t=>(String(t).trim().match(/\S+/g)||[]).length;
+const shortTh=t=>t.replace(/^(AoS\d) /,"$1 · ");
+function newsStory(id){ const s=NEWS&&NEWS.stories.find(x=>x.id===id); if(s) return s;
+  const m=(state.news||{})[id]; return m?{id,src:m.src,title:m.title,url:m.url,th:m.th||[],date:m.d,desc:"",kind:m.kind||"story"}:null; }
+function newsFiltered(){
+  if(newsTh==="read") return Object.values(state.news||{}).sort((a,b)=>String(b.d).localeCompare(String(a.d))).map(n=>newsStory(n.id)).filter(Boolean);
+  const list=NEWS.stories;
+  if(newsTh==="broadcast"||newsTh==="story") return list.filter(s=>s.kind===newsTh);
+  if(newsTh==="beyond") return list.filter(s=>!s.th.length);
+  if(newsTh!=="all") return list.filter(s=>s.th.includes(newsTh));
+  return list;
+}
+function storyHTML(s){
+  const mine=(state.news||{})[s.id]; const kd=KIND[s.kind]||KIND.story;
+  return `<article class="story ${kd[0]}${mine?" read":""}" data-nid="${esc(s.id)}">
+    ${mine?'<span class="stampn">Heard</span>':""}
+    <div class="meta"><span class="src">${esc(s.src)}</span><span class="lvl">${kd[1]}</span><span>${esc(fmtNewsDate(s.date))}</span></div>
+    <h3>${esc(s.title)}</h3>
+    ${s.desc?`<p class="d">${esc(s.desc)}</p>`:""}
+    <div class="stags">${s.th.length?s.th.map(t=>`<span class="ttag">${esc(shortTh(t))}</span>`).join(""):'<span class="ttag beyond">Beyond the course</span>'}</div>
+    ${mine&&newsOpen!==s.id?`<p class="tw-mine">${esc(mine.txt)}</p>${mine.q?`<p class="tw-mine q">? ${esc(mine.q)}</p>`:""}`:""}
+    <div class="acts"><a class="btn ghost" href="${esc(s.url)}" target="_blank" rel="noopener">${s.kind==="broadcast"?"Listen on BBC Sounds ↗":"Open the story ↗"}</a>
+      ${newsOpen===s.id?"":(mine?'<button type="button" class="btn ghost" data-nact="write">Edit what I wrote</button>':'<button type="button" class="btn hv" data-nact="write">Heard it</button>')}</div>
+    ${newsOpen===s.id?`<form class="tw" data-nform="${esc(s.id)}" autocomplete="off">
+      <div class="field"><label for="nw-${esc(s.id)}">Two sentences: what you heard or read, and the musical feature behind it</label><textarea id="nw-${esc(s.id)}" required>${mine?esc(mine.txt):""}</textarea></div>
+      <div class="field"><label for="nq-${esc(s.id)}">What you would listen to next, or a question it raised (optional)</label><textarea id="nq-${esc(s.id)}">${mine?esc(mine.q||""):""}</textarea></div>
+      <span class="wc" id="nwc-${esc(s.id)}" aria-live="polite"></span>
+      <div class="actions"><button class="btn hv" type="submit">Heard it</button><button type="button" class="btn ghost" data-nact="cancel">Cancel</button></div>
+    </form>`:""}
+  </article>`;
+}
+function renderNews(){
+  const box=$("newsList"); if(!box) return;
+  if(!NEWS){ $("newsFilters").innerHTML=""; $("newsMore").hidden=true;
+    box.innerHTML=`<p class="small" style="color:#cdbfae">${NEWS_ERR?"The programme could not reach this week's broadcasts and stories. Everything else on the stand works; try again later.":"Opening the programme…"}</p>`; return; }
+  const counts={}; NEWS.stories.forEach(s=>s.th.forEach(t=>counts[t]=(counts[t]||0)+1));
+  const nb=NEWS.stories.filter(s=>s.kind==="broadcast").length, ns=NEWS.stories.filter(s=>s.kind==="story").length;
+  const beyond=NEWS.stories.filter(s=>!s.th.length).length;
+  let h=`<button type="button" class="nchip" data-nt="all" aria-pressed="${newsTh==="all"}">Everything <b>${NEWS.stories.length}</b></button>`;
+  if(nb) h+=`<button type="button" class="nchip bc" data-nt="broadcast" aria-pressed="${newsTh==="broadcast"}">Broadcasts <b>${nb}</b></button>`;
+  if(ns) h+=`<button type="button" class="nchip" data-nt="story" aria-pressed="${newsTh==="story"}">Stories <b>${ns}</b></button>`;
+  (NEWS.themes||[]).forEach(t=>{ if(counts[t]) h+=`<button type="button" class="nchip" data-nt="${esc(t)}" aria-pressed="${newsTh===t}">${esc(shortTh(t))} <b>${counts[t]}</b></button>`; });
+  if(beyond) h+=`<button type="button" class="nchip" data-nt="beyond" aria-pressed="${newsTh==="beyond"}">Beyond the course <b>${beyond}</b></button>`;
+  h+=`<button type="button" class="nchip" data-nt="read" aria-pressed="${newsTh==="read"}">Heard by you <b>${newsCount()}</b></button>`;
+  $("newsFilters").innerHTML=h;
+  try{ $("newsWhen").textContent="Collected "+new Date(NEWS.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+  const list=newsFiltered();
+  box.innerHTML=list.length?list.slice(0,newsShow).map(storyHTML).join(""):`<p class="small" style="color:#cdbfae">${newsTh==="read"?"Nothing heard yet. Pick one and press Heard it.":"Nothing tagged to this area of study this week. Try Everything."}</p>`;
+  $("newsMore").hidden=list.length<=newsShow;
+  const src=NEWS.sources||[]; const ok=src.filter(x=>x.ok).length;
+  $("newsFoot").innerHTML=`Sources (${ok} of ${src.length} answered this morning): ${src.map(x=>esc(x.src)+(x.ok?"":" (no answer today)")).join(" · ")}. <b>Broadcasts</b> are this week's episodes, with a link to BBC Sounds. <b>Stories</b> are music news and reviews, chosen by the sources, not checked by the department. If a site asks you to sign in or pay, pick another.`;
+  const c=$("newsCntTxt"); if(c) c.textContent=`${nb} broadcasts · ${ns} stories`;
+}
+async function loadNews(){
+  try{ const r=await fetch(NEWS_URL+"?d="+today(),{cache:"no-cache"}); if(!r.ok) throw 0;
+    const j=await r.json(); if(!j||!Array.isArray(j.stories)) throw 0; NEWS=j; }catch(e){ NEWS_ERR=true; }
+  renderNews();
+}
+function goNews(){
+  const el=$("news"); if(!el) return;
+  el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+  const hot=$("newsHot"); hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200);
+  const n=newsCount();
+  say(NEWS?`The programme: ${NEWS.stories.length} broadcasts and stories from this week. ${n?`You've heard ${n}.`:"Pick one and write two sentences."}`:"The programme: this week's broadcasts and music news.");
+}
+$("newsFilters").addEventListener("click",e=>{ const b=e.target.closest(".nchip"); if(!b) return; newsTh=b.dataset.nt; newsShow=12; newsOpen=null; renderNews(); });
+$("newsMore").addEventListener("click",()=>{ newsShow+=12; renderNews(); });
+$("newsList").addEventListener("click",e=>{
+  const b=e.target.closest("[data-nact]"); if(!b) return;
+  const id=b.closest(".story").dataset.nid;
+  if(b.dataset.nact==="cancel"){ newsOpen=null; renderNews(); return; }
+  newsOpen=id; renderNews(); const t=$("nw-"+id); if(t) t.focus();
+  say(pick(["What did you hear, and what in the music makes it work? Two sentences.","Say what it was, then name the feature: a texture, a chord, a rhythm, a timbre, a structure.","If you can say which area of study it belongs to, you've understood it."]));
+});
+$("newsList").addEventListener("submit",e=>{
+  const f=e.target.closest("form[data-nform]"); if(!f) return; e.preventDefault();
+  const id=f.dataset.nform, s=newsStory(id); if(!s) return;
+  const txt=$("nw-"+id).value.trim(), q=$("nq-"+id).value.trim();
+  if(wordCount(txt)<15){ $("nwc-"+id).textContent="A little more: at least 15 words, so it says what you heard and the music behind it."; return; }
+  if(!state.news) state.news={};
+  const was=state.news[id];
+  state.news[id]={id,d:was?was.d:today(),src:s.src,title:s.title,url:s.url,th:s.th||[],kind:s.kind||"story",txt,q};
+  const k=state.notes.findIndex(n=>n.news===id);
+  if(k>=0){ state.notes[k].learned=txt; state.notes[k].q=q; }
+  else state.notes.unshift({date:today(),hw:(s.th&&s.th[0])||"Beyond the course",what:(s.kind==="broadcast"?"On the radio: ":"In the news: ")+s.title+" ("+s.src+")",learned:txt,q,news:id});
+  newsOpen=null; save(); renderNews(); renderNotes(); renderMeter();
+  const n=newsCount();
+  say(was?"Changed, here and on your programme note.":pick([`Heard, and it's on a programme note. ${n} so far.`,"Good. That's your answer to 'What have you listened to lately?'",`Noted. ${n} from the programme now.`]));
+});
+
+/* ---------- programme notes ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function noteHTML(n,i,example){
+  const it=n.s?BY[n.s]:null;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:(n.news?' data-g="news"':"")}${example?' aria-label="Example programme note"':""}>
+      <div class="hd"><b>${esc(n.what)}</b><span class="d">${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="src">${esc(n.hw||"")}${it?` · bar ${it.n}`:""}${n.news?" · the programme":""}</div>
+      ${n.quo?`<div class="quo">${esc(n.quo)}</div>`:""}
+      <div class="why"><i>what I noticed</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>listen next / question</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">Bin this note</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("logCount").textContent=state.notes.length?plural(state.notes.length,"note"):"";
+  if(!state.notes.length){
+    box.innerHTML=noteHTML({hw:"AoS1 Baroque solo concerto",what:"Betsy Schwarm: Why should you listen to Vivaldi's Four Seasons? (TED-Ed)",s:"Sv",
+      quo:"Ritornello: the orchestra's opening idea keeps coming back, in different keys, between the soloist's episodes.",
+      learned:"In the first movement of Il Gardellino the tutti ritornello comes back four times and each time it is shorter. The flute's episodes are where the bird-song is: trills and repeated notes high up, over thin strings. The last ritornello is the opening one again, in D, so the ear knows it is the end before it ends.",
+      q:"Does the Bach A minor concerto shorten its ritornellos the same way, or keep them whole?"},0,true)+`<p class="small" style="color:#cdbfae">No notes yet. Fill one bar, then write the first note.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>noteHTML(n,i,false)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to bin it"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Bin this note"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes(); renderMeter();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value,what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; if(!state.done[match.s]) JUST=match.s; state.done[match.s]=true; state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbHw").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Printed.";
+  say(pick(["Printed. That note is what a university or a conservatoire reads; the bars are for me.","Good note. Keep the last line: the next thing you listen to should answer it.","Noted. What it was, the feature, what you noticed. That's a proper programme note."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Music programme notes – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)} · ${n.hw||""}\nFrom: ${n.what}${n.quo?`\nThe feature: ${n.quo}`:""}\nWhat I noticed: ${n.learned}${n.q?`\nListen next / question: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} bars filled, ${notes} programme ${notes===1?"note":"notes"})?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+
+/* ---------- guided tour (demo only) ---------- */
+const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/music.html";
+const TOUR=[
+  {sel:".scene", h:"This is the score", p:"A full score on a stand: six staves, one per section of the orchestra, and each section is one kind of thing. The woodwind listens (podcasts and radio), the brass enters (competitions and auditions), the percussion does (practice and composing tools), the keyboard reads, the voices apply (placements, degrees, conservatoires) and the strings watch (talks and concerts). Rehearsal letters A to F mark where each section comes in. Click a section name or a letter and the page goes to that section."},
+  {sel:".scene", h:"The bars", p:"Every item is one bar of the score: 61 in all, numbered through the piece. Click a bar to open it. When a pupil does something, the notes go into its bar; until then the bar shows a rest. The house lights above the stand go down as the sections come in, and all the way down when all six are in."},
+  {sel:"#news", h:"The programme", p:"Every morning the page collects this week's episodes of Composer of the Week, Record Review, Music Matters, The Early Music Show and Jazz Record Requests on Radio 3, and Add to Playlist and Soul Music on Radio 4, with links to BBC Sounds, and music news and reviews from the Guardian, OperaWire, WhatsOnStage, The Arts Desk, Pitchfork, NME, Folk Radio UK and MusicRadar. Each is tagged to the areas of study it seems to touch. A pupil listens or reads, then writes two sentences: what it was, and the musical feature behind it. That saves to the department. Nobody has to update it."},
+  {sel:"#smallprint", h:"The small print", p:"Each section carries a piece of music history with its source and a label: attested, reported, or invented. Composer of the Week's history, Purcell's natural trumpet and John Shore's tuning fork (labelled reported), Vivaldi's girls at the Pietà, Chopin's dedication to Schumann, the first rehearsal of Figaro, and the Bach concerto at Zimmermann's coffee house."},
+  {sel:".guide", h:"The page-turner", p:"Wren Ashby, an invented page-turner, and the page says so. She greets each pupil by name in the margin, reacts to what they do, and keeps asking for the programme note."},
+  {sel:".count-card", h:"Your score", p:"Bars filled, sections in, and six section states named the way a rehearsal names them: tacet, sight-read (one bar), rehearsed (half), concert-ready (every bar). The bar below shows every item."},
+  {sel:".pick-card", h:"The cue", p:"A pupil says how long they have and Wren points at one thing they have not done, usually in a section they have not started."},
+  {sel:".orders", h:"The rehearsal schedule", p:"Three things from the department each half term, with a date. This half term: the Vivaldi talk and Il Gardellino, one Composer of the Week programme, and a £5 CBSO ticket. You change these by editing one block at the top of the file."},
+  {sel:"#zone-do", h:"The percussion", p:"Where pupils stop listening and start making: ear training on musictheory.net, dictation on teoria, Open Music Theory, Ableton's free Learning Music, MuseScore, BandLab, Audacity, the BBC's composing resources and the BCMG Composing Lab in November. Every item carries an area of study."},
+  {sel:"#zone-enter", h:"The brass", p:"Project Remix (apply by 8 November), BBC Young Composer, the NCEM award, NYO and National Youth Choir auditions, Rotary Young Musician, Music for Youth and BBC Introducing. Pupils tap 'I want to enter' and the department has a list."},
+  {sel:"#zone-apply", h:"The voices", p:"NYO Open and Free for Teens tickets, NYO Inspire, the Sutton Trust week at Cambridge, the Cambridge taster days, Junior Conservatoire, Oxford and Cambridge Music (offers, written work, the 15 October deadline) and UCAS Conservatoires with its 1 October deadline."},
+  {sel:".board", h:"The season", p:"October to July: the Oxbridge and UCAS deadlines, the NYC auditions, the NCEM premiere at the Conservatoire, Project Remix, the BCMG labs, NYO at Warwick in January, the free Ex Cathedra Vespers, the Rotary final in April, the Junior RBC auditions and the Proms. Dates that follow last year's pattern are marked 'check'."},
+  {sel:"#notebook", h:"Programme notes", p:"For anything they do, a pupil writes a note: what it was, the musical feature in one line, what they noticed, and what to listen to next, tagged to an area of study. Broadcasts and stories logged from the programme go onto a note too. It saves to the department as they write and copies out as text."},
+  {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, bars and sections used, every broadcast and story logged with the pupil's sentences, and every programme note. The button here opens a version with demo data."},
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, which optional areas of study you teach, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+];
+let tourI=-1, tourTarget=null;
+function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
+  const hl=$("tourHl"); hl.hidden=false; hl.style.clipPath=`polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1}px ${y1}px, ${x1}px ${y2}px, ${x2}px ${y2}px, ${x2}px ${y1}px, ${x1}px ${y1}px)`;
+  const rg=$("tourRing"); rg.hidden=false; rg.style.left=x1+"px"; rg.style.top=y1+"px"; rg.style.width=(x2-x1)+"px"; rg.style.height=(y2-y1)+"px"; }
+addEventListener("scroll",()=>{ if(tourI>=0) tourPlace(); },{passive:true});
+function tourStop(){ tourI=-1; $("tourHl").hidden=true; $("tourRing").hidden=true; $("tourCard").hidden=true; try{ localStorage.setItem("mus-demo-toured","1"); }catch(e){} say(greeting()); }
+function tourShow(i){
+  if(i<0||i>=TOUR.length){ tourStop(); return; }
+  tourI=i; const t=TOUR[i]; const el=document.querySelector(t.sel); if(!el){ tourShow(i+1); return; }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});
+  tourTarget=el; setTimeout(tourPlace, reduce?0:450);
+  $("tourStep").textContent=`Tour · ${i+1} of ${TOUR.length}`; $("tourH").textContent=t.h; $("tourP").textContent=t.p;
+  $("tourBack").disabled=i===0; $("tourNext").textContent=i===TOUR.length-1?"Finish":"Next";
+  $("tourDots").innerHTML=TOUR.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("");
+  $("tourCard").hidden=false; say(t.h+". "+t.p.split(". ")[0]+".");
+}
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="tourBtn"){ fbShow(false); tourShow(0); }
+  else if(id==="tourNext"){ tourShow(tourI+1); }
+  else if(id==="tourBack"){ tourShow(tourI-1); }
+  else if(id==="tourSkip"){ tourStop(); }
+});
+addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
+
+/* ---------- teacher dashboard (demo data) ---------- */
+const SAMPLE=[{"name": "Amara Okafor", "cls": "12A", "done": ["Sv", "Cw", "Cb", "Rr", "Mt", "Im", "Rx", "Sn", "Ag"], "picks": 3, "interest": ["Rx", "Ny"], "last": "2026-10-09", "news": [{"id": "c0f3a1b2d4", "d": "2026-10-09", "kind": "broadcast", "src": "Composer of the Week · Radio 3", "title": "The Venetian School: Saint Mark", "th": ["AoS1 Baroque solo concerto"], "txt": "Donald Macleod played music written for St Mark's in Venice, where the choir and brass were split between galleries on opposite sides. The echo between the two groups is the texture: antiphonal, with the gap between the entries written in, not added.", "q": "Does Purcell use anything like this in the trumpet sonata, or is the echo all in the trumpet's own repeats?"}], "notes": [{"hw": "AoS1 Baroque solo concerto", "what": "Betsy Schwarm: Why should you listen to Vivaldi's Four Seasons? (TED-Ed)", "quo": "Ritornello: the orchestra's idea comes back between the soloist's episodes, in different keys.", "learned": "In Il Gardellino the ritornello comes back four times and gets shorter each time. The flute's episodes are the birdsong: trills, repeated notes high up, over very thin strings. The last ritornello is the opening again in D so you know it is ending before it ends.", "q": "Does the Bach A minor shorten its ritornellos the same way?"}]}, {"name": "Ben Carter", "cls": "12A", "done": ["Sp", "Al"], "picks": 0, "interest": ["Bi"], "last": "2026-10-06", "news": [], "notes": []}, {"name": "Chloe Nguyen", "cls": "12B", "done": ["Sv", "Cw", "Cb", "Rr", "Em", "Ag", "Im", "Om", "Ox", "Ca", "Hp", "Ex"], "picks": 3, "interest": ["St", "Cm"], "last": "2026-10-09", "news": [{"id": "9a7e2c4b11", "d": "2026-10-09", "kind": "story", "src": "Guardian · classical", "title": "Shostakovich Symphony No 8 album review – composer's cry of despair", "th": ["AoS7 Art music since 1910"], "txt": "A new recording of Shostakovich's Eighth, written in 1943, which the reviewer hears as a war symphony with no victory in it. The third movement is a toccata, a single rhythm hammered for seven minutes, so the violence is in the rhythm and the orchestration rather than in dissonance.", "q": "How did the Soviet critics in 1943 describe a symphony with no happy ending?"}, {"id": "5d2b8e7f03", "d": "2026-10-10", "kind": "broadcast", "src": "Record Review · Radio 3", "title": "Haydn's 'Emperor' String Quartet in Building a Library", "th": ["AoS1 Western classical 1650–1910"], "txt": "Six recordings of the slow movement, which is a set of variations on the tune Haydn wrote for the emperor. The recordings differed most in how much vibrato the first violin used on the tune and in how fast the variations went, and the one she chose kept the tune plain and let the variations do the decorating.", "q": ""}], "notes": [{"hw": "AoS1 Chopin, Brahms, Grieg", "what": "IMSLP (Petrucci Music Library): free scores", "quo": "Brahms Op.118 no.2: the melody is in the top voice but the bass answers it in canon two bars later.", "learned": "I printed the Intermezzo and marked the cadences. There are hardly any perfect cadences until the end of each section; Brahms keeps landing on the dominant or an interrupted cadence, which is why it feels like it never settles. The middle section goes to F sharp minor with the canon between the hands.", "q": "Is the canon in the middle section something the examiners expect us to name?"}]}, {"name": "Daniel Brooks", "cls": "12B", "done": [], "picks": 0, "interest": [], "last": "2026-10-01", "news": [], "notes": []}, {"name": "Esha Patel", "cls": "13A", "done": ["Ox", "Ca", "Uc", "Cw", "Rr", "Sv", "Cb", "Hp", "Ma", "Mt", "Te", "Nv", "Jb", "Rb"], "picks": 3, "interest": ["Nv", "Jb"], "last": "2026-10-09", "news": [{"id": "e1c9d0a477", "d": "2026-10-09", "kind": "broadcast", "src": "Music Matters · Radio 3", "title": "Arranging the Air: The magic and the mayhem", "th": ["AoS1 Western classical 1650–1910"], "txt": "A programme about what conductors do, with players saying that the beat is the least of it and that the rehearsal is where the interpretation is made. One cellist said a conductor's job is to decide which line the audience should hear in each bar, which is balance, and that is what you hear change between recordings.", "q": "How much of what I hear in a Building a Library comparison is the conductor and how much is the hall?"}], "notes": [{"hw": "Applying", "what": "University of Oxford: Music", "quo": "", "learned": "The written work is two essays and one harmony exercise, due 10 November, and the video is five minutes. I am sending the Bach chorale from last term and the essay on the Figaro act 1 finale. I need to record the video with the score visible.", "q": "Does the video need to be unedited, one take?"}]}, {"name": "Finn Murphy", "cls": "13A", "done": ["Sh", "An", "Jq", "Bl"], "picks": 0, "interest": ["Mf"], "last": "2026-10-04", "news": [], "notes": []}, {"name": "Grace Adeyemi", "cls": "12A", "done": ["Sv", "Ms", "Br", "Dv", "Ew", "Yc"], "picks": 1, "interest": ["Yc", "Bc", "Nc"], "last": "2026-10-08", "news": [{"id": "b44f1e0c92", "d": "2026-10-08", "kind": "story", "src": "Folk Radio UK", "title": "KLOF No. 100 (Folk & Experimental)", "th": ["AoS6 Contemporary traditional"], "txt": "A playlist of new folk and experimental records, including a Scots fiddle tune set over a drone with no chord changes at all. The interest is in the ornaments and the rhythm against the drone, which is the opposite of how a pop track keeps you listening.", "q": "Could I use a drone under my own composition instead of a chord progression?"}], "notes": [{"hw": "Composing", "what": "MuseScore Studio: free notation software", "quo": "Articulation and dynamics are part of the composition, not decoration added afterwards.", "learned": "I wrote out eight bars of my piece with phrasing and dynamics and the playback sounded different from how I had been imagining it, mostly because the left hand was too loud. I rewrote the accompaniment an octave higher and thinner.", "q": "How do I notate a pedal marking that lasts across a bar line?"}]}, {"name": "Harry Singh", "cls": "12B", "done": ["Mr"], "picks": 0, "interest": [], "last": "2026-10-02", "news": [], "notes": []}];
+function gOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
+  const t=totals(); const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
+  return {c,k:ORDER.filter(g=>c[g]).length,sec,ready:ORDER.filter(g=>sec[g]===3).length}; }
+function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }catch(e){ return iso; } }
+function dashRows(){
+  const rows=SAMPLE.map(p=>({...p,you:false}));
+  if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes.filter(n=>!n.news),news:Object.values(state.news||{}),interest:Object.keys(state.interest),last:today(),you:true}); }
+  return rows;
+}
+function renderDash(){
+  const rows=dashRows(); const N=ITEMS.length;
+  const signed=rows.length, active=rows.filter(r=>r.done.length).length, picksDone=rows.filter(r=>r.picks===3).length, nbLines=rows.reduce((a,r)=>a+r.notes.length,0), newsN=rows.reduce((a,r)=>a+r.news.length,0);
+  const comps=ITEMS.filter(i=>i.g==="enter"||i.g==="apply"||i.s==="Bc");
+  const entry=comps.map(c=>({c,who:rows.filter(r=>r.interest.includes(c.s))})).filter(x=>x.who.length);
+  const famCount=g=>rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].g===g).length,0);
+  const thCount={}; rows.forEach(r=>r.done.forEach(s=>{ const t=BY[s]&&BY[s].th; if(t) thCount[t]=(thCount[t]||0)+1; }));
+  const roster=["Amara Okafor","Ben Carter","Chloe Nguyen","Daniel Brooks","Grace Adeyemi","Harry Singh","Isla Fraser","Jacob Lee"];
+  const missing=roster.filter(n=>!rows.some(r=>r.name===n));
+  const nbRows=rows.filter(r=>r.notes.length).slice(0,4);
+  const max=Math.max(1,...ORDER.map(famCount));
+  const grid=[...rows].sort((a,b)=>b.done.length-a.done.length);
+  const allTh=[...new Set(ITEMS.map(i=>i.th))]; const quiet=allTh.filter(t=>!thCount[t]);
+  $("dashBody").innerHTML=`
+    <div class="tiles">
+      <div class="tl"><b>${signed}</b><span>pupils signed in</span></div>
+      <div class="tl"><b>${active}</b><span>have done something</span></div>
+      <div class="tl"><b>${newsN}</b><span>broadcasts and stories logged from the programme</span></div>
+      <div class="tl"><b>${picksDone}</b><span>finished the half-term schedule</span></div>
+      <div class="tl"><b>${nbLines}</b><span>programme notes written</span></div>
+      <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>names down for competitions, auditions and placements</span></div>
+    </div>
+    <div class="dcard"><h3>The programme: what pupils wrote</h3><p class="small">Every broadcast and story a pupil has logged, with the two sentences they wrote: what it was, and the musical feature behind it. This is the part you would read before the lesson.</p>
+      <table class="dt"><tr><th>Pupil</th><th>Broadcast or story</th><th>What they wrote</th></tr>
+      ${rows.flatMap(r=>r.news.map(n=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${esc(r.cls)} · ${fmtDd(n.d)}</span></td><td><span class="pill" style="background:${n.kind==="broadcast"?"var(--brassy2)":"var(--news)"}">${n.kind==="broadcast"?"broadcast":"story"}</span> <b>${esc(n.title)}</b><br><span class="small">${esc(n.src)} · ${esc((n.th||[]).join(", ")||"Beyond the course")}</span></td><td>${esc(n.txt)}${n.q?`<br><span class="small">Listen next / question: ${esc(n.q)}</span>`:""}</td></tr>`)).join("")||'<tr><td colspan="3">Nothing logged yet.</td></tr>'}</table></div>
+    <div class="dash-cols">
+      <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. Project Remix, the Rotary heat and Music for Youth go through school; NYO, NYC and the conservatoires pupils apply for themselves, so this is who to support.</p>
+        <table class="dt"><tr><th>Competition / audition / programme</th><th>Pupils</th></tr>
+        ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.pn}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
+      <div class="dcard"><h3>Which sections get used</h3><p class="small">Items done across all pupils, by section, and by area of study. Tells you where to point the next half term's schedule.</p>
+        <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].letter}</span> ${FAM[g].place} · ${FAM[g].label}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        ${quiet.length?`<p class="small"><b>Nobody has touched yet:</b> ${quiet.map(esc).join(" · ")}</p>`:""}
+        <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
+    </div>
+    <div class="dcard"><h3>The score: every pupil</h3>
+      <table class="dt"><tr><th>Pupil</th><th>Form</th><th>Bars</th><th>Sections</th><th>Schedule</th><th class="hide-m">Programme</th><th class="hide-m">Notes</th><th class="hide-m">Interests</th><th class="hide-m">Last seen</th></tr>
+      ${grid.map(r=>{ const G=gOf(r.done);
+        return `<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}</td><td>${esc(r.cls)}</td>
+        <td><span class="meter"><i style="width:${(r.done.length/N*100).toFixed(0)}%"></i></span><span class="lapt">${r.done.length} / ${N}</span></td>
+        <td>${ORDER.map(g=>`<span class="sw s${G.sec[g]}" title="${FAM[g].place}: ${STATE_NAME[G.sec[g]]}"></span>`).join("")} <span class="small">${G.k}/6</span></td>
+        <td>${"●".repeat(r.picks)}${"○".repeat(3-r.picks)} ${r.picks}/3</td><td class="hide-m">${r.news.length}</td><td class="hide-m">${r.notes.length}</td>
+        <td class="hide-m">${r.interest.map(s=>`<span class="pill" data-g="${BY[s]?BY[s].g:"enter"}">${BY[s]?BY[s].pn:esc(s)}</span>`).join("")||"–"}</td><td class="hide-m">${fmtDd(r.last)}</td></tr>`; }).join("")}</table></div>
+    <div class="dcard"><h3>Programme notes</h3><p class="small">Each pupil's notes in full, copyable as text. Four shown here.</p>
+      <div class="dash-cols">${nbRows.map(r=>`<div><b>${esc(r.name)}</b> <span class="small">· ${r.cls}</span>${r.notes.map(n=>`<div class="nbq"><span class="small"><b>${esc(n.hw||"")}</b> · ${esc(n.what)}</span>${n.quo?`<br>${esc(n.quo)}`:""}<br>${esc(n.learned)}${n.q?`<br><span class="small">Listen next / question: ${esc(n.q)}</span>`:""}</div>`).join("")}</div>`).join("")}</div></div>
+    <div class="dcard"><h3>Also on the real page</h3><p class="small">Paste a form list to see who has not signed in; export everything as a CSV; hide test records; the page needs the department token pasted once and then loads on its own.</p></div>`;
+}
+function dashShow(on){ if(on) renderDash(); $("dash").hidden=!on; if(on) $("dashClose").focus(); }
+document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||id==="dashBtn2"){ fbShow(false); dashShow(true); } else if(id==="dashClose") dashShow(false); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
+
+/* ---------- feedback (demo only) ---------- */
+const FB={use:"",look:"",news:"",aos:new Set(),more:new Set()};
+function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
+function segPick(sel,key,btn){ FB[key]=btn.dataset.v; document.querySelectorAll(sel+" button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn))); }
+function chipPick(set,btn){ const v=btn.dataset.v; if(set.has(v)) set.delete(v); else set.add(v); btn.setAttribute("aria-pressed",String(set.has(v))); }
+document.addEventListener("click",e=>{
+  const id=e.target.id;
+  if(id==="fbOpen"||id==="fbOpen2"){ fbShow(true); return; }
+  if(id==="fbClose"||id==="fbScrim"){ fbShow(false); return; }
+  let b;
+  if((b=e.target.closest("#fbUse button"))){ segPick("#fbUse","use",b); return; }
+  if((b=e.target.closest("#fbDiv button"))){ segPick("#fbDiv","look",b); return; }
+  if((b=e.target.closest("#fbSlip button"))){ segPick("#fbSlip","news",b); return; }
+  if((b=e.target.closest("#fbAos button"))){ chipPick(FB.aos,b); return; }
+  if((b=e.target.closest("#fbMore button"))){ chipPick(FB.more,b); return; }
+});
+$("fbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
+  const rec={kind:"feedback",page:"music-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,areasOfStudy:[...FB.aos],look:FB.look,programme:FB.news,more:[...FB.more],
+    change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,newsN:newsCount(),interest:Object.keys(state.interest)}:null,
+    sent:new Date().toISOString(), ua:navigator.userAgent};
+  $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
+  const key="sc-mus-feedback::"+name+"::"+rec.sent;
+  let ok=false;
+  try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-mus-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
+  $("fbSend").disabled=false;
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.news=""; FB.aos.clear(); FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbSlip button,#fbAos button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  else {
+    const txt=`Feedback on the Music page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nOptional areas of study taught: ${rec.areasOfStudy.join(", ")||"–"}\nThe look: ${rec.look||"–"}\nThe programme: ${rec.programme||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const c=$("fbCopy"); c.value=txt; c.hidden=false;
+    $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
+    c.focus(); c.select();
+  }
+});
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to hear, watch, read, practise, enter and apply for · this week's broadcasts and music news in the programme every morning";
+$("tableEyebrow").textContent="Six sections · "+ITEMS.length+" things · one bar each";
+$("foot").innerHTML="Compiled 30 September 2026, additions and link checks 10 October 2026 · course tags follow AQA A-level Music (7272): AoS1 Western classical tradition 1650–1910 (the Baroque solo concerto, the operas of Mozart, the piano music of Chopin, Brahms and Grieg) and the optional areas AoS2–7 · free at the point of use unless the card says otherwise<br>Sources for the six sections are in the small print under the score. The Rea Sinfonia, Bordesley Hall and Wren Ashby are invented. The programme refreshes itself every morning; its broadcasts and stories come from the sources named under it and are not checked by the department. The three books are in the library or on request.";
+$("nbDate").value=today();
+$("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
+loadNews();
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildScore(); lightScore();
+renderSmallprint();
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ $("intro").hidden=true; signIn(who.cls,who.cand); } })();
+})();
+</script>
+</body>
+</html>
