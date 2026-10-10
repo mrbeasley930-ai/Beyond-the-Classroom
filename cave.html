@@ -118,6 +118,15 @@ body.bk-on{padding-bottom:96px}
 .ring{opacity:0;transition:opacity .25s}
 .stone{cursor:pointer}
 .stone:hover rect,.stone:focus rect{stroke:#fff}
+.stages-list{display:none;gap:8px;margin-top:10px}
+.splaque{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;font:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-left:7px solid var(--g);border-radius:6px;padding:10px 12px;cursor:pointer}
+.splaque .sno{font-family:var(--f-head);font-weight:700;font-size:1.7rem;line-height:1}
+.splaque b{display:block;font-family:var(--f-head);font-size:1.2rem;line-height:1.1}
+.splaque i{display:block;font-style:normal;font-size:.84rem;color:var(--ink2);margin:2px 0 6px}
+.splaque .sbar{display:block;height:8px;border-radius:4px;background:#d8ccb0;border:1px solid #a8977a;overflow:hidden}
+.splaque .sbar em{display:block;height:100%;background:var(--g);width:0;transition:width .6s}
+.splaque .sn{font-family:var(--f-mono);font-size:.7rem;color:var(--ink2);text-align:right;max-width:90px}
+@media (max-width:700px){.scene{display:none}.stages-list{display:grid}}
 .scene-key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.84rem;color:var(--dim);margin:10px 2px 0}
 .scene-key b{color:var(--tx)}
 .swipe{display:none}
@@ -504,12 +513,13 @@ footer{margin-top:40px;font-size:.82rem;color:var(--dim);line-height:1.5;border-
         <g id="walker"></g>
         <!-- title -->
         <text class="hd" x="560" y="48" text-anchor="middle" font-size="26" fill="#f3e3b8" id="sceneTitle">THE CAVE</text>
-        <text class="mono" x="560" y="70" text-anchor="middle" font-size="11" fill="#c9b998" id="sceneSub">Republic 514a–517a · the light is the share of stones you have passed</text>
+        <text class="mono" x="560" y="70" text-anchor="middle" font-size="11" fill="#c9b998" id="sceneSub">Republic 514a–517a · six stages · the light is the share of items you have done</text>
         <text class="mono" x="24" y="24" font-size="11" fill="#8a7a62" id="sceneWho"></text>
         <text class="mono" x="1376" y="24" text-anchor="end" font-size="11" fill="#8a7a62" id="sceneLight">LIGHT 0%</text>
       </svg>
     </div>
-    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see all of it.</span><span><b>Click a stage name</b> to go to its items.</span><span><b>Click a stone</b> to open the item.</span><span>A filled stone is done. A stage is <b>in full light</b> when every stone in it is filled.</span><span>The sky, the sun and the trees appear as the light comes in.</span></div>
+    <div class="stages-list" id="stagesList" aria-label="The six stages"></div>
+    <div class="scene-key" aria-hidden="true"><span><b>Click a stage</b> to go to its items.</span><span>A stage is <b>in full light</b> when every stone in it is passed.</span><span>The sky, the sun and the trees appear as the light comes in.</span></div>
     <div class="smallprint paper" id="smallprint" aria-label="Sources for the six stages"></div>
   </section>
 
@@ -1025,9 +1035,7 @@ function setLight(L){
   set("sky",L.toFixed(3)); set("hills",(L*.95).toFixed(3)); set("trees",L.toFixed(3)); set("pool",(L*.9).toFixed(3));
   set("sunDisc",(.12+.88*L).toFixed(3)); set("sunRays",L.toFixed(3)); set("sunHaloC",L.toFixed(3)); set("rim",(.15+.7*L).toFixed(3));
   const sl=$("sceneLight"); if(sl){ sl.textContent="LIGHT "+Math.round(L*100)+"%"; sl.setAttribute("fill", rgb(mix(hex("#8a7a62"),hex("#3a2e22"),L))); }
-  // labels that stand in the open air darken as the day comes
-  const outTxt=rgb(mix(hex("#e8d7a8"),hex("#1d160f"),L)), outSub=rgb(mix(hex("#c9b998"),hex("#3a2e22"),L));
-  ["do","enter","apply"].forEach(g=>{ const a=$("lb-"+g), b=$("mc-"+g); if(a) a.setAttribute("fill",outTxt); if(b) b.setAttribute("fill",outSub); });
+
 }
 
 /* ---------- Glaux ---------- */
@@ -1098,51 +1106,43 @@ $("gateForm").addEventListener("submit",e=>{
 $("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
 
 /* ---------- the cave: one stone per item ---------- */
-const STONE=14, GAP=5;
-function bez(p0,p1,p2,t){ const u=1-t; return {x:u*u*p0.x+2*u*t*p1.x+t*t*p2.x, y:u*u*p0.y+2*u*t*p1.y+t*t*p2.y}; }
-function gridPts(x0,y0,cols,n){ const out=[]; for(let i=0;i<n;i++) out.push({x:x0+(i%cols)*(STONE+GAP), y:y0+Math.floor(i/cols)*(STONE+GAP)}); return out; }
-function pathPts(p0,p1,p2,n){ const out=[]; for(let i=0;i<n;i++){ const t=n===1?.5:i/(n-1); const p=bez(p0,p1,p2,t); out.push({x:p.x-STONE/2,y:p.y-STONE/2}); } return out; }
-const LABEL={watch:{x:52,y:492},listen:{x:372,y:492},read:{x:500,y:440},do:{x:905,y:330},enter:{x:940,y:110},apply:{x:1150,y:560}};
-const LABEL_TXT={watch:"THE WALL · the shadows",listen:"THE FIRE · the voices behind you",read:"THE STEEP WAY · the texts themselves",do:"OUTSIDE · reflections, then the things",enter:"THE SUN · your own argument",apply:"THE DESCENT · back to the others"};
 const COLOUR={watch:"#9d8ad0",listen:"#e8a33a",read:"#5fa3cc",do:"#6cc08a",enter:"#ffd86b",apply:"#d4694a"};
-function stonePts(g,n){
-  switch(g){
-    case "watch": return gridPts(60,506,13,n);
-    case "listen": return gridPts(372,506,9,n);
-    case "read": return pathPts({x:626,y:756},{x:706,y:690},{x:748,y:594},n>10?Math.ceil(n/2):n).concat(n>10?pathPts({x:748,y:594},{x:784,y:500},{x:856,y:426},Math.floor(n/2)):[]);
-    case "do": return gridPts(925,352,6,n);
-    case "enter": return gridPts(1100,250,8,n);
-    case "apply": return pathPts({x:1360,y:300},{x:1392,y:520},{x:1300,y:640},n>6?Math.ceil(n/2):n).concat(n>6?pathPts({x:1300,y:640},{x:1240,y:740},{x:1130,y:780},Math.floor(n/2)):[]);
-  }
-}
+/* one plaque per stage in the picture: name, what it holds, n of m, a bar */
+const PLAQUE={watch:{x:52,y:482,w:276},listen:{x:352,y:482,w:270},read:{x:520,y:318,w:320},do:{x:900,y:330,w:320},enter:{x:880,y:62,w:280},apply:{x:1060,y:560,w:320}};
+const PLAQUE_TXT={watch:"the shadows: talks and lectures",listen:"the voices behind you: podcasts",read:"the texts themselves, and books",do:"reflections, then the things: tools, visits",enter:"your own argument: competitions",apply:"back to the others: degrees, summer schools"};
+const WALK={watch:{x:206,y:772},listen:{x:640,y:776},read:{x:748,y:594},do:{x:1000,y:470},enter:{x:1220,y:318},apply:{x:1200,y:770}};
 function buildMap(){
   let h="";
   for(const g of ORDER){
-    const list=ITEMS.filter(i=>i.g===g); const pts=stonePts(g,list.length);
-    h+=`<g class="hot" data-f="${g}" tabindex="0" role="button" aria-label="${esc(stageName(g))}: go to its items">
-      <rect class="ring" x="${LABEL[g].x-8}" y="${LABEL[g].y-16}" width="${LABEL_TXT[g].length*7.4+40}" height="24" rx="4" fill="none" stroke="${COLOUR[g]}" stroke-width="1.5"/>
-      <text class="mono lb" id="lb-${g}" x="${LABEL[g].x}" y="${LABEL[g].y}" font-size="11.5" fill="#e8d7a8">${FAM[g].no} · ${LABEL_TXT[g]}</text>
-      <text class="mono lb" id="mc-${g}" x="${LABEL[g].x}" y="${LABEL[g].y+14}" font-size="10" fill="#c9b998"></text></g>`;
-    list.forEach((it,i)=>{ const p=pts[i]||pts[pts.length-1];
-      h+=`<g class="stone" data-s="${it.s}" tabindex="0" role="button" aria-label="Stone ${it.pn}, ${esc(it.short)}"><title>${esc(it.pn)} · ${esc(it.short)}</title>
-        <rect id="st-${it.s}" x="${p.x}" y="${p.y}" width="${STONE}" height="${STONE}" rx="3" fill="#2a2119" stroke="#6a5a48" stroke-width="1"/></g>`; });
+    const P=PLAQUE[g];
+    h+=`<g class="hot plaque" data-f="${g}" tabindex="0" role="button" aria-label="${esc(stageName(g))}: go to its items" transform="translate(${P.x} ${P.y})">
+      <rect class="ring" x="-5" y="-5" width="${P.w+10}" height="86" rx="9" fill="none" stroke="${COLOUR[g]}" stroke-width="2"/>
+      <rect x="0" y="0" width="${P.w}" height="76" rx="6" fill="#f4ead6" stroke="#1d160f" stroke-width="1.5"/>
+      <rect x="0" y="0" width="7" height="76" rx="3" fill="${COLOUR[g]}"/>
+      <text class="hd" x="18" y="27" font-size="19" fill="#1d160f">${FAM[g].no} · ${esc(FAM[g].stage)}</text>
+      <text x="18" y="45" font-size="12" fill="#5a4a38">${esc(PLAQUE_TXT[g])}</text>
+      <rect x="18" y="56" width="${P.w-36}" height="9" rx="4" fill="#d8ccb0" stroke="#a8977a" stroke-width=".8"/>
+      <rect id="pb-${g}" x="18" y="56" width="0" height="9" rx="4" fill="${COLOUR[g]}"/>
+      <text class="mono" id="mc-${g}" x="${P.w-16}" y="26" text-anchor="end" font-size="11.5" fill="#1d160f"></text></g>`;
   }
   $("map").innerHTML=h;
+  // the same six, stacked, for phones
+  $("stagesList").innerHTML=ORDER.map(g=>`<button type="button" class="splaque" data-go="${g}" style="--g:${COLOUR[g]}"><span class="sno">${FAM[g].no}</span><span><b>${esc(FAM[g].stage)} · ${FAM[g].label}</b><i>${esc(PLAQUE_TXT[g])}</i><em class="sbar"><em id="spb-${g}"></em></em></span><span class="sn" id="smc-${g}"></span></button>`).join("");
 }
 function lightStones(){
   const G=stages();
-  ITEMS.forEach(it=>{ const r=$("st-"+it.s); if(!r) return; const d=!!state.done[it.s];
-    r.setAttribute("fill", d?COLOUR[it.g]:"#2a2119"); r.setAttribute("stroke", d?"#fff":"#6a5a48");
-    r.parentNode.classList.toggle("just", JUST===it.s); });
+  ORDER.forEach(g=>{ const el=$("mc-"+g); if(el) el.textContent=`${G.c[g]} of ${G.t[g]}`;
+    const bar=$("pb-"+g); if(bar) bar.setAttribute("width", ((PLAQUE[g].w-36)*G.c[g]/G.t[g]).toFixed(1));
+    const s=$("smc-"+g); if(s) s.textContent=`${G.c[g]} of ${G.t[g]} · ${STATE_NAME[G.sec[g]]}`;
+    const sb=$("spb-"+g); if(sb) sb.style.width=Math.round(100*G.c[g]/G.t[g])+"%";
+    const pl=document.querySelector(`.plaque[data-f="${g}"] rect:nth-of-type(2)`); if(pl) pl.setAttribute("fill", G.sec[g]===3?"#ffe99c":"#f4ead6"); });
   JUST=null;
-  ORDER.forEach(g=>{ const el=$("mc-"+g); if(el) el.textContent=`${G.c[g]} of ${G.t[g]} · ${STATE_NAME[G.sec[g]].toUpperCase()}`; });
   // the walker stands at the stage last touched
-  const W={watch:{x:206,y:772},listen:{x:640,y:776},read:{x:748,y:594},do:{x:1000,y:470},enter:{x:1220,y:318},apply:{x:1300,y:640}}[state.at]||{x:206,y:772};
+  const W=WALK[state.at]||WALK.watch;
   const outside = state.at==="do"||state.at==="enter"||state.at==="apply";
   $("walker").innerHTML=`<g transform="translate(${W.x} ${W.y})" aria-hidden="true"><ellipse cx="0" cy="2" rx="12" ry="3" fill="#000" opacity=".35"/>
     <circle cx="0" cy="-34" r="6" fill="${outside?"#2a2119":"#0a0806"}"/><path d="M-6 -27 h12 l3 18 h-4 l-1 11 h-8 l-1 -11 h-4z" fill="${outside?"#2a2119":"#0a0806"}"/></g>`;
 }
-
 /* ---------- the stones as cards ---------- */
 function recHTML(it,extra=""){
   const done=state.done[it.s];
@@ -1282,7 +1282,6 @@ function goZone(g){
 }
 
 document.addEventListener("click",e=>{
-  const st=e.target.closest(".stone"); if(st){ openSheet(st.dataset.s); return; }
   const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
   const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
   const t=e.target.closest("[data-s]");
@@ -1298,7 +1297,7 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
-  if((e.key==="Enter"||e.key===" ") && e.target.classList && (e.target.classList.contains("hot")||e.target.classList.contains("stone"))){ e.preventDefault(); e.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("hot")){ e.preventDefault(); e.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); }
 });
 
 /* ---------- next step ---------- */
