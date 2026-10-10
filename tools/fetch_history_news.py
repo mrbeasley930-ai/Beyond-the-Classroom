@@ -33,18 +33,16 @@ UA = "Mozilla/5.0 (compatible; Beyond-the-Classroom-history-arrivals/1.0; +https
 #   filter: None = keep everything; "hist" = keep only headlines that look like history
 FEEDS = [
     ("The National Archives", "https://www.nationalarchives.gov.uk/feeds/blogs.xml", "archive", "the National Archives' own blogs: documents from its collections, explained by its staff", 4, None, "story"),
-    ("History Today",       "https://www.historytoday.com/feed/rss.xml",            "magazine", "monthly history magazine written by historians", 5, None, "story"),
     ("HistoryExtra",        "https://www.historyextra.com/feed/",                    "magazine", "BBC History Magazine's website", 5, None, "story"),
     ("The Conversation",    "https://theconversation.com/uk/arts/articles.atom",      "academic", "academics writing for a general reader: history pieces only", 4, "hist", "story"),
-    ("The Guardian",        "https://www.theguardian.com/books/history/rss",         "review",   "the Guardian's history books desk: reviews and extracts", 4, None, "story"),
-    ("History Hit",         "https://www.historyhit.com/feed/",                      "magazine", "History Hit articles", 3, None, "story"),
+    ("The Guardian",        "https://www.theguardian.com/books/history/rss",         "review",   "the Guardian's history books desk: history books only", 4, "hist", "story"),
     ("The Rest is History", "https://feeds.megaphone.fm/GLT4787413333",              "podcast",  "Tom Holland and Dominic Sandbrook (on the department's list; some strong language)", 3, None, "podcast"),
     ("Cold War Conversations", "https://feeds.megaphone.fm/NSR5326520675",           "podcast",  "oral history of the Cold War from people who were there (on the department's list)", 2, None, "podcast"),
-    ("Empire",              "https://feeds.megaphone.fm/empirepodcast",              "podcast",  "William Dalrymple and Anita Anand on empires (on the department's list)", 2, None, "podcast"),
     ("HistoryExtra podcast", "https://feeds.megaphone.fm/GLT5697813216",             "podcast",  "interviews with historians about their new books (on the department's list)", 3, None, "podcast"),
     ("Not Just the Tudors", "https://access.acast.com/rss/b0ed85cc-f4ed-49e9-b860-0ba48481ae25", "podcast", "Suzannah Lipscomb on the early modern world (on the department's list)", 2, None, "podcast"),
     ("Gone Medieval",       "https://access.acast.com/rss/11c1773b-6d50-4dbb-b543-483046bdc241", "podcast", "the Middle Ages (on the department's list)", 1, None, "podcast"),
 ]
+OTD_SKIP = re.compile(r"murder|abduct|kidnap|rape|sexual|serial killer|child|girl|boy\b|suicide|massacre of (school|children)", re.I)
 WIKI = "https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/{mm}/{dd}"
 
 # AQA 7042 as the department teaches it, by keyword (lower-case match)
@@ -67,7 +65,7 @@ _rx = {k: re.compile(v, re.I) for k, v in THEMES.items()}
 HIST = re.compile(r"histor|centur|\bwar\b|wars\b|empire|imperial|revolution|archive|museum|ancient|medieval|victorian|tudor|stuart|georgian|edwardian|soviet|\btsar|\bkings?\b|queens?\b|monarch|\b1[0-9]{3}s?\b|\b20[0-2]0s\b|fascis|nazi|colonial|slavery|holocaust|cold war|\bera\b|dynasty|\bdig\b|archaeolog|heritage|anniversary", re.I)
 
 # notices and items that are not history
-SKIP = re.compile(r"job opportunit|vacanc|webinar:|sponsored|\bdeals?\b|discount|black friday|subscribe|competition:|win a |\bsale\b|gift guide|best .* to buy|crossword|quiz of the|trailer|^introducing|bonus:|ad-free|members? only", re.I)
+SKIP = re.compile(r"daily quiz|\bquiz\b|^letter:|best .* books|books out in|job opportunit|vacanc|webinar:|sponsored|\bdeals?\b|discount|black friday|subscribe|competition:|win a |\bsale\b|gift guide|best .* to buy|crossword|quiz of the|trailer|^introducing|bonus:|ad-free|members? only", re.I)
 
 
 def tag(title, desc=""):
@@ -174,7 +172,9 @@ def on_this_day(now):
             link = (((pages[0].get("content_urls") or {}).get("desktop") or {}).get("page")) or ""
         if not text or not link:
             continue
-        th = tag(text, " ".join(clean(p.get("extract", "")) for p in pages[:2]))
+        if OTD_SKIP.search(text):  # crimes against individuals and children are not for this board
+            continue
+        th = tag(text)  # the event text only: page extracts drag in false matches
         out.append({"id": "otd-" + hashlib.sha1((str(year) + text).encode("utf-8")).hexdigest()[:8],
                     "year": year, "text": text, "url": link, "th": th})
     # on the course first, then the rest by year
