@@ -893,7 +893,11 @@ const ITEMS = [
    think:"Do the OpenLearn Greek course on this page first. If you want more, tap 'I'm interested' before Christmas so the department can help with the bursary form in time.",tags:["paid","bursaries","summer school"],url:"https://www.greeksummerschool.org/",lt:"Greek Summer School"},
   {s:"Dn",g:"apply",short:"Go back down",name:"The Descent: take one thing from this page back to someone who has not studied Classics",mins:60,t:"an hour, when you are ready",th:"Beyond the course",
    what:"Republic 519c–520c: the city compels those who have seen the light to go back down and take their turn. Explain one text, object or idea from this page to someone who has never studied Classics: a younger pupil at a department event, a form group, a parent, a friend. Then write on your tablet what they asked that you could not answer.",
-   think:"The question they asked that you could not answer is the next stone. Tell the department when you have done this; there are Year 7–9 events that need a sixth former who can explain the Cyclops in two minutes.",tags:["free","the descent","ask your teacher"],url:"",lt:"",ask:true}
+   think:"The question they asked that you could not answer is the next stone. Tell the department when you have done this; there are Year 7–9 events that need a sixth former who can explain the Cyclops in two minutes.",tags:["free","the descent","ask your teacher"],url:"",lt:"",ask:true},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Ot",g:"watch",short:"Odysseus on trial",name:"Classics for All: the Mock Trial of Odysseus at the UK Supreme Court",mins:90,t:"1h30",th:"WH Odyssey",added:"2026-10-10",what:"Every October Classics for All puts an ancient figure on trial before a real judge and KCs. On 22 October 2026 it was Odysseus, charged over the loss of his ships and crew, with Lord Briggs presiding. Previous trials (Medea, 2024) are on the Classics for All YouTube channel; the 2026 recording should follow.",think:"Would you convict? Use Books 9–12 as your evidence and decide whether the prosecution's reading of Odysseus survives the text.",tags:["Y12–13","free","Odyssey","recording"],url:"https://classicsforall.org.uk/news-and-events/events/mock-trial-odysseus",lt:"Classics for All: the trial"},
+  {s:"Wac",g:"do",short:"Warwick Greek play: Clouds",name:"Warwick Ancient Drama Festival 2027: Aristophanes' Clouds, 28–29 January",mins:360,t:"a day",th:"Beyond the course",added:"2026-10-10",what:"Warwick stages a Greek play every January with a free Schools Day on Friday 29 January 2027, 11am–5.30pm: talks on Greek theatre, comedy and the historical background, then a 3.30pm matinee of Clouds. Ticket fees are waived for state schools and there are five £700 travel bursaries for state schools attending for the first time. The school books; places are limited.",think:"Aristophanes mocks Socrates on stage in 423 BC. How does a comic Socrates change the way you read the one in the Symposium?",tags:["Y12–13","free","29 Jan","trip"],url:"https://www.theclassicslibrary.com/event/warwick-ancient-drama-festival-28-29-january-2027-aristophanes-clouds-with-700-bursaries-for-travel/",lt:"Festival details and bursaries"},
+  {s:"Kc",g:"listen",short:"CA lecture at Keele: Teutoburg Forest",name:"Roman Society and Classical Association joint lecture, Keele: Jo Ball on the Teutoburg Forest (AD 9)",mins:90,t:"1h30",th:"WH Homeric and Augustan world",added:"2026-10-10",what:"The nearest Classical Association branch lecture this half term: Thursday 19 November 2026, 7.30pm, Keele Hall. Jo Ball (Manchester) on how Varus lost three legions in a German forest. Open to the public; the price is not stated (branch lectures are normally free to students), so check with North Staffs CA.",think:"Augustus' Rome lost three legions in a forest. What does that do to the picture of imperial power in the Aeneid's prophecies?",tags:["Y12–13","19 Nov","in person","free · check"],url:"https://www.romansociety.org/Events/Classical-Association-Joint-Lectures",lt:"Lecture listing"},
 ];
 const YEAR = [
   {m:"2026-10",when:"Tue 13 Oct, 6pm",what:"BMCA autumn lecture: Hannah Cornwell, Birmingham and Midland Institute",sub:"Book through Eventbrite; ask about going as a group.",s:"Bl",check:false},
@@ -930,13 +934,13 @@ const MONTHS = [
    Nothing else needs touching. The Mouth of the Cave updates itself.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three steps before half term. Take them, and write a line on your tablet for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three steps before Christmas. Take them, and write a line on your tablet for each.",
   items:[
-    {s:"Jd",step:"Watch",txt:"Watch Jill Dash on the Odyssey (5 min), then reread the Cyclops episode in Book 9 and decide whether Odysseus' boast is heroic."},
-    {s:"Nh",step:"Listen",txt:"Listen to one episode of Natalie Haynes Stands Up for the Classics on a writer or figure from your course."},
-    {s:"Gr",step:"Watch",txt:"Watch one Gresham lecture from the Classics for schools page (Melissa Lane on the Cave is the obvious one) and write down one claim you could test against a text you study."}
+    {s:"Ot",step:"Watch",txt:"Watch the recording of Classics for All's mock trial of Odysseus at the Supreme Court (22 October), then give your own verdict on the tablet with Books 9 to 12 as the evidence. Does the prosecution's reading of him survive the text?"},
+    {s:"Gr",step:"Watch",txt:"Watch Melissa Lane's Gresham lecture Plato on Truth, Lies and Power (given 22 October, free on the Gresham site) and write down one thing it changes about how you read the Cave."},
+    {s:"Wac",step:"Do",txt:"Ask the department to book the free Schools Day at Warwick's Ancient Drama Festival (Aristophanes' Clouds, Friday 29 January, talks and a matinee) and to apply for one of the £700 travel bursaries. Places go before Christmas."}
   ]
 };
 const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date

@@ -957,7 +957,11 @@ const ITEMS = [
    think:"Check the criteria when applications open; your teacher will know when.",tags:["Y12","residential"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
   {s:"LU",g:"apply",short:"Levelling Up: Physics",name:"Levelling Up: Physics (Institute of Physics)",mins:9000,t:"months",
    what:"Free near-peer tutoring and mentoring from physics undergraduates, with a campus visit; the local hub is the University of Birmingham. The long form runs from April of Year 12 to December of Year 13.",
-   think:"Ask your teacher whether a local department is running it this year.",tags:["Y12–13","tutoring"],url:"https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now",lt:"Levelling Up: Physics"}
+   think:"Ask your teacher whether a local department is running it this year.",tags:["Y12–13","tutoring"],url:"https://www.iop.org/education/school-and-college-students/levelling-up-physics-apply-now",lt:"Levelling Up: Physics"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Nob",g:"read",short:"Nobel Prize in Physics 2026",name:"Nobel Prize in Physics 2026: Francis Halzen and IceCube",mins:45,t:"45m",added:"2026-10-10",what:"Francis Halzen won the 2026 prize for decisive contributions to the IceCube Neutrino Observatory and the discovery of high-energy neutrinos of astrophysical origin. Read the popular-science summary, then watch his Nobel lecture (Stockholm, Nobel Week from 7 December; the lecture date is published in late November; ceremony 10 December), livestreamed and kept online.",think:"Why does it take a cubic kilometre of Antarctic ice to catch a particle that passes straight through the Earth?",tags:["Y12–13","free","online","Dec"],url:"https://www.nobelprize.org/prizes/physics/2026/popular-information/",lt:"Popular information (Nobel Foundation)"},
+  {s:"Gem",g:"do",short:"Geminids",name:"Geminids meteor shower: the night of 13–14 December",mins:60,t:"1h outside",added:"2026-10-10",what:"The year's richest meteor shower, up to 150 an hour at peak on the night of Sunday 13 to Monday 14 December 2026, with the Moon out of the way. The debris comes from the asteroid 3200 Phaethon, not a comet. Best after midnight, which is a school night, so the early evening of the 13th is the realistic slot.",think:"Estimate the kinetic energy of a 1 g Geminid hitting the atmosphere at 35 km/s, then explain why it still burns up 80 km above you.",tags:["Y12–13","free","13–14 Dec"],url:"https://www.spacecentre.co.uk/news/space-now-blog/geminid-meteor-shower/",lt:"National Space Centre guide"},
+  {s:"Fly",g:"watch",short:"Gravity assist, live",name:"Europa Clipper's Earth flyby, 3 December (and Hera at Didymos in November)",mins:40,t:"40m",added:"2026-10-10",what:"On Thursday 3 December 2026 NASA's Europa Clipper swings past Earth to take a little of our orbital momentum on its way to Jupiter. The same autumn ESA's Hera arrives at the Didymos–Dimorphos asteroid pair that DART knocked off course in 2022 (ESA gives November; the day is published nearer the time).",think:"Where does the spacecraft's extra speed come from if energy is conserved? Draw the velocity vectors in the Earth's frame and in the Sun's frame.",tags:["Y12–13","free","online","3 Dec"],url:"https://science.nasa.gov/mission/europa-clipper/",lt:"NASA Europa Clipper"},
 ];
 const YEAR = [
   {when:"Tue 6 Oct 2026",what:"Birmingham IOP lecture: dark matter experiments",sub:"7.30pm, Poynting Physics Building. Next ones 3 Nov, 2 Feb, 2 Mar, 13 Apr, 4 May.",s:"Bm",check:false},
@@ -985,13 +989,13 @@ const YEAR = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three picks from the department for this half term. Do them, tick them, write a line in the lab book for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three picks from the department for the half term before Christmas. Do them, tick them, write a line in the lab book for each.",
   items:[
-    {s:"Gz",step:"Watch",txt:"Watch Andrea Ghez's 16-minute talk and write down which equation from the gravitational fields topic she is using."},
-    {s:"BP",step:"Solve",txt:"Do one past Senior Physics Challenge paper (Year 12) or Physics Challenge paper (Year 13) with the mark scheme beside you."},
-    {s:"Bm",step:"Go",txt:"Go to a free University of Birmingham physics lecture: Tuesday 6 October or Tuesday 3 November, 7.30pm."}
+    {s:"PC",step:"Solve",txt:"Thursday 12 November is BPhO Round 1 for anyone invited after Round 0. Everyone else: Year 13 sit the Physics Challenge, Year 12 the Astro Challenge (tile Ast), both one hour in school, free, and both close on Saturday 12 December. Ask your teacher for a lunchtime slot."},
+    {s:"Bm",step:"Go",txt:"Tuesday 3 November, 7.30pm, Poynting building: The Invisible Scanners, Jim Grozier on the women who measured the bubble-chamber photographs of the 1960s. Free, no booking. The Tuesday 1 December lecture is still to be announced; check the page."},
+    {s:"Nob",step:"Watch",txt:"Read the popular summary of the 2026 Nobel Prize in Physics (Francis Halzen, IceCube, high-energy neutrinos), then watch his Nobel lecture streamed from Stockholm in the week of 7 December. Lab book: why a cubic kilometre of ice."}
   ]
 };
 const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date

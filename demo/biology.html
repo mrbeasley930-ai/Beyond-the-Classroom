@@ -956,7 +956,11 @@ const ITEMS = [
    think:"Check the criteria and put the December opening in your diary.",tags:["Y12","summer"],url:"https://in2scienceuk.org/our-programmes/in2stem/",lt:"In2STEM"},
   {s:"Un",g:"apply",short:"UNIQ",name:"UNIQ, University of Oxford",mins:6000,t:"resid.",
    what:"A free Oxford residential and support programme for state-school Year 12s, prioritising pupils with good grades from backgrounds under-represented at Oxford. Applications for UNIQ 2027 open in December. Check the course list for biology and biomedical sciences.",
-   think:"Check the criteria when applications open in December; your teacher will know the dates.",tags:["Y12","residential","opens Dec"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"}
+   think:"Check the criteria when applications open in December; your teacher will know the dates.",tags:["Y12","residential","opens Dec"],url:"https://www.uniq.ox.ac.uk/",lt:"UNIQ"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"ZSL",g:"watch",short:"ZSL Wild Talks",name:"ZSL Wild Talks: free evening lectures on conservation science",mins:90,t:"1h 30",added:"2026-10-10",what:"Free lectures from the Zoological Society of London, in person at Regent's Park or online, with recordings on ZSL's Science and Conservation YouTube channel. Next: Back from the Brink, Tuesday 17 November 2026, 6–7.30pm.",think:"What decides whether a captive-breeding programme (sihek, scimitar-horned oryx, partula snails) actually restores a wild population?",tags:["Y12–13","free","17 Nov","online"],url:"https://www.zsl.org/news-and-events/events/back-brink-saving-species-inspiring-hope",lt:"Book the free online place"},
+  {s:"Nob",g:"read",short:"Nobel 2026: optogenetics",name:"Nobel Prize in Physiology or Medicine 2026: light-gated ion channels",mins:60,t:"1h",added:"2026-10-10",what:"Karl Deisseroth, Peter Hegemann and Georg Nagel won the 2026 prize for optogenetics: switching individual neurones on and off with light. Read the popular information, then watch the Nobel lectures streamed from Stockholm in Nobel Week (ceremony 10 December; the lecture date is published in late November).",think:"What does controlling one neurone with light let you test that an electrode cannot?",tags:["Y12–13","free","Dec","online"],url:"https://www.nobelprize.org/prizes/medicine/2026/summary/",lt:"nobelprize.org: 2026 summary"},
+  {s:"BB",g:"enter",short:"Big Bang Competition",name:"The Big Bang Competition 2027",mins:600,t:"10h+",added:"2026-10-10",what:"The UK's biggest STEM project competition for 11–18s: a written report on your own investigation (an EPQ or an extended practical counts). Entries are open now and close Friday 12 March 2027, 4pm, so the data has to be gathered before Christmas.",think:"What question could you actually test with the equipment in the school lab before the end of term?",tags:["Y12–13","free","closes 12 Mar"],url:"https://eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition/",lt:"Entry rules"},
 ];
 /* The field season. m = month (YYYY-MM) it sits under. s links to an item; url is for events with no item. */
 const YEAR = [
@@ -992,13 +996,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three picks from the department for this half term. Do them, record them, write a notebook entry for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three picks from the department for the half term before Christmas. Do them, record them, write a notebook entry for each.",
   items:[
-    {s:"Dou",step:"Watch",txt:"Watch Jennifer Doudna's 16-minute talk on CRISPR and write down how Cas9 finds the right place in the DNA."},
-    {s:"BP",step:"Practise",txt:"Try one British Biology Olympiad past paper. There are no mark schemes, so look up the questions you could not answer."},
-    {s:"WS",step:"Watch",txt:"Watch the film from Biology: The Whole Story that matches the topic you are studying now."}
+    {s:"BBO",step:"Enter",txt:"Tell your teacher you want to sit the British Biology Olympiad (papers 15–25 January; registration is open now and free). Then do one past paper before the end of November so January is not a shock."},
+    {s:"ZSL",step:"Watch",txt:"Book the free online place for ZSL's Wild Talks lecture on Tuesday 17 November, 6pm, Back from the Brink, and write down what decides whether a captive-breeding programme actually restores a wild population."},
+    {s:"Nob",step:"Watch",txt:"Read the Nobel Foundation's popular summary of the 2026 prize for optogenetics, then watch the laureates' lectures streamed from Stockholm in Nobel Week (from 7 December). Write down how a light-sensitive algal protein ends up controlling a mouse neurone."}
   ]
 };
 const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date
@@ -1547,7 +1551,7 @@ $("fbForm").addEventListener("submit",async e=>{
       body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-bio-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
   $("fbSend").disabled=false;
   if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.div=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
-  else { const lines=Object.entries(rec).filter(([k,v])=>!["kind","ua","pupilView"].includes(k)&&v!==""&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>k+": "+(Array.isArray(v)?v.join(", "):v)); let box=$("fbCopy"); if(!box){ box=document.createElement("textarea"); box.id="fbCopy"; box.readOnly=true; box.className="plain"; box.style.cssText="width:100%;min-height:180px;font:inherit;font-size:.85rem;padding:8px;border:2px solid currentColor"; $("fbMsg").after(box); } box.hidden=false; box.value=lines.join("\n"); box.focus(); box.select(); $("fbMsg").innerHTML="That did not send from this link. Your answers are below: copy them into an email to Simon. The feedback button does work on <a href=\"https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/biology.html\" target=\"_blank\" rel=\"noopener\">this version of the demo</a>."; }
+  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
 });
 // page comments, where the viewer's account allows them
 (async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;

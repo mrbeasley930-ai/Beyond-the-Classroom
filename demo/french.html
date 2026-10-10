@@ -1061,7 +1061,11 @@ const ITEMS = [
    think:"Read the careers page, then write one French sentence beginning 'Avec le français, je pourrais…' and keep it where you will see it in January.",tags:["free","careers"],url:"https://whystudylanguages.ac.uk/post16/",lt:"Why Study Languages"},
   {s:"RtW",g:"apply",short:"Routes into Languages West Midlands · Year 12 Taster Day",name:"Routes into Languages West Midlands (University of Warwick): Year 12 Taster Day, Thursday 10 June 2027",mins:300,t:"a day at Warwick",th:"Applying",
    what:"The regional Routes programme run from Warwick: a Year 12 taster day on 10 June 2027, webinars for Years 12–13, and the Mother Tongue Other Tongue poetry competition in May–June. The department books places.",
-   think:"Put your name down now; the department books it. Take the carnet and ask a student what their year abroad was.",tags:["free","Year 12","10 Jun 2027","school books"],url:"https://warwick.ac.uk/fac/arts/modernlanguages/outreach/routes/routes-programme-202627.pdf",lt:"Programme (PDF)"}
+   think:"Put your name down now; the department books it. Take the carnet and ask a student what their year abroad was.",tags:["free","Year 12","10 Jun 2027","school books"],url:"https://warwick.ac.uk/fac/arts/modernlanguages/outreach/routes/routes-programme-202627.pdf",lt:"Programme (PDF)"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Gon",g:"read",short:"Prix Goncourt 2026",name:"Prix Goncourt 2026: la semaine des prix, 2–4 November",mins:45,t:"45 min",th:"T2 Médias",added:"2026-10-10",what:"France's four big novel prizes land in three days: Médicis (Monday 2 November), Goncourt and Renaudot (Tuesday 3 November, lunchtime, Chez Drouant), Femina (Wednesday 4 November). The announcement is on the lunchtime news and in every paper. Read the Goncourt result the same day, then the first chapter of the winner on the publisher's site.",think:"Why does a country put a literary prize on the lunchtime news?",tags:["Y12–13","free","3 Nov"],url:"https://www.livreshebdo.fr/article/le-calendrier-des-grands-prix-litteraires-dautomne-2026",lt:"Le calendrier des prix (Livres Hebdo)"},
+  {s:"Lyc",g:"read",short:"Goncourt des lycéens",name:"Prix Goncourt des lycéens 2026: the sixth-formers' prize, 26 November",mins:60,t:"1h",th:"T2 Médias",added:"2026-10-10",what:"About 2,000 French lycéens read the same novels as the Goncourt jury and pick their own winner, announced in Rennes on Thursday 26 November 2026. Look at the sixteen-book list (Hassaine, Haenel, Prudhomme, Devi, Jaenada and others), pick the one you would vote for from the blurbs and extracts, then compare with the lycéens' choice and the Académie's.",think:"Does a prize chosen by seventeen-year-olds mean something different from one chosen by ten old novelists?",tags:["Y12–13","free","26 Nov"],url:"https://www.fnacdarty.com/wp-content/uploads/2026/09/cp-annonce-selection-du-prix-goncourt-des-lyceens-2026-vf.pdf",lt:"La sélection 2026 (Fnac)"},
+  {s:"Tel",g:"watch",short:"Téléthon",name:"Téléthon 2026: 4–5 December, the 40th edition",mins:45,t:"45 min",th:"T2 Médias",added:"2026-10-10",what:"France's biggest charity broadcast: thirty hours of live television on France 2 and France 3, a running total on screen, thousands of village events, parrain Patrick Fiori. The france.tv stream is sometimes geo-blocked outside France; the France 2 news bulletins on YouTube and franceinfo carry the highlights.",think:"What does the Téléthon tell you about how the French do charity, media and the state?",tags:["Y12–13","free","4–5 Dec"],url:"https://www.afm-telethon.fr/fr/evenement-telethon",lt:"AFM-Téléthon"},
 ];
 
 /* The year as an agenda. m = month (YYYY-MM). s links to an item; url is for events with no item; fr = a date France keeps. */
@@ -1116,13 +1120,13 @@ const MONTHS = [
    every morning by the GitHub Action). Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three things from the department for this half term. Do them, mark them done, and keep a cutting for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things from the department for the half term before Christmas. Do them, mark them done, and keep a cutting for each.",
   items:[
-    {news:3,step:"Read",txt:"Three headlines from the rack, any theme, with your two French sentences on each. Pick one from a paper and one from the Journal en français facile."},
-    {s:"Kao",step:"Watch",txt:"Syrine Kaouane's eight minutes in French on getting from the banlieue to a grande école. Once without the transcript, once with. Then a cutting."},
-    {s:"JFF",step:"Listen",txt:"Four Journal en français facile bulletins in a fortnight, transcript closed the first time through. On the fourth, open it and count what you missed."}
+    {s:"Gon",step:"Read",txt:"La semaine des prix: Médicis on Monday 2 November, Goncourt and Renaudot on Tuesday 3, Femina on Wednesday 4. Read the Goncourt announcement in Le Monde or Libération the same day, then the first pages of the winner on the publisher's site. One cutting, in French."},
+    {s:"UK",step:"Do",txt:"The UK Linguistics Olympiad Advanced paper is sat in school in the week of Monday 9 November (the school registered you before half term). Afterwards, write down the one language rule you worked out from the data alone."},
+    {s:"Tel",step:"Watch",txt:"Téléthon, Friday 4 to Saturday 5 December, 30 hours live on France 2 (the 40th edition). Watch twenty minutes of the live feed or the highlights, then read one newspaper piece on the final total. Cutting: what it tells you about charity, media and the state in France."}
   ]
 };
 const COMPILED="2026-10-08";           // items without their own `added` date count as added on this date

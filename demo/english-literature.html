@@ -939,7 +939,12 @@ const ITEMS = [
    more:[{lt:"King's",url:"https://www.kcl.ac.uk/study/undergraduate/courses/english-ba"},{lt:"Durham",url:"https://www.durham.ac.uk/study/courses/english-literature-q300/"},{lt:"Warwick",url:"https://warwick.ac.uk/study/undergraduate/courses/ba-english-literature"}]},
   {s:"OxX",g:"apply",short:"Oxford English · resources for applicants",name:"Oxford English Faculty: extracurricular resources and inspiration",mins:30,t:"a list to work through",th:"Applying",
    what:"The faculty's own list for people thinking of applying: Great Writers Inspire, the Professor of Poetry lectures, Approaching Shakespeare, Challenging the Canon, the Ten-Minute Book Club and more.",
-   think:"Several of these are already in the tower. Tick off the ones you have done and see what is left.",tags:["free","Years 12–13"],url:"https://www.english.ox.ac.uk/extracurricular-resources-inspiration",lt:"Oxford English"}
+   think:"Several of these are already in the tower. Tick off the ones you have done and see what is left.",tags:["free","Years 12–13"],url:"https://www.english.ox.ac.uk/extracurricular-resources-inspiration",lt:"Oxford English"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Bkr",g:"read",short:"Booker Prize 2026",name:"Booker Prize 2026: the winner, 9 November",mins:45,t:"45m",th:"All",added:"2026-10-10",what:"Six shortlisted novels (M. John Harrison, Marlon James, Luke Kennard, Rebecca Perry, Elizabeth Strout, Douglas Stuart); judges chaired by Mary Beard. Watch the six free shortlist films, back one book, then see who wins on Monday 9 November 2026.",think:"What are the judges rewarding: prose, structure, subject, or timing?",tags:["Y12–13","free","9 Nov"],url:"https://thebookerprizes.com/bp2026",lt:"Shortlist and films"},
+  {s:"GrD",g:"watch",short:"Gresham: Oakley on Donne and Herbert",name:"Gresham College: Love's Transcendence in the Poetry of John Donne, George Herbert and R S Thomas (Mark Oakley)",mins:60,t:"1h",th:"Love through the ages",added:"2026-10-10",what:"A lunchtime lecture on Wednesday 18 November 2026, 1pm, free online with the recording kept on the Gresham site. Donne is in your anthology, so this is direct context for The Flea and A Valediction. Find the event on the Gresham What's On page.",think:"Where does Donne's love poetry stop being about a person and start being about God?",tags:["Y12–13","free","18 Nov","online"],url:"https://www.gresham.ac.uk/whats-on",lt:"Gresham What's On"},
+  {s:"GrS",g:"watch",short:"Gresham: Emma Smith, Shakespeare Now",name:"Gresham College: Shakespeare Now: Creativity and Controversy (Emma Smith), 8 December",mins:60,t:"1h",th:"Love through the ages",added:"2026-10-10",what:"Emma Smith (the Approaching Shakespeare lecturer) on how today's stage and screen handle Shakespeare's treatment of race, gender and disability: adapt, apologise, or historicise? Tuesday 8 December 2026, 6pm, free live online or the recording the next day.",think:"Should your set play be made to speak to 2026, or understood on its own terms?",tags:["Y12–13","free","8 Dec","online"],url:"https://www.gresham.ac.uk/whats-on/shakespeare-now",lt:"Register free (online)"},
+  {s:"TSE",g:"read",short:"T S Eliot Prize 2026 shortlist",name:"T S Eliot Prize 2026: the shortlist",mins:60,t:"1h",th:"Modern times",added:"2026-10-10",what:"Ten new collections, including Andrew Motion's Gravity Archives and Kim Moore's The House of Broken Things. Read one poem from each poet (free samples on the Prize site and publishers' pages) and pick your winner before the readings on 17 January and the result on 18 January 2027.",think:"What does a 2026 poem about love or loss do that the anthology poems could not?",tags:["Y12–13","free","Dec"],url:"https://tseliot.com/prize/",lt:"The 2026 shortlist"},
 ];
 
 /* The year as notices to mariners. m = month (YYYY-MM). s links to an item. */
@@ -985,13 +990,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three things from the department for this half term. Do them, light them, and write each one up in your log.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things from the department for the half term before Christmas. Do them, light them, and write each one up in your log.",
   items:[
-    {s:"Cat",step:"Watch",txt:"Watch Mandy Len Catron's 'A better way to talk about love' (15 min). Find three metaphors for love in the anthology and say what each one assumes."},
-    {s:"PU",step:"Listen",txt:"One episode of Poetry Unbound. Read the poem on the page and write three sentences before you listen; then see what he found that you missed."},
-    {s:"EmS",step:"Listen",txt:"Emma Smith's Approaching Shakespeare lecture on your play. Put her central question at the top of a log entry and answer it yourself."}
+    {s:"Bkr",step:"Read",txt:"Before Monday 9 November, read the opening pages of two of the six Booker shortlist novels and back one in your log. Then see what Mary Beard's judges rewarded, and whether it was the same thing you were reading for."},
+    {s:"GrD",step:"Watch",txt:"Wednesday 18 November, 1pm: Mark Oakley's Gresham lecture on love and the sacred in Donne, Herbert and R S Thomas, free online (watch the recording if 1pm is a lesson). Log entry: where does Donne's love poetry stop being about a person?"},
+    {s:"GrS",step:"Watch",txt:"Tuesday 8 December, 6pm: Emma Smith at Gresham, Shakespeare Now: Creativity and Controversy, free online. Put her central question at the top of a log entry and answer it for your set play."}
   ]
 };
 const COMPILED="2026-10-09";           // items without their own `added` date count as added on this date

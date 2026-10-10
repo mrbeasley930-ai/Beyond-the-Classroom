@@ -926,7 +926,11 @@ const ITEMS = [
    more:[{lt:"Lancaster",url:"https://lancaster.ac.uk/study/undergraduate/courses/linguistics-ba-hons-q100"},{lt:"Cambridge",url:"https://www.undergraduate.study.cam.ac.uk/courses/linguistics"},{lt:"Oxford",url:"https://www.ling-phil.ox.ac.uk/studying-linguistics-oxford"}]},
   {s:"Lan",g:"apply",short:"Lancaster · free online courses",name:"Lancaster University: free online courses in Shakespeare's Language and Corpus Linguistics",mins:600,t:"weeks",th:"Applying",
    what:"Two FutureLearn courses from Lancaster's linguistics department, Shakespeare's Language and Corpus Linguistics. Free to join; FutureLearn may limit how long free access lasts. No start dates were published when this page was made.",
-   think:"Shakespeare's Language suits Othello. Corpus Linguistics is how university linguists work; do a week of it and you will know whether you want to.",tags:["free to join","online","check dates"],url:"https://lancaster.ac.uk/linguistics/free-online-courses",lt:"Lancaster"}
+   think:"Shakespeare's Language suits Othello. Corpus Linguistics is how university linguists work; do a week of it and you will know whether you want to.",tags:["free to join","online","check dates"],url:"https://lancaster.ac.uk/linguistics/free-online-courses",lt:"Lancaster"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"WOTY",g:"do",short:"Word of the Year 2026",name:"Word of the Year 2026: Collins, Cambridge, Oxford",mins:45,t:"45 min",th:"C01 Non-fiction and spoken",added:"2026-10-10",what:"Every November the big dictionaries each pick a word of the year from their corpus data: Collins first (6 November in 2025), then Cambridge (18 November in 2025), then Oxford, whose shortlist goes to a public vote in the last week of November with the winner at the start of December. The 2026 dates were not yet published on 10 October. The OUP page explains how the choice is made and lists past winners.",think:"Who is this word for, and what would Johnson or Murray have made of putting it in a dictionary?",tags:["Y12–13","free","Nov–Dec","dates · check"],url:"https://corp.oup.com/word-of-the-year/",lt:"Oxford Word of the Year"},
+  {s:"Bkr",g:"read",short:"Booker Prize 2026",name:"Booker Prize 2026: the shortlist and the winner, 9 November",mins:90,t:"1½h",th:"C03 Prose and writing",added:"2026-10-10",what:"Six shortlisted novels (M. John Harrison, Marlon James, Luke Kennard, Rebecca Perry, Elizabeth Strout, Douglas Stuart), judged by a panel chaired by the classicist Mary Beard with the poet Raymond Antrobus and Jarvis Cocker. The winner is announced on Monday 9 November 2026; the Booker site carries extracts, the judges' comments and six free shortlist films.",think:"Read the opening pages of two shortlisted novels and decide which one you would back, then see whether the judges agree.",tags:["Y12–13","free","9 Nov"],url:"https://thebookerprizes.com/the-booker-library/prize-years/2026",lt:"Booker Prize 2026"},
+  {s:"Rth",g:"listen",short:"Reith Lectures 2026",name:"BBC Reith Lectures 2026: Robert Macfarlane, The Human Superiority Complex",mins:60,t:"1h each",th:"C01 Non-fiction and spoken",added:"2026-10-10",what:"The nature writer Robert Macfarlane (Underland, Is a River Alive?) gives this year's four Reith Lectures, one per classical element, the first starting from the Epic of Gilgamesh. Radio 4 with a Q&A, then BBC Sounds. Broadcast dates were not yet announced on 10 October; the 2025 series started in the last week of November.",think:"Macfarlane is a writer first. Listen for how the argument is carried by image, story and cadence rather than by data, and mark the moment the audience is won.",tags:["Y12–13","free","Radio 4","dates · check"],url:"https://www.bbc.co.uk/programmes/b00729d9",lt:"The Reith Lectures"},
 ];
 
 /* The year as a day book. m = month (YYYY-MM). s links to an item; url is for events with no item. */
@@ -969,13 +973,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three things from the department for this half term. Do them, file them, and write a slip for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things from the department for the half term before Christmas. Do them, file them, and write a slip for each.",
   items:[
-    {s:"Lyi",step:"Watch",txt:"Watch Jamila Lyiscott's '3 ways to speak English' (4 min). Mark each switch of variety and what signals it, then write a slip."},
-    {s:"WoM",step:"Listen",txt:"One episode of Word of Mouth. Note one claim about spoken language that you could test against a spoken text in the anthology."},
-    {s:"UKp",step:"Do",txt:"Try one problem from a UKLO Advanced past paper. If you liked it, tap \"I want to enter\" on the Olympiad card: the school's entries close on 2 November and the paper is sat the week after."}
+    {s:"UK",step:"Do",txt:"The UK Linguistics Olympiad Advanced paper is sat in school in the week of Monday 9 November (entries closed on 2 November). Results come on Monday 7 December: when they do, write a slip on the one problem you would solve differently now."},
+    {s:"WOTY",step:"Do",txt:"Word of the Year season: Collins in early November, Cambridge in mid-November, then Oxford's public vote in the last week of November. Pick one of the three winners and write a slip on who the word is for and what Murray would have done with it."},
+    {s:"Bkr",step:"Read",txt:"Read the opening pages of two of the six Booker shortlist novels before Monday 9 November and back one on a slip. Then see whether Mary Beard's judges agree, and say what they were rewarding."}
   ]
 };
 const COMPILED="2026-10-08";           // items without their own `added` date count as added on this date

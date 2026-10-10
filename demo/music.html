@@ -1007,7 +1007,10 @@ const ITEMS = [
    think:"Watch one video on orchestration or on a composer from AoS7. Apply one technique from it to eight bars of your own piece.",tags:["free","YouTube"],url:"https://www.youtube.com/@DBruce",lt:"David Bruce"},
   {s:"Sw",g:"watch",short:"Sideways · film music",name:"Sideways (YouTube): how film and game music works",mins:20,t:"one video: 20 min",th:"AoS3 Music for media",
    what:"Video essays on music for film, television and games: how a theme is built, how Zimmer uses texture, why a game score has to loop. Clear and well argued.",
-   think:"Watch a video on a composer from Music for media (Herrmann, Zimmer, Giacchino, Newman, Uematsu). Write down one technique and name the cue it is used in.",tags:["free","YouTube"],url:"https://www.youtube.com/@Sideways440",lt:"Sideways"}
+   think:"Watch a video on a composer from Music for media (Herrmann, Zimmer, Giacchino, Newman, Uematsu). Write down one technique and name the cue it is used in.",tags:["free","YouTube"],url:"https://www.youtube.com/@Sideways440",lt:"Sideways"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"BCl",g:"enter",short:"B:Classical for £5",name:"B:Classical: £5 student tickets for Symphony Hall's visiting orchestras",mins:120,t:"2h",th:"AoS1 Western classical 1650–1910",added:"2026-10-10",what:"Symphony Hall's own season of visiting orchestras (Philharmonia, Flanders Symphony, Strasbourg Philharmonic and more) sells £5 tickets to students; a separate scheme from the CBSO's. In the window: Flanders SO with Mozart's Violin Concerto No. 5, Thursday 5 November, 7.30pm; Marin Alsop and the Philharmonia in Mahler 6, Sunday 22 November (St Cecilia's Day).",think:"Pick the concert whose programme is closest to a set work and go with the score.",tags:["Y12–13","£5","Symphony Hall"],url:"https://bmusic.co.uk/bclassical",lt:"bmusic.co.uk/bclassical"},
+  {s:"Tro",g:"listen",short:"Town Hall organ concerts",name:"Thomas Trotter: Monday lunchtime organ concerts at the Town Hall",mins:60,t:"1h",th:"Performing",added:"2026-10-10",what:"Birmingham City Organist Thomas Trotter gives hour-long Monday lunchtime concerts on the Town Hall organ, about £8.50; this season marks his 900th recital since 1983. In the window: In Memoriam (Bach, Alain, Duruflé), Monday 9 November, 1pm; Monday 23 November, 1pm; Lunchtime Christmas Music at Symphony Hall, Monday 7 December. School-day lunchtimes, so ask first.",think:"Listen for how one player manages texture and dynamics without a conductor or an orchestra.",tags:["Y12–13","£8.50","Mondays 1pm"],url:"https://bmusic.co.uk/lunchtime-organ-concerts",lt:"bmusic.co.uk"},
 ];
 
 /* The season. m = month (YYYY-MM). s links to an item. */
@@ -1052,13 +1055,13 @@ const MONTHS = [
    Nothing else needs touching. The programme updates itself.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three pieces to prepare before half term. Do them, fill the bars, and write a programme note for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three pieces to prepare before Christmas. Do them, fill the bars, and write a programme note for each.",
   items:[
-    {s:"Sv",step:"Watch",txt:"Watch Betsy Schwarm on Vivaldi's Four Seasons (4 min), then listen to the first movement of Il Gardellino and note where the ritornello returns."},
-    {s:"Cw",step:"Listen",txt:"Listen to one Composer of the Week programme on the composer of a set work you are studying."},
-    {s:"Cb",step:"Watch",txt:"Book a £5 student ticket for a CBSO concert at Symphony Hall this half term."}
+    {s:"Rb",step:"Go",txt:"Friday 20 November, 6pm, Royal Birmingham Conservatoire: the Baroque Orchestra plays Handel's Concerto Grosso Op. 3 No. 2, Muffat and Vivaldi's Concerto for four violins Op. 3 No. 10, £5 under 25. Take the score of the Vivaldi and mark every ritornello."},
+    {s:"Cb",step:"Go",txt:"Sunday 29 November, 3pm, Town Hall: the CBSO plays Beethoven's Violin Concerto with the Leonore No. 2, Egmont and Coriolan overtures, £5 student ticket. Programme note: where the soloist and the orchestra argue, and who wins."},
+    {s:"Cw",step:"Listen",txt:"Composer of the Week, Monday 2 to Friday 6 November, 4pm on Radio 3: The Mighty Handful. One episode a day on the way home, or the whole week on Sounds, and a programme note on one piece you had not heard before."}
   ]
 };
 const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date

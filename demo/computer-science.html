@@ -977,7 +977,9 @@ const ITEMS = [
    think:"Watch one session and do the worksheet. Note the kind of question that took you longest.",tags:["free","TMUA"],url:"https://www.maths.ox.ac.uk/r/matlive",lt:"Livestreams"},
   {s:"Fa",g:"apply",short:"Degree apprenticeships",name:"Degree apprenticeships in software and cyber (GOV.UK)",mins:30,t:"a search: 30 min",th:"Applying",
    what:"Search the government's apprenticeship service for 'software developer' or 'cyber security' degree apprenticeships: a full degree while working and being paid, with no tuition fees to pay. Large employers open applications in the autumn of Year 13.",
-   think:"Find two computing degree apprenticeships within reach of Birmingham. Note the entry grades, the closing date and what the employer asks for.",tags:["free","Year 13"],url:"https://www.findapprenticeship.service.gov.uk/",lt:"Find an apprenticeship"}
+   think:"Find two computing degree apprenticeships within reach of Birmingham. Note the entry grades, the closing date and what the employer asks for.",tags:["free","Year 13"],url:"https://www.findapprenticeship.service.gov.uk/",lt:"Find an apprenticeship"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Sk",g:"watch",short:"Gresham: AI and copyright",name:"Gresham College: AI, Copyright and the Fight for Free Culture (Daniel Susskind)",mins:60,t:"1h",th:"1.5 Legal, moral, ethical",added:"2026-10-10",what:"A six-lecture Gresham series on who owns what when machines are trained on everyone's work. Lecture 1, The Future of Creativity (22 September), is already online; lecture 2, The Romantic History of Copyright, is on Monday 30 November 2026, 6pm, free online. The explicitly AI lectures follow in March and May.",think:"If a model is trained on a million books, who, if anyone, is owed something? Write the answer as a one-paragraph policy.",tags:["Y12–13","free","30 Nov","online"],url:"https://www.gresham.ac.uk/watch-now/series/ai-copyright",lt:"Series page and registration"},
 ];
 
 /* The roadmap. m = month (YYYY-MM). s links to an item. */
@@ -1019,13 +1021,13 @@ const MONTHS = [
    Nothing else needs touching. Upstream updates itself.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three issues assigned to you before half term. Close them, and write a commit for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three issues assigned to you before Christmas. Close them, and write a commit for each.",
   items:[
-    {s:"Ci",step:"Enter",txt:"Register for the National Cipher Challenge and do the first challenge before half term."},
-    {s:"Tb",step:"Watch",txt:"Watch Joy Buolamwini's talk on bias in algorithms (9 min) and write down who you think should be accountable when a system is biased."},
-    {s:"Bi",step:"Do",txt:"Try three problems from the BIO beginner set in the language you use in class."}
+    {s:"Ci",step:"Enter",txt:"Keep up with the National Cipher Challenge: chapters 4 to 10 are released every Thursday at 3pm from 5 November to 17 December, each closing the following Wednesday at 11pm. Six of the seven is a pass."},
+    {s:"Be",step:"Do",txt:"Sit the UK Bebras Challenge in school between Monday 9 and Friday 20 November (45 minutes, free; your teacher registers the group). Top scorers go to the Oxford University Computing Challenge in the new year."},
+    {s:"Gi",step:"Watch",txt:"Tuesday 1 December, 6pm: Matt Jones's Gresham lecture AI as Muse? Creativity, Provocation and Human Ownership, free online (recording within days). Commit message: who should own what a model makes."}
   ]
 };
 const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date

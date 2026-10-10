@@ -1051,7 +1051,11 @@ const ITEMS = [
    think:"Read three profiles. Which of their jobs uses the most physical geography, and which the most human?",tags:["free"],url:"https://www.rgs.org/schools/careers-and-progression",lt:"RGS careers"},
   {s:"Fa",g:"apply",short:"Find an apprenticeship",name:"Find an apprenticeship (GOV.UK)",mins:20,t:"20 min",th:"Applying",
    what:"The government's search for apprenticeships in England, including degree apprenticeships. Search for geospatial, surveying, environmental, planning or flood risk.",
-   think:"Search 'geospatial' and 'environmental'. Write down one employer near Birmingham and what A levels they ask for.",tags:["free","apprenticeships"],url:"https://www.findapprenticeship.service.gov.uk/",lt:"Find an apprenticeship"}
+   think:"Search 'geospatial' and 'environmental'. Write down one employer near Birmingham and what A levels they ask for.",tags:["free","apprenticeships"],url:"https://www.findapprenticeship.service.gov.uk/",lt:"Find an apprenticeship"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"COP",g:"read",short:"COP31 Antalya",name:"COP31: the UN climate conference, Antalya, 9–20 November 2026",mins:45,t:"45m",th:"Topic 6 The carbon cycle and energy security",added:"2026-10-10",what:"Türkiye hosts and Australia chairs the negotiations; the World Leaders' Summit is on 11–12 November. Follow one day through Carbon Brief's daily briefing or the UNFCCC webcast and note what was agreed. The Global Carbon Budget is normally launched at COP (13 November in 2025).",think:"Which of the Edexcel carbon-cycle and energy-security players got what they wanted, and who lost?",tags:["Y12–13","free","9–20 Nov"],url:"https://unfccc.int/cop31",lt:"UNFCCC COP31"},
+  {s:"Thw",g:"do",short:"The Great Thaw (Lapworth)",name:"The Great Thaw: cryosphere loss in paint, Lapworth Museum of Geology",mins:90,t:"1.5h",th:"Beyond the course",added:"2026-10-10",what:"A free exhibition at the University of Birmingham's Lapworth Museum (two miles from school; University station) of Gennadiy Ivanov's paintings of glacier and ice-sheet loss, made with cryosphere scientists, to 8 January 2027. The geology galleries are free too; a free guided tour runs on the first Monday of the month at noon (booking required).",think:"Does a painting of a retreating glacier tell you anything a satellite image cannot?",tags:["Y12–13","free","Birmingham","to 8 Jan"],url:"https://www.birmingham.ac.uk/events/the-great-thaw",lt:"Exhibition page"},
+  {s:"Rgu",g:"apply",short:"RGS: choosing a geography degree",name:"RGS webinar: how to choose the right university and geography course (3 November)",mins:60,t:"1h",th:"Applying",added:"2026-10-10",what:"A free hour for Year 12 on Tuesday 3 November 2026, 4–5pm, with a University of Reading admissions tutor and current undergraduates on how geography degrees differ and how UCAS works. Book free on the RGS site (an account, not membership, is needed). A companion webinar on careers in ecosystems and conservation follows on Wednesday 11 November, 4–5pm.",think:"BA or BSc, physical or human, and which two universities would you shortlist tonight?",tags:["Y12","free","3 Nov","online"],url:"https://www.rgs.org/events/upcoming-events/how-to-choose-the-right-university-geography-course/",lt:"Book the webinar"},
 ];
 
 /* The mission calendar. m = month (YYYY-MM). s links to an item. */
@@ -1095,13 +1099,13 @@ const MONTHS = [
    Nothing else needs touching. The hazard board updates itself.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three targets from the department before half term. Do them, image them, and file a scene log for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three targets from the department before Christmas. Do them, image them, and file a scene log for each.",
   items:[
-    {s:"Rm",step:"Join",txt:"Join the Royal Geographical Society as a student member. It is free for A level students and gives you Geographical magazine and the members-only talks."},
-    {s:"Ha",step:"Watch",txt:"Watch Peter Haas on the Haiti earthquake (8 min) and write down three reasons buildings failed."},
-    {s:"At",step:"Listen",txt:"Listen to one Ask the Geographer episode on a topic in your current unit."}
+    {s:"Re",step:"Write",txt:"The RGS–Financial Times essay closes Monday 9 November, 5pm: 1,000 words on this year's migration question, written over half term. Free, judged blind. Tap 'I'm entering' so the department knows."},
+    {s:"Ol",step:"Sit",txt:"The first UK National Geography Olympiad runs Monday 9 to Friday 20 November: a quiz for post-16 geographers, sat in school, free. Your teacher registers the group; you turn up."},
+    {s:"COP",step:"Track",txt:"COP31 runs in Antalya from 9 to 20 November, leaders' summit 11–12 November. Follow one day of it through Carbon Brief's daily briefing (the Global Carbon Budget is launched during it) and log what was actually agreed and who lost."}
   ]
 };
 const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date

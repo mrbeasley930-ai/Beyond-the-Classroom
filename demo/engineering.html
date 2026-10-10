@@ -1152,7 +1152,10 @@ const ITEMS = [
    think:"Check the criteria. If you meet them, tap 'I'm interested'.",tags:["Year 12","summer","free"],url:"https://in2scienceuk.org/students/",lt:"Details"},
   {s:"Go",g:"apply",short:"Girls on Track UK",name:"Girls on Track UK (Motorsport UK)",mins:60,t:"an event",th:"Applying",
    what:"Free school events for girls aged 8 to 18 that use motorsport to show the engineering and other careers in the sport, with talks from women who work in it, and a free online community. The school registers interest.",
-   think:"Tap 'I'm interested' and the department can register the school for an event.",tags:["free","school registers","motorsport"],url:"https://motorsportuk.org/the-sport/women-in-motorsport/girls-on-track-uk/",lt:"Girls on Track UK"}
+   think:"Tap 'I'm interested' and the department can register the school for an event.",tags:["free","school registers","motorsport"],url:"https://motorsportuk.org/the-sport/women-in-motorsport/girls-on-track-uk/",lt:"Girls on Track UK"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"TEW",g:"do",short:"Tomorrow's Engineers Week",name:"Tomorrow's Engineers Week 2026: 9–13 November",mins:60,t:"1h",th:"F130 Principles of engineering",added:"2026-10-10",what:"EngineeringUK's national week of engineering careers activity, Monday 9 to Friday 13 November 2026, theme Shape our future: free resources, engineer Q&As and three design challenges (beat the heat, smart support, beyond the plate). Schools register free.",think:"Which of the three challenges could you take on to a Big Bang entry?",tags:["Y12–13","free","9–13 Nov"],url:"https://www.engineeringuk.com/teweek/",lt:"engineeringuk.com/teweek"},
+  {s:"IET",g:"watch",short:"IET lectures and webinars",name:"IET free lectures and online talks",mins:60,t:"1h",th:"F137 Electrical devices and circuits",added:"2026-10-10",what:"The Institution of Engineering and Technology runs free public lectures and online talks all year; most need only a free non-member login, and Birmingham Local Network events are open to the public. Next: Skywave over-the-horizon radar, from the University of Birmingham's SERENE group, Wednesday 4 November 2026, 12–1pm online.",think:"Pick one talk a term and write down the one engineering trade-off the speaker had to make.",tags:["Y12–13","free","online","4 Nov"],url:"https://events.theiet.org/search",lt:"events.theiet.org"},
 ];
 
 /* The calendar. m = month (YYYY-MM). s links to an item. */
@@ -1192,13 +1195,13 @@ const MONTHS = [
    Nothing else needs touching. The pit wall news updates itself.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three runs from the department before half term. Do them, light them up, and file a debrief sheet for each.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three runs from the department before Christmas. Do them, light them up, and file a debrief sheet for each.",
   items:[
-    {s:"In",step:"Read",txt:"Read one 'How does that work?' article in Ingenia and write down which principle of engineering it depends on."},
-    {s:"Sd",step:"Watch",txt:"Watch Donald Sadoway's TED talk on the liquid-metal battery (15 min) and sketch the cell."},
-    {s:"Pe",step:"Watch",txt:"Watch one Practical Engineering video on a structural failure and note what the engineers got wrong."}
+    {s:"Sr",step:"Build",txt:"STEM Racing (F1 in Schools): regional finals start on 12 November and the West Midlands final is Friday 5 February at Aston, so November and December are the build window. Get your team's car to a testable state before the end of term and log the test."},
+    {s:"Cb",step:"Watch",txt:"The season ends with three races in a fortnight: Las Vegas (04:00 UK, Sunday 22 November), Qatar (16:00, Sunday 29 November) and Abu Dhabi (13:00, Sunday 6 December). Pick one and file a strategy debrief: tyre choice, pit windows, what the engineers got wrong."},
+    {s:"Ie",step:"Watch",txt:"Tuesday 3 November, 6.30–7.30pm: the ICE Presidential Address, Julie Wood, free online (register with a free ICE account). Write down the one engineering trade-off she had to make in her career."}
   ]
 };
 const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date

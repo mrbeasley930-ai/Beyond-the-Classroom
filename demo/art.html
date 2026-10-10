@@ -856,7 +856,11 @@ const ITEMS = [
    think:"It is a whole extra A level on Saturdays. Talk to your teacher first; then, if it is for you, join the waitlist.",tags:["free","Saturdays","talk to your teacher","waitlist"],url:"https://www.arthistorylinkup.org/programmes/art-history-a-level",lt:"Art History Link-Up"},
   {s:"Ru",g:"apply",short:"Ruskin School of Art open days",name:"Ruskin School of Art (Oxford) open days",mins:240,t:"a day",
    what:"Undergraduate open days for Fine Art (BFA): tours and a talk with tutors and students. 2026 dates were 1 and 2 July (in person) and 18 September (in person and online); booking opened 5 May. The Ruskin does not review portfolios at open days.",
-   think:"If Fine Art at a university rather than an art school is a possibility, this is the one to see. The September online session suits anyone who cannot travel.",tags:["free","Y12","online option","check dates"],url:"https://www.rsa.ox.ac.uk/study/undergraduate/open-days",lt:"Ruskin open days"}
+   think:"If Fine Art at a university rather than an art school is a possibility, this is the one to see. The September online session suits anyone who cannot travel.",tags:["free","Y12","online option","check dates"],url:"https://www.rsa.ox.ac.uk/study/undergraduate/open-days",lt:"Ruskin open days"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"TP",g:"watch",short:"Turner Prize 2026",name:"Turner Prize 2026: Barclay, Freije, Humeau, Sasraku",mins:60,t:"1h",added:"2026-10-10",what:"Four shortlisted artists show at MIMA, Middlesbrough until 29 March 2027; the winner is announced on 10 December 2026. The Tate release and the room-by-room reviews are enough to form a view without the train fare.",think:"Which of the four installations is doing something a painting could not, and does that matter to the judges?",tags:["Y12–13","free","10 Dec"],url:"https://www.tate.org.uk/press/press-releases/turner-prize-2026-shortlist-announced",lt:"Tate: the shortlist"},
+  {s:"Sur",g:"do",short:"Birmingham Surrealists at mac",name:"mac Birmingham: Emmy Bridgwater and the Birmingham Surrealists",mins:90,t:"1h 30",added:"2026-10-10",what:"An exhibition at mac, Cannon Hill Park, on Emmy Bridgwater and the Birmingham Surrealist group of the 1930s and 40s, to 10 January 2027. Bridgwater was born in Edgbaston. Admission is not stated on the listing (mac gallery shows are normally free), so check before you go.",think:"What did the Birmingham group take from Paris Surrealism, and what did they do with it that was their own?",tags:["Y12–13","Birmingham","to 10 Jan","free · check"],url:"https://macbirmingham.co.uk/whats-on/exhibitions",lt:"mac: exhibitions"},
+  {s:"TCo",g:"apply",short:"Tate Collective",name:"Tate Collective: £5 exhibition tickets for 16–25s",mins:10,t:"10 min",added:"2026-10-10",what:"Free membership for anyone aged 16–25 that cuts every Tate exhibition ticket to £5 and lets you bring three friends at the same price. Sign up now; use it for Light and Magic at Tate Modern (to 21 February 2027) or the Bloomsbury show at Tate Britain (from 12 November).",think:"Which Tate show would most change how you work in the studio, and why that one?",tags:["Y12–13","£5","London"],url:"https://www.tate.org.uk/tate-collective",lt:"Tate Collective"},
 ];
 /* The year as tour dates. m = month (YYYY-MM). s links to an item; url is for events with no item. */
 const YEAR = [
@@ -893,13 +897,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three things from the department for this half term. Do them, mark them done, write each one up in the black book.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things from the department for the half term before Christmas. Do them, mark them done, write each one up in the black book.",
   items:[
-    {s:"Ik",step:"Do",txt:"Go to Ikon's free Balraj Khanna show before 21 February and fill two sketchbook pages with studies and notes."},
-    {s:"Crt",step:"Watch",txt:"Book a free online Courtauld workshop in the October half term (26–28 October)."},
-    {s:"Kap",step:"Watch",txt:"Watch Titus Kaphar (13 min) and write down what you would need to know about a painting before changing it."}
+    {s:"Crt",step:"Book",txt:"Year 12: apply now for the Courtauld's free online Seminar Sessions, Tuesday 10 to Thursday 12 November, 5–6.15pm, all three evenings. Year 13 applying to the Ruskin: your portfolio upload closes Thursday 5 November."},
+    {s:"Ik",step:"Do",txt:"Go back to Ikon for a Sunday Spotlight Tour of Balraj Khanna (3pm, any Sunday to 13 December, 15 minutes, no booking) and add two more sketchbook pages that only make sense because you heard the tour."},
+    {s:"TP",step:"Watch",txt:"Read the four rooms of the Turner Prize 2026 show and back a winner in the black book before the judges announce theirs on Thursday 10 December. Then say whether they were right."}
   ]
 };
 const COMPILED="2026-09-30";           // items without their own `added` date count as added on this date
@@ -1431,7 +1435,7 @@ $("fbForm").addEventListener("submit",async e=>{
       body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-art-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
   $("fbSend").disabled=false;
   if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.look=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbDiv button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
-  else { const lines=Object.entries(rec).filter(([k,v])=>!["kind","ua","pupilView"].includes(k)&&v!==""&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>k+": "+(Array.isArray(v)?v.join(", "):v)); let box=$("fbCopy"); if(!box){ box=document.createElement("textarea"); box.id="fbCopy"; box.readOnly=true; box.className="plain"; box.style.cssText="width:100%;min-height:180px;font:inherit;font-size:.85rem;padding:8px;border:2px solid currentColor"; $("fbMsg").after(box); } box.hidden=false; box.value=lines.join("\n"); box.focus(); box.select(); $("fbMsg").innerHTML="That did not send from this link. Your answers are below: copy them into an email to Simon. The feedback button does work on <a href=\"https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/art.html\" target=\"_blank\" rel=\"noopener\">this version of the demo</a>."; }
+  else { $("fbMsg").textContent="That did not send. Copy your answers into an email to Simon instead."; }
 });
 // page comments, where the viewer's account allows them
 (async()=>{ try{ if(!window.claude||!claude.use) return; const c=await claude.use("comments"); if(!c) return;

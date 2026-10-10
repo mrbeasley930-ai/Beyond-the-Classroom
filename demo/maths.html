@@ -1031,7 +1031,10 @@ const ITEMS = [
    more:[{lt:"Imperial",url:"https://www.imperial.ac.uk/study/courses/undergraduate/mathematics-bsc/"},{lt:"Durham",url:"https://www.durham.ac.uk/study/courses/mathematics-g100/"}]},
   {s:"STEP",g:"apply",w:true,short:"STEP · Sixth Term Examination Papers",name:"STEP: entry and papers (OCR / Cambridge)",mins:30,t:"30 min to read",th:"Applying",
    what:"STEP 2 and STEP 3 are sat in June of Year 13 as part of a Cambridge offer, and some other universities give a lower offer for a good grade. The school's exams officer enters you, for a fee per paper; there are no late entries. 2027 dates are not out yet: last year the papers were in early June.",
-   think:"If you are applying to Cambridge, tell the exams officer in the spring term, before the entry window closes.",tags:["Year 13","fee per paper","Further Maths"],url:"https://www.undergraduate.study.cam.ac.uk/apply/after/sixth-term-exam-STEP",lt:"Cambridge on STEP"}
+   think:"If you are applying to Cambridge, tell the exams officer in the spring term, before the entry window closes.",tags:["Year 13","fee per paper","Further Maths"],url:"https://www.undergraduate.study.cam.ac.uk/apply/after/sixth-term-exam-STEP",lt:"Cambridge on STEP"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Rit",g:"enter",short:"Ritangle (MEI)",name:"Ritangle: MEI's team competition for A level and Further Maths students",mins:90,t:"90 min a week, Oct–Dec",th:"Problem solving",added:"2026-10-10",what:"Free. A question a week from October, building to three a week, then a final set released at 5pm on Tuesday 8 December 2026 that the team has until noon on Monday 14 December to crack. Teams of two to four, nominated by a teacher; registration closes Monday 7 December.",think:"Which of the weekly questions needed something you have not been taught yet, and what was it?",tags:["Y12–13","free","team","closes 14 Dec"],url:"https://mei.org.uk/ritangle/",lt:"Ritangle at MEI"},
+  {s:"MWE",g:"do",short:"Maths Week England",name:"Maths Week England 2026: 15–21 November, Maths on the Move",mins:60,t:"1h",th:"Beyond the specification",added:"2026-10-10",what:"The national maths week, Sunday 15 to Saturday 21 November 2026. Free registration gives access to the week's resources and live online events; NRICH and others run sessions during the week (check nrich.maths.org/events in early November). Maths Inspiration's free online Christmas Quiz follows on Tuesday 15 December, 2–3pm, booked by the school.",think:"Pick one thing from the week that a Year 7 could understand and explain it to one.",tags:["Y12–13","free","15–21 Nov"],url:"https://mathsweekengland.co.uk/",lt:"Maths Week England"},
 ];
 
 /* The problem on the desk: one a week. Edit or add below; each runs from `from` to `to` (inclusive).
@@ -1146,13 +1149,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1 and half term",
-  until:"2026-10-30",
-  lede:"Three things from the department before you come back after half term. Do them, put the lights on, and write each one up on the notepaper.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things from the department before Christmas. Do them, put the lights on, and write each one up on the notepaper.",
   items:[
-    {s:"Hot",step:"Watch",txt:"Watch The Infinite Hotel Paradox (6 min), then try this week's problem on the desk, which is the same hotel with a coach party."},
-    {s:"GHp",step:"Watch",txt:"Sarah Hart's lecture on proof (an hour). Write out one proof she gives, and say what kind of proof it is."},
-    {s:"STF",step:"Do",txt:"Year 12: STEP Support Foundation module 1. Year 13: the first STEP 2 module (in the Further Maths wing). Hints off for the first attempt."}
+    {s:"BMO",step:"Do",txt:"Wednesday 18 November: BMO Round 1 and the Senior Kangaroo, sat in school by everyone who qualified from October's Senior Challenge. Everyone else: a past BMO1, questions 1 and 2 only, that same week, hints off."},
+    {s:"Rit",step:"Do",txt:"Ritangle: get a team of two to four nominated by a teacher before Monday 7 December. The weekly questions have been coming since October; the final set lands at 5pm on Tuesday 8 December and the team has until noon on Monday 14 December."},
+    {s:"GHp",step:"Watch",txt:"Wednesday 16 December, 6pm: Sarah Hart's Gresham lecture The Maths of Christmas, free online (Alain Goriely's Building with Magnets, Tuesday 10 November, 6pm, is the warm-up). Write out one result from either and say what kind of argument proves it."}
   ]
 };
 const COMPILED="2026-10-09";           // items without their own `added` date count as added on this date

@@ -925,7 +925,7 @@ const ITEMS = [
    think:"Take the hit it gave you and write down which two of your answers it says conflict. Then decide which one you would give up, and why that one.",tags:["free","interactive","God paper","15 min"],url:"https://www.philosophyexperiments.com/god/",lt:"Battleground God"},
   {s:"ECc",g:"do",short:"Ethics Cup case sets",name:"Ethics Cup case sets",mins:60,t:"an hour, with someone",
    what:"The past case sets are free to download from the Ethics Cup site whether or not the school enters a team. Each is a real ethical case written for structured discussion.",
-   think:"Take one case and a friend. Take opposite sides for ten minutes, then swap and argue the other side better than they did. Write up where you ended, not where you began.",tags:["free","discussion","Moral Philosophy","do it with a friend"],url:"https://ethicscup.wp.st-andrews.ac.uk/case-set-2025/",lt:"Case set"},
+   think:"Take one case and a friend. Take opposite sides for ten minutes, then swap and argue the other side better than they did. Write up where you ended, not where you began.",tags:["free","discussion","Moral Philosophy","do it with a friend"],url:"https://ethicscup.wp.st-andrews.ac.uk/case-set-10/",lt:"Case set"},
   {s:"Hert",g:"do",short:"Hertford College Super-Curricular Challenge",name:"Hertford College (Oxford) Super-Curricular Challenge",mins:180,t:"a few evenings",
    what:"A structured challenge from an Oxford college: read, listen, visit, then share what you found. Works for any subject, with suggested philosophy reading and podcasts.",
    think:"Do the challenge on a question rather than a thinker. 'Is there anything it is like to be a bat?' gives you more to read than 'Nagel'.",tags:["free","self-directed","any year"],url:"https://www.hertford.ox.ac.uk/study-here/outreach/digital/challenge/",lt:"Hertford challenge"},
@@ -939,7 +939,9 @@ const ITEMS = [
    think:"Read it to find out which other subject you would want to study alongside this one for three years. That decision is worth making in Year 12, not in October of Year 13.",tags:["free","Year 12–13","joint courses only"],url:"https://www.philosophy.ox.ac.uk/undergraduate-admissions",lt:"Oxford Philosophy"},
   {s:"CamA",g:"apply",short:"Cambridge · the Philosophy Tripos",name:"Cambridge Faculty of Philosophy: prospective undergraduates",mins:20,t:"20m",
    what:"Cambridge teaches Philosophy as a single-honours degree, the Philosophy Tripos. This page says what is studied in each year, how the course is taught, and what the admissions process looks like.",
-   think:"Compare the first-year papers here with the AQA course. What is on theirs that is not on yours? That gap is your wider reading list.",tags:["free","Year 12–13","single honours"],url:"https://www.phil.cam.ac.uk/prosp-students/prosp-ugrad",lt:"Cambridge Philosophy"}
+   think:"Compare the first-year papers here with the AQA course. What is on theirs that is not on yours? That gap is your wider reading list.",tags:["free","Year 12–13","single honours"],url:"https://www.phil.cam.ac.uk/prosp-students/prosp-ugrad",lt:"Cambridge Philosophy"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"ArS",g:"listen",short:"Aristotelian Society (free, Mondays)",name:"The Aristotelian Society: Monday meetings at Senate House",mins:90,t:"1h30",added:"2026-10-10",what:"The oldest philosophy society in Britain meets on Mondays at Senate House, London, 6.15–7.45pm: a 45-minute paper by a working philosopher, then open discussion. Free, no membership needed; papers are published in the Proceedings and recorded as a podcast. In the window: Alex Long on the method of hypotheses in Plato's Phaedo (9 November) and Alisabeth Ayars, The Worth of Moral Worth (23 November).",think:"This is what a university philosophy seminar actually sounds like. Listen to one paper on the podcast and write down the move you would have challenged.",tags:["Y13","free","London","podcast"],url:"https://www.aristoteliansociety.org.uk/the-proceedings/the-2026-27-programme/",lt:"2026–27 programme"},
 ];
 
 /* The year as an almanac. m = month (YYYY-MM). s links to an item; url is for events with no item. */
@@ -975,13 +977,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three waymarks from the department for this half term. Pass them, mark them, write each one up in the notebook.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three waymarks from the department for the half term before Christmas. Pass them, mark them, write each one up in the notebook.",
   items:[
-    {s:"Brf",step:"Watch",txt:"Watch the Royal Institute of Philosophy briefing (15 min) on the topic you are studying now, and write down one objection it raises that your notes do not have."},
-    {s:"Gre",step:"Watch",txt:"Gresham's schools talk, Should We Manipulate People's Emotions?, Wednesday 14 October, 2–3pm. The department books the livestream; you turn up with a question."},
-    {s:"ECc",step:"Do",txt:"Download an Ethics Cup case and argue it with a friend, opposite sides, ten minutes each way, before the Warwick registration date on 23 October."}
+    {s:"PERC",step:"Do",txt:"PERC 2027 (Oxford Uehiro): a two-to-four-minute team video on an ethical problem and who is responsible for it, due Monday 4 January, 4pm. Make it before the end of term; your teacher signs the support form."},
+    {s:"ECc",step:"Do",txt:"The 2027 Ethics Cup case set is out and the Warwick heat is Thursday 7 January. Take cases 1, 2, 3 and 5 and argue each one with a friend, opposite sides, ten minutes each way. Notebook: the strongest objection you could not answer."},
+    {s:"Gre",step:"Watch",txt:"Monday 7 December, 6pm: Linda Woodhead's Gresham lecture Offence and the Future of Courtesy, free online. Write down where she stands on Mill's harm principle and whether you agree."}
   ]
 };
 const COMPILED="2026-10-07";           // items without their own `added` date count as added on this date

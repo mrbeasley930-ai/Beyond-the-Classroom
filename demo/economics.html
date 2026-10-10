@@ -954,7 +954,10 @@ const ITEMS = [
    think:"Read the 'selection criteria' section. Then look at your minutes and ask which entries show the things it lists.",tags:["free","admissions","Maths A required"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/economics-and-management",lt:"Oxford course page"},
   {s:"CamE",g:"apply",short:"Cambridge · Economics (admissions)",name:"University of Cambridge: Economics BA (course page)",mins:30,t:"course page",th:"",added:"2026-10-07",
    what:"The official course page: A*A*A with Mathematics required and Further Mathematics strongly recommended by many colleges, the admissions assessment, and the course structure.",
-   think:"If you are not taking Further Maths, read this page now, not in Year 13, and talk to the department about the NRICH problems and the maths you can do on your own.",tags:["free","admissions","Maths required · FM recommended"],url:"https://www.undergraduate.study.cam.ac.uk/courses/economics-ba-hons",lt:"Cambridge course page"}
+   think:"If you are not taking Further Maths, read this page now, not in Year 13, and talk to the department about the NRICH problems and the maths you can do on your own.",tags:["free","admissions","Maths required · FM recommended"],url:"https://www.undergraduate.study.cam.ac.uk/courses/economics-ba-hons",lt:"Cambridge course page"},
+  // ---- Added for Autumn 2 (2026-10-10)
+  {s:"Nob",g:"read",short:"Nobel 2026: the prize lecture",name:"Nobel Prize in Economic Sciences 2026: the prize lecture",mins:60,t:"1h",th:"1–4",added:"2026-10-10",what:"The 2026 laureates are announced on Monday 12 October and give their prize lecture in Stockholm in Nobel Week (from 7 December), streamed and archived on nobelprize.org. Read the popular science background first; it is written for your level.",think:"What question did this work answer that the textbook still treats as open?",tags:["Y12–13","free","w/c 7 Dec","online"],url:"https://www.nobelprize.org/prizes/economic-sciences/",lt:"nobelprize.org: Economic Sciences"},
+  {s:"Rth",g:"listen",short:"Reith Lectures 2026",name:"BBC Reith Lectures 2026: Robert Macfarlane on the human superiority complex",mins:45,t:"45m each",th:"4",added:"2026-10-10",what:"The 2026 Reith lecturer is the writer Robert Macfarlane: four lectures on humanity's relationship with the rest of the living world, on Radio 4 and BBC Sounds. Broadcast dates were not yet announced on 10 October (the 2025 series ran from late November). Not an economist, which is the point: listen with Raworth's doughnut and the Dasgupta Review in mind.",think:"What would it cost to price the thing Macfarlane says is priceless, and who would pay?",tags:["Y12–13","free","Radio 4","dates · check"],url:"https://www.bbc.co.uk/programmes/b00729d9",lt:"The Reith Lectures"},
 ];
 
 /* The year as a calendar. m = month (YYYY-MM). s links to a paper; mpc marks a decision day; data marks a release. */
@@ -998,13 +1001,13 @@ const MONTHS = [
    Nothing else needs touching.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three items from the department for this half term. Do them, mark them read, minute each one.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three items from the department for the half term before Christmas. Do them, mark them read, minute each one.",
   items:[
-    {s:"MIN",step:"Read, then vote",txt:"Read the September Monetary Policy Summary, especially the paragraph where the three who voted to raise explain themselves. Then cast your 5 November vote above, with reasons."},
-    {s:"IFSp",step:"Listen",txt:"One IFS podcast on a topic from your current theme. Answer its questions in the minutes, and add the one question the IFS did not ask."},
-    {s:"CPI",step:"Read on the day",txt:"Wednesday 21 October, 7am: the September inflation figure. Read the bulletin that day, write down which division moved the number, and change your vote if it changes your mind."}
+    {s:"MIN",step:"Vote, then read",txt:"Thursday 5 November, noon: the decision and the November Monetary Policy Report. Your vote must be in before then. Afterwards read the Summary, compare your reasons with the majority's and with the dissenters', and minute where you were wrong."},
+    {s:"RES",step:"Watch",txt:"Tuesday 3 November, 2–3.30pm: the Royal Economic Society's annual public lecture, Dharshini David on Is Economics Broken?, written for sixth formers and livestreamed free. The department books a room; you bring a question for the minutes."},
+    {s:"CPI",step:"Read on the day",txt:"Wednesday 18 November, 7am: the October inflation figure. Wednesday 16 December, 7am: the November figure. Read each bulletin that morning, note which division moved the number, and cast your 17 December vote above before noon that day."}
   ]
 };
 const COMPILED="2026-10-07";           // papers without their own `added` date count as added on this date
