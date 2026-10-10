@@ -69,7 +69,7 @@ THEMES = {
     "AoS5 Jazz":                  r"\bjazz\b|armstrong|ellington|charlie parker|miles davis|metheny|simcock|bebop|big band|swing\b|improvis|ronnie scott|blue note|saxophon|trumpeter|coltrane|monk\b|mingus|herbie hancock",
     "AoS6 Contemporary traditional": r"piazzolla|tango|diabat|\bkora\b|anoushka|shankar|sitar|mariza|fado|bellowhead|folk\b|traditional music|world music|flamenco|ceilidh|ceili|bluegrass|celtic|gamelan|afrobeat|raga|bhangra|qawwali|cajun|klezmer|balkan|nordic folk|fiddle|accordion|uilleann|bagpipe",
     "AoS7 Art music since 1910":  r"shostakovich|messiaen|steve reich|macmillan|minimalis|stravinsky|schoenberg|berg\b|webern|bart[oó]k|britten|tippett|ligeti|boulez|stockhausen|cage\b|glass\b|adams\b|birtwistle|ad[eè]s|contemporary classical|new music|premiere|world premiere|new commission|commission|electronic music|electroacoustic|avant",
-    "Performing":                 r"audition|competition|young musician|conservatoire|royal academy|royal college|guildhall|rncm|trinity laban|youth orchestra|\bnyo\b|national youth|masterclass|prize|award|scholarship|grade 8|abrsm|exam",
+    "Performing":                 r"audition|competition|young musician|conservatoire|royal academy|royal college|guildhall|rncm|trinity laban|youth orchestra|\bnyo\b|national youth|masterclass|prize|award|scholarship|grade 8|abrsm|\bexams?\b",
 }
 _rx = {k: re.compile(v, re.I) for k, v in THEMES.items()}
 
