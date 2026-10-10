@@ -1,0 +1,1564 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Classical Civilisation · Beyond the Classroom</title>
+<meta name="description" content="Free things for sixth-form Classical Civilisation students: lectures, podcasts, the texts themselves, tools, essay prizes and the way into a Classics degree, built as Plato's cave: out of the shadows and up into the light.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ======================================================================
+   THE CAVE — Classical Civilisation, Beyond the Classroom
+   The page starts in the dark. --L (0 to 1) is how much light the pupil has let in:
+   the share of items done. Everything outside the panels is coloured from it in
+   JS (setLight), so the whole page climbs from cave-black through firelight to day.
+   ====================================================================== */
+:root{
+  --L:0;
+  --bg:#0b0907; --bg2:#15100b; --tx:#efe4cf; --dim:#b9a98e; --line2:#3a2e22; --rule2:#2a2119;
+  --paper:#f4ead6; --paper2:#eadcc0; --ink:#1d160f; --ink2:#5a4a38; --rule:#cdbb9c; --line:#b8a685; --card:#f4ead6;
+  --fire:#e8a33a; --fire2:#c9731f; --ember:#9a3b1a; --sun:#ffd86b; --sky:#8fc3e8; --ok:#2f7a4b; --warn:#b5651d; --bad:#a3271f;
+  --watch:#6d5a9a; --listen:#c9731f; --read:#2f6b8f; --do:#3c8c5a; --enter:#d4a017; --apply:#9a3b1a;
+  --f-head:"Cormorant Garamond",Georgia,serif; --f-text:"Literata",Georgia,serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--f-text);font-size:1.02rem;line-height:1.5;transition:background 1.2s ease,color 1.2s ease;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:.005em;margin:0;line-height:1.08}
+h2{font-size:2.1rem}
+p{margin:0 0 10px}
+a{color:inherit}
+button{font-family:inherit}
+code{font-family:var(--f-mono)}
+.small{font-size:.86rem;color:var(--ink2)}
+.paper{background:var(--paper);color:var(--ink);border:1px solid #2a2119;border-radius:4px;position:relative;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+.paper.hz::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:4px;background:
+  radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.35),transparent 60%),
+  radial-gradient(90% 60% at 100% 100%,rgba(90,60,20,.10),transparent 60%)}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 60px}
+.btn{font:inherit;font-weight:600;font-size:1rem;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;text-decoration:none;line-height:1.2}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.hv{background:var(--fire);border-color:var(--fire);color:var(--ink)}
+.btn.g{background:var(--ink);color:var(--paper)}
+.btn.big{font-size:1.15rem;padding:13px 24px}
+.btn:disabled{opacity:.55;cursor:default}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.badge i{width:10px;height:10px;border-radius:50%;background:var(--fire);box-shadow:0 0 10px var(--fire)}
+.paper .badge{color:var(--ink2)}
+.field{display:grid;gap:5px}
+.field label{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.field input,.field select,.field textarea{font:inherit;font-size:1rem;padding:9px 11px;border:1.5px solid var(--line);border-radius:4px;background:#fffaf0;color:var(--ink);width:100%}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--fire);outline-offset:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.err{color:var(--bad);font-weight:600;min-height:1.2em}
+
+/* ---------- backup to file ---------- */
+.bk-banner{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;
+  padding:10px 16px;font-weight:700;font-size:.95rem;text-align:center;color:#fff;background:#B42318;border-bottom:3px solid #7A1A10}
+.bk-banner.ok{background:#1B7F52;border-bottom-color:#11563A}
+.bk-banner.bad{background:#7A1A10;border-bottom-color:#000}
+.bk-banner[hidden]{display:none}
+.bk-banner button{font:inherit;font-size:.85rem;background:#fff;color:#7A1A10;border:0;border-radius:6px;padding:4px 10px;cursor:pointer}
+.bk-banner.ok button{color:#11563A}
+.bk-dock{position:fixed;right:16px;bottom:16px;z-index:15;display:grid;justify-items:end;gap:8px;max-width:min(340px,calc(100vw - 32px))}
+.bk-dock[hidden]{display:none}
+body.bk-on{padding-bottom:96px}
+.bk-row{display:flex;gap:8px}
+.bk-btn{font:inherit;font-weight:700;font-size:.95rem;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;
+  background:#B42318;color:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.55)}
+.bk-btn.ok{background:#1B7F52}
+.bk-btn.ghost{background:var(--card,#fff);color:var(--ink,#111);border:1.5px solid var(--line,#ccc);box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+.bk-msg{background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ccc);border-radius:10px;padding:10px 12px;font-size:.9rem;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.45);display:grid;gap:8px}
+.bk-msg:empty{display:none}
+.bk-msg .bk-row button{font:inherit;font-size:.88rem;font-weight:700;border-radius:6px;padding:6px 12px;cursor:pointer;border:1.5px solid var(--line,#ccc);background:transparent;color:var(--ink,#111)}
+.bk-msg .bk-row button.go{background:#B42318;border-color:#B42318;color:#fff}
+@media print{.bk-banner,.bk-dock{display:none!important}}
+
+/* ---------- the gate ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px;background:
+  radial-gradient(60% 50% at 50% 100%,rgba(232,163,58,.22),transparent 70%),var(--bg)}
+.gate[hidden],.wrap[hidden]{display:none}
+.gate-card{width:min(860px,100%);padding:40px 38px 30px;display:grid;gap:16px}
+.gate-card h1{font-size:clamp(2.6rem,8vw,5.2rem);line-height:.95}
+.gate-card h1 code{font-family:var(--f-mono);font-weight:600;font-size:.3em;color:var(--fire);background:var(--ink);display:inline-block;padding:4px 10px 3px;margin-bottom:12px;letter-spacing:.08em;border-radius:2px}
+.gate-card h1 em{display:block;font-family:var(--f-head);font-weight:500;font-style:italic;font-size:.3em;color:var(--ink2);margin-top:12px;line-height:1.3}
+.gate-guide{display:grid;grid-template-columns:130px minmax(0,1fr);gap:20px;align-items:center}
+.gate-guide svg{width:130px;height:auto}
+@media (max-width:640px){.gate-guide{grid-template-columns:1fr}.gate-guide svg{width:100px}}
+.gate-card .passno{position:absolute;right:22px;top:-14px;background:var(--fire);color:var(--ink);padding:3px 12px;font-family:var(--f-mono);font-weight:600;font-size:.76rem;border:2px solid var(--ink);border-radius:3px;transform:rotate(1.5deg)}
+
+/* ---------- top ---------- */
+.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:8px 0 22px}
+.top h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:.98}
+.top h1 b{color:var(--fire);font-weight:700}
+.top h1 span{display:block;font-family:var(--f-text);font-weight:400;font-size:.92rem;color:var(--dim);margin-top:10px;max-width:60ch;line-height:1.45}
+.strap{font-family:var(--f-mono);font-size:.78rem;color:var(--dim);margin-top:8px;letter-spacing:.02em}
+.who{display:grid;justify-items:end;gap:4px;text-align:right}
+.who b{font-family:var(--f-head);font-size:1.3rem}
+.who button{font:inherit;font-size:.82rem;background:transparent;border:0;color:var(--dim);text-decoration:underline;cursor:pointer;padding:0}
+.saved{font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+.saved.ok{color:#8fd19e}.saved.bad{color:#f28b82}
+
+/* ---------- the cave scene ---------- */
+.scene{position:relative;border:1px solid var(--rule2);border-radius:6px;overflow:auto;background:#000;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.view{display:block;width:100%;min-width:860px;height:auto}
+.view text{font-family:var(--f-text)}
+.view text.hd{font-family:var(--f-head);font-weight:700}
+.view text.mono{font-family:var(--f-mono)}
+.hot{cursor:pointer}
+.hot:focus{outline:none}
+.hot:focus .ring,.hot:hover .ring,.hot.lit .ring{opacity:1}
+.ring{opacity:0;transition:opacity .25s}
+.stone{cursor:pointer}
+.stone:hover rect,.stone:focus rect{stroke:#fff}
+.scene-key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.84rem;color:var(--dim);margin:10px 2px 0}
+.scene-key b{color:var(--tx)}
+.swipe{display:none}
+@media (max-width:900px){.swipe{display:inline}}
+@keyframes flicker{0%,100%{opacity:.85}30%{opacity:1}55%{opacity:.78}80%{opacity:.95}}
+.flame{animation:flicker 2.4s infinite ease-in-out;transform-origin:center bottom}
+@keyframes shadowpass{0%{transform:translateX(-30px)}100%{transform:translateX(30px)}}
+.shadow-walk{animation:shadowpass 9s infinite alternate ease-in-out}
+@keyframes rays{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+.rays{animation:rays 5s infinite ease-in-out}
+@keyframes popstone{0%{transform:scale(.4)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+.stone.just rect{animation:popstone .6s ease-out;transform-box:fill-box;transform-origin:center}
+
+/* ---------- small print ---------- */
+.smallprint{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0;overflow:hidden}
+@media (max-width:860px){.smallprint{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.smallprint{grid-template-columns:1fr}}
+.sp{padding:12px 14px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.92rem;line-height:1.45;color:var(--ink2);display:grid;gap:4px;align-content:start}
+.sp:nth-child(3n){border-right:0}
+.sp .nm{font-family:var(--f-head);font-weight:700;font-size:1.12rem;color:var(--ink)}
+.sp .nm b{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--g);margin-right:7px;border:1px solid #000}
+.sp.wide{grid-column:1/-1;border-right:0;background:#fff7e4}
+.lab-t{display:inline-block;font-family:var(--f-mono);font-weight:600;font-size:.62rem;text-transform:uppercase;border:1.5px solid currentColor;padding:0 5px;border-radius:3px;margin-right:3px;white-space:nowrap}
+.lab-t.att{color:#15703c}.lab-t.rep{color:#8a5a12}.lab-t.lgd{color:#b4232f}.lab-t.inv{color:#3d4fa8}
+
+/* ---------- the owl, your light, next step ---------- */
+.crew{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:18px;margin:22px 0}
+@media (max-width:900px){.crew{grid-template-columns:1fr}}
+.guide{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:560px){.guide{grid-template-columns:100px 1fr}}
+.guide-img{width:150px;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6))}
+@media (max-width:560px){.guide-img{width:100px}}
+@keyframes hoot{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.guide-img.call{animation:hoot .6s ease-in-out 3}
+.radio{background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:14px 16px;position:relative;display:grid;gap:6px;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+.radio::before{content:"";position:absolute;left:-10px;top:26px;border:10px solid transparent;border-right-color:var(--ink);border-left:0}
+.radio .nm{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:flex;gap:8px;align-items:center}
+.radio .av{width:14px;height:14px;border-radius:50%;background:var(--fire);display:inline-block;border:1px solid var(--ink)}
+.radio #bubbleTxt{font-family:var(--f-head);font-size:1.3rem;line-height:1.3;font-weight:600}
+.radio.talk #bubbleTxt{animation:ink .5s ease-out}
+@keyframes ink{from{opacity:.2}to{opacity:1}}
+.chime{display:inline-flex;gap:2px;margin-left:auto}
+.chime i{width:4px;height:12px;background:var(--fire);border-radius:2px;opacity:.3}
+.radio.talk .chime i{animation:bars .7s infinite ease-in-out}
+.radio.talk .chime i:nth-child(2){animation-delay:.15s}.radio.talk .chime i:nth-child(3){animation-delay:.3s}
+@keyframes bars{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.side{display:grid;gap:14px}
+.card{padding:18px 20px}
+.card h2{font-size:1.6rem;margin-bottom:8px}
+.lapbox{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin:4px 0 10px}
+.lap{font-family:var(--f-head);font-weight:700;font-size:2.6rem;line-height:1}
+.lap small,.pos small{display:block;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:var(--ink2);margin-bottom:4px;font-weight:400}
+.pos{font-family:var(--f-head);font-weight:700;font-size:1.7rem;line-height:1}
+.meter{height:14px;border-radius:7px;background:#1d160f;border:1px solid var(--ink);overflow:hidden;position:relative;margin:4px 0 8px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,#6b3a12,var(--fire),var(--sun));transition:width .8s ease}
+.stages{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:6px 0 4px}
+.stages span{height:30px;border-radius:3px;border:1px solid var(--ink);display:grid;place-items:center;font-family:var(--f-mono);font-size:.72rem;font-weight:600;color:var(--ink)}
+.stages span[data-st="0"]{background:#d8ccb0}.stages span[data-st="1"]{background:#f0c36b}.stages span[data-st="2"]{background:#f6dd9a}.stages span[data-st="3"]{background:#ffe99c;box-shadow:0 0 0 2px var(--sun) inset}
+.seckey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.78rem;color:var(--ink2);margin-bottom:8px}
+.seckey span::before{content:"";display:inline-block;width:10px;height:10px;border:1px solid var(--ink);margin-right:5px;background:var(--c);vertical-align:-1px}
+.rack{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px}
+.rack i{width:12px;height:12px;border-radius:2px;background:#d8ccb0;border:1px solid #a8977a;display:inline-block}
+.rack i.on{background:var(--g);border-color:var(--ink)}
+.register{display:grid;gap:3px;margin-top:10px;font-size:.84rem;color:var(--ink2)}
+.pick-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:.9rem;padding:7px 14px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pickmsg{margin-top:8px;font-weight:600;min-height:1.3em}
+
+/* ---------- this half term ---------- */
+.orders{padding:22px 24px;margin:0 0 22px}
+.rubric{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+.due{display:inline-block;font-family:var(--f-mono);font-size:.8rem;background:var(--ink);color:var(--paper);padding:3px 10px;border-radius:3px;margin:8px 0}
+.lede{color:var(--ink2);max-width:80ch}
+.legs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:8px}
+@media (max-width:860px){.legs{grid-template-columns:1fr}}
+.leg{border:1px solid var(--line);border-radius:4px;padding:12px 12px 10px;display:grid;gap:8px;align-content:start;background:#fffaf0}
+.leg.done{background:#eef5ea;border-color:var(--ok)}
+.leg .lh{display:flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.leg .lno{background:var(--ink);color:var(--paper);padding:2px 7px;border-radius:2px;font-weight:600}
+.leg.done .lno{background:var(--ok)}
+.leg p{margin:0;font-size:.95rem}
+
+/* ---------- items (stones) ---------- */
+.rec{position:relative;display:grid;gap:3px;text-align:left;font:inherit;background:#fffaf0;color:var(--ink);border:1px solid var(--line);border-left:6px solid var(--g);border-radius:4px;padding:10px 12px 10px 12px;cursor:pointer;min-width:0;align-content:start}
+.rec:hover,.rec:focus{border-color:var(--ink);outline:none;box-shadow:0 4px 14px -8px rgba(0,0,0,.5)}
+.rec.done{background:#eef5ea}
+.rec.flash{animation:flashrec 1s ease-out 2}
+@keyframes flashrec{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 0 4px var(--fire)}}
+.rec .no{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:flex;gap:6px;align-items:center}
+.rec .no .dot{width:9px;height:9px;border-radius:50%;background:#d8ccb0;border:1px solid var(--ink2);display:inline-block}
+.rec.done .no .dot{background:var(--ok);border-color:var(--ok)}
+.rec .nm{font-family:var(--f-head);font-weight:700;font-size:1.22rem;line-height:1.1}
+.rec .t{font-size:.84rem;color:var(--ink2)}
+.rec .th{font-family:var(--f-mono);font-size:.68rem;color:var(--ink2);margin-top:2px}
+.rec .stamp{position:absolute;right:10px;top:8px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;color:var(--ok);border:1.5px solid var(--ok);padding:1px 6px;border-radius:2px;transform:rotate(-6deg);opacity:0}
+.rec.done .stamp{opacity:1}
+.rec.new::after{content:"NEW";position:absolute;right:10px;bottom:8px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;background:var(--fire);color:var(--ink);padding:1px 6px;border-radius:2px}
+.zones{display:grid;gap:16px}
+.zone{padding:16px 18px;--g:var(--watch)}
+.zone[data-g="watch"]{--g:var(--watch)}.zone[data-g="listen"]{--g:var(--listen)}.zone[data-g="read"]{--g:var(--read)}.zone[data-g="do"]{--g:var(--do)}.zone[data-g="enter"]{--g:var(--enter)}.zone[data-g="apply"]{--g:var(--apply)}
+.zone.off{display:none}
+.zone.flash{animation:zoneflash 1.1s ease-out 2}
+@keyframes zoneflash{50%{box-shadow:0 0 0 5px var(--fire)}}
+.zone-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;margin-bottom:12px}
+@media (max-width:640px){.zone-head{grid-template-columns:auto 1fr}.zone-head .n{grid-column:1/-1}}
+.zone-head .ic{width:54px;height:54px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-family:var(--f-head);font-weight:700;font-size:1.6rem;border:2px solid var(--ink);line-height:1}
+.zone-head .ic small{display:block;font-family:var(--f-mono);font-size:.5rem;letter-spacing:.1em;font-weight:400}
+.zone-head .nm{font-family:var(--f-head);font-weight:700;font-size:1.7rem;display:block;line-height:1.05}
+.zone-head .def{display:block;font-size:.9rem;color:var(--ink2);margin-top:3px;max-width:80ch}
+.zone-head .n{font-family:var(--f-mono);font-size:.76rem;color:var(--ink2);text-align:right;white-space:nowrap}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px}
+.section-h{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:30px 0 8px}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-family:var(--f-mono);font-size:.82rem;border:1.5px solid var(--line2);background:var(--bg2);color:var(--tx);padding:4px 12px;cursor:pointer;border-radius:3px;display:inline-flex;gap:8px;align-items:center}
+.chip i{font-style:normal;width:9px;height:9px;border-radius:50%;background:var(--g,var(--fire));display:inline-block}
+.chip b{font-weight:400;color:var(--dim);font-size:.74rem}
+.chip[aria-pressed="true"]{background:var(--g,var(--fire));color:#fff;border-color:var(--g,var(--fire))}
+.chip[aria-pressed="true"] b,.chip[aria-pressed="true"] i{color:#fff;background:#fff}
+.chip[data-g="watch"]{--g:var(--watch)}.chip[data-g="listen"]{--g:var(--listen)}.chip[data-g="read"]{--g:var(--read)}.chip[data-g="do"]{--g:var(--do)}.chip[data-g="enter"]{--g:var(--enter)}.chip[data-g="apply"]{--g:var(--apply)}.chip[data-g="news"]{--g:var(--sun)}
+
+/* ---------- the mouth of the cave: news ---------- */
+.mouth{margin:28px 0 8px;padding:22px 24px;border-radius:6px;position:relative;overflow:hidden;color:var(--ink);
+  background:radial-gradient(70% 90% at 50% 0%,#fff4d6 0%,#f4ead6 55%,#eadcc0 100%);border:1px solid #2a2119;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+.mouth .sec-head h2{font-size:2.2rem}
+.pw-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.nfilters{display:flex;flex-wrap:wrap;gap:6px}
+.nchip{font:inherit;font-family:var(--f-mono);font-size:.78rem;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:#fffaf0;color:var(--ink);padding:4px 11px;border-radius:3px;cursor:pointer}
+.nchip b{font-weight:400;color:var(--ink2);font-size:.72rem}
+.nchip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.nchip[aria-pressed="true"] b{color:var(--paper)}
+.pw-when{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2)}
+.screens{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.story{min-width:0;overflow-wrap:anywhere;position:relative;background:#fffaf0;color:var(--ink);border:1px solid var(--ink);border-left:7px solid var(--lv,#8d8070);border-radius:3px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.story.pc{--lv:var(--listen)}.story.sto{--lv:var(--read)}.story.ln{--lv:var(--enter)}
+.story.read{background:#eef5ea}
+.story .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--ink2)}
+.story .src{font-family:var(--f-head);font-weight:700;font-size:1.1rem;color:var(--ink)}
+.story .lvl{border:1px solid var(--ink2);padding:0 6px;border-radius:2px}
+.story h3{font-family:var(--f-text);font-weight:600;font-size:1.02rem;line-height:1.32;margin:2px 0}
+.story p.d{margin:0;color:var(--ink2);font-size:.9rem}
+.story .stags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.ttag{font-family:var(--f-mono);font-size:.66rem;border:1px solid var(--line);background:#f4ead6;padding:1px 7px;border-radius:2px;color:var(--ink2)}
+.ttag.beyond{border-style:dashed}
+.story .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.story .acts .btn{padding:5px 12px 4px;font-size:.92rem}
+.story .stampn{position:absolute;right:12px;top:-11px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;color:#fff;background:var(--ok);border-radius:2px;padding:1px 9px}
+.tw{display:grid;gap:8px;margin-top:6px;padding-top:8px;border-top:1px dashed var(--line)}
+.tw-mine{font-size:.92rem;background:#fff;border-left:3px solid var(--ok);padding:6px 10px;margin:0}
+.tw-mine.q{border-left-color:var(--fire)}
+.wc{font-family:var(--f-mono);font-size:.74rem;color:var(--bad)}
+.pw-foot{font-size:.82rem;color:var(--ink2);margin-top:12px;line-height:1.5}
+.pw-foot span{text-decoration:underline dotted;cursor:help}
+
+/* ---------- the year ---------- */
+.board{margin:30px 0;padding:20px 22px}
+.btop{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:12px}
+.btop .sub{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.month{border:1px solid var(--line);border-radius:4px;background:#fffaf0;padding:10px 12px}
+.month h3{font-size:1.35rem;display:flex;justify-content:space-between;align-items:baseline}
+.month h3 small{font-family:var(--f-mono);font-size:.68rem;color:var(--ink2);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+.ev{display:grid;grid-template-columns:auto 1fr;gap:8px;padding:7px 0;border-top:1px dashed var(--rule);font-size:.9rem}
+.ev .w{font-family:var(--f-mono);font-size:.74rem;color:var(--ink2);white-space:nowrap;padding-top:2px}
+.ev b{display:block;font-weight:600}
+.ev .s{color:var(--ink2);font-size:.84rem}
+.ev.urgent .w{color:var(--bad);font-weight:600}
+.ev .open{font:inherit;font-size:.8rem;background:transparent;border:0;color:var(--read);text-decoration:underline;cursor:pointer;padding:0}
+.ev .chk{font-family:var(--f-mono);font-size:.62rem;border:1px solid var(--warn);color:var(--warn);padding:0 4px;border-radius:2px;margin-left:4px}
+.ev .mine{font-family:var(--f-mono);font-size:.62rem;background:var(--ok);color:#fff;padding:0 5px;border-radius:2px;margin-left:4px}
+
+/* ---------- the tablet ---------- */
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin:30px 0}
+@media (max-width:900px){.book{grid-template-columns:1fr}}
+.cover-side{padding:22px 24px}
+.tape{position:absolute;top:-12px;left:22px;background:var(--fire);color:var(--ink);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border:1.5px solid var(--ink);transform:rotate(-1.5deg)}
+.cover-side form{display:grid;gap:12px;margin-top:12px}
+.copyrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.entries{display:grid;gap:10px;align-content:start}
+.entries-h{display:flex;justify-content:space-between;align-items:baseline;color:var(--dim)}
+.entries-h h3{font-size:1.5rem;color:var(--tx)}
+.note{background:#2a2119;color:#f1e6d0;border:1px solid #4a3a2a;border-left:6px solid var(--g,#8d8070);border-radius:3px;padding:12px 14px;display:grid;gap:5px;background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.05) 27px 28px)}
+.note[data-g="watch"]{--g:var(--watch)}.note[data-g="listen"]{--g:var(--listen)}.note[data-g="read"]{--g:var(--read)}.note[data-g="do"]{--g:var(--do)}.note[data-g="enter"]{--g:var(--enter)}.note[data-g="apply"]{--g:var(--apply)}.note[data-g="news"]{--g:var(--sun)}
+.note.example{opacity:.75;border-style:dashed}
+.note .hd{display:flex;justify-content:space-between;gap:10px;font-family:var(--f-mono);font-size:.7rem;color:#c9b998;letter-spacing:.04em}
+.note .tno{color:var(--fire)}
+.note .msg{font-family:var(--f-head);font-weight:600;font-size:1.25rem;line-height:1.25}
+.note .src{font-size:.82rem;color:#c9b998}
+.note .why,.note .qy{font-size:.92rem}
+.note .why i,.note .qy i{display:block;font-style:normal;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:#c9b998;margin-bottom:2px}
+.note .del{font:inherit;font-size:.78rem;background:transparent;border:1px solid #6a5a48;color:#c9b998;padding:2px 8px;border-radius:3px;cursor:pointer}
+.note .del.arm{background:var(--bad);border-color:var(--bad);color:#fff}
+
+footer{margin-top:40px;font-size:.82rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--rule2);padding-top:14px}
+
+/* ---------- the sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50}
+.scrim[hidden]{display:none}
+.sheet{position:fixed;z-index:60;left:50%;top:50%;transform:translate(-50%,-50%);width:min(720px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:var(--paper);color:var(--ink);border:1px solid var(--ink);border-radius:6px;box-shadow:0 40px 80px -20px rgba(0,0,0,.9);--g:var(--watch)}
+.sheet[hidden]{display:none}
+.sheet[data-g="watch"]{--g:var(--watch)}.sheet[data-g="listen"]{--g:var(--listen)}.sheet[data-g="read"]{--g:var(--read)}.sheet[data-g="do"]{--g:var(--do)}.sheet[data-g="enter"]{--g:var(--enter)}.sheet[data-g="apply"]{--g:var(--apply)}
+.sheet-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:18px 20px 12px;border-bottom:1px solid var(--rule);background:#fffaf0}
+.plate-ic{width:52px;height:52px;border-radius:4px;background:var(--g);color:#fff;display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:.9rem;border:2px solid var(--ink)}
+.sheet .fam{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.st2{background:#d8ccb0;color:var(--ink);padding:1px 7px;border-radius:2px;font-weight:600}
+.st2.closed{background:var(--ok);color:#fff}
+.sheet h3{font-size:1.8rem;line-height:1.1}
+.sheet .x{font:inherit;font-size:1.6rem;line-height:1;background:transparent;border:0;cursor:pointer;color:var(--ink2);padding:0 4px}
+.sheet-body{padding:16px 20px 20px;display:grid;gap:12px}
+.sheet .lab{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:4px}
+.think{background:#fff7e4;border-left:4px solid var(--fire);padding:10px 12px;font-size:.98rem}
+.think b{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--line);padding:1px 8px;border-radius:2px;color:var(--ink2)}
+.tags .th{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="bk-banner" id="bkBanner" role="status" hidden></div>
+<div class="bk-dock" id="bkDock" hidden>
+  <div class="bk-msg" id="bkMsg" aria-live="polite"></div>
+  <div class="bk-row">
+    <button type="button" class="bk-btn ghost" id="bkLoad">Restore</button>
+    <button type="button" class="bk-btn" id="bkSave">Backup</button>
+  </div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>
+</div>
+
+<!-- Glaux, the little owl, drawn once and reused: the frontal owl of the Athenian tetradrachm, with the olive sprig and the crescent -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="owl" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="192" rx="56" ry="5" fill="#000" opacity=".4"/>
+      <!-- ledge -->
+      <path d="M30 168 q70 -14 140 0 l6 10 q-76 10 -152 0z" fill="#4a3826" stroke="#1d160f" stroke-width="2"/>
+      <!-- olive sprig and crescent, as on the coin -->
+      <path d="M26 92 q6 -30 30 -40" fill="none" stroke="#6f8a3a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M34 78 q-10 -4 -8 -14 q10 2 8 14z M42 64 q-10 -2 -10 -12 q10 0 10 12z M30 92 q-9 -6 -4 -15 q8 4 4 15z" fill="#8aa84a" stroke="#3f5a20" stroke-width="1"/>
+      <path d="M170 44 a13 13 0 1 1 -8 -22 a10 10 0 1 0 8 22z" fill="#e8d7a8" stroke="#1d160f" stroke-width="1.5"/>
+      <!-- body -->
+      <path d="M58 168 q-10 -70 42 -96 q52 26 42 96z" fill="#8c6a3f" stroke="#1d160f" stroke-width="2.5"/>
+      <!-- breast speckles, like the coin's chevrons -->
+      <g fill="none" stroke="#5a4328" stroke-width="2" stroke-linecap="round">
+        <path d="M82 112 l6 5 l6 -5 M100 112 l6 5 l6 -5 M76 128 l6 5 l6 -5 M94 128 l6 5 l6 -5 M112 128 l6 5 l6 -5 M82 144 l6 5 l6 -5 M100 144 l6 5 l6 -5 M88 158 l6 5 l6 -5"/>
+      </g>
+      <!-- wing -->
+      <path d="M56 120 q-6 30 10 46 q2 -30 12 -44z" fill="#6f5331" stroke="#1d160f" stroke-width="2"/>
+      <path d="M144 120 q6 30 -10 46 q-2 -30 -12 -44z" fill="#6f5331" stroke="#1d160f" stroke-width="2"/>
+      <!-- head -->
+      <path d="M52 84 q0 -46 48 -46 q48 0 48 46 q0 24 -48 28 q-48 -4 -48 -28z" fill="#a07a48" stroke="#1d160f" stroke-width="2.5"/>
+      <path d="M58 48 l-8 -18 l20 10z M142 48 l8 -18 l-20 10z" fill="#a07a48" stroke="#1d160f" stroke-width="2.5"/>
+      <!-- facial discs and the big round eyes -->
+      <circle cx="78" cy="76" r="20" fill="#e8d7a8" stroke="#1d160f" stroke-width="2"/>
+      <circle cx="122" cy="76" r="20" fill="#e8d7a8" stroke="#1d160f" stroke-width="2"/>
+      <circle cx="78" cy="76" r="11" fill="#f2c94c" stroke="#1d160f" stroke-width="1.5"/>
+      <circle cx="122" cy="76" r="11" fill="#f2c94c" stroke="#1d160f" stroke-width="1.5"/>
+      <circle cx="78" cy="76" r="5.5" fill="#1d160f"/><circle cx="122" cy="76" r="5.5" fill="#1d160f"/>
+      <circle cx="80.5" cy="73.5" r="1.8" fill="#fff"/><circle cx="124.5" cy="73.5" r="1.8" fill="#fff"/>
+      <!-- beak -->
+      <path d="M100 86 l-6 8 l6 10 l6 -10z" fill="#3a2a1b" stroke="#1d160f" stroke-width="1.5"/>
+      <!-- feet -->
+      <path d="M84 168 l-6 8 M84 168 l0 9 M84 168 l6 8 M116 168 l-6 8 M116 168 l0 9 M116 168 l6 8" fill="none" stroke="#1d160f" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- the three letters of the coin -->
+      <text x="148" y="150" font-family="Cormorant Garamond,Georgia,serif" font-weight="700" font-size="22" fill="#e8d7a8" stroke="#1d160f" stroke-width=".6" letter-spacing="1">ΑΘΕ</text>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="gate" id="gate">
+  <form class="gate-card paper hz" id="gateForm" autocomplete="off">
+    <span class="passno">THE WALL · CLASSICAL CIVILISATION</span>
+    <span class="badge" style="justify-self:start"><i></i>Classical Civilisation · Beyond the classroom</span>
+    <h1 id="gateH"><code>REPUBLIC 514a · "SEE HUMAN BEINGS AS THOUGH IN AN UNDERGROUND CAVE"</code><br>The Cave<em>Six stages, from the shadows on the wall to the sun, and back down to tell the others</em></h1>
+    <div class="gate-guide">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#owl"/></svg>
+      <p>Free things for sixth-form Classical Civilisation students: lectures, podcasts, the texts in full, tools for looking at the objects themselves, essay prizes, and the way into a Classics degree. Most of them are tied to what you study: the Odyssey and the Aeneid, Love and Relationships, the Invention of the Barbarian and Greek Art. The page is the cave in Plato's Republic, and you start chained in it, watching shadows. Six stages, each one kind of thing: the Wall (watch), the Fire (listen), the Steep Way (read), Outside (do), the Sun (enter), the Descent (apply). Every item is a stone on the way up; do it and the page gets lighter. The Mouth of the Cave brings in classics news every morning. Glaux, Athena's owl, can see in the dark and will show you round. Everything saves to the department.</p>
+    </div>
+    <div class="two">
+      <div class="field"><label for="gCls">Form</label><input id="gCls" placeholder="e.g. 12A" required></div>
+      <div class="field"><label for="gName">Your name</label><input id="gName" placeholder="e.g. Priya Shah" required></div>
+    </div>
+    <p class="small">Use your full name so your teacher can find you. Your form code is on your timetable.</p>
+    <div class="err" id="gErr" aria-live="polite"></div>
+    <div><button class="btn big hv" type="submit" id="gGo">Turn round</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <header class="top">
+    <div>
+      <span class="badge"><i></i>Classical Civilisation · Beyond the classroom</span>
+      <h1>The <b>Cave</b><span id="linePath">Plato, Republic 514a–517a · six stages from the shadows to the sun · classics news every morning at the mouth of the cave</span></h1>
+      <div class="strap" id="strap"></div>
+    </div>
+    <div class="who"><b id="whoName"></b><span class="saved" id="savedMsg"></span><button type="button" id="signOut">Not you? Sign out</button></div>
+  </header>
+
+  <!-- ===== THE CAVE ===== -->
+  <section aria-label="The cave: six stages from the wall of shadows to the sun, one stone per item">
+    <div class="scene">
+      <svg class="view" id="view" viewBox="0 0 1400 830" role="group" aria-label="A cross-section of Plato's cave: the wall of shadows and the fire at the bottom left, a steep passage climbing to the mouth of the cave, the open air and the sun at the top right, and a path back down. Each stage holds one stone per item; a stone is filled when the item is done, and the scene gets lighter as more are done.">
+        <defs>
+          <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc3e8"/><stop offset="1" stop-color="#f3e3b8"/></linearGradient>
+          <linearGradient id="rockG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2119"/><stop offset="1" stop-color="#0e0b08"/></linearGradient>
+          <radialGradient id="fireG" cx=".5" cy=".9" r=".7"><stop offset="0" stop-color="#ffb347" stop-opacity=".9"/><stop offset=".4" stop-color="#e8a33a" stop-opacity=".35"/><stop offset="1" stop-color="#e8a33a" stop-opacity="0"/></radialGradient>
+          <radialGradient id="sunG" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff6c8"/><stop offset=".6" stop-color="#ffd86b"/><stop offset="1" stop-color="#ffb347"/></radialGradient>
+          <radialGradient id="sunHalo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd86b" stop-opacity=".55"/><stop offset="1" stop-color="#ffd86b" stop-opacity="0"/></radialGradient>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+          <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#fff" opacity=".06"/><circle cx="4" cy="4" r=".6" fill="#000" opacity=".2"/></pattern>
+          <clipPath id="outside"><path d="M880 0 H1400 V830 H1120 Q1040 640 960 560 Q900 500 880 420 Z"/></clipPath>
+        </defs>
+        <!-- the dark, then the day: the sky's opacity is the light let in -->
+        <rect width="1400" height="830" fill="#070504"/>
+        <g clip-path="url(#outside)">
+          <rect id="sky" width="1400" height="830" fill="url(#skyG)" opacity="0"/>
+          <!-- hills, trees, the pool -->
+          <path id="hills" d="M880 520 Q1000 440 1120 480 Q1240 520 1400 460 V830 H1120 Q1040 640 960 560 Z" fill="#5c7a4a" opacity="0"/>
+          <ellipse id="pool" cx="1230" cy="700" rx="120" ry="34" fill="#6aa6cf" opacity="0"/>
+          <g id="trees" opacity="0">
+            <path d="M1300 470 q-30 -70 0 -110 q30 40 0 110z" fill="#3e6b3a"/><rect x="1297" y="465" width="6" height="40" fill="#4a3826"/>
+            <path d="M1360 440 q-26 -60 0 -96 q26 36 0 96z" fill="#3e6b3a"/><rect x="1357" y="436" width="6" height="36" fill="#4a3826"/>
+            <path d="M1040 540 q-22 -50 0 -80 q22 30 0 80z" fill="#3e6b3a"/><rect x="1037" y="536" width="6" height="30" fill="#4a3826"/>
+          </g>
+          <!-- the sun -->
+          <g id="sunG2" transform="translate(1230 150)">
+            <circle id="sunHaloC" r="150" fill="url(#sunHalo)" opacity="0"/>
+            <g id="sunRays" opacity="0"><g class="rays" stroke="#ffd86b" stroke-width="3" stroke-linecap="round">
+              <path d="M0 -78 V-120 M55 -55 L85 -85 M78 0 H120 M55 55 L85 85 M0 78 V120 M-55 55 L-85 85 M-78 0 H-120 M-55 -55 L-85 -85"/>
+              <path d="M28 -73 L42 -110 M73 -28 L110 -42 M73 28 L110 42 M28 73 L42 110 M-28 73 L-42 110 M-73 28 L-110 42 M-73 -28 L-110 -42 M-28 -73 L-42 -110" stroke-width="1.5" opacity=".7"/>
+            </g></g>
+            <circle id="sunDisc" r="62" fill="url(#sunG)" opacity=".12"/>
+          </g>
+        </g>
+        <!-- the rock -->
+        <path d="M0 0 H880 Q900 180 880 300 Q860 400 880 420 Q900 500 960 560 Q1040 640 1120 830 H0 Z" fill="url(#rockG)"/>
+        <path d="M0 0 H880 Q900 180 880 300 Q860 400 880 420 Q900 500 960 560 Q1040 640 1120 830 H0 Z" fill="url(#grain)"/>
+        <!-- rock texture: ledges and stalactites -->
+        <g fill="none" stroke="#3a2e22" stroke-width="2" opacity=".7">
+          <path d="M0 120 Q140 100 260 130 T520 120 T800 150"/><path d="M0 250 Q120 230 240 262 T480 250 T720 280"/>
+          <path d="M60 0 l16 70 l14 -70 M180 0 l10 48 l9 -48 M330 0 l22 110 l18 -110 M470 0 l12 60 l10 -60 M640 0 l20 90 l16 -90 M760 0 l10 40 l8 -40"/>
+          <path d="M0 400 Q80 380 160 410 T340 400"/><path d="M0 640 Q60 620 120 650"/>
+        </g>
+        <!-- the mouth of the cave: a rim of light -->
+        <path id="rim" d="M880 300 Q860 400 880 420 Q900 500 960 560 Q1040 640 1120 830" fill="none" stroke="#ffd86b" stroke-width="6" opacity=".15" filter="url(#soft)"/>
+        <!-- the cave floor and the inner wall -->
+        <path d="M0 790 H1120" stroke="#1d160f" stroke-width="3"/>
+        <!-- STAGE 1: the wall of shadows -->
+        <rect x="40" y="470" width="300" height="300" rx="6" fill="#241b13" stroke="#3a2e22"/>
+        <rect id="wallGlow" x="40" y="470" width="300" height="300" rx="6" fill="url(#fireG)" opacity=".8"/>
+        <g class="shadow-walk" opacity=".85" fill="#0a0806">
+          <path d="M120 760 v-70 l-14 -40 h-16 l-10 46 h12 v64z"/>
+          <path d="M170 760 v-60 l20 -50 l10 20 l-10 34 h-6 v56z"/>
+          <ellipse cx="226" cy="640" rx="22" ry="14"/><rect x="214" y="650" width="22" height="110"/>
+          <path d="M280 760 v-80 q0 -26 20 -26 q20 0 20 26 v80z"/>
+        </g>
+        <!-- the low wall and the puppet-bearers, behind the prisoners -->
+        <rect x="360" y="690" width="240" height="90" fill="#1a1410" stroke="#3a2e22"/>
+        <text class="mono" x="368" y="712" font-size="10" fill="#8a7a62">the low wall · the bearers and their puppets</text>
+        <g fill="#2c2219"><rect x="400" y="600" width="18" height="90"/><rect x="450" y="590" width="18" height="100"/><rect x="520" y="596" width="18" height="94"/></g>
+        <g fill="#3d2f22"><path d="M396 600 l10 -40 h8 l10 40z"/><circle cx="459" cy="580" r="12"/><path d="M520 596 h18 l8 -36 h-34z"/></g>
+        <!-- STAGE 2: the fire -->
+        <g transform="translate(470 560)">
+          <ellipse cx="0" cy="130" rx="150" ry="60" fill="url(#fireG)"/>
+          <path d="M-40 128 q0 -14 14 -16 l52 0 q14 2 14 16z" fill="#1d160f" stroke="#3a2e22"/>
+          <g class="flame">
+            <path d="M0 126 q-34 -36 -8 -78 q4 24 20 30 q-6 -34 16 -58 q0 36 20 52 q14 -16 6 -36 q26 30 6 70 q-12 24 -60 20z" fill="#c9731f"/>
+            <path d="M0 122 q-20 -26 -4 -56 q4 16 14 20 q-4 -24 12 -40 q0 26 14 36 q10 -10 6 -24 q16 22 2 50 q-10 18 -44 14z" fill="#e8a33a"/>
+            <path d="M2 118 q-10 -16 -2 -34 q2 10 8 12 q-2 -14 8 -24 q0 16 8 22 q6 -6 4 -14 q8 14 0 30 q-6 10 -26 8z" fill="#ffd86b"/>
+          </g>
+        </g>
+        <!-- STAGE 3: the steep way -->
+        <path d="M620 760 Q700 700 740 600 Q780 500 860 420" fill="none" stroke="#3a2e22" stroke-width="40" stroke-linecap="round"/>
+        <path d="M620 760 Q700 700 740 600 Q780 500 860 420" fill="none" stroke="#2a2119" stroke-width="26" stroke-linecap="round" stroke-dasharray="14 10"/>
+        <!-- STAGE 4: outside -->
+        <!-- STAGE 5: the sun -->
+        <!-- STAGE 6: the descent -->
+        <path id="descent" d="M1360 300 Q1390 500 1300 640 Q1240 740 1130 780" fill="none" stroke="#c9b998" stroke-width="2.5" stroke-dasharray="6 8" opacity=".5"/>
+        <!-- the stones, the labels and the walker are drawn by JS -->
+        <g id="map"></g>
+        <g id="walker"></g>
+        <!-- title -->
+        <text class="hd" x="560" y="48" text-anchor="middle" font-size="26" fill="#f3e3b8" id="sceneTitle">THE CAVE</text>
+        <text class="mono" x="560" y="70" text-anchor="middle" font-size="11" fill="#c9b998" id="sceneSub">Republic 514a–517a · the light is the share of stones you have passed</text>
+        <text class="mono" x="24" y="24" font-size="11" fill="#8a7a62" id="sceneWho"></text>
+        <text class="mono" x="1376" y="24" text-anchor="end" font-size="11" fill="#8a7a62" id="sceneLight">LIGHT 0%</text>
+      </svg>
+    </div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see all of it.</span><span><b>Click a stage name</b> to go to its items.</span><span><b>Click a stone</b> to open the item.</span><span>A filled stone is done. A stage is <b>in full light</b> when every stone in it is filled.</span><span>The sky, the sun and the trees appear as the light comes in.</span></div>
+    <div class="smallprint paper" id="smallprint" aria-label="Sources for the six stages"></div>
+  </section>
+
+  <!-- ===== GLAUX, YOUR LIGHT, NEXT STEP ===== -->
+  <section class="crew" aria-label="Glaux the owl, your light, and a step to take next">
+    <div class="guide">
+      <svg class="guide-img" id="guideImg" viewBox="0 0 200 200" aria-hidden="true"><use href="#owl"/></svg>
+      <div class="radio" id="radio" role="status" aria-live="polite"><span class="nm"><span class="av" aria-hidden="true"></span>Glaux · Athena's owl (invented)<span class="chime" aria-hidden="true"><i></i><i></i><i></i></span></span><span id="bubbleTxt"></span></div>
+    </div>
+    <div class="side">
+      <div class="card paper hz count-card">
+        <h2>Your light</h2>
+        <div class="lapbox"><div class="lap" id="lapVal"><small>STONES PASSED</small>0 / 0</div><div class="pos" id="posVal"><small>STAGES IN FULL LIGHT</small>0 of 6</div></div>
+        <div class="meter" aria-hidden="true"><i id="meterBar" style="width:0%"></i></div>
+        <div class="stages" id="sectors" aria-label="Six stages"></div>
+        <div class="seckey"><span style="--c:#d8ccb0">dark</span><span style="--c:#f0c36b">a first stone</span><span style="--c:#f6dd9a">half way</span><span style="--c:#ffe99c">in full light</span></div>
+        <p class="small" id="coverTxt" style="margin:0"></p>
+        <div class="rack" id="rack" aria-label="Every stone: one per item, filled when you have done it"></div>
+        <div class="register" id="register"></div>
+      </div>
+      <div class="card paper hz pick-card">
+        <h2>Next step</h2>
+        <p class="small" style="margin:0">Say how long you have. Glaux finds you a stone, usually from a stage you have not reached yet.</p>
+        <div class="pick-row">
+          <div class="seg" id="seg" role="group" aria-label="How much time do you have?"><button type="button" data-b="quick" aria-pressed="true">20 min</button><button type="button" data-b="evening" aria-pressed="false">An evening</button><button type="button" data-b="long" aria-pressed="false">Weeks</button></div>
+          <button type="button" class="btn hv" id="pickBtn">Find me a step</button>
+        </div>
+        <div class="pickmsg" id="pickMsg" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THIS HALF TERM ===== -->
+  <section class="orders paper hz" aria-labelledby="htLabel">
+    <span class="rubric"><span id="htEyebrow"></span><span>The Cave · Classical Civilisation</span></span>
+    <h2 id="htLabel"></h2>
+    <span class="due" id="htDue"></span>
+    <p class="lede" id="htLede"></p>
+    <div class="legs" id="start"></div>
+  </section>
+
+  <!-- ===== THE MOUTH OF THE CAVE: CLASSICS IN THE NEWS ===== -->
+  <section aria-labelledby="newsH" id="news" class="mouth">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--ink2)">The Mouth of the Cave · daylight comes in every morning</span>
+      <h2 id="newsH">Classics in the news</h2>
+      <p class="lede" id="newsLede">Collected automatically every morning: new pieces from <i>Antigone</i> (an open online journal of classics written for anyone), <i>Sententiae Antiquae</i> (a passage of Greek or Latin with a translation, most days), Archaeology magazine, the Greek Archaeology Newsroom, the Guardian's archaeology and classics desks, The Conversation and Phys.org (Greek and Roman stories only); and new episodes of Natalie Haynes Stands Up for the Classics, In Our Time (classical episodes only), The Rest Is History (ancient episodes only), The Ancients and The Partial Historians. Read or listen to one, then press <b>Take it in</b> and write two sentences: what it was, and which part of the course it touches (a text, an object, an idea, a scholar). It saves to the department and goes on your tablet. Each item is tagged to the part of the course it seems to belong to; the tags come from keywords, so some will be wrong, and finding the better link is part of the exercise.</p>
+    </div>
+    <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show one part of the course"></div><span class="pw-when" id="newsWhen"></span></div>
+    <div class="screens" id="newsList"></div>
+    <div style="margin-top:10px"><button type="button" class="btn g" id="newsMore" hidden>Show more</button></div>
+    <p class="pw-foot" id="newsFoot"></p>
+  </section>
+
+  <!-- ===== THE SIX STAGES ===== -->
+  <section aria-labelledby="tableH" id="table">
+    <div class="section-h">
+      <div><span class="eyebrow" id="tableEyebrow"></span><h2 id="tableH">Every stage</h2></div>
+      <div class="chips" id="goList" aria-label="Jump to a stage"></div>
+    </div>
+    <div class="chips" id="filters" style="margin:12px 0 18px" aria-label="Show one stage"></div>
+    <div class="zones" id="grid"></div>
+  </section>
+
+  <!-- ===== THE YEAR ===== -->
+  <section class="board paper hz" id="timetable" aria-labelledby="yearH">
+    <div class="btop"><span class="sub">THE YEAR · OCTOBER 2026 – JULY 2027</span><h2 id="yearH">The year</h2><span class="sub">Deadlines, competitions, plays and openings · "check" = the date follows last year's pattern and is not yet confirmed</span></div>
+    <div class="months" id="year"></div>
+  </section>
+
+  <!-- ===== YOUR TABLET ===== -->
+  <section class="book" id="notebook" aria-labelledby="nbH">
+    <div class="cover-side paper hz">
+      <span class="tape" id="nbCover">your tablet</span>
+      <h2 id="nbH">Your tablet</h2>
+      <p>Greeks and Romans wrote their notes on wax tablets with a stylus. Write a line for anything you watch, listen to, read, do or enter: what it was, its point in one line, what you found out, and a question it left you with. Classics applicants are asked what they have read beyond the course and what they made of it. This is where your answer comes from, and where your personal statement and your teacher's reference start.</p>
+      <form id="entryForm" autocomplete="off">
+        <div class="two">
+          <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
+          <div class="field"><label for="nbHw">Part of the course (OCR H408)</label>
+            <select id="nbHw" required>
+              <option value="">Choose…</option>
+              <optgroup label="The World of the Hero (H408/11)">
+                <option>WH Odyssey</option><option>WH Aeneid</option><option>WH Homeric and Augustan world</option>
+              </optgroup>
+              <optgroup label="Love and Relationships (H408/32)">
+                <option>LR Sappho</option><option>LR Plato</option><option>LR Ovid</option><option>LR Seneca</option><option>LR Greek and Roman society</option>
+              </optgroup>
+              <optgroup label="The Invention of the Barbarian (H408/23)">
+                <option>IB Herodotus</option><option>IB Aeschylus Persians</option><option>IB Greeks and others</option>
+              </optgroup>
+              <optgroup label="Greek Art (H408/24)">
+                <option>GA Sculpture</option><option>GA Vase painting</option><option>GA Architecture</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Classical skills</option><option>Beyond the course</option><option>Applying</option>
+              </optgroup>
+            </select></div>
+        </div>
+        <div class="field"><label for="nbWhat">What I watched, listened to, read, did or entered</label><input id="nbWhat" list="whatList" placeholder="lecture, podcast, text, object, tool, competition…" required><datalist id="whatList"></datalist></div>
+        <div class="field"><label for="nbQuo">Its point in one line (optional)</label><input id="nbQuo" placeholder="e.g. Odysseus names himself to the Cyclops because kleos needs a name attached"></div>
+        <div class="field"><label for="nbLearned">What I found out</label><textarea id="nbLearned" required></textarea></div>
+        <div class="field"><label for="nbQ">A question it left me with, or where I would go next (optional)</label><textarea id="nbQ"></textarea></div>
+        <div class="copyrow"><button class="btn hv" type="submit">Write it on my tablet</button><button class="btn ghost" type="button" id="copyBtn">Copy my whole tablet as text</button><span class="small" id="copyMsg" aria-live="polite"></span></div>
+        <textarea id="copyFallback" hidden aria-label="Your tablet as text"></textarea>
+      </form>
+    </div>
+    <div class="entries">
+      <div class="entries-h"><h3>The lines</h3><span id="logCount"></span></div>
+      <div id="entries" class="entries"></div>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+<script>
+(function(){
+/* Six stages of the cave, each one kind of thing. The Mouth of the Cave (news) is the other thing to click. */
+const FAM = {
+  watch:{label:"Watch", stage:"The Wall", verb:"Talks, lectures and films", map:"shadows: talks and lectures", no:1,
+    def:"The shadows on the wall: other people's pictures of the texts and the objects. Five-minute animations, hour-long lectures, a whole university course. Useful, and not the thing itself."},
+  listen:{label:"Listen", stage:"The Fire", verb:"Podcasts and radio", map:"the voices behind you", no:2,
+    def:"Turn round. The voices you heard echoing off the wall belong to people: scholars talking for 45 minutes about one text, a comedian who reads Ovid in the original, two historians telling Rome from the beginning."},
+  read:{label:"Read", stage:"The Steep Way", verb:"The texts themselves, and books", map:"the texts themselves", no:3,
+    def:"The rough climb. The whole Odyssey, not the seventeen books; all of Sappho; the Symposium from the first page; Herodotus Book 7 in your own time. Free, in full, online. Then the books worth asking the library for."},
+  do:{label:"Do", stage:"Outside", verb:"Tools, objects, visits and courses", map:"reflections, then the things", no:4,
+    def:"Out into the air. First reflections, then the things: hear Homer sung, plot Aeneas's route in Roman travel times, search the Parthenon sculptures yourself, read a line of the Greek, see a tragedy performed in Greek."},
+  enter:{label:"Enter", stage:"The Sun", verb:"Competitions", map:"your own argument", no:5,
+    def:"Looking at the source and saying what you see: essay prizes from Oxford and Cambridge colleges and the Classical Association, written work on objects, verse. This is where your own argument goes out into the light."},
+  apply:{label:"Apply", stage:"The Descent", verb:"Summer schools and degrees", map:"back down to the others", no:6,
+    def:"Plato's released prisoner has to go back down. Summer schools, the way into a Classics degree with or without Latin and Greek, a fortnight of Greek in Dorset, and one stone for coming back to tell the others."}
+};
+/* Where each stage's picture comes from, and how sure we are. att = in Plato's text, or in a source written at the time;
+   rep = reported by a later writer; lgd = a story with no good source; inv = made up for this page.
+   Stephanus pages refer to Republic Book 7. Translations are this page's own, kept close to the Greek. */
+const SMALLPRINT = [
+  {g:"watch", txt:`Socrates asks Glaucon to picture people in an underground cave, chained since childhood by the legs and neck so that they can only look ahead at the wall in front of them (514a–b) <span class="lab-t att">attested</span>. Behind them, higher up, a fire burns; between the fire and the prisoners runs a road with a low wall along it, "like the screen puppeteers put up in front of an audience, over which they show their puppets" (514b) <span class="lab-t att">attested</span>. Men walk along the road carrying statues and figures of animals, in stone and wood, and the prisoners see only the shadows these cast on the wall. They give the shadows names and take them for the real things (515a–c) <span class="lab-t att">attested</span>. On this page the Wall holds the talks and lectures: pictures of the texts and objects made by other people.`},
+  {g:"listen", txt:`Some of the bearers talk as they pass. Socrates: "if the prison had an echo from the wall in front of them, whenever one of the passers-by spoke, do you think they would believe the sound came from anything but the passing shadow?" (515b) <span class="lab-t att">attested</span>. The fire is not the sun: it stands for the visible world's light, as the sun outside stands for the Good (517b–c) <span class="lab-t att">attested</span>. When a prisoner is released and made to turn round and look at the fire, the light hurts his eyes and he cannot see the objects whose shadows he saw before (515c–d) <span class="lab-t att">attested</span>. The Fire here is the podcasts: the voices turn out to belong to people.`},
+  {g:"read", txt:`The released prisoner is dragged "up the rough, steep way" (τραχεῖα, ἀνάντης, 515e) by force and not let go until he is out in the sunlight; he is in pain and complains, and when he reaches the light his eyes are so full of its glare that he cannot see a single one of the things now called real (515e–516a) <span class="lab-t att">attested</span>. Socrates says of the man set free that he "would prefer" the old shadows and the old prizes for spotting them, like Homer's Achilles who would rather be a labourer on earth than king of the dead (516d, quoting Odyssey 11.489–91) <span class="lab-t att">attested</span>. That quotation is why the Steep Way holds the Odyssey itself.`},
+  {g:"do", txt:`Outside, the eyes need to get used to the light. Socrates sets the order: first shadows, then reflections of people and other things in water, then the things themselves; then the sky at night, the light of the stars and the moon, more easily than the sun by day (516a–b) <span class="lab-t att">attested</span>. This page keeps that order: a tool that reflects a text (a map, a database, a gallery online) before the thing itself (a line of the Greek, a play performed in Greek, a sculpture in a cast gallery). The Homeric singing on this stage is a reconstruction by two scholars, and they say so: it is an approach to the singers' technique, not a recovered tune <span class="lab-t att">attested</span>, their own note.`},
+  {g:"enter", txt:`Last of all he would be able to look at the sun itself, "not its appearance in water or in some other place, but the sun itself, by itself, in its own region" (516b) <span class="lab-t att">attested</span>. He would then reason that it is the sun that makes the seasons and the years, governs everything in the visible world, and is in a way the cause of all the things he and his companions used to see (516b–c) <span class="lab-t att">attested</span>. Socrates explains the picture: the ascent is the soul's rise to the intelligible region, and the last thing seen there, with difficulty, is the Form of the Good, the cause of everything right and fine (517b–c) <span class="lab-t att">attested</span>. The Sun on this page is the competitions: looking at the source and saying what you see.`},
+  {g:"apply", txt:`Picture him going back down to his old seat: his eyes would be full of darkness, and if he had to compete with the prisoners at judging shadows before his sight returned, they would laugh and say the trip up had ruined his eyes, "and if they could get their hands on the man who was trying to free them and lead them up, would they not kill him?" (516e–517a) <span class="lab-t att">attested</span>. Readers have long taken that last line as Plato's reference to the death of Socrates in 399 BC <span class="lab-t rep">reported</span>: a reading, not something the text states. Later Socrates says the city must compel those who have seen the Good to go back down "to the others' dwelling, and get used to seeing in the dark" (519c–d), each taking a turn (520c) <span class="lab-t att">attested</span>. That is the Descent: applying, and going back to tell the others.`},
+  {g:"", wide:true, txt:`<b>About this page.</b> The cave is Plato's; the picture here is a diagram, and the six stages are this page's way of sorting things to do, not Plato's divisions. Glaux is <span class="lab-t inv">invented</span>. The little owl (<i>Athene noctua</i>, γλαύξ) sits beside Athena on Athens' silver coins from about 510 BC, with an olive sprig and, from the 480s, a crescent moon, and the letters ΑΘΕ; the coins were called "owls", and Aristophanes jokes about "owls of Laurium" nesting in people's purses (<i>Birds</i> 1106) <span class="lab-t att">attested</span>. "Let no one ignorant of geometry enter," said to have been written over the door of Plato's Academy, is not in Plato or any source for nine hundred years; it first appears in sixth-century AD commentators <span class="lab-t lgd">legend</span>. That "Plato" was a nickname for his broad build, his real name being Aristocles, is told by Diogenes Laertius (3.4), writing some five hundred years later <span class="lab-t rep">reported</span>. Every item is a stone on the way up; passing it is arithmetic, not a judgement on you. The news at the Mouth of the Cave is real and comes from the sources named under it, which the department has not checked.`}
+];
+// mins drives "Next step": quick <= 20, evening <= 180, long > 180
+// th = the part of OCR A Level Classical Civilisation (H408), as the department teaches it, the item serves most.
+const ITEMS = [
+  // ---- stage 1: watch (the Wall)
+  {s:"Jd",g:"watch",short:"Jill Dash: reading the Odyssey",name:"Jill Dash (TED-Ed): Everything you need to know to read Homer's Odyssey",mins:5,t:"5 min",th:"WH Odyssey",
+   what:"A five-minute animation on what the Odyssey is, who sings it and why it starts in the middle. It dwells on the Cyclops. A shadow of the poem, and a clear one; the set text is Book 9.",
+   think:"Watch it, then reread the Cyclops episode in Book 9. Argue one side: Odysseus' boast to Polyphemus is heroic kleos, or it is the lack of restraint that costs him his crew. Find the line that decides it for you.",tags:["free","TED-Ed","retelling, not the text"],url:"https://www.ted.com/talks/jill_dash_everything_you_need_to_know_to_read_homer_s_odyssey",lt:"Watch on TED"},
+  {s:"Mr",g:"watch",short:"Mark Robinson: why read the Aeneid",name:"Mark Robinson (TED-Ed): Why should you read Virgil's Aeneid?",mins:5,t:"5 min",th:"WH Aeneid",
+   what:"Five minutes on the poem Augustus wanted and Virgil, dying, asked to have burned. Good on what the Aeneid is for; it has no room for what the poem does to its own hero.",
+   think:"Why might Augustus have wanted the Aeneid published against Virgil's wishes? Find one passage that supports your answer (the Parade of Heroes in 6, the Shield in 8) and one that complicates it (Dido in 4, the last lines of 12).",tags:["free","TED-Ed","retelling, not the text"],url:"https://www.ted.com/talks/mark_robinson_why_should_you_read_virgil_s_aeneid",lt:"Watch on TED"},
+  {s:"Mw",g:"watch",short:"Winkler: what makes a hero?",name:"Matthew Winkler (TED-Ed): What makes a hero?",mins:4,t:"4 min",th:"WH Homeric and Augustan world",
+   what:"Joseph Campbell's hero's journey in four minutes: call, threshold, ordeal, return. It fits a great many stories, which is the problem. This one is on the Wall to be argued with.",
+   think:"Test the pattern against Odysseus or Aeneas. Where does it break? Aeneas has no return and does not want the call; Odysseus's 'ordeal' is mostly other people's. Say what the break tells you about Homer's or Virgil's idea of a hero that Campbell's cannot.",tags:["free","TED-Ed","argue with it"],url:"https://www.ted.com/talks/matthew_winkler_what_makes_a_hero",lt:"Watch on TED"},
+  {s:"Ig",g:"watch",short:"Gillespie: Cassandra",name:"Iseult Gillespie (TED-Ed): The tragedy of Cassandra, the princess who predicted the fall of Troy",mins:4,t:"4 min",th:"WH Aeneid",
+   what:"Cassandra's story from Apollo's gift to the sack of Troy. A retelling that stitches several ancient versions together without saying which is which.",
+   think:"Compare it with the fall of Troy in Aeneid 2, where Cassandra is dragged from Minerva's temple. Why does Virgil give the sack to a Trojan narrator, and what does that do to the Greeks in the poem?",tags:["free","TED-Ed","retelling, not the text"],url:"https://www.ted.com/talks/iseult_gillespie_the_tragedy_of_cassandra_the_princess_who_predicted_the_fall_of_troy",lt:"Watch on TED"},
+  {s:"Nm",g:"watch",short:"MacGregor: the Cyrus Cylinder",name:"Neil MacGregor: 2600 years of history in one object",mins:19,t:"19 min",th:"IB Greeks and others",
+   what:"The former director of the British Museum on the Cyrus Cylinder: a Persian king's own account of taking Babylon, and how the object has been read since. The Persians speaking for themselves, which the Greek sources rarely let them do.",
+   think:"Does the Cylinder support or undercut the picture of Persian kingship in Herodotus or in Aeschylus' Persians? Give one point each way, with a passage from the set text for each.",tags:["free","TED"],url:"https://www.ted.com/talks/neil_macgregor_2600_years_of_history_in_one_object",lt:"Watch on TED"},
+  {s:"Mh",g:"watch",short:"Robinson: Herodotus",name:"Mark Robinson (TED-Ed): Why is Herodotus called \"The Father of History\"?",mins:5,t:"5 min",th:"IB Herodotus",
+   what:"Five minutes on what Herodotus set out to do and why Cicero called him the father of history (and Plutarch the father of lies).",
+   think:"Herodotus often reports a story without vouching for it. Take one story you know from him and decide what it tells you about Greek views of non-Greeks, rather than about the non-Greeks themselves.",tags:["free","TED-Ed"],url:"https://www.ted.com/talks/mark_robinson_why_is_herodotus_called_the_father_of_history",lt:"Watch on TED"},
+  {s:"Se",g:"watch",short:"Esposito: Antigone",name:"Stephen Esposito (TED-Ed): The Greek tragedy of Oedipus' daughter",mins:5,t:"5 min",th:"IB Aeschylus Persians",
+   what:"Sophocles' Antigone in five minutes: a sister buries her brother against the king's order. Tragedy as the Athenians watched it, which is the setting of Aeschylus' Persians too.",
+   think:"Persians was performed in Athens in 472 BC, eight years after Salamis, to the people who fought there. Antigone sets divine law against the city's; Persians shows the enemy grieving. What is an Athenian audience being asked to feel in each case, and is it the same thing?",tags:["free","TED-Ed","retelling, not the text"],url:"https://www.ted.com/talks/stephen_esposito_the_greek_tragedy_of_oedipus_daughter",lt:"Watch on TED"},
+  {s:"Mv",g:"watch",short:"Vazquez: Plato's Ship of State",name:"Michael Vazquez (TED-Ed): Plato's infamous Ship of State thought experiment",mins:5,t:"5 min",th:"LR Plato",
+   what:"Republic Book 6 in five minutes: the ship whose crew fight over the helm and call the man who studies the stars a stargazer. Plato on democracy, from the same book as the Cave.",
+   think:"Is the ship a fair picture of Athenian democracy? Name one institution Plato leaves out. Then: how does this Plato, who distrusts the crowd, compare with the Plato of the Symposium, where the best speech is given to a woman and the drunkest to Alcibiades?",tags:["free","TED-Ed"],url:"https://www.ted.com/talks/michael_vazquez_plato_s_infamous_ship_of_state_thought_experiment",lt:"Watch on TED"},
+  {s:"Gr",g:"watch",short:"Gresham: Classics for schools",name:"Gresham College: Classics for schools (Melissa Lane and others)",mins:45,t:"one lecture: about 45 min",th:"LR Plato",
+   what:"Free recorded university lectures. Melissa Lane's series on the politics of ancient Greece includes a lecture on Plato's Cave itself, one on Socratic expertise, and one on Athenian democracy and equality; her Lawgivers series has Solon, Lycurgus and Antigone's unwritten laws. There is an Ancient Greece and Rome for Schools playlist, and live online talks for schools in term time.",
+   think:"Watch Lane on the Cave, then come back to this page's small print and check her account of 514a–517a against it. Write down one claim from the lecture you could test against the Symposium.",tags:["free","Gresham","lecture"],url:"https://www.gresham.ac.uk/schools-and-colleges/classics",lt:"Gresham Classics"},
+  {s:"Od",g:"watch",short:"Oxbridge Classics Open Day",name:"Cambridge Faculty of Classics: the Oxbridge Classics Open Day recording and school sessions",mins:60,t:"the recording: about an hour",th:"Applying",
+   what:"The joint Oxford and Cambridge Classics open day for sixth formers, with sample lectures, recorded and posted on the Cambridge schools page. The page also lists Mary Beard's Classics Shorts, free set-text commentaries and the school sessions the Faculty runs (ask your teacher).",
+   think:"Watch one sample lecture as if you were in the room: write down the question the lecturer is really asking and whether you would have asked a different one. That is the question an admissions interview is built on.",tags:["free","Cambridge","lecture"],url:"https://www.classics.cam.ac.uk/prospective/schools",lt:"Cambridge Classics schools page"},
+  {s:"Tl",g:"watch",short:"Classics TL;DR (Oxford)",name:"Oxford Classics outreach: Classics TL;DR animations and learning resources",mins:10,t:"10 min each",th:"WH Aeneid",
+   what:"Short animated guides from the Oxford Faculty: the Aeneid, the Iliad and Cicero in a few minutes each, plus the Panoply vase animations, an APGRD e-book on Medea in performance, and Roman inscriptions from Britain.",
+   think:"Watch the Aeneid TL;DR and list what it leaves out of the prescribed books. The gaps are a map of what the examiner can ask that a summary cannot answer.",tags:["free","Oxford","retelling, not the text"],url:"https://clasoutreach.web.ox.ac.uk/learning-resources",lt:"Oxford learning resources"},
+  {s:"Pv",g:"watch",short:"Panoply vase animations",name:"Panoply: Greek vases brought to life",mins:5,t:"3–5 min each",th:"GA Vase painting",
+   what:"Short films that animate the figures on real Greek pots: Heracles, a symposium, Athena's birth, a dancing satyr. Each film says which vase it is from and where it is. Good for seeing how a painter tells a story on a curved surface.",
+   think:"Watch one, then find the actual pot in a museum collection online (the Beazley database on this page will do). Note two things the painter did that the animation had to invent movement for.",tags:["free","film","vase"],url:"https://www.panoply.org.uk/",lt:"Panoply"},
+  {s:"Ky",g:"watch",short:"Kagan: Greek history (Yale)",name:"Donald Kagan: Introduction to Ancient Greek History (Open Yale Courses)",mins:1800,t:"24 lectures, about 75 min each",th:"IB Greeks and others",
+   what:"A whole first-year university course, filmed at Yale: from the Bronze Age to the end of the classical period, with the Persian Wars, Sparta, the rise of Athenian democracy and the Peloponnesian War. Free, with transcripts. Kagan has views and states them; that is part of the point.",
+   think:"Watch the lectures on the Persian Wars and write down where Kagan trusts Herodotus and where he does not. Then find the passage in Herodotus 7 that he is trusting or doubting.",tags:["free","Yale","long"],url:"https://oyc.yale.edu/classics/clcv-205",lt:"Open Yale Courses"},
+  {s:"Sm",g:"watch",short:"Smarthistory: Greek art",name:"Smarthistory: ancient Greek art, essays and short films",mins:10,t:"8–12 min each",th:"GA Sculpture",
+   what:"Short films and essays by art historians on the key objects: the Kritios Boy, the Doryphoros, the Riace bronzes, the Parthenon frieze, black- and red-figure pots, the Erechtheion. Filmed in front of the objects where they could be.",
+   think:"Pick a sculpture on your prescribed list. Watch the Smarthistory film, then describe the piece yourself in 150 words without using any of their phrases. The exam wants your eyes, not theirs.",tags:["free","film","art history"],url:"https://smarthistory.org/ancient-greece/",lt:"Smarthistory"},
+
+  // ---- stage 2: listen (the Fire)
+  {s:"Io",g:"listen",short:"In Our Time: your set text",name:"BBC Radio 4: In Our Time, the classical episodes",mins:45,t:"one episode: 45 min",th:"WH Odyssey",
+   what:"Melvyn Bragg and three academics for 45 minutes, no music, no jokes. The archive has the Odyssey, the Aeneid, Sappho, the Symposium, Ovid, Seneca, Herodotus, the Persian Wars, Greek tragedy and the Parthenon. Search the archive by text or topic. New classical episodes arrive at the Mouth of the Cave.",
+   think:"Listen to one on your set text. Write down the moment two of the academics disagree about what the text means; that disagreement is an AO2 paragraph waiting to be written.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/programmes/b006qykl",lt:"In Our Time archive"},
+  {s:"Nh",g:"listen",short:"Natalie Haynes Stands Up",name:"BBC Radio 4: Natalie Haynes Stands Up for the Classics",mins:28,t:"one episode: 28 min",th:"LR Sappho",
+   what:"A comedian who read Classics at Cambridge takes one ancient writer or figure per half hour, with an academic guest: Sappho, Ovid, Homer, Herodotus, Plato, Virgil, Euripides, Aristophanes and more across five series, all on BBC Sounds.",
+   think:"Listen to the Sappho or the Ovid episode. Write down one joke that is also a critical point about the text, and say what the point is in plain words.",tags:["free","BBC Sounds"],url:"https://www.bbc.co.uk/sounds/brand/b077x8pc",lt:"BBC Sounds"},
+  {s:"Cp",g:"listen",short:"The Classics Podcast (CA)",name:"The Classics Podcast (Classical Association): TCP Does Virgil's Aeneid, and the Roman coins series",mins:30,t:"one episode: about 30 min",th:"WH Aeneid",
+   what:"The Classical Association's free podcast. Series include a book-by-book Aeneid, Roman coins from Augustus to Nero, Roman inscriptions with Abigail Graham, Roman urban living with Andrew Wallace-Hadrill, revision bitesize episodes and Classics and Careers.",
+   think:"Listen to the episode on a prescribed book of the Aeneid, then the coins episode on Augustus. Where does the coinage make the same claim the poem makes, and where does the poem hold back?",tags:["free","podcast","Classical Association"],url:"https://classicalassociation.org/podcast/",lt:"The Classics Podcast"},
+  {s:"Ew",g:"listen",short:"Emily Wilson on translating the Odyssey",name:"University of Oxford podcasts, Faculty of Classics: Emily Wilson on her Odyssey, and the What is Tragedy? series",mins:50,t:"one recording: about 50 min",th:"WH Odyssey",
+   what:"Oxford's own recordings: Emily Wilson reading from and discussing her 2017 translation of the Odyssey (the first by a woman into English), the What is Tragedy? lecture series, and APGRD talks on modern productions of ancient drama.",
+   think:"Rieu opens 'Tell me, Muse, of that resourceful man'. Wilson opens 'Tell me about a complicated man'. Listen to her reasons, then write a paragraph on which word, resourceful or complicated, the Odysseus of Book 9 deserves.",tags:["free","podcast","Oxford"],url:"https://podcasts.ox.ac.uk/units/faculty-classics",lt:"Oxford podcasts"},
+  {s:"Ph",g:"listen",short:"The Partial Historians",name:"The Partial Historians: Rome from the founding of the city",mins:40,t:"one episode: about 40 min",th:"WH Homeric and Augustan world",
+   what:"Two academics, Fiona Radford and Peta Greenfield, telling Roman history in order from Aeneas and Romulus onwards, source by source. Their special episodes include a 'You Are Odysseus' episode. New episodes arrive at the Mouth of the Cave.",
+   think:"Listen to the early episodes on Aeneas and Romulus. Write down which parts of the Aeneid's version of Rome's founding Livy and the historians share, and which Virgil changes.",tags:["free","podcast"],url:"https://partialhistorians.com/",lt:"The Partial Historians"},
+  {s:"Rh",g:"listen",short:"The Rest Is History: ancient episodes",name:"The Rest Is History: the Trojan War, Augustus, the Persian Wars and other ancient episodes",mins:60,t:"one episode: about an hour",th:"Beyond the course",
+   what:"Tom Holland and Dominic Sandbrook. Among hundreds of episodes are series on the Trojan War and the Odyssey, the fall of the Roman Republic, Augustus, the Persian Wars and Alexander. Entertaining, opinionated, sometimes loose with a date; new ancient episodes arrive at the Mouth of the Cave.",
+   think:"Listen to one episode on a period you study and write down one claim you want to check. Then check it in the set text or in Herodotus. Say whether it survived.",tags:["free","podcast","argue with it"],url:"https://therestishistory.com/",lt:"The Rest Is History"},
+  {s:"An",g:"listen",short:"The Ancients",name:"The Ancients (History Hit): interviews with ancient historians and archaeologists",mins:40,t:"one episode: about 40 min",th:"IB Greeks and others",
+   what:"Tristan Hughes interviews a different scholar each episode: Persia, Troy, the Parthenon, Sappho, Roman women, the Etruscans. One expert, one subject, no co-host. New episodes arrive at the Mouth of the Cave.",
+   think:"Find an episode with a Persian or Achaemenid subject. Write down what the Persians' own evidence says that Herodotus does not, and one thing Herodotus gets right that the archaeology confirms.",tags:["free","podcast"],url:"https://www.historyhit.com/podcasts/the-ancients/",lt:"The Ancients"},
+  {s:"Lh",g:"listen",short:"Literature and History",name:"Literature and History (Doug Metzger): the ancient Mediterranean, one text per episode",mins:90,t:"one episode: 60–120 min",th:"LR Sappho",
+   what:"An independent podcast that works through literary history from the beginning: the Odyssey, Sappho, Herodotus, Plato's Symposium, the Aeneid, Ovid and Seneca each get an episode or several, with a summary of the text, the history around it and a closing comic song. Long, careful and free.",
+   think:"Listen to the Sappho episode. Write down how Metzger handles the fragments, what he thinks fragment 31 is doing, and whether you agree after reading it in the Kline translation on this page.",tags:["free","podcast","long"],url:"https://literatureandhistory.com/",lt:"Literature and History"},
+
+  // ---- stage 3: read (the Steep Way)
+  {s:"Kl",g:"read",short:"The whole Odyssey and Aeneid (Kline)",name:"A. S. Kline's translations on Poetry in Translation: the Odyssey, the Aeneid, the Iliad and the Metamorphoses in full",mins:600,t:"a book a night: weeks",th:"WH Odyssey",
+   what:"Free, complete, readable translations. Your prescription is seventeen books of the Odyssey and parts of the Aeneid; the examiner has read the rest. Kline is the alternative translation OCR lists for the Odyssey.",
+   think:"Read the Odyssey books you are not set (2, 3, 4, 14, 15, 20, 24). Then say what Books 2–4 do for Telemachus that the poem would lose without them, in one paragraph with a line reference.",tags:["free","the text"],url:"https://www.poetryintranslation.com/",lt:"Poetry in Translation",
+   more:[{lt:"Odyssey",url:"https://www.poetryintranslation.com/PITBR/Greek/Odhome.php"},{lt:"Aeneid",url:"https://www.poetryintranslation.com/PITBR/Latin/Virgilhome.php"}]},
+  {s:"Il",g:"read",short:"The Iliad, Books 1, 6, 22, 24",name:"Homer, Iliad: Books 1, 6, 22 and 24 (Kline)",mins:240,t:"four books: an evening or two",th:"WH Homeric and Augustan world",
+   what:"The other Homeric poem. Achilles' quarrel (1), Hector and Andromache (6), the death of Hector (22) and Priam in Achilles' tent (24). Odysseus is a different man in it, and the heroic code is stated in full.",
+   think:"Read Sarpedon's speech in 12.310–28 as well (Kline has it). Write down the heroic code in your own words, then test Odysseus in Odyssey 9 against it. Where does he keep it and where does he not?",tags:["free","the text"],url:"https://www.poetryintranslation.com/PITBR/Greek/Ilhome.php",lt:"Iliad (Kline)"},
+  {s:"Sp",g:"read",short:"All of Sappho",name:"Sappho: the poems and fragments (Kline)",mins:60,t:"an hour",th:"LR Sappho",
+   what:"Everything that survives of Sappho, in a free translation, with the fragment numbers. Your prescription is a handful of poems; the rest is a page or two of lines and single words, and it changes how the set ones read.",
+   think:"Read the whole of it in one sitting. Write down which three fragments outside your prescription you would set if you were OCR, and the one word in each that made you choose it.",tags:["free","the text"],url:"https://www.poetryintranslation.com/PITBR/Greek/Sappho.php",lt:"Sappho (Kline)"},
+  {s:"Sy",g:"read",short:"The Symposium, whole",name:"Plato, Symposium, complete (Jowett translation, Perseus Digital Library)",mins:150,t:"an evening",th:"LR Plato",
+   what:"The whole dialogue, not the extracts: the drinking party, the seven speeches on Eros, Diotima through Socrates, and Alcibiades crashing in drunk at the end. Jowett's Victorian translation is free and on Perseus, where you can click to the Greek.",
+   think:"Read it straight through. Then answer: why does Plato end with Alcibiades rather than with Diotima? Give a reason that depends on the order of the speeches.",tags:["free","the text"],url:"https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DSym.",lt:"Symposium on Perseus"},
+  {s:"Ov",g:"read",short:"Ovid: Amores and Ars Amatoria",name:"Ovid, Amores and Ars Amatoria, complete (Kline)",mins:180,t:"an evening or two",th:"LR Ovid",
+   what:"All three books of the Amores and all three of the Ars Amatoria, free. The set poems make more sense when you know the poet who is 'teaching' love has already written a book of being bad at it.",
+   think:"Read Amores 1.1 and 1.9 and Ars Amatoria 1 in full. Then: is the lover of the Amores the same man as the teacher of the Ars? Find two lines that say yes and one that says no.",tags:["free","the text"],url:"https://www.poetryintranslation.com/PITBR/Latin/AmoresBkI.php",lt:"Amores (Kline)",
+   more:[{lt:"Ars Amatoria",url:"https://www.poetryintranslation.com/PITBR/Latin/ArtofLoveBkI.php"}]},
+  {s:"Sn",g:"read",short:"Seneca's Letters",name:"Seneca, Moral Letters to Lucilius (Gummere translation, Wikisource)",mins:120,t:"ten letters: an evening",th:"LR Seneca",
+   what:"All 124 letters, free. Your set letters sit inside a correspondence that ranges over slavery, old age, the games, friendship and how to die. Gummere's Loeb translation is out of copyright and on Wikisource.",
+   think:"Read Letters 7 (the games), 12 (old age) and 47 (slaves) alongside your set letters. Write down what Seneca thinks a relationship is for, in one sentence that would cover a wife, a friend and a slave.",tags:["free","the text"],url:"https://en.wikisource.org/wiki/Moral_letters_to_Lucilius",lt:"Letters on Wikisource"},
+  {s:"Hd",g:"read",short:"Herodotus Book 7, whole",name:"Herodotus, Histories: Book 7 in full (Godley translation, Perseus)",mins:240,t:"an evening or two",th:"IB Herodotus",
+   what:"Xerxes' invasion from the council at Susa to Thermopylae, in full: the dream, the canal, the bridge, the counting of the army, Demaratus on the Spartans, the three hundred. Godley's Loeb translation is free on Perseus with the Greek alongside.",
+   think:"Read the Xerxes–Demaratus conversations (7.101–4, 7.209, 7.234–7). Write down what Herodotus wants a Greek reader to believe about Persian kingship from them, and one place where he lets Xerxes be reasonable.",tags:["free","the text"],url:"https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D7",lt:"Herodotus 7 on Perseus"},
+  {s:"Pe",g:"read",short:"Aeschylus, Persians",name:"Aeschylus, Persians, complete (Smyth translation, Perseus)",mins:90,t:"an evening",th:"IB Aeschylus Persians",
+   what:"The oldest surviving Greek play, free, with the Greek alongside: the chorus of elders, the Queen's dream, the messenger's account of Salamis, the ghost of Darius, Xerxes in rags. Smyth's translation is literal, which is useful.",
+   think:"Read the messenger speech (lines 353–432) and the ghost of Darius. Write down three places where the Persians say things no Persian would have said and an Athenian would have wanted to hear.",tags:["free","the text"],url:"https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0012",lt:"Persians on Perseus"},
+  {s:"Ag",g:"read",short:"Antigone journal",name:"Antigone: an open forum for classics",mins:20,t:"one article: 15–25 min",th:"Beyond the course",
+   what:"A free online journal, edited by classicists, that publishes essays on anything Greek and Roman for anyone to read: translations, arguments, oddities, the odd bad-tempered review. New pieces arrive at the Mouth of the Cave; the archive is searchable.",
+   think:"Search the archive for your set text. Read one piece and write down its argument in one sentence and the one piece of evidence it rests on.",tags:["free","journal"],url:"https://antigonejournal.com/",lt:"Antigone"},
+  {s:"Sa",g:"read",short:"Sententiae Antiquae",name:"Sententiae Antiquae: a passage of Greek or Latin most days, with a translation",mins:5,t:"5 min a day",th:"Classical skills",
+   what:"A blog by two Homer scholars, Joel Christensen and Erik Robinson, posting a short passage of Greek or Latin with a translation most days, plus longer pieces on Homer. The original is always given, so you see what the translator had to work with.",
+   think:"Follow it for a fortnight. Pick one passage from an author you study and compare its translation here with the one in your set text. Write down one word they translate differently and which you prefer.",tags:["free","blog"],url:"https://sententiaeantiquae.com/",lt:"Sententiae Antiquae"},
+  {s:"Om",g:"read",short:"Omnibus",name:"Omnibus (Classical Association): the magazine for sixth formers",mins:20,t:"one article: 20 min",th:"Beyond the course",
+   what:"Short articles by university classicists written for sixth formers, twice a year. Issue 92 has Hannah Cornwell on the Prima Porta Augustus, Thomas Biggs on an Aeneid that does not survive, and the 2027 competition announcements. Paid per issue; ask for the department copy.",
+   think:"Read one article and write down the question it answers. Then write the question you would have asked instead.",tags:["department copy","Classical Association"],url:"https://classicalassociation.org/publications/",lt:"Omnibus (CA publications)"},
+  {s:"Cf",g:"read",short:"Classics for All reviews",name:"Classics for All: book reviews and Classics Matters",mins:15,t:"15 min",th:"Beyond the course",
+   what:"Reviews of new Classics books, some written by sixth formers and students through The Chorus. The quickest way to decide what to read next, and a place you could write for.",
+   think:"Read three reviews of books on your set text or period. Choose one book and ask the library for it. Write down the sentence in the review that made you choose it.",tags:["free","reviews"],url:"https://classicsforall.org.uk/",lt:"Classics for All"},
+  {s:"Or",g:"read",short:"Oxford's reading list",name:"Oxford Classics outreach: suggested reading for sixth formers",mins:10,t:"10 min to choose from",th:"Applying",
+   what:"The Faculty's own list of what to read before applying: translations, introductions, histories, with a line on each. Pick from it rather than from a tutoring company's.",
+   think:"Choose one book from the list that is not on this page and ask the library or the department for it. Write it on your tablet when you have read it.",tags:["free","Oxford","reading list"],url:"https://clasoutreach.web.ox.ac.uk/reading",lt:"Oxford reading"},
+  {s:"Wl",g:"read",short:"Wilson's Odyssey",name:"Emily Wilson, The Odyssey (Norton, 2017): the translation and the introduction",mins:300,t:"the introduction: an evening; the poem: weeks",th:"WH Odyssey",
+   what:"A modern translation in iambic pentameter, the same length as the Greek. The 80-page introduction is the best short account of the poem in print. The library has it, or ask the department.",
+   think:"Read the introduction, then put Wilson's Book 9 beside your Rieu for the blinding of the Cyclops. Write down three word choices that change how you judge Odysseus, with both versions quoted.",tags:["book","library"],url:"",lt:""},
+  {s:"Pj",g:"read",short:"Haynes, Pandora's Jar",name:"Natalie Haynes, Pandora's Jar: Women in the Greek Myths (2020)",mins:240,t:"a chapter an evening",th:"WH Odyssey",
+   what:"Short chapters on the women of Greek myth and what later writers did to them: Pandora, Jocasta, Helen, Medusa, the Amazons, Clytemnestra, Eurydice, Phaedra, Medea, Penelope. Pairs with her radio series on this page.",
+   think:"Read the Penelope chapter. Then reread Odyssey 19 (the interview with the beggar) and 23 (the bed). Does Haynes's Penelope, who knows, fit the text, or does the text keep it open? Quote the line that decides it.",tags:["book","library"],url:"",lt:""},
+  {s:"Sq",g:"read",short:"Beard, SPQR",name:"Mary Beard, SPQR: A History of Ancient Rome (2015)",mins:600,t:"the Augustus chapters: an evening",th:"WH Aeneid",
+   what:"A readable history of Rome from the founding to AD 212. The chapters on the end of the Republic and on Augustus are the background the Aeneid assumes you know.",
+   think:"Read the Augustus chapter. Write down what Beard says Augustus wanted people to believe about himself, then find the three lines of the Aeneid that say the same thing most directly.",tags:["book","library"],url:"",lt:""},
+  {s:"Pf",g:"read",short:"Holland, Persian Fire",name:"Tom Holland, Persian Fire: The First World Empire and the Battle for the West (2005)",mins:600,t:"weeks",th:"IB Greeks and others",
+   what:"A narrative history of the Persian Wars that starts in Persia, not Greece: Cyrus, Darius, the empire, and then Marathon, Thermopylae, Salamis and Plataea. Holland translated Herodotus too, and it shows.",
+   think:"Read the chapters on the Persian court. Write down three things the Persians did that Herodotus either does not know or turns into a story about Greek freedom.",tags:["book","library"],url:"",lt:""},
+  {s:"Os",g:"read",short:"Osborne, Archaic and Classical Greek Art",name:"Robin Osborne, Archaic and Classical Greek Art (Oxford History of Art, 1998)",mins:480,t:"a chapter an evening",th:"GA Sculpture",
+   what:"A short illustrated history of exactly the period of your prescribed sculpture, pots and buildings, by a Cambridge professor, which keeps asking what the objects were for rather than only what they look like.",
+   think:"Read the chapter that covers your prescribed free-standing sculpture. Write down Osborne's explanation of why the Greeks changed how they carved the human body between 600 and 450 BC, and say whether one of your prescribed statues fits it.",tags:["book","library"],url:"",lt:""},
+  {s:"Ci",g:"read",short:"Miller, Circe",name:"Madeline Miller, Circe (2018)",mins:480,t:"a week",th:"WH Odyssey",
+   what:"A novel that tells the Odyssey's witch her own way: her island, her exile, Odysseus as a guest who stays a year. Classical reception, which is what the Mary Renault prize on this page is about.",
+   think:"Read it, then reread Odyssey 10. Write down what Miller had to change about Circe to make her the narrator, and what Homer gains by not letting her speak for herself.",tags:["book","library","reception"],url:"",lt:""},
+
+  // ---- stage 4: do (Outside)
+  {s:"Hh",g:"do",short:"Hear Homer sung",name:"Danek and Hagel: singing Homer, Demodocus' song of Ares and Aphrodite (Odyssey 8.267–366)",mins:12,t:"12 min",th:"WH Odyssey",
+   what:"Two Austrian scholars' reconstruction of how a Homeric singer might have performed, with a lyre, to the quantities of the Greek. The sample is the song Demodocus sings in Odyssey 8, a prescribed book. They say it is an approach to the technique, not a recovered tune.",
+   think:"Listen while following Book 8.267–366 in your Rieu. Then write down what changes about the song when it is sung in a hall rather than read in a chair: who is listening in the poem, and what are they laughing at?",tags:["free","audio","the thing itself"],url:"https://www.oeaw.ac.at/kal/sh/",lt:"Listen (Austrian Academy)"},
+  {s:"Th",g:"do",short:"Theoi: every source on a god",name:"Theoi Greek Mythology: every ancient passage on a god or hero, by source",mins:30,t:"30 min",th:"WH Homeric and Augustan world",
+   what:"A reference site that collects, by god or figure, every passage from ancient literature that mentions them, quoted in translation with the reference. Athena, Aphrodite, Eros, Circe, the Cyclopes: each page is the primary evidence in one place.",
+   think:"Look up Aphrodite. Write down how Homer, Sappho and Plato's Symposium each use her, with one quotation from each, and say whether it is the same goddess.",tags:["free","reference","sources"],url:"https://www.theoi.com/",lt:"Theoi"},
+  {s:"Pr",g:"do",short:"Perseus: read a line of the Greek",name:"Perseus Digital Library: your set text with the Greek or Latin alongside, and a dictionary a click away",mins:30,t:"30 min",th:"Classical skills",
+   what:"Every text on this page is on Perseus in the original with a translation beside it. Click any Greek or Latin word and it tells you what it is and what it means. You do not need to know the language to see what the translator did with one line.",
+   think:"Find Odyssey 9.366 (Odysseus tells the Cyclops his name is Outis, 'Nobody') or Aeneid 4.1. Click through the words. Write down one place where Rieu or West chose an English word the Greek or Latin does not quite say.",tags:["free","the thing itself","tool"],url:"https://www.perseus.tufts.edu/hopper/",lt:"Perseus"},
+  {s:"Ob",g:"do",short:"ORBIS: Aeneas's route",name:"ORBIS (Stanford): the Roman world as a travel network",mins:30,t:"30 min",th:"WH Aeneid",
+   what:"A map of the Roman empire that works out how long a journey took and what it cost, by road, river and sea, in different seasons. Built from ancient evidence by Stanford historians.",
+   think:"Plot Aeneas's journey from Troy to Carthage to Cumae in ORBIS. Write down how long a Roman sailor of Virgil's day would have expected it to take, and then say why Virgil's version takes seven years.",tags:["free","map","tool"],url:"https://orbis.stanford.edu/",lt:"ORBIS"},
+  {s:"Bc",g:"do",short:"British Museum: search the Parthenon sculptures",name:"British Museum collection online: the Parthenon sculptures, the Bassae frieze, Greek pots, and a visit",mins:40,t:"40 min online",th:"GA Sculpture",
+   what:"The whole collection is searchable online with photographs you can zoom. Search 'Parthenon frieze' or 'Exekias'. The Museum also runs free sessions for sixth forms, fewer during its building works; ask your teacher.",
+   think:"Find one slab of the Parthenon frieze and one metope online. Zoom in. Write a 150-word description of each as if the reader had never seen it, then say what the frieze does that the metope cannot.",tags:["free","objects","museum"],url:"https://www.britishmuseum.org/collection",lt:"Collection online",
+   more:[{lt:"Sixth-form sessions",url:"https://www.britishmuseum.org/learn/schools/ages-16"}],ask:true},
+  {s:"Ac",g:"do",short:"Acropolis Museum online",name:"Acropolis Museum, Athens: the collection online",mins:30,t:"30 min",th:"GA Architecture",
+   what:"The museum built under the Acropolis, with the Parthenon sculptures that stayed in Athens, the Caryatids from the Erechtheion, the archaic korai and the Kritios Boy, photographed and described in English.",
+   think:"Look at the Parthenon gallery pieces here and at the British Museum's online. Write down one argument for keeping them where they are and one for reuniting them, each resting on a specific object.",tags:["free","objects","museum"],url:"https://www.theacropolismuseum.gr/en/explore-collections",lt:"Acropolis Museum"},
+  {s:"Bz",g:"do",short:"Beazley Archive: find the pot",name:"Beazley Archive Pottery Database (Oxford)",mins:30,t:"30 min",th:"GA Vase painting",
+   what:"The world's database of Greek painted pottery, from the Oxford research centre named after Sir John Beazley, who worked out which hands painted which pots. Search by painter, shape, subject or museum and see the pot, its date and where it is now.",
+   think:"Search for your prescribed painter (Exekias, the Berlin Painter, Euphronios). Find a pot by them that is not on your list. Describe its subject and say what it shares with the set one that made Beazley give both to the same hand.",tags:["free","database","objects"],url:"https://www.carc.ox.ac.uk/carc/pottery",lt:"Beazley Archive"},
+  {s:"Cc",g:"do",short:"The cast galleries",name:"Cambridge Museum of Classical Archaeology: Cast Gallery tours and live virtual visits; the Ashmolean's taught sessions",mins:90,t:"a virtual visit: 90 min",th:"GA Sculpture",
+   what:"The Cambridge Cast Gallery holds plaster casts of most of the sculptures on your list, life size, in one room; it runs Key Stage 5 tours and live virtual visits (Tuesday to Thursday mornings, booked a week ahead). The Ashmolean in Oxford runs taught gallery sessions on site or online. The department books either.",
+   think:"On the visit, stand (or be shown) in front of a statue you only know from a photograph. Write down one thing the photograph hid: the back, the size, the angle it was meant to be seen from.",tags:["free","visit","ask your teacher"],url:"https://www.classics.cam.ac.uk/museum/schools",lt:"Cambridge casts",
+   more:[{lt:"Ashmolean sessions",url:"https://www.ashmolean.org/secondary-schools"}],ask:true},
+  {s:"He",g:"do",short:"HE+ Classics (Cambridge)",name:"Cambridge HE+: Classics, two modules with questions",mins:90,t:"one module: 90 min",th:"GA Architecture",
+   what:"Two short online modules written by Cambridge academics for sixth formers: Power and Propaganda in the Persian Empire, and Introduction to Ancient Greece: the Parthenon. Each has readings, images and questions to answer.",
+   think:"Do the Parthenon module if you study Greek Art, the Persian one if you study the Barbarian. Write up your answer to its last question on your tablet as if it were an exam answer.",tags:["free","Cambridge","course"],url:"https://myheplus.com/subject/classics",lt:"HE+ Classics"},
+  {s:"Ol",g:"do",short:"OU: Introducing the Classical World",name:"Open University (OpenLearn): Introducing the Classical World, a free 20-hour course",mins:1200,t:"20 hours over a term",th:"Classical skills",
+   what:"A free Open University course on the kinds of evidence classicists use: texts, inscriptions, coins, buildings, pots, and how to argue from each. A statement of participation at the end if you make an account.",
+   think:"Do it over a term. Write down the one kind of evidence you had not thought of as evidence before, and find an example of it that bears on your set text.",tags:["free","course","certificate"],url:"https://www.open.edu/openlearn/history-the-arts/classical-studies/introducing-the-classical-world/content-section-0",lt:"OpenLearn"},
+  {s:"Gk",g:"do",short:"OU: start on ancient Greek",name:"Open University (OpenLearn): Getting started on ancient Greek",mins:600,t:"10 hours",th:"Classical skills",
+   what:"A free short course on the Greek alphabet and the first words, enough to read a name on a pot or a line of Sappho aloud. Nobody on a Classical Civilisation course has to do this; the ones who do find the texts change.",
+   think:"Learn the alphabet, then read the first line of the Odyssey aloud from Perseus (ἄνδρα μοι ἔννεπε, Μοῦσα). Write down the word Rieu translates as 'resourceful' and what the dictionary on Perseus says it means.",tags:["free","course","language"],url:"https://www.open.edu/openlearn/history-the-arts/getting-started-on-ancient-greek/content-section-overview",lt:"OpenLearn Greek"},
+  {s:"Ep",g:"do",short:"A Classics EPQ",name:"Classics EPQ (Newcastle University): how to do an Extended Project on the ancient world",mins:3000,t:"a year",th:"Beyond the course",
+   what:"Free guidance from Newcastle's Classics department on choosing and researching an EPQ question on the ancient world, with themed starting points: democracy, migration, conflict, gender, identity.",
+   think:"Read the guidance, then write three possible questions on your tablet, each one answerable from sources you can actually read. Show them to your teacher.",tags:["free","EPQ","long"],url:"https://research.ncl.ac.uk/classicsepq/",lt:"Classics EPQ"},
+  {s:"Ch",g:"do",short:"The Chorus (16–25s)",name:"The Chorus (Classics for All): the free network for young classicists",mins:120,t:"one online meeting: an evening",th:"Beyond the course",
+   what:"Free for 16- to 25-year-olds: termly online gatherings with talks, a student blog (The Rostra) you can write for, and reviews for Classics Matters. Parental consent is needed under 18. The department helps with the form.",
+   think:"Join, go to one online meeting, and write down the name of one person you heard from and what they are working on. Then pitch a 500-word piece for The Rostra on something from your tablet.",tags:["free","network","ask your teacher"],url:"https://classicsforall.org.uk/get-involved/chorus",lt:"The Chorus",ask:true},
+  {s:"Gp",g:"do",short:"Cambridge Greek Play: Ion",name:"Cambridge Greek Play 2026: Euripides' Ion, in ancient Greek with English surtitles, Arts Theatre Cambridge, 14–17 October",mins:180,t:"an evening, plus the journey",th:"IB Aeschylus Persians",
+   what:"Every three years Cambridge stages a Greek play in Greek, with surtitles. This year it is Euripides' Ion, set at Delphi. Free pre-show talks at 1pm daily (booking needed); post-show talk Thursday 15 October. Tickets from £20; age 11+; the play contains themes of rape and violence. A trip is the department's decision.",
+   think:"If you go: write down what the Greek sounded like in the theatre and one moment where the surtitles were not enough. If you cannot: watch the Faculty's trailer and read the play's opening on Perseus instead.",tags:["paid","trip","ask your teacher"],url:"https://www.artstheatre.co.uk/whats-on/the-cambridge-greek-play-2026-ion-by-euripides/",lt:"Arts Theatre",ask:true},
+  {s:"Bl",g:"do",short:"BMCA lecture, 13 Oct, Birmingham",name:"Birmingham and Midlands Classical Association: Hannah Cornwell, The Theatre of Diplomacy in Ancient Rome, Tuesday 13 October 2026, 6–7.30pm, Birmingham and Midland Institute",mins:90,t:"an evening in the city centre",th:"WH Aeneid",
+   what:"The local branch of the Classical Association's autumn lecture, in Margaret Street: a Birmingham academic on how Roman diplomacy was staged and performed. Booked through Eventbrite from the event page; ask your teacher about going as a group. The branch runs more lectures through the year.",
+   think:"Write down one way Cornwell says Romans performed power to foreigners, then find a scene in the Aeneid where Aeneas or Latinus does the same thing.",tags:["lecture","Birmingham","ask your teacher"],url:"https://www.birmingham.ac.uk/events/bmca-autumn-lecture-at-birmingham-and-midland-institute",lt:"Event page",ask:true},
+  {s:"Bk",g:"do",short:"BMCA Texts and Topics conference",name:"BMCA A Level Texts and Topics Conference, King Edward's School, Birmingham",mins:360,t:"a day",th:"Beyond the course",
+   what:"A day of workshops for sixth formers at King Edward's School: strands in Latin, Greek and Classical Civilisation and specification topics, with an optional University of Birmingham tour. Free for state schools. The 2026–27 date is not yet published; the department is asking.",
+   think:"Choose the workshop on your set text. Write down one argument the workshop leader made that you had not met, and where you would look to check it.",tags:["free","conference","ask your teacher"],url:"https://www.theclassicslibrary.com/bmca-a-level-classics-conference-2026-2/",lt:"BMCA conference",ask:true},
+  {s:"Oc",g:"do",short:"Oxford Classical Conversations",name:"Oxford Faculty of Classics: Classical Conversations, a session for your class",mins:60,t:"an hour, with your class",th:"Applying",
+   what:"Oxford classicists run an hour-long interactive session for a school, online or in person, on a topic the school chooses; it can be built on your set books. The department emails the Faculty to arrange it.",
+   think:"Before the session, write down the question about your set text you most want answered by someone who teaches it at university. Ask it. Write down the answer.",tags:["free","Oxford","ask your teacher"],url:"https://clasoutreach.web.ox.ac.uk/classical-conversations",lt:"Classical Conversations",ask:true},
+
+  // ---- stage 5: enter (the Sun)
+  {s:"Sj",g:"enter",short:"St John's Oxford essay prize",name:"Classics and Ancient History Essay Competition, St John's College, Oxford",mins:1200,t:"an essay: a month",th:"Applying",
+   what:"Up to 2,000 words on one question from four strands: literature, history, art and archaeology, philosophy. Open to Year 12 in any UK school; no prior Classics needed. £100 book token for each strand winner and a prize for the best essay from someone new to the subject. Deadline late February (2026 was 22 February); a subject day in April. Email a PDF with the cover sheet to the college.",
+   think:"Choose the strand that matches your strongest component and write the question you would most like to be set. Tap 'I'm entering this' and the department will check the 2027 questions with you when they appear.",tags:["free","essay","Year 12","enter yourself"],url:"https://www.sjc.ox.ac.uk/access-and-outreach/our-programmes-sjc/subject-exploration-days/classics-essay-competition-2026/",lt:"St John's"},
+  {s:"Fz",g:"enter",short:"Fitzwilliam Cambridge essay",name:"Ancient World and Classics Essay Competition, Fitzwilliam College, Cambridge",mins:1500,t:"an essay with a research log: a month",th:"Applying",
+   what:"2,000–2,500 words on one of six questions, with a research log, for Year 12. Questions usually published in October; deadline late February (2026 was 27 February, 6pm). Five entries per school at most, uploaded with the college's template. £200 first prize. 2026 questions included women in ancient Greece and judging ancient figures by modern standards. No generative AI.",
+   think:"When the questions appear, pick one and write the first sentence of your answer before you read anything. Then read, and see whether it survives. Tap 'I want to enter' so the department can count the school's five places.",tags:["free","essay","Year 12"],url:"https://www.fitz.cam.ac.uk/fitzwilliam-college-essay-competitions-2026",lt:"Fitzwilliam"},
+  {s:"Rn",g:"enter",short:"Mary Renault reception prize",name:"Mary Renault Classical Reception Essay Competition, St Hugh's College, Oxford",mins:2000,t:"an essay: a term",th:"Beyond the course",
+   what:"2,000–4,000 words on how a classical text has been reworked in later literature, film, theatre or art. You choose the topic. Years 12 and 13. Deadline in July (2026 was 22 July, 2pm); 2027 details not yet published. 2026 winners wrote on Sartre's Aeschylus and on modern musicals. References and a bibliography required; no generative AI.",
+   think:"Circe on this page is a possible subject; so is any film of Troy or any Penelope. Write down the reworking you know best and the one question about it you could argue for 3,000 words. Tap 'I'm entering this'.",tags:["free","essay","Years 12 and 13","enter yourself"],url:"https://www.st-hughs.ox.ac.uk/prospective-students/outreach-at-st-hughs/essay-competitions/the-mary-renault-prize/",lt:"St Hugh's"},
+  {s:"Gl",g:"enter",short:"Omnibus: Gladstone essay, Sam Hood translation",name:"Classical Association Omnibus competitions: the Gladstone Memorial Essay Prize and the Sam Hood Translation Prize",mins:1200,t:"an essay: a month",th:"WH Homeric and Augustan world",
+   what:"Essay: up to 2,000 words on one of eight set topics; the 2027 list includes gods in Homer and Virgil, and dramatic choruses. £200 first, £100 second. Translation: one passage of Latin or Greek (Livy, Virgil, Juvenal, Sophocles, Aristophanes, Lucian), for those who also study a language; £75 and a book. Under-19s in full-time education. Deadline 2pm, Wednesday 7 July 2027; full instructions in Omnibus 93. Submitted by email with a teacher's confirmation. No AI, no tutors.",
+   think:"The gods in Homer and Virgil topic is your course. Write down, in one sentence each, what Athena wants in the Odyssey and what Juno wants in the Aeneid, and whether either of them gets it. That is an essay plan. Tap 'I'm entering this'.",tags:["free","essay","Classical Association","enter yourself"],url:"https://classicalassociation.org/competition/omnibus-competitions/",lt:"CA competitions"},
+  {s:"Gi",g:"enter",short:"Girton writing competition",name:"Humanities Writing Competition, Girton College, Cambridge",mins:900,t:"a piece: a few weeks",th:"GA Vase painting",
+   what:"Write about objects from Girton's Lawrence Room museum, which holds Egyptian, Greek and Roman material; an essay or a creative piece (monologue, story, poem) both count. Year 12. The 2026–27 round launches in the autumn term; confirm on the Girton page.",
+   think:"Look at the Lawrence Room's Greek pots online. Choose one and write its first paragraph twice: once as a museum label, once as the potter. Keep the better one. Tap 'I'm entering this'.",tags:["free","essay or creative","Year 12","enter yourself"],url:"https://www.girton.cam.ac.uk/humanities-writing-competition",lt:"Girton"},
+  {s:"Ox",g:"enter",short:"Oxford Classics outreach competitions",name:"Oxford Faculty of Classics outreach competitions",mins:600,t:"varies",th:"Beyond the course",
+   what:"Creative and written competitions run by the Faculty for school pupils; categories change each year. The 2026 entries have closed and the 2027 competitions are to be announced in the spring.",
+   think:"Check the page in March. When the categories appear, write down which one fits something already on your tablet. Tap 'I'm entering this'.",tags:["free","Oxford","enter yourself"],url:"https://clasoutreach.web.ox.ac.uk/competitions",lt:"Oxford competitions"},
+  {s:"Vv",g:"enter",short:"CA Verse and Voice",name:"Classical Association Verse and Voice Competition",mins:300,t:"a poem or a performance: a week",th:"Beyond the course",
+   what:"The Classical Association's creative competition: write or perform verse in response to classical objects (the 2026 round used ten objects from Sir John Soane's Museum). Free, with a senior category for 12- to 18-year-olds. The 2026 round has closed; watch for 2027.",
+   think:"Choose an object from this page's Greek Art items and write twelve lines in its voice. Keep them for the 2027 round. Tap 'I'm entering this'.",tags:["free","verse","Classical Association","enter yourself"],url:"https://classicalassociation.org/competition/verse-and-voice-competition/",lt:"Verse and Voice"},
+
+  // ---- stage 6: apply (the Descent)
+  {s:"Un",g:"apply",short:"UNIQ (Oxford)",name:"UNIQ: the University of Oxford's free access programme for Year 12",mins:2400,t:"a week in the summer",th:"Applying",
+   what:"A free residential week in Oxford, plus online support with applying, for Year 12s at UK state schools, with priority for under-represented groups. Courses include Classics: Ancient Greece, Classics: Rome, and Classical Archaeology and Ancient History. Applications ran 15 December to 13 January last year; 2027 dates to confirm.",
+   think:"Read the three Classics course pages and write down which you would choose and why in two sentences. Tap 'I'm interested' and the department will help with the form in December.",tags:["free","summer school","Year 12"],url:"https://www.uniq.ox.ac.uk/courses",lt:"UNIQ"},
+  {s:"St",g:"apply",short:"Sutton Trust summer schools",name:"Sutton Trust UK Summer Schools",mins:2400,t:"a week in the summer",th:"Applying",
+   what:"Free summer schools at thirteen universities including Oxford, Cambridge, Durham and UCL, in over forty subjects, for Year 12s at state schools with at least five GCSEs at 9–6; priority criteria apply. Check whether Classics or Ancient History is offered this year. The 2027 window is not yet published.",
+   think:"Check the subject list in January. If Classics is not there, write down which related subject (History, Archaeology, Philosophy) you would choose and why. Tap 'I'm interested'.",tags:["free","summer school","Year 12"],url:"https://www.suttontrust.com/our-programmes/uk-summer-schools/",lt:"Sutton Trust"},
+  {s:"Oa",g:"apply",short:"Classics at Oxford",name:"University of Oxford: Classics (Q800), one course, with or without a language",mins:30,t:"30 min to read",th:"Applying",
+   what:"Oxford has redesigned Classics as one four-year course (Q800) for everyone: those with Latin or Greek A level take both languages; those without choose a Latin or a Greek stream and learn it from the beginning, reading the other literature in translation. No written admissions test; two pieces of written work are sent in by 10 November, and applicants without a language are assessed at interview on their aptitude for learning one. Offer AAA. Classical Civilisation is not required but the page says it can help. Classical Archaeology and Ancient History is a separate course.",
+   think:"Read the page, then write down the one thing about the course you would mention at interview that is not on it, taken from your tablet. Then choose: Latin stream or Greek stream, and why.",tags:["free","degree","Oxford"],url:"https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/classics",lt:"Oxford Classics"},
+  {s:"Ca",g:"apply",short:"Classics at Cambridge",name:"University of Cambridge: Classics (three-year and four-year courses)",mins:30,t:"30 min to read",th:"Applying",
+   what:"The three-year course (Q800) is for applicants with Latin A level (some Colleges take Greek instead); the four-year course (Q801) is for those with little or no Latin or Greek and spends its first year mainly on Latin. Every College sets an admissions assessment at interview for both, and both ask for two pieces of written work. Typical offer A*AA. Classical Civilisation is not required, but the page lists it among the four subjects recommended for the four-year course.",
+   think:"Read the four-year course page. Write down what the first year covers and whether a year of intensive Latin before the degree proper appeals. Honest answer; it is a real question.",tags:["free","degree","Cambridge"],url:"https://www.undergraduate.study.cam.ac.uk/courses/classics",lt:"Cambridge Classics"},
+  {s:"Wk",g:"apply",short:"Classical Civilisation at Warwick",name:"University of Warwick: Classical Civilisation BA, and Classics and Ancient History",mins:30,t:"30 min to read",th:"Applying",
+   what:"Warwick's Classical Civilisation BA (Q820) needs no Latin or Greek; typical offer AAB. Students without a language can start one in the first year through accelerated modules, or not. A large department an hour from Birmingham; it also runs Classics, and Classics and Ancient History.",
+   think:"Compare the first-year modules with your A level. Write down the one module you would take first and what from your course it builds on.",tags:["free","degree","no language needed"],url:"https://warwick.ac.uk/study/undergraduate/courses/classicalcivilisation/",lt:"Warwick Classical Civilisation"},
+  {s:"Bh",g:"apply",short:"Classics at Birmingham",name:"University of Birmingham: Classics, Ancient History and Archaeology",mins:30,t:"30 min to read",th:"Applying",
+   what:"The university down the road: Classics, Ancient History, Classical Literature and Civilisation, Archaeology and joint degrees, most without a language requirement. This page lists them all. The department runs Year 12 taster events in June and hosts the BMCA lectures on this page.",
+   think:"Read the Classical Literature and Civilisation page. Write down two differences between it and Warwick's course, one you would see as a gain and one as a loss.",tags:["free","degree","Birmingham"],url:"https://www.birmingham.ac.uk/study/undergraduate/subjects/classics-ancient-history-and-archaeology-courses",lt:"Birmingham courses"},
+  {s:"Js",g:"apply",short:"JACT Greek Summer School",name:"JACT Greek Summer School, Bryanston, Dorset: two weeks of ancient Greek, beginners welcome, 25 July – 7 August 2027",mins:9600,t:"a fortnight in the summer",th:"Classical skills",
+   what:"A fortnight of intensive Greek for sixth formers, with a beginners' course for those who know only the alphabet. Resident fee last year £1,190, non-resident £790; bursaries available and applied for on the same form. Applications and bursary forms by 31 March; full 2027 details due in November.",
+   think:"Do the OpenLearn Greek course on this page first. If you want more, tap 'I'm interested' before Christmas so the department can help with the bursary form in time.",tags:["paid","bursaries","summer school"],url:"https://www.greeksummerschool.org/",lt:"Greek Summer School"},
+  {s:"Dn",g:"apply",short:"Go back down",name:"The Descent: take one thing from this page back to someone who has not studied Classics",mins:60,t:"an hour, when you are ready",th:"Beyond the course",
+   what:"Republic 519c–520c: the city compels those who have seen the light to go back down and take their turn. Explain one text, object or idea from this page to someone who has never studied Classics: a younger pupil at a department event, a form group, a parent, a friend. Then write on your tablet what they asked that you could not answer.",
+   think:"The question they asked that you could not answer is the next stone. Tell the department when you have done this; there are Year 7–9 events that need a sixth former who can explain the Cyclops in two minutes.",tags:["free","the descent","ask your teacher"],url:"",lt:"",ask:true}
+];
+const YEAR = [
+  {m:"2026-10",when:"Tue 13 Oct, 6pm",what:"BMCA autumn lecture: Hannah Cornwell, Birmingham and Midland Institute",sub:"Book through Eventbrite; ask about going as a group.",s:"Bl",check:false},
+  {m:"2026-10",when:"Wed 14 – Sat 17 Oct",what:"Cambridge Greek Play: Euripides' Ion, Arts Theatre",sub:"Free 1pm pre-show talks (booking needed); post-show talk Thursday.",s:"Gp",check:false},
+  {m:"2026-10",when:"Thu 15 Oct, 6pm",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants, through UCAS.",s:"Oa",check:false,urgent:true},
+  {m:"2026-10",when:"October",what:"Fitzwilliam 2027 essay questions published",sub:"Last year's pattern; deadline late February.",s:"Fz",check:true},
+  {m:"2026-11",when:"Autumn term",what:"Girton Humanities Writing Competition launches",sub:"Confirm on the Girton page.",s:"Gi",check:true},
+  {m:"2026-11",when:"November",what:"JACT Greek Summer School 2027 details published",sub:"Applications and bursary forms by 31 March.",s:"Js",check:false},
+  {m:"2026-12",when:"Mid-December",what:"UNIQ applications open",sub:"Last year: 15 December to 13 January.",s:"Un",check:true},
+  {m:"2027-01",when:"Mid-January",what:"UNIQ applications close; UCAS deadline for most courses",sub:"Classics applicants not applying to Oxford or Cambridge.",s:"Un",check:true},
+  {m:"2027-01",when:"January",what:"Sutton Trust summer school applications open",sub:"Last year's pattern; check the subject list for Classics.",s:"St",check:true},
+  {m:"2027-02",when:"Late February",what:"St John's Oxford and Fitzwilliam essay deadlines",sub:"Last year: 22 and 27 February. The department sets an internal deadline two weeks earlier.",s:"Sj",check:true,urgent:true},
+  {m:"2027-03",when:"Early March",what:"Sutton Trust applications close",sub:"Last year's pattern.",s:"St",check:true},
+  {m:"2027-03",when:"Wed 31 Mar",what:"JACT Greek Summer School: applications and bursary forms due",sub:"Late applications considered while places last.",s:"Js",check:false,urgent:true},
+  {m:"2027-04",when:"Spring",what:"Oxford Classics outreach competitions announced; Mary Renault 2027 details",sub:"Check both pages.",s:"Ox",check:true},
+  {m:"2027-04",when:"April",what:"St John's subject exploration day",sub:"Last year: 22 April.",s:"Sj",check:true},
+  {m:"2027-06",when:"June",what:"University of Birmingham: Year 12 taster events",sub:"Last year's pattern.",s:"Bh",check:true},
+  {m:"2027-07",when:"Wed 7 Jul, 2pm",what:"Omnibus Gladstone essay and Sam Hood translation deadline",sub:"Teacher confirmation needed; published date.",s:"Gl",check:false,urgent:true},
+  {m:"2027-07",when:"Late July",what:"Mary Renault Prize deadline",sub:"Last year: 22 July, 2pm.",s:"Rn",check:true},
+  {m:"2027-07",when:"Sun 25 Jul – Sat 7 Aug",what:"JACT Greek Summer School, Bryanston",sub:"Published dates.",s:"Js",check:false}
+];
+const MONTHS = [
+  ["2026-10","October","autumn 1"],["2026-11","November","autumn 2"],["2026-12","December","autumn 2"],["2027-01","January","spring 1"],
+  ["2027-02","February","spring 1"],["2027-03","March","spring 2"],["2027-04","April","summer 1"],["2027-05","May","summer 1"],
+  ["2027-06","June","summer 2"],["2027-07","July","summer 2"]
+];
+
+/* ======================================================================
+   EDIT EACH HALF TERM
+   1. HALFTERM: the label, the date the three steps are wanted by, and
+      the three steps (s = stone code from ITEMS) with one line each.
+   2. To add an item: add it to ITEMS above with added:"YYYY-MM-DD".
+      Pupils who last visited before that date see a NEW marker on it.
+   Nothing else needs touching. The Mouth of the Cave updates itself.
+   ====================================================================== */
+const HALFTERM = {
+  label:"Autumn 1",
+  until:"2026-10-23",
+  lede:"Three steps before half term. Take them, and write a line on your tablet for each.",
+  items:[
+    {s:"Jd",step:"Watch",txt:"Watch Jill Dash on the Odyssey (5 min), then reread the Cyclops episode in Book 9 and decide whether Odysseus' boast is heroic."},
+    {s:"Nh",step:"Listen",txt:"Listen to one episode of Natalie Haynes Stands Up for the Classics on a writer or figure from your course."},
+    {s:"Gr",step:"Watch",txt:"Watch one Gresham lecture from the Classics for schools page (Melissa Lane on the Cave is the obvious one) and write down one claim you could test against a text you study."}
+  ]
+};
+const COMPILED="2026-10-10";           // items without their own `added` date count as added on this date
+
+/* ---------- cloud store (same Worker as every other tracked lesson) ---------- */
+const CLOUD={ endpoint:"https://vestigia-store.mrbeasley930.workers.dev", book:"sc-clas", token:"vp_8c7103b52959b06cb55526bf" };
+let IDENTITY=null;
+function fullKey(){ return CLOUD.book+"::"+IDENTITY.cls+"::"+IDENTITY.cand; }
+const CloudStore={
+  async pull(){ try{ const r=await fetch(CLOUD.endpoint+"?key="+encodeURIComponent(fullKey()),{headers:{"x-vestigia-token":CLOUD.token}}); if(!r.ok) return null;
+      const j=await r.json(); return j&&j.data?j.data:null; }catch(e){ return null; } },
+  async push(b){ if(!IDENTITY) return false;
+    try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
+      body:JSON.stringify({key:fullKey(),cls:IDENTITY.cls,cand:IDENTITY.cand,book:CLOUD.book,data:b,savedAt:new Date().toISOString()})}); return r.ok; }catch(e){ return false; } }
+};
+
+const ORDER = Object.keys(FAM);   // stage order, 1 to 6
+/* stone numbers run through the whole cave; pn = stage and stone, e.g. 3·07 */
+ORDER.forEach(g=>{ let a=0; ITEMS.filter(i=>i.g===g).forEach(i=>{ i.pn = FAM[g].no+"·"+String(++a).padStart(2,"0"); }); });
+ITEMS.sort((a,b)=>FAM[a.g].no-FAM[b.g].no);
+ITEMS.forEach((it,i)=>{ it.n=i+1; it.tno=String(i+1).padStart(3,"0"); if(!it.added) it.added=COMPILED; if(!it.tags) it.tags=[]; });
+const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
+const COMP=th=> th.startsWith("WH")?"WH" : th.startsWith("LR")?"LR" : th.startsWith("IB")?"IB" : th.startsWith("GA")?"GA" : "other";
+const COMP_NAME={WH:"World of the Hero",LR:"Love and Relationships",IB:"Invention of the Barbarian",GA:"Greek Art",other:"skills, applying, beyond"};
+
+/* ---------- state ---------- */
+const KEY_BASE="clas-beyond-v1";
+let KEY=KEY_BASE;
+// done[s] = the date the stone was passed (YYYY-MM-DD)
+const blank=()=>({done:{},notes:[],news:{},interest:{},fam:"all",bucket:"quick",at:"watch",lastVisit:null,savedAt:null});
+let state=blank();
+let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
+let JUST=null;        // the stone just passed, for the animation
+let JUST_DONE=null;   // the stage just lit in full
+
+function loadLocal(){ let s=blank(); try{const raw=localStorage.getItem(KEY); if(raw) s=Object.assign(s,JSON.parse(raw));}catch(e){} return s; }
+function saveLocal(){ try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} }
+function save(){ state.savedAt=new Date().toISOString(); saveLocal(); mirrorToCloud();  BK.changed(); }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const firstName=()=> IDENTITY ? IDENTITY.cand.split(/\s+/)[0] : "";
+const reduceMotion=()=>matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const plural=(n,w,ws)=>n+" "+(n===1?w:(ws||w+"s"));
+const stageName=g=>"Stage "+FAM[g].no+", "+FAM[g].stage;
+
+/* ---------- the stages: stones passed, stages lit ---------- */
+const STATE_NAME=["dark","a first stone","half way","in full light"];
+function counts(){ const c={}; ORDER.forEach(g=>c[g]=0); ITEMS.forEach(i=>{ if(state.done[i.s]) c[i.g]++; }); return c; }
+function totals(){ const t={}; ORDER.forEach(g=>t[g]=0); ITEMS.forEach(i=>t[i.g]++); return t; }
+function secState(n,t){ return !n?0 : n>=t?3 : n*2>=t?2 : 1; }   // 0 dark, 1 a first stone, 2 half way, 3 in full light
+function stages(){
+  const c=counts(), t=totals();
+  const N=ORDER.reduce((a,g)=>a+c[g],0);
+  const k=ORDER.filter(g=>c[g]).length;
+  const pct=Math.round(N/ITEMS.length*100);
+  const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
+  const complete=ORDER.filter(g=>sec[g]===3).length;
+  return {c,t,N,k,pct,sec,complete};
+}
+/* which components the pupil's stones serve */
+function comps(){ const u={WH:0,LR:0,IB:0,GA:0,other:0}; ITEMS.forEach(i=>{ if(state.done[i.s]) u[COMP(i.th)]++; }); return u; }
+
+/* ---------- the light: the page climbs from cave-black to day ---------- */
+const hex=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+const rgb=a=>"rgb("+a.map(Math.round).join(",")+")";
+const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
+const STOPS=[ // 0 = the dark, .5 = firelight, 1 = day
+  {bg:"#0b0907",bg2:"#15100b",tx:"#efe4cf",dim:"#b9a98e",line2:"#3a2e22",rule2:"#2a2119"},
+  {bg:"#2e2115",bg2:"#3b2b1b",tx:"#f6e7c8",dim:"#cdb58f",line2:"#5a4330",rule2:"#4a3828"},
+  {bg:"#efe3c9",bg2:"#e4d5b4",tx:"#1d160f",dim:"#5a4a38",line2:"#b8a685",rule2:"#cdbb9c"}
+];
+function setLight(L){
+  L=Math.max(0,Math.min(1,L));
+  const a=L<.5?STOPS[0]:STOPS[1], b=L<.5?STOPS[1]:STOPS[2], t=L<.5?L*2:(L-.5)*2;
+  const R=document.documentElement.style;
+  for(const k of Object.keys(a)) R.setProperty("--"+k, rgb(mix(hex(a[k]),hex(b[k]),t)));
+  R.setProperty("--L",L);
+  const set=(id,v)=>{ const el=$(id); if(el) el.setAttribute("opacity",v); };
+  set("sky",L.toFixed(3)); set("hills",(L*.95).toFixed(3)); set("trees",L.toFixed(3)); set("pool",(L*.9).toFixed(3));
+  set("sunDisc",(.12+.88*L).toFixed(3)); set("sunRays",L.toFixed(3)); set("sunHaloC",L.toFixed(3)); set("rim",(.15+.7*L).toFixed(3));
+  const sl=$("sceneLight"); if(sl){ sl.textContent="LIGHT "+Math.round(L*100)+"%"; sl.setAttribute("fill", rgb(mix(hex("#8a7a62"),hex("#3a2e22"),L))); }
+  // labels that stand in the open air darken as the day comes
+  const outTxt=rgb(mix(hex("#e8d7a8"),hex("#1d160f"),L)), outSub=rgb(mix(hex("#c9b998"),hex("#3a2e22"),L));
+  ["do","enter","apply"].forEach(g=>{ const a=$("lb-"+g), b=$("mc-"+g); if(a) a.setAttribute("fill",outTxt); if(b) b.setAttribute("fill",outSub); });
+}
+
+/* ---------- Glaux ---------- */
+let _rt=null;
+function say(txt){ $("bubbleTxt").textContent=txt; const r=$("radio"); r.classList.remove("talk"); void r.offsetWidth; r.classList.add("talk"); clearTimeout(_rt); _rt=setTimeout(()=>r.classList.remove("talk"),2600); }
+function greeting(){
+  const G=stages(); const n=G.N;
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  if(!NEW_SINCE) return `${firstName()}. You are chained facing the wall, like everyone at the start. ${ITEMS.length} stones between here and the sun, in six stages. The three on this half term's card are the first steps; or ask me for one. I can see in the dark. You will learn.`;
+  if(!n) return `${firstName()}. ${ITEMS.length} stones, none passed yet. Jill Dash on this half term's card is five minutes. Even a shadow is a start.`;
+  if(ht<HALFTERM.items.length) return `${firstName()}. ${plural(n,"stone")} passed, in ${G.k} of 6 stages. ${ht} of ${HALFTERM.items.length} of this half term's steps taken. The light is ${G.pct}%.`;
+  if(G.k<6) return `${firstName()}. ${plural(n,"stone")} passed. Nothing yet from ${ORDER.filter(g=>!G.c[g]).map(g=>FAM[g].stage).slice(0,2).join(" or ")}. That is where the next step is.`;
+  if(G.complete<6) return `${firstName()}. A stone in every stage: ${n} of ${ITEMS.length}, ${G.complete} stage${G.complete===1?"":"s"} in full light. Keep the tablet written; that is the part anyone else reads.`;
+  return `${firstName()}. Every stage in full light. Now check your tablet says what you found out, not just where you went. Then go back down.`;
+}
+
+/* ---------- what the department sees ---------- */
+function summary(){
+  const done=ITEMS.filter(i=>state.done[i.s]).map(i=>i.s);
+  const fams=[...new Set(done.map(s=>BY[s].g))];
+  const ht=HALFTERM.items.filter(x=>state.done[x.s]).length;
+  const interest=Object.entries(state.interest).map(([s,d])=>({s,name:BY[s]?BY[s].name:s,kind:BY[s]?BY[s].g:"",when:d}));
+  const G=stages(); const P=comps();
+  const units={}; done.forEach(s=>{ const th=BY[s].th; units[th]=(units[th]||0)+1; });
+  return { name:IDENTITY.cand, cls:IDENTITY.cls, subject:"Classical Civilisation",
+           doneN:done.length, total:ITEMS.length, done, fams,
+           notesN:state.notes.length, notes:state.notes,
+           interest,
+           halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
+           cave:{pct:G.pct, stages:G.k, passed:G.N, lit:G.complete, states:G.sec, comps:P, units},
+           newsN:Object.keys(state.news||{}).length, news:Object.values(state.news||{}),
+           lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
+}
+let _mt=null;
+function mirrorToCloud(){ if(!IDENTITY) return; clearTimeout(_mt);
+  setSaved("saving…","");
+  _mt=setTimeout(async()=>{ const ok=await CloudStore.push(summary()); BK.cloud(ok); setSaved(ok?"✓ saved":"not saved – check you are online", ok?"ok":"bad"); }, 600); }
+function setSaved(t,c){ const el=$("savedMsg"); if(!el) return; el.textContent=t; el.className="saved "+c; }
+
+/* ---------- sign in ---------- */
+const WHO_KEY="clas-beyond-who";
+async function signIn(cls,cand){
+  IDENTITY={cls,cand}; KEY=KEY_BASE+"_"+cls+"_"+cand;
+  const local=loadLocal();
+  const remote=await CloudStore.pull();
+  if(remote&&remote.__state&&(!local.savedAt||(remote.__state.savedAt||"")>=(local.savedAt||""))) state=Object.assign(blank(),remote.__state);
+  else state=local;
+  if(!FAM[state.at]) state.at="watch";
+  if(!state.news) state.news={};
+  Object.keys(state.done).forEach(s=>{ if(state.done[s]===true) state.done[s]=today(); });
+  NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
+  state.lastVisit=today();
+  try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
+  $("gate").hidden=true; $("app").hidden=false;
+  $("whoName").textContent=cand+" · "+cls;
+  $("linePath").textContent=`Plato, Republic 514a–517a · ${cand}, ${cls} · six stages from the shadows to the sun · classics news every morning at the mouth of the cave`;
+  $("sceneWho").textContent=`CLASSICAL CIVILISATION · BEYOND THE CLASSROOM · ${cand.toUpperCase()} · ${cls.toUpperCase()}`;
+  $("nbCover").textContent=`tablet · ${cand} · ${cls}`;
+  saveLocal(); renderSeg(); renderAll(); say(greeting()); BK.start(); mirrorToCloud();
+}
+$("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const cls=$("gCls").value.trim().toUpperCase(), cand=$("gName").value.trim();
+  if(!cls){ $("gErr").textContent="Enter your form."; return; }
+  if(!/^.{2,40}$/.test(cand)||/^\d+$/.test(cand)){ $("gErr").textContent="Enter your name (2–40 characters)."; return; }
+  $("gGo").textContent="Turning round…"; signIn(cls,cand);
+});
+$("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KEY);}catch(e){} location.reload(); });
+
+/* ---------- the cave: one stone per item ---------- */
+const STONE=14, GAP=5;
+function bez(p0,p1,p2,t){ const u=1-t; return {x:u*u*p0.x+2*u*t*p1.x+t*t*p2.x, y:u*u*p0.y+2*u*t*p1.y+t*t*p2.y}; }
+function gridPts(x0,y0,cols,n){ const out=[]; for(let i=0;i<n;i++) out.push({x:x0+(i%cols)*(STONE+GAP), y:y0+Math.floor(i/cols)*(STONE+GAP)}); return out; }
+function pathPts(p0,p1,p2,n){ const out=[]; for(let i=0;i<n;i++){ const t=n===1?.5:i/(n-1); const p=bez(p0,p1,p2,t); out.push({x:p.x-STONE/2,y:p.y-STONE/2}); } return out; }
+const LABEL={watch:{x:52,y:492},listen:{x:372,y:492},read:{x:500,y:440},do:{x:905,y:330},enter:{x:940,y:110},apply:{x:1150,y:560}};
+const LABEL_TXT={watch:"THE WALL · the shadows",listen:"THE FIRE · the voices behind you",read:"THE STEEP WAY · the texts themselves",do:"OUTSIDE · reflections, then the things",enter:"THE SUN · your own argument",apply:"THE DESCENT · back to the others"};
+const COLOUR={watch:"#9d8ad0",listen:"#e8a33a",read:"#5fa3cc",do:"#6cc08a",enter:"#ffd86b",apply:"#d4694a"};
+function stonePts(g,n){
+  switch(g){
+    case "watch": return gridPts(60,506,13,n);
+    case "listen": return gridPts(372,506,9,n);
+    case "read": return pathPts({x:626,y:756},{x:706,y:690},{x:748,y:594},n>10?Math.ceil(n/2):n).concat(n>10?pathPts({x:748,y:594},{x:784,y:500},{x:856,y:426},Math.floor(n/2)):[]);
+    case "do": return gridPts(925,352,6,n);
+    case "enter": return gridPts(1100,250,8,n);
+    case "apply": return pathPts({x:1360,y:300},{x:1392,y:520},{x:1300,y:640},n>6?Math.ceil(n/2):n).concat(n>6?pathPts({x:1300,y:640},{x:1240,y:740},{x:1130,y:780},Math.floor(n/2)):[]);
+  }
+}
+function buildMap(){
+  let h="";
+  for(const g of ORDER){
+    const list=ITEMS.filter(i=>i.g===g); const pts=stonePts(g,list.length);
+    h+=`<g class="hot" data-f="${g}" tabindex="0" role="button" aria-label="${esc(stageName(g))}: go to its items">
+      <rect class="ring" x="${LABEL[g].x-8}" y="${LABEL[g].y-16}" width="${LABEL_TXT[g].length*7.4+40}" height="24" rx="4" fill="none" stroke="${COLOUR[g]}" stroke-width="1.5"/>
+      <text class="mono lb" id="lb-${g}" x="${LABEL[g].x}" y="${LABEL[g].y}" font-size="11.5" fill="#e8d7a8">${FAM[g].no} · ${LABEL_TXT[g]}</text>
+      <text class="mono lb" id="mc-${g}" x="${LABEL[g].x}" y="${LABEL[g].y+14}" font-size="10" fill="#c9b998"></text></g>`;
+    list.forEach((it,i)=>{ const p=pts[i]||pts[pts.length-1];
+      h+=`<g class="stone" data-s="${it.s}" tabindex="0" role="button" aria-label="Stone ${it.pn}, ${esc(it.short)}"><title>${esc(it.pn)} · ${esc(it.short)}</title>
+        <rect id="st-${it.s}" x="${p.x}" y="${p.y}" width="${STONE}" height="${STONE}" rx="3" fill="#2a2119" stroke="#6a5a48" stroke-width="1"/></g>`; });
+  }
+  $("map").innerHTML=h;
+}
+function lightStones(){
+  const G=stages();
+  ITEMS.forEach(it=>{ const r=$("st-"+it.s); if(!r) return; const d=!!state.done[it.s];
+    r.setAttribute("fill", d?COLOUR[it.g]:"#2a2119"); r.setAttribute("stroke", d?"#fff":"#6a5a48");
+    r.parentNode.classList.toggle("just", JUST===it.s); });
+  JUST=null;
+  ORDER.forEach(g=>{ const el=$("mc-"+g); if(el) el.textContent=`${G.c[g]} of ${G.t[g]} · ${STATE_NAME[G.sec[g]].toUpperCase()}`; });
+  // the walker stands at the stage last touched
+  const W={watch:{x:206,y:772},listen:{x:640,y:776},read:{x:748,y:594},do:{x:1000,y:470},enter:{x:1220,y:318},apply:{x:1300,y:640}}[state.at]||{x:206,y:772};
+  const outside = state.at==="do"||state.at==="enter"||state.at==="apply";
+  $("walker").innerHTML=`<g transform="translate(${W.x} ${W.y})" aria-hidden="true"><ellipse cx="0" cy="2" rx="12" ry="3" fill="#000" opacity=".35"/>
+    <circle cx="0" cy="-34" r="6" fill="${outside?"#2a2119":"#0a0806"}"/><path d="M-6 -27 h12 l3 18 h-4 l-1 11 h-8 l-1 -11 h-4z" fill="${outside?"#2a2119":"#0a0806"}"/></g>`;
+}
+
+/* ---------- the stones as cards ---------- */
+function recHTML(it,extra=""){
+  const done=state.done[it.s];
+  const isNew=NEW_SINCE && it.added>NEW_SINCE;
+  return `<button type="button" class="rec${done?" done":""}${isNew?" new":""}${extra}" data-g="${it.g}" data-s="${it.s}"
+    aria-label="Stone ${it.pn}, ${esc(it.short)}, ${stageName(it.g)}, ${esc(it.t)}${done?", passed":""}${isNew?", new":""}">
+    <span class="no"><span class="dot" aria-hidden="true"></span>stone ${it.pn}</span>
+    <span class="nm">${esc(it.short)}</span>
+    <span class="t">${esc(it.t)}</span>
+    <span class="th">${esc(it.th)}</span>
+    <span class="stamp" aria-hidden="true">PASSED</span></button>`;
+}
+function renderGrid(){
+  $("grid").innerHTML=ORDER.map(g=>{
+    const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
+    const off = (state.fam!=="all" && g!==state.fam) ? " off":"";
+    return `<div class="zone paper hz${off}" id="zone-${g}" data-g="${g}">
+      <div class="zone-head"><div class="ic"><span>${FAM[g].no}<small>STAGE</small></span></div><div><span class="nm">${esc(FAM[g].stage)} · ${FAM[g].label}</span><span class="def">${FAM[g].def}</span></div>
+        <span class="n">${done} of ${list.length} passed · ${STATE_NAME[secState(done,list.length)]}</span></div>
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+  }).join("");
+}
+function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
+function renderStart(){
+  $("htEyebrow").textContent="The card · "+HALFTERM.label;
+  $("htLabel").textContent="This half term's steps";
+  $("htDue").textContent="by "+fmtLong(HALFTERM.until);
+  $("htLede").textContent=HALFTERM.lede;
+  $("start").innerHTML=HALFTERM.items.map((x,i)=>{
+    const it=BY[x.s]; const d=state.done[x.s];
+    return `<div class="leg${d?" done":""}" data-g="${it.g}"><div class="lh"><span class="lno" aria-hidden="true">${d?"✓ DONE":"STAGE "+FAM[it.g].no}</span><span class="step">${esc(x.step)} · ${esc(FAM[it.g].stage)}${d?" · done":""}</span></div><p>${esc(x.txt)}</p>${recHTML(it)}</div>`;
+  }).join("");
+}
+function renderFilters(){
+  const t=totals();
+  let h=`<button type="button" class="chip" data-f="all" aria-pressed="${state.fam==="all"}"><i></i>every stage <b>${ITEMS.length}</b></button>`;
+  for(const g of ORDER){h+=`<button type="button" class="chip" data-g="${g}" data-f="${g}" aria-pressed="${state.fam===g}"><i></i>${FAM[g].no} · ${FAM[g].label} <b>${t[g]}</b></button>`;}
+  $("filters").innerHTML=h;
+  $("goList").innerHTML=ORDER.map(g=>`<button type="button" class="chip go" data-g="${g}" data-go="${g}"><i></i>${FAM[g].no} ${FAM[g].stage}</button>`).join("")+`<button type="button" class="chip go" data-g="news" data-go="news"><i></i>The Mouth</button>`;
+}
+function renderSmallprint(){
+  $("smallprint").innerHTML=SMALLPRINT.map(x=> x.wide ? `<div class="sp wide"><span>${x.txt}</span></div>` :
+    `<div class="sp" data-g="${x.g}" style="--g:${COLOUR[x.g]}"><span class="nm"><b></b>Stage ${FAM[x.g].no} · ${esc(FAM[x.g].stage)}</span><span>${x.txt}</span></div>`).join("");
+}
+function renderMeter(){
+  const G=stages(); const P=comps();
+  $("lapVal").innerHTML=`<small>STONES PASSED</small>${G.N} / ${ITEMS.length}`;
+  $("posVal").innerHTML=`<small>STAGES IN FULL LIGHT</small>${G.complete} of 6`;
+  $("meterBar").style.width=G.pct+"%";
+  $("sectors").innerHTML=ORDER.map(g=>`<span data-st="${G.sec[g]}" title="${esc(FAM[g].stage)}: ${G.c[g]} of ${G.t[g]}, ${STATE_NAME[G.sec[g]]}">${FAM[g].no}</span>`).join("");
+  const parts=Object.keys(P).filter(k=>P[k]).map(k=>`${COMP_NAME[k]} ${P[k]}`);
+  $("coverTxt").textContent=`Light ${G.pct}%. ${G.k} of 6 stages reached.`+(parts.length?` Stones by component: ${parts.join(" · ")}.`:" Every stone is tagged to a part of the course; the mix shows here.");
+  $("rack").innerHTML=ITEMS.map(it=>`<i class="${state.done[it.s]?"on":""}" style="--g:${COLOUR[it.g]}" title="${esc(it.pn)} · ${esc(it.short)}"></i>`).join("");
+  const inn=Object.keys(state.interest).map(s=>BY[s]).filter(Boolean);
+  const nw=Object.keys(state.news||{}).length;
+  $("register").innerHTML=(inn.length?`<span><b>Your name is down for:</b> ${inn.map(i=>esc(i.short)).join(" · ")}</span>`:`<span>Tap "I'm entering this" or "I'm interested" on a stone and the department has your name.</span>`)
+    +`<span><b>Tablet:</b> ${plural(state.notes.length,"line")} · <b>Mouth of the Cave:</b> ${nw} taken in</span>`;
+  setLight(G.N/ITEMS.length);
+  lightStones();
+}
+function renderYear(){
+  const byM={}; YEAR.forEach(e=>{ (byM[e.m]=byM[e.m]||[]).push(e); });
+  $("year").innerHTML=MONTHS.map(([m,name,term])=>{
+    const evs=byM[m]||[];
+    return `<div class="month"><h3>${name}<small>${term}</small></h3>${evs.length?evs.map(e=>{
+      const it=e.s?BY[e.s]:null; const mine=it&&state.interest[it.s];
+      return `<div class="ev${e.urgent?" urgent":""}"><span class="w">${esc(e.when)}</span><div><b>${esc(e.what)}${e.check?'<span class="chk">check</span>':""}${mine?'<span class="mine">YOUR NAME IS DOWN</span>':""}</b><span class="s">${esc(e.sub)}</span>${it?` <button type="button" class="open" data-s="${it.s}">open the stone</button>`:""}</div></div>`;
+    }).join(""):`<div class="ev"><span class="w">—</span><div><span class="s">Nothing fixed yet.</span></div></div>`}</div>`;
+  }).join("");
+}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();}
+
+/* ---------- the sheet ---------- */
+let lastFocus=null, openSym=null;
+function interestLabel(it){ return it.g==="enter" ? (it.tags.includes("enter yourself")?"I'm entering this":"I want to enter") : it.ask ? "Put my name down" : "I'm interested"; }
+function openSheet(sym){
+  const it=BY[sym]; if(!it) return; openSym=sym; lastFocus=document.activeElement;
+  const done=!!state.done[sym]; const inn=state.interest[sym];
+  const link = it.url ? `<a class="btn g" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.lt)} ↗</a>` : `<span class="small">No link: ${it.tags.includes("book")?"it is a book. Ask the library or the department for a copy.":"this one happens in person. Tell the department."}</span>`;
+  const more = (it.more||[]).map(m=>`<a class="btn ghost" href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.lt)} ↗</a>`).join("");
+  const askable = (it.g==="enter" || it.g==="apply" || it.ask);
+  const selfEntry = it.tags.includes("enter yourself");
+  const interestBtn = askable ? `<button type="button" class="btn ghost${inn?" on":""}" id="shIn" aria-pressed="${!!inn}">${inn?"✓ The department has your name (undo)":interestLabel(it)}</button>` : "";
+  const sh=$("sheet"); sh.dataset.g=it.g;
+  sh.innerHTML=`<div class="sheet-top">
+      <div class="plate-ic" aria-hidden="true"><span>${it.pn}</span></div>
+      <div><div class="fam"><span class="st2${done?" closed":""}">${done?"passed":"not yet"}</span>Stone ${it.tno} · ${stageName(it.g)} · ${FAM[it.g].label} · ${esc(it.t)}</div><h3 id="shTitle">${esc(it.name)}</h3></div>
+      <button type="button" class="x" id="shClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
+      <div class="think"><b>Glaux · your task</b>${esc(it.think)}</div>
+      <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
+      <div class="actions">
+        ${link}${more}
+        ${interestBtn}
+        <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Passed ✓ (undo)":"Pass it: I've done this"}</button>
+        <button type="button" class="btn ghost" id="shWrite">Write it on my tablet</button>
+      </div>
+      ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department has your name; no email needed."):"Tap the button and your teacher will talk to you about dates, consent forms and cost."}</p>`:""}
+    </div>`;
+  $("scrim").hidden=false; sh.hidden=false; $("shClose").focus();
+}
+function closeSheet(){ $("sheet").hidden=true; $("scrim").hidden=true; openSym=null; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function toggleDone(sym){
+  const was=!!state.done[sym]; const before=stages();
+  if(was) delete state.done[sym]; else { state.done[sym]=today(); JUST=sym; }
+  state.at=BY[sym].g;
+  const G=stages(); const g=BY[sym].g;
+  if(!was && G.sec[g]===3 && before.sec[g]!==3) JUST_DONE=g;
+  save(); renderStart(); renderGrid(); renderMeter();
+  if(!was){ const it=BY[sym];
+    if(G.sec[g]===3 && G.complete===6) say(`Every stage in full light. ${G.N} of ${ITEMS.length}. Plato says you go back down now. Stage 6 has a stone for it.`);
+    else if(G.sec[g]===3) say(`${FAM[g].stage}: in full light. Every stone there passed. Your eyes will take a moment.`);
+    else if(before.c[g]===0 && g==="watch" && G.k===1) say(`A shadow, and a start. Stone ${it.pn}, ${it.short}. Now write it on the tablet while you can still see what it showed you.`);
+    else if(before.c[g]===0 && G.k>1) say(`${FAM[g].stage}: reached. ${G.k} of 6 stages, ${plural(G.N,"stone")} passed. The light is ${G.pct}%.`);
+    else if(before.c[g]===0) say(`First stone: ${it.pn}, ${it.short}. Write it on the tablet while you still remember what you found out.`);
+    else if(G.sec[g]===2 && before.sec[g]!==2) say(`${FAM[g].stage}: half way.`);
+    else say(pick([`Stone ${it.pn} passed: ${it.short}. ${plural(G.N,"stone")} so far. The light is ${G.pct}%.`,`${it.short}: passed. ${G.N} of ${ITEMS.length}. A passed stone is not a line on the tablet, mind.`,`${it.short}: passed. There are stages you have not reached.`,`Passed. Eyes up. Next stone.`])); }
+  else say("Unpassed. That stone is dark again.");
+}
+function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.interest[sym]=today(); else delete state.interest[sym]; save(); renderYear(); renderMeter();
+  say(on?`Your name goes to the department for ${BY[sym].short}. Your teacher does the rest.`:`Your name is off the list for ${BY[sym].short}.`); }
+
+function goZone(g){
+  if(g==="news"){ goNews(); return; }
+  if(g==="notebook"||g==="timetable"){ const el=$(g); el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    say(g==="notebook"?`Your tablet: ${plural(state.notes.length,"line")} so far. What you found out is the part that matters.`:"The year: the dates. Anything marked check follows last year's pattern."); return; }
+  state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid(); lightStones();
+  const el=$("zone-"+g); if(!el) return;
+  setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+    el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2200); }, reduceMotion()?0:300);
+  document.querySelectorAll(".hot.lit").forEach(h=>h.classList.remove("lit"));
+  document.querySelectorAll(`.hot[data-f="${g}"]`).forEach(hot=>{ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); });
+  const G=stages();
+  say(`${FAM[g].stage}: ${FAM[g].verb.toLowerCase()}. ${G.c[g]?`${G.c[g]} of ${G.t[g]} passed.`:"Nothing from here yet."}`);
+}
+
+document.addEventListener("click",e=>{
+  const st=e.target.closest(".stone"); if(st){ openSheet(st.dataset.s); return; }
+  const hot=e.target.closest(".hot"); if(hot){ goZone(hot.dataset.f); return; }
+  const go=e.target.closest("[data-go]"); if(go){ goZone(go.dataset.go); return; }
+  const t=e.target.closest("[data-s]");
+  if(t && (t.classList.contains("rec")||t.classList.contains("open"))){ openSheet(t.dataset.s); return; }
+  const f=e.target.closest(".chip[data-f]");
+  if(f){ state.fam = (state.fam===f.dataset.f && f.dataset.f!=="all") ? "all" : f.dataset.f; saveLocal(); renderFilters(); renderGrid(); return; }
+  if(e.target.id==="shClose"||e.target.id==="scrim"){ closeSheet(); return; }
+  if(e.target.id==="shDone"){ const s=openSym; toggleDone(s); openSheet(s); $("shDone").focus(); return; }
+  if(e.target.id==="shIn"){ const s=openSym; toggleInterest(s); openSheet(s); $("shIn").focus(); return; }
+  if(e.target.id==="shWrite"){ const it=BY[openSym]; closeSheet(); $("nbWhat").value=it.name; $("nbQ").placeholder=it.think;
+    const o=[...$("nbHw").options].find(o=>o.value===it.th); if(o) $("nbHw").value=o.value;
+    $("notebook").scrollIntoView({behavior:reduceMotion()?"auto":"smooth"}); $("nbQuo").focus({preventScroll:true}); return; }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("sheet").hidden){ closeSheet(); return; }
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && (e.target.classList.contains("hot")||e.target.classList.contains("stone"))){ e.preventDefault(); e.target.dispatchEvent(new MouseEvent("click",{bubbles:true})); }
+});
+
+/* ---------- next step ---------- */
+const inBucket=(it,b)=> b==="quick"? it.mins<=20 : b==="evening"? (it.mins>20&&it.mins<=180) : it.mins>180;
+const BUCKET_TXT={quick:"twenty minutes or so",evening:"an evening",long:"weeks"};
+function renderSeg(){ document.querySelectorAll("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.b===state.bucket))); }
+$("seg").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; state.bucket=b.dataset.b; saveLocal(); renderSeg(); $("pickMsg").textContent="";});
+$("pickBtn").addEventListener("click",()=>{
+  const pool=ITEMS.filter(i=>inBucket(i,state.bucket)&&!state.done[i.s]);
+  if(!pool.length){ $("pickMsg").textContent="You have passed every stone that takes "+BUCKET_TXT[state.bucket]+". Try a different amount of time."; say("No stone left that takes "+BUCKET_TXT[state.bucket]+". Change the time."); return; }
+  // prefer a stage the pupil has not reached, two times in three
+  const G=stages(); const fresh=pool.filter(i=>!G.c[i.g]);
+  const choice = (fresh.length && Math.random()<.67) ? pick(fresh) : pick(pool);
+  if(state.fam!=="all"){ state.fam="all"; renderFilters(); renderGrid(); }
+  say("Something that takes "+BUCKET_TXT[state.bucket]+". Looking.");
+  $("pickBtn").disabled=true;
+  const img=$("guideImg"); img.classList.remove("call"); void img.offsetWidth; if(!reduceMotion()) img.classList.add("call");
+  const land=()=>{ $("pickBtn").disabled=false; img.classList.remove("call");
+    $("pickMsg").textContent=`Your step: ${choice.short}, ${choice.t}.`;
+    say(`Next step, from ${FAM[choice.g].stage}: ${choice.short} (${choice.t}).${!G.c[choice.g]?" You have not reached that stage yet, so this one takes you there.":""}`);
+    state.at=choice.g; saveLocal(); lightStones();
+    document.querySelectorAll("#grid .rec.flash").forEach(t=>t.classList.remove("flash"));
+    const el=document.querySelector(`#grid .rec[data-s="${choice.s}"]`);
+    if(el){ el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),3000); }
+    setTimeout(()=>openSheet(choice.s), reduceMotion()?0:400); };
+  setTimeout(land, reduceMotion()?0:1600);
+});
+
+/* ---------- the mouth of the cave: classics in the news ---------- */
+const NEWS_URL="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/data/classics-news.json";
+const KIND={podcast:["pc","Podcast"],story:["sto","Article"],line:["ln","A line of Greek or Latin"]};
+let NEWS=null, NEWS_ERR=false, newsTh="all", newsShow=12, newsOpen=null;
+function newsCount(){ return Object.keys(state.news||{}).length; }
+function fmtNewsDate(iso){ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } }
+const wordCount=t=>(String(t).trim().match(/\S+/g)||[]).length;
+function newsStory(id){ const s=NEWS&&NEWS.stories.find(x=>x.id===id); if(s) return s;
+  const m=(state.news||{})[id]; return m?{id,src:m.src,title:m.title,url:m.url,th:m.th||[],date:m.d,desc:"",kind:m.kind||"story"}:null; }
+function newsFiltered(){
+  if(newsTh==="read") return Object.values(state.news||{}).sort((a,b)=>String(b.d).localeCompare(String(a.d))).map(n=>newsStory(n.id)).filter(Boolean);
+  const list=NEWS.stories;
+  if(newsTh==="podcast") return list.filter(s=>s.kind==="podcast");
+  if(newsTh==="line") return list.filter(s=>s.kind==="line");
+  if(newsTh==="beyond") return list.filter(s=>!s.th.length);
+  if(newsTh!=="all") return list.filter(s=>s.th.includes(newsTh));
+  return list;
+}
+function storyHTML(s){
+  const mine=(state.news||{})[s.id]; const kd=KIND[s.kind]||KIND.story;
+  return `<article class="story ${kd[0]}${mine?" read":""}" data-nid="${esc(s.id)}">
+    ${mine?'<span class="stampn">TAKEN IN</span>':""}
+    <div class="meta"><span class="src">${esc(s.src)}</span><span class="lvl">${kd[1]}</span><span>${esc(fmtNewsDate(s.date))}</span></div>
+    <h3>${esc(s.title)}</h3>
+    ${s.desc?`<p class="d">${esc(s.desc)}</p>`:""}
+    <div class="stags">${s.th.length?s.th.map(t=>`<span class="ttag">${esc(t)}</span>`).join(""):'<span class="ttag beyond">Beyond the course</span>'}</div>
+    ${mine&&newsOpen!==s.id?`<p class="tw-mine">${esc(mine.txt)}</p>${mine.q?`<p class="tw-mine q">Question: ${esc(mine.q)}</p>`:""}`:""}
+    <div class="acts"><a class="btn ghost" href="${esc(s.url)}" target="_blank" rel="noopener">${s.kind==="podcast"?"Listen ↗":"Read it ↗"}</a>
+      ${newsOpen===s.id?"":(mine?'<button type="button" class="btn ghost" data-nact="write">Edit what I wrote</button>':'<button type="button" class="btn hv" data-nact="write">Take it in</button>')}</div>
+    ${newsOpen===s.id?`<form class="tw" data-nform="${esc(s.id)}" autocomplete="off">
+      <div class="field"><label for="nw-${esc(s.id)}">Two sentences: what it was, and which part of the course it touches</label><textarea id="nw-${esc(s.id)}" required>${mine?esc(mine.txt):""}</textarea></div>
+      <div class="field"><label for="nq-${esc(s.id)}">A question it raised, or where you would look next (optional)</label><textarea id="nq-${esc(s.id)}">${mine?esc(mine.q||""):""}</textarea></div>
+      <span class="wc" id="nwc-${esc(s.id)}" aria-live="polite"></span>
+      <div class="actions"><button class="btn hv" type="submit">Take it in</button><button type="button" class="btn ghost" data-nact="cancel">Cancel</button></div>
+    </form>`:""}
+  </article>`;
+}
+function renderNews(){
+  const box=$("newsList"); if(!box) return;
+  if(!NEWS){ $("newsFilters").innerHTML=""; $("newsMore").hidden=true;
+    box.innerHTML=`<p class="small">${NEWS_ERR?"The Mouth of the Cave could not be reached. Everything else on the page works; try again later.":"Letting today's light in…"}</p>`; return; }
+  const counts={}; NEWS.stories.forEach(s=>s.th.forEach(t=>counts[t]=(counts[t]||0)+1));
+  const np=NEWS.stories.filter(s=>s.kind==="podcast").length, nl=NEWS.stories.filter(s=>s.kind==="line").length;
+  const beyond=NEWS.stories.filter(s=>!s.th.length).length;
+  let h=`<button type="button" class="nchip" data-nt="all" aria-pressed="${newsTh==="all"}">everything <b>${NEWS.stories.length}</b></button>`;
+  if(np) h+=`<button type="button" class="nchip" data-nt="podcast" aria-pressed="${newsTh==="podcast"}">podcasts <b>${np}</b></button>`;
+  if(nl) h+=`<button type="button" class="nchip" data-nt="line" aria-pressed="${newsTh==="line"}">a line of the original <b>${nl}</b></button>`;
+  (NEWS.themes||[]).forEach(t=>{ if(counts[t]) h+=`<button type="button" class="nchip" data-nt="${esc(t)}" aria-pressed="${newsTh===t}">${esc(t)} <b>${counts[t]}</b></button>`; });
+  if(beyond) h+=`<button type="button" class="nchip" data-nt="beyond" aria-pressed="${newsTh==="beyond"}">beyond the course <b>${beyond}</b></button>`;
+  h+=`<button type="button" class="nchip" data-nt="read" aria-pressed="${newsTh==="read"}">taken in by you <b>${newsCount()}</b></button>`;
+  $("newsFilters").innerHTML=h;
+  let when=""; try{ when=new Date(NEWS.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
+  $("newsWhen").textContent=when?"Collected "+when:"";
+  const list=newsFiltered();
+  box.innerHTML=list.length?list.slice(0,newsShow).map(storyHTML).join(""):`<p class="small">${newsTh==="read"?"Nothing taken in yet. Pick one and press Take it in.":"Nothing tagged to this part of the course today. Try everything."}</p>`;
+  $("newsMore").hidden=list.length<=newsShow;
+  const src=(NEWS.sources||[]); const ok=src.filter(x=>x.ok).length;
+  $("newsFoot").innerHTML=`Sources (${ok} of ${src.length} answered this morning): ${src.map(x=>`<span title="${esc(x.line||"")}">${esc(x.src)}</span>`+(x.ok?"":" (no answer today)")).join(" · ")}. Chosen by the sources, not checked by the department; hover a name to see what it is. If a site asks you to sign in or pay, pick another.`;
+}
+async function loadNews(){
+  try{ const r=await fetch(NEWS_URL+"?d="+today(),{cache:"no-cache"}); if(!r.ok) throw 0;
+    const j=await r.json(); if(!j||!Array.isArray(j.stories)) throw 0; NEWS=j; }catch(e){ NEWS_ERR=true; }
+  renderNews();
+}
+function goNews(){
+  const el=$("news"); if(!el) return;
+  el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+  const n=newsCount();
+  say(NEWS?`The Mouth of the Cave: ${NEWS.stories.length} pieces in this morning. ${n?`You have taken in ${n}.`:"Pick one and write two sentences."}`:"The Mouth of the Cave: classics news, new every morning.");
+}
+$("newsFilters").addEventListener("click",e=>{ const b=e.target.closest(".nchip"); if(!b) return; newsTh=b.dataset.nt; newsShow=12; newsOpen=null; renderNews(); });
+$("newsMore").addEventListener("click",()=>{ newsShow+=12; renderNews(); });
+$("newsList").addEventListener("click",e=>{
+  const b=e.target.closest("[data-nact]"); if(!b) return;
+  const id=b.closest(".story").dataset.nid;
+  if(b.dataset.nact==="cancel"){ newsOpen=null; renderNews(); return; }
+  newsOpen=id; renderNews(); const t=$("nw-"+id); if(t) t.focus();
+  say(pick(["What was it, and where does it touch your course? Two sentences.","Say what it was, then make the link: a text, an object, an idea, a scholar.","If you can say which component it belongs to, and why, you have taken it in."]));
+});
+$("newsList").addEventListener("submit",e=>{
+  const f=e.target.closest("form[data-nform]"); if(!f) return; e.preventDefault();
+  const id=f.dataset.nform, s=newsStory(id); if(!s) return;
+  const txt=$("nw-"+id).value.trim(), q=$("nq-"+id).value.trim();
+  if(wordCount(txt)<15){ $("nwc-"+id).textContent="A little more: at least 15 words, so it says what it was and how it connects to your course."; return; }
+  if(!state.news) state.news={};
+  const was=state.news[id];
+  state.news[id]={id,d:was?was.d:today(),src:s.src,title:s.title,url:s.url,th:s.th||[],kind:s.kind||"story",txt,q};
+  const k=state.notes.findIndex(n=>n.news===id);
+  if(k>=0){ state.notes[k].learned=txt; state.notes[k].q=q; }
+  else state.notes.unshift({date:today(),hw:(s.th&&s.th[0])||"Beyond the course",what:(s.kind==="podcast"?"Listened: ":"Read: ")+s.title+" ("+s.src+")",learned:txt,q,news:id,tag:(s.th&&s.th[0])||""});
+  newsOpen=null; save(); renderNews(); renderNotes(); renderMeter();
+  const n=newsCount();
+  say(was?"Changed, here and on your tablet.":pick([`Taken in, and it is on your tablet. ${n} so far.`,"Good. That is your answer to 'What have you been reading in Classics lately?'",`Taken in. ${n} from the Mouth of the Cave now.`]));
+});
+
+/* ---------- the tablet ---------- */
+function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+function noteHTML(n,i,example){
+  const it=n.s?BY[n.s]:null;
+  const msg=n.quo||n.what;
+  return `<article class="note${example?" example":""}"${it?` data-g="${it.g}"`:(n.news?' data-g="news"':"")}${example?' aria-label="Example line"':""}>
+      <div class="hd"><span><span class="tno">${it?"stone "+it.pn:n.news?"the Mouth":"tablet"}</span> · ${esc(IDENTITY?IDENTITY.cand:"you")}</span><span>${example?"example":esc(fmtDate(n.date))}</span></div>
+      <div class="msg">${esc(msg)}</div>
+      <div class="src">${n.quo?esc(n.what)+" · ":""}${esc(n.hw||"")}${n.tag&&n.tag!==n.hw?" · "+esc(n.tag):""}</div>
+      <div class="why"><i>what I found out</i>${esc(n.learned)}</div>
+      ${n.q?`<div class="qy"><i>question / where next</i>${esc(n.q)}</div>`:""}
+      ${example?"":`<div><button type="button" class="del" data-i="${i}">Rub this line out</button></div>`}
+    </article>`;
+}
+function renderNotes(){
+  const box=$("entries");
+  $("logCount").textContent=state.notes.length?plural(state.notes.length,"line"):"";
+  if(!state.notes.length){
+    box.innerHTML=noteHTML({date:today(),hw:"WH Odyssey",what:"Jill Dash (TED-Ed): Everything you need to know to read Homer's Odyssey",s:"Jd",
+      quo:"Odysseus names himself to the Cyclops because kleos needs a name attached to it",
+      learned:"The talk treats the boast as pride. Reread Book 9: Odysseus has just saved the crew with 'Nobody', and the name is what lets Polyphemus curse him by name to Poseidon. The boast is heroic in the Iliad's terms and fatal in the Odyssey's, which is the poem's argument about what kind of hero it wants.",
+      q:"Does Odysseus ever boast like that again after Book 9, or does the poem train it out of him?"},0,true)+`<p class="small" style="color:var(--dim)">No lines yet. Pass one stone, then write the first.</p>`;
+    return;
+  }
+  box.innerHTML=state.notes.map((n,i)=>noteHTML(n,i,false)).join("");
+}
+$("entries").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  if(!b.classList.contains("arm")){ b.classList.add("arm"); b.textContent="Tap again to rub it out"; setTimeout(()=>{ if(b.isConnected){ b.classList.remove("arm"); b.textContent="Rub this line out"; } },3000); return; }
+  state.notes.splice(Number(b.dataset.i),1); save(); renderNotes(); renderMeter();
+});
+$("entryForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n={date:$("nbDate").value,hw:$("nbHw").value,what:$("nbWhat").value.trim(),quo:$("nbQuo").value.trim(),learned:$("nbLearned").value.trim(),q:$("nbQ").value.trim()};
+  if(!n.date||!n.hw||!n.what||!n.learned) return;
+  const match=ITEMS.find(i=>i.name===n.what||i.short===n.what);
+  if(match){ n.s=match.s; const before=stages(); if(!state.done[match.s]){ JUST=match.s; state.done[match.s]=n.date; const G=stages(); if(G.sec[match.g]===3&&before.sec[match.g]!==3) JUST_DONE=match.g; } state.at=match.g; }
+  state.notes.unshift(n);
+  save(); renderNotes(); renderStart(); renderGrid(); renderMeter();
+  ["nbWhat","nbQuo","nbLearned","nbQ"].forEach(id=>$(id).value=""); $("nbHw").value=""; $("nbQ").placeholder="";
+  $("copyMsg").textContent="Written on your tablet.";
+  say(pick(["Written. The tablet is what a university reads; the stones are for you.","Good line. Keep the question: your next stone should try to answer it.","What it was, its point, what you found out. That is a proper line."]));
+});
+$("copyBtn").addEventListener("click",()=>{
+  if(!state.notes.length){ $("copyMsg").textContent="Nothing to copy yet."; return; }
+  const txt=`Classical Civilisation tablet – ${IDENTITY.cand}, ${IDENTITY.cls}\n\n`+state.notes.map(n=>`${fmtDate(n.date)} · ${n.hw||""}${n.tag&&n.tag!==n.hw?" · "+n.tag:""}\nFrom: ${n.what}${n.quo?`\nThe point: ${n.quo}`:""}\nWhat I found out: ${n.learned}${n.q?`\nQuestion: ${n.q}`:""}`).join("\n\n");
+  const fb=()=>{ const t=$("copyFallback"); t.value=txt; t.hidden=false; t.focus(); t.select(); $("copyMsg").textContent="Select all and copy the text below."; };
+  try{ navigator.clipboard.writeText(txt).then(()=>{ $("copyMsg").textContent="Copied."; },fb); }catch(err){ fb(); }
+});
+/* ---------- backup to file (BACKUP BLOCK v1) ---------- */
+const BK=(function(){
+  let lastBk=null, cloudBad=false, pending=null, on=false, lastTxt="";
+  const subject=(document.title||"Lesson").trim();
+  const bkKey=()=>KEY+"__backup";
+  const hhmm=iso=>{ try{ return new Date(iso).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } };
+  const day=iso=>{ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } };
+  const dirty=()=> !lastBk || (!!state.savedAt && state.savedAt>lastBk);
+  let msgT=null;
+  const msg=h=>{ clearTimeout(msgT); $("bkMsg").innerHTML=h; if(h && !/<button/.test(h)) msgT=setTimeout(()=>{ $("bkMsg").innerHTML=""; },10000); };
+  function render(){
+    if(!on) return;
+    const b=$("bkBanner"), btn=$("bkSave"); let cls="", txt;
+    if(cloudBad && dirty()){ cls="bad"; txt="Your work did not save online. Press Backup now and keep the file."; }
+    else if(cloudBad){ cls="ok"; txt="Your work did not save online, but your backup from "+hhmm(lastBk)+" has it. Back up again if you do any more."; }
+    else if(dirty()){ txt="Before you close this page, press Backup and keep the file."+(lastBk?" You have done more since your last backup at "+hhmm(lastBk)+".":""); }
+    else { cls="ok"; txt="Backed up at "+hhmm(lastBk)+". Back up again if you do any more."; }
+    b.className="bk-banner"+(cls?" "+cls:"");
+    if(txt!==lastTxt){ b.innerHTML=esc(txt)+' <button type="button" id="bkBannerBtn">Backup now</button>'; lastTxt=txt; }
+    btn.classList.toggle("ok", !dirty());
+    btn.textContent=!dirty()?"Backed up ✓":"Backup";
+  }
+  function fileName(){
+    const n=(IDENTITY&&IDENTITY.cand||"pupil").replace(/[^\w \-]/g,"").trim();
+    return n+" - "+subject.replace(/[^\w \-]/g,"").trim()+" - backup "+today()+".json";
+  }
+  function backup(){
+    const data={kind:"html-lesson-backup",v:1,book:CLOUD.book,page:subject,
+      cls:IDENTITY&&IDENTITY.cls,name:IDENTITY&&IDENTITY.cand,made:new Date().toISOString(),state:state};
+    const name=fileName();
+    try{
+      const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+      const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),4000);
+    }catch(e){ msg("The backup could not be made on this computer. Tell your teacher."); return; }
+    lastBk=data.made; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg(`<span>Saved to your <b>Downloads</b> folder as<br><b>${esc(name)}</b>. Keep it until your teacher has seen your work.</span>`);
+    render();
+  }
+  function askRestore(data){
+    pending=data;
+    const s=data.state||{}, ticks=Object.keys(s.done||{}).length, notes=(s.notes||[]).length;
+    const other = IDENTITY && data.name && data.name.toLowerCase()!==IDENTITY.cand.toLowerCase()
+      ? `<span><b>This backup belongs to ${esc(data.name)}.</b></span>` : "";
+    msg(`${other}<span>Replace what is on screen with the backup from <b>${esc(day(data.made))}, ${esc(hhmm(data.made))}</b>
+      (${ticks} stones passed, ${notes} ${notes===1?"line":"lines"} on the tablet)?</span>
+      <div class="bk-row"><button type="button" class="go" id="bkYes">Replace</button><button type="button" id="bkNo">Cancel</button></div>`);
+    $("bkYes").focus();
+  }
+  function restore(){
+    if(!pending) return;
+    state=Object.assign(blank(), pending.state); state.lastVisit=today();
+    pending=null; save(); renderAll();
+    lastBk=state.savedAt; try{ localStorage.setItem(bkKey(),lastBk); }catch(e){}
+    msg("Restored. Your work from the backup is back on screen."); render();
+  }
+  function read(file){
+    const r=new FileReader();
+    r.onload=()=>{ let d=null; try{ d=JSON.parse(r.result); }catch(e){}
+      if(!d||d.kind!=="html-lesson-backup"||!d.state){ msg("That file is not a backup from this page. Choose the file that ends in <b>backup</b> and <b>.json</b>."); return; }
+      if(d.book!==CLOUD.book){ msg(`That backup is from <b>${esc(d.page||"another page")}</b>, not this one.`); return; }
+      askRestore(d); };
+    r.onerror=()=>msg("The file could not be opened. Try again.");
+    r.readAsText(file);
+  }
+  document.addEventListener("click",e=>{
+    const id=e.target.id;
+    if(id==="bkSave"||id==="bkBannerBtn") backup();
+    else if(id==="bkLoad"){ $("bkFile").value=""; $("bkFile").click(); }
+    else if(id==="bkYes") restore();
+    else if(id==="bkNo"){ pending=null; msg(""); }
+  });
+  $("bkFile").addEventListener("change",e=>{ const f=e.target.files&&e.target.files[0]; if(f) read(f); });
+  return {
+    start(){ try{ lastBk=localStorage.getItem(bkKey()); }catch(e){ lastBk=null; } on=true; lastTxt="";
+      $("bkBanner").hidden=false; $("bkDock").hidden=false; document.body.classList.add("bk-on"); render(); },
+    changed(){ render(); },
+    cloud(ok){ cloudBad=!ok; render(); }
+  };
+})();
+
+/* ---------- init ---------- */
+$("strap").textContent=ITEMS.length+" free things to watch, listen to, read, do, enter and apply for · classics news every morning at the mouth of the cave · the page gets lighter as you go";
+$("tableEyebrow").textContent="Six stages · "+ITEMS.length+" stones · one each on the way up";
+$("foot").innerHTML="Compiled 30 September 2026, rebuilt for the department's course and link-checked 10 October 2026 · course tags follow OCR A Level Classical Civilisation (H408) as the department teaches it: The World of the Hero (Odyssey and Aeneid), Love and Relationships, The Invention of the Barbarian and Greek Art · free at the point of use unless the stone says otherwise<br>Sources for the six stages are in the small print under the cave, with Stephanus pages. The cave is Plato's; the diagram and the owl are this page's. The Mouth of the Cave refreshes itself every morning; its articles and podcasts come from the sources named under it and are not checked by the department. Some podcasts use strong language. The books are in the library or on request.";
+$("nbDate").value=today();
+loadNews();
+$("whatList").innerHTML=ITEMS.map(i=>`<option value="${esc(i.name)}"></option>`).join("");
+buildMap(); renderSmallprint(); setLight(0);
+(function(){ let who=null; try{ who=JSON.parse(sessionStorage.getItem(WHO_KEY)||"null"); }catch(e){}
+  if(who&&who.cls&&who.cand){ signIn(who.cls,who.cand); } else { $("gCls").focus(); } })();
+})();
+</script>
+</body>
+</html>

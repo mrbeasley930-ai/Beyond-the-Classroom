@@ -1,0 +1,34 @@
+name: Classics at the mouth of the cave
+
+# Reads the classics journals, archaeology feeds and podcasts every morning and commits
+# data/classics-news.json, which the Classical Civilisation page ("The Cave") reads for
+# the Mouth of the Cave. Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "40 7 * * *"     # 07:40 UTC daily, after the Politics Order Paper (07:25); the last of the morning runs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: classics-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Let the light in
+        run: python3 tools/fetch_classics_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "glaux-bot"
+          git config user.email "glaux-bot@users.noreply.github.com"
+          git add data/classics-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "The mouth of the cave: classics news $(date -u +%Y-%m-%d)" && git pull --rebase && git push; fi
