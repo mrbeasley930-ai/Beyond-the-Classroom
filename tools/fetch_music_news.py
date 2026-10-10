@@ -202,7 +202,8 @@ def main():
                 "id": hashlib.sha1(url.encode("utf-8")).hexdigest()[:10],
                 "kind": "broadcast", "src": f"{label} · {station}", "title": title, "url": sounds, "page": url,
                 "desc": (desc[:277] + "…") if len(desc) > 280 else desc,
-                "date": (date or now).isoformat(timespec="minutes"), "th": tag(title, desc),
+                "date": (date or now).isoformat(timespec="minutes"),
+                "th": tag(title, desc) or (["AoS1 Western classical 1650–1910"] if label == "Composer of the Week" else []),
             })
             k += 1
         sources.append({"src": label, "kind": "broadcast", "line": f"{station} · {line}", "ok": True, "n": k})
