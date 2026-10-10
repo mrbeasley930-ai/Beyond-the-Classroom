@@ -1,0 +1,34 @@
+name: Politics order paper
+
+# Pulls the politics feeds and the latest Commons divisions every morning and commits
+# data/politics-news.json, which the Politics "Division Lobby" page reads (the Order Paper
+# and the Division). Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "25 7 * * *"     # 07:25 UTC daily, after History arrivals (07:10)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: politics-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the feeds and the divisions
+        run: python3 tools/fetch_politics_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "order-paper-bot"
+          git config user.email "order-paper-bot@users.noreply.github.com"
+          git add data/politics-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "Order Paper: politics $(date -u +%Y-%m-%d)" && git pull --rebase && git push; fi
