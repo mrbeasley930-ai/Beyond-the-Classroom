@@ -1,0 +1,33 @@
+name: History arrivals board
+
+# Pulls the history feeds every morning and commits data/history-news.json,
+# which the History "History Line" page reads (the Arrivals board). Nothing else on the site changes.
+
+on:
+  schedule:
+    - cron: "10 7 * * *"     # 07:10 UTC daily, after Computer Science upstream (06:55)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: history-news
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the feeds
+        run: python3 tools/fetch_history_news.py
+      - name: Commit if changed
+        run: |
+          git config user.name "arrivals-bot"
+          git config user.email "arrivals-bot@users.noreply.github.com"
+          git add data/history-news.json
+          if git diff --cached --quiet; then echo "no change"; else git commit -m "Arrivals: history stories $(date -u +%Y-%m-%d)" && git pull --rebase && git push; fi
