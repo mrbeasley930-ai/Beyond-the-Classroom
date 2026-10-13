@@ -5,8 +5,8 @@ for the Engineering page ("The Garage": the pit wall screens).
 Runs in a GitHub Action every morning (see .github/workflows/engineering-news.yml).
 No third-party packages: urllib + xml only.
 
-Each story is tagged to the units of the OCR Cambridge Advanced National in Engineering
-(H027/H127, units F130-F137) by keyword. The tags are a rough sort to help a pupil find a
+Each story is tagged to the topic areas of OCR A Level Design and Technology: Design
+Engineering (H404; nine topic areas, 1 Identifying requirements to 9 Health and safety) by keyword. The tags are a rough sort to help a pupil find a
 story that touches the unit they are on; they are not a judgement about the story.
 Stories from the motorsport sources also carry the "Motorsport" tag, and only technical
 stories are kept from them (results and gossip are dropped by keyword).
@@ -44,16 +44,18 @@ FEEDS = [
     ("ScienceDaily (materials)", "https://www.sciencedaily.com/rss/matter_energy/materials_science.xml", "research", "university press releases, materials science", 4, "eng"),
 ]
 
-# OCR Cambridge Advanced National in Engineering units, by keyword (lower-case match)
+# OCR A Level Design and Technology: Design Engineering (H404), the nine topic areas of the
+# specification, by keyword (lower-case match). Short labels here; the page expands them.
 THEMES = {
-    "F130 Principles":      r"\bforces?\b|torque|momentum|velocity|accelerat|friction|\bload(s|ed|ing)?\b|efficien|thermodynamic|\bheat\b|fluid|aerodynam|downforce|\bdrag\b|pressure|stress|strain|vibrat|resonan|kinetic|wind tunnel|\bwinds?\b",
-    "F131 Materials":       r"material|steel|alumin|titanium|carbon fibre|carbon fiber|composite|concrete|timber|\bwood|bamboo|polymer|plastic|ceramic|alloy|graphene|corrosion|fatigue|crack|\bglass\b|rubber|\btyres?\b|\btires?\b|recycl|metamaterial|metasurface|\bgel\b",
-    "F132 In practice":     r"safety|sustainab|net zero|emission|regulation|technical rules|standards?\b|inspect|maintenance|collapse|failure|\bfail(s|ed)?\b|construction|infrastructure|bridge|tunnel|railway|\brail\b|\bdam\b|highway|airport|reactor|cost cap|ethic|hydrogen",
-    "F133 CAD":             r"\bcad\b|computer-aided design|digital twin|simulat|\bcfd\b|finite element|\bfea\b|design software",
-    "F134 Programmable electronics": r"microcontroller|arduino|raspberry pi|embedded|\bcode\b|coding|algorithm|\bai\b|artificial intelligence|machine learning|robot|autonomous|self-driving|sensors?\b|control system|drones?\b|\bchips?\b|processor|semiconductor|software",
-    "F135 Mechanical design": r"\bengines?\b|gearbox|transmission|suspension|\bbrakes?\b|bearing|mechanism|\bgears?\b|piston|turbine|\bpumps?\b|actuator|chassis|\bwings?\b|\bfloor\b|diffuser|upgrade|prototype|product design|heat shield|thruster",
-    "F136 CAM":             r"manufactur|3d.print|3-d print|printed|additive|\bcnc\b|machining|machined|factory|production line|assembly line|\bweld|\bcasting\b|forging|mass production|automation",
-    "F137 Electrical":      r"batter(y|ies)|electric (car|vehicle|motor)|\bevs?\b|charging|charger|hybrid|power unit|energy recovery|\bers\b|\bmgu|\bmotors?\b|circuit|voltage|\bcurrent\b|electricity|solar|wind (farm|turbine|power)|\bgrid\b|transformer|\bcables?\b|electronic",
+    "1 Requirements":       r"\busers?\b|user needs|accessib|ergonom|inclusive|disab|elderly|ageing|wheelchair|stakeholder|\bbrief\b|requirements?\b|human factors|anthropometr|custom(er|ers)\b",
+    "2 Existing products":  r"teardown|redesign|new version|next.generation|successor|upgrade|\biterat|\bevolv|history of|anniversary|first ever|pioneer|breakthrough|reinvent|benchmark|rival|compared with",
+    "3 Wider issues":       r"sustainab|net zero|emission|carbon|climate|recycl|circular|\bwaste\b|lifecycle|life cycle|ethic|regulation|technical rules|standards?\b|cost cap|\bcosts?\b|supply chain|tariff|energy (use|efficien|saving)|hydrogen|renewable|environment|right to repair|obsolescen",
+    "4 Design thinking":    r"\bcad\b|computer-aided design|digital twin|simulat|\bcfd\b|finite element|\bfea\b|design software|sketch|rendering|concept car|\bconcept\b|prototype|design process|designers?\b|modelling|virtual reality|\bvr\b|generative design",
+    "5 Materials":          r"material|steel|alumin|titanium|carbon fibre|carbon fiber|composite|concrete|timber|\bwood|bamboo|polymer|plastic|ceramic|alloy|graphene|corrosion|fatigue|crack|\bglass\b|rubber|\btyres?\b|\btires?\b|metamaterial|metasurface|\bgel\b|\bfoam\b|coating|smart material|shape.memory",
+    "6 Technical":          r"\bforces?\b|torque|momentum|velocity|accelerat|friction|\bload(s|ed|ing)?\b|efficien|thermodynamic|\bheat\b|fluid|aerodynam|downforce|\bdrag\b|pressure|stress|strain|vibrat|resonan|kinetic|wind tunnel|structur|\bbeam\b|truss|\bengines?\b|gearbox|transmission|suspension|\bbrakes?\b|bearing|mechanism|\bgears?\b|piston|turbine|\bpumps?\b|actuator|chassis|\bwings?\b|\bfloor\b|diffuser|batter(y|ies)|electric (car|vehicle|motor)|\bevs?\b|charging|charger|hybrid|power unit|energy recovery|\bers\b|\bmgu|\bmotors?\b|circuit|voltage|\bcurrent\b|electricity|solar|wind (farm|turbine|power)|\bgrid\b|transformer|\bcables?\b|electronic|microcontroller|arduino|raspberry pi|embedded|\bcode\b|coding|algorithm|\bai\b|artificial intelligence|machine learning|robot|autonomous|self-driving|sensors?\b|control system|drones?\b|\bchips?\b|processor|semiconductor|software|smart (home|device|watch)|internet of things|\biot\b",
+    "7 Manufacturing":      r"manufactur|3d.print|3-d print|printed|additive|\bcnc\b|machining|machined|\blathe|laser.cut|factory|production line|assembly line|\bweld|\bcasting\b|forging|moulding|molding|injection|extru|mass production|automation|\bbatch\b|lean\b|just.in.time|quality control|tolerance|\bjigs?\b|fixture|gigafactory|\bplant\b",
+    "8 Viability":          r"\btest(s|ed|ing)?\b|trial|evaluat|feedback|review|prove|validat|certif|homologat|launch|goes on sale|on sale|\bprice|\bmarket|commercial|viab|profit|demand|affordab|scal(e|ing) up|rollout|roll.out|deliver|deadline|delay",
+    "9 Health and safety":  r"safety|\bsafe\b|hazard|\brisk\b|injur|accident|crash test|fire\b|toxic|fumes|exposure|\bppe\b|protective|regulator|recall|ban(ned|s)?\b|inquiry|collapse|failure|\bfail(s|ed)?\b",
     "Motorsport":           r"$^",   # set by the source, not by keyword
 }
 _rx = {k: re.compile(v, re.I) for k, v in THEMES.items()}

@@ -30,6 +30,8 @@
   --enter:#e0344c;   /* 5 qualifying — red */
   --apply:#3d6ff0;   /* 6 race day — blue */
   --news:#ff5a2a;    /* the pit wall */
+  --manual:#9fc4ff;  /* 8 the workshop manual */
+  --amber:#f0a020;
   --f-head:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
   --f-text:"Barlow","Helvetica Neue",Arial,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -40,7 +42,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--pit);color:var(--paper);font-family:var(--f-text);font-size:1.06rem;line-height:1.5;
   background-image:linear-gradient(180deg,#0b0d11 0,#0e1116 30%,#11151b 100%);}
 [data-g="do"]{--g:var(--do)} [data-g="watch"]{--g:var(--watch)} [data-g="listen"]{--g:var(--listen)}
-[data-g="read"]{--g:var(--read)} [data-g="enter"]{--g:var(--enter)} [data-g="apply"]{--g:var(--apply)} [data-g="news"]{--g:var(--news)}
+[data-g="read"]{--g:var(--read)} [data-g="enter"]{--g:var(--enter)} [data-g="apply"]{--g:var(--apply)} [data-g="news"]{--g:var(--news)} [data-g="manual"]{--g:var(--manual)}
 a{color:inherit}
 button{font-family:inherit}
 h1,h2,h3{margin:0;font-weight:700;line-height:1.05}
@@ -210,6 +212,8 @@ h1,h2,h3{margin:0;font-weight:700;line-height:1.05}
 .leg p{margin:0}
 
 /* ---------- the pit wall (news) ---------- */
+.rule{background:#fff3e0;border-left:5px solid var(--listen);padding:10px 12px;font-size:.92rem;display:grid;gap:4px}
+.rule b{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
 .pitwall{display:grid;gap:16px}
 .sec-head{display:grid;gap:6px}
 .sec-head h2{font-family:var(--f-head);font-weight:800;font-size:2.4rem;text-transform:uppercase;color:#fff}
@@ -246,6 +250,57 @@ h1,h2,h3{margin:0;font-weight:700;line-height:1.05}
 .tw-mine.q{color:#aab3c0}
 .pw-foot{font-size:.84rem;color:#aab3c0;border-top:1px solid #2a313c;padding-top:10px;margin:0}
 @media (max-width:560px){.screens{grid-template-columns:1fr}.story .stampn{top:auto;bottom:12px}}
+
+/* ---------- the workshop manual (revision) ---------- */
+.scene .binder{stroke:#000;stroke-width:1}
+.scene .binder.r{fill:#c9303f}.scene .binder.a{fill:#e0a020}.scene .binder.g{fill:#2a9d5c}
+.manual{display:grid;gap:16px}
+.man-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end}
+.shelf{display:flex;gap:6px;flex-wrap:wrap}
+.spine{font:inherit;cursor:pointer;width:44px;height:64px;border:2px solid #000;border-radius:3px;background:#2a313c;color:#fff;display:grid;grid-template-rows:1fr auto;align-items:end;justify-items:center;padding:0 0 4px;position:relative;box-shadow:inset 4px 0 0 rgba(255,255,255,.12)}
+.spine b{font-family:var(--f-head);font-weight:800;font-size:1.3rem;line-height:1}
+.spine i{font-family:var(--f-mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);font-style:normal}
+.spine.r{background:#c9303f}.spine.a{background:#e0a020;color:#12161c}.spine.a i{color:rgba(0,0,0,.7)}.spine.g{background:#2a9d5c}
+.spine:hover{filter:brightness(1.15)}
+.man-sum{font-family:var(--f-mono);font-size:.78rem;color:#aab3c0;text-align:right}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.topic{background:#0b0e13;border:2px solid #2a313c;border-left:6px solid #3a4250;border-radius:4px;padding:14px 16px 14px;display:grid;gap:9px;align-content:start;color:#e8edf3}
+.topic.flash{animation:flash 2.2s ease}
+.topic.r{border-left-color:#c9303f}.topic.a{border-left-color:#e0a020}.topic.g{border-left-color:#2a9d5c}
+.topic .th{display:flex;gap:10px;align-items:baseline}
+.topic .th b{font-family:var(--f-head);font-weight:800;font-size:1.9rem;line-height:1;color:var(--manual);min-width:1.1em}
+.topic h3{font-family:var(--f-head);font-weight:800;font-size:1.3rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.1}
+.topic .qs{margin:0;padding:0;list-style:none;display:grid;gap:3px;font-size:.9rem;color:#c2cad6}
+.topic .qs li{display:grid;grid-template-columns:2.4em 1fr;gap:6px}
+.topic .qs li i{font-family:var(--f-mono);font-size:.72rem;color:#aab3c0;font-style:normal;padding-top:3px}
+.topic .think{color:var(--ink);font-size:.96rem;background:var(--paper)}
+.topic .lab{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#aab3c0}
+.topic .here{display:flex;flex-wrap:wrap;gap:6px}
+.topic .here button{font:inherit;font-size:.84rem;cursor:pointer;background:#151a21;border:1.5px solid #3a4250;color:#e8edf3;border-radius:3px;padding:2px 9px;display:inline-flex;gap:6px;align-items:center}
+.topic .here button i{width:9px;height:9px;border-radius:2px;background:#262c36;border:1px solid #000;font-style:normal}
+.topic .here button.on i{background:var(--g);box-shadow:0 0 6px var(--g)}
+.topic .here button:hover{background:#1d232c}
+.topic .links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem}
+.topic .links a{color:#9fc4ff}
+.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
+.rate button{font:inherit;font-family:var(--f-head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;cursor:pointer;border:2px solid #3a4250;background:#151a21;color:#e8edf3;border-radius:3px;padding:7px 4px 6px;line-height:1.1}
+.rate button[data-r="r"][aria-pressed="true"]{background:#c9303f;border-color:#c9303f}
+.rate button[data-r="a"][aria-pressed="true"]{background:#e0a020;border-color:#e0a020;color:#12161c}
+.rate button[data-r="g"][aria-pressed="true"]{background:#2a9d5c;border-color:#2a9d5c}
+.rate button:hover{filter:brightness(1.15)}
+.rated{font-family:var(--f-mono);font-size:.7rem;color:#aab3c0;min-height:1em}
+.papers{padding:22px 22px 18px;display:grid;gap:10px}
+.papers h3{font-family:var(--f-head);font-weight:800;font-size:1.5rem;text-transform:uppercase}
+.papers .small{margin:0}
+.ptable{width:100%;border-collapse:collapse;font-size:.92rem}
+.ptable th,.ptable td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.ptable th{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.ptable td.ser{font-family:var(--f-head);font-weight:800;font-size:1.05rem;text-transform:uppercase;white-space:nowrap}
+.ptable a{margin-right:10px;white-space:nowrap}
+.pdone{font:inherit;font-size:.8rem;cursor:pointer;border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:3px;padding:1px 8px;white-space:nowrap}
+.pdone.on{background:var(--read);border-color:var(--read);color:#fff}
+@media (max-width:760px){.man-top{grid-template-columns:1fr}.man-sum{text-align:left}.topics{grid-template-columns:1fr}.spine{width:36px;height:56px}
+  .ptable{display:block}.ptable thead{display:none}.ptable tr{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--rule);padding:6px 0}.ptable td{border:0;padding:2px 0}.ptable td.ser{padding-top:4px}}
 
 /* ---------- the six sessions ---------- */
 .section-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
@@ -419,6 +474,7 @@ body.bk-on{padding-bottom:0}
 .demo-note{margin:0;font-size:.9rem;background:#fff6c2;color:var(--ink);border:2px dashed var(--ink);padding:8px 10px}
 @media (max-width:600px){.intro-card{grid-template-columns:1fr;justify-items:center;padding:30px 18px 22px}.intro-card svg{width:110px}.intro-txt .btn{justify-self:stretch}}
 
+.rag{display:inline-block;min-width:3.4em;text-align:center;font-family:var(--f-mono);font-size:.7rem;border-radius:3px;padding:1px 4px;background:#e4e7e2;color:#47505c}.rag.r{background:#c9303f;color:#fff}.rag.a{background:#e0a020;color:#12161c}.rag.g{background:#2a9d5c;color:#fff}
 /* ---------- tour ---------- */
 .tour-hl{position:fixed;inset:0;z-index:30;background:rgba(3,5,8,.72);pointer-events:none}
 .tour-hl[hidden]{display:none}
@@ -569,11 +625,13 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
     </div>
     <div class="field"><label>Would you use this with your sixth form?</label>
       <div class="seg" id="fbUse"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="changes" aria-pressed="false">With changes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
-    <div class="field"><label>Which qualification do you teach? (The course tags assume the Cambridge Advanced National.)</label>
-      <div class="seg" id="fbQual" style="flex-wrap:wrap"><button type="button" data-v="advanced-national" aria-pressed="false">Advanced National (H027/H127)</button><button type="button" data-v="technicals" aria-pressed="false">Cambridge Technicals</button><button type="button" data-v="other" aria-pressed="false">Something else</button></div></div>
+    <div class="field"><label>The workshop projects (3D printing, laser, lathe, three levels each) and the rule on each card. Right for your workshop?</label>
+      <div class="seg" id="fbQual" style="flex-wrap:wrap"><button type="button" data-v="rules-ok" aria-pressed="false">Rules as written</button><button type="button" data-v="rules-change" aria-pressed="false">I'll send our wording</button><button type="button" data-v="projects-change" aria-pressed="false">Change the projects</button><button type="button" data-v="no-projects" aria-pressed="false">Leave projects out</button></div></div>
+    <div class="field"><label>The workshop manual (revision: the nine H404 topics, confidence ratings, the past papers shelf). Keep it?</label>
+      <div class="seg" id="fbRev" style="flex-wrap:wrap"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="more" aria-pressed="false">Keep it, add more</button><button type="button" data-v="drop" aria-pressed="false">Leave it out</button></div></div>
     <div class="field"><label>More of…</label>
       <div class="fb-chips" id="fbMore">
-        <button type="button" data-v="motorsport">Motorsport engineering</button><button type="button" data-v="stemracing">STEM Racing / Greenpower</button><button type="button" data-v="build">Things to build</button><button type="button" data-v="cad">CAD and CAM</button><button type="button" data-v="electronics">Electronics and coding</button><button type="button" data-v="materials">Materials</button><button type="button" data-v="civil">Civil and structures</button><button type="button" data-v="energy">Energy</button><button type="button" data-v="aero">Aerospace</button><button type="button" data-v="apprentice">Apprenticeships</button><button type="button" data-v="degrees">Degrees and admissions</button><button type="button" data-v="esat">ESAT preparation</button><button type="button" data-v="local">Birmingham and Midlands events</button><button type="button" data-v="employers">Local employers</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
+        <button type="button" data-v="motorsport">Motorsport engineering</button><button type="button" data-v="stemracing">STEM Racing / Greenpower</button><button type="button" data-v="build">Things to build</button><button type="button" data-v="workshop">More workshop projects</button><button type="button" data-v="revision">More revision</button><button type="button" data-v="f1">F1 routes</button><button type="button" data-v="cad">CAD and CAM</button><button type="button" data-v="electronics">Electronics and coding</button><button type="button" data-v="materials">Materials</button><button type="button" data-v="civil">Civil and structures</button><button type="button" data-v="energy">Energy</button><button type="button" data-v="aero">Aerospace</button><button type="button" data-v="apprentice">Apprenticeships</button><button type="button" data-v="degrees">Degrees and admissions</button><button type="button" data-v="esat">ESAT preparation</button><button type="button" data-v="local">Birmingham and Midlands events</button><button type="button" data-v="employers">Local employers</button><button type="button" data-v="tracking">Department tracking</button><button type="button" data-v="tutor">Tutor view</button>
       </div></div>
     <div class="field"><label>The look: the garage, the lap time, the race engineer. Keep it?</label>
       <div class="seg" id="fbDiv"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="tone" aria-pressed="false">Keep it, tone it down</button><button type="button" data-v="drop" aria-pressed="false">Different idea</button></div></div>
@@ -581,7 +639,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
       <div class="seg" id="fbSlip"><button type="button" data-v="keep" aria-pressed="false">Keep it</button><button type="button" data-v="more-motorsport" aria-pressed="false">More motorsport</button><button type="button" data-v="less-motorsport" aria-pressed="false">Less motorsport</button><button type="button" data-v="drop" aria-pressed="false">Leave it out</button></div></div>
     <div class="field"><label for="fbChange">What would you change?</label><textarea id="fbChange"></textarea></div>
     <div class="field"><label for="fbBack">What would make a pupil come back to it?</label><textarea id="fbBack"></textarea></div>
-    <div class="field"><label for="fbWrong">Anything missing or wrong (items, dates, links, unit tags, wording)?</label><textarea id="fbWrong"></textarea></div>
+    <div class="field"><label for="fbWrong">Anything missing or wrong (items, dates, links, topic tags, workshop rules, wording)?</label><textarea id="fbWrong"></textarea></div>
     <div class="actions"><button class="btn big hv" type="submit" id="fbSend">Send to Simon</button></div>
     <p class="small" id="fbMsg" aria-live="polite"></p>
     <textarea class="fb-copy" id="fbCopy" hidden aria-label="Your answers as text"></textarea>
@@ -594,7 +652,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
     <div class="intro-txt">
       <span class="badge" style="justify-self:start"><i></i>Engineering · The Garage · demo</span>
       <h2 id="introH">A demo of a web page for your sixth-form engineers.</h2>
-      <p>It is a working copy of the page a pupil would use: 50 free things to watch, listen to, read, build, enter and apply for, each tagged to a unit of the course. It is laid out as a race team's garage over one weekend. Each session is one kind of thing, with a strip of rev lights, one per item; each thing a pupil does lights one and takes time off their lap on the timing screen. The pit wall screens collect engineering news every morning, with motorsport technology alongside civil, electrical, materials and space engineering, and pupils write two sentences on a story that the department can read.</p>
+      <p>It is a working copy of the page a pupil would use: 66 free things to watch, listen to, read, build, enter and apply for, each tagged to a topic area of OCR A Level Design Engineering (H404), including nine workshop projects on your Bambu Lab printers, laser cutter and lathe, and the routes into Formula 1. It is laid out as a race team's garage over one weekend. Each session is one kind of thing, with a strip of rev lights, one per item; each thing a pupil does lights one and takes time off their lap on the timing screen. The pit wall screens collect engineering news every morning, with motorsport technology alongside civil, electrical, materials and space engineering, and pupils write two sentences on a story that the department can read. The workshop manual is revision: the nine topic areas, a confidence rating on each that the department can see, and every past paper with its mark scheme and examiners' report.</p>
       <ol>
         <li><b>Sign in</b> with any form and your own name. Nothing here reaches real pupils.</li>
         <li><b>Take the short tour</b> that starts straight after, or skip it and click about.</li>
@@ -630,7 +688,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
 
   <div class="demo">
     <p class="send-note" style="grid-column:1/-1;margin:0;padding:8px 12px;border:2px solid #000;background:#fff;color:#000;font-weight:600">Any changes you would like, or anything that is wrong, send them to Simon.</p>
-    <div><b>Demo for the Engineering department.</b> This is the working pupil page: sign in with any name, light a few rev lights, log a story from the pit wall, ask Jo for a strategy call. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
+    <div><b>Demo for the Engineering department.</b> This is the working pupil page: sign in with any name, light a few rev lights, log a story from the pit wall, rate a binder in the workshop manual, open a workshop project, ask Jo for a strategy call. Nothing here reaches real pupils; it saves to a separate demo store. When you have had a look, press <b>Feedback</b> (bottom left) and say what you would want more of, less of, or changed.</div>
     <div class="demo-btns"><button type="button" class="btn ghost" id="tourBtn">Take the tour</button><button type="button" class="btn ghost" id="dashBtn2">Teacher dashboard</button><button type="button" class="btn hv" id="fbOpen2">Feedback</button></div>
   </div>
   <header class="top">
@@ -669,6 +727,22 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
           <path d="M60 37 L20 470 H320 L280 37Z M360 37 L320 470 H620 L580 37Z M660 37 L620 470 H920 L880 37Z M940 37 L900 470 H1180 L1140 37Z" fill="url(#beamG)" opacity=".5"/>
         </g>
         <text class="wallname" x="695" y="96" text-anchor="middle" aria-hidden="true">BRINDLEY RACING</text>
+
+        <!-- ===== 8 THE WORKSHOP MANUAL (revision): a shelf of binders above the monitor wall ===== -->
+        <g class="hot" data-g="manual" data-f="manual" id="manualHot" tabindex="0" role="button" aria-label="8, The workshop manual: revision for the written papers, with a binder for each topic area">
+          <rect class="halo" x="48" y="38" width="350" height="72" rx="4"/>
+          <g class="obj">
+            <text x="64" y="50" class="mono" font-size="10" font-weight="700" fill="#9fc4ff">8 · WORKSHOP MANUAL</text>
+            <text x="384" y="50" text-anchor="end" class="mono" font-size="10" fill="#aab3c0" id="manualCntTxt">revision</text>
+            <g id="binders"></g>
+            <rect x="340" y="56" width="44" height="42" rx="2" fill="#4a5260" stroke="#000"/>
+            <rect x="346" y="62" width="32" height="12" fill="#e4e7e2"/>
+            <text x="362" y="71" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="8.5" fill="#12161c">PAPERS</text>
+            <circle cx="362" cy="86" r="3" fill="#0a0c10"/>
+            <rect x="56" y="98" width="334" height="6" fill="#3a4250"/>
+            <path d="M70 104 v6 M376 104 v6" stroke="#2a313c" stroke-width="4"/>
+          </g>
+        </g>
         <path d="M455 106 H935" stroke="#f4cc12" stroke-width="3" opacity=".5" aria-hidden="true"/>
         <rect y="470" width="1180" height="330" fill="url(#floorG)"/>
         <path d="M0 470 H1180" stroke="#4a5260" stroke-width="3"/>
@@ -857,7 +931,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
         </g>
       </svg>
     </div>
-    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see the pit lane.</span><span><b>Click a part of the garage</b> to go to that session.</span><span><b>Click a rev light</b> to open that thing.</span><span><b>Click the pit wall</b> for this week's engineering news.</span><span>A lit rev light means you have done it.</span></div>
+    <div class="scene-key" aria-hidden="true"><span class="swipe">Swipe the picture sideways to see the pit lane.</span><span><b>Click a part of the garage</b> to go to that session.</span><span><b>Click a rev light</b> to open that thing.</span><span><b>Click the pit wall</b> for this week's engineering news.</span><span><b>Click the shelf of binders</b> for revision: the nine topic areas and the past papers.</span><span>A lit rev light means you have done it.</span></div>
     <div class="smallprint paper" id="smallprint" aria-label="Sources for the six sessions"></div>
   </section>
 
@@ -903,12 +977,28 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
     <div class="sec-head">
       <span class="eyebrow">7 · The pit wall · new stories every morning</span>
       <h2 id="newsH">Engineering in the news</h2>
-      <p class="lede" id="newsLede">This week's engineering stories from twelve sources, collected automatically every morning: motorsport technology from Racecar Engineering, The Race and Motorsport.com, and wider engineering from New Civil Engineer, IEEE Spectrum, the BBC, ESA, NASA, Carbon Brief, Tech Xplore and ScienceDaily. Read one, open the full story, then press <b>Log it</b> and write two sentences: what was built, tested or found, and the engineering principle behind it. It saves to the department and goes onto a debrief sheet. Each story is tagged to the units of the course it seems to touch. The tags come from keywords, so some will be wrong; finding a better link to the course is part of the exercise.</p>
+      <p class="lede" id="newsLede">This week's engineering stories from twelve sources, collected automatically every morning: motorsport technology from Racecar Engineering, The Race and Motorsport.com, and wider engineering from New Civil Engineer, IEEE Spectrum, the BBC, ESA, NASA, Carbon Brief, Tech Xplore and ScienceDaily. Read one, open the full story, then press <b>Log it</b> and write two sentences: what was built, tested or found, and the engineering principle behind it. It saves to the department and goes onto a debrief sheet. Each story is tagged to the topic areas of the course (OCR Design Engineering) it seems to touch. The tags come from keywords, so some will be wrong; finding a better link to the course is part of the exercise.</p>
     </div>
-    <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show stories for one unit"></div><span class="pw-when" id="newsWhen"></span></div>
+    <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show stories for one topic area"></div><span class="pw-when" id="newsWhen"></span></div>
     <div class="screens" id="newsList"></div>
     <div><button type="button" class="btn hv" id="newsMore" hidden>Show more stories</button></div>
     <p class="pw-foot" id="newsFoot"></p>
+  </section>
+
+
+  <!-- ===== THE WORKSHOP MANUAL: REVISION ===== -->
+  <section aria-labelledby="manualH" id="manual" class="manual">
+    <div class="sec-head">
+      <span class="eyebrow">8 · The workshop manual · revision for the two written papers</span>
+      <h2 id="manualH">Workshop manual</h2>
+      <p class="lede">OCR A Level Design Engineering (H404) has two written papers, <b>Principles</b> (1 h 30, 80 marks) and <b>Problem solving</b> (1 h 45, 70 marks, with a resource booklet about a context), and both draw on the same nine topic areas. Each binder below is one topic area: the questions the specification asks, where on this page you can work on it, and free places to revise it. <b>Rate your confidence</b> on each binder. It saves to the department, so your teachers can see which topics the class finds hard, and you can see which binders are still red. At the bottom is the shelf of past papers, with mark schemes and the examiners' reports.</p>
+    </div>
+    <div class="man-top">
+      <div class="shelf" id="shelf" role="group" aria-label="Nine binders: your confidence in each topic area"></div>
+      <div class="man-sum" id="manSum"></div>
+    </div>
+    <div class="topics" id="topicList"></div>
+    <div class="papers paper hz" id="papers"></div>
   </section>
 
   <!-- ===== THE SIX SESSIONS ===== -->
@@ -936,12 +1026,12 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
       <form id="entryForm" autocomplete="off">
         <div class="two">
           <div class="field"><label for="nbDate">Date</label><input type="date" id="nbDate" required></div>
-          <div class="field"><label for="nbHw">Unit of the course</label>
+          <div class="field"><label for="nbHw">Topic area of the course</label>
             <select id="nbHw" required>
               <option value="">Choose…</option>
-              <option>F130 Principles of engineering</option><option>F131 Materials science and technology</option><option>F132 Engineering in practice</option>
-              <option>F133 Computer Aided Design</option><option>F134 Programmable electronics</option><option>F135 Mechanical product design</option>
-              <option>F136 Computer Aided Manufacture</option><option>F137 Electrical devices and circuits</option>
+              <option>1 Identifying requirements</option><option>2 Learning from existing products and practice</option><option>3 Implications of wider issues</option>
+              <option>4 Design thinking and communication</option><option>5 Material and component considerations</option><option>6 Technical understanding</option>
+              <option>7 Manufacturing processes and techniques</option><option>8 Viability of design solutions</option><option>9 Health and safety</option>
               <option>Beyond the course</option><option>Applying</option>
             </select></div>
         </div>
@@ -962,8 +1052,8 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
 
   <section class="dept" aria-label="For the department">
     <h2>What the department would see</h2>
-    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each competition (your list for a STEM Racing or Greenpower team, and a heads-up on everyone applying for scholarships and placements on their own); how much of the half-term run plan each pupil has done; each pupil's lap time, grid slot and which of the six sessions they have used; <b>every news story each pupil has logged from the pit wall, with the two sentences they wrote</b>; each pupil's debrief sheets in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. The run plan is edited in one block at the top of the file; the news updates itself; pupils keep everything they have done.</p>
-    <p>Anything on this page can be changed for Engineering: the items, the unit tags, the news sources and how much motorsport is in them, the dates, Jo's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
+    <p>A separate teacher page, with no setup beyond pasting a token once: every pupil who has signed in; who tapped <b>I want to enter</b> for each competition (your list for a STEM Racing or Greenpower team, and a heads-up on everyone applying for scholarships and placements on their own); how much of the half-term run plan each pupil has done; each pupil's lap time, grid slot and which of the six sessions they have used; <b>every news story each pupil has logged from the pit wall, with the two sentences they wrote</b>; each pupil's red, amber, green rating of the nine topic areas, read across as a class so you can see which topic to reteach, and how many past papers each has done; who has built which workshop project, with the build log; each pupil's debrief sheets in full, as copyable text for references and personal statements; who on your form list has not signed in yet; a CSV. The run plan is edited in one block at the top of the file; the news updates itself; pupils keep everything they have done.</p>
+    <p>Anything on this page can be changed for Engineering: the items, the topic tags, the workshop projects and the rule on each card, the news sources and how much motorsport is in them, the dates, Jo's lines, what gets tracked, the look of it. Use the Feedback button to say what you would want.</p>
     <div><button type="button" class="btn big hv" id="dashBtn">Open the teacher dashboard (demo data)</button></div>
   </section>
 
@@ -976,7 +1066,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
 (function(){
 /* Six sessions, in the order of a race weekend. The pit wall (news) is the seventh thing to click. */
 const FAM = {
-  do:{label:"Do", verb:"Things to build, test and try", place:"The Garage", the:"the garage", code:"THU", day:"Thursday", def:"The car on stands with the panels off. Where you stop watching and start making.", no:1},
+  do:{label:"Do", verb:"Things to build, test and try", place:"The Garage", the:"the garage", code:"THU", day:"Thursday", def:"The car on stands with the panels off. Where you stop watching and start making: free problems and simulators to start, then the department's workshop projects on the Bambu Lab printers, the laser cutter and the lathe, three levels of each.", no:1},
   watch:{label:"Watch", verb:"Talks, lectures and videos", place:"Practice", the:"practice", code:"FP", day:"Friday", def:"Free practice: watch the car run and learn how it behaves. Engineers explaining what they build.", no:2},
   listen:{label:"Listen", verb:"Podcasts and radio", place:"Team Radio", the:"team radio", code:"RADIO", day:"all weekend", def:"Headsets on. Engineering you can listen to on the bus.", no:3},
   read:{label:"Read", verb:"Magazines, books and guides", place:"The Debrief", the:"the debrief", code:"DEBRIEF", day:"Friday night", def:"The data desk after practice, where the reading gets done.", no:4},
@@ -992,125 +1082,208 @@ const SMALLPRINT = [
   {g:"read", txt:`From the 1850s August Wöhler, an engineer on the Prussian railways, ran railway axles through millions of loading cycles and showed that metal can fail at stresses well below its breaking strength. His results are the first S–N (stress against number of cycles) curves. <span class="st att">attested</span> his papers in the <i>Zeitschrift für Bauwesen</i>, 1858–1870.`},
   {g:"enter", txt:`In October 1829 the Liverpool and Manchester Railway held the Rainhill Trials, a competition for a locomotive, with a £500 prize. Robert and George Stephenson's <i>Rocket</i> was the only engine to finish the trial, and won. <span class="st att">attested</span> the railway company's conditions and contemporary reports; <i>Rocket</i> is in the Science Museum Group collection.`},
   {g:"apply", txt:`The Women's Engineering Society was founded in London on 23 June 1919 by a group including Katharine Parsons, Rachel Parsons and Caroline Haslett, to keep open the engineering jobs women had done in the war. <span class="st att">attested</span> the Society's founding papers; it still runs.`},
+  {g:"", wide:true, txt:`<b>The workshop manual.</b> The nine topic areas and the questions under them are quoted from section 2c of the OCR specification for A Level Design and Technology: Design Engineering (H404), <span class="st att">attested</span> the specification (checked 13 October 2026). The past papers, mark schemes and examiners' reports are OCR's own, linked from its assessment page. The confidence ratings are yours; nobody marks them.`},
   {g:"", wide:true, txt:`<b>About this page.</b> Brindley Racing, car 27 and its livery are <span class="st inv">invented</span>; the car is not drawn from any real team's car, and no real team's name or badge is on the page. Jo Halloran <span class="st inv">invented</span> is not based on anyone. The sector colours follow the convention on motorsport timing screens (yellow, green, purple); here they mean started, half or more, and all of it. Your lap time is arithmetic: every thing you do takes the same slice off a 1:38.400 lap, down to 1:31.000 when everything is done; every two or three things done gains a place on the grid. The other times on the timing screen are made up. News stories on the pit wall are real, collected from the sources named under them, and real teams appear in them.`}
 ];
+
+/* The nine topic areas of OCR A Level Design and Technology: Design Engineering (H404), section 2c of the
+   specification. qs = the questions the specification asks under each; here = card codes from ITEMS;
+   links = free places to revise it that are not cards. Checked against the specification 13 October 2026. */
+const TOPIC_SHORT={"1 Identifying requirements":"1 · Requirements","2 Learning from existing products and practice":"2 · Existing products","3 Implications of wider issues":"3 · Wider issues","4 Design thinking and communication":"4 · Design thinking","5 Material and component considerations":"5 · Materials","6 Technical understanding":"6 · Technical","7 Manufacturing processes and techniques":"7 · Manufacturing","8 Viability of design solutions":"8 · Viability","9 Health and safety":"9 · Health and safety",
+  "1 Requirements":"1 · Requirements","2 Existing products":"2 · Existing products","3 Wider issues":"3 · Wider issues","4 Design thinking":"4 · Design thinking","5 Materials":"5 · Materials","6 Technical":"6 · Technical","7 Manufacturing":"7 · Manufacturing","8 Viability":"8 · Viability","9 Health and safety":"9 · Health and safety"};
+const TOPICS=[
+  {n:1,name:"Identifying requirements",th:"1 Identifying requirements",
+   qs:[["1.1","What can be learnt by exploring the contexts that design solutions are intended for?"],["1.2","What can be learnt by undertaking stakeholder analysis?"],["1.3","How can usability be considered when designing prototypes?"]],
+   here:["TEW","Ei","Iv"],
+   links:[{lt:"Design Council: the Double Diamond",url:"https://www.designcouncil.org.uk/our-resources/framework-for-innovation/"},{lt:"OCR H404/02 resource booklet, June 2025 (a context to analyse)",url:"https://www.ocr.org.uk/Images/752252-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf"}],
+   tip:"Problem solving (paper 2) starts here: read the resource booklet, list the stakeholders, and write what each one needs before you look at any question."},
+  {n:2,name:"Learning from existing products and practice",th:"2 Learning from existing products and practice",
+   qs:[["2.1","Why analyse and evaluate products as part of the design and manufacturing process?"],["2.2","Why understand technological developments in design engineering?"],["2.3","Why understand past and present developments in design engineering?"],["2.4","What can be learnt by examining the lifecycles of products?"]],
+   here:["In","Et","Bi","Nw"],
+   links:[{lt:"iFixit teardowns (what is inside, and why)",url:"https://www.ifixit.com/Teardown"},{lt:"Ellen MacArthur Foundation: the circular economy",url:"https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview"}],
+   tip:"Pick one product a week and do a teardown on paper: function, materials, how it was made, how it is joined, what wears out first."},
+  {n:3,name:"Implications of wider issues",th:"3 Implications of wider issues",
+   qs:[["3.1","What factors overcome conflicts between moral and commercial factors when designing and manufacturing?"],["3.2","What needs considering when developing design solutions for manufacture?"],["3.3","What needs considering when manufacturing products?"],["3.4","What needs considering when distributing products to markets?"],["3.5","What energy factors need considering when developing design solutions?"],["3.6","How do mathematics and science inform decisions in design engineering?"]],
+   here:["Ea","Ie","Gc","Sd","Iv"],
+   links:[{lt:"Carbon Brief (energy and emissions, explained)",url:"https://www.carbonbrief.org/"},{lt:"Ellen MacArthur Foundation: circular economy",url:"https://www.ellenmacarthurfoundation.org/topics/circular-economy-introduction/overview"}],
+   tip:"Examiners want the trade-off named: cheaper against safer, lighter against stronger, faster against greener. Say which way you would go and why."},
+  {n:4,name:"Design thinking and communication",th:"4 Design thinking and communication",
+   qs:[["4.1","How do design engineers use annotated 2D and 3D sketching and digital tools to communicate ideas?"],["4.2","How do industry professionals use digital design tools to explore, innovate and develop ideas?"],["4.3","How do design engineers use different approaches to design thinking?"]],
+   here:["Os","Nw","Sr"],
+   links:[{lt:"Tinkercad (free CAD and circuits in the browser)",url:"https://www.tinkercad.com/"},{lt:"Design Council: the Double Diamond",url:"https://www.designcouncil.org.uk/our-resources/framework-for-innovation/"}],
+   tip:"Sketch every day for a fortnight: one object, isometric or two-point perspective, with annotations that say material and process, not just names."},
+  {n:5,name:"Material and component considerations",th:"5 Material and component considerations",
+   qs:[["5.1","What factors influence the selection of materials used in products?"],["5.2","What materials and components should be selected when designing and manufacturing products and prototypes?"],["5.3","Why consider the properties and characteristics of materials when designing and manufacturing?"]],
+   here:["Sm","Hr","Gr","Tt","Te"],
+   links:[{lt:"The Engineering ToolBox (properties, tables, formulas)",url:"https://www.engineeringtoolbox.com/"},{lt:"Technology Student (V. Ryan): materials",url:"https://www.technologystudent.com/"}],
+   tip:"Learn five materials properly: a ferrous metal, a non-ferrous, a thermoplastic, a composite and a timber. Property, process, cost, where it is used, where it fails."},
+  {n:6,name:"Technical understanding",th:"6 Technical understanding",
+   qs:[["6.1","What considerations need to be made about the structural integrity of a design solution?"],["6.2","How do mechanisms provide functionality to products and systems?"],["6.3","What forces need consideration to ensure structural and mechanical efficiency?"],["6.4","How can electronic systems offer functionality to design solutions?"],["6.5","How can programmable devices and smart technologies provide functionality in system design?"]],
+   here:["Is","Iw","Fa","Wk","So","Te","Ex","Cb"],
+   links:[{lt:"Electronics Club (components and circuits, free)",url:"https://electronicsclub.info/"},{lt:"Learn About Electronics",url:"https://www.learnabout-electronics.org/"},{lt:"Technology Student: mechanisms and gears",url:"https://www.technologystudent.com/"}],
+   tip:"The biggest topic and the one with calculations: moments, stress and strain, gear ratios, velocity ratios, Ohm's law, potential dividers, logic. Do the maths with units every time."},
+  {n:7,name:"Manufacturing processes and techniques",th:"7 Manufacturing processes and techniques",
+   qs:[["7.1","How can materials and processes be used to make iterative models?"],["7.2","How can materials and processes be used to make final prototypes?"],["7.3","How can materials and processes be used to make commercial products?"],["7.4","How is manufacturing organised and managed for different scales of production?"],["7.5","How is the quality of products controlled through manufacture?"]],
+   here:["Ds","P3a","P3b","P3c","PLa","PLb","PLc","PMa","PMb","PMc"],
+   links:[{lt:"Bambu Lab wiki (the department's printers)",url:"https://wiki.bambulab.com/en/home"},{lt:"LightBurn documentation (laser cutting)",url:"https://docs.lightburnsoftware.com/"},{lt:"Technology Student: CAM and processes",url:"https://www.technologystudent.com/"}],
+   tip:"For each process you have used in the workshop, write the commercial version beside it: your 3D print against injection moulding, your laser cut against die cutting, your lathe part against CNC turning."},
+  {n:8,name:"Viability of design solutions",th:"8 Viability of design solutions",
+   qs:[["8.1","How do design engineers assess whether a design solution meets its stakeholder requirements?"],["8.2","How do design engineers assess whether a design solution meets its technical specification?"],["8.3","How do design engineers and manufacturers decide whether a design solution is commercially viable?"]],
+   here:["Tb","In","Fs"],
+   links:[{lt:"OCR examiners' report, Problem solving, June 2025 (what good answers did)",url:"https://www.ocr.org.uk/Images/752066-examiners-report-problem-solving-in-design-engineering.pdf"}],
+   tip:"A viability answer has a test in it: what you would measure, against what number, and what you would do if it failed."},
+  {n:9,name:"Health and safety",th:"9 Health and safety",
+   qs:[["9.1","How can safety be ensured when working with materials in a workshop environment?"],["9.2","What are the implications of health and safety legislation on product manufacture?"]],
+   here:["P3a","PLa","PMa"],
+   links:[{lt:"HSE: risk assessment, step by step",url:"https://www.hse.gov.uk/simple-health-safety/risk/index.htm"}],
+   tip:"Before every workshop project on this page you write a risk assessment: hazard, who is harmed and how, what you do about it. That is 9.1 revised, every time."}
+];
+/* the past papers shelf: OCR's free papers, mark schemes and examiners' reports, checked 13 October 2026 */
+const PAPERS=[
+  {k:"25",ser:"June 2025",p1:{qp:"https://www.ocr.org.uk/Images/752250-question-paper-principles-of-design-engineering.pdf",ms:"https://www.ocr.org.uk/Images/752417-mark-scheme-principles-of-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/752067-examiners-report-principles-of-design-engineering.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/752251-question-paper-problem-solving-in-design-engineering.pdf",rb:"https://www.ocr.org.uk/Images/752252-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf",ms:"https://www.ocr.org.uk/Images/752418-mark-scheme-problem-solving-in-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/752066-examiners-report-problem-solving-in-design-engineering.pdf"}},
+  {k:"24",ser:"June 2024",p1:{qp:"https://www.ocr.org.uk/Images/726574-question-paper-principles-of-design-engineering.pdf",ms:"https://www.ocr.org.uk/Images/726743-mark-scheme-principles-of-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/726388-examiners-report-principles-of-design-engineering.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/726575-question-paper-problem-solving-in-design-engineering.pdf",rb:"https://www.ocr.org.uk/Images/726576-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf",ms:"https://www.ocr.org.uk/Images/726744-mark-scheme-problem-solving-in-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/726387-examiners-report-problem-solving-in-design-engineering.pdf"}},
+  {k:"23",ser:"June 2023",p1:{qp:"https://www.ocr.org.uk/Images/703783-question-paper-principles-of-design-engineering.pdf",ms:"https://www.ocr.org.uk/Images/703955-mark-scheme-principles-of-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/703602-examiners-report-principles-of-design-engineering.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/703784-question-paper-problem-solving-in-design-engineering.pdf",rb:"https://www.ocr.org.uk/Images/703785-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf",ms:"https://www.ocr.org.uk/Images/703956-mark-scheme-problem-solving-in-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/703601-examiners-report-problem-solving-in-design-engineering.pdf"}},
+  {k:"22",ser:"June 2022",p1:{qp:"https://www.ocr.org.uk/Images/676745-question-paper-principles-of-design-engineering.pdf",ms:"https://www.ocr.org.uk/Images/676945-mark-scheme-principles-of-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/688023-examiners-report-principles-of-design-engineering.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/676746-question-paper-problem-solving-in-design-engineering.pdf",rb:"https://www.ocr.org.uk/Images/676747-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf",ms:"https://www.ocr.org.uk/Images/676946-mark-scheme-problem-solving-in-design-engineering.pdf",er:"https://www.ocr.org.uk/Images/688022-examiners-report-problem-solving-in-design-engineering.pdf"}},
+  {k:"21",ser:"Nov 2021",p1:{qp:"https://www.ocr.org.uk/Images/666851-question-paper-principles-of-design-engineering.pdf",ms:"https://www.ocr.org.uk/Images/666858-mark-scheme-principles-of-design-engineering.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/666852-question-paper-problem-solving-in-design-engineering.pdf",rb:"https://www.ocr.org.uk/Images/666853-question-paper-problem-solving-in-design-engineering-resource-booklet.pdf",ms:"https://www.ocr.org.uk/Images/666859-mark-scheme-problem-solving-in-design-engineering.pdf"}},
+  {k:"sam",ser:"Specimen",p1:{qp:"https://www.ocr.org.uk/Images/304614-unit-h404-01-principles-of-design-engineering-sample-assessment-material.pdf"},
+   p2:{qp:"https://www.ocr.org.uk/Images/304619-unit-h404-02-problem-solving-in-design-engineering-sample-assessment-material.pdf",rb:"https://www.ocr.org.uk/Images/344715-unit-h404-02-problem-solving-in-design-engineering-resource-booklet.pdf"}}
+];
+const SPEC_URL="https://www.ocr.org.uk/Images/304609-specification-accredited-a-level-gce-design-and-technology-h404-h406.pdf";
+const RATE={r:"Not yet",a:"Getting there",g:"Confident"};
+const RATE_SHORT={r:"Red",a:"Amber",g:"Green"};
+
+/* ======================================================================
+   WORKSHOP RULES  (EDIT: the department's own wording goes here)
+   One line per machine, shown on every project card for that machine.
+   The DT department confirms or rewrites these before the page goes live.
+   ====================================================================== */
+const WORKSHOP = {
+  print:{label:"3D printing",rule:"Book a Bambu Lab printer with the department and have your file checked in Bambu Studio before you print. Nozzle and bed are hot; keep hands out while it moves; only use the filaments the department stocks. Collect your print when it is finished, not during the lesson of another class."},
+  laser:{label:"Laser cutting",rule:"The laser cutter is used only with a member of staff present, with the extraction running and the lid closed. Never leave it running unattended. Only materials the department has approved go in: no PVC, vinyl, polycarbonate or anything unmarked. Hand in your file in advance."},
+  lathe:{label:"Metal lathe",rule:"The lathe is used only after the department's induction and with a member of staff present. Eye protection on, sleeves rolled, long hair tied back, no gloves, no jewellery. The chuck key never leaves your hand while it is in the chuck. Stop the machine before measuring."}
+};
 // mins drives the strategy call: quick <= 20, evening <= 180, long > 180
-// th = the unit of the OCR Cambridge Advanced National in Engineering (H027/H127) the item serves most.
+// th = the topic area of OCR A Level Design and Technology: Design Engineering (H404) the item serves most, or Beyond the course / Applying.
 const ITEMS = [
   // ---- 1 The garage · Do
-  {s:"Is",g:"do",short:"Isaac Science",name:"Isaac Science (physics and maths problems)",mins:20,t:"one deck: 20 min",th:"F130 Principles of engineering",
+  {s:"Is",g:"do",short:"Isaac Science",name:"Isaac Science (physics and maths problems)",mins:20,t:"one deck: 20 min",th:"6 Technical understanding",
    what:"Free problems from Cambridge, marked instantly. The mechanics, electricity and maths decks cover the principles of engineering and lead into first-year degree work.",
    think:"Do one mechanics deck and one electricity deck. Write down the question that took you longest and the principle it tested.",tags:["free","Years 12–13"],url:"https://isaacscience.org/",lt:"isaacscience.org"},
-  {s:"Iw",g:"do",short:"I Want to Study Engineering",name:"I Want to Study Engineering: problems for future engineers",mins:30,t:"one problem: 30 min",th:"F130 Principles of engineering",
+  {s:"Iw",g:"do",short:"I Want to Study Engineering",name:"I Want to Study Engineering: problems for future engineers",mins:30,t:"one problem: 30 min",th:"6 Technical understanding",
    what:"Free engineering problems, sorted by topic, for anyone thinking about an engineering degree. Linked from the University of Cambridge's engineering admissions site.",
    think:"Pick a mechanics problem. Before you start, sketch the forces. When you finish, say which assumption made the problem solvable.",tags:["free","degree preparation"],url:"https://i-want-to-study-engineering.org/",lt:"i-want-to-study-engineering.org"},
   {s:"Ep",g:"do",short:"ESAT preparation",name:"ESAT preparation materials (UAT-UK)",mins:60,t:"a practice paper: an hour",th:"Applying",
    what:"Free practice material for the Engineering and Science Admissions Test, which Cambridge and Oxford engineering applicants sit (Mathematics 1, Mathematics 2 and Physics). October sitting 12–16 October 2026; January booking opens at 3pm on 26 October. The test costs £78; there is a bursary.",
    think:"Year 13 applicants: do one timed section and mark it. Year 12: look at one paper now so the format is not new next year.",tags:["free materials","test £78"],url:"https://esat-tmua.ac.uk/prepare/",lt:"ESAT prepare"},
-  {s:"Iv",g:"do",short:"ICE virtual work experience",name:"ICE virtual work experience (Springpod)",mins:180,t:"a few hours online",th:"F132 Engineering in practice",
+  {s:"Iv",g:"do",short:"ICE virtual work experience",name:"ICE virtual work experience (Springpod)",mins:180,t:"a few hours online",th:"3 Implications of wider issues",
    what:"Free online work experience in civil engineering with the Institution of Civil Engineers, for ages 14 and over: short tasks set by working engineers.",
    think:"Write down one decision in the tasks that depended on cost or safety rather than on the physics.",tags:["free","work experience"],url:"https://www.ice.springpod.com/",lt:"ICE virtual work experience"},
-  {s:"Os",g:"do",short:"Onshape: free CAD",name:"Onshape Education: CAD in the browser",mins:120,t:"an evening",th:"F133 Computer Aided Design",
+  {s:"Os",g:"do",short:"Onshape: free CAD",name:"Onshape Education: CAD in the browser",mins:120,t:"an evening",th:"4 Design thinking and communication",
    what:"Professional CAD that runs in a web browser, free on the Education plan. Nothing to install; it saves as you go and keeps every version.",
    think:"Model one part of the car in the picture, such as a wheel nut or a front-wing endplate, with dimensions you choose. Then make a drawing of it with three views.",tags:["free","CAD"],url:"https://www.onshape.com/en/education/",lt:"Onshape Education"},
-  {s:"Fa",g:"do",short:"Falstad circuit simulator",name:"Falstad circuit simulator",mins:20,t:"20 min",th:"F137 Electrical devices and circuits",
+  {s:"Fa",g:"do",short:"Falstad circuit simulator",name:"Falstad circuit simulator",mins:20,t:"20 min",th:"6 Technical understanding",
    what:"A circuit simulator that runs in the browser and shows the current moving. Load the sample circuits or build your own.",
    think:"Build a potential divider with a thermistor and watch the output voltage as you change the temperature. Then swap in a light-dependent resistor.",tags:["free","circuits"],url:"https://www.falstad.com/circuit/",lt:"falstad.com/circuit"},
-  {s:"Wk",g:"do",short:"Wokwi: microcontroller simulator",name:"Wokwi: Arduino, ESP32 and Raspberry Pi Pico in the browser",mins:120,t:"an evening",th:"F134 Programmable electronics",
+  {s:"Wk",g:"do",short:"Wokwi: microcontroller simulator",name:"Wokwi: Arduino, ESP32 and Raspberry Pi Pico in the browser",mins:120,t:"an evening",th:"6 Technical understanding",
    what:"Write code for a microcontroller and run it on a simulated board with sensors, displays and motors. Free to use in the browser; paid plans add extras.",
    think:"Simulate an Arduino that reads a temperature sensor and switches a fan on above 30 °C and off below 27 °C. Why the gap between the two?",tags:["free to start","programmable electronics"],url:"https://wokwi.com/",lt:"wokwi.com"},
   // ---- 2 Practice · Watch
-  {s:"Hr",g:"watch",short:"Hardy · bamboo houses",name:"Elora Hardy: Magical houses, made of bamboo (TED)",mins:10,t:"10 min talk",th:"F131 Materials science and technology",
+  {s:"Hr",g:"watch",short:"Hardy · bamboo houses",name:"Elora Hardy: Magical houses, made of bamboo (TED)",mins:10,t:"10 min talk",th:"5 Material and component considerations",
    what:"An architect builds houses in Bali almost entirely from bamboo, including the curved roofs and the bridges.",
    think:"Compare bamboo with steel and concrete for tensile strength, stiffness and durability. Where would you not use it, and why?",tags:["TED"],url:"https://www.ted.com/talks/elora_hardy_magical_houses_made_of_bamboo",lt:"Watch on TED"},
-  {s:"Gr",g:"watch",short:"Green · wooden skyscrapers",name:"Michael Green: Why we should build wooden skyscrapers (TED)",mins:12,t:"12 min talk",th:"F131 Materials science and technology",
+  {s:"Gr",g:"watch",short:"Green · wooden skyscrapers",name:"Michael Green: Why we should build wooden skyscrapers (TED)",mins:12,t:"12 min talk",th:"5 Material and component considerations",
    what:"An architect argues for tall buildings made from engineered timber. A one-sided case: the set question asks what is missing.",
    think:"Make the case against. What does the talk say about fire, moisture and joints, and what does it leave out?",tags:["TED","argue with it"],url:"https://www.ted.com/talks/michael_green_why_we_should_build_wooden_skyscrapers",lt:"Watch on TED"},
-  {s:"Sd",g:"watch",short:"Sadoway · liquid-metal battery",name:"Donald Sadoway: The missing link to renewable energy (TED)",mins:15,t:"15 min talk",th:"F137 Electrical devices and circuits",
+  {s:"Sd",g:"watch",short:"Sadoway · liquid-metal battery",name:"Donald Sadoway: The missing link to renewable energy (TED)",mins:15,t:"15 min talk",th:"3 Implications of wider issues",
    what:"An MIT materials scientist explains a battery made of layers of molten metal, for storing energy from wind and solar farms.",
    think:"Sketch the liquid-metal battery. Why does its operating temperature decide which materials can be used?",tags:["TED"],url:"https://www.ted.com/talks/donald_sadoway_the_missing_link_to_renewable_energy",lt:"Watch on TED"},
-  {s:"Da",g:"watch",short:"D'Andrea · quadcopters",name:"Raffaello D'Andrea: The astounding athletic power of quadcopters (TED)",mins:16,t:"16 min talk",th:"F134 Programmable electronics",
+  {s:"Da",g:"watch",short:"D'Andrea · quadcopters",name:"Raffaello D'Andrea: The astounding athletic power of quadcopters (TED)",mins:16,t:"16 min talk",th:"6 Technical understanding",
    what:"Drones that balance a pole, catch a ball and keep flying with a propeller missing, all by feedback control.",
    think:"Draw the feedback loop that keeps a quadcopter stable: sensor, controller, actuator. Where would a programmable microcontroller sit?",tags:["TED"],url:"https://www.ted.com/talks/raffaello_d_andrea_the_astounding_athletic_power_of_quadcopters",lt:"Watch on TED"},
-  {s:"Rb",g:"watch",short:"Raibert · Spot the robot dog",name:"Marc Raibert: Meet Spot, the robot dog that can run, hop and open doors (TED)",mins:14,t:"14 min talk",th:"F134 Programmable electronics",
+  {s:"Rb",g:"watch",short:"Raibert · Spot the robot dog",name:"Marc Raibert: Meet Spot, the robot dog that can run, hop and open doors (TED)",mins:14,t:"14 min talk",th:"6 Technical understanding",
    what:"The founder of Boston Dynamics shows legged robots keeping their balance. Several years old; the robots have moved on.",
    think:"List the sensors and actuators Spot needs to stay upright. Which component would you expect to fail first in use?",tags:["TED"],url:"https://www.ted.com/talks/marc_raibert_meet_spot_the_robot_dog_that_can_run_hop_and_open_doors",lt:"Watch on TED"},
-  {s:"Km",g:"watch",short:"Kumar · flying robots",name:"Vijay Kumar: Robots that fly ... and cooperate (TED)",mins:16,t:"16 min talk",th:"F135 Mechanical product design",
+  {s:"Km",g:"watch",short:"Kumar · flying robots",name:"Vijay Kumar: Robots that fly ... and cooperate (TED)",mins:16,t:"16 min talk",th:"6 Technical understanding",
    what:"Small flying robots that build structures and fly in formation. Several years old, but the design trade-offs have not changed.",
    think:"What does a designer trade off when making a flying robot smaller: mass, battery life, motor power or processing?",tags:["TED"],url:"https://www.ted.com/talks/vijay_kumar_robots_that_fly_and_cooperate",lt:"Watch on TED"},
-  {s:"Ds",g:"watch",short:"DeSimone · fast 3D printing",name:"Joseph DeSimone: What if 3D printing was 100x faster? (TED)",mins:11,t:"11 min talk",th:"F136 Computer Aided Manufacture",
+  {s:"Ds",g:"watch",short:"DeSimone · fast 3D printing",name:"Joseph DeSimone: What if 3D printing was 100x faster? (TED)",mins:11,t:"11 min talk",th:"7 Manufacturing processes and techniques",
    what:"A chemist shows a printer that grows parts continuously out of a pool of liquid resin, using light and oxygen.",
    think:"Compare this process with layer-by-layer printing and with CNC machining for a batch of 500 parts. Which would you choose, and on what grounds?",tags:["TED"],url:"https://www.ted.com/talks/joseph_desimone_what_if_3d_printing_was_100x_faster",lt:"Watch on TED"},
-  {s:"Tt",g:"watch",short:"Tibbits · 4D printing",name:"Skylar Tibbits: The emergence of \"4D printing\" (TED)",mins:8,t:"8 min talk",th:"F131 Materials science and technology",
+  {s:"Tt",g:"watch",short:"Tibbits · 4D printing",name:"Skylar Tibbits: The emergence of \"4D printing\" (TED)",mins:8,t:"8 min talk",th:"5 Material and component considerations",
    what:"Printed objects that fold or change shape by themselves when they get wet or warm.",
    think:"Which material property is being designed in here? How would you test whether a printed part behaves as intended?",tags:["TED"],url:"https://www.ted.com/talks/skylar_tibbits_the_emergence_of_4d_printing",lt:"Watch on TED"},
-  {s:"Ri",g:"watch",short:"Ri Christmas Lectures archive",name:"Royal Institution Christmas Lectures archive: the engineering series",mins:60,t:"one lecture: an hour",th:"F137 Electrical devices and circuits",
+  {s:"Ri",g:"watch",short:"Ri Christmas Lectures archive",name:"Royal Institution Christmas Lectures archive: the engineering series",mins:60,t:"one lecture: an hour",th:"6 Technical understanding",
    what:"Every series free to watch. For engineering: Danielle George, Sparks will fly (2014, electronics at home); Saiful Islam, Supercharged (2016, batteries and fuels); Kevin Fong, How to survive in space (2015). The 2026 series, on BBC after Christmas, is Jim Al-Khalili on time.",
    think:"Watch one of Danielle George's 2014 lectures. Pick one demonstration and draw the circuit behind it.",tags:["free","lectures"],url:"https://www.rigb.org/christmas-lectures/watch-royal-institution-christmas-lectures-archive",lt:"Ri archive"},
   {s:"Ry",g:"watch",short:"Royal Institution on YouTube",name:"Royal Institution YouTube channel",mins:60,t:"a lecture: an hour",th:"Beyond the course",
    what:"New public lectures and demonstrations every week across the sciences, including engineering and technology.",
    think:"Search the channel for engineering, materials or robotics. Choose one lecture and write down the one number from it you would quote at an interview.",tags:["free","lectures"],url:"https://www.youtube.com/user/TheRoyalInstitution",lt:"Ri YouTube"},
-  {s:"Pe",g:"watch",short:"Practical Engineering",name:"Practical Engineering (Grady Hillhouse)",mins:20,t:"one video: 20 min",th:"F132 Engineering in practice",
+  {s:"Pe",g:"watch",short:"Practical Engineering",name:"Practical Engineering (Grady Hillhouse)",mins:20,t:"one video: 20 min",th:"6 Technical understanding",
    what:"A civil engineer explains how dams, bridges, roads and water supply work, and how failures were investigated.",
    think:"Watch one video on a structural failure. Write down what the engineers got wrong, and what check would have caught it.",tags:["free","civil"],url:"https://www.youtube.com/@PracticalEngineeringChannel",lt:"Practical Engineering"},
-  {s:"Te",g:"watch",short:"The Efficient Engineer",name:"The Efficient Engineer",mins:20,t:"one video: 20 min",th:"F131 Materials science and technology",
+  {s:"Te",g:"watch",short:"The Efficient Engineer",name:"The Efficient Engineer",mins:20,t:"one video: 20 min",th:"6 Technical understanding",
    what:"Clear animated explanations of stress and strain, bending, torsion, fatigue and fluid mechanics. The level of A-level physics and the first year of a degree.",
    think:"Watch the video on fatigue. Then look at the small print under the debrief desk: what did Wöhler find that the video explains?",tags:["free","mechanics"],url:"https://www.youtube.com/@TheEfficientEngineer",lt:"The Efficient Engineer"},
-  {s:"Cb",g:"watch",short:"Chain Bear · racing car tech",name:"Chain Bear: Formula 1 technology explained",mins:15,t:"one video: 15 min",th:"F130 Principles of engineering",
+  {s:"Cb",g:"watch",short:"Chain Bear · racing car tech",name:"Chain Bear: Formula 1 technology explained",mins:15,t:"one video: 15 min",th:"6 Technical understanding",
    what:"Animated explanations of racing-car engineering for people who are not engineers yet: aerodynamics, tyres, power units, brakes and the rules that limit them. Subtitled.",
    think:"Pick a video on aerodynamics. Sketch the airflow over the car and mark where the downforce comes from. What does it cost in drag, and why?",tags:["free","motorsport"],url:"https://www.youtube.com/@chainbear",lt:"Chain Bear on YouTube"},
-  {s:"Ex",g:"watch",short:"Engineering Explained",name:"Engineering Explained (Jason Fenske)",mins:15,t:"one video: 15 min",th:"F135 Mechanical product design",
+  {s:"Ex",g:"watch",short:"Engineering Explained",name:"Engineering Explained (Jason Fenske)",mins:15,t:"one video: 15 min",th:"6 Technical understanding",
    what:"A mechanical engineer explains how cars work: engines, gearboxes, turbochargers, differentials, torque and power, electric drive.",
    think:"Watch one video on a part of the drivetrain. Draw it and label where the energy goes in, where it comes out and where it is lost.",tags:["free","cars"],url:"https://www.youtube.com/@EngineeringExplained",lt:"Engineering Explained"},
   {s:"Ti",g:"watch",short:"This is Engineering",name:"This is Engineering (Royal Academy of Engineering)",mins:20,t:"20 min",th:"Applying",
    what:"Over a hundred short films of working engineers, and a guide to routes into engineering. National Engineering Day is Wednesday 4 November 2026.",
    think:"Watch three films from three different kinds of engineering. Which job would you want to do for a week, and what would you need to learn first?",tags:["free","careers"],url:"https://www.thisisengineering.org.uk/",lt:"thisisengineering.org.uk"},
-  {s:"Gc",g:"watch",short:"Gresham College · technology",name:"Gresham College: Information Technology collection",mins:60,t:"a lecture: an hour",th:"Beyond the course",
+  {s:"Gc",g:"watch",short:"Gresham College · technology",name:"Gresham College: Information Technology collection",mins:60,t:"a lecture: an hour",th:"3 Implications of wider issues",
    what:"Free public lectures on technology and society. Gresham has no engineering collection; this is the nearest. Schools-only live talks run 2–3pm in term time.",
    think:"Choose one lecture. Who carries the risk when the technology in it goes wrong, and who decides?",tags:["free","lectures"],url:"https://www.gresham.ac.uk/schools-and-colleges/information-technology",lt:"Gresham IT"},
   // ---- 3 Team radio · Listen
-  {s:"Ea",g:"listen",short:"Engineering a Better World",name:"Engineering a Better World (IET with The House magazine)",mins:30,t:"one episode: 30 min",th:"F132 Engineering in practice",
+  {s:"Ea",g:"listen",short:"Engineering a Better World",name:"Engineering a Better World (IET with The House magazine)",mins:30,t:"one episode: 30 min",th:"3 Implications of wider issues",
    what:"A podcast from Westminster: MPs, peers and engineers on energy, infrastructure and technology policy.",
    think:"Note one decision in the episode that was made for political or cost reasons rather than engineering ones.",tags:["free","podcast"],url:"https://open.spotify.com/show/4LbWOzdlkDNFNipBl9YuQz",lt:"Spotify"},
   {s:"Ue",g:"listen",short:"Undercover Engineers",name:"Undercover Engineers (IET Education)",mins:30,t:"one episode: 30 min",th:"Applying",
    what:"Interviews with working engineers in aerospace, structures, robotics, AI and cyber security about what they build and how they got there. Pitched a little younger than sixth form; the interviews are still useful.",
    think:"For one guest, write down their route: what they studied, where they trained, and the first job they did.",tags:["free","podcast"],url:"https://education.theiet.org/secondary/undercover-engineers-podcast",lt:"IET Education"},
-  {s:"Bi",g:"listen",short:"In Our Time · science",name:"BBC In Our Time: Science archive",mins:45,t:"one episode: 45 min",th:"Beyond the course",
+  {s:"Bi",g:"listen",short:"In Our Time · science",name:"BBC In Our Time: Science archive",mins:45,t:"one episode: 45 min",th:"2 Learning from existing products and practice",
    what:"Forty-five minutes with three academics on one subject. Hundreds of episodes on science and technology, including machines, materials and electricity.",
    think:"Search the archive for an episode on a machine or a material you are studying. Write down the problem the first engineers were trying to solve.",tags:["free","radio"],url:"https://www.bbc.co.uk/programmes/p01gyd7j",lt:"In Our Time Science"},
   // ---- 4 The debrief · Read
-  {s:"In",g:"read",short:"Ingenia magazine",name:"Ingenia (Royal Academy of Engineering)",mins:15,t:"one article: 15 min",th:"Beyond the course",
+  {s:"In",g:"read",short:"Ingenia magazine",name:"Ingenia (Royal Academy of Engineering)",mins:15,t:"one article: 15 min",th:"2 Learning from existing products and practice",
    what:"The Royal Academy of Engineering's free magazine, online and in print. Start with the 'How does that work?' series; 'How I got here' is about engineers' careers.",
    think:"Read one 'How does that work?' article and write down which principle of engineering it depends on.",tags:["free","magazine"],url:"https://www.ingenia.org.uk/",lt:"ingenia.org.uk"},
-  {s:"Et",g:"read",short:"E+T magazine",name:"E+T Magazine (IET)",mins:15,t:"one article: 15 min",th:"Beyond the course",
+  {s:"Et",g:"read",short:"E+T magazine",name:"E+T Magazine (IET)",mins:15,t:"one article: 15 min",th:"2 Learning from existing products and practice",
    what:"News and features on engineering and technology from the Institution of Engineering and Technology.",
    think:"Find a feature on a project still being built. What is the hardest engineering problem left, according to the article?",tags:["free","magazine"],url:"https://eandt.theiet.org/",lt:"E+T"},
   {s:"He",g:"read",short:"Cambridge HE+ Engineering",name:"Cambridge HE+ Engineering",mins:40,t:"a list to work through",th:"Applying",
    what:"Cambridge's subject page for sixth formers: what engineering at university covers, and where to go further.",
    think:"Work through one strand over a fortnight. Then write down which part you would want to specialise in, and why.",tags:["free","degree preparation"],url:"https://myheplus.com/subject/engineering",lt:"HE+ Engineering"},
-  {s:"Ie",g:"read",short:"ICE education resources",name:"ICE education resources",mins:20,t:"20 min",th:"F132 Engineering in practice",
+  {s:"Ie",g:"read",short:"ICE education resources",name:"ICE education resources",mins:20,t:"20 min",th:"3 Implications of wider issues",
    what:"Civil engineering resources from the Institution of Civil Engineers, including ICE Futures and the education newsletter, which carries scholarship dates.",
    think:"Find one project the ICE features. What did it cost, how long did it take, and what was the main risk?",tags:["free","civil"],url:"https://www.ice.org.uk/your-career/education-resources",lt:"ICE resources"},
-  {s:"So",g:"read",short:"Gordon · Structures",name:"J. E. Gordon, Structures: Or Why Things Don't Fall Down (1978)",mins:500,t:"a book",th:"F130 Principles of engineering",
+  {s:"So",g:"read",short:"Gordon · Structures",name:"J. E. Gordon, Structures: Or Why Things Don't Fall Down (1978)",mins:500,t:"a book",th:"6 Technical understanding",
    what:"Why bridges, buildings, boats and bones stay up, and why some do not. The book most often recommended to engineering applicants.",
    think:"Gordon explains why a crack in a ship's deck starts at a hatch corner. Draw the stress lines round a square hole and a round one.",tags:["library","first book"]},
-  {s:"Sm",g:"read",short:"Miodownik · Stuff Matters",name:"Mark Miodownik, Stuff Matters (2013)",mins:400,t:"a book",th:"F131 Materials science and technology",
+  {s:"Sm",g:"read",short:"Miodownik · Stuff Matters",name:"Mark Miodownik, Stuff Matters (2013)",mins:400,t:"a book",th:"5 Material and component considerations",
    what:"A chapter per everyday material: steel, paper, concrete, chocolate, foam, plastic, glass, graphite, porcelain, implants. A materials scientist on why each behaves as it does.",
    think:"Choose one chapter. Explain the material's behaviour in terms of its structure, then say what you would use it for and what you would not.",tags:["library","materials"]},
-  {s:"Bl",g:"read",short:"Agrawal · Built",name:"Roma Agrawal, Built: The Hidden Stories Behind Our Structures (2018)",mins:400,t:"a book",th:"F132 Engineering in practice",
+  {s:"Bl",g:"read",short:"Agrawal · Built",name:"Roma Agrawal, Built: The Hidden Stories Behind Our Structures (2018)",mins:400,t:"a book",th:"6 Technical understanding",
    what:"A structural engineer who worked on the Shard explains how buildings and bridges are designed and built, from foundations to wind loads.",
    think:"Agrawal explains how tall buildings resist the wind. Sketch the forces on a tall building in a gale and say where the bending is greatest.",tags:["library","structures"]},
-  {s:"Nw",g:"read",short:"Newey · How to Build a Car",name:"Adrian Newey, How to Build a Car (2017)",mins:500,t:"a book",th:"F135 Mechanical product design",
+  {s:"Nw",g:"read",short:"Newey · How to Build a Car",name:"Adrian Newey, How to Build a Car (2017)",mins:500,t:"a book",th:"4 Design thinking and communication",
    what:"A racing-car designer's account of the cars he drew over forty years: how a design starts on a drawing board, how it is tested, and what went wrong.",
    think:"Find where he explains ground effect. Write the explanation in three lines with a sketch, then check it against what you know about pressure and airflow.",tags:["library","motorsport"]},
   // ---- 5 Qualifying · Enter
-  {s:"Tb",g:"enter",short:"Big Bang Competition",name:"The Big Bang Competition (EngineeringUK)",mins:2000,t:"a project: months",th:"F132 Engineering in practice",
+  {s:"Tb",g:"enter",short:"Big Bang Competition",name:"The Big Bang Competition (EngineeringUK)",mins:2000,t:"a project: months",th:"8 Viability of design solutions",
    what:"Enter a project you have designed and built, on your own or as a team, aged 11 to 18. Finalists show it at the Big Bang Fair at the NEC in Birmingham in June; titles include UK Young Engineer of the Year. Opens in the autumn; the 2027 closing date is not yet published.",
    think:"If you have a project from the course or from home, write one paragraph: the problem, what you built, and how you tested it. That paragraph is most of the entry.",tags:["free","enter yourself","NEC Birmingham"],url:"https://eukeducation.org.uk/about-us/our-activities-for-schools/the-big-bang-competition/",lt:"Big Bang Competition"},
-  {s:"Sr",g:"enter",short:"STEM Racing UK",name:"STEM Racing UK (formerly F1 in Schools)",mins:3000,t:"a team project: months",th:"F133 Computer Aided Design",
+  {s:"Sr",g:"enter",short:"STEM Racing UK",name:"STEM Racing UK (formerly F1 in Schools)",mins:3000,t:"a team project: months",th:"4 Design thinking and communication",
    what:"Design, make and race a miniature car as a team, using CAD and CAM, and present your engineering portfolio to judges. Regional finals run from November 2026 to February 2027. The school registers the team; registration and making the car cost money, and the CAD software is free.",
    think:"Tap 'I want to enter' so the department knows there is a team. Then sketch what you would change about a car's shape to cut its drag.",tags:["team","school registers","costs apply"],url:"https://www.stemracing.co.uk/",lt:"STEM Racing UK"},
-  {s:"Gp",g:"enter",short:"Greenpower Formula 24+",name:"Greenpower Formula 24+",mins:3000,t:"a team project: a season",th:"F137 Electrical devices and circuits",
+  {s:"Gp",g:"enter",short:"Greenpower Formula 24+",name:"Greenpower Formula 24+",mins:3000,t:"a team project: a season",th:"6 Technical understanding",
    what:"Build and race a single-seater electric car as a team, ages 16 to 25, at real motorsport circuits; the International Final is at Goodwood each October. The school buys the kit car and pays entries, so the department has to decide to take part.",
    think:"Tap 'I want to enter' if you would join a team. Then work out how far the car could go on a battery storing 1 kWh if it needs 400 W to hold 40 km/h.",tags:["team","school decides","paid"],url:"https://www.greenpower.co.uk/",lt:"Greenpower"},
   {s:"If",g:"enter",short:"IET Future Talent Awards",name:"IET Future Talent Awards (Launch Scholarship)",mins:120,t:"an application",th:"Applying",
@@ -1138,7 +1311,7 @@ const ITEMS = [
   {s:"Ed",g:"apply",short:"EDT Platinum Placements",name:"EDT Platinum Placements (formerly Year in Industry)",mins:120,t:"an application",th:"Applying",
    what:"A paid year working for an engineering company before university, with help on your CV and interview and a volunteer mentor. Applications for 2027–28 opened on 1 October 2026; most placements start July to September.",
    think:"Year 13: if you might take a year out, tap 'I'm interested' and look at three of the companies.",tags:["Year 13","paid placement"],url:"https://www.etrust.org.uk/programmes-platinum-placements",lt:"Details"},
-  {s:"Ei",g:"apply",short:"Industrial Cadets: Gold",name:"EDT Industrial Cadets: Gold Mentored Project",mins:3000,t:"50 hours over a term",th:"F132 Engineering in practice",
+  {s:"Ei",g:"apply",short:"Industrial Cadets: Gold",name:"EDT Industrial Cadets: Gold Mentored Project",mins:3000,t:"50 hours over a term",th:"1 Identifying requirements",
    what:"A Year 12 team project on a real company problem, with an engineer as mentor: about 50 hours. The school pays an admin cost; bursaries or sponsorship may be available.",
    think:"Tap 'I'm interested' so the department knows there is a team.",tags:["Year 12","team"],url:"https://www.etrust.org.uk/schools-groups",lt:"Details"},
   {s:"En",g:"apply",short:"Industrial Cadets: Silver",name:"EDT Industrial Cadets: Silver Insight into Apprenticeships",mins:3000,t:"six months, part online",th:"Applying",
@@ -1154,8 +1327,52 @@ const ITEMS = [
    what:"Free school events for girls aged 8 to 18 that use motorsport to show the engineering and other careers in the sport, with talks from women who work in it, and a free online community. The school registers interest.",
    think:"Tap 'I'm interested' and the department can register the school for an event.",tags:["free","school registers","motorsport"],url:"https://motorsportuk.org/the-sport/women-in-motorsport/girls-on-track-uk/",lt:"Girls on Track UK"},
   // ---- Added for Autumn 2 (2026-10-10)
-  {s:"TEW",g:"do",short:"Tomorrow's Engineers Week",name:"Tomorrow's Engineers Week 2026: 9–13 November",mins:60,t:"1h",th:"F130 Principles of engineering",added:"2026-10-10",what:"EngineeringUK's national week of engineering careers activity, Monday 9 to Friday 13 November 2026, theme Shape our future: free resources, engineer Q&As and three design challenges (beat the heat, smart support, beyond the plate). Schools register free.",think:"Which of the three challenges could you take on to a Big Bang entry?",tags:["Y12–13","free","9–13 Nov"],url:"https://www.engineeringuk.com/teweek/",lt:"engineeringuk.com/teweek"},
-  {s:"IET",g:"watch",short:"IET lectures and webinars",name:"IET free lectures and online talks",mins:60,t:"1h",th:"F137 Electrical devices and circuits",added:"2026-10-10",what:"The Institution of Engineering and Technology runs free public lectures and online talks all year; most need only a free non-member login, and Birmingham Local Network events are open to the public. Next: Skywave over-the-horizon radar, from the University of Birmingham's SERENE group, Wednesday 4 November 2026, 12–1pm online.",think:"Pick one talk a term and write down the one engineering trade-off the speaker had to make.",tags:["Y12–13","free","online","4 Nov"],url:"https://events.theiet.org/search",lt:"events.theiet.org"},
+  {s:"TEW",g:"do",short:"Tomorrow's Engineers Week",name:"Tomorrow's Engineers Week 2026: 9–13 November",mins:60,t:"1h",th:"1 Identifying requirements",added:"2026-10-10",what:"EngineeringUK's national week of engineering careers activity, Monday 9 to Friday 13 November 2026, theme Shape our future: free resources, engineer Q&As and three design challenges (beat the heat, smart support, beyond the plate). Schools register free.",think:"Which of the three challenges could you take on to a Big Bang entry?",tags:["Y12–13","free","9–13 Nov"],url:"https://www.engineeringuk.com/teweek/",lt:"engineeringuk.com/teweek"},
+  {s:"IET",g:"watch",short:"IET lectures and webinars",name:"IET free lectures and online talks",mins:60,t:"1h",th:"6 Technical understanding",added:"2026-10-10",what:"The Institution of Engineering and Technology runs free public lectures and online talks all year; most need only a free non-member login, and Birmingham Local Network events are open to the public. Next: Skywave over-the-horizon radar, from the University of Birmingham's SERENE group, Wednesday 4 November 2026, 12–1pm online.",think:"Pick one talk a term and write down the one engineering trade-off the speaker had to make.",tags:["Y12–13","free","online","4 Nov"],url:"https://events.theiet.org/search",lt:"events.theiet.org"},
+  // ---- Added 13 October 2026 at the department's request: workshop projects (3D printing, laser, lathe) and F1 routes
+  {s:"P3a",g:"do",proj:"print",short:"3D print 1 · measure, model, print",name:"3D printing project 1: measure it, model it, print it",mins:180,t:"an evening plus a print",th:"7 Manufacturing processes and techniques",added:"2026-10-13",
+   what:"Find a small part that is missing or broken at home or in school: a knob, a clip, a bracket, a cap. Measure it with callipers, draw it with dimensions, model it in Onshape or Tinkercad, slice it in Bambu Studio and print it on one of the department's Bambu Lab printers. Level 1 of three.",
+   think:"Before you print, write a risk assessment (hot nozzle and bed, moving parts, fumes from some filaments) and the drawing with every dimension on it. After, measure the print against the drawing. Where is it out, by how much, and why? That goes in the build log.",tags:["workshop project","3D printing","level 1","staff present"],url:"https://wiki.bambulab.com/en/software/bambu-studio",lt:"Bambu Studio guide"},
+  {s:"P3b",g:"do",proj:"print",short:"3D print 2 · tolerance gauge",name:"3D printing project 2: how close can this printer hold?",mins:180,t:"an evening plus a print",th:"7 Manufacturing processes and techniques",added:"2026-10-13",
+   what:"Print a tolerance gauge: a set of pegs and holes with clearances from 0.0 to 0.5 mm (MakerWorld has several ready to print, or model your own). Measure the printed pegs and holes with callipers, then write down, for this printer and this filament, the clearance that gives a sliding fit and the one that gives a press fit. Level 2.",
+   think:"This is 7.5, quality control, done for real. Print the gauge twice, once at 0.2 mm layers and once at 0.12 mm. Does the layer height change the fit? Put the numbers in the build log; the next person to design a snap-fit will want them.",tags:["workshop project","3D printing","level 2","staff present"],url:"https://makerworld.com/en",lt:"MakerWorld"},
+  {s:"P3c",g:"do",proj:"print",short:"3D print 3 · strength and orientation",name:"3D printing project 3: strength against print orientation",mins:300,t:"two sessions",th:"6 Technical understanding",added:"2026-10-13",
+   what:"Design a simple L-bracket with a mounting hole and print three: one flat, one on its edge, one at 45 degrees, same filament and settings. Clamp each one and load it to failure with known masses, recording the mass and where it broke. Plot the three results. Level 3.",
+   think:"A printed part is a stack of welded layers: strong along a layer, weak across the joins. Predict the order before you test. Then explain the result with a sketch of the layer lines at the break, and say which orientation you would specify for a real bracket and why.",tags:["workshop project","3D printing","level 3","staff present"],url:"https://wiki.bambulab.com/en/home",lt:"Bambu Lab wiki"},
+  {s:"PLa",g:"do",proj:"laser",short:"Laser 1 · kerf test and a box",name:"Laser cutting project 1: kerf test and a press-fit box",mins:180,t:"an evening plus a cut",th:"7 Manufacturing processes and techniques",added:"2026-10-13",
+   what:"Cut a kerf test strip in 3 mm plywood or acrylic to find how much material the beam removes. Then generate a finger-jointed box in MakerCase, enter the kerf, cut it and see whether the fingers press together without glue. Level 1.",
+   think:"Measure the kerf three ways: the width of a single cut, the shortfall of a cut-out square, and the gap in the box joints. Do they agree? Put the number and the machine settings (power, speed) in the build log so the next cut is right first time.",tags:["workshop project","laser cutting","level 1","staff present"],url:"https://en.makercase.com/",lt:"MakerCase (free box generator)"},
+  {s:"PLb",g:"do",proj:"laser",short:"Laser 2 · living hinge",name:"Laser cutting project 2: a living hinge",mins:180,t:"an evening plus a cut",th:"5 Material and component considerations",added:"2026-10-13",
+   what:"A living hinge is a pattern of slots that lets a stiff sheet bend. Design three in Inkscape or LightBurn with different slot lengths and spacings, cut them in 3 mm plywood, and find the tightest bend radius each one takes before it snaps. Level 2.",
+   think:"Which property of the plywood are you working with here, and which are you working against? Write the slot pattern that survived the tightest radius as a rule (slot length, gap, spacing) and say whether you would expect it to hold in acrylic.",tags:["workshop project","laser cutting","level 2","staff present"],url:"https://docs.lightburnsoftware.com/",lt:"LightBurn documentation"},
+  {s:"PLc",g:"do",proj:"laser",short:"Laser 3 · a gear train that works",name:"Laser cutting project 3: a gear train that works",mins:300,t:"two sessions",th:"6 Technical understanding",added:"2026-10-13",
+   what:"Generate two or three spur gears with a free gear generator, cut them in 3 mm ply or acrylic, mount them on dowels in a laser-cut base so they mesh, and measure the velocity ratio by counting turns. Then add an idler and show the output reverses. Level 3.",
+   think:"Work out the velocity ratio from the tooth counts before you cut, then measure it. If the gears bind, is it the kerf, the centre distance or the tooth profile? Say which, with evidence, in the build log.",tags:["workshop project","laser cutting","level 3","staff present"],url:"https://geargenerator.com/",lt:"Gear Generator (free)"},
+  {s:"PMa",g:"do",proj:"lathe",short:"Lathe 1 · a stepped pin to drawing",name:"Lathe project 1: face, turn and part off a stepped pin to drawing",mins:180,t:"a session, after induction",th:"7 Manufacturing processes and techniques",added:"2026-10-13",
+   what:"From aluminium bar, make a pin with two diameters and a chamfer to a drawing the department gives you, to plus or minus 0.1 mm: face the end, turn the two diameters, chamfer, part off. Measure with a micrometer. Level 1.",
+   think:"Before you switch on: a risk assessment, and the speed for the diameter you are cutting. After: how far out was each dimension, and was the error in your measuring, your cut depth or the machine? Blondihacks' Lathe Skills videos show every step.",tags:["workshop project","metal lathe","level 1","staff present"],url:"https://www.youtube.com/@Blondihacks",lt:"Blondihacks: Lathe Skills"},
+  {s:"PMb",g:"do",proj:"lathe",short:"Lathe 2 · drill, bore and thread",name:"Lathe project 2: drill, bore and thread a bush",mins:240,t:"two sessions",th:"7 Manufacturing processes and techniques",added:"2026-10-13",
+   what:"Make a threaded bush: turn the outside, centre-drill and drill through, bore to size, then cut an internal thread with a tap in the tailstock, or an external one with a die. Check the thread with a bolt. Level 2.",
+   think:"Why drill before you bore, when a drill would get you close? Write down the drill size you chose for the tap and where the number came from. If the thread is tight, which of the three operations is to blame?",tags:["workshop project","metal lathe","level 2","staff present"],url:"https://www.youtube.com/@Blondihacks",lt:"Blondihacks: Lathe Skills"},
+  {s:"PMc",g:"do",proj:"lathe",short:"Lathe 3 · a bearing housing to fit",name:"Lathe project 3: a bearing housing turned to a press fit",mins:300,t:"two sessions",th:"8 Viability of design solutions",added:"2026-10-13",
+   what:"Turn a housing whose bore takes a standard bearing (a 608 skateboard bearing is 22 mm outside) as a press fit: tight enough to hold, loose enough to go in with a vice. Measure the bearing, decide the bore size and the tolerance, cut it, and test it. Level 3.",
+   think:"This is 8.2: does the part meet its technical specification? Write the specification first (bore diameter and tolerance), then the measurement, then pass or fail. If it failed, what would you change: the number, the method or the machine?",tags:["workshop project","metal lathe","level 3","staff present"],url:"https://www.youtube.com/@Blondihacks",lt:"Blondihacks: Lathe Skills"},
+  {s:"Ft",g:"watch",short:"F1 Tech Talk",name:"Formula 1 on YouTube: the Tech Talk series",mins:10,t:"one video: 10 min",th:"6 Technical understanding",added:"2026-10-13",
+   what:"Formula 1's own channel. Tech Talk explains one piece of the real cars at a time from footage of them: floors, front wings, brake ducts, cooling, suspension, steering. About ten minutes each; search the channel for Tech Talk.",
+   think:"Watch one. Draw the part, write the force or flow it manages (downforce, drag, heat, load) and the rule in the technical regulations that limits it.",tags:["free","motorsport"],url:"https://www.youtube.com/@F1",lt:"Formula 1 on YouTube"},
+  {s:"Mj",g:"read",short:"Motorsport engineer · the job",name:"Motorsport engineer: the job, the routes in and the pay (National Careers Service)",mins:15,t:"15 min",th:"Applying",added:"2026-10-13",
+   what:"The government's careers profile: what motorsport engineers do day to day and at race weekends, the three routes in (degree, apprenticeship, volunteering at events), the entry requirements for each, and the pay, from about £27,000 to about £60,000.",
+   think:"Write down which A levels each route needs. Then find one motorsport event within an hour of Birmingham where you could volunteer or marshal next season; Motorsport UK clubs take people from 16.",tags:["free","careers","motorsport"],url:"https://nationalcareers.service.gov.uk/job-profiles/motorsport-engineer",lt:"National Careers Service"},
+  {s:"Fe",g:"enter",short:"F1 Engineering Scholarship",name:"Formula 1 Engineering Scholarship (Oxford, Cambridge and partner universities)",mins:120,t:"an application, after an offer",th:"Applying",added:"2026-10-13",
+   what:"Formula 1 pays tuition fees and living costs for a four-year engineering degree, with work experience at F1 teams, for a small number of students at partner universities including Oxford and Cambridge. It is for students from groups under-represented in the sport; the criteria differ by university (ethnicity, gender, household income) and you apply through the university once you hold an offer or a place, in Cambridge's case in August after results. Two awards a year at each.",
+   think:"Year 13 applicants for engineering at Oxford or Cambridge: read both pages now, before you have an offer, so you know whether you qualify. If you might, tap 'I'm entering this' and the department will remind you in the summer.",tags:["Year 13","eligibility criteria","enter yourself","motorsport"],url:"https://www.undergraduate.study.cam.ac.uk/fees-funding/scholarships-bursaries/formula-1-engineering-scholarship",lt:"Cambridge page",more:[{lt:"Oxford page",url:"https://eng.ox.ac.uk/study/undergraduate/formula-one-engineering-scholarship"}]},
+  {s:"Fw",g:"apply",short:"Williams F1 work experience",name:"Atlassian Williams F1 Team: work experience week",mins:120,t:"an application; one week in summer",th:"Applying",added:"2026-10-13",
+   what:"One week, five days, at the Williams factory at Grove in Oxfordshire, for students in Years 10 to 13 and first-year undergraduates, in June, July or August. In 2026 applications opened in the week of 23 February and closed in the spring, with outcomes in early May; the team expects the same timing in 2027. CV, then an online assessment, then a three-minute video. Unpaid, and you get yourself to Grove.",
+   think:"Tap 'I'm interested' and the department will remind you in February. Start the CV now: what have you built, measured, tested or raced? Every workshop project on this page is a line on it.",tags:["Years 12–13","unpaid","Grove, Oxfordshire","motorsport"],url:"https://careers.williamsf1.com/work-experience",lt:"Williams careers"},
+  {s:"Fc",g:"apply",short:"F1 teams · apprenticeships",name:"The F1 teams' careers pages: apprenticeships, placements, graduate schemes",mins:30,t:"30 min, then monthly",th:"Applying",added:"2026-10-13",
+   what:"Seven of the teams are within two hours of Birmingham: Mercedes at Brackley, Red Bull Racing at Milton Keynes, Aston Martin at Silverstone, Williams at Grove, McLaren at Woking, Alpine at Enstone, Haas at Banbury. Each advertises apprenticeships (machining, composites, electronics, software, business) when it has them, industrial placements for university students and graduate schemes. Apprenticeships appear through the year with no fixed window, so look monthly.",
+   think:"Open two teams' pages. For one apprenticeship and one graduate scheme write down the GCSE and A-level requirements and the closing date. Which route is yours, and what do you need to do this year for it?",tags:["free","apprenticeships","motorsport"],url:"https://www.mercedesamgf1.com/careers",lt:"Mercedes careers",
+   more:[{lt:"Red Bull Racing",url:"https://careers.redbullracing.com/"},{lt:"McLaren Racing",url:"https://racingcareers.mclaren.com/"},{lt:"Aston Martin F1",url:"https://www.astonmartinf1.com/en-GB/careers"},{lt:"Williams placements",url:"https://careers.williamsf1.com/placements"}]},
 ];
 
 /* The calendar. m = month (YYYY-MM). s links to an item. */
@@ -1165,6 +1382,8 @@ const YEAR = [
   {m:"2026-10",when:"Thu 15 Oct, 6pm",what:"Oxford and Cambridge applications close",sub:"Year 13 applicants, through UCAS.",s:"Ca",check:false,urgent:true},
   {m:"2026-10",when:"Mon 26 Oct, 3pm",what:"ESAT January booking opens",sub:"For courses that accept the January sitting.",s:"Ep",check:false},
   {m:"2026-11",when:"Autumn",what:"Big Bang Competition opens",sub:"Have a project? Tell the department.",s:"Tb",check:true},
+  {m:"2027-02",when:"Late Feb",what:"Williams F1 work experience applications open",sub:"Years 10–13. In 2026 they opened in the week of 23 February.",s:"Fw",check:true},
+  {m:"2027-08",when:"August",what:"Formula 1 Engineering Scholarship, Cambridge round",sub:"Offer holders only; Oxford contacts its offer holders directly.",s:"Fe",check:true},
   {m:"2026-11",when:"Wed 4 Nov",what:"National Engineering Day",sub:"Royal Academy of Engineering.",s:"Ti",check:false},
   {m:"2026-11",when:"9–13 Nov",what:"Tomorrow's Engineers Week",sub:"Films and events all week.",s:"Ti",check:false},
   {m:"2026-11",when:"Autumn term",what:"Nuffield Research Placements open",sub:"Year 12. Last year's pattern.",s:"Nr",check:true},
@@ -1227,7 +1446,7 @@ const BY = Object.fromEntries(ITEMS.map(i=>[i.s,i]));
 /* ---------- state ---------- */
 const KEY_BASE="eng-beyond-demo";
 let KEY=KEY_BASE;
-const blank=()=>({done:{},notes:[],news:{},interest:{},fam:"all",bucket:"quick",at:"do",lastVisit:null,savedAt:null});
+const blank=()=>({done:{},notes:[],news:{},rev:{},papers:{},interest:{},fam:"all",bucket:"quick",at:"do",lastVisit:null,savedAt:null});
 let state=blank();
 let NEW_SINCE=null;   // items added after this date get a NEW marker this visit
 let JUST=null;        // the rev light just lit, for the animation
@@ -1294,6 +1513,7 @@ function summary(){
            halfTerm:{label:HALFTERM.label, until:HALFTERM.until, done:ht, total:HALFTERM.items.length},
            garage:{pct:G.pct, sessions:G.k, lap:fmtLap(G.lap), pos:G.pos, sectors:G.sec},
            newsN:Object.keys(state.news||{}).length, news:Object.values(state.news||{}),
+           revN:Object.keys(state.rev||{}).length, rev:revSummary(), papersN:Object.keys(state.papers||{}).length, papers:Object.keys(state.papers||{}),
            lastSeen:new Date().toISOString(), savedAt:state.savedAt, __state:state };
 }
 let _mt=null;
@@ -1312,6 +1532,7 @@ async function signIn(cls,cand){
   else state=local;
   if(!FAM[state.at]) state.at="do";
   if(!state.news) state.news={};
+  if(!state.rev) state.rev={}; if(!state.papers) state.papers={};
   NEW_SINCE=state.lastVisit;                 // null on a first visit: nothing is flagged
   state.lastVisit=today();
   try{ sessionStorage.setItem(WHO_KEY,JSON.stringify(IDENTITY)); }catch(e){}
@@ -1334,7 +1555,7 @@ $("signOut").addEventListener("click",()=>{ try{sessionStorage.removeItem(WHO_KE
 
 /* ---------- the garage picture: plates, rev lights, timing screen, start lights ---------- */
 const PLATE={ watch:{x:44,y:318,w:350}, enter:{x:560,y:436,w:270}, listen:{x:982,y:340,w:188}, read:{x:30,y:712,w:350}, do:{x:470,y:712,w:470}, apply:{x:1188,y:712,w:204} };
-const SUB={ do:"build, test and try", watch:"talks, lectures, videos", listen:"podcasts and radio", read:"magazines, books, guides", enter:"competitions, scholarships", apply:"placements, degrees" };
+const SUB={ do:"build, test, try; workshop projects", watch:"talks, lectures, videos", listen:"podcasts and radio", read:"magazines, books, guides", enter:"competitions, scholarships", apply:"placements, degrees" };
 function buildGarage(){
   const t=totals();
   ORDER.forEach(g=>{
@@ -1401,7 +1622,7 @@ function recHTML(it,extra=""){
     <span class="no">P/N <b>${it.pn}</b> · ${FAM[it.g].code}</span>
     <span class="nm">${esc(it.short)}</span>
     <span class="t">${esc(it.t)}</span>
-    <span class="th">${esc(it.th)}</span>
+    <span class="th">${esc(shortTh(it.th))}${it.proj?" · workshop":""}</span>
     <span class="stamp" aria-hidden="true">Done</span></button>`;
 }
 function renderGrid(){
@@ -1449,7 +1670,8 @@ function renderMeter(){
   $("coverTxt").textContent=w;
   $("revbar").innerHTML=ORDER.map(g=>`<div class="revrow"><span class="fl">${FAM[g].no}</span>${ITEMS.filter(i=>i.g===g).map(it=>`<span class="rv${state.done[it.s]?" on":""}" data-g="${g}" title="${it.pn}: ${esc(it.short)}"></span>`).join("")}</div>`).join("");
   const nn=Object.keys(state.news||{}).length;
-  $("register").textContent=`Car 27 · ${plural(G.N,"light")} · ${G.k} of 6 sessions · ${plural(state.notes.length,"debrief sheet")} · ${plural(nn,"news story","news stories")} logged`;
+  const rc=revCounts();
+  $("register").textContent=`Car 27 · ${plural(G.N,"light")} · ${G.k} of 6 sessions · ${plural(state.notes.length,"debrief sheet")} · ${plural(nn,"news story","news stories")} logged · ${rc.n} of 9 topics rated`;
   lightGarage();
 }
 function renderYear(){
@@ -1462,7 +1684,7 @@ function renderYear(){
   }).join("");
 }
 
-function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();}
+function renderAll(){renderStart();renderFilters();renderGrid();renderMeter();renderYear();renderNotes();renderNews();renderManual();}
 
 /* ---------- detail sheet ---------- */
 let lastFocus=null, openSym=null;
@@ -1484,12 +1706,13 @@ function openSheet(sym){
     <div class="sheet-body">
       <div><span class="lab">What it is</span><p>${esc(it.what)}</p></div>
       <div class="think"><b>Jo's note</b>${esc(it.think)}</div>
+      ${it.proj?`<div class="rule"><b>Workshop rule · ${esc(WORKSHOP[it.proj].label)}</b>${esc(WORKSHOP[it.proj].rule)}</div>`:""}
       <div class="tags"><span class="th">${esc(it.th)}</span>${it.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
       <div class="actions">
         ${link}${more}
         ${interestBtn}
         <button type="button" class="btn ghost${done?" on":""}" id="shDone" aria-pressed="${done}">${done?"Done ✓ (undo)":"Light it up: I've done this"}</button>
-        <button type="button" class="btn ghost" id="shWrite">File a debrief sheet</button>
+        <button type="button" class="btn ghost" id="shWrite">${it.proj?"File a build log":"File a debrief sheet"}</button>
       </div>
       ${askable&&!inn?`<p class="small">${it.g==="enter"?(selfEntry?"You enter this one yourself. Tap the button and the department knows to help you with it.":"Entries go through school. Tap the button and the department has your name; no email needed."):"Tap the button and your teacher will talk to you about eligibility and dates."}</p>`:""}
     </div>`;
@@ -1505,6 +1728,7 @@ function toggleDone(sym){
     const up = before.pos>G.pos ? ` Up to P${G.pos}.` : "";
     if(before.c[g]===0 && G.k===6) say(`That's all six sessions started. Lights out. ${fmtLap(G.lap)}, P${G.pos}.`);
     else if(before.c[g]===0 && G.k>1) say(`First light in ${FAM[g].the}. ${G.k} of 6 sessions started, lap ${fmtLap(G.lap)}.${up}`);
+    else if(it.proj) say(pick([`${it.short}: built. File the build log now, with the numbers: what you measured, what you got, what you'd change.`,`Workshop project done. ${fmtLap(G.lap)}.${up} Put the measurements in a build log; a part without numbers is a souvenir.`]));
     else if(before.c[g]===0) say(`Copy. First rev light on: ${it.short}. Now file a debrief sheet while you still remember it.`);
     else if(G.c[g]===G.t[g]) say(`Purple sector. Every light in ${FAM[g].the} is on.${up}`);
     else say(pick([`${it.short}: done. Lap ${fmtLap(G.lap)}.${up}`,`Copy that. ${plural(G.N,"light")} on.${up} A light isn't a debrief sheet, mind.`,`Good. ${fmtLap(G.lap)}, P${G.pos}. There's time still to find in the sessions you haven't touched.`,`${it.pn} done.${up||" Keep pushing."}`])); }
@@ -1515,6 +1739,7 @@ function toggleInterest(sym){ const on=!state.interest[sym]; if(on) state.intere
 
 function goZone(g){
   if(g==="news"){ goNews(); return; }
+  if(g==="manual"){ goManual(); return; }
   state.fam="all"; state.at=g; saveLocal(); renderFilters(); renderGrid();
   const el=$("zone-"+g); if(!el) return;
   setTimeout(()=>{ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
@@ -1578,7 +1803,7 @@ let NEWS=null, NEWS_ERR=false, newsTh="all", newsShow=12, newsOpen=null;
 function newsCount(){ return Object.keys(state.news||{}).length; }
 function fmtNewsDate(iso){ try{ return new Date(iso).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}); }catch(e){ return ""; } }
 const wordCount=t=>(String(t).trim().match(/\S+/g)||[]).length;
-const shortTh=t=>t==="Motorsport"?"Motorsport":t.replace(/^(F13\d) /,"$1 · ");
+const shortTh=t=>t==="Motorsport"?"Motorsport":(TOPIC_SHORT[t]||t.replace(/^(\d) /,"$1 · "));
 function newsStory(id){ const s=NEWS&&NEWS.stories.find(x=>x.id===id); if(s) return s;
   const m=(state.news||{})[id]; return m?{id,src:m.src,title:m.title,url:m.url,th:m.th||[],date:m.d,desc:"",level:""}:null; }
 function newsFiltered(){
@@ -1622,7 +1847,7 @@ function renderNews(){
   $("newsFilters").innerHTML=h;
   try{ $("newsWhen").textContent="Collected "+new Date(NEWS.made).toLocaleString("en-GB",{weekday:"long",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"}); }catch(e){}
   const list=newsFiltered();
-  box.innerHTML=list.length?list.slice(0,newsShow).map(storyHTML).join(""):`<p class="small" style="color:#aab3c0">${newsTh==="read"?"Nothing logged yet. Pick a story and press Log it.":"Nothing tagged to this unit this week. Try All stories."}</p>`;
+  box.innerHTML=list.length?list.slice(0,newsShow).map(storyHTML).join(""):`<p class="small" style="color:#aab3c0">${newsTh==="read"?"Nothing logged yet. Pick a story and press Log it.":"Nothing tagged to this topic area this week. Try All stories."}</p>`;
   $("newsMore").hidden=list.length<=newsShow;
   const src=NEWS.sources||[]; const ok=src.filter(x=>x.ok).length;
   $("newsFoot").innerHTML=`Sources (${ok} of ${src.length} answered this morning): ${src.map(x=>esc(x.src)+(x.ok?"":" (no answer today)")).join(" · ")}. <b>Way in</b>: written for anyone. <b>Magazine</b>: engineering journalism. <b>Research</b>: university press releases, closest to the paper. From the three motorsport news sites only technical stories are kept. The stories are chosen by the sources, not checked by the department. If a site asks you to sign in or pay, pick another story.`;
@@ -1647,7 +1872,7 @@ $("newsList").addEventListener("click",e=>{
   const id=b.closest(".story").dataset.nid;
   if(b.dataset.nact==="cancel"){ newsOpen=null; renderNews(); return; }
   newsOpen=id; renderNews(); const t=$("nw-"+id); if(t) t.focus();
-  say(pick(["What did they build or find, and what principle makes it work? Two sentences.","Say what was made or tested, then name the engineering: a material, a force, a circuit, a process.","If you can say which unit of the course explains it, you've understood it."]));
+  say(pick(["What did they build or find, and what principle makes it work? Two sentences.","Say what was made or tested, then name the engineering: a material, a force, a circuit, a process.","If you can say which topic area of the course explains it, you've understood it."]));
 });
 $("newsList").addEventListener("submit",e=>{
   const f=e.target.closest("form[data-nform]"); if(!f) return; e.preventDefault();
@@ -1664,6 +1889,77 @@ $("newsList").addEventListener("submit",e=>{
   const n=newsCount();
   say(was?"Updated, here and on your debrief sheet.":pick([`Logged, and it's on a debrief sheet. ${n} ${n===1?"story":"stories"} so far.`,"Good. That's your answer to 'What have you read about engineering recently?'",`Copy. ${n} on the pit wall log now.`]));
 });
+
+/* ---------- the workshop manual: revision ---------- */
+function revSummary(){ const o={}; TOPICS.forEach(t=>{ const r=(state.rev||{})[t.n]; o[t.n]={name:t.name,r:r?r.r:null,d:r?r.d:null}; }); return o; }
+function revCounts(){ const c={r:0,a:0,g:0,n:0}; TOPICS.forEach(t=>{ const r=(state.rev||{})[t.n]; if(r&&c[r.r]!==undefined){ c[r.r]++; c.n++; } }); return c; }
+function papersDone(){ return Object.keys(state.papers||{}).length; }
+function renderBinders(){
+  let h=""; TOPICS.forEach((t,i)=>{ const x=64+i*30; const r=(state.rev||{})[t.n];
+    h+=`<rect class="binder${r?" "+r.r:""}" x="${x}" y="54" width="26" height="44" rx="2" fill="#2a313c"><title>${t.n} ${esc(t.name)}: ${r?RATE[r.r]:"not rated"}</title></rect>
+      <rect x="${x+3}" y="58" width="20" height="9" fill="#e4e7e2"/><text x="${x+13}" y="66" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="9" fill="#12161c">${t.n}</text>
+      <circle cx="${x+13}" cy="80" r="2.2" fill="#0a0c10"/><circle cx="${x+13}" cy="90" r="2.2" fill="#0a0c10"/>`; });
+  const b=$("binders"); if(b) b.innerHTML=h;
+  const c=revCounts(); const ct=$("manualCntTxt"); if(ct) ct.textContent=c.n?`${c.n}/9 rated`:"revision";
+}
+function topicHTML(t){
+  const r=(state.rev||{})[t.n];
+  const here=t.here.map(sy=>BY[sy]).filter(Boolean).map(it=>`<button type="button" data-s="${it.s}" class="${state.done[it.s]?"on":""}" data-g="${it.g}"><i aria-hidden="true"></i>${it.pn} ${esc(it.short)}</button>`).join("");
+  return `<article class="topic${r?" "+r.r:""}" id="topic-${t.n}" data-g="manual">
+    <div class="th"><b>${t.n}</b><h3>${esc(t.name)}</h3></div>
+    <ul class="qs">${t.qs.map(q=>`<li><i>${q[0]}</i><span>${esc(q[1])}</span></li>`).join("")}</ul>
+    <div class="think" style="margin:0"><b>Jo's note</b>${esc(t.tip)}</div>
+    ${here?`<span class="lab">Work on it here (a lit light is one you have done)</span><div class="here">${here}</div>`:""}
+    <span class="lab">Revise it elsewhere</span>
+    <div class="links">${t.links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.lt)} ↗</a>`).join("")}</div>
+    <span class="lab">How confident are you?</span>
+    <div class="rate" role="group" aria-label="Confidence in topic ${t.n}">${["r","a","g"].map(k=>`<button type="button" data-t="${t.n}" data-r="${k}" aria-pressed="${!!(r&&r.r===k)}">${RATE[k]}</button>`).join("")}</div>
+    <span class="rated">${r?`Rated ${fmtDate(r.d)}. Rate it again after you revise.`:"Not rated yet."}</span>
+  </article>`;
+}
+function papersHTML(){
+  const n=papersDone(); const tot=PAPERS.reduce((a,p)=>a+(p.p1?1:0)+(p.p2?1:0),0);
+  const cell=(p,part)=>{ const d=p[part]; if(!d) return "<td>—</td>"; const key=p.k+"-"+part; const done=(state.papers||{})[key];
+    return `<td>${d.qp?`<a href="${d.qp}" target="_blank" rel="noopener">Paper${d.ms&&p.k==="sam"?" + mark scheme":""}</a>`:""}${d.rb?`<a href="${d.rb}" target="_blank" rel="noopener">Booklet</a>`:""}${d.ms?`<a href="${d.ms}" target="_blank" rel="noopener">Mark scheme</a>`:""}${d.er?`<a href="${d.er}" target="_blank" rel="noopener">Examiners' report</a>`:""}
+      <button type="button" class="pdone${done?" on":""}" data-pk="${key}" aria-pressed="${!!done}">${done?"Done ✓ "+fmtDate(done):"Done it"}</button></td>`; };
+  return `<h3>The past papers shelf</h3>
+    <p class="small">Every paper OCR has set for Design Engineering, with the mark scheme and, where there is one, the examiners' report. Do a paper in the time, mark it with the scheme, then read the report: it says what the strong answers did and where candidates lost marks. Press <b>Done it</b> when you have marked a paper; the department can see how many you have done. The specimen papers are older and OCR says to prefer the live ones. <a href="${SPEC_URL}" target="_blank" rel="noopener">The specification</a> has the full list of what can be asked.</p>
+    <table class="ptable"><thead><tr><th>Series</th><th>Paper 1 · Principles (1 h 30, 80 marks)</th><th>Paper 2 · Problem solving (1 h 45, 70 marks)</th></tr></thead>
+    <tbody>${PAPERS.map(p=>`<tr><td class="ser">${esc(p.ser)}</td>${cell(p,"p1")}${cell(p,"p2")}</tr>`).join("")}</tbody></table>
+    <p class="small">${n?`${n} of ${tot} papers marked and done.`:"No papers done yet. Start with June 2025 Principles."} The specimen papers have the mark scheme inside the same file.</p>`;
+}
+function renderManual(){
+  renderBinders();
+  const sh=$("shelf"); if(!sh) return;
+  sh.innerHTML=TOPICS.map(t=>{ const r=(state.rev||{})[t.n]; return `<button type="button" class="spine${r?" "+r.r:""}" data-topic="${t.n}" title="${t.n} ${esc(t.name)}: ${r?RATE[r.r]:"not rated"}" aria-label="Topic ${t.n}, ${esc(t.name)}, ${r?RATE[r.r]:"not rated"}"><b>${t.n}</b><i>${r?RATE_SHORT[r.r]:"rate"}</i></button>`; }).join("");
+  const c=revCounts();
+  $("manSum").innerHTML=c.n?`${c.n} of 9 rated · <span style="color:#ff8fa0">${c.r} red</span> · <span style="color:#f0a020">${c.a} amber</span> · <span style="color:#9fe3bd">${c.g} green</span><br>${plural(papersDone(),"past paper")} done`:"Nothing rated yet. Click a binder or scroll down.";
+  $("topicList").innerHTML=TOPICS.map(topicHTML).join("");
+  $("papers").innerHTML=papersHTML();
+}
+function goManual(){
+  const el=$("manual"); if(!el) return;
+  el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"start"});
+  const hot=$("manualHot"); if(hot){ hot.classList.add("lit"); setTimeout(()=>hot.classList.remove("lit"),2200); }
+  const c=revCounts();
+  say(c.n?`Workshop manual. ${c.n} of 9 topics rated${c.r?`, ${c.r} still red`:""}. ${papersDone()?`${plural(papersDone(),"past paper")} done.`:"No past papers done yet."}`:"Workshop manual: the nine topic areas and the past papers. Rate each binder red, amber or green, then go and turn the reds amber.");
+}
+$("shelf").addEventListener("click",e=>{ const b=e.target.closest(".spine"); if(!b) return; const el=$("topic-"+b.dataset.topic); if(el){ el.scrollIntoView({behavior:reduceMotion()?"auto":"smooth",block:"center"}); el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),2000); } });
+$("topicList").addEventListener("click",e=>{
+  const rb=e.target.closest(".rate button"); if(rb){ const n=rb.dataset.t, k=rb.dataset.r; const was=(state.rev||{})[n];
+    if(was&&was.r===k) delete state.rev[n]; else state.rev[n]={r:k,d:today()};
+    save(); renderManual(); const t=TOPICS.find(x=>String(x.n)===String(n)); const c=revCounts();
+    if(was&&was.r===k) say(`Rating taken off topic ${n}.`);
+    else if(k==="r") say(pick([`Topic ${n} red. Honest. Start with the cards under it, then a past paper question on it.`,`Red on ${t.name.toLowerCase()}. That's the one to spend the next twenty minutes on.`]));
+    else if(k==="a") say(`Amber on topic ${n}. Do one past paper question on it with the mark scheme beside you, then rate it again.`);
+    else say(c.g===9?"Nine green binders. Now prove it: a whole paper, timed, marked.":pick([`Green on topic ${n}. Teach it to someone in the class; if you can't, it's amber.`,`Confident on ${t.name.toLowerCase()}. ${c.r?`${c.r} still red.`:"Good."}`]));
+    return; }
+  const hb=e.target.closest(".here button[data-s]"); if(hb){ openSheet(hb.dataset.s); return; }
+});
+$("papers").addEventListener("click",e=>{ const b=e.target.closest(".pdone"); if(!b) return; const k=b.dataset.pk;
+  if((state.papers||{})[k]) delete state.papers[k]; else state.papers[k]=today();
+  save(); renderManual(); const n=papersDone();
+  say(state.papers[k]?pick([`Paper done and marked. ${plural(n,"paper")} on the shelf. Did you read the examiners' report?`,`${plural(n,"past paper")} done. Which topic lost you most marks? Rate that binder red.`]):"Taken off the shelf."); });
 
 /* ---------- debrief sheets ---------- */
 function fmtDate(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
@@ -1682,7 +1978,7 @@ function renderNotes(){
   const box=$("entries");
   $("logCount").textContent=state.notes.length?plural(state.notes.length,"sheet"):"";
   if(!state.notes.length){
-    box.innerHTML=noteHTML({hw:"F131 Materials science and technology",what:"Elora Hardy: Magical houses, made of bamboo (TED)",s:"Hr",
+    box.innerHTML=noteHTML({hw:"5 Material and component considerations",what:"Elora Hardy: Magical houses, made of bamboo (TED)",s:"Hr",
       quo:"A hollow tube resists bending well for its weight: stiffness depends on the shape as well as the material.",
       learned:"The roofs curve because bamboo is strong in tension along the fibres. The weak points are the joints, which are pinned and bolted, not glued. Bamboo rots if it stays wet, so the houses stand on stone footings with wide roofs to keep the rain off.",
       q:"How would you test the strength of a joint when every pole is a different diameter?"},0,true)+`<p class="small" style="color:#aab3c0">No sheets filed yet. Light one rev light, then file the first sheet.</p>`;
@@ -1799,21 +2095,22 @@ const BK=(function(){
 const GITHUB_DEMO="https://mrbeasley930-ai.github.io/Beyond-the-Classroom/demo/engineering.html";
 const TOUR=[
   {sel:".scene", h:"This is the garage", p:"Brindley Racing, an invented team, over one race weekend. Six sessions, one per kind of thing: the garage (things to build and try), practice (talks and videos), team radio (podcasts), the debrief (reading), qualifying (competitions) and race day (placements, degrees, apprenticeships). Click a part of the garage and the page goes to that session."},
-  {sel:".scene", h:"Rev lights", p:"Each session has a strip of rev lights, one per item: 50 in all. Click a light to open that item. When a pupil does something, its light comes on. The start lights in the pit lane come on as each session is started, and go out when all six have been."},
+  {sel:".scene", h:"Rev lights", p:"Each session has a strip of rev lights, one per item: 66 in all. Click a light to open that item. When a pupil does something, its light comes on. The start lights in the pit lane come on as each session is started, and go out when all six have been."},
   {sel:".scene", h:"The timing screen", p:"Every item done takes the same slice off the pupil's lap, from 1:38.400 to 1:31.000 with everything done, and moves them up the grid from P20. The pupil's own row is highlighted. The other cars are made up."},
-  {sel:"#news", h:"The pit wall", p:"Every morning the page collects this week's engineering news from twelve sources: motorsport technology (Racecar Engineering, The Race, Motorsport.com, technical stories only) and wider engineering (New Civil Engineer, IEEE Spectrum, the BBC, ESA, NASA, Carbon Brief, Tech Xplore, ScienceDaily). Each story is tagged to the units of the course it seems to touch. A pupil reads one and writes two sentences: what was built or found, and the engineering behind it. That saves to the department. Nobody has to update it."},
+  {sel:"#news", h:"The pit wall", p:"Every morning the page collects this week's engineering news from twelve sources: motorsport technology (Racecar Engineering, The Race, Motorsport.com, technical stories only) and wider engineering (New Civil Engineer, IEEE Spectrum, the BBC, ESA, NASA, Carbon Brief, Tech Xplore, ScienceDaily). Each story is tagged to the topic areas of H404 it seems to touch. A pupil reads one and writes two sentences: what was built or found, and the engineering behind it. That saves to the department. Nobody has to update it."},
+  {sel:"#manual", h:"The workshop manual: revision", p:"The shelf of nine binders above the monitors is revision for the two written papers. Each binder is one of the nine topic areas of H404, with the specification's own questions, the items on this page that work on it, free places to revise it, and a red, amber, green confidence rating that saves to the department, so you can see which topics the class finds hard. Below the binders is every past paper OCR has set, with the mark scheme and examiners' report, and a Done tick per paper."},
   {sel:"#smallprint", h:"The small print", p:"Each session has a piece of engineering history with its source and a label: attested, reported or invented. Brindley (the team is named after the canal engineer who laid out the first Birmingham Canal), Wenham's wind tunnel, Marconi's transatlantic signal (labelled reported), Wöhler's fatigue tests, the Rainhill Trials, and the founding of the Women's Engineering Society."},
   {sel:".guide", h:"The race engineer", p:"Jo Halloran, an invented race engineer, and the page says so. She greets each pupil by name over the radio, reacts to what they do, and keeps asking for the debrief sheet."},
   {sel:".count-card", h:"Your lap", p:"Lap time, grid slot, and six mini-sectors coloured the way timing screens colour them: yellow for a session started, green for half or more done, purple for all of it. The rev bar shows every item."},
   {sel:".pick-card", h:"Strategy call", p:"A pupil says how long they have and Jo calls one thing they have not done, usually from a session they have not started."},
   {sel:".orders", h:"The run plan", p:"Three things from the department each half term, with a date. This half term: an Ingenia 'How does that work?' article, Donald Sadoway's battery talk, and a Practical Engineering video on a structural failure. You change these by editing one block at the top of the file."},
-  {sel:"#zone-do", h:"The garage", p:"Where pupils stop watching and start making: Isaac Science, engineering problems linked from Cambridge, ESAT practice, ICE virtual work experience, free CAD in the browser (Onshape), a circuit simulator, and a microcontroller simulator for programmable electronics. Every item carries a unit of the course."},
+  {sel:"#zone-do", h:"The garage and the workshop projects", p:"Where pupils stop watching and start making: Isaac Science, engineering problems linked from Cambridge, ESAT practice, free CAD, a circuit simulator and a microcontroller simulator, then nine workshop projects you asked for, three levels each: on the Bambu Lab printers (a measured part, a tolerance gauge, strength against orientation), the laser cutter (kerf test and box, living hinge, a gear train) and the lathe (a stepped pin to drawing, a threaded bush, a bearing housing to a press fit). Each card carries the workshop rule for that machine, which the department rewrites in its own words, and files a build log with the numbers."},
   {sel:"#zone-enter", h:"Qualifying", p:"The Big Bang Competition (finals at the NEC), STEM Racing UK, Greenpower, the IET Future Talent and ICE QUEST scholarships, and the Arkwright Scholarships to pass down to Year 11. Pupils tap 'I want to enter' and the department has a list."},
-  {sel:"#zone-apply", h:"Race day", p:"Oxford and Cambridge engineering (offers, the ESAT, the 15 October deadline), Formula Student for choosing a university, the government's apprenticeship search, EDT Platinum Placements and Industrial Cadets, Nuffield and In2STEM placements, and Girls on Track UK school events."},
+  {sel:"#zone-apply", h:"Race day, and the way into F1", p:"Oxford and Cambridge engineering (offers, the ESAT, the 15 October deadline), Formula Student for choosing a university, the government's apprenticeship search, EDT Platinum Placements and Industrial Cadets, Nuffield and In2STEM placements, Girls on Track UK, and the Formula 1 routes: the Williams work-experience week for Years 10 to 13 (applications open in February), the teams' own apprenticeship and placement pages, the Formula 1 Engineering Scholarship at Oxford and Cambridge, the F1 Tech Talk films and the motorsport engineer job profile."},
   {sel:".board", h:"The calendar", p:"October to July: ESAT sittings and booking, the Oxbridge and UCAS deadlines, National Engineering Day, Tomorrow's Engineers Week, STEM Racing regionals, Arkwright, the scholarship windows, and the Big Bang Fair in June. Dates that follow last year's pattern are marked 'check'."},
   {sel:"#notebook", h:"Debrief sheets", p:"For anything they do, a pupil files a sheet: what it was, the principle in one line, what they found out, and what they would test next, tagged to a unit. Stories logged from the pit wall go onto a sheet too. It saves to the department as they write and copies out as text."},
   {sel:".dept", h:"What you would see", p:"A separate teacher page lists every pupil, the entry list, lap times and sessions used, every news story logged with the pupil's sentences, and every debrief sheet. The button here opens a version with demo data."},
-  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, which qualification you teach, and anything you would correct, and it goes straight to him. That is the end of the tour."}
+  {sel:".demo", h:"Tell Simon what you want", p:"The Feedback button is at the bottom left. Say what you would want more of, less of, or changed, whether the workshop rules are right, and anything you would correct, and it goes straight to him. That is the end of the tour."}
 ];
 let tourI=-1, tourTarget=null;
 function tourPlace(){ if(!tourTarget||tourI<0) return; const r=tourTarget.getBoundingClientRect(); const x1=r.left-6,y1=r.top-6,x2=r.right+6,y2=r.bottom+6;
@@ -1843,7 +2140,7 @@ addEventListener("resize",()=>{ if(tourI>=0) tourShow(tourI); });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&tourI>=0) tourStop(); });
 
 /* ---------- teacher dashboard (demo data) ---------- */
-const SAMPLE=[{"name": "Amara Okafor", "cls": "12A", "done": ["Sd", "In", "Pe", "Cb", "Os", "Fa", "Sr", "Te", "Sm"], "picks": 3, "interest": ["Sr", "Gp"], "last": "2026-10-09", "news": [{"id": "95bc22cc5d", "d": "2026-10-09", "src": "The Race", "title": "FIA clampdown on Macarena wings for 2027", "th": ["Motorsport", "F135 Mechanical design"], "txt": "The FIA is tightening the technical rules so teams cannot keep developing rear wings with rotating parts for 2027. A moving wing element changes the angle of attack, so it can trade downforce for less drag on the straights.", "q": "How do they measure whether a wing flexes or rotates more than the rules allow?"}], "notes": [{"hw": "F133 Computer Aided Design", "what": "Onshape Education: CAD in the browser", "quo": "Fully define a sketch before you extrude it, or the part changes when you edit one dimension.", "learned": "I modelled the front-wing endplate as a sketch on one plane and extruded it 4 mm. Adding a fillet broke it until I fixed the sketch constraints. The drawing with three views took longer than the model.", "q": "How do teams check a CAD part against the rules before they make it?"}]}, {"name": "Ben Carter", "cls": "12A", "done": ["Cb", "Ex"], "picks": 0, "interest": ["Gp"], "last": "2026-10-06", "news": [], "notes": []}, {"name": "Chloe Nguyen", "cls": "12B", "done": ["Sd", "In", "Pe", "Hr", "Gr", "So", "Is", "Ea", "Ox", "Ca"], "picks": 3, "interest": ["Nr"], "last": "2026-10-09", "news": [{"id": "20bffdc03a", "d": "2026-10-09", "src": "Tech Xplore (engineering)", "title": "We blasted mobile homes with hurricane‑force winds to test how they fail to make affordable housing safer", "th": ["F130 Principles", "F132 In practice"], "txt": "Researchers put a full-size manufactured home in front of wind at 110 mph to watch how it fails. The wind load on the walls and roof has to go through the frame into the ground, so the tie-downs and connections are where it breaks first.", "q": "Is it cheaper to strengthen the connections or the whole frame?"}, {"id": "66502ffd14", "d": "2026-10-10", "src": "New Civil Engineer", "title": "Life-expired bridge to be removed this weekend as part of Transpennine Route Upgrade", "th": ["F132 In practice", "F135 Mechanical design"], "txt": "Network Rail is replacing an old railway bridge at Church Fenton so there is room for the overhead wires needed to electrify the line. The new bridge has to give more clearance underneath, which is a design constraint set by the electrical system, not by the loads.", "q": ""}], "notes": [{"hw": "F131 Materials science and technology", "what": "Michael Green: Why we should build wooden skyscrapers (TED)", "quo": "Timber is light for its strength, but it burns and it moves when it gets wet.", "learned": "He says big laminated timber sections char on the outside and protect the middle, so they keep their strength in a fire for longer than you would expect. He does not talk about the joints, which is where steel connectors are used and where the fire risk would be.", "q": "How do building regulations in the UK treat tall timber buildings now?"}]}, {"name": "Daniel Brooks", "cls": "12B", "done": [], "picks": 0, "interest": [], "last": "2026-10-01", "news": [], "notes": []}, {"name": "Esha Patel", "cls": "13A", "done": ["Ep", "Ca", "Ox", "Is", "Iw", "Sd", "In", "Pe", "He", "Ti", "If", "Fs"], "picks": 3, "interest": ["If", "Ed"], "last": "2026-10-09", "news": [{"id": "78a00411e1", "d": "2026-10-09", "src": "NASA", "title": "NASA Demonstrates Next-Generation Heat Shield Technologies", "th": ["F130 Principles", "F135 Mechanical design"], "txt": "NASA is testing new heat shield designs on a cargo spacecraft as it re-enters the atmosphere after leaving the space station. The shield has to absorb or carry away the heat made by compressing the air in front of it, so the test is about the material and the shape together.", "q": "How do you measure the temperature on the shield during re-entry?"}], "notes": [{"hw": "Applying", "what": "ESAT preparation materials (UAT-UK)", "quo": "", "learned": "I did Mathematics 2 in timed conditions and got about two thirds right. Most of the ones I lost were on inequalities and on sketching graphs quickly. I need to stop doing algebra where a sketch would do.", "q": "Should I sit January as well if October goes badly?"}]}, {"name": "Finn Murphy", "cls": "13A", "done": ["Cb", "Ex", "Nw", "Ap"], "picks": 0, "interest": ["Ei"], "last": "2026-10-04", "news": [], "notes": []}, {"name": "Grace Adeyemi", "cls": "12A", "done": ["Sd", "Wk", "Da", "Fa", "Go"], "picks": 1, "interest": ["Go", "Tb"], "last": "2026-10-08", "news": [{"id": "8c56f41da9", "d": "2026-10-08", "src": "BBC Technology", "title": "Why are more roofs not made of solar tiles?", "th": ["F137 Electrical"], "txt": "Solar tiles were meant to replace ordinary roof tiles, but most people still fit solar panels on top of the roof. A tile has to keep the rain out as well as generate electricity, so each one needs its own wiring and is harder to replace when it fails.", "q": "What is the efficiency of a tile compared with a panel of the same area?"}], "notes": [{"hw": "F134 Programmable electronics", "what": "Wokwi: Arduino, ESP32 and Raspberry Pi Pico in the browser", "quo": "if (t > 30) fan on; if (t < 27) fan off;", "learned": "With one threshold the fan clicked on and off every second when the temperature sat near 30. Two thresholds stop it chattering. That is hysteresis.", "q": "Where else is hysteresis used on purpose?"}]}, {"name": "Harry Singh", "cls": "12B", "done": ["Rb"], "picks": 0, "interest": [], "last": "2026-10-02", "news": [], "notes": []}];
+const SAMPLE=[{"name": "Amara Okafor", "cls": "12A", "done": ["Sd", "In", "Pe", "Cb", "Os", "Fa", "Sr", "Te", "Sm", "P3a", "PLa"], "picks": 3, "interest": ["Sr", "Gp", "Fw"], "last": "2026-10-09", "rev": {"1": "a", "2": "g", "3": "a", "4": "g", "5": "a", "6": "r", "7": "g", "8": "r", "9": "g"}, "papers": ["25-p1"], "news": [{"id": "95bc22cc5d", "d": "2026-10-09", "src": "The Race", "title": "FIA clampdown on Macarena wings for 2027", "th": ["Motorsport", "6 Technical"], "txt": "The FIA is tightening the technical rules so teams cannot keep developing rear wings with rotating parts for 2027. A moving wing element changes the angle of attack, so it can trade downforce for less drag on the straights.", "q": "How do they measure whether a wing flexes or rotates more than the rules allow?"}], "notes": [{"hw": "4 Design thinking and communication", "what": "Onshape Education: CAD in the browser", "quo": "Fully define a sketch before you extrude it, or the part changes when you edit one dimension.", "learned": "I modelled the front-wing endplate as a sketch on one plane and extruded it 4 mm. Adding a fillet broke it until I fixed the sketch constraints. The drawing with three views took longer than the model.", "q": "How do teams check a CAD part against the rules before they make it?"}]}, {"name": "Ben Carter", "cls": "12A", "done": ["Cb", "Ex", "PMa"], "picks": 0, "interest": ["Gp", "Fc"], "last": "2026-10-06", "rev": {"6": "a", "7": "a", "9": "g"}, "papers": [], "news": [], "notes": []}, {"name": "Chloe Nguyen", "cls": "12B", "done": ["Sd", "In", "Pe", "Hr", "Gr", "So", "Is", "Ea", "Ox", "Ca", "P3a", "P3b"], "picks": 3, "interest": ["Nr"], "last": "2026-10-09", "rev": {"1": "g", "2": "g", "3": "g", "4": "a", "5": "g", "6": "a", "7": "a", "8": "a", "9": "g"}, "papers": ["25-p1", "25-p2", "24-p1"], "news": [{"id": "20bffdc03a", "d": "2026-10-09", "src": "Tech Xplore (engineering)", "title": "We blasted mobile homes with hurricane‑force winds to test how they fail to make affordable housing safer", "th": ["6 Technical", "3 Wider issues"], "txt": "Researchers put a full-size manufactured home in front of wind at 110 mph to watch how it fails. The wind load on the walls and roof has to go through the frame into the ground, so the tie-downs and connections are where it breaks first.", "q": "Is it cheaper to strengthen the connections or the whole frame?"}, {"id": "66502ffd14", "d": "2026-10-10", "src": "New Civil Engineer", "title": "Life-expired bridge to be removed this weekend as part of Transpennine Route Upgrade", "th": ["3 Wider issues", "6 Technical"], "txt": "Network Rail is replacing an old railway bridge at Church Fenton so there is room for the overhead wires needed to electrify the line. The new bridge has to give more clearance underneath, which is a design constraint set by the electrical system, not by the loads.", "q": ""}], "notes": [{"hw": "5 Material and component considerations", "what": "Michael Green: Why we should build wooden skyscrapers (TED)", "quo": "Timber is light for its strength, but it burns and it moves when it gets wet.", "learned": "He says big laminated timber sections char on the outside and protect the middle, so they keep their strength in a fire for longer than you would expect. He does not talk about the joints, which is where steel connectors are used and where the fire risk would be.", "q": "How do building regulations in the UK treat tall timber buildings now?"}]}, {"name": "Daniel Brooks", "cls": "12B", "done": [], "picks": 0, "interest": [], "last": "2026-10-01", "rev": {}, "papers": [], "news": [], "notes": []}, {"name": "Esha Patel", "cls": "13A", "done": ["Ep", "Ca", "Ox", "Is", "Iw", "Sd", "In", "Pe", "He", "Ti", "If", "Fs", "Ft", "Mj"], "picks": 3, "interest": ["If", "Ed", "Fe"], "last": "2026-10-09", "rev": {"1": "g", "2": "g", "3": "a", "4": "g", "5": "g", "6": "g", "7": "a", "8": "g", "9": "g"}, "papers": ["25-p1", "25-p2", "24-p1", "24-p2", "23-p1"], "news": [{"id": "78a00411e1", "d": "2026-10-09", "src": "NASA", "title": "NASA Demonstrates Next-Generation Heat Shield Technologies", "th": ["6 Technical"], "txt": "NASA is testing new heat shield designs on a cargo spacecraft as it re-enters the atmosphere after leaving the space station. The shield has to absorb or carry away the heat made by compressing the air in front of it, so the test is about the material and the shape together.", "q": "How do you measure the temperature on the shield during re-entry?"}], "notes": [{"hw": "Applying", "what": "ESAT preparation materials (UAT-UK)", "quo": "", "learned": "I did Mathematics 2 in timed conditions and got about two thirds right. Most of the ones I lost were on inequalities and on sketching graphs quickly. I need to stop doing algebra where a sketch would do.", "q": "Should I sit January as well if October goes badly?"}]}, {"name": "Finn Murphy", "cls": "13A", "done": ["Cb", "Ex", "Nw", "Ap", "Fc", "PMa", "PMb"], "picks": 0, "interest": ["Ei", "Fw"], "last": "2026-10-04", "rev": {"5": "r", "6": "a", "7": "g", "8": "r"}, "papers": ["25-p1"], "news": [], "notes": []}, {"name": "Grace Adeyemi", "cls": "12A", "done": ["Sd", "Wk", "Da", "Fa", "Go", "PLa", "PLb"], "picks": 1, "interest": ["Go", "Tb"], "last": "2026-10-08", "rev": {"3": "r", "5": "a", "6": "a", "7": "a", "9": "g"}, "papers": [], "news": [{"id": "8c56f41da9", "d": "2026-10-08", "src": "BBC Technology", "title": "Why are more roofs not made of solar tiles?", "th": ["6 Technical"], "txt": "Solar tiles were meant to replace ordinary roof tiles, but most people still fit solar panels on top of the roof. A tile has to keep the rain out as well as generate electricity, so each one needs its own wiring and is harder to replace when it fails.", "q": "What is the efficiency of a tile compared with a panel of the same area?"}], "notes": [{"hw": "6 Technical understanding", "what": "Wokwi: Arduino, ESP32 and Raspberry Pi Pico in the browser", "quo": "if (t > 30) fan on; if (t < 27) fan off;", "learned": "With one threshold the fan clicked on and off every second when the temperature sat near 30. Two thresholds stop it chattering. That is hysteresis.", "q": "Where else is hysteresis used on purpose?"}]}, {"name": "Harry Singh", "cls": "12B", "done": ["Rb"], "picks": 0, "interest": [], "last": "2026-10-02", "rev": {"6": "r"}, "papers": [], "news": [], "notes": []}];
 function gOf(done){ const c={}; ORDER.forEach(g=>c[g]=0); done.forEach(s=>{ if(BY[s]) c[BY[s].g]++; });
   const t=totals(); const sec={}; ORDER.forEach(g=>sec[g]=secState(c[g],t[g]));
   const lap=LAP0-LAP_GAIN*done.length/ITEMS.length; const pos=FIELD.filter(f=>f.t<lap).length+1;
@@ -1852,7 +2149,7 @@ function fmtDd(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("e
 function dashRows(){
   const rows=SAMPLE.map(p=>({...p,you:false}));
   if(IDENTITY){ rows.push({name:IDENTITY.cand,cls:IDENTITY.cls,done:ITEMS.filter(i=>state.done[i.s]).map(i=>i.s),
-    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes.filter(n=>!n.news),news:Object.values(state.news||{}),interest:Object.keys(state.interest),last:today(),you:true}); }
+    picks:HALFTERM.items.filter(x=>state.done[x.s]).length,notes:state.notes.filter(n=>!n.news),news:Object.values(state.news||{}),interest:Object.keys(state.interest),rev:Object.fromEntries(Object.entries(state.rev||{}).map(([k,v])=>[k,v.r])),papers:Object.keys(state.papers||{}),last:today(),you:true}); }
   return rows;
 }
 function renderDash(){
@@ -1875,7 +2172,17 @@ function renderDash(){
       <div class="tl"><b>${picksDone}</b><span>finished the half-term run plan</span></div>
       <div class="tl"><b>${nbLines}</b><span>debrief sheets filed</span></div>
       <div class="tl"><b>${entry.reduce((a,x)=>a+x.who.length,0)}</b><span>names down for competitions and placements</span></div>
+      <div class="tl"><b>${rows.reduce((a,r)=>a+r.done.filter(s=>BY[s]&&BY[s].proj).length,0)}</b><span>workshop projects built (3D printing, laser, lathe)</span></div>
+      <div class="tl"><b>${rows.reduce((a,r)=>a+(r.papers||[]).length,0)}</b><span>past papers done and marked</span></div>
     </div>
+    <div class="dcard"><h3>The workshop manual: where the class is weak</h3><p class="small">Each pupil rates the nine topic areas of H404 red, amber or green on the revision shelf. This is the class read across: a red column is a topic to reteach before the mocks; a blank cell is a pupil who has not rated it. Past papers done and marked are counted from the shelf.</p>
+      <table class="dt"><tr><th>Pupil</th>${TOPICS.map(t=>`<th title="${esc(t.name)}">${t.n}</th>`).join("")}<th>Papers</th></tr>
+      ${rows.map(r=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${esc(r.cls)}</span></td>${TOPICS.map(t=>{ const v=(r.rev||{})[t.n]; return `<td><span class="rag ${v||""}" title="${esc(t.name)}: ${v?RATE[v]:"not rated"}">${v?RATE_SHORT[v]:"·"}</span></td>`; }).join("")}<td>${(r.papers||[]).length}</td></tr>`).join("")}
+      <tr><td><b>Red count</b></td>${TOPICS.map(t=>`<td><b>${rows.filter(r=>(r.rev||{})[t.n]==="r").length}</b></td>`).join("")}<td></td></tr></table>
+      <p class="small">${TOPICS.map(t=>`<b>${t.n}</b> ${esc(t.name)}`).join(" · ")}</p></div>
+    <div class="dcard"><h3>Workshop projects</h3><p class="small">The nine projects on the department's kit (three levels each on the Bambu Lab printers, the laser cutter and the lathe). A lit project means the pupil pressed done; their build log is in the debrief sheets below. The workshop rules on each card are the department's to confirm.</p>
+      <table class="dt"><tr><th>Project</th><th>Level</th><th>Built by</th></tr>
+      ${ITEMS.filter(i=>i.proj).map(i=>`<tr><td><span class="pill" data-g="do">${i.pn}</span> ${esc(i.short)}</td><td>${esc(WORKSHOP[i.proj].label)} · ${esc(i.tags.find(t=>/^level/.test(t))||"")}</td><td>${rows.filter(r=>r.done.includes(i.s)).map(r=>esc(r.name)+(r.you?'<span class="you-tag">you</span>':"")).join(", ")||"–"}</td></tr>`).join("")}</table></div>
     <div class="dcard"><h3>The pit wall: what pupils wrote</h3><p class="small">Every story a pupil has logged, with the two sentences they wrote: what was built or found, and the engineering behind it. This is the part you would read before the lesson.</p>
       <table class="dt"><tr><th>Pupil</th><th>Story</th><th>What they wrote</th></tr>
       ${rows.flatMap(r=>r.news.map(n=>`<tr class="${r.you?"you":""}"><td>${esc(r.name)}${r.you?'<span class="you-tag">you</span>':""}<br><span class="small">${esc(r.cls)} · ${fmtDd(n.d)}</span></td><td><b>${esc(n.title)}</b><br><span class="small">${esc(n.src)} · ${esc((n.th||[]).join(", ")||"Beyond the course")}</span></td><td>${esc(n.txt)}${n.q?`<br><span class="small">Test next / question: ${esc(n.q)}</span>`:""}</td></tr>`)).join("")||'<tr><td colspan="3">Nothing logged yet.</td></tr>'}</table></div>
@@ -1883,9 +2190,9 @@ function renderDash(){
       <div class="dcard"><h3>Entry list</h3><p class="small">Pupils who tapped <b>I want to enter</b> or <b>I'm interested</b>. STEM Racing, Greenpower and Industrial Cadets need a school team; the scholarships pupils apply for themselves, so this is who to support.</p>
         <table class="dt"><tr><th>Competition / programme</th><th>Pupils</th></tr>
         ${entry.map(x=>`<tr><td><span class="pill" data-g="${x.c.g}">${x.c.pn}</span> ${esc(x.c.short)}</td><td>${x.who.map(w=>esc(w.name)+(w.you?'<span class="you-tag">you</span>':"")).join(", ")}</td></tr>`).join("")||'<tr><td colspan="2">Nobody yet.</td></tr>'}</table></div>
-      <div class="dcard"><h3>Which sessions get used</h3><p class="small">Items done across all pupils, by session, and by unit of the course. Tells you where to point the next half term's run plan.</p>
+      <div class="dcard"><h3>Which sessions get used</h3><p class="small">Items done across all pupils, by session, and by topic area of the course. Tells you where to point the next half term's run plan.</p>
         <table class="dt">${ORDER.map(g=>{const n=famCount(g); return `<tr><td><span class="pill" data-g="${g}">${FAM[g].label}</span> ${FAM[g].place}</td><td><span class="meter"><i style="width:${(n/max*100).toFixed(0)}%;background:var(--g)" data-g="${g}"></i></span>${n}</td></tr>`;}).join("")}</table>
-        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(t)}</b> ${n}`).join(" · ")}</p>
+        <p class="small">${Object.entries(thCount).sort((a,b)=>b[1]-a[1]).map(([t,n])=>`<b>${esc(shortTh(t))}</b> ${n}`).join(" · ")}</p>
         <p class="small"><b>Not signed in yet (${missing.length} of ${roster.length} on the form list you pasted):</b> ${missing.map(esc).join(", ")}</p></div>
     </div>
     <div class="dcard"><h3>The grid: every pupil</h3>
@@ -1906,7 +2213,7 @@ document.addEventListener("click",e=>{ const id=e.target.id; if(id==="dashBtn"||
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("dash").hidden) dashShow(false); });
 
 /* ---------- feedback (demo only) ---------- */
-const FB={use:"",qual:"",look:"",news:"",more:new Set()};
+const FB={use:"",qual:"",rev:"",look:"",news:"",more:new Set()};
 function fbShow(on){ $("fb").hidden=!on; $("fbScrim").hidden=!on; if(on) $("fbName").focus(); }
 function segPick(sel,key,btn){ FB[key]=btn.dataset.v; document.querySelectorAll(sel+" button").forEach(b=>b.setAttribute("aria-pressed",String(b===btn))); }
 document.addEventListener("click",e=>{
@@ -1916,6 +2223,7 @@ document.addEventListener("click",e=>{
   let b;
   if((b=e.target.closest("#fbUse button"))){ segPick("#fbUse","use",b); return; }
   if((b=e.target.closest("#fbQual button"))){ segPick("#fbQual","qual",b); return; }
+  if((b=e.target.closest("#fbRev button"))){ segPick("#fbRev","rev",b); return; }
   if((b=e.target.closest("#fbDiv button"))){ segPick("#fbDiv","look",b); return; }
   if((b=e.target.closest("#fbSlip button"))){ segPick("#fbSlip","news",b); return; }
   const m=e.target.closest("#fbMore button"); if(m){ const v=m.dataset.v; if(FB.more.has(v)) FB.more.delete(v); else FB.more.add(v); m.setAttribute("aria-pressed",String(FB.more.has(v))); return; }
@@ -1923,9 +2231,9 @@ document.addEventListener("click",e=>{
 $("fbForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const name=$("fbName").value.trim(); if(!name){ $("fbMsg").textContent="Put your name in so Simon knows who it is from."; return; }
-  const rec={kind:"feedback",page:"engineering-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,qualification:FB.qual,look:FB.look,pitwall:FB.news,more:[...FB.more],
+  const rec={kind:"feedback",page:"engineering-beyond-demo",name,role:$("fbRole").value.trim(),use:FB.use,workshop:FB.qual,manual:FB.rev,look:FB.look,pitwall:FB.news,more:[...FB.more],
     change:$("fbChange").value.trim(),back:$("fbBack").value.trim(),wrong:$("fbWrong").value.trim(),
-    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,newsN:newsCount(),interest:Object.keys(state.interest)}:null,
+    pupilView:IDENTITY?{doneN:ITEMS.filter(i=>state.done[i.s]).length,notesN:state.notes.length,newsN:newsCount(),revN:Object.keys(state.rev||{}).length,papersN:Object.keys(state.papers||{}).length,interest:Object.keys(state.interest)}:null,
     sent:new Date().toISOString(), ua:navigator.userAgent};
   $("fbSend").disabled=true; $("fbMsg").textContent="Sending…";
   const key="sc-eng-feedback::"+name+"::"+rec.sent;
@@ -1933,9 +2241,9 @@ $("fbForm").addEventListener("submit",async e=>{
   try{ const r=await fetch(CLOUD.endpoint,{method:"POST",headers:{"x-vestigia-token":CLOUD.token,"Content-Type":"application/json"},
       body:JSON.stringify({key,cls:"FEEDBACK",cand:name,book:"sc-eng-feedback",data:rec,savedAt:rec.sent})}); ok=r.ok; }catch(err){}
   $("fbSend").disabled=false;
-  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.qual=""; FB.look=""; FB.news=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbQual button,#fbDiv button,#fbSlip button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
+  if(ok){ $("fbMsg").textContent="Sent. Thank you — Simon will see it."; $("fbCopy").hidden=true; say("Feedback sent to Simon. Thank you."); $("fbForm").reset(); FB.use=""; FB.qual=""; FB.rev=""; FB.look=""; FB.news=""; FB.more.clear(); document.querySelectorAll("#fbUse button,#fbQual button,#fbRev button,#fbDiv button,#fbSlip button,#fbMore button").forEach(b=>b.setAttribute("aria-pressed","false")); setTimeout(()=>fbShow(false),1500); }
   else {
-    const txt=`Feedback on the Engineering page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nQualification taught: ${rec.qualification||"–"}\nThe look: ${rec.look||"–"}\nThe pit wall: ${rec.pitwall||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
+    const txt=`Feedback on the Engineering page – ${name}${rec.role?" ("+rec.role+")":""}\nWould use it: ${rec.use||"–"}\nWorkshop projects and rules: ${rec.workshop||"–"}\nWorkshop manual: ${rec.manual||"–"}\nThe look: ${rec.look||"–"}\nThe pit wall: ${rec.pitwall||"–"}\nMore of: ${rec.more.join(", ")||"–"}\n\nWhat I would change:\n${rec.change||"–"}\n\nWhat would make a pupil come back:\n${rec.back||"–"}\n\nMissing or wrong:\n${rec.wrong||"–"}`;
     const c=$("fbCopy"); c.value=txt; c.hidden=false;
     $("fbMsg").innerHTML=`That did not send from this address. Your answers are in the box below: copy them into an email to Simon, or open <a href="${GITHUB_DEMO}" target="_blank" rel="noopener">the version of this demo that saves</a> and press Send there.`;
     c.focus(); c.select();
@@ -1944,7 +2252,7 @@ $("fbForm").addEventListener("submit",async e=>{
 /* ---------- init ---------- */
 $("strap").textContent=ITEMS.length+" free things to watch, hear, read, build, enter and apply for · engineering news on the pit wall every morning";
 $("tableEyebrow").textContent="Six sessions · "+ITEMS.length+" things · one rev light each";
-$("foot").innerHTML="Compiled 30 September 2026, additions and link checks 10 October 2026 · course tags follow the OCR Cambridge Advanced National in Engineering (H027 Certificate, H127 Extended Certificate; units F130–F137) · free at the point of use unless the card says otherwise<br>Sources for the six sessions are in the small print under the picture. Brindley Racing, car 27 and Jo Halloran are invented. The pit wall refreshes itself every morning; its stories come from the sources named under it and are not checked by the department. The four books are in the library or on request.";
+$("foot").innerHTML="Compiled 30 September 2026, additions and link checks 10 and 13 October 2026 · course tags follow the nine topic areas of OCR A Level Design and Technology: Design Engineering (H404), as the department teaches it · free at the point of use unless the card says otherwise<br>Sources for the six sessions are in the small print under the picture. Brindley Racing, car 27 and Jo Halloran are invented. The pit wall refreshes itself every morning; its stories come from the sources named under it and are not checked by the department. The workshop projects need the department's say-so and a technician present: the rules on each card are the department's. The four books are in the library or on request.";
 $("nbDate").value=today();
 $("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
 loadNews();
