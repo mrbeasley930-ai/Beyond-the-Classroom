@@ -294,6 +294,29 @@ h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:800;line-height:1.02;let
 .rec.flash{animation:recflash 3s ease}
 @keyframes recflash{0%,100%{outline:0}15%,60%{outline:3px solid var(--amber)}}
 
+/* ---------- the podcast rack (platform 1: the department's own list) ---------- */
+.podrack{background:var(--hall);color:var(--tx);border:1px solid #000;border-radius:4px;box-shadow:4px 4px 0 rgba(0,0,0,.35);overflow:hidden;margin-top:6px}
+.podrack-top{padding:16px 18px 12px;border-bottom:1px solid var(--line);display:grid;gap:4px;position:relative}
+.podrack-top:before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:var(--listen)}
+.podrack-top h3{font-family:var(--f-board);font-weight:900;font-size:1.3rem;color:var(--amber);letter-spacing:.06em;text-transform:uppercase}
+.podrack-top p{margin:0;font-size:.95rem;color:var(--dim)}
+.podrack-band{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--listen);padding:12px 18px 2px}
+.podrack-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr) auto;gap:6px 16px;align-items:center;padding:9px 18px;border-top:1px dashed var(--line)}
+.podrack-row .pn{font-family:var(--f-board);font-weight:900;font-size:1rem;color:#fff;letter-spacing:.03em;line-height:1.15}
+.podrack-row .pn small{display:block;font-family:var(--f-mono);font-weight:400;font-size:.64rem;color:var(--faint);letter-spacing:.06em;margin-top:2px}
+.podrack-row .ln{font-size:.92rem;color:var(--dim);line-height:1.4}
+.podrack-row .rtags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.rtag{font-family:var(--f-mono);font-size:.64rem;border:1px solid var(--line2);border-radius:3px;padding:0 6px;color:var(--tx);white-space:nowrap}
+.rtag.u{border-color:var(--listen);color:var(--listen)}
+.rtag.warn{border-color:var(--warn);color:var(--warn)}
+.rtag.off{border-style:dashed;color:var(--faint)}
+.podrack-row .acts{display:grid;gap:6px;justify-items:end}
+.podrack-row .go{font-family:var(--f-head);font-weight:800;font-size:.92rem;letter-spacing:.04em;text-transform:uppercase;color:var(--amber);text-decoration:none;border:1.5px solid var(--amber);padding:4px 10px 3px;border-radius:3px;white-space:nowrap}
+.podrack-row .go:hover{background:var(--amber);color:var(--ink)}
+.podrack-row .open{font:inherit;font-family:var(--f-mono);font-size:.7rem;background:none;border:0;padding:0;color:var(--ok);text-decoration:underline;cursor:pointer;white-space:nowrap}
+.podrack-foot{padding:12px 18px 14px;font-size:.84rem;color:var(--faint);border-top:1px solid var(--line);line-height:1.45}
+@media (max-width:640px){.podrack-row{grid-template-columns:minmax(0,1fr);gap:5px}.podrack-row .acts{justify-items:start;grid-auto-flow:column;align-items:center}}
+
 /* ---------- the timetable (calendar) ---------- */
 .board{background:var(--hall);border:1px solid #000;box-shadow:8px 8px 0 rgba(0,0,0,.45);color:var(--tx);border-radius:4px;overflow:hidden}
 .btop{padding:22px 22px 12px;display:grid;gap:4px;position:relative;border-bottom:1px solid var(--line)}
@@ -738,7 +761,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
     <div class="sec-head">
       <span class="eyebrow">Arrivals · new every morning</span>
       <h2 id="newsH">History in the news</h2>
-      <p class="lede" id="newsLede">Collected automatically every morning from the National Archives' blogs, HistoryExtra, The Conversation and the Guardian's history books desk, plus new episodes of history podcasts, most of them on the department's own list: The Rest is History, Cold War Conversations, Not Just the Tudors, Gone Medieval and the HistoryExtra podcast. Read or listen to one, then press <b>Log it</b> and write two sentences: what it was about, and how it connects to something you study (a cause, a consequence, a historian's view, a source you could use). It saves to the department and goes into your travel log. Each item is tagged to the part of the course it seems to touch. The tags come from keywords, so some will be wrong; finding a better link is part of the exercise.</p>
+      <p class="lede" id="newsLede">Collected automatically every morning from the National Archives' blogs, HistoryExtra, The Conversation and the Guardian's history books desk, plus new episodes of the history podcasts on the department's own list (the full list is on platform 1): The Rest is History, Cold War Conversations, Empire, Since Attlee &amp; Churchill, More Jam Tomorrow, The Rest is Classified, Legacy, Dan Snow's History Hit, HistoryExtra, Not Just the Tudors, Gone Medieval and the rest. Read or listen to one, then press <b>Log it</b> and write two sentences: what it was about, and how it connects to something you study (a cause, a consequence, a historian's view, a source you could use). It saves to the department and goes into your travel log. Each item is tagged to the part of the course it seems to touch. The tags come from keywords, so some will be wrong; finding a better link is part of the exercise.</p>
     </div>
     <div class="otd" id="otd" aria-label="On this day"></div>
     <div class="pw-top"><div class="nfilters" id="newsFilters" role="group" aria-label="Show one part of the course"></div><span class="pw-when" id="newsWhen"></span></div>
@@ -812,7 +835,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:.92rem}
 (function(){
 /* Six platforms, each a line on the map. Arrivals (news) is the seventh thing to click. */
 const FAM = {
-  listen:{label:"Listen", verb:"Podcasts and radio", map:"podcasts and radio", def:"Podcasts and radio: three historians arguing for 45 minutes, a revolution in a hundred episodes, and people who were there.", no:1},
+  listen:{label:"Listen", verb:"Podcasts and radio", map:"podcasts and radio", def:"Podcasts and radio: three historians arguing for 45 minutes, a revolution in a hundred episodes, and people who were there. The department's full podcast list is at the end of this platform.", no:1},
   watch:{label:"Watch", verb:"Talks, lectures and film", map:"talks, lectures, film", def:"Short talks to argue with, university lectures, newsreels, and a Soviet film that is itself a source.", no:2},
   read:{label:"Read", verb:"Sources, articles and books", map:"sources and books", def:"Primary sources for both units (Lenin, Khrushchev, Thatcher, Hansard, cartoons), magazines, and eight books from the library.", no:3},
   do:{label:"Do", verb:"Archives, places and practice", map:"archives and places", def:"Where you stop reading about it and handle the evidence: archives for your NEA, Birmingham's own history on the course, and places to visit.", no:4},
@@ -1388,6 +1411,56 @@ function recHTML(it,extra=""){
     <span class="th">${esc(it.th)}</span>
     <span class="stamp" aria-hidden="true">PUNCHED</span></button>`;
 }
+
+/* ---------- the podcast rack: the department's own list of 22, in full ----------
+   Taken from the department's "Recommended History Podcasts" poster (October 2026).
+   stop = the ticket on this platform that already uses the podcast; the rack links to it.
+   feed = true when new episodes arrive on the Arrivals board every morning.
+   band: course = tied to 1H or 2S; nea = useful for the investigation; wide = beyond the course; sidings = finished, archive only. */
+const PODS = [
+ {band:"course", n:"The Rest is History", who:"Tom Holland and Dominic Sandbrook. Three or four episodes a week; series on the Russian Revolution, Stalin, the 1970s and Thatcher.", th:["1H","2S"], url:"https://therestishistory.com/", stop:"Rh", feed:true, lang:true},
+ {band:"course", n:"Cold War Conversations", who:"Ian Sanders. Oral history: people who were there, from Berlin to the Cuban missile crisis. Over 450 episodes.", th:["1H Soviet Union","2S"], url:"https://coldwarconversations.com/", stop:"Cw", feed:true},
+ {band:"course", n:"Since Attlee & Churchill", who:"Lee David Evans (historian of the Conservative Party) and Richard Johnson (historian of the Labour Party) on post-war British politics, weekly.", th:["2S Britain 1951–2007"], url:"https://podcasts.apple.com/gb/podcast/since-attlee-churchill/id1785733887", feed:true},
+ {band:"course", n:"Presidents, Prime Ministers, Monarchs & Dictators", who:"Iain Dale (LBC). Season one is every British Prime Minister, one episode each, with the author of that PM's essay; later seasons do the presidents, monarchs and dictators.", th:["2S Britain 1951–2007","Beyond"], url:"https://podcasts.apple.com/gb/podcast/presidents-prime-ministers-monarchs-dictators/id1535436589", feed:true},
+ {band:"course", n:"Jam Tomorrow / More Jam Tomorrow", who:"Ros Taylor on what life in post-war Britain was really like, one subject an episode: coal, contraception, ID cards, old age. Jam Tomorrow (26 episodes) ended in 2025; More Jam Tomorrow carries on.", th:["2S Britain 1951–79","2S Britain 1979–2007"], url:"https://morejamtomorrow.com/", feed:true},
+ {band:"course", n:"Talk ’90s to Me", who:"Miranda Sawyer (Observer) meets the people who made the 1990s: Britpop, Cool Britannia, Trainspotting, the Chemical Generation. Culture more than politics.", th:["2S Britain 1979–2007"], url:"https://podcasts.apple.com/gb/podcast/talk-90s-to-me/id1828415501", feed:true, lang:true},
+ {band:"course", n:"Empire", who:"William Dalrymple and Anita Anand. The British Empire from the East India Company to Suez and decolonisation, plus the Ottomans, the Mughals and the rest. 400+ episodes.", th:["2S Britain 1951–79","NEA: East India Company"], url:"https://empirepoduk.com/", feed:true},
+ {band:"course", n:"The Rest is Classified", who:"Gordon Corera (BBC security correspondent) and David McCloskey (ex-CIA). Spy history: the Cambridge Five, the KGB, Berlin, the CIA. Cold War espionage sits inside 1H.", th:["1H Soviet Union 1917–64","Beyond"], url:"https://therestisclassified.com/", feed:true},
+ {band:"course", n:"Black British Lives Matter", who:"Sir Lenny Henry and Marcus Ryder interview Black British figures about race in Britain today; eleven episodes (2021–22) alongside the book of the same name. For the race-relations strand of 2S.", th:["2S Britain 1951–2007"], url:"https://shows.acast.com/black-british-lives-matter-with-lenny-henry", lang:true, ended:"one series, 2021–22"},
+ {band:"nea", n:"Not Just the Tudors", who:"Suzannah Lipscomb on the early modern world, not only England. Two or three episodes a week.", th:["NEA: Tudors","NEA: Stuarts"], url:"https://www.historyhit.com/podcast/not-just-the-tudors/", stop:"Nt", feed:true},
+ {band:"nea", n:"Gone Medieval", who:"Matt Lewis and guests on the Middle Ages, from the Normans to Bosworth.", th:["NEA: Tudors","Beyond"], url:"https://www.historyhit.com/podcast/gone-medieval/", stop:"Gm", feed:true},
+ {band:"nea", n:"HistoryExtra podcast", who:"BBC History Magazine's interviews with historians about their new books, daily. The quickest way to hear a historian you could cite.", th:["Historiography","every unit"], url:"https://www.historyextra.com/podcast/", feed:true},
+ {band:"nea", n:"Legacy", who:"Afua Hirsch and Peter Frankopan take one famous life a series (Napoleon, Nina Simone, Picasso) and ask whether the reputation is deserved: an argument about interpretation every time.", th:["Historiography","NEA: French Revolution"], url:"https://podcasts.apple.com/gb/podcast/legacy/id1711362652", feed:true},
+ {band:"nea", n:"Journey Through Time", who:"David Olusoga and Sarah Churchwell on forgotten people whose actions had unintended consequences; a 2026 series on McCarthyism.", th:["Historiography","Beyond"], url:"https://podcasts.apple.com/gb/podcast/journey-through-time/id1802085505", feed:true},
+ {band:"nea", n:"The Last Best Hope?", who:"Adam Smith, Oxford's Rothermere American Institute. One figure, idea or moment in American political history each episode, with Oxford historians.", th:["Beyond","Historiography"], url:"https://www.rai.ox.ac.uk/podcast", feed:true},
+ {band:"wide", n:"Dan Snow's History Hit", who:"Dan Snow, Mondays and Thursdays, any period, usually with the historian who wrote the book. 1,500+ episodes; search the archive for your unit.", th:["every unit"], url:"https://www.historyhit.com/podcast/dan-snows-history-hit/", feed:true},
+ {band:"wide", n:"American History Hit", who:"Don Wildman, twice a week, on the United States from Powhatan to the Cold War.", th:["Beyond"], url:"https://www.historyhit.com/podcast/american-history-hit/", feed:true},
+ {band:"wide", n:"History Daily", who:"Noiser. One event told on its anniversary, about twenty minutes, every weekday. Good on a bus.", th:["Beyond"], url:"https://www.noiser.com/history-daily", feed:true},
+ {band:"wide", n:"Short History Of…", who:"Noiser. One subject an episode, told as a story: the Romanovs, the Cuban missile crisis, the Chartists, Mary Shelley. Weekly.", th:["Beyond","1H"], url:"https://www.noiser.com/short-history-of", feed:true},
+ {band:"wide", n:"History's Heroes", who:"BBC Radio 4. Story-led series on extraordinary people, most of them from the Second World War: narrated by Alex von Tunzelmann and, for History's Secret Heroes, Helena Bonham Carter.", th:["Beyond"], url:"https://www.bbc.co.uk/sounds/series/m001mcbp", feed:true},
+ {band:"sidings", n:"Warfare", who:"James Rogers, History Hit. Twice-weekly military history from Napoleon to 9/11. Finished in March 2024; 400+ episodes still there.", th:["Beyond"], url:"https://podcasts.apple.com/gb/podcast/warfare/id1526490428", ended:"ended March 2024"},
+ {band:"sidings", n:"The History Hotline", who:"Deanna Lyncook. Black history that the textbooks leave out, in conversation. Finished in November 2024; 150 episodes still there.", th:["2S Britain 1951–2007","Beyond"], url:"https://rss.com/podcasts/thehistoryhotline/", ended:"ended November 2024"},
+];
+const RACK_BANDS=[["course","On your course · 1H and 2S"],["nea","For the investigation and for historians' views"],["wide","Beyond the course"],["sidings","In the sidings · finished, but the archive is open"]];
+function rackHTML(){
+  const feedN=PODS.filter(p=>p.feed).length;
+  const rows=b=>PODS.filter(p=>p.band===b).map(p=>{
+    const tags=p.th.map(t=>`<span class="rtag u">${esc(t)}</span>`).join("")
+      +(p.feed?`<span class="rtag">on the Arrivals board</span>`:"")
+      +(p.lang?`<span class="rtag warn">some strong language</span>`:"")
+      +(p.ended?`<span class="rtag off">${esc(p.ended)}</span>`:"");
+    const stop=p.stop&&BY[p.stop]?`<button type="button" class="open" data-s="${p.stop}">ticket ${BY[p.stop].tno} on this platform${state.done[p.stop]?" · punched":""}</button>`:"";
+    return `<div class="podrack-row"><div class="pn">${esc(p.n)}</div>
+      <div class="ln">${esc(p.who)}<div class="rtags">${tags}</div></div>
+      <div class="acts"><a class="go" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(p.n)}">Listen ↗</a>${stop}</div></div>`;
+  }).join("");
+  return `<div class="podrack" id="podrack" aria-label="The department's podcast list">
+    <div class="podrack-top"><h3>The department's podcast list · ${PODS.length} services</h3>
+      <p>Every podcast on the History department's recommended list, in full. Four of them already have tickets on this platform; the rest are here so you can find them. ${feedN} of the ${PODS.length} put their new episodes on the Arrivals board every morning, where you can log one. Any of them counts in your travel log: write the entry yourself.</p></div>
+    ${RACK_BANDS.map(([b,label])=>`<div class="podrack-band">${label}</div>${rows(b)}`).join("")}
+    <div class="podrack-foot">The department's note on its list: discretion advised, some episodes use strong language or cover difficult themes. Unit tags are the page's, not the department's: they say where a podcast is most likely to be useful, and a podcast tagged Beyond the course can still be the one that gets you the degree place.</div></div>`;
+}
+
 function renderGrid(){
   $("grid").innerHTML=ORDER.map(g=>{
     const list=ITEMS.filter(i=>i.g===g); const done=list.filter(i=>state.done[i.s]).length;
@@ -1395,7 +1468,7 @@ function renderGrid(){
     return `<div class="zone paper${off}" id="zone-${g}" data-g="${g}">
       <div class="zone-head"><div class="ic"><span>${FAM[g].no}<small>PLAT</small></span></div><div><span class="nm">${FAM[g].label} · ${FAM[g].verb}</span><span class="def">${FAM[g].def}</span></div>
         <span class="n">${done} of ${list.length} visited · ${STATE_NAME[secState(done,list.length)]}</span></div>
-      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div></div>`;
+      <div class="recs">${list.map(it=>recHTML(it)).join("")}</div>${g==="listen"?rackHTML():""}</div>`;
   }).join("");
 }
 function fmtLong(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}); }catch(e){ return iso; } }
@@ -1967,7 +2040,7 @@ $("fbForm").addEventListener("submit",async e=>{
 /* ---------- init ---------- */
 $("strap").textContent=ITEMS.length+" free things to listen to, watch, read, do, enter and apply for · history in the news, new every morning";
 $("tableEyebrow").textContent="Six platforms · "+ITEMS.length+" services · one stop each on the map";
-$("foot").innerHTML="Compiled 30 September 2026, rebuilt for the department's course and link-checked 10 October 2026 · course tags follow AQA A-level History (7042) as the department teaches it: 1H Tsarist and Communist Russia 1855–1964, 2S The Making of Modern Britain 1951–2007, and the historical investigation (NEA) · free at the point of use unless the card says otherwise<br>Sources for the six platforms are in the small print under the map. The History Line, its boards and the announcer are invented; Five Ways station is real. The Arrivals board refreshes itself every morning; its articles and podcasts come from the sources named under it and are not checked by the department. Some podcasts on the department's list use strong language. The books are in the library or on request.";
+$("foot").innerHTML="Compiled 30 September 2026, rebuilt for the department's course and link-checked 10 October 2026 · course tags follow AQA A-level History (7042) as the department teaches it: 1H Tsarist and Communist Russia 1855–1964, 2S The Making of Modern Britain 1951–2007, and the historical investigation (NEA) · free at the point of use unless the card says otherwise<br>Sources for the six platforms are in the small print under the map. The History Line, its boards and the announcer are invented; Five Ways station is real. The Arrivals board refreshes itself every morning; its articles and podcasts come from the sources named under it and are not checked by the department. The department's podcast list (platform 1) is from its October 2026 poster; some of those podcasts use strong language. The books are in the library or on request.";
 $("nbDate").value=today();
 $("introGo").addEventListener("click",()=>{ $("intro").hidden=true; $("gName").focus(); });
 loadNews();

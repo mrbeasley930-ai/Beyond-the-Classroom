@@ -8,7 +8,8 @@ No third-party packages: urllib + xml + json only.
 Three things arrive:
   stories   articles from history magazines, the National Archives' blogs, The Conversation (history only)
             and the Guardian's history books desk          (kind "story", ten days deep)
-  podcasts  new episodes of history podcasts, several of them on the department's own list
+  podcasts  new episodes of the history podcasts on the department's own list (its October 2026
+            poster: nineteen of the twenty-two still running; capped at MAX_PODCASTS on the board)
                                                             (kind "podcast", three weeks deep)
   onthisday Wikipedia's selected events for today's date    (separate list)
 Everything is tagged by keyword to AQA A-level History (7042) as the department teaches it:
@@ -41,7 +42,32 @@ FEEDS = [
     ("HistoryExtra podcast", "https://feeds.megaphone.fm/GLT5697813216",             "podcast",  "interviews with historians about their new books (on the department's list)", 3, None, "podcast"),
     ("Not Just the Tudors", "https://access.acast.com/rss/b0ed85cc-f4ed-49e9-b860-0ba48481ae25", "podcast", "Suzannah Lipscomb on the early modern world (on the department's list)", 2, None, "podcast"),
     ("Gone Medieval",       "https://access.acast.com/rss/11c1773b-6d50-4dbb-b543-483046bdc241", "podcast", "the Middle Ages (on the department's list)", 1, None, "podcast"),
+    # the rest of the department's list (its October 2026 poster), added 14 Oct 2026; one or two each so they share the board
+    ("Empire",              "https://feeds.megaphone.fm/empirepodcast",                 "podcast",  "William Dalrymple and Anita Anand on empires, the British one included (on the department's list)", 2, None, "podcast"),
+    ("Since Attlee & Churchill", "https://feeds.acast.com/public/shows/68c319db86eb67a6f6b2a910", "podcast", "post-war British politics with a historian of each big party (on the department's list)", 2, None, "podcast"),
+    ("More Jam Tomorrow",   "https://rss.libsyn.com/shows/570270/destinations/4934350.xml", "podcast", "Ros Taylor on how life in Britain changed after 1945 (on the department's list)", 1, None, "podcast"),
+    ("The Rest is Classified", "https://feeds.megaphone.fm/therestisclassified",        "podcast",  "spy history with Gordon Corera and David McCloskey (on the department's list)", 1, None, "podcast"),
+    ("Legacy",              "https://feeds.acast.com/public/shows/68e4c0be965488b63a6987c5", "podcast", "Afua Hirsch and Peter Frankopan on whether famous lives deserve their reputations (on the department's list)", 1, None, "podcast"),
+    ("Journey Through Time", "https://feeds.megaphone.fm/journeythroughtime",           "podcast",  "David Olusoga and Sarah Churchwell on forgotten people and unintended consequences (on the department's list)", 1, None, "podcast"),
+    ("Presidents, Prime Ministers, Monarchs & Dictators", "https://feeds.captivate.fm/the-presidents-prime-ministers/", "podcast", "Iain Dale on every PM, president, monarch and dictator (on the department's list)", 1, None, "podcast"),
+    ("Talk '90s to Me",     "https://feeds.megaphone.fm/NSR2448691535",                 "podcast",  "Miranda Sawyer on the 1990s (on the department's list; some strong language)", 1, None, "podcast"),
+    ("Dan Snow's History Hit", "https://access.acast.com/rss/c939f8d1-c4bc-478e-8bb9-e5343f9a7ab5", "podcast", "Dan Snow, any period, usually with the historian who wrote the book (on the department's list)", 2, None, "podcast"),
+    ("American History Hit", "https://access.acast.com/rss/62c7fb2a7acf3900129dffa7",  "podcast",  "Don Wildman on the United States (on the department's list)", 1, None, "podcast"),
+    ("History Daily",       "https://audioboom.com/channels/5162833.rss",               "podcast",  "Noiser: one event told on its anniversary, twenty minutes (on the department's list)", 1, None, "podcast"),
+    ("Short History Of...", "https://feeds.megaphone.fm/NSR8236478683",                 "podcast",  "Noiser: one subject an episode, told as a story (on the department's list)", 1, None, "podcast"),
+    ("History's Heroes",    "https://podcasts.files.bbci.co.uk/m001mcbp.rss",           "podcast",  "BBC Radio 4: story-led series on extraordinary people (on the department's list)", 1, None, "podcast"),
+    ("The Last Best Hope?", "https://feeds.acast.com/public/shows/62cda17f1c07740014d65e4f", "podcast", "Adam Smith and Oxford's Rothermere American Institute on American political history (on the department's list)", 1, None, "podcast"),
 ]
+# the board takes turns between sources, but with nineteen podcast feeds the podcasts would still outnumber the
+# articles two to one, so the podcasts are capped after the turn-taking: the newest from each feed get in first
+MAX_PODCASTS = 16
+# show pages for feeds whose episodes carry no link of their own and whose channel has no <link> (Goalhanger's megaphone feeds)
+HOMES = {
+    "Empire": "https://empirepoduk.com/",
+    "The Rest is Classified": "https://therestisclassified.com/",
+    "Journey Through Time": "https://podcasts.apple.com/gb/podcast/journey-through-time/id1802085505",
+    "The Rest is History": "https://therestishistory.com/",
+}
 OTD_SKIP = re.compile(r"murder|abduct|kidnap|rape|sexual|serial killer|child|girl|boy\b|suicide|massacre of (school|children)", re.I)
 WIKI = "https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/{mm}/{dd}"
 
@@ -202,7 +228,7 @@ def main():
             print(f"!! {label}: {e}", file=sys.stderr)
             sources.append({"src": label, "level": level, "line": line, "kind": kind, "ok": False, "n": 0})
             continue
-        home = podcast_home(raw) if kind == "podcast" else ""
+        home = (podcast_home(raw) or HOMES.get(label, "")) if kind == "podcast" else ""
         got = [(t, (l if l.startswith("http") else home), d, dd) for t, l, d, dd in got if t]
         got = [g for g in got if g[1].startswith("http")]
         got.sort(key=lambda g: g[3] or dt.datetime.min.replace(tzinfo=dt.timezone.utc), reverse=True)
@@ -244,6 +270,14 @@ def main():
         for k in order:
             if queues[k]:
                 mixed.append(queues[k].pop(0))
+    kept, np = [], 0
+    for h in mixed:
+        if h["kind"] == "podcast":
+            if np >= MAX_PODCASTS:
+                continue
+            np += 1
+        kept.append(h)
+    mixed = kept
     otd, otd_ok = on_this_day(now)
     sources.append({"src": "Wikipedia: On this day", "level": "reference", "line": "Wikipedia's selected events for today's date", "kind": "onthisday", "ok": otd_ok, "n": len(otd)})
     data = {
