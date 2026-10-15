@@ -1,5 +1,5 @@
 {
- "made": "2026-10-14T11:42+00:00",
+ "made": "2026-10-15T11:19+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,7 +25,7 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Motorsport.com",
@@ -38,8 +38,8 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
@@ -53,21 +53,21 @@
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "ESA",
    "level": "magazine",
    "line": "European Space Agency · space engineering and technology",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "NASA",
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "Carbon Brief",
@@ -100,64 +100,94 @@
  ],
  "stories": [
   {
-   "id": "3e555b6ea6",
-   "src": "Tech Xplore (vehicles)",
+   "id": "36697a9f46",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "George Russell forced to race with used Mercedes parts after Singapore GP crash",
+   "url": "https://www.motorsport.com/f1/news/george-russells-singapore-sprint-crash-forced-mercedes-to-use-second-hand-parts/10865313/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "George Russell’s 2026 Singapore Grand Prix was already a certified nightmare on paper. We already knew he had to swallow a massive 60-place engine penalty, fought a brake pedal that decided to go squishy, and spent two hours baking in the cockpit while a ruptured drink bottle …",
+   "date": "2026-10-15T10:05+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "3367e0c737",
+   "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New platform tackles critical material risks in electric motors",
-   "url": "https://techxplore.com/news/2026-10-platform-tackles-critical-material-electric.html",
-   "desc": "As manufacturers face growing uncertainty tied to critical material shortages and global supply chain disruptions, the Department of Energy's (DOE) Oak Ridge National Laboratory (ORNL) researchers have developed a super intelligence (SI)-driven platform to help companies evalu…",
-   "date": "2026-10-14T11:00+00:00",
+   "title": "Using electronic structure to guide AI in designing new materials",
+   "url": "https://techxplore.com/news/2026-10-electronic-ai-materials.html",
+   "desc": "Structure dictates function. Scientists are increasingly using artificial intelligence (AI) to design the arrangement of atoms in new materials with desired properties. Now, researchers at the Institute of Industrial Science, The University of Tokyo, have extended a leading ge…",
+   "date": "2026-10-15T09:00+00:00",
    "th": [
     "5 Materials",
     "6 Technical"
    ]
   },
   {
-   "id": "876bc9738f",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "£2.2bn in unspent developer contributions could help tackle road repair backlog, MPs say",
-   "url": "https://www.newcivilengineer.com/latest/2-2bn-in-unspent-developer-contributions-could-help-tackle-road-repair-backlog-mps-say-14-10-2026/",
-   "desc": "More than £2.2bn in Community Infrastructure Levy (CIL) contributions remains unspent by planning authorities in England and Wales, according to a report by the All-Party Parliamentary Group (APPG) for Better Roads, which calls for the government to make it easier and more tra…",
-   "date": "2026-10-14T09:14+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "830ebfd8f0",
-   "src": "Motorsport.com",
+   "id": "efec9cc650",
+   "src": "The Race",
    "level": "way in",
-   "title": "Red Bull sends warning to F1 rivals with engine development admission",
-   "url": "https://www.motorsport.com/f1/news/red-bull-sends-warning-to-f1-rivals-with-engine-development-admission/10865049/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Ask most engineers to grade their own work at four or five out of 10 and you'd brace for bad news. Pierre Wache, Red Bull Racing's technical director, offered that score for the team's first homemade Formula 1 power unit, and it feels like a threat to the rest of the grid. Put…",
-   "date": "2026-10-14T00:42+00:00",
+   "title": "How Red Bull has improved its F1 engine without ADUO",
+   "url": "https://www.the-race.com/formula-1/key-gains-red-bull-has-made-with-its-race-winning-f1-engine/",
+   "desc": "Red Bull's first-ever F1 engine is already a winner. Jon Noble spoke to the technical director behind the project to find out how",
+   "date": "2026-10-15T08:48+00:00",
    "th": [
     "Motorsport",
-    "2 Existing products",
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "a4685d43cd",
+   "src": "ESA",
+   "level": "magazine",
+   "title": "Swarming robots to tackle space debris",
+   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/Swarming_robots_to_tackle_space_debris",
+   "desc": "Image: Test setup in a robotics laboratory",
+   "date": "2026-10-15T07:50+00:00",
+   "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "f95cdff65a",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Names Astronaut Christina Koch Acting Deputy Chief Engineer",
-   "url": "https://www.nasa.gov/news-release/nasa-names-astronaut-christina-koch-acting-deputy-chief-engineer/",
-   "desc": "NASA engineer and astronaut Christina Koch will serve as the agency’s acting deputy chief engineer beginning on Sunday, Nov. 1, following the retirement of Katherine Van Hooser, who will conclude more than 35 years of distinguished service to the agency on Wednesday, Oct. 21. …",
-   "date": "2026-10-13T20:41+00:00",
-   "th": []
-  },
-  {
-   "id": "c9f81f2c16",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Soft robotic fish combines high-speed swimming with 3D maneuverability",
-   "url": "https://techxplore.com/news/2026-10-soft-robotic-fish-combines-high.html",
-   "desc": "Researchers from the Shenyang Institute of Automation (SIA) of the Chinese Academy of Sciences have developed an electrohydraulically actuated soft robotic fish that can swim at high speeds and perform agile three-dimensional (3D) maneuvers. The soft robotic fish addresses a l…",
-   "date": "2026-10-13T19:40+00:00",
+   "id": "32f880d6d5",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "Toilet paper and secret recorders: What we know about the arrest of the Saudi OpenAI engineer",
+   "url": "https://www.bbc.co.uk/news/articles/cm04054ykqqqo?at_medium=RSS&at_campaign=rss",
+   "desc": "Abdulrahman Alfozan had worked for the AI giant for more than a year before he was arrested by the FBI.",
+   "date": "2026-10-14T15:54+00:00",
    "th": [
     "6 Technical"
+   ]
+  },
+  {
+   "id": "6b38e26f43",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA’s Space X CRS-35 Launch Jellyfish",
+   "url": "https://www.nasa.gov/image-article/nasas-space-x-crs-35-launch-jellyfish/",
+   "desc": "Sunlight illuminates the exhaust plumes of a SpaceX Falcon 9 rocket carrying the company’s Dragon spacecraft on Oct. 13, 2026. This visual phenomenon is known as a “jellyfish”; it happens near sunrise or sunset when the exhaust plume from the rocket becomes brightly illuminate…",
+   "date": "2026-10-14T15:18+00:00",
+   "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "45b2bfd923",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Bamboo emerges as potential source of affordable, low-carbon transportation fuels",
+   "url": "https://techxplore.com/news/2026-10-bamboo-emerges-potential-source-carbon.html",
+   "desc": "A new study by researchers, including those in Worcester Polytechnic Institute's Department of Chemical Engineering, has found that the fastest-growing plant on Earth may offer a sustainable and cost-effective alternative to petroleum-derived transportation fuels.",
+   "date": "2026-10-14T14:00+00:00",
+   "th": [
+    "3 Wider issues",
+    "5 Materials",
+    "8 Viability"
    ]
   },
   {
@@ -185,6 +215,32 @@
    ]
   },
   {
+   "id": "0f967aa96a",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Why Christian Horner banned Mercedes' name as Red Bull built its own F1 engine",
+   "url": "https://www.motorsport.com/f1/news/why-horner-banned-mercedes-name-as-red-bull-built-its-own-f1-engine/10864996/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Former Red Bull CEO and team principal Christian Horner has revealed why he banned employees of the squad's powertrains division from using the name of bitter Formula 1 rivals Mercedes. The Milton Keynes-based outfit had enjoyed a flourishing partnership with Honda following a…",
+   "date": "2026-10-14T18:00+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "787036f3b4",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Eye-inspired cameras help new system detect fast-moving drones in complex skies",
+   "url": "https://techxplore.com/news/2026-10-eye-cameras-fast-drones-complex.html",
+   "desc": "Southwest Research Institute (SwRI) has developed a new tool that uses neuromorphic cameras to detect unmanned aerial system (UAS) drones. SwRI's Hierax system pairs event-based cameras, dynamic sensing technology that mimics the power of human eyesight, with custom software t…",
+   "date": "2026-10-14T20:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
    "id": "270dbf5ff7",
    "src": "BBC Technology",
    "level": "way in",
@@ -197,55 +253,28 @@
    ]
   },
   {
-   "id": "53660af3a9",
+   "id": "550aa79730",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Develops Batteries to Power Humanity’s Return to Moon",
+   "url": "https://www.nasa.gov/centers-and-facilities/langley/nasa-develops-batteries-to-power-humanitys-return-to-moon/",
+   "desc": "If you’ve ever had your car start sluggishly, or not at all, on a particularly frigid winter morning, you know standard batteries do not like extreme cold. That’s why NASA researchers are working to develop a battery that could function in the brutal cold of the Moon’s South P…",
+   "date": "2026-10-14T14:41+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "3e555b6ea6",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Croatia tests fully driverless robotaxi service",
-   "url": "https://techxplore.com/news/2026-10-croatia-fully-driverless-robotaxi.html",
-   "desc": "A Croatian firm that launched Europe's first commercial robotaxi service earlier this year is now testing fully driverless rides in the capital, its chief executive told AFP Tuesday.",
-   "date": "2026-10-14T09:20+00:00",
+   "title": "New platform tackles critical material risks in electric motors",
+   "url": "https://techxplore.com/news/2026-10-platform-tackles-critical-material-electric.html",
+   "desc": "As manufacturers face growing uncertainty tied to critical material shortages and global supply chain disruptions, the Department of Energy's (DOE) Oak Ridge National Laboratory (ORNL) researchers have developed a super intelligence (SI)-driven platform to help companies evalu…",
+   "date": "2026-10-14T11:00+00:00",
    "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "19bd23939c",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Ageing infrastructure and cyber threats are disrupting businesses’ water security",
-   "url": "https://www.newcivilengineer.com/latest/ageing-infrastructure-and-cyber-threats-are-disrupting-businesses-water-security-14-10-2026/",
-   "desc": "Business leaders and water system decision makers in the UK have said that ageing infrastructure and threats to cyber security are obstacles to protecting businesses from water-related disruption.",
-   "date": "2026-10-14T08:59+00:00",
-   "th": [
-    "1 Requirements",
+    "5 Materials",
     "6 Technical"
-   ]
-  },
-  {
-   "id": "4fc8f94857",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "FIA could outlaw Red Bull’s clever sidepod loophole ahead of 2027 season",
-   "url": "https://www.motorsport.com/f1/news/fia-outlaws-red-bulls-clever-sidepod-aerodynamic-loophole-ahead-of-2027-season/10864930/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "If there's one thing Formula 1 engineers love more than coffee, it's finding a tiny gray area in the rulebook and driving a championship-contending race car straight through it. But as Milton Keynes just learned, the fun doesn't last forever. According to a scoop from Rosario …",
-   "date": "2026-10-13T21:50+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "c3f755812a",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Less platinum, cheaper hydrogen: Ultrathin electrolyzer coatings show promise",
-   "url": "https://techxplore.com/news/2026-10-platinum-cheaper-hydrogen-ultrathin-electrolyzer.html",
-   "desc": "Hydrogen is expected to become an important energy carrier of the future, particularly for industrial applications. But this requires climate-friendly technologies that split water into hydrogen and oxygen. One major challenge is cost: PEM water electrolysis requires component…",
-   "date": "2026-10-13T19:00+00:00",
-   "th": [
-    "3 Wider issues",
-    "5 Materials"
    ]
   },
   {
@@ -273,52 +302,42 @@
    ]
   },
   {
-   "id": "40aa110edb",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Smarter cities need more than smart algorithms. They need trust",
-   "url": "https://techxplore.com/news/2026-10-smarter-cities-smart-algorithms.html",
-   "desc": "We've never had a better understanding of how cities move, but turning that knowledge into smoother, cleaner and more equitable trips remains a challenge. The main obstacle to sustainable mobility may not be technological, but rather political and organizational.",
-   "date": "2026-10-12T21:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "0a37ff9792",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Welsh Senedd moves motion to review operation of Barnett Formula in light of ‘unfair rail funding’",
-   "url": "https://www.newcivilengineer.com/latest/welsh-senedd-moves-motion-to-review-operation-of-barnett-formula-in-light-of-unfair-rail-funding-14-10-2026/",
-   "desc": "Members of the Senedd have backed calls for the UK Government to accelerate its commitment to investment in rail infrastructure in Wales and allow Welsh ministers to have more flexibility over funding from Westminster.",
-   "date": "2026-10-14T08:49+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "6feeca1782",
+   "id": "830ebfd8f0",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Cadillac’s F1 brakes are still a problem: ‘I had to lift and coast on lap two’",
-   "url": "https://www.motorsport.com/f1/news/cadillacs-f1-brakes-are-still-a-problem-i-had-to-lift-and-coast-on-lap-two/10864720/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Valtteri Bottas was again hindered by Cadillac’s well-documented brake issues in Formula 1’s Singapore Grand Prix, although the veteran has described the problem as “almost solved”. Brake overheating has been an issue throughout the season on the MAC-26, causing four retiremen…",
-   "date": "2026-10-13T14:41+00:00",
+   "title": "Red Bull sends warning to F1 rivals with engine development admission",
+   "url": "https://www.motorsport.com/f1/news/red-bull-sends-warning-to-f1-rivals-with-engine-development-admission/10865049/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Ask most engineers to grade their own work at four or five out of 10 and you'd brace for bad news. Pierre Wache, Red Bull Racing's technical director, offered that score for the team's first homemade Formula 1 power unit, and it feels like a threat to the rest of the grid. Put…",
+   "date": "2026-10-14T00:42+00:00",
    "th": [
     "Motorsport",
+    "2 Existing products",
     "6 Technical"
    ]
   },
   {
-   "id": "b7be2770f2",
+   "id": "405e872d3d",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "3D imaging technique examines nuclear fuel rod corrosion at nanoscale resolution",
-   "url": "https://techxplore.com/news/2026-10-3d-imaging-technique-nuclear-fuel.html",
-   "desc": "The cladding tubes of the fuel rods used in nuclear reactors must remain leak-tight—despite the risk of corrosion from the surrounding cooling water and despite the radiation they are exposed to during operation. It is therefore important to know how quickly corrosion layers f…",
-   "date": "2026-10-13T18:40+00:00",
+   "title": "Shoulder exoskeletons can slow arm movements, revealing potential barrier to worker adoption",
+   "url": "https://techxplore.com/news/2026-10-shoulder-exoskeletons-arm-movements-revealing.html",
+   "desc": "Shoulder exoskeletons designed to help manufacturing workers with overhead tasks need to allow for more dynamic movement before workers reliably use them, according to two studies led by University of Michigan Engineering and the Boeing Company.",
+   "date": "2026-10-14T19:20+00:00",
    "th": [
-    "5 Materials"
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "53660af3a9",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Croatia tests fully driverless robotaxi service",
+   "url": "https://techxplore.com/news/2026-10-croatia-fully-driverless-robotaxi.html",
+   "desc": "A Croatian firm that launched Europe's first commercial robotaxi service earlier this year is now testing fully driverless rides in the capital, its chief executive told AFP Tuesday.",
+   "date": "2026-10-14T09:20+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
    ]
   },
   {
@@ -347,103 +366,65 @@
    ]
   },
   {
-   "id": "dd681e5b6b",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "From 'hands-free' to 'eyes-off': How General Motors is simulating its way to autonomous driving",
-   "url": "https://techxplore.com/news/2026-10-free-eyes-general-motors-simulating.html",
-   "desc": "At the General Motors Global Technical Center in Warren, Michigan, in suburban Detroit, hundreds of volunteer, real-world drivers have hopped inside a Cadillac Lyriq electric vehicle or other popular GM models and experienced all sorts of things while in the car: regular roadw…",
-   "date": "2026-10-12T20:00+00:00",
-   "th": [
-    "4 Design thinking",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "2f007364ad",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Why collaboration is at the core of durable electricity infrastructure",
-   "url": "https://www.newcivilengineer.com/latest/why-collaboration-is-at-the-core-of-durable-electricity-infrastructure-14-10-2026/",
-   "desc": "The independent electricity network sector has built its reputation on speed and flexibility.",
-   "date": "2026-10-14T05:30+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "d76bf44d51",
+   "id": "4fc8f94857",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "McLaren to phase upgrades for 2026 fight and next year's F1 development",
-   "url": "https://www.motorsport.com/f1/news/mclaren-to-phase-upgrades-for-2026-fight-and-next-years-f1-development/10864787/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "McLaren is hoping its upgrade plan can do two things at once: close the gap to the front of the grid while also forming an understanding of which aerodynamic concept it should be targeting for next year's Formula 1 season. Team principal Andrea Stella has laid out his thinking…",
-   "date": "2026-10-13T00:35+00:00",
+   "title": "FIA could outlaw Red Bull’s clever sidepod loophole ahead of 2027 season",
+   "url": "https://www.motorsport.com/f1/news/fia-outlaws-red-bulls-clever-sidepod-aerodynamic-loophole-ahead-of-2027-season/10864930/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "If there's one thing Formula 1 engineers love more than coffee, it's finding a tiny gray area in the rulebook and driving a championship-contending race car straight through it. But as Milton Keynes just learned, the fun doesn't last forever. According to a scoop from Rosario …",
+   "date": "2026-10-13T21:50+00:00",
    "th": [
     "Motorsport",
-    "2 Existing products"
+    "6 Technical"
    ]
   },
   {
-   "id": "8738842c9d",
+   "id": "879938a492",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Just add water: New binder simplifies battery manufacturing and recycling without sacrificing performance",
-   "url": "https://techxplore.com/news/2026-10-binder-battery-recycling-sacrificing.html",
-   "desc": "A new battery binder—the glue that holds together a battery's internal parts—could make lithium-ion batteries more environmentally friendly and easier to recycle without sacrificing performance.",
-   "date": "2026-10-12T20:40+00:00",
+   "title": "Drones on the line: New algorithms help drone fleets inspect power infrastructure",
+   "url": "https://techxplore.com/news/2026-10-drones-line-algorithms-drone-fleets.html",
+   "desc": "Researchers have developed two algorithms to help fleets of drones inspect electricity infrastructure more efficiently, potentially cutting costs and reducing risks to human workers. They provide details in the International Journal of Systems, Control and Communications.",
+   "date": "2026-10-14T19:00+00:00",
    "th": [
-    "3 Wider issues",
-    "6 Technical",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "40aa110edb",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Smarter cities need more than smart algorithms. They need trust",
+   "url": "https://techxplore.com/news/2026-10-smarter-cities-smart-algorithms.html",
+   "desc": "We've never had a better understanding of how cities move, but turning that knowledge into smoother, cleaner and more equitable trips remains a challenge. The main obstacle to sustainable mobility may not be technological, but rather political and organizational.",
+   "date": "2026-10-12T21:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "801c62dc9a",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "AI drone outpaces former world champions using one camera and no GPS",
+   "url": "https://techxplore.com/news/2026-10-ai-drone-outpaces-world-champions.html",
+   "desc": "What does it take for an autonomous robot to be faster around a course than human drone pilots? At these dizzying speeds, humans need lightning-fast reflexes. Researchers at Delft University of Technology (the Netherlands) have developed an AI system that enables a racing dron…",
+   "date": "2026-10-14T18:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "fcf4d734e0",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Engineers develop new way to monitor 3D printed concrete during construction",
+   "url": "https://techxplore.com/news/2026-10-3d-concrete.html",
+   "desc": "A Rowan University team of engineers has developed a new way to measure how 3D-printed concrete deforms during printing and curing, revealing how lower layers respond to the weight and pressure of newly deposited material. The approach could help researchers and manufacturers …",
+   "date": "2026-10-14T15:20+00:00",
+   "th": [
+    "5 Materials",
     "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "416dfa5d66",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Amey appointed as system integrator for Northern Powerhouse Rail Phase One",
-   "url": "https://www.newcivilengineer.com/latest/amey-appointed-as-system-integrator-for-northern-powerhouse-rail-phase-one-14-10-2026/",
-   "desc": "Amey has been named by Network Rail as the system integrator for six projects that together make up Phase One of the Northern Powerhouse Rail (NPR) programme.",
-   "date": "2026-10-14T05:30+00:00",
-   "th": []
-  },
-  {
-   "id": "75e5061351",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Shape-sensing sheet digitally tracks its movement as it bends and twists",
-   "url": "https://techxplore.com/news/2026-10-sheet-digitally-tracks-movement.html",
-   "desc": "MIT engineers have developed a flexible, shape-sensing sheet that digitally reconstructs its own form as it bends and twists. The sensor is similar in principle to some motion-capture garments, which track a person's physical movements to mimic them in a virtual avatar. Those …",
-   "date": "2026-10-09T17:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "49e4fe7e32",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "How far can new tech from AI to robotics shift the productivity dial?",
-   "url": "https://www.newcivilengineer.com/in-depth/how-far-can-new-tech-from-ai-to-robotics-shift-the-productivity-dial-14-10-2026/",
-   "desc": "Technology has long been pressed into service to solve the productivity riddle; but with the emergence of AI and robotics, infrastructure players are turning their attention to ensuring the payoffs are more than virtual.",
-   "date": "2026-10-14T03:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "20bffdc03a",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "We blasted mobile homes with hurricane‑force winds to test how they fail to make affordable housing safer",
-   "url": "https://techxplore.com/news/2026-10-blasted-mobile-homes-hurricaneforce-housing.html",
-   "desc": "It's 9:15 a.m. The wind is roaring at 110 miles per hour (177 kph); the sound is deafening. Dust swirls through the air. We are watching a single-wide manufactured home rock back and forth as it is pounded by turbulent wind.",
-   "date": "2026-10-09T15:00+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability",
-    "9 Health and safety"
    ]
   }
  ]
