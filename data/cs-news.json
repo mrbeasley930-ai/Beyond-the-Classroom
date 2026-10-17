@@ -1,5 +1,5 @@
 {
- "made": "2026-10-16T11:57+00:00",
+ "made": "2026-10-17T11:13+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -30,7 +30,7 @@
    "level": "magazine",
    "line": "the UK's National Cyber Security Centre: warnings and advice",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "The Conversation",
@@ -44,7 +44,7 @@
    "level": "magazine",
    "line": "Quanta Magazine, computer science: theory, algorithms, AI research",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "Raspberry Pi Foundation",
@@ -72,7 +72,7 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "ScienceDaily",
@@ -84,27 +84,44 @@
  ],
  "stories": [
   {
-   "id": "42e795f0c3",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Living with a stink? Technology might help",
-   "url": "https://www.bbc.co.uk/news/articles/cr6240q1w136o?at_medium=RSS&at_campaign=rss",
-   "desc": "Smells from rubbish dumps and industrial facilities are being more carefully monitored.",
-   "date": "2026-10-15T23:18+00:00",
-   "th": []
-  },
-  {
-   "id": "048b26c659",
+   "id": "b140e0bf69",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
-   "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
-   "desc": "The incident is likely 1st confirmation of mercenary spyware delivered by targeted ads.",
-   "date": "2026-10-15T20:32+00:00",
+   "title": "OpenAI models hacked a crypto wallet and breached more websites",
+   "url": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
+   "desc": "The actions could have resulted in criminal charges had humans been behind the keyboard.",
+   "date": "2026-10-16T20:59+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.3 Networks and the web",
+    "1.3 Security and encryption",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "91c2dfd574",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Toxic algorithms wouldn't let them go - now Australia wants an off switch",
+   "url": "https://www.bbc.co.uk/news/articles/cwr7y8er1n8vo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Australian government hopes to protect social media users from being served content they don't want to see.",
+   "date": "2026-10-16T18:11+00:00",
+   "th": [
+    "1.4 / 2.3 Algorithms"
+   ]
+  },
+  {
+   "id": "8d4656f002",
+   "src": "Quanta",
+   "level": "magazine",
+   "kind": "story",
+   "title": "He Wants AI Benchmarking To Be a Science, Not a Dark Art",
+   "url": "https://www.quantamagazine.org/he-wants-ai-benchmarking-to-be-a-science-not-a-dark-art-20261016/",
+   "desc": "Moritz Hardt, author of a new book on benchmarks, believes these “standardized tests” for artificial intelligence are fundamentally broken — but not unfixable. The post He Wants AI Benchmarking To Be a Science, Not a Dark Art first appeared on Quanta Magazine",
+   "date": "2026-10-16T13:25+00:00",
+   "th": [
+    "1.5 AI and automation"
    ]
   },
   {
@@ -172,20 +189,6 @@
    ]
   },
   {
-   "id": "4b1d008af1",
-   "src": "Quanta",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Is ‘Attention’ the Essence of Intelligence?",
-   "url": "https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/",
-   "desc": "A mathematical mechanism enables AI models to process language at scale, undergirding the current AI revolution. Our columnist asks: Why is attention the key? The post Is ‘Attention’ the Essence of Intelligence? first appeared on Quanta Magazine",
-   "date": "2026-10-12T14:20+00:00",
-   "th": [
-    "1.4 / 2.3 Algorithms",
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "a9842125a3",
    "src": "MIT News",
    "level": "research",
@@ -213,38 +216,52 @@
    ]
   },
   {
-   "id": "ebce4d43dc",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "AI giant Anthropic woos potential investors ahead of stock market debut",
-   "url": "https://www.bbc.co.uk/news/articles/cqzjx448vxkgo?at_medium=RSS&at_campaign=rss",
-   "desc": "It comes as some investors have become concerned about the amount of money being spent on AI infrastructure.",
-   "date": "2026-10-15T11:34+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "e0c7d4aa37",
+   "id": "048b26c659",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Fridge hack costing millions and sparking fires stemmed from poor security",
-   "url": "https://arstechnica.com/security/2026/10/fridge-hack-costing-millions-and-sparking-fires-stemmed-from-poor-security/",
-   "desc": "Incident hitting 700 supermarkets exploited outdated devices exposed to the Internet.",
-   "date": "2026-10-14T21:35+00:00",
+   "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
+   "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
+   "desc": "The incident is likely 1st confirmation of mercenary spyware delivered by targeted ads.",
+   "date": "2026-10-15T20:32+00:00",
    "th": [
     "1.3 Security and encryption"
    ]
   },
   {
-   "id": "6d75c823a5",
+   "id": "f0ba9c0c7b",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Russian man linked to deadly London hospitals hack arrested",
+   "url": "https://www.bbc.co.uk/news/articles/c9vgr61kml3mo?at_medium=RSS&at_campaign=rss",
+   "desc": "The 28-year-old detained by German police is accused of being part of the cyber-crime gang that hacked blood-test firm Synnovis in 2024.",
+   "date": "2026-10-16T15:31+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "4b1d008af1",
+   "src": "Quanta",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Is ‘Attention’ the Essence of Intelligence?",
+   "url": "https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/",
+   "desc": "A mathematical mechanism enables AI models to process language at scale, undergirding the current AI revolution. Our columnist asks: Why is attention the key? The post Is ‘Attention’ the Essence of Intelligence? first appeared on Quanta Magazine",
+   "date": "2026-10-12T14:20+00:00",
+   "th": [
+    "1.4 / 2.3 Algorithms",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "2c7558e806",
    "src": "The Conversation",
    "level": "way in",
    "kind": "story",
-   "title": "Here’s how to find the learning strategy that makes AI work for you",
-   "url": "https://theconversation.com/heres-how-to-find-the-learning-strategy-that-makes-ai-work-for-you-291860",
+   "title": "Here’s how a learning strategy can make AI work for you",
+   "url": "https://theconversation.com/heres-how-a-learning-strategy-can-make-ai-work-for-you-291860",
    "desc": "Generative AI can make learning faster and easier, but that does not necessarily mean we are learning better.",
    "date": "2026-10-13T14:10+00:00",
    "th": [
@@ -278,20 +295,6 @@
    ]
   },
   {
-   "id": "03128b2e62",
-   "src": "Quanta",
-   "level": "magazine",
-   "kind": "story",
-   "title": "As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines",
-   "url": "https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/",
-   "desc": "In the shadow of a rumored AI proof of one of the biggest problems in their field, three computer scientists rushed to publish their own milestone result. The post As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines first appeared on Quanta Magazine",
-   "date": "2026-10-07T15:08+00:00",
-   "th": [
-    "1.4 / 2.3 Algorithms",
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "4c75baed55",
    "src": "MIT News",
    "level": "research",
@@ -307,42 +310,40 @@
    ]
   },
   {
-   "id": "0c0674d48e",
-   "src": "NCSC",
+   "id": "e0c7d4aa37",
+   "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Incident affecting ASOS customers",
-   "url": "https://www.ncsc.gov.uk/news/incident-affecting-asos-customers",
-   "desc": "ASOS has said it is investigating a cyber incident and that some customer personal information may have been accessed.",
-   "date": "2026-10-06T12:00+00:00",
+   "title": "Fridge hack costing millions and sparking fires stemmed from poor security",
+   "url": "https://arstechnica.com/security/2026/10/fridge-hack-costing-millions-and-sparking-fires-stemmed-from-poor-security/",
+   "desc": "Incident hitting 700 supermarkets exploited outdated devices exposed to the Internet.",
+   "date": "2026-10-14T21:35+00:00",
    "th": [
     "1.3 Security and encryption"
    ]
   },
   {
-   "id": "3ba6460763",
+   "id": "42e795f0c3",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "'I applied for 200 jobs' - How 'spray and pray' AI job applications can backfire",
-   "url": "https://www.bbc.co.uk/news/articles/c623dnkn8pkyo?at_medium=RSS&at_campaign=rss",
-   "desc": "Graduates are increasingly using AI to misrepresent themselves in job applications, research suggests. But some say their peer group has no choice.",
-   "date": "2026-10-14T08:27+00:00",
-   "th": [
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
-   ]
+   "title": "Living with a stink? Technology might help",
+   "url": "https://www.bbc.co.uk/news/articles/cr6240q1w136o?at_medium=RSS&at_campaign=rss",
+   "desc": "Smells from rubbish dumps and industrial facilities are being more carefully monitored.",
+   "date": "2026-10-15T23:18+00:00",
+   "th": []
   },
   {
-   "id": "7923e9feda",
-   "src": "Ars Technica",
+   "id": "03128b2e62",
+   "src": "Quanta",
    "level": "magazine",
    "kind": "story",
-   "title": "Anthropic warns small AI models could self-replicate through IoT devices",
-   "url": "https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices/",
-   "desc": "\"Small weight-based replicators\" could usher in a new generation of computer worms.",
-   "date": "2026-10-14T12:55+00:00",
+   "title": "As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines",
+   "url": "https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/",
+   "desc": "In the shadow of a rumored AI proof of one of the biggest problems in their field, three computer scientists rushed to publish their own milestone result. The post As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines first appeared on Quanta Magazine",
+   "date": "2026-10-07T15:08+00:00",
    "th": [
+    "1.4 / 2.3 Algorithms",
     "1.5 AI and automation"
    ]
   },
@@ -399,30 +400,29 @@
    ]
   },
   {
-   "id": "c94f49a183",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyk?at_medium=RSS&at_campaign=rss",
-   "desc": "The plan for an orbiting data centre involves linking satellites around Earth.",
-   "date": "2026-10-13T19:45+00:00",
-   "th": [
-    "1.1 Processors and hardware",
-    "1.3 Databases and data"
-   ]
-  },
-  {
-   "id": "417ef50af1",
+   "id": "7923e9feda",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "PC shipments fall 20.1 percent in “sharpest decline” since Q1 2023",
-   "url": "https://arstechnica.com/information-technology/2026/10/pc-shipments-fall-20-1-percent-in-sharpest-decline-since-q1-2023/",
-   "desc": "\"The current decline may be just the beginning of a new downward cycle.\"",
-   "date": "2026-10-09T18:54+00:00",
+   "title": "Anthropic warns small AI models could self-replicate through IoT devices",
+   "url": "https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices/",
+   "desc": "\"Small weight-based replicators\" could usher in a new generation of computer worms.",
+   "date": "2026-10-14T12:55+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "ebce4d43dc",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "AI giant Anthropic woos potential investors ahead of stock market debut",
+   "url": "https://www.bbc.co.uk/news/articles/cqzjx448vxkgo?at_medium=RSS&at_campaign=rss",
+   "desc": "It comes as some investors have become concerned about the amount of money being spent on AI infrastructure.",
+   "date": "2026-10-15T11:34+00:00",
+   "th": [
+    "1.5 AI and automation"
    ]
   },
   {
@@ -453,16 +453,44 @@
    ]
   },
   {
-   "id": "aa1f5cdbbf",
-   "src": "MIT News",
-   "level": "research",
+   "id": "417ef50af1",
+   "src": "Ars Technica",
+   "level": "magazine",
    "kind": "story",
-   "title": "Planning system ensures a robot’s flight path will remain collision-free",
-   "url": "https://news.mit.edu/2026/planning-system-ensures-robots-flight-path-will-remain-collision-free-1007",
-   "desc": "This new method, called “SANDO,” could help disaster-response robots navigate dangerous, unknown environments.",
-   "date": "2026-10-07T04:00+00:00",
+   "title": "PC shipments fall 20.1 percent in “sharpest decline” since Q1 2023",
+   "url": "https://arstechnica.com/information-technology/2026/10/pc-shipments-fall-20-1-percent-in-sharpest-decline-since-q1-2023/",
+   "desc": "\"The current decline may be just the beginning of a new downward cycle.\"",
+   "date": "2026-10-09T18:54+00:00",
    "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "3ba6460763",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "'I applied for 200 jobs' - How 'spray and pray' AI job applications can backfire",
+   "url": "https://www.bbc.co.uk/news/articles/c623dnkn8pkyo?at_medium=RSS&at_campaign=rss",
+   "desc": "Graduates are increasingly using AI to misrepresent themselves in job applications, research suggests. But some say their peer group has no choice.",
+   "date": "2026-10-14T08:27+00:00",
+   "th": [
+    "1.5 Law and ethics",
     "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "c94f49a183",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyk?at_medium=RSS&at_campaign=rss",
+   "desc": "The plan for an orbiting data centre involves linking satellites around Earth.",
+   "date": "2026-10-13T19:45+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Databases and data"
    ]
   },
   {
@@ -476,49 +504,6 @@
    "date": "2026-10-13T09:34+00:00",
    "th": [
     "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "5690cd6928",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Hackers obtain counterfeit TLS certificates for Google and other large services",
-   "url": "https://arstechnica.com/security/2026/10/hackers-obtain-counterfeit-tls-certificates-for-google-and-other-large-services/",
-   "desc": "Compromise of 3 domain registries allows hackers to walk off with unauthorized certs.",
-   "date": "2026-10-06T19:21+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "f7a56ebdc9",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "AI minister warns 'likely' UK's cyber defences will be breached",
-   "url": "https://www.bbc.co.uk/news/articles/cr78pe09y05xo?at_medium=RSS&at_campaign=rss",
-   "desc": "Kanishka Narayan said the government will use advanced AI to strengthen the UK against cyber attacks.",
-   "date": "2026-10-12T15:03+00:00",
-   "th": [
-    "1.3 Security and encryption",
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "cc70a9dda9",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "AI is less regulated than milk, says Microsoft president",
-   "url": "https://www.bbc.co.uk/news/articles/c6rmy7zmvx3lo?at_medium=RSS&at_campaign=rss",
-   "desc": "Brad Smith calls for global rules on AI, and says the UK is in the \"best position\" to lead the charge.",
-   "date": "2026-10-12T07:47+00:00",
-   "th": [
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
    ]
   }
  ]
