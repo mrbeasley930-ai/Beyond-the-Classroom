@@ -1,5 +1,5 @@
 {
- "made": "2026-10-16T11:39+00:00",
+ "made": "2026-10-17T10:59+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 46
+   "n": 30
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 7
+   "n": 11
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 18
+   "n": 19
   },
   {
    "src": "GDACS",
@@ -121,6 +121,88 @@
  ],
  "events": [
   {
+   "id": "qus6000u2y1",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.7 earthquake",
+   "place": "48 km WNW of Khuzdar, Pakistan",
+   "lat": 28.02,
+   "lon": 66.17,
+   "date": "2026-10-17T05:06+00:00",
+   "mag": 5.7,
+   "depth": 10,
+   "alert": "yellow",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2y1",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "pakistan"
+  },
+  {
+   "id": "gd8f53b9f99e",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Typhoon Champi",
+   "place": "Guam, Northern Mariana Islands",
+   "lat": 12.5,
+   "lon": 147.3,
+   "date": "2026-10-17T00:00+00:00",
+   "alert": "red",
+   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001338",
+   "desc": "From 14/10/2026 to 17/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 259 km/h) CHAMPI-26 was active in NWPacific. The cyclone affects these countries: Guam, Northern Mariana Islands (vulnerability Medium). Estimated population…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd7a4cd437a2",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Hurricane Trudy",
+   "place": "México",
+   "lat": 16.0,
+   "lon": -103.4,
+   "date": "2026-10-17T00:00+00:00",
+   "alert": "green",
+   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001337",
+   "desc": "From 13/10/2026 to 17/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 194 km/h) TRUDY-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "eo74114b1132",
+   "kind": "storm",
+   "src": "NASA EONET · JTWC",
+   "title": "Tropical Cyclone 01P",
+   "place": "",
+   "lat": -12.7,
+   "lon": -163.4,
+   "date": "2026-10-16T18:00+00:00",
+   "first": "2026-10-16T06:00+00:00",
+   "url": "https://www.metoc.navy.mil/jtwc/products/sh0127.tcw",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd067110cb83",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Hurricane Simon",
+   "place": "México",
+   "lat": 21.5,
+   "lon": -110.3,
+   "date": "2026-10-16T18:00+00:00",
+   "alert": "orange",
+   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001335",
+   "desc": "From 07/10/2026 to 16/10/2026, a Tropical Depression (maximum wind speed of 250 km/h) SIMON-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1 (120 k…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
    "id": "qus6000u2mq",
    "kind": "quake",
    "src": "USGS",
@@ -140,36 +222,23 @@
    "region": "russia"
   },
   {
-   "id": "gd067110cb83",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Hurricane Simon",
-   "place": "México",
-   "lat": 20.0,
-   "lon": -108.8,
-   "date": "2026-10-16T00:00+00:00",
-   "alert": "orange",
-   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001335",
-   "desc": "From 07/10/2026 to 16/10/2026, a Tropical Storm (maximum wind speed of 250 km/h) SIMON-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1 (120 km/h) …",
+   "id": "qus6000u2gd",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "off the coast of Ecuador",
+   "lat": 0.9,
+   "lon": -85.36,
+   "date": "2026-10-15T11:16+00:00",
+   "mag": 5.4,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2gd",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd7a4cd437a2",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Hurricane Trudy",
-   "place": "México",
-   "lat": 14.2,
-   "lon": -102.4,
-   "date": "2026-10-16T00:00+00:00",
-   "alert": "green",
-   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001337",
-   "desc": "From 13/10/2026 to 16/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h) TRUDY-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "off the coast of ecuador"
   },
   {
    "id": "qaka2026ukynnb",
@@ -210,17 +279,17 @@
    "region": "new zealand"
   },
   {
-   "id": "gd8f53b9f99e",
-   "kind": "storm",
+   "id": "gd27621e636a",
+   "kind": "flood",
    "src": "GDACS",
-   "title": "Tropical cyclone Champi",
-   "place": "Guam",
-   "lat": 11.4,
-   "lon": 152.7,
-   "date": "2026-10-14T14:31+00:00",
-   "alert": "orange",
-   "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001338",
-   "desc": "From 14/10/2026 to 16/10/2026, a Tropical Storm (maximum wind speed of 241 km/h) CHAMPI-26 was active in NWPacific. The cyclone affects these countries: Guam (vulnerability Medium). Estimated population affected by category 1 (120 km/h) win…",
+   "title": "Flooding in Libya",
+   "place": "Libya",
+   "lat": 32.9,
+   "lon": 13.18,
+   "date": "2026-10-14T11:00+00:00",
+   "alert": "green",
+   "url": "https://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104231",
+   "desc": "On 13/10/2026, a flood started in Libya, lasting until 15/10/2026 (last update). The flood caused 2 deaths and 5 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -511,21 +580,6 @@
    "region": "papua new guinea"
   },
   {
-   "id": "eo8ffc5f1a76",
-   "kind": "storm",
-   "src": "NASA EONET · JTWC",
-   "title": "Cyclone Rachel",
-   "place": "",
-   "lat": 33.9,
-   "lon": -115.4,
-   "date": "2026-10-11T12:00+00:00",
-   "first": "2026-09-27T18:00+00:00",
-   "url": "https://www.metoc.navy.mil/jtwc/products/ep1826.tcw",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000u1gs",
    "kind": "quake",
    "src": "USGS",
@@ -557,22 +611,6 @@
    "url": "https://irwin.doi.gov/observer/incidents/2026-IDTFD-000268",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "gd10d56eb3b8",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Italy",
-   "place": "Italy",
-   "lat": 40.98,
-   "lon": 16.62,
-   "date": "2026-10-10T07:04+00:00",
-   "alert": "green",
-   "url": "https://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104220",
-   "desc": "On 07/10/2026, a flood started in Italy, lasting until 12/10/2026 (last update). The flood caused 0 deaths and 204 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -663,44 +701,6 @@
    ]
   },
   {
-   "id": "qus6000u164",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.9 earthquake",
-   "place": "west of Macquarie Island",
-   "lat": -60.98,
-   "lon": 154.46,
-   "date": "2026-10-09T14:49+00:00",
-   "mag": 5.9,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u164",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "west of macquarie island"
-  },
-  {
-   "id": "qus6000u15x",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.4 earthquake",
-   "place": "99 km NE of Norsup, Vanuatu",
-   "lat": -15.54,
-   "lon": 168.15,
-   "date": "2026-10-09T13:51+00:00",
-   "mag": 5.4,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u15x",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "vanuatu"
-  },
-  {
    "id": "gd0e70639080",
    "kind": "flood",
    "src": "GDACS",
@@ -727,7 +727,7 @@
    "date": "2026-10-09T06:06+00:00",
    "alert": "green",
    "url": "https://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104216",
-   "desc": "On 01/10/2026, a flood started in Brazil, lasting until 12/10/2026 (last update). The flood caused 0 deaths and 260 displaced .",
+   "desc": "On 01/10/2026, a flood started in Brazil, lasting until 13/10/2026 (last update). The flood caused 0 deaths and 268 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -919,7 +919,7 @@
    "date": "2026-09-30T05:14+00:00",
    "alert": "green",
    "url": "https://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104200",
-   "desc": "On 26/09/2026, a flood started in Colombia, lasting until 14/10/2026 (last update). The flood caused 0 deaths and 15 displaced .",
+   "desc": "On 26/09/2026, a flood started in Colombia, lasting until 16/10/2026 (last update). The flood caused 1 deaths and 17 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -943,12 +943,12 @@
    "id": "qus6000txpi",
    "kind": "quake",
    "src": "USGS",
-   "title": "Magnitude 6.6 earthquake",
-   "place": "80 km ENE of Tadine, New Caledonia",
-   "lat": -21.3,
-   "lon": 168.61,
+   "title": "Magnitude 6.7 earthquake",
+   "place": "74 km ENE of Tadine, New Caledonia",
+   "lat": -21.31,
+   "lon": 168.55,
    "date": "2026-09-25T21:23+00:00",
-   "mag": 6.6,
+   "mag": 6.7,
    "depth": 10,
    "alert": "green",
    "tsunami": false,
@@ -1063,28 +1063,60 @@
  ],
  "stories": [
   {
-   "id": "af59375039",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Duct tape kept out more flood water than sandbags in laboratory tests",
-   "url": "https://theconversation.com/duct-tape-kept-out-more-flood-water-than-sandbags-in-laboratory-tests-294502",
-   "desc": "Duck tape kept out more floodwater than sandbags, in lab tests.",
-   "date": "2026-10-16T10:29+00:00",
+   "id": "771d03fb37",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Squash down: smaller pumpkins expected this Halloween after drought in England",
+   "url": "https://www.theguardian.com/lifeandstyle/2026/oct/17/smaller-pumpkins-halloween-drought-england",
+   "desc": "Data shows 2026 could be worst harvest on record, as growers suggest painting faces on vegetables instead of carving In the lead-up to Halloween, front porches across the country feature fat, proudly carved pumpkins, lit from within by tea lights. But this year there is likely…",
+   "date": "2026-10-17T09:00+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "b7b9bbd997",
-   "src": "Guardian Environment",
+   "id": "9264a68438",
+   "src": "Guardian Global Development",
    "level": "way in",
-   "title": "Flash floods destroy villages in central Nepal",
-   "url": "https://www.theguardian.com/environment/2026/oct/16/flash-floods-deaths-nepal-high-temperatures-portugal",
-   "desc": "Landslide blocks river and triggers downstream flooding, while summer temperatures persist in Portugal Flash floods have swept through Nepal’s central Gorkha district after a pre-dawn landslide on 11 October blocked the Budhi Gandaki River, triggering severe downstream floodin…",
-   "date": "2026-10-16T10:12+00:00",
+   "title": "As King Charles heads to the Caribbean, he should know that Winston Churchill admitted to imperial plunder 90 years ago | Kenneth Mohammed",
+   "url": "https://www.theguardian.com/global-development/2026/oct/17/king-charles-caribbean-winston-churchill-empire-britain-wealth",
+   "desc": "Modern politicians play on tales of empire to exaggerate what Britain left behind, but the monarch should consider a historical speech on the vast wealth taken away For us in the Caribbean, there is something surreal about Britain’s renewed nostalgia over empire. As Britain’s …",
+   "date": "2026-10-17T05:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 3 Globalisation"
    ]
+  },
+  {
+   "id": "491ff4aa35",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Brazil sees record fall in Amazon deforestation as key election looms",
+   "url": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
+   "desc": "The Amazon rainforest is a crucial buffer against climate change - but deforestation had expanded under former president Jair Bolsonaro.",
+   "date": "2026-10-17T02:33+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "6867845143",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Rabbits were a medieval royal luxury in England – until the Black Death made them commonplace",
+   "url": "https://theconversation.com/rabbits-were-a-medieval-royal-luxury-in-england-until-the-black-death-made-them-commonplace-293400",
+   "desc": "Once the preserve of the aristocracy, rabbits became commonplace by the end of the Middle Ages as the world was turned upside down after the arrival of plague.",
+   "date": "2026-10-16T12:54+00:00",
+   "th": []
+  },
+  {
+   "id": "2da5eddda2",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP17: Which countries have released new pledges to tackle nature loss?",
+   "url": "https://www.carbonbrief.org/cop17-which-countries-have-released-new-pledges-to-tackle-nature-loss",
+   "desc": "Some 58% of countries have met a UN call to submit new pledges on addressing nature loss – two years&#8230;",
+   "date": "2026-10-16T11:54+00:00",
+   "th": []
   },
   {
    "id": "60edff8937",
@@ -1110,18 +1142,6 @@
    "th": []
   },
   {
-   "id": "998b296838",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Saudi Arabia to execute man for being at protests and funerals when he was 15",
-   "url": "https://www.theguardian.com/global-development/2026/oct/16/saudi-arabia-to-execute-man-for-being-at-protests-and-funerals-when-he-was-15",
-   "desc": "Use of death penalty against people for crimes committed when they were children a ‘new low’, say rights groups A young man faces imminent execution in Saudi Arabia for attending protests and funerals when he was aged 15 to 17, say human rights groups, in the latest example of…",
-   "date": "2026-10-16T05:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
    "id": "2e25e9d521",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1132,28 +1152,6 @@
    "th": [
     "Topic 2B Coastal landscapes and change"
    ]
-  },
-  {
-   "id": "c6fa11337f",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Watch: What does Starlink have to do with the Ukraine-Russia war?",
-   "url": "https://www.bbc.co.uk/news/videos/cqr7yzpxm083o?at_medium=RSS&at_campaign=rss",
-   "desc": "Ukraine's president has told Elon Musk that any restriction on the Starlink's system cost lives.",
-   "date": "2026-10-15T17:31+00:00",
-   "th": [
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "6c3676767b",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "COP17: Tracking progress towards the UN’s 2030 nature targets",
-   "url": "https://interactive.carbonbrief.org/nature-targets-2030-progress/",
-   "desc": "Countries will meet in Armenia this month to carry out the first global review of progress towards meeting key nature&#8230;",
-   "date": "2026-10-15T16:07+00:00",
-   "th": []
   },
   {
    "id": "4415c6e080",
@@ -1169,27 +1167,62 @@
    ]
   },
   {
-   "id": "09f887f3b0",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Could your plastic film packaging serve a purpose? We won’t know until recycling laws change",
-   "url": "https://theconversation.com/could-your-plastic-film-packaging-serve-a-purpose-we-wont-know-until-recycling-laws-change-293561",
-   "desc": "Hard-to-recycle plastic waste could be an untapped resource but current laws make it difficult for UK companies to innovate.",
-   "date": "2026-10-16T09:59+00:00",
-   "th": []
-  },
-  {
-   "id": "a0c658a6b3",
+   "id": "42c147a6a5",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Iguazu Falls in South America hits record 10 times normal water flow – video",
-   "url": "https://www.theguardian.com/world/video/2026/oct/16/iguazu-falls-in-south-america-hits-record-10-times-normal-water-flow-video",
-   "desc": "Iguazu Falls, an Unesco world heritage site, has reached a record water flow after heavy rains across the river basin. El Niño weather patterns are said to have driven the water flow to hit 10 times the normal amount. Usually the water flow is 1.5m litres per second, but local…",
-   "date": "2026-10-16T09:37+00:00",
+   "title": "Brazilian Amazon deforestation falls to lowest on record as pivotal vote looms",
+   "url": "https://www.theguardian.com/environment/2026/oct/16/brazil-amazon-deforestation-lowest-on-record-election",
+   "desc": "Forest clearance at smallest total since records began in 1988 in success for Lula ahead of presidential run-off Deforestation in the Brazilian Amazon has fallen to its lowest level since records began, new government data shows. But whether this globally important success is …",
+   "date": "2026-10-16T19:37+00:00",
    "th": [
-    "Topic 4B Diverse places",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "998b296838",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Saudi Arabia to execute man for being at protests and funerals when he was 15",
+   "url": "https://www.theguardian.com/global-development/2026/oct/16/saudi-arabia-to-execute-man-for-being-at-protests-and-funerals-when-he-was-15",
+   "desc": "Use of death penalty against people for crimes committed when they were children a ‘new low’, say rights groups A young man faces imminent execution in Saudi Arabia for attending protests and funerals when he was aged 15 to 17, say human rights groups, in the latest example of…",
+   "date": "2026-10-16T05:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "c32690ccc6",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Why hasn't the UK had any named storms yet?",
+   "url": "https://www.bbc.co.uk/weather/articles/ck5yn68mj88vo?at_medium=RSS&at_campaign=rss",
+   "desc": "So far this autumn wet and windy weather patterns have been steered away from the UK. When could we see that change?",
+   "date": "2026-10-17T01:53+00:00",
+   "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
+  },
+  {
+   "id": "af59375039",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Duct tape kept out more flood water than sandbags in laboratory tests",
+   "url": "https://theconversation.com/duct-tape-kept-out-more-flood-water-than-sandbags-in-laboratory-tests-294502",
+   "desc": "A cheap roll of duct tape cut flood water leakage through a door by 97% in lab tests.",
+   "date": "2026-10-16T10:29+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "6c3676767b",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP17: Tracking progress towards the UN’s 2030 nature targets",
+   "url": "https://interactive.carbonbrief.org/nature-targets-2030-progress/",
+   "desc": "Countries will meet in Armenia this month to carry out the first global review of progress towards meeting key nature&#8230;",
+   "date": "2026-10-15T16:07+00:00",
+   "th": []
   },
   {
    "id": "d965b50b2a",
@@ -1214,19 +1247,6 @@
    ]
   },
   {
-   "id": "6105d1413d",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "The hidden costs of fracking: boom in Argentina linked to trail of sickness",
-   "url": "https://www.theguardian.com/global-development/2026/oct/15/the-hidden-costs-of-fracking-boom-in-argentina-linked-to-trail-of-sickness",
-   "desc": "Families in Vaca Muerta, the centre of Patagonia’s shale operation, report cancers, miscarriages and pollution In Allen, a small town in Argentine Patagonia, many people living on the same street ended up falling ill. For some, it was severe migraines, nausea or skin irritatio…",
-   "date": "2026-10-15T10:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
    "id": "7f11bb5dc8",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1236,30 +1256,6 @@
    "date": "2026-10-15T04:01+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "8dd4697287",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Severe drought declared and hosepipe bans in force - is your area affected?",
-   "url": "https://www.bbc.co.uk/news/articles/crk661074ejo?at_medium=RSS&at_campaign=rss",
-   "desc": "Parts of southern England have entered \"severe drought\", while about 30 million people are under hosepipe ban.",
-   "date": "2026-10-15T15:42+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "b13a8f5d68",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Interactive: Tracking negotiating texts at the COP17 biodiversity summit",
-   "url": "https://www.carbonbrief.org/interactive-tracking-negotiating-texts-at-the-cop17-biodiversity-summit",
-   "desc": "Next week, diplomats from around the world will descend on Yerevan, Armenia, to negotiate a series of decisions under the&#8230;",
-   "date": "2026-10-12T14:31+00:00",
-   "th": [
-    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1275,25 +1271,63 @@
    ]
   },
   {
-   "id": "d8dc85e443",
+   "id": "532c4f38fe",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "US voters want more action on global heating. Why are Democrats and Republicans staying silent?",
+   "url": "https://www.theguardian.com/us-news/2026/oct/16/midterms-voters-climate-crisis-candidates",
+   "desc": "Polls show that Democrats and Republicans in battleground states want to hear more from candidates about the climate crisis Most Americans feel unease or alarm about the climate crisis and, in both red and blue states, want to know how political leaders are going to fix it. Bu…",
+   "date": "2026-10-16T15:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "6105d1413d",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "The hidden costs of fracking: boom in Argentina linked to trail of sickness",
+   "url": "https://www.theguardian.com/global-development/2026/oct/15/the-hidden-costs-of-fracking-boom-in-argentina-linked-to-trail-of-sickness",
+   "desc": "Families in Vaca Muerta, the centre of Patagonia’s shale operation, report cancers, miscarriages and pollution In Allen, a small town in Argentine Patagonia, many people living on the same street ended up falling ill. For some, it was severe migraines, nausea or skin irritatio…",
+   "date": "2026-10-15T10:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "63527aeb0d",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Evacuation orders as fast-moving California wildfire burns homes",
+   "url": "https://www.bbc.co.uk/news/articles/c6vgjnk8nw2wo?at_medium=RSS&at_campaign=rss",
+   "desc": "Fanned by the fierce Santa Ana winds, the Norte Fire is one of 13 burning across the state.",
+   "date": "2026-10-17T01:36+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "09f887f3b0",
    "src": "The Conversation",
    "level": "research",
-   "title": "Can the Greens stick to their democratic principles?",
-   "url": "https://theconversation.com/can-the-greens-stick-to-their-democratic-principles-294419",
-   "desc": "Green Party Leader Zack Polanski has come under intense pressure over a controversial party motion.",
-   "date": "2026-10-15T11:24+00:00",
+   "title": "Could your plastic film packaging serve a purpose? We won’t know until recycling laws change",
+   "url": "https://theconversation.com/could-your-plastic-film-packaging-serve-a-purpose-we-wont-know-until-recycling-laws-change-293561",
+   "desc": "Hard-to-recycle plastic waste could be an untapped resource but current laws make it difficult for UK companies to innovate.",
+   "date": "2026-10-16T09:59+00:00",
    "th": []
   },
   {
-   "id": "ea00261ecb",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Revealed: VW, Ford and Tesla batteries linked to destructive deforestation of indigenous lands",
-   "url": "https://www.theguardian.com/environment/2026/oct/16/vw-ford-tesla-batteries-deforestation-indigenous-lands",
-   "desc": "Mines in supply chains of western carmakers linked to widespread deforestation of primary rainforest in nickel-rich lands inhabited by Tolaki people in Indonesia Volkswagen, Ford and Tesla are among the electric carmakers whose batteries may contain nickel mined in indigenous …",
-   "date": "2026-10-16T07:00+00:00",
+   "id": "b13a8f5d68",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "Interactive: Tracking negotiating texts at the COP17 biodiversity summit",
+   "url": "https://www.carbonbrief.org/interactive-tracking-negotiating-texts-at-the-cop17-biodiversity-summit",
+   "desc": "Next week, diplomats from around the world will descend on Yerevan, Armenia, to negotiate a series of decisions under the&#8230;",
+   "date": "2026-10-12T14:31+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1305,18 +1339,6 @@
    "desc": "The 42-metre-high timber lighthouse will feature seven halls and stand roughly 145 metres above the North Sea Norfolk’s highest point may soon host a lighthouse built entirely of timber, a major new cultural project has revealed. The proposal was designed by builder and design…",
    "date": "2026-10-15T08:00+00:00",
    "th": []
-  },
-  {
-   "id": "d2ccff900c",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "LGBTQ+ people go into hiding in Senegal as hundreds are arrested",
-   "url": "https://www.theguardian.com/global-development/2026/oct/15/senegal-homosexuality-criminalised-anti-lgbtq-arrests-hiv-testing-human-rights-watch",
-   "desc": "At least 320 people detained for ‘acts against nature’ after law criminalising homosexuality toughened, HRW reports Mass arrests, forced HIV testing and barriers to legal representation are part of an escalating crackdown against LGBTQ+ people in Senegal, according to a new re…",
-   "date": "2026-10-15T08:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
-   ]
   },
   {
    "id": "3a911e5d50",
@@ -1332,30 +1354,6 @@
    ]
   },
   {
-   "id": "171b219a37",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "£15m for zero-emission testing at Belfast Harbour",
-   "url": "https://www.bbc.co.uk/news/articles/c6kgqr9n8082o?at_medium=RSS&at_campaign=rss",
-   "desc": "It comes after a £15m investment from UK Research and Innovation's Local Innovation Partnerships Fund.",
-   "date": "2026-10-15T14:55+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "51c655f1d0",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Factcheck: UK Conservatives double the ‘cost of net-zero’ after spreadsheet blunder",
-   "url": "https://www.carbonbrief.org/factcheck-uk-conservatives-double-the-cost-of-net-zero-after-spreadsheet-blunder",
-   "desc": "A booklet published by the UK’s opposition Conservative party includes a “cost of net-zero” that appears to have been doubled&#8230;",
-   "date": "2026-10-09T06:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "9cf9e0c63f",
    "src": "UN News (migration)",
    "level": "way in",
@@ -1368,28 +1366,50 @@
    ]
   },
   {
-   "id": "82e648a917",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Cities are sinking – but citywide averages hide the real problem",
-   "url": "https://theconversation.com/cities-are-sinking-but-citywide-averages-hide-the-real-problem-294213",
-   "desc": "Satellite data shows how unevenly cities are sinking. In Jakarta, some coastal areas are subsiding by as much as 7cm a year.",
-   "date": "2026-10-15T10:47+00:00",
+   "id": "b58387eb29",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "For restaurants Covid-19 was a crisis – pandemic loans are proving a disaster",
+   "url": "https://www.theguardian.com/environment/2026/oct/16/restaurant-pandemic-loans",
+   "desc": "Low-interest loans kept many eateries afloat. But the industry never recovered enough for them to repay the debt For almost 20 years, Jai Mazumdar has served vegetarian curries, samosas, gulab jamun and other Indian delicacies at Spice N Curry, a cafe and grocery nestled insid…",
+   "date": "2026-10-16T13:00+00:00",
    "th": [
-    "Topic 4A Regenerating places"
+    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
-   "id": "19e0c371d8",
-   "src": "Guardian Environment",
+   "id": "d2ccff900c",
+   "src": "Guardian Global Development",
    "level": "way in",
-   "title": "Severe drought declared in six areas of England as reservoirs run low",
-   "url": "https://www.theguardian.com/environment/2026/oct/15/severe-drought-declared-six-areas-england-public-water-supplies-threat",
-   "desc": "Some reservoirs in south at critical levels as water companies call for extended restrictions that would affect golf clubs, private schools and car washes A severe drought has been declared in six areas of England, with some reservoirs at critically low levels, threatening pub…",
-   "date": "2026-10-15T12:18+00:00",
+   "title": "LGBTQ+ people go into hiding in Senegal as hundreds are arrested",
+   "url": "https://www.theguardian.com/global-development/2026/oct/15/senegal-homosexuality-criminalised-anti-lgbtq-arrests-hiv-testing-human-rights-watch",
+   "desc": "At least 320 people detained for ‘acts against nature’ after law criminalising homosexuality toughened, HRW reports Mass arrests, forced HIV testing and barriers to legal representation are part of an escalating crackdown against LGBTQ+ people in Senegal, according to a new re…",
+   "date": "2026-10-15T08:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 8A Health, human rights and intervention"
    ]
+  },
+  {
+   "id": "c6fa11337f",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Watch: What does Starlink have to do with the Ukraine-Russia war?",
+   "url": "https://www.bbc.co.uk/news/videos/cqr7yzpxm083o?at_medium=RSS&at_campaign=rss",
+   "desc": "Ukraine's president has told Elon Musk that any restriction on the Starlink's system cost lives.",
+   "date": "2026-10-15T17:31+00:00",
+   "th": [
+    "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "d8dc85e443",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Can the Greens stick to their democratic principles?",
+   "url": "https://theconversation.com/can-the-greens-stick-to-their-democratic-principles-294419",
+   "desc": "Green Party Leader Zack Polanski has come under intense pressure over a controversial party motion.",
+   "date": "2026-10-15T11:24+00:00",
+   "th": []
   },
   {
    "id": "a47084bc31",
@@ -1405,6 +1425,16 @@
    ]
   },
   {
+   "id": "ef40d95db1",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Comparing Off-World Rover Driving Distances",
+   "url": "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances/",
+   "desc": "Description This infographic illustrates the distances driven by various rovers on the surface of Earth’s Moon and Mars. Of the vehicles shown, the NASA Mars rovers Perseverance and Curiosity are still operational and moving across the surface; the figures shown for those two …",
+   "date": "2026-10-13T17:56+00:00",
+   "th": []
+  },
+  {
    "id": "feccf9c86e",
    "src": "Guardian Global Development",
    "level": "way in",
@@ -1417,61 +1447,15 @@
    ]
   },
   {
-   "id": "ef40d95db1",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Comparing Off-World Rover Driving Distances",
-   "url": "https://science.nasa.gov/photojournal/comparing-off-world-rover-driving-distances/",
-   "desc": "Description This infographic illustrates the distances driven by various rovers on the surface of Earth’s Moon and Mars. Of the vehicles shown, the NASA Mars rovers Perseverance and Curiosity are still operational and moving across the surface; the figures shown for those two …",
-   "date": "2026-10-13T17:56+00:00",
-   "th": []
-  },
-  {
-   "id": "1cf796ca9a",
+   "id": "8dd4697287",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Two dead in Istanbul after heaviest rainfall in 84 years, governor says",
-   "url": "https://www.bbc.co.uk/news/articles/cq398x7j1lrwo?at_medium=RSS&at_campaign=rss",
-   "desc": "Residents have been told to avoid leaving their homes unless absolutely necessary.",
-   "date": "2026-10-15T10:05+00:00",
+   "title": "Severe drought declared and hosepipe bans in force - is your area affected?",
+   "url": "https://www.bbc.co.uk/news/articles/crk661074ejo?at_medium=RSS&at_campaign=rss",
+   "desc": "Parts of southern England have entered \"severe drought\", while about 30 million people are under hosepipe ban.",
+   "date": "2026-10-15T15:42+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "b023d73119",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "‘Like selling wolves from Yellowstone’: how protected US sharks are being sold off to foreign aquariums",
-   "url": "https://www.theguardian.com/environment/2026/oct/15/conservation-aquariums-endangered-sharks-protected-waters-delaware-bay-us-sand-tiger-sharks",
-   "desc": "While anglers cannot take endangered sand tiger sharks, a loophole lets private firms catch the fish to sell abroad, profiting from Delaware Bay’s conservation success Shortly after 12.45pm, what remains of a 300-metre line goes taut. Somewhere beneath the murky green surface …",
-   "date": "2026-10-15T09:00+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change"
-   ]
-  },
-  {
-   "id": "84d007dc8e",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "From black soldier flies to mealworms: farming insects for food, fodder and fertiliser in Uganda",
-   "url": "https://www.theguardian.com/global-development/2026/oct/14/farming-insects-food-fodder-fertiliser-uganda",
-   "desc": "Cultivating the nutritious bugs means families can raise livestock and enrich their own food, while lowering pressures on the land A few minutes’ walk from his home in the Kyaka II refugee settlement, Kanane Bikanyale feeds black soldier fly larvae to chickens in a coop above …",
-   "date": "2026-10-14T10:00+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "7f996a46da",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Little tern colony has worst breeding season",
-   "url": "https://www.bbc.co.uk/news/articles/cjy56e4v6exzo?at_medium=RSS&at_campaign=rss",
-   "desc": "Planning is under way to improve the colony for the 2027 breeding season.",
-   "date": "2026-10-15T05:19+00:00",
-   "th": [
-    "Topic 4A Regenerating places"
    ]
   }
  ]
