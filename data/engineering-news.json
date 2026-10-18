@@ -1,5 +1,5 @@
 {
- "made": "2026-10-17T10:33+00:00",
+ "made": "2026-10-18T10:54+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,7 +25,7 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "Motorsport.com",
@@ -38,15 +38,15 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 4
+   "n": 5
   },
   {
    "src": "BBC Technology",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 3
+   "n": 2
   },
   {
    "src": "Carbon Brief",
@@ -100,30 +100,53 @@
  ],
  "stories": [
   {
-   "id": "94af6d19dc",
-   "src": "Motorsport.com",
+   "id": "61b449f25e",
+   "src": "The Race",
    "level": "way in",
-   "title": "Ferrari expected to introduce major upgrade package at United States GP",
-   "url": "https://www.motorsport.com/f1/news/ferrari-expected-to-introduce-major-upgrade-package-at-united-states-gp/10865819/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Ferrari will likely introduce a new floor at the United States Grand Prix as part of its final major upgrade of the 2026 season, Motorsport.com understands. While the Maranello outfit has already shifted its focus to 2027, the team is expected to bring a new floor to the race …",
-   "date": "2026-10-17T10:27+00:00",
+   "title": "What Ferrari's changing with its biggest F1 upgrade of 2026",
+   "url": "https://www.the-race.com/formula-1/what-ferrari-is-changing-biggest-f1-2026-upgrade/",
+   "desc": "We're inside the final two months of the F1 season, yet Ferrari is preparing to bring its biggest upgrade of 2026 to the US GP",
+   "date": "2026-10-18T09:31+00:00",
    "th": [
     "Motorsport",
     "2 Existing products"
    ]
   },
   {
-   "id": "2732fbe45b",
+   "id": "ad46de338d",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Mercedes reveals why it rejected the Macarena wing over a year ago",
+   "url": "https://www.motorsport.com/f1/news/mercedes-reveals-why-it-rejected-f1s-macarena-wing-over-a-year-ago/10865869/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "The Mercedes Formula 1 team looked at building its own Macarena rear wing long before it was seen running on a circuit by a rival outfit. But according to deputy technical director Simone Resta, it decided against it. The rotating wing, whose main flap turns over when a car sw…",
+   "date": "2026-10-17T14:02+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "f5f0086a80",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "This Hidden Device Could Free Up Gigawatts of Grid Power",
+   "url": "https://spectrum.ieee.org/variable-frequency-drives",
+   "desc": "This article was originally published by Canary Media . America’s energy supply crunch is driving a surge of federal and private investment in new electricity generation — from polluting gas turbines to cleaner developments like solar farms and geothermal plants . But gigawatt…",
+   "date": "2026-10-17T13:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d531b4627c",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Upcycled battery materials roughly double cell cycle life in tests",
-   "url": "https://techxplore.com/news/2026-10-upcycled-battery-materials-roughly-cell.html",
-   "desc": "A new recycling approach developed by Worcester Polytechnic Institute (WPI) researchers could help make battery waste a valuable source of high-performance materials. In a study published in Advanced Energy Materials, a team led by professor Yan Wang, the William B. Smith Prof…",
-   "date": "2026-10-16T20:00+00:00",
+   "title": "Team develops embodied robotic arm 'EmArm' with human-like touch sensing",
+   "url": "https://techxplore.com/news/2026-10-team-embodied-robotic-arm-emarm.html",
+   "desc": "A research team at The Hong Kong University of Science and Technology (HKUST) has developed an Embodied Sensorimotor Robotic Arm (EmArm) capable of whole-arm tactile sensing and adaptive manipulation. By embedding a soft optical tactile skin directly into a robotic skeleton an…",
+   "date": "2026-10-17T11:00+00:00",
    "th": [
-    "5 Materials",
-    "6 Technical",
-    "8 Viability"
+    "6 Technical"
    ]
   },
   {
@@ -139,19 +162,6 @@
    ]
   },
   {
-   "id": "62145d24f4",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Simulation App Speeds Up Electric Truck Battery Design",
-   "url": "https://spectrum.ieee.org/electric-truck-battery-design-simulation",
-   "desc": "This article is brought to you by COMSOL . These days, no one blinks an eye at two-day, one-day, and even same-day package deliveries. Despite the plethora of localized fulfillment and distributi on centers that have cropped up to meet the demand, delivery trucks still need to…",
-   "date": "2026-10-16T16:49+00:00",
-   "th": [
-    "4 Design thinking",
-    "6 Technical"
-   ]
-  },
-  {
    "id": "1484a996e7",
    "src": "NASA",
    "level": "magazine",
@@ -164,16 +174,14 @@
    ]
   },
   {
-   "id": "efec9cc650",
-   "src": "The Race",
-   "level": "way in",
-   "title": "How Red Bull has improved its F1 engine without ADUO",
-   "url": "https://www.the-race.com/formula-1/key-gains-red-bull-has-made-with-its-race-winning-f1-engine/",
-   "desc": "Red Bull's first-ever F1 engine is already a winner. Jon Noble spoke to the technical director behind the project to find out how",
-   "date": "2026-10-15T08:48+00:00",
+   "id": "2f36c0d312",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Kier appointed to design Heaton Park Metrolink stop improvements",
+   "url": "https://www.newcivilengineer.com/latest/kier-appointed-to-design-heaton-park-metrolink-stop-improvements-16-10-2026/",
+   "desc": "Kier has been appointed by Transport for Greater Manchester (TfGM) to lead the design of improvements to Heaton Park Metrolink stop in Prestwich, Greater Manchester.",
+   "date": "2026-10-16T14:08+00:00",
    "th": [
-    "Motorsport",
-    "6 Technical",
     "8 Viability"
    ]
   },
@@ -214,28 +222,57 @@
    ]
   },
   {
-   "id": "c9854177fa",
+   "id": "efec9cc650",
+   "src": "The Race",
+   "level": "way in",
+   "title": "How Red Bull has improved its F1 engine without ADUO",
+   "url": "https://www.the-race.com/formula-1/key-gains-red-bull-has-made-with-its-race-winning-f1-engine/",
+   "desc": "Red Bull's first-ever F1 engine is already a winner. Jon Noble spoke to the technical director behind the project to find out how",
+   "date": "2026-10-15T08:48+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "94af6d19dc",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Did Max Verstappen already know the impact of Red Bull’s big upgrade when he signed his new deal?",
-   "url": "https://www.motorsport.com/f1/news/did-max-verstappen-already-know-the-impact-of-red-bulls-big-upgrade-when-he-signed-his-new-deal/10865786/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "While Max Verstappen was still seriously considering the possibility of ending this Formula 1 season without winning a single race at Monza, things now look considerably different. Verstappen came remarkably close to victory in Baku before actually coming out on top in the sub…",
-   "date": "2026-10-17T08:15+00:00",
+   "title": "Ferrari expected to introduce major upgrade package at United States GP",
+   "url": "https://www.motorsport.com/f1/news/ferrari-expected-to-introduce-major-upgrade-package-at-united-states-gp/10865819/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Ferrari will likely introduce a new floor at the United States Grand Prix as part of its final major upgrade of the 2026 season, Motorsport.com understands. While the Maranello outfit has already shifted its focus to 2027, the team is expected to bring a new floor to the race …",
+   "date": "2026-10-17T10:27+00:00",
    "th": [
     "Motorsport",
     "2 Existing products"
    ]
   },
   {
-   "id": "a1b3fb3caa",
+   "id": "62145d24f4",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Simulation App Speeds Up Electric Truck Battery Design",
+   "url": "https://spectrum.ieee.org/electric-truck-battery-design-simulation",
+   "desc": "This article is brought to you by COMSOL . These days, no one blinks an eye at two-day, one-day, and even same-day package deliveries. Despite the plethora of localized fulfillment and distributi on centers that have cropped up to meet the demand, delivery trucks still need to…",
+   "date": "2026-10-16T16:49+00:00",
+   "th": [
+    "4 Design thinking",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "2732fbe45b",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Can AI help discover new food physics? Researchers pair AI with human expertise",
-   "url": "https://techxplore.com/news/2026-10-ai-food-physics-pair-human.html",
-   "desc": "Information about food properties that determine quality, safety and sensory characteristics is critical for food product development and processing design, but it is spread across thousands of scientific papers written over decades, making it difficult for food engineers to a…",
-   "date": "2026-10-16T16:40+00:00",
+   "title": "Upcycled battery materials roughly double cell cycle life in tests",
+   "url": "https://techxplore.com/news/2026-10-upcycled-battery-materials-roughly-cell.html",
+   "desc": "A new recycling approach developed by Worcester Polytechnic Institute (WPI) researchers could help make battery waste a valuable source of high-performance materials. In a study published in Advanced Energy Materials, a team led by professor Yan Wang, the William B. Smith Prof…",
+   "date": "2026-10-16T20:00+00:00",
    "th": [
-    "6 Technical"
+    "5 Materials",
+    "6 Technical",
+    "8 Viability"
    ]
   },
   {
@@ -253,18 +290,6 @@
    ]
   },
   {
-   "id": "0ed98d3b25",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Meet the Anthropic Engineer Keeping Its AI Agent Trustworthy",
-   "url": "https://spectrum.ieee.org/anthropic-engineer-ai-agent",
-   "desc": "If you’ve ever wondered how Claude and similar AI agents can answer complex questions in seconds and where they get the information, you’re not alone. Gurmeet Saran works to find that answer every day as an engineer at Anthropic in San Francisco, the AI research company behind…",
-   "date": "2026-10-12T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "b4fa6a814a",
    "src": "NASA",
    "level": "magazine",
@@ -275,6 +300,18 @@
    "th": [
     "3 Wider issues",
     "6 Technical"
+   ]
+  },
+  {
+   "id": "bf013710a9",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Brighton council declines to name roadworks contractors after water main leaks",
+   "url": "https://www.newcivilengineer.com/latest/brighton-council-declines-to-name-roadworks-contractors-after-water-main-leaks-16-10-2026/",
+   "desc": "Brighton and Hove City Council (BHCC) has declined a request by NCE to name which contractors are delivering a road improvement scheme, where a major water main leak took Southern Water four days to fix.",
+   "date": "2026-10-16T14:05+00:00",
+   "th": [
+    "8 Viability"
    ]
   },
   {
@@ -290,28 +327,40 @@
    ]
   },
   {
-   "id": "e670ee866f",
+   "id": "c9854177fa",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Why Mercedes switched George Russell to its old F1 car spec in Singapore",
-   "url": "https://www.motorsport.com/f1/news/why-mercedes-switched-george-russell-to-its-old-f1-car-spec-in-singapore/10865660/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "When Mercedes arguably underperformed in Formula 1’s Bahrain Grand Prix in Malaysia despite introducing a brand-new floor and bodywork package at Sepang, the team had to figure out its next steps. The Anglo-German squad eventually opted for split specifications at the next rou…",
-   "date": "2026-10-16T14:14+00:00",
+   "title": "Did Max Verstappen already know the impact of Red Bull’s big upgrade when he signed his new deal?",
+   "url": "https://www.motorsport.com/f1/news/did-max-verstappen-already-know-the-impact-of-red-bulls-big-upgrade-when-he-signed-his-new-deal/10865786/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "While Max Verstappen was still seriously considering the possibility of ending this Formula 1 season without winning a single race at Monza, things now look considerably different. Verstappen came remarkably close to victory in Baku before actually coming out on top in the sub…",
+   "date": "2026-10-17T08:15+00:00",
    "th": [
     "Motorsport",
+    "2 Existing products"
+   ]
+  },
+  {
+   "id": "0ed98d3b25",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Meet the Anthropic Engineer Keeping Its AI Agent Trustworthy",
+   "url": "https://spectrum.ieee.org/anthropic-engineer-ai-agent",
+   "desc": "If you’ve ever wondered how Claude and similar AI agents can answer complex questions in seconds and where they get the information, you’re not alone. Gurmeet Saran works to find that answer every day as an engineer at Anthropic in San Francisco, the AI research company behind…",
+   "date": "2026-10-12T18:00+00:00",
+   "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "4781c596d0",
+   "id": "a1b3fb3caa",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Small-scale desalination technology could be the answer to water security in remote Australia",
-   "url": "https://techxplore.com/news/2026-10-small-scale-desalination-technology-remote.html",
-   "desc": "New technology supported by researchers at Murdoch University has the potential to solve water scarcity issues in remote and rural Australia. While many cities enjoy a steady flow of safe and reliable water, remote communities often face a different reality.",
-   "date": "2026-10-16T11:00+00:00",
+   "title": "Can AI help discover new food physics? Researchers pair AI with human expertise",
+   "url": "https://techxplore.com/news/2026-10-ai-food-physics-pair-human.html",
+   "desc": "Information about food properties that determine quality, safety and sensory characteristics is critical for food product development and processing design, but it is spread across thousands of scientific papers written over decades, making it difficult for food engineers to a…",
+   "date": "2026-10-16T16:40+00:00",
    "th": [
-    "9 Health and safety"
+    "6 Technical"
    ]
   },
   {
@@ -328,28 +377,15 @@
    ]
   },
   {
-   "id": "001c1dd238",
-   "src": "IEEE Spectrum",
+   "id": "1a6f44891f",
+   "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Learning to Play Like a Pro: Adaptive Motion Planning and Tracking for Humanoid Robots",
-   "url": "https://content.knowledgehub.wiley.com/learning-to-play-like-a-pro-adaptive-motion-planning-and-tracking-for-humanoid-robots/",
-   "desc": "This White Paper provides roboticists and control engineers with a comprehensive overview of how motion planning and motion tracking can be decoupled to preserve professional athletic style in humanoid robots, and why adaptive, speed-aware control is essential for closing the …",
-   "date": "2026-10-12T10:00+00:00",
+   "title": "Sizewell C selects Amentum for £22.3M marine and tunnelling works",
+   "url": "https://www.newcivilengineer.com/latest/sizewell-c-selects-amentum-for-22-3m-marine-and-tunnelling-works-16-10-2026/",
+   "desc": "US engineering and technology services contractor Amentum has been awarded a £22.3M, ten-year contract by Sizewell C’s main contractor the Civil Works Alliance (CWA) to design marine and tunnelling works for the nuclear power plant in Suffolk.",
+   "date": "2026-10-16T11:15+00:00",
    "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "c6b6d28e28",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "Power Up: Roll Out Solar Arrays Boost Space Station Power Supply",
-   "url": "https://www.nasa.gov/missions/station/iss-research/power-up-roll-out-solar-arrays-boost-space-station-power-supply/",
-   "desc": "From the International Space Station’s unique position 250 miles above Earth, the Sun is a vital source of energy. Solar power supports the station’s life support systems, daily activities, and hundreds of research investigations that improve life on Earth and prepare humans f…",
-   "date": "2026-10-15T17:30+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
+    "7 Manufacturing"
    ]
   },
   {
@@ -366,28 +402,40 @@
    ]
   },
   {
-   "id": "802440229b",
+   "id": "e670ee866f",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Karun Chandhok raises concerns about Mercedes F1 upgrade performance",
-   "url": "https://www.motorsport.com/f1/news/karun-chandhok-raises-concerns-about-mercedes-f1-upgrade-performance/10865623/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Sky Sports pundit and former Formula 1 driver Karun Chandhok believes Mercedes should be \"concerned\" by its latest upgrade package, warning that the new aerodynamic parts have failed to deliver the desired jump in performance. Despite Kimi Antonelli closing in on his maiden dr…",
-   "date": "2026-10-16T12:07+00:00",
+   "title": "Why Mercedes switched George Russell to its old F1 car spec in Singapore",
+   "url": "https://www.motorsport.com/f1/news/why-mercedes-switched-george-russell-to-its-old-f1-car-spec-in-singapore/10865660/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "When Mercedes arguably underperformed in Formula 1’s Bahrain Grand Prix in Malaysia despite introducing a brand-new floor and bodywork package at Sepang, the team had to figure out its next steps. The Anglo-German squad eventually opted for split specifications at the next rou…",
+   "date": "2026-10-16T14:14+00:00",
    "th": [
     "Motorsport",
-    "2 Existing products"
+    "6 Technical"
    ]
   },
   {
-   "id": "c10a28de3a",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Chemical fine-tuning lifts perovskite LEDs to 37% efficiency",
-   "url": "https://techxplore.com/news/2026-10-chemical-fine-tuning-perovskite-efficiency.html",
-   "desc": "Chemists developed a way to significantly improve the performance of light-emitting diodes (LEDs) made with perovskite. The journal Nature published the advancement in these hybrid LEDs, which hold potential for a range of uses, including biomedical sensing, low-light imaging …",
-   "date": "2026-10-15T19:20+00:00",
+   "id": "001c1dd238",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Learning to Play Like a Pro: Adaptive Motion Planning and Tracking for Humanoid Robots",
+   "url": "https://content.knowledgehub.wiley.com/learning-to-play-like-a-pro-adaptive-motion-planning-and-tracking-for-humanoid-robots/",
+   "desc": "This White Paper provides roboticists and control engineers with a comprehensive overview of how motion planning and motion tracking can be decoupled to preserve professional athletic style in humanoid robots, and why adaptive, speed-aware control is essential for closing the …",
+   "date": "2026-10-12T10:00+00:00",
    "th": [
     "6 Technical"
+   ]
+  },
+  {
+   "id": "4781c596d0",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Small-scale desalination technology could be the answer to water security in remote Australia",
+   "url": "https://techxplore.com/news/2026-10-small-scale-desalination-technology-remote.html",
+   "desc": "New technology supported by researchers at Murdoch University has the potential to solve water scarcity issues in remote and rural Australia. While many cities enjoy a steady flow of safe and reliable water, remote communities often face a different reality.",
+   "date": "2026-10-16T11:00+00:00",
+   "th": [
+    "9 Health and safety"
    ]
   },
   {
@@ -404,6 +452,18 @@
    ]
   },
   {
+   "id": "6d3470e4d4",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "How high groundwater can influence the design of below ground attenuation structures",
+   "url": "https://www.newcivilengineer.com/sponsored/how-high-groundwater-can-influence-the-design-of-below-ground-attenuation-structures-16-10-2026/",
+   "desc": "In the first of a two-part series, Stuart Crisp, UK manager of Advanced Drainage Systems (ADS), considers the case for open or closed bottom below ground attenuation structures and how high groundwater can influence design.",
+   "date": "2026-10-16T10:44+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
    "id": "401d4ab42e",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -413,6 +473,30 @@
    "date": "2026-10-09T12:00+00:00",
    "th": [
     "3 Wider issues"
+   ]
+  },
+  {
+   "id": "c10a28de3a",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Chemical fine-tuning lifts perovskite LEDs to 37% efficiency",
+   "url": "https://techxplore.com/news/2026-10-chemical-fine-tuning-perovskite-efficiency.html",
+   "desc": "Chemists developed a way to significantly improve the performance of light-emitting diodes (LEDs) made with perovskite. The journal Nature published the advancement in these hybrid LEDs, which hold potential for a range of uses, including biomedical sensing, low-light imaging …",
+   "date": "2026-10-15T19:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "9ac9263147",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Ofwat proposes £280,000 enforcement package for Hafren Dyfrdwy over wastewater breaches",
+   "url": "https://www.newcivilengineer.com/latest/ofwat-proposes-280000-enforcement-package-for-hafren-dyfrdwy-over-wastewater-breaches-16-10-2026/",
+   "desc": "Water regulator Ofwat has proposed accepting a £280,000 enforcement package from Hafren Dyfrdwy after finding the water company breached its legal obligations in the operation of its wastewater treatment works and network.",
+   "date": "2026-10-16T09:18+00:00",
+   "th": [
+    "9 Health and safety"
    ]
   },
   {
@@ -428,16 +512,15 @@
    ]
   },
   {
-   "id": "d594f506fe",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Greener chemistry brings low-toxicity perovskite solar cells closer to production",
-   "url": "https://techxplore.com/news/2026-10-greener-chemistry-toxicity-perovskite-solar.html",
-   "desc": "Solar panels that can be coated onto thin, flexible surfaces could one day be made the way newspapers are printed, at room temperature and without the toxic chemicals the process has relied on, claim researchers from the University of Surrey.",
-   "date": "2026-10-15T17:00+00:00",
+   "id": "4f9de9a68a",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Why we need a full-lifecycle approach to UK nuclear power",
+   "url": "https://www.newcivilengineer.com/latest/why-uk-nuclear-needs-xyz-16-10-2026/",
+   "desc": "The UK's nuclear programme is entering a significant period of new development.",
+   "date": "2026-10-16T05:30+00:00",
    "th": [
-    "6 Technical",
-    "9 Health and safety"
+    "3 Wider issues"
    ]
   }
  ]
