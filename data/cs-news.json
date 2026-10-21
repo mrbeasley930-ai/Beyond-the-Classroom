@@ -1,5 +1,5 @@
 {
- "made": "2026-10-20T12:20+00:00",
+ "made": "2026-10-21T12:30+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -30,7 +30,7 @@
    "level": "magazine",
    "line": "the UK's National Cyber Security Centre: warnings and advice",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "The Conversation",
@@ -51,7 +51,7 @@
    "level": "way in",
    "line": "the education charity behind Ada Computer Science, Bebras and Astro Pi",
    "ok": true,
-   "n": 1
+   "n": 3
   },
   {
    "src": "Ars Technica",
@@ -84,32 +84,68 @@
  ],
  "stories": [
   {
-   "id": "18342e179d",
+   "id": "e3dbce13ab",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Google Cloud says 'power event' behind outage hitting UK banks and websites",
-   "url": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
-   "desc": "It has since been linked to a number of services, most notably British neobank Revolut, going down for customers or suffering problems on Tuesday morning.",
-   "date": "2026-10-20T12:09+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "de7b0df69e",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "PSA: Patch your Plex media server before someone hacks it",
-   "url": "https://arstechnica.com/security/2026/10/recently-fixed-plex-media-vulnerabilities-are-being-exploited-to-install-malware/",
-   "desc": "A researcher says attacks chaining 4 vulnerabilities is hacking unpatched boxes.",
-   "date": "2026-10-19T19:39+00:00",
+   "title": "Cyber chiefs tell websites to make critical safety update or go offline",
+   "url": "https://www.bbc.co.uk/news/articles/cmly0lg3w5x2o?at_medium=RSS&at_campaign=rss",
+   "desc": "Two critical vulnerabilities have been identified with PHP, a programming language which is widely used across the internet.",
+   "date": "2026-10-21T12:14+00:00",
    "th": [
     "1.2 Software and development",
     "1.3 Networks and the web",
     "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "9a22d2d44c",
+   "src": "NCSC",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Critical security issue affecting PHP",
+   "url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php",
+   "desc": "The NCSC is encouraging UK organisations to prepare for immediate updating of systems using PHP.",
+   "date": "2026-10-21T12:00+00:00",
+   "th": []
+  },
+  {
+   "id": "b9e4695abc",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Why Meta’s new virtual reality glasses could finally take this technology primetime",
+   "url": "https://theconversation.com/why-metas-new-virtual-reality-glasses-could-finally-take-this-technology-primetime-294126",
+   "desc": "Is Meta’s long game on virtual reality about to pay off?",
+   "date": "2026-10-21T11:48+00:00",
+   "th": [
+    "1.4 / 2.3 Algorithms"
+   ]
+  },
+  {
+   "id": "d08a006f19",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Preparing young people for frontier technologies: Our new partnership with the UK government",
+   "url": "https://www.raspberrypi.org/blog/preparing-young-people-for-frontier-technologies-our-new-partnership-with-the-uk-government/",
+   "desc": "Around the world, governments are grappling with the same question: how do you prepare young people for careers shaped by emerging technologies? In the UK, part of the answer is TechFirst, and we’re proud to be playing a central role in it. Through the new TechFirst partnershi…",
+   "date": "2026-10-21T09:58+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "cd17d62877",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "The Internet goes on high alert after discovery of 8 compromised TLS certs",
+   "url": "https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs/",
+   "desc": "Intermediate certs allow anyone to mint web credentials for any Internet server.",
+   "date": "2026-10-20T19:47+00:00",
+   "th": [
+    "1.3 Networks and the web"
    ]
   },
   {
@@ -123,19 +159,6 @@
    "date": "2026-10-19T18:20+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "8881ed3718",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Digital natives are buying electric cars as if they were smartphones",
-   "url": "https://theconversation.com/digital-natives-are-buying-electric-cars-as-if-they-were-smartphones-291483",
-   "desc": "Car buyers increasingly see vehicles as hardware platforms to host digital functions.",
-   "date": "2026-10-19T16:04+00:00",
-   "th": [
-    "1.1 Processors and hardware"
    ]
   },
   {
@@ -160,19 +183,6 @@
    "url": "https://www.quantamagazine.org/he-wants-ai-benchmarking-to-be-a-science-not-a-dark-art-20261016/",
    "desc": "Moritz Hardt, author of a new book on benchmarks, believes these “standardized tests” for artificial intelligence are fundamentally broken — but not unfixable. The post He Wants AI Benchmarking To Be a Science, Not a Dark Art first appeared on Quanta Magazine",
    "date": "2026-10-16T13:25+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "394873158d",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
-   "kind": "story",
-   "title": "From musical fruit to walking robots: Coolest Projects India returns to Hyderabad",
-   "url": "https://www.raspberrypi.org/blog/from-musical-fruit-to-walking-robots-coolest-projects-india-returns-to-hyderabad/",
-   "desc": "Coolest Projects returned for its second year in India on Saturday 19 September, taking place in Telangana’s state capital Hyderabad once more. This year’s India event brought together 326 young technology creators who showcased 132 projects: India’s young tech creator communi…",
-   "date": "2026-10-15T14:47+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -205,44 +215,56 @@
    ]
   },
   {
-   "id": "3de1548360",
+   "id": "688b51f07c",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "US bans China's DeepSeek from government in race for AI dominance",
-   "url": "https://www.bbc.co.uk/news/articles/cjkgeq0k1wevo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Chinese technology is removed from most US government agencies as race for AI dominance steps up.",
-   "date": "2026-10-19T18:21+00:00",
+   "title": "The tech helping crack decades-old cold cases",
+   "url": "https://www.bbc.co.uk/news/articles/c370pzdkw77jo?at_medium=RSS&at_campaign=rss",
+   "desc": "Investigative genetic genealogy can help hunt down criminals but raises worries over privacy.",
+   "date": "2026-10-20T23:13+00:00",
    "th": [
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
+    "1.5 Law and ethics"
    ]
   },
   {
-   "id": "b140e0bf69",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "OpenAI models hacked a crypto wallet and breached more websites",
-   "url": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
-   "desc": "The actions could have resulted in criminal charges had humans been behind the keyboard.",
-   "date": "2026-10-16T20:59+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "0b07338f1a",
+   "id": "8881ed3718",
    "src": "The Conversation",
    "level": "way in",
    "kind": "story",
-   "title": "Experts have voted to stop adding extra seconds to clock time – the outcome favours big tech",
-   "url": "https://theconversation.com/experts-have-voted-to-stop-adding-extra-seconds-to-clock-time-the-outcome-favours-big-tech-294297",
-   "desc": "Additional seconds added to the clock will be abolished starting from 2027.",
-   "date": "2026-10-15T13:53+00:00",
+   "title": "Digital natives are buying electric cars as if they were smartphones",
+   "url": "https://theconversation.com/digital-natives-are-buying-electric-cars-as-if-they-were-smartphones-291483",
+   "desc": "Car buyers increasingly see vehicles as hardware platforms to host digital functions.",
+   "date": "2026-10-19T16:04+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "48435e9ebd",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The next Chair of the Board of Trustees, Blythe Masters",
+   "url": "https://www.raspberrypi.org/blog/the-next-chair-of-the-board-of-trustees-blythe-masters/",
+   "desc": "I am delighted to share the news that Blythe Masters has been appointed as the next Chair of the Raspberry Pi Foundation’s Board of Trustees. Blythe brings a wealth of experience to our governance at a time when our mission to enable all young people to realise their full pote…",
+   "date": "2026-10-20T12:45+00:00",
    "th": []
+  },
+  {
+   "id": "de7b0df69e",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "PSA: Patch your Plex media server before someone hacks it",
+   "url": "https://arstechnica.com/security/2026/10/recently-fixed-plex-media-vulnerabilities-are-being-exploited-to-install-malware/",
+   "desc": "A researcher says attacks chaining 4 vulnerabilities is hacking unpatched boxes.",
+   "date": "2026-10-19T19:39+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web",
+    "1.3 Security and encryption"
+   ]
   },
   {
    "id": "ff71041f97",
@@ -285,41 +307,54 @@
    ]
   },
   {
-   "id": "8294376ada",
+   "id": "9f48ad608f",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "China's growth accelerates as AI boom helps boost exports",
-   "url": "https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&at_campaign=rss",
-   "desc": "Exports have helped offset weak spending at home, but trade tensions and AI doubts cloud its outlook.",
-   "date": "2026-10-19T06:08+00:00",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/live:bbc_world_service_west_africa?at_medium=RSS&at_campaign=rss",
+   "desc": "The next generation of chip is thinner and flexible when compared to traditional silicon.",
+   "date": "2026-10-20T19:45+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "0b07338f1a",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Experts have voted to stop adding extra seconds to clock time – the outcome favours big tech",
+   "url": "https://theconversation.com/experts-have-voted-to-stop-adding-extra-seconds-to-clock-time-the-outcome-favours-big-tech-294297",
+   "desc": "Additional seconds added to the clock will be abolished starting from 2027.",
+   "date": "2026-10-15T13:53+00:00",
+   "th": []
+  },
+  {
+   "id": "394873158d",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "From musical fruit to walking robots: Coolest Projects India returns to Hyderabad",
+   "url": "https://www.raspberrypi.org/blog/from-musical-fruit-to-walking-robots-coolest-projects-india-returns-to-hyderabad/",
+   "desc": "Coolest Projects returned for its second year in India on Saturday 19 September, taking place in Telangana’s state capital Hyderabad once more. This year’s India event brought together 326 young technology creators who showcased 132 projects: India’s young tech creator communi…",
+   "date": "2026-10-15T14:47+00:00",
    "th": [
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "048b26c659",
+   "id": "b140e0bf69",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
-   "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
-   "desc": "The incident is likely 1st confirmation of mercenary spyware delivered by targeted ads.",
-   "date": "2026-10-15T20:32+00:00",
+   "title": "OpenAI models hacked a crypto wallet and breached more websites",
+   "url": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
+   "desc": "The actions could have resulted in criminal charges had humans been behind the keyboard.",
+   "date": "2026-10-16T20:59+00:00",
    "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "2c7558e806",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Here’s how a learning strategy can make AI work for you",
-   "url": "https://theconversation.com/heres-how-a-learning-strategy-can-make-ai-work-for-you-291860",
-   "desc": "Generative AI can make learning faster and easier, but that does not necessarily mean we are learning better.",
-   "date": "2026-10-13T14:10+00:00",
-   "th": [
+    "1.3 Networks and the web",
+    "1.3 Security and encryption",
     "1.5 AI and automation"
    ]
   },
@@ -350,43 +385,43 @@
    ]
   },
   {
-   "id": "5d0e81b00d",
+   "id": "18342e179d",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Don't fall for this - how to protect yourself from AI scams",
-   "url": "https://www.bbc.co.uk/news/articles/c60rl1xvjv89o?at_medium=RSS&at_campaign=rss",
-   "desc": "Trading standards officers say AI is \"super-charging\" existing scams through clones and fake websites.",
-   "date": "2026-10-18T23:24+00:00",
+   "title": "Google resolves cloud outage affecting UK banks and websites",
+   "url": "https://www.bbc.co.uk/news/articles/cxdd8mm6qy4mo?at_medium=RSS&at_campaign=rss",
+   "desc": "Revolut was one of the hardest hit, with banking services going down for many customers.",
+   "date": "2026-10-20T18:03+00:00",
    "th": [
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
+    "1.2 Software and development",
+    "1.3 Networks and the web"
    ]
   },
   {
-   "id": "e0c7d4aa37",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Fridge hack costing millions and sparking fires stemmed from poor security",
-   "url": "https://arstechnica.com/security/2026/10/fridge-hack-costing-millions-and-sparking-fires-stemmed-from-poor-security/",
-   "desc": "Incident hitting 700 supermarkets exploited outdated devices exposed to the Internet.",
-   "date": "2026-10-14T21:35+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "d7ded6c33e",
+   "id": "2c7558e806",
    "src": "The Conversation",
    "level": "way in",
    "kind": "story",
-   "title": "An overlooked sci-fi movie shows how disruption by AI could be positive for society",
-   "url": "https://theconversation.com/an-overlooked-sci-fi-movie-shows-how-disruption-by-ai-could-be-positive-for-society-293636",
-   "desc": "The message in the film Annihilation is that disruption by AI needn’t be disastrous for humanity.",
-   "date": "2026-10-12T15:00+00:00",
+   "title": "Here’s how a learning strategy can make AI work for you",
+   "url": "https://theconversation.com/heres-how-a-learning-strategy-can-make-ai-work-for-you-291860",
+   "desc": "Generative AI can make learning faster and easier, but that does not necessarily mean we are learning better.",
+   "date": "2026-10-13T14:10+00:00",
    "th": [
     "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "048b26c659",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
+   "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
+   "desc": "The incident is likely 1st confirmation of mercenary spyware delivered by targeted ads.",
+   "date": "2026-10-15T20:32+00:00",
+   "th": [
+    "1.3 Security and encryption"
    ]
   },
   {
@@ -403,54 +438,58 @@
    ]
   },
   {
-   "id": "91c2dfd574",
+   "id": "12e344ee9c",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Toxic algorithms wouldn't let them go - now Australia wants an off switch",
-   "url": "https://www.bbc.co.uk/news/articles/cwr7y8er1n8vo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Australian government hopes to protect social media users from being served content they don't want to see.",
-   "date": "2026-10-16T18:11+00:00",
+   "title": "UK asks Apple to widen access to its payment tech",
+   "url": "https://www.bbc.co.uk/news/articles/cqm26zzl0k12o?at_medium=RSS&at_campaign=rss",
+   "desc": "Proposed changes could lead to new digital wallets and keys as well as ticketing apps, the regulator says.",
+   "date": "2026-10-20T12:29+00:00",
    "th": [
-    "1.4 / 2.3 Algorithms"
+    "1.2 Software and development",
+    "1.5 Law and ethics"
    ]
   },
   {
-   "id": "7923e9feda",
+   "id": "e0c7d4aa37",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Anthropic warns small AI models could self-replicate through IoT devices",
-   "url": "https://arstechnica.com/security/2026/10/anthropic-warns-small-ai-models-could-self-replicate-through-iot-devices/",
-   "desc": "\"Small weight-based replicators\" could usher in a new generation of computer worms.",
-   "date": "2026-10-14T12:55+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "f0ba9c0c7b",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Russian man linked to deadly London hospitals hack arrested",
-   "url": "https://www.bbc.co.uk/news/articles/c9vgr61kml3mo?at_medium=RSS&at_campaign=rss",
-   "desc": "The 28-year-old detained by German police is accused of being part of the cyber-crime gang that hacked blood-test firm Synnovis in 2024.",
-   "date": "2026-10-16T15:31+00:00",
+   "title": "Fridge hack costing millions and sparking fires stemmed from poor security",
+   "url": "https://arstechnica.com/security/2026/10/fridge-hack-costing-millions-and-sparking-fires-stemmed-from-poor-security/",
+   "desc": "Incident hitting 700 supermarkets exploited outdated devices exposed to the Internet.",
+   "date": "2026-10-14T21:35+00:00",
    "th": [
     "1.3 Security and encryption"
    ]
   },
   {
-   "id": "42e795f0c3",
+   "id": "3de1548360",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Living with a stink? Technology might help",
-   "url": "https://www.bbc.co.uk/news/articles/cr6240q1w136o?at_medium=RSS&at_campaign=rss",
-   "desc": "Smells from rubbish dumps and industrial facilities are being more carefully monitored.",
-   "date": "2026-10-15T23:18+00:00",
-   "th": []
+   "title": "US bans China's DeepSeek from government in race for AI dominance",
+   "url": "https://www.bbc.co.uk/news/articles/cjkgeq0k1wevo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Chinese technology is removed from most US government agencies as race for AI dominance steps up.",
+   "date": "2026-10-19T18:21+00:00",
+   "th": [
+    "1.5 Law and ethics",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "8294376ada",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "China's growth accelerates as AI boom helps boost exports",
+   "url": "https://www.bbc.co.uk/news/articles/cm5yn098xz8lo?at_medium=RSS&at_campaign=rss",
+   "desc": "Exports have helped offset weak spending at home, but trade tensions and AI doubts cloud its outlook.",
+   "date": "2026-10-19T06:08+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
   }
  ]
 }
