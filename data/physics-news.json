@@ -1,5 +1,5 @@
 {
- "made": "2026-10-21T10:59+00:00",
+ "made": "2026-10-22T10:58+00:00",
  "themes": [
   "Measurements",
   "Particles & quantum",
@@ -17,7 +17,7 @@
    "level": "way in",
    "line": "BBC News science and environment desk",
    "ok": true,
-   "n": 5
+   "n": 8
   },
   {
    "src": "The Conversation",
@@ -31,7 +31,7 @@
    "level": "magazine",
    "line": "Simons Foundation · long reads on new physics",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Physics World",
@@ -51,15 +51,15 @@
    "src": "CERN",
    "level": "magazine",
    "line": "the particle physics lab near Geneva",
-   "ok": true,
-   "n": 5
+   "ok": false,
+   "n": 0
   },
   {
    "src": "ESA",
    "level": "magazine",
    "line": "European Space Agency · space science",
    "ok": true,
-   "n": 3
+   "n": 4
   },
   {
    "src": "NASA",
@@ -73,7 +73,7 @@
    "level": "research",
    "line": "American Physical Society · short pieces on new papers",
    "ok": true,
-   "n": 3
+   "n": 4
   },
   {
    "src": "Phys.org (physics)",
@@ -92,55 +92,89 @@
  ],
  "stories": [
   {
-   "id": "08e788c673",
+   "id": "e520c90bba",
    "src": "Physics World",
    "level": "magazine",
-   "title": "Using AI agents to run quantum simulations",
-   "url": "https://physicsworld.com/a/using-ai-agents-to-run-quantum-simulations/",
-   "desc": "Researchers have developed a multi-agent AI system that converts plain-language research questions into executed, checked and reproducible quantum simulations using several specialist software packages",
-   "date": "2026-10-21T09:19+00:00",
-   "th": [
-    "Particles & quantum"
-   ]
-  },
-  {
-   "id": "e696ff9b3f",
-   "src": "Phys.org (space)",
-   "level": "research",
-   "title": "SpaceX turns a profit after a string of losses as its satellite and computer leasing businesses soar",
-   "url": "https://phys.org/news/2026-10-spacex-profit-losses-satellite-leasing.html",
-   "desc": "SpaceX reported a bigger quarterly profit than expected Tuesday as its satellite communications operations and its business of leasing computing power to other companies boomed.",
-   "date": "2026-10-21T08:48+00:00",
+   "title": "Earth’s gravity and magnetism have unexpected effects on the human genome and mitochondria",
+   "url": "https://physicsworld.com/a/earths-gravity-and-magnetism-have-unexpected-effects-on-the-human-genome-and-mitochondria/",
+   "desc": "Findings could have implications for space travel and for treating neurodegenerative diseases",
+   "date": "2026-10-22T08:00+00:00",
    "th": [
     "Fields"
    ]
   },
   {
-   "id": "9420c8fb92",
-   "src": "NASA",
+   "id": "b5317757da",
+   "src": "ESA",
    "level": "magazine",
-   "title": "APOD: 2026 October 21 – New Ghosts Revealed in Cassiopeia",
-   "url": "https://science.nasa.gov/image-article/apod-2026-october-21-new-ghosts-revealed-in-cassiopeia/",
-   "desc": "APOD Science APOD APOD: 2026 October 21 – New… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with…",
-   "date": "2026-10-21T04:05+00:00",
+   "title": "Stars brewing in a nebulous cauldron",
+   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/Stars_brewing_in_a_nebulous_cauldron",
+   "desc": "Image: Stars brewing in a nebulous cauldron",
+   "date": "2026-10-22T08:00+00:00",
    "th": [
     "Astrophysics"
    ]
   },
   {
-   "id": "32475fef7d",
+   "id": "84c853ea6e",
+   "src": "BBC Science",
+   "level": "way in",
+   "title": "NI risks missing 2030 energy goals, says Stormont committee",
+   "url": "https://www.bbc.co.uk/news/articles/c623d18dl3v0o?at_medium=RSS&at_campaign=rss",
+   "desc": "A committee hears that Northern Ireland could lose out on economic opportunities if action is not accelerated.",
+   "date": "2026-10-22T05:09+00:00",
+   "th": [
+    "Mechanics & materials"
+   ]
+  },
+  {
+   "id": "2d35605bae",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "APOD: 2026 October 22 – The First Green Star, WD J1330+6435",
+   "url": "https://science.nasa.gov/image-article/apod-2026-october-22-the-first-green-star-wd-j13306435/",
+   "desc": "APOD Science APOD APOD: 2026 October 22 – The… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with…",
+   "date": "2026-10-22T04:05+00:00",
+   "th": [
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "5afed52556",
    "src": "Phys.org (physics)",
    "level": "research",
-   "title": "A hidden rivalry between two quantum states at the heart of superconductors",
-   "url": "https://phys.org/news/2026-10-hidden-rivalry-quantum-states-heart.html",
-   "desc": "Transmitting electricity without losing any energy may sound impossible, yet this is precisely the promise of superconductivity. For nearly 40 years, scientists have been working to understand materials that exhibit this remarkable property at relatively high temperatures. Unl…",
-   "date": "2026-10-20T22:00+00:00",
+   "title": "Laser-made lattice reveals discrete light solitons in tunable atomic vapor",
+   "url": "https://phys.org/news/2026-10-laser-lattice-reveals-discrete-solitons.html",
+   "desc": "Scientists from the Quantum Technologies Group at the Institute of Physics Zagreb, in collaboration with a colleague from the Physics Department at the Faculty of Science (PMF), have experimentally demonstrated for the first time the existence of discrete one-dimensional (1D) …",
+   "date": "2026-10-21T22:20+00:00",
    "th": [
     "Particles & quantum",
-    "Waves & light",
-    "Mechanics & materials",
-    "Electricity",
-    "Further mechanics & thermal"
+    "Waves & light"
+   ]
+  },
+  {
+   "id": "9a1b2152d5",
+   "src": "Phys.org (space)",
+   "level": "research",
+   "title": "NASA's CASALS instrument bridges gaps in 3D maps of Earth's surface",
+   "url": "https://phys.org/news/2026-10-nasa-casals-instrument-bridges-gaps.html",
+   "desc": "A team of researchers at NASA's Goddard Space Flight Center (GSFC) has developed a new instrument designed to eliminate blind spots between lines of lidar data on Earth's surface. Built with support from NASA's Earth Science Technology Office (ESTO), the Concurrent Artificiall…",
+   "date": "2026-10-21T18:20+00:00",
+   "th": [
+    "Waves & light"
+   ]
+  },
+  {
+   "id": "0274a747a5",
+   "src": "Physics Magazine",
+   "level": "research",
+   "title": "A Quantum Cyclotron for Antimatter",
+   "url": "http://link.aps.org/doi/10.1103/Physics.19.132",
+   "desc": "Author(s): Paolo Crivelli A device that stores a single positron and controls its quantum states could measure its magnetic moment with unprecedented precision, testing a symmetry principle central to quantum field theory. [Physics 19, 132] Published Wed Oct 21, 2026",
+   "date": "2026-10-21T10:00+00:00",
+   "th": [
+    "Particles & quantum",
+    "Fields"
    ]
   },
   {
@@ -156,6 +190,171 @@
    ]
   },
   {
+   "id": "f012ae868f",
+   "src": "Physics World",
+   "level": "magazine",
+   "title": "Japan launches sample-return mission to Mars’s moon Phobos",
+   "url": "https://physicsworld.com/a/japan-launches-sample-return-mission-to-marss-moon-phobos/",
+   "desc": "The Martian Moons eXploration mission will aim to return 10g of material back to Earth",
+   "date": "2026-10-21T16:00+00:00",
+   "th": [
+    "Mechanics & materials",
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "b31925230b",
+   "src": "ESA",
+   "level": "magazine",
+   "title": "MMX lifts off to Mars’s moon Phobos",
+   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/MMX_lifts_off_to_Mars_s_moon_Phobos",
+   "desc": "Image: MMX lifts off to Mars’s moon Phobos",
+   "date": "2026-10-20T07:00+00:00",
+   "th": [
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "549d378a9b",
+   "src": "BBC Science",
+   "level": "way in",
+   "title": "Burnham defends Jackdaw decision as Badenoch urges PM to overturn ban on new oil and gas licences",
+   "url": "https://www.bbc.co.uk/news/articles/cy4zdgk081eo?at_medium=RSS&at_campaign=rss",
+   "desc": "The UK government says the field, which is opposed by environmental campaigners, could be producing gas by the end of this month.",
+   "date": "2026-10-21T15:36+00:00",
+   "th": [
+    "Further mechanics & thermal"
+   ]
+  },
+  {
+   "id": "cf37dcb56b",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Conducts RS-25 Engine Test in Support of Future Artemis Missions",
+   "url": "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions/",
+   "desc": "NASA tested RS-25 engine No. 10001 on Oct. 21 on the Fred Haise Test Stand at NASA’s Stennis Space Center near Bay St. Louis, Mississippi. Test teams fired the developmental engine for almost eight-and-a-half minutes (500 seconds), the same amount of time RS-25 engines fire du…",
+   "date": "2026-10-21T20:51+00:00",
+   "th": [
+    "Mechanics & materials"
+   ]
+  },
+  {
+   "id": "b3771ad301",
+   "src": "Phys.org (physics)",
+   "level": "research",
+   "title": "Perovskite laser maintains stable performance over 400 million pulses",
+   "url": "https://phys.org/news/2026-10-perovskite-laser-stable-million-pulses.html",
+   "desc": "In a study published in Advanced Optical Materials, researchers at Vilnius University (VU) demonstrated perovskite-based laser structures that maintained stable performance over more than 400 million pulses. Their findings address one of the major challenges limiting the pract…",
+   "date": "2026-10-21T22:00+00:00",
+   "th": [
+    "Waves & light",
+    "Mechanics & materials",
+    "Electricity"
+   ]
+  },
+  {
+   "id": "285de7bffc",
+   "src": "Phys.org (space)",
+   "level": "research",
+   "title": "Hubble observations challenge supernova winds' role in cosmic reionization",
+   "url": "https://phys.org/news/2026-10-hubble-supernova-role-cosmic-reionization.html",
+   "desc": "An international team of researchers, including members from the University of Michigan, has revealed surprising results that could rewrite our understanding of a key transition in the early universe.",
+   "date": "2026-10-21T17:20+00:00",
+   "th": [
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "85bfd0cf64",
+   "src": "Physics Magazine",
+   "level": "research",
+   "title": "Putting Momentum Under the Microscope",
+   "url": "http://link.aps.org/doi/10.1103/Physics.19.s129",
+   "desc": "Author(s): Ryan Wilkinson A new method lets quantum gas microscopes measure not only where atoms are but also how they move. [Physics 19, s129] Published Wed Oct 21, 2026",
+   "date": "2026-10-21T10:00+00:00",
+   "th": [
+    "Particles & quantum",
+    "Mechanics & materials",
+    "Further mechanics & thermal"
+   ]
+  },
+  {
+   "id": "49de142982",
+   "src": "Physics World",
+   "level": "magazine",
+   "title": "To detect deepfake videos, researchers turn to the physics of light",
+   "url": "https://physicsworld.com/a/to-detect-deepfake-videos-researchers-turn-to-the-physics-of-light/",
+   "desc": "New technique claims 97.8% accuracy and uses less energy than digital neural networks with similar performance",
+   "date": "2026-10-21T14:00+00:00",
+   "th": [
+    "Waves & light"
+   ]
+  },
+  {
+   "id": "e031d33f61",
+   "src": "ESA",
+   "level": "magazine",
+   "title": "Celebrating BepiColombo, three words at a time",
+   "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/Celebrating_BepiColombo_three_words_at_a_time",
+   "desc": "Video: 00:03:32 BepiColombo launched on 20 October 2018. This year, the anniversary is special. After eight years of travelling through the inner Solar System, the ESA/JAXA mission will arrive at Mercury on 9 December, 2026. To celebrate, mission team members were asked to des…",
+   "date": "2026-10-19T15:00+00:00",
+   "th": [
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "7deca7eaeb",
+   "src": "BBC Science",
+   "level": "way in",
+   "title": "How much gas could Jackdaw provide? And will it cut your energy bills?",
+   "url": "https://www.bbc.co.uk/news/articles/cq4g13pplyzzo?at_medium=RSS&at_campaign=rss",
+   "desc": "BBC Verify looks at what the Jackdaw decision means for bills, energy security and the environment.",
+   "date": "2026-10-21T11:57+00:00",
+   "th": [
+    "Further mechanics & thermal"
+   ]
+  },
+  {
+   "id": "5a5a808935",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA JPL Looks to Next 90 Years of Innovation, Exploration",
+   "url": "https://www.nasa.gov/centers-and-facilities/jpl/nasa-jpl-looks-to-next-90-years-of-innovation-exploration/",
+   "desc": "Interstellar probes. Lunar drones. Helicopters on Mars. When a group of Caltech graduate students and enthusiasts began conducting rocket-propulsion tests in Pasadena’s Arroyo Seco on Oct. 31, 1936, they had no idea that their work marked the inception of the Jet Propulsion La…",
+   "date": "2026-10-21T18:35+00:00",
+   "th": [
+    "Mechanics & materials",
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "4218257d1a",
+   "src": "Phys.org (physics)",
+   "level": "research",
+   "title": "X-ray free-electron laser sets new record for shortest high-energy pulses",
+   "url": "https://phys.org/news/2026-10-ray-free-electron-laser-shortest.html",
+   "desc": "Researchers at the Linac Coherent Light Source (LCLS) at the U.S. Department of Energy's SLAC National Accelerator Laboratory have measured the shortest high-energy X-ray pulses ever recorded at an X-ray free-electron laser (XFEL). The pulses had photon energies of about 9 kil…",
+   "date": "2026-10-21T18:40+00:00",
+   "th": [
+    "Particles & quantum",
+    "Waves & light",
+    "Mechanics & materials"
+   ]
+  },
+  {
+   "id": "6f029fd31d",
+   "src": "Phys.org (space)",
+   "level": "research",
+   "title": "Reexamined Viking 2 signal reveals possible marsquake from region active decades later",
+   "url": "https://phys.org/news/2026-10-reexamined-viking-reveals-marsquake-region.html",
+   "desc": "Earthquakes and the seismic waves they generate provide some of the best clues to Earth's interior. To extend that success to other worlds, scientists placed seismometers on the Apollo missions to the moon and on the Viking Mars landers, which reached Mars in 1976. Though the …",
+   "date": "2026-10-21T16:40+00:00",
+   "th": [
+    "Waves & light",
+    "Astrophysics"
+   ]
+  },
+  {
    "id": "eb82c86dcc",
    "src": "Physics Magazine",
    "level": "research",
@@ -168,13 +367,25 @@
    ]
   },
   {
-   "id": "b31925230b",
+   "id": "cbac9ca413",
+   "src": "Physics World",
+   "level": "magazine",
+   "title": "Cosmic chronicles: the impact of celestial instabilities on human history",
+   "url": "https://physicsworld.com/a/cosmic-chronicles-the-impact-of-celestial-instabilities-on-human-history/",
+   "desc": "Emma Chapman reviews Ripples on the Cosmic Ocean: How the Solar System Shaped Human History – And May Help Save Our Planet by Dagomar Degroot",
+   "date": "2026-10-21T11:00+00:00",
+   "th": [
+    "Astrophysics"
+   ]
+  },
+  {
+   "id": "c57fc0a338",
    "src": "ESA",
    "level": "magazine",
-   "title": "MMX lifts off to Mars’s moon Phobos",
-   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/MMX_lifts_off_to_Mars_s_moon_Phobos",
-   "desc": "Image: MMX lifts off to Mars’s moon Phobos",
-   "date": "2026-10-20T07:00+00:00",
+   "title": "Euclid discovers new comet",
+   "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet",
+   "desc": "The European Space Agency’s Euclid space telescope has discovered its first previously unknown comet, in images taken between 16 and 24 September 2026.",
+   "date": "2026-10-19T12:00+00:00",
    "th": [
     "Astrophysics"
    ]
@@ -192,79 +403,42 @@
    ]
   },
   {
-   "id": "fa23cdac2e",
-   "src": "CERN",
-   "level": "magazine",
-   "title": "CMS pixel detector extracted after 10 years of successful operations",
-   "url": "https://home.cern/cms-pixel-detector-extracted-after-10-years-of-successful-operations/",
-   "desc": "",
-   "date": "2026-10-19T09:44+00:00",
-   "th": []
-  },
-  {
-   "id": "f6423fae83",
-   "src": "Quanta Magazine",
-   "level": "magazine",
-   "title": "Triplet of ‘Ghostly’ Galaxies Hints at What Dark Matter Is — and Isn’t",
-   "url": "https://www.quantamagazine.org/triplet-of-ghostly-galaxies-hints-at-what-dark-matter-is-and-isnt-20261014/",
-   "desc": "A collision may have left these galaxies without dark matter. That spells trouble for alternative gravity theories. The post Triplet of ‘Ghostly’ Galaxies Hints at What Dark Matter Is — and Isn’t first appeared on Quanta Magazine",
-   "date": "2026-10-14T14:04+00:00",
-   "th": [
-    "Mechanics & materials",
-    "Fields",
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "e61546b8f2",
-   "src": "Physics World",
-   "level": "magazine",
-   "title": "Controlling four-dimensional monopoles",
-   "url": "https://physicsworld.com/a/controlling-four-dimensional-monopoles/",
-   "desc": "The first experimental realisation of Floquet tensor monopoles provides a controllable platform for investigating non-equilibrium topology in four dimensions",
-   "date": "2026-10-21T09:15+00:00",
-   "th": []
-  },
-  {
-   "id": "95c0adb0b4",
-   "src": "Phys.org (space)",
-   "level": "research",
-   "title": "A magnetar can be born when two neutron stars touch",
-   "url": "https://phys.org/news/2026-10-magnetar-born-neutron-stars.html",
-   "desc": "All neutron stars have intense magnetic fields. The typical magnetic field of a neutron star is about 100,000 times stronger than the strongest magnetic fields we can create on Earth. But about 1% of neutron stars have even stronger magnetic fields. Known as magnetars, their m…",
-   "date": "2026-10-21T02:40+00:00",
-   "th": [
-    "Fields",
-    "Nuclear",
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "d76e807170",
+   "id": "e2800801f1",
    "src": "NASA",
    "level": "magazine",
-   "title": "NASA’s SR-1 Freedom Advances with Progress on Nuclear Power Module",
-   "url": "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module/",
-   "desc": "Destined for Mars and beyond, NASA’s Space Reactor-1 (SR-1) Freedom will be humanity’s first fission-powered spacecraft to travel outside Earth’s orbit. Announced during NASA’s “Ignition” event, this mission will demonstrate nuclear electric propulsion in deep space, and progr…",
-   "date": "2026-10-20T18:11+00:00",
+   "title": "Tracks Along the Longest Drive on Another World",
+   "url": "https://science.nasa.gov/blog/tracks-along-the-longest-drive-on-another-world/",
+   "desc": "Written by Vandi Verma, Chief Engineer for Robotic Operations at NASA’s Jet Propulsion Laboratory Oct. 12, 2026 Since the last blog update, Perseverance has achieved a major milestone on Mars. On Sol 2006 (Oct. 11, 2026), its odometer reached 45.22 kilometers (28.10 miles), se…",
+   "date": "2026-10-21T15:50+00:00",
    "th": [
-    "Fields",
-    "Nuclear",
     "Astrophysics"
    ]
   },
   {
-   "id": "bcacf01d29",
+   "id": "63d700b12f",
    "src": "Phys.org (physics)",
    "level": "research",
-   "title": "Oxygen collisions show evidence of jet quenching, a signature of early-universe matter",
-   "url": "https://phys.org/news/2026-10-oxygen-collisions-evidence-jet-quenching.html",
-   "desc": "New results from the STAR experiment at the Relativistic Heavy Ion Collider (RHIC) provide strong evidence that smashing oxygen nuclei together at nearly the speed of light generates a quark-gluon plasma (QGP), a type of matter that existed just after the birth of the universe…",
-   "date": "2026-10-20T21:20+00:00",
+   "title": "Ultrafast light can control ferromagnetism without relying on heating",
+   "url": "https://phys.org/news/2026-10-ultrafast-ferromagnetism.html",
+   "desc": "Despite being known for more mundane uses such as sticking notes to refrigerators or keeping bags shut, magnetization is one of the most fundamental and useful properties of a material. Indeed, it forms the physical basis for storing most of our digital information, encoding t…",
+   "date": "2026-10-21T17:40+00:00",
    "th": [
-    "Particles & quantum",
     "Waves & light",
     "Mechanics & materials",
+    "Further mechanics & thermal",
+    "Fields"
+   ]
+  },
+  {
+   "id": "fe02f2f6b9",
+   "src": "Phys.org (space)",
+   "level": "research",
+   "title": "Astronomers uncover the engine behind the most powerful stellar flares in the Kepler field",
+   "url": "https://phys.org/news/2026-10-astronomers-uncover-powerful-stellar-flares.html",
+   "desc": "A new study led by researchers at the Konkoly Observatory of the HUN-REN Research Centre for Astronomy and Earth Sciences (HUN-REN CSFK) in Budapest has revealed what makes a distant red giant star the most explosively active in the entire Kepler field—and the answer lies in a…",
+   "date": "2026-10-21T13:20+00:00",
+   "th": [
+    "Fields",
     "Astrophysics"
    ]
   },
@@ -282,15 +456,15 @@
    ]
   },
   {
-   "id": "e031d33f61",
-   "src": "ESA",
+   "id": "08e788c673",
+   "src": "Physics World",
    "level": "magazine",
-   "title": "Celebrating BepiColombo, three words at a time",
-   "url": "https://www.esa.int/ESA_Multimedia/Videos/2026/10/Celebrating_BepiColombo_three_words_at_a_time",
-   "desc": "Video: 00:03:32 BepiColombo launched on 20 October 2018. This year, the anniversary is special. After eight years of travelling through the inner Solar System, the ESA/JAXA mission will arrive at Mercury on 9 December, 2026. To celebrate, mission team members were asked to des…",
-   "date": "2026-10-19T15:00+00:00",
+   "title": "Using AI agents to run quantum simulations",
+   "url": "https://physicsworld.com/a/using-ai-agents-to-run-quantum-simulations/",
+   "desc": "Researchers have developed a multi-agent AI system that converts plain-language research questions into executed, checked and reproducible quantum simulations using several specialist software packages",
+   "date": "2026-10-21T09:19+00:00",
    "th": [
-    "Astrophysics"
+    "Particles & quantum"
    ]
   },
   {
@@ -306,16 +480,49 @@
    ]
   },
   {
-   "id": "bfe3d8bc59",
-   "src": "CERN",
-   "level": "magazine",
-   "title": "CERN and Mistral join forces to accelerate AI for science",
-   "url": "https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/",
-   "desc": "CERN, the European Laboratory for Particle Physics, and Mistral, a European developer of large-scale AI models, have signed a statement of intent to establish a long-term strategic partnership focused on developing foundation models for scientific discovery. The partnership br…",
-   "date": "2026-10-15T10:00+00:00",
+   "id": "9e5db6b682",
+   "src": "Phys.org (physics)",
+   "level": "research",
+   "title": "'Invisible' tweak could help make protein shakes less clumpy",
+   "url": "https://phys.org/news/2026-10-invisible-tweak-protein-clumpy.html",
+   "desc": "Scientists from RMIT University and Riga Technical University in Latvia have shown that static charge left on surfaces can be controlled, which may have big benefits for companies needing to avoid the little zap in production of common household goods. The discovery could even…",
+   "date": "2026-10-21T15:40+00:00",
    "th": [
-    "Particles & quantum",
-    "Mechanics & materials"
+    "Fields"
+   ]
+  },
+  {
+   "id": "e696ff9b3f",
+   "src": "Phys.org (space)",
+   "level": "research",
+   "title": "SpaceX turns a profit after a string of losses as its satellite and computer leasing businesses soar",
+   "url": "https://phys.org/news/2026-10-spacex-profit-losses-satellite-leasing.html",
+   "desc": "SpaceX reported a bigger quarterly profit than expected Tuesday as its satellite communications operations and its business of leasing computing power to other companies boomed.",
+   "date": "2026-10-21T08:48+00:00",
+   "th": [
+    "Fields"
+   ]
+  },
+  {
+   "id": "e61546b8f2",
+   "src": "Physics World",
+   "level": "magazine",
+   "title": "Controlling four-dimensional monopoles",
+   "url": "https://physicsworld.com/a/controlling-four-dimensional-monopoles/",
+   "desc": "The first experimental realisation of Floquet tensor monopoles provides a controllable platform for investigating non-equilibrium topology in four dimensions",
+   "date": "2026-10-21T09:15+00:00",
+   "th": []
+  },
+  {
+   "id": "6a0bec9347",
+   "src": "Phys.org (physics)",
+   "level": "research",
+   "title": "Physicists trap and tame single particle of antimatter for months",
+   "url": "https://phys.org/news/2026-10-physicists-particle-antimatter-months.html",
+   "desc": "For the first time, Northwestern University physicists have coaxed a single positron—the antimatter counterpart of an electron—into an exquisitely controlled quantum state.",
+   "date": "2026-10-21T15:00+00:00",
+   "th": [
+    "Particles & quantum"
    ]
   },
   {
@@ -331,93 +538,6 @@
    ]
   },
   {
-   "id": "e04a98d47c",
-   "src": "Phys.org (space)",
-   "level": "research",
-   "title": "Rare solar radiation storm gives scientists clearest picture yet of flight risks",
-   "url": "https://phys.org/news/2026-10-rare-solar-storm-scientists-clearest.html",
-   "desc": "The most comprehensive data set ever collected from Earth's atmosphere during a solar radiation event has highlighted the importance of better-coordinated radiation monitoring for aviation safety, according to new research led by the University of Surrey.",
-   "date": "2026-10-21T01:00+00:00",
-   "th": [
-    "Nuclear"
-   ]
-  },
-  {
-   "id": "f1b3456c3a",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Experimental Mars Helicopter Blade Designs Target Longer Flights",
-   "url": "https://www.nasa.gov/science-research/aeronautics-research/nasa-experimental-mars-helicopter-blade-designs-target-longer-flights/",
-   "desc": "NASA researchers are developing the future of flight on Mars, laying the groundwork for helicopters with the ability to fly higher and farther while conducting science on the Red Planet. Using high-fidelity computer simulations and wind tunnel tests, engineers are reimagining …",
-   "date": "2026-10-20T16:02+00:00",
-   "th": [
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "c0effcc64c",
-   "src": "Phys.org (physics)",
-   "level": "research",
-   "title": "'Smoking gun' may help solve mystery of high-temperature superconductivity",
-   "url": "https://phys.org/news/2026-10-gun-mystery-high-temperature-superconductivity.html",
-   "desc": "Superconductivity has many important practical applications, including creating powerful magnets used in high-resolution medical scans, transporting electricity efficiently and building ultrasensitive measuring devices. Until now, understanding exactly what lay behind this uni…",
-   "date": "2026-10-20T20:00+00:00",
-   "th": [
-    "Electricity",
-    "Further mechanics & thermal",
-    "Fields"
-   ]
-  },
-  {
-   "id": "81e363ca0e",
-   "src": "Physics Magazine",
-   "level": "research",
-   "title": "Imaging with Zero Photons",
-   "url": "http://link.aps.org/doi/10.1103/Physics.19.s127",
-   "desc": "Author(s): Marric Stephens A technique known as ghost imaging has been adapted so that an object can be imaged by discarding all photons that interact with it. [Physics 19, s127] Published Thu Oct 15, 2026",
-   "date": "2026-10-15T10:00+00:00",
-   "th": [
-    "Particles & quantum"
-   ]
-  },
-  {
-   "id": "c57fc0a338",
-   "src": "ESA",
-   "level": "magazine",
-   "title": "Euclid discovers new comet",
-   "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet",
-   "desc": "The European Space Agency’s Euclid space telescope has discovered its first previously unknown comet, in images taken between 16 and 24 September 2026.",
-   "date": "2026-10-19T12:00+00:00",
-   "th": [
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "8dd4697287",
-   "src": "BBC Science",
-   "level": "way in",
-   "title": "Severe drought declared and hosepipe bans in force - is your area affected?",
-   "url": "https://www.bbc.co.uk/news/articles/crk661074ejo?at_medium=RSS&at_campaign=rss",
-   "desc": "Parts of southern England have entered \"severe drought\", while about 30 million people are under hosepipe ban.",
-   "date": "2026-10-15T15:42+00:00",
-   "th": [
-    "Mechanics & materials"
-   ]
-  },
-  {
-   "id": "d2ee885b0d",
-   "src": "CERN",
-   "level": "magazine",
-   "title": "Studying beautiful flavour transitions",
-   "url": "https://home.cern/studying-beautiful-flavour-transitions/",
-   "desc": "Studying rare processes is part and parcel of particle physics, providing stringent tests of the&#160;Standard Model. At the recent&#160;International Conference on High Energy Physics (ICHEP),&#160;the&#160;CMS&#160;and&#160;LHCb&#160;Collaborations presented their latest res…",
-   "date": "2026-10-14T13:41+00:00",
-   "th": [
-    "Particles & quantum",
-    "Fields"
-   ]
-  },
-  {
    "id": "0dc60f6e1b",
    "src": "Physics World",
    "level": "magazine",
@@ -426,170 +546,6 @@
    "desc": "Joshua Biro wonders how we know if a student has really understood a piece of physics",
    "date": "2026-10-20T16:09+00:00",
    "th": []
-  },
-  {
-   "id": "7b7c8ba621",
-   "src": "Phys.org (space)",
-   "level": "research",
-   "title": "'Terror of kings': Why the 1066 appearance of Halley's Comet terrified the medieval world",
-   "url": "https://phys.org/news/2026-10-terror-kings-halley-comet-medieval.html",
-   "desc": "A sequence on the Bayeux Tapestry shows King Harold alongside a crowd gazing at the sky, beneath the embroidered caption Isti mirant stella (\"those people marvel at the star\"). Above Harold sits Halley's Comet, with ghostlike invasion boats in the border below—a Norman framing…",
-   "date": "2026-10-20T21:30+00:00",
-   "th": [
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "c5c47b1123",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Provides Progress Update on Moon Base Rovers",
-   "url": "https://www.nasa.gov/missions/moon-base/nasa-provides-progress-update-on-moon-base-rovers/",
-   "desc": "As NASA works to build the Moon Base, crewed and robotic lunar rovers will play a crucial role during early development through technology demonstrations, astronaut transport, terrain mapping, scientific investigations, and resource prospecting. Data from these early missions …",
-   "date": "2026-10-20T15:00+00:00",
-   "th": [
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "589c5864a5",
-   "src": "Phys.org (physics)",
-   "level": "research",
-   "title": "Custom frame timing captures ultrafast events across five orders of magnitude in time",
-   "url": "https://phys.org/news/2026-10-custom-captures-ultrafast-events-magnitude.html",
-   "desc": "Most conventional methods of ultrafast photography use evenly spaced intervals in which images are taken, but new developments have shown how much can be left out of the story, especially when multiple timescales are involved.",
-   "date": "2026-10-20T19:20+00:00",
-   "th": []
-  },
-  {
-   "id": "86ef55bcf9",
-   "src": "CERN",
-   "level": "magazine",
-   "title": "Continuous Improvement gains momentum at CERN",
-   "url": "https://home.cern/continuous-improvement-gains-momentum-at-cern/",
-   "desc": "In January, the Continuous Improvement (CI) Team launched the&#160;CERNidée portal&#160;as one&#160;way for the CERN community to share ideas for simplifying processes, improving services&#160;and removing obstacles in their daily work. Suggestions arrived at an average&#160;r…",
-   "date": "2026-10-14T12:53+00:00",
-   "th": [
-    "Particles & quantum",
-    "Mechanics & materials"
-   ]
-  },
-  {
-   "id": "7cb387e7b2",
-   "src": "Physics World",
-   "level": "magazine",
-   "title": "From space to folk music: quantum hackathon explores diverse use cases",
-   "url": "https://physicsworld.com/a/from-space-to-folk-music-quantum-hackathon-explores-diverse-use-cases/",
-   "desc": "The three-day event created a fun, vibrant and collaborative environment for teams of hackers to explore real-world problems that support business growth while benefitting the wider world",
-   "date": "2026-10-20T15:17+00:00",
-   "th": [
-    "Particles & quantum"
-   ]
-  },
-  {
-   "id": "b7f1b65510",
-   "src": "Phys.org (space)",
-   "level": "research",
-   "title": "Using eyedrops in space—wearable patch offers a new approach",
-   "url": "https://phys.org/news/2026-10-eyedrops-space-wearable-patch-approach.html",
-   "desc": "Applying eyedrops is difficult in space, where there is almost no gravity. A KAIST research team has developed a wearable patch that delivers eyedrops to the eye without relying on gravity. The research team was led by Professor Ki-Hun Jeong from the Department of Bio and Brai…",
-   "date": "2026-10-20T21:00+00:00",
-   "th": [
-    "Fields"
-   ]
-  },
-  {
-   "id": "419686aeb9",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "Webb Captures Stellar Jets",
-   "url": "https://www.nasa.gov/image-article/webb-captures-stellar-jets/",
-   "desc": "An image from NASA’s James Webb Space Telescope released on Oct. 6, 2026, reveals a cauldron of cosmic creation. Webb has unveiled numerous stars formerly hidden by clouds of dust in a stellar nursery known as NGC 7129, which resides about 3,300 light-years from Earth. Learn m…",
-   "date": "2026-10-20T14:44+00:00",
-   "th": [
-    "Waves & light",
-    "Astrophysics"
-   ]
-  },
-  {
-   "id": "4d384d853f",
-   "src": "Phys.org (physics)",
-   "level": "research",
-   "title": "Steering electrons with extreme ultraviolet light—team achieves quantum coherent control",
-   "url": "https://phys.org/news/2026-10-electrons-extreme-ultraviolet-team-quantum.html",
-   "desc": "Light is one of the most powerful tools scientists have for probing matter. By interacting with electrons, light reveals how atoms, molecules and materials are structured and how they evolve in time. Highly energetic ultraviolet and X-ray photons are particularly attractive be…",
-   "date": "2026-10-20T18:00+00:00",
-   "th": [
-    "Particles & quantum",
-    "Waves & light",
-    "Mechanics & materials",
-    "Electricity"
-   ]
-  },
-  {
-   "id": "17db4d4386",
-   "src": "CERN",
-   "level": "magazine",
-   "title": "The public consultation for the Future Circular Collider (FCC) project generates extensive dialogue with the local communities",
-   "url": "https://home.cern/une-periode-de-participation-citoyenne-sur-le-projet-de-futur-collisionneur-circulaire-fcc-riche-en-echanges-avec-les-territoires/",
-   "desc": "The public consultation process for the Future Circular Collider (FCC) project, which began in the spring, has just ended in France (on 1 October) and in Switzerland (on 2 October), following four months of interaction and dialogue with the local communities. The process consi…",
-   "date": "2026-10-14T11:25+00:00",
-   "th": [
-    "Particles & quantum"
-   ]
-  },
-  {
-   "id": "90d6e0b96a",
-   "src": "Physics World",
-   "level": "magazine",
-   "title": "Chiral bristlebot toys shed light on transport dynamics in active matter systems",
-   "url": "https://physicsworld.com/a/chiral-bristlebot-toys-shed-light-on-transport-dynamics-in-active-matter-systems/",
-   "desc": "Leaning in to the natural “handedness” of vibrating bots revealed “qualitatively new phenomena”, say physicists",
-   "date": "2026-10-20T13:30+00:00",
-   "th": [
-    "Waves & light",
-    "Further mechanics & thermal"
-   ]
-  },
-  {
-   "id": "324533d2a4",
-   "src": "Phys.org (physics)",
-   "level": "research",
-   "title": "Individual atomic collisions can now be detected in the lab, potentially opening up pathways to new physics",
-   "url": "https://phys.org/news/2026-10-individual-atomic-collisions-lab-potentially.html",
-   "desc": "Tiny atoms and molecules are constantly bombarding each other all around us. While we regularly measure the large-scale effects of these interactions, measuring the effect of each individual collision is far more difficult. But now, researchers have managed to measure how tiny…",
-   "date": "2026-10-20T17:10+00:00",
-   "th": [
-    "Waves & light",
-    "Mechanics & materials",
-    "Further mechanics & thermal"
-   ]
-  },
-  {
-   "id": "920768e5e4",
-   "src": "Physics World",
-   "level": "magazine",
-   "title": "One-positron quantum cyclotron could put the Standard Model to the test",
-   "url": "https://physicsworld.com/a/one-positron-quantum-cyclotron-could-put-the-standard-model-to-the-test/",
-   "desc": "Magnetic moment could be measured at unprecedented precision",
-   "date": "2026-10-20T10:23+00:00",
-   "th": [
-    "Particles & quantum",
-    "Fields"
-   ]
-  },
-  {
-   "id": "24d2c570b1",
-   "src": "Physics World",
-   "level": "magazine",
-   "title": "The roadmap for runaway electron-induced plasma facing component damage in tokamaks",
-   "url": "https://physicsworld.com/a/the-roadmap-for-runaway-electron-induced-plasma-facing-component-damage-in-tokamaks/",
-   "desc": "Join the audience for a live webinar on 10 November 2026 sponsored by IOP Publishing's journal, Plasma Physics and Controlled Fusion",
-   "date": "2026-10-20T09:52+00:00",
-   "th": [
-    "Particles & quantum",
-    "Nuclear"
-   ]
   }
  ]
 }
