@@ -1,5 +1,5 @@
 {
- "made": "2026-10-21T11:39+00:00",
+ "made": "2026-10-22T11:40+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,7 +25,7 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Motorsport.com",
@@ -38,15 +38,15 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 5
+   "n": 4
   },
   {
    "src": "BBC Technology",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "Carbon Brief",
@@ -100,63 +100,55 @@
  ],
  "stories": [
   {
-   "id": "176987b733",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Mott MacDonald moves US headquarters to Empire State Building",
-   "url": "https://www.newcivilengineer.com/latest/mott-macdonald-moves-us-headquarters-to-empire-state-building-21-10-2026/",
-   "desc": "British engineering, development and management consultancy Mott MacDonald has relocated its North America headquarters to the Empire State Building, to expand its presence in the New York metropolitan area.",
-   "date": "2026-10-21T10:16+00:00",
-   "th": []
-  },
-  {
-   "id": "6729e5becb",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "US regulators certify Boeing 737 MAX 10 after delays",
-   "url": "https://techxplore.com/news/2026-10-certify-boeing-max-delays.html",
-   "desc": "U.S. officials gave final approval Tuesday to the Boeing 737 MAX 10, certifying the latest long-delayed version of the popular single-aisle aircraft.",
-   "date": "2026-10-21T08:56+00:00",
-   "th": [
-    "8 Viability",
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "2097974e97",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Charles Leclerc makes worrying Ferrari admission ahead of major F1 upgrade",
-   "url": "https://www.motorsport.com/f1/news/charles-leclerc-makes-worrying-ferrari-admission-ahead-of-major-f1-upgrade/10866596/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "After a mixed season for the Ferrari Formula 1 team, Charles Leclerc says their problem is the \"raw performance\" of its car, not its set-up. This comes as the outfit is expected to bring its largest upgrade of the season to the United States Grand Prix. Ferrari has often looke…",
-   "date": "2026-10-21T08:00+00:00",
-   "th": [
-    "Motorsport",
-    "2 Existing products"
-   ]
-  },
-  {
-   "id": "3007c93199",
+   "id": "f2de7c8c38",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Background static can carry wireless data without an actively generated radio signal",
-   "url": "https://techxplore.com/news/2026-10-background-static-wireless-generated-radio.html",
-   "desc": "Stanford researchers recently revealed how a seemingly physics-defying wireless communication technology works. The new technology, called thermal noise communication, harnesses background static that normally is the bane of radio, cellular and other wireless signals. In their…",
-   "date": "2026-10-20T19:20+00:00",
+   "title": "Drone system uses VR for warehouse inventory",
+   "url": "https://techxplore.com/news/2026-10-drone-vr-warehouse.html",
+   "desc": "Engineering students at the University of Cincinnati are developing an easy-to-use system to deploy autonomous drones in warehouses to take inventory and alert workers about leaks from containers. UC College of Engineering and Applied Science doctoral students Deepak Antony Da…",
+   "date": "2026-10-22T11:28+00:00",
+   "th": [
+    "4 Design thinking",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "228e5c0b24",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Personalized public transport: Researchers develop autonomous mobility service",
+   "url": "https://techxplore.com/news/2026-10-personalized-autonomous-mobility.html",
+   "desc": "The transportation sector is still responsible for around a third of greenhouse gas emissions. Shifting from private transportation—particularly vehicles with internal combustion engines—to electric public transportation offers a way to reduce emissions.",
+   "date": "2026-10-22T11:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d5f64b9e7e",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Red Bull called Christian Horner to thank him for F1 engine project after maiden win",
+   "url": "https://www.motorsport.com/f1/news/red-bull-called-christian-horner-to-thank-him-for-f1-engine-project-after-maiden-win/10866935/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Christian Horner has revealed Red Bull shareholders called him on the back of the Red Bull Ford Powertrains engine’s maiden Formula 1 victory in Malaysia. Horner joined the Milton Keynes-based squad as its team principal when the brand acquired the Jaguar outfit ahead of the 2…",
+   "date": "2026-10-22T11:02+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "cf37dcb56b",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Conducts RS-25 Engine Test in Support of Future Artemis Missions",
+   "url": "https://www.nasa.gov/image-article/rs-25-engine-test-in-support-of-future-artemis-missions/",
+   "desc": "NASA tested RS-25 engine No. 10001 on Oct. 21 on the Fred Haise Test Stand at NASA’s Stennis Space Center near Bay St. Louis, Mississippi. Test teams fired the developmental engine for almost eight-and-a-half minutes (500 seconds), the same amount of time RS-25 engines fire du…",
+   "date": "2026-10-21T20:51+00:00",
    "th": [
     "6 Technical",
     "8 Viability"
    ]
-  },
-  {
-   "id": "d76e807170",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA’s SR-1 Freedom Advances with Progress on Nuclear Power Module",
-   "url": "https://www.nasa.gov/centers-and-facilities/glenn/sr-1-freedom-advances-with-progress-on-nuclear-power-module/",
-   "desc": "Destined for Mars and beyond, NASA’s Space Reactor-1 (SR-1) Freedom will be humanity’s first fission-powered spacecraft to travel outside Earth’s orbit. Announced during NASA’s “Ignition” event, this mission will demonstrate nuclear electric propulsion in deep space, and progr…",
-   "date": "2026-10-20T18:11+00:00",
-   "th": []
   },
   {
    "id": "b657bbd1f7",
@@ -183,65 +175,54 @@
    ]
   },
   {
-   "id": "984ffe78bb",
-   "src": "The Race",
-   "level": "way in",
-   "title": "Horner was congratulated by Red Bull bosses after F1 engine's wins",
-   "url": "https://www.the-race.com/formula-1/horner-was-congratulated-by-red-bull-bosses-after-f1-engines-wins/",
-   "desc": "Christian Horner says Red Bull's chiefs still called him after the team's 2026 wins despite the nature of his split with the company",
-   "date": "2026-10-19T06:04+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "ab0bd235fc",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Capability recovery: the workforce strategy engineering is missing",
-   "url": "https://www.newcivilengineer.com/archive/capability-recovery-the-workforce-strategy-engineering-is-missing-21-10-2026/",
-   "desc": "The Royal Academy of Engineering estimates the UK needs up to 240,000 engineers and technicians every year for a decade.",
-   "date": "2026-10-21T05:30+00:00",
-   "th": []
-  },
-  {
-   "id": "feb576f338",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Digital natives are buying electric cars as if they were smartphones",
-   "url": "https://techxplore.com/news/2026-10-digital-natives-buying-electric-cars.html",
-   "desc": "Until recently, buying a car meant obsessing over horsepower, transmission types and brand heritage. But step into the market today and the showroom floor looks entirely different.",
-   "date": "2026-10-21T00:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "f3f1d9c7d8",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "F1’s former fuel flow meter supplier sues its replacement ahead of US GP",
-   "url": "https://www.motorsport.com/f1/news/f1s-former-fuel-flow-meter-supplier-sues-its-replacement-in-texas/10866487/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Formula 1’s former fuel flow meter supplier, Sentronics Holdings Ltd, has taken its replacement to court in Texas. The company claims that the sensors now used by every car in the championship infringe its patent. The British company filed the case against German manufacturer …",
-   "date": "2026-10-20T11:35+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical",
-    "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "0e6f271407",
+   "id": "3164c5723d",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New method predicts iron ore behavior for lower-carbon steelmaking",
-   "url": "https://techxplore.com/news/2026-10-method-iron-ore-behavior-carbon.html",
-   "desc": "Reducing carbon dioxide emissions from steelmaking requires more efficient ways to turn iron ore into iron. While hydrogen-based technologies offer a promising path toward lower-carbon steel production, conventional blast furnaces will remain important during the transition. U…",
-   "date": "2026-10-20T19:00+00:00",
+   "title": "Engineers use sound to identify potential catastrophic drone failures",
+   "url": "https://techxplore.com/news/2026-10-potential-catastrophic-drone-failures.html",
+   "desc": "Engineers at the University of Cincinnati are using sound to help NASA detect if a drone's motors or propellers are damaged to prevent a crash. UC College of Engineering and Applied Science doctoral student Prissha Chawla and her research partners recorded the various sounds t…",
+   "date": "2026-10-22T11:00+00:00",
+   "th": [
+    "6 Technical",
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "3d9dbfa459",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "The chargeable battery–fuel cell hybrid answers the challenges of emission-free heavy-duty transport",
+   "url": "https://techxplore.com/news/2026-10-chargeable-batteryfuel-cell-hybrid-emission.html",
+   "desc": "In late 2026, a pilot project exploring the possibilities of using hydrogen and electricity to power heavy-duty transport on long-haul journeys will begin in Finland. The pilot aims to develop technology that contributes to the EU's objective of emission-free heavy road freigh…",
+   "date": "2026-10-21T23:40+00:00",
    "th": [
     "3 Wider issues",
-    "5 Materials"
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "2097974e97",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Charles Leclerc makes worrying Ferrari admission ahead of major F1 upgrade",
+   "url": "https://www.motorsport.com/f1/news/charles-leclerc-makes-worrying-ferrari-admission-ahead-of-major-f1-upgrade/10866596/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "After a mixed season for the Ferrari Formula 1 team, Charles Leclerc says their problem is the \"raw performance\" of its car, not its set-up. This comes as the outfit is expected to bring its largest upgrade of the season to the United States Grand Prix. Ferrari has often looke…",
+   "date": "2026-10-21T08:00+00:00",
+   "th": [
+    "Motorsport",
+    "2 Existing products"
+   ]
+  },
+  {
+   "id": "072358b442",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA’s CASALS Instrument Bridges Gaps in 3D Maps of Earth’s Surface",
+   "url": "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/nasas-casals-instrument-bridges-gaps-in-3d-maps-of-earths-surface/",
+   "desc": "From orbit, today’s space-based laser instruments measure Earth’s forests and terrain one narrow line at a time. Between those lines are enormous gaps that include millions of acres of land scientists never directly measure. NASA’s CASALS instrument will blend machine learning…",
+   "date": "2026-10-21T12:17+00:00",
+   "th": [
+    "6 Technical"
    ]
   },
   {
@@ -269,52 +250,40 @@
    ]
   },
   {
-   "id": "de0c9a63d3",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "SP Renewables installs 1.8km subsea pipe using horizontal directional drilling",
-   "url": "https://www.newcivilengineer.com/latest/sp-renewables-installs-1-8km-subsea-pipe-using-horizontal-directional-drilling-21-10-2026/",
-   "desc": "ScottishPower Renewables has used horizontal directional drilling (HDD) to install two 1.8km long, 800mm diameter cable ducts from the Suffolk coast, out towards the site of its East Anglia TWO offshore windfarm, in what it called a “global engineering first”.",
-   "date": "2026-10-21T05:30+00:00",
-   "th": [
-    "3 Wider issues"
-   ]
-  },
-  {
-   "id": "4a09132e8d",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "The driveway divide: Why parking for electric vehicles is such a big barrier",
-   "url": "https://techxplore.com/news/2026-10-driveway-electric-vehicles-big-barrier.html",
-   "desc": "Most people who have an electric car have access to a driveway or private parking. In England, 90% of EV owners can park easily and charge theirs from home. But roughly 40% of U.K. households don't have off-street parking, so the questions are how they would charge an EV and w…",
-   "date": "2026-10-20T21:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "b04a87d701",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Christian Horner: Building Red Bull’s F1 engine was “scary as hell”",
-   "url": "https://www.motorsport.com/f1/news/christian-horner-receives-unexpected-call-from-red-bull-after-breakthrough/10866228/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Former Red Bull team principal Christian Horner has admitted that building the team’s in-house power unit from scratch was “scary as hell”, after the engine claimed its first race wins this 2026 season. This comes despite him being axed from the team a year earlier. Horner was…",
-   "date": "2026-10-19T21:13+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "30a7365b4b",
+   "id": "429537805d",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Turning coffee waste into 3D-printed architectural forms",
-   "url": "https://techxplore.com/news/2026-10-coffee-3d-architectural.html",
-   "desc": "RMIT researchers have turned coffee waste into 3D-printed architectural forms, opening a potential pathway towards more sustainable, low-carbon construction. The project brings together scientific, architectural and engineering expertise.",
-   "date": "2026-10-20T17:40+00:00",
+   "title": "Wheeled, flying and six-legged robots stay on track with new learning method",
+   "url": "https://techxplore.com/news/2026-10-wheeled-flying-legged-robots-stay.html",
+   "desc": "It's important for a robot not just to learn a task optimally, but to complete it without going off the rails of reasonable expectations. Until now, roboticists could have one or the other. Aerospace engineering researchers in The Grainger College of Engineering, University of…",
+   "date": "2026-10-21T19:20+00:00",
    "th": [
-    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "cd07c30f6e",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "New vehicle system filters roadside air and traps brake dust using electric charges",
+   "url": "https://techxplore.com/news/2026-10-vehicle-filters-roadside-air-electric.html",
+   "desc": "Researchers have developed an air-purifying vehicle technology that removes fine particulate matter from surrounding air as a vehicle moves and captures brake wear particles before they are released. The technology uses the vehicle's existing structure to purify roadside air a…",
+   "date": "2026-10-21T14:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "f3f1d9c7d8",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "F1’s former fuel flow meter supplier sues its replacement ahead of US GP",
+   "url": "https://www.motorsport.com/f1/news/f1s-former-fuel-flow-meter-supplier-sues-its-replacement-in-texas/10866487/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Formula 1’s former fuel flow meter supplier, Sentronics Holdings Ltd, has taken its replacement to court in Texas. The company claims that the sensors now used by every car in the championship infringe its patent. The British company filed the case against German manufacturer …",
+   "date": "2026-10-20T11:35+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
     "7 Manufacturing"
    ]
   },
@@ -332,53 +301,27 @@
    ]
   },
   {
-   "id": "ba4aa623cd",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Lifford Bridge hosts trial of system offering continuous half-joint corrosion monitoring",
-   "url": "https://www.newcivilengineer.com/in-depth/lifford-bridge-hosts-trial-of-system-offering-continuous-half-joint-corrosion-monitoring-21-10-2026/",
-   "desc": "A new system designed to help steer engineering decisions as concrete structures reach end of life is being put through its paces on Lifford Bridge which spans the River Foyle between Ireland and Northern Ireland.",
-   "date": "2026-10-21T03:00+00:00",
-   "th": [
-    "5 Materials",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "74ee303068",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Ammonia-fueled ship exhaust treatment could achieve roughly 99% removal of targeted pollutants",
-   "url": "https://techxplore.com/news/2026-10-ammonia-fueled-ship-exhaust-treatment.html",
-   "desc": "A research team led by Dr. Sun-Mi Hwang from the Clean Air Research Laboratory at the Korea Institute of Energy Research (KIER) has developed catalysts as an all-in-one solution to address exhaust emissions from ammonia-fueled ships. This technology can simultaneously and cost…",
-   "date": "2026-10-20T20:20+00:00",
-   "th": [
-    "3 Wider issues",
-    "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "9c63c039de",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "McLaren to use final 2026 developments to test 2027 F1 car concepts",
-   "url": "https://www.motorsport.com/f1/news/mclaren-to-use-final-2026-developments-to-test-2027-f1-car-concepts/10866094/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "McLaren has revealed that its last run of upgrades for its 2026 Formula 1 car will also act as tests for “fundamental concepts that will carry into next year’s car”. After the Singapore Grand Prix, team principal Andrea Stella explained its late-season upgrade plan, indicating…",
-   "date": "2026-10-19T16:11+00:00",
-   "th": [
-    "Motorsport",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "03fdfdf3dd",
+   "id": "5887e0b5bc",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Lithium ions form unexpected clusters in battery electrolytes, challenging long-held assumptions",
-   "url": "https://techxplore.com/news/2026-10-lithium-ions-unexpected-clusters-battery.html",
-   "desc": "Research by Columbia University faculty in the Arts and Sciences and the School of Engineering and Applied Science has revealed a new insight that challenges long-held assumptions about the fundamental chemistry of lithium-ion batteries.",
-   "date": "2026-10-20T17:20+00:00",
+   "title": "Magnetic field tests predict blue OLED lifetimes from tiny brightness changes",
+   "url": "https://techxplore.com/news/2026-10-magnetic-field-blue-oled-lifetimes.html",
+   "desc": "Could a magnetic field be used to identify in advance which OLEDs will keep smartphone and TV screens bright the longest? A KAIST research team has developed a technique that predicts OLED lifetime by analyzing small changes in brightness caused by a magnetic field. The techni…",
+   "date": "2026-10-21T15:20+00:00",
    "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "b04a87d701",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Christian Horner: Building Red Bull’s F1 engine was “scary as hell”",
+   "url": "https://www.motorsport.com/f1/news/christian-horner-receives-unexpected-call-from-red-bull-after-breakthrough/10866228/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Former Red Bull team principal Christian Horner has admitted that building the team’s in-house power unit from scratch was “scary as hell”, after the engine claimed its first race wins this 2026 season. This comes despite him being axed from the team a year earlier. Horner was…",
+   "date": "2026-10-19T21:13+00:00",
+   "th": [
+    "Motorsport",
     "6 Technical"
    ]
   },
@@ -395,65 +338,28 @@
    ]
   },
   {
-   "id": "11c3e0f550",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Reduced carbon footprint calcined clay cement to be launched",
-   "url": "https://www.newcivilengineer.com/latest/reduced-carbon-footprint-calcined-clay-cement-to-be-launched-20-10-2026/",
-   "desc": "A British-made calcined clay aimed at reducing the carbon footprint of cement will be launched to the wider construction industry on Thursday (22 October).",
-   "date": "2026-10-20T15:52+00:00",
+   "id": "cdfbacb80d",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "New planning method could make driverless electric taxi fleets more efficient and reliable",
+   "url": "https://techxplore.com/news/2026-10-method-driverless-electric-taxi-fleets.html",
+   "desc": "Self-driving electric taxi fleets could make transportation more efficient and sustainable, but only if vehicles can continuously make smart decisions about where to drive and when to recharge. Researchers at Chalmers University of Technology in Sweden have now developed a new…",
+   "date": "2026-10-21T14:20+00:00",
    "th": [
-    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "3007c93199",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Background static can carry wireless data without an actively generated radio signal",
+   "url": "https://techxplore.com/news/2026-10-background-static-wireless-generated-radio.html",
+   "desc": "Stanford researchers recently revealed how a seemingly physics-defying wireless communication technology works. The new technology, called thermal noise communication, harnesses background static that normally is the bane of radio, cellular and other wireless signals. In their…",
+   "date": "2026-10-20T19:20+00:00",
+   "th": [
+    "6 Technical",
     "8 Viability"
-   ]
-  },
-  {
-   "id": "406eb86a5e",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Why some buildings collapse in an earthquake while others stay standing",
-   "url": "https://techxplore.com/news/2026-10-collapse-earthquake-stay.html",
-   "desc": "The twin earthquakes that struck Venezuela on June 24, 2026, collapsing buildings across northern Venezuela, from Yaracuy state to Caracas, have revived a question that follows every major quake: Why do some buildings fall while others nearby remain standing?",
-   "date": "2026-10-20T17:00+00:00",
-   "th": [
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "001c1dd238",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Learning to Play Like a Pro: Adaptive Motion Planning and Tracking for Humanoid Robots",
-   "url": "https://content.knowledgehub.wiley.com/learning-to-play-like-a-pro-adaptive-motion-planning-and-tracking-for-humanoid-robots/",
-   "desc": "This White Paper provides roboticists and control engineers with a comprehensive overview of how motion planning and motion tracking can be decoupled to preserve professional athletic style in humanoid robots, and why adaptive, speed-aware control is essential for closing the …",
-   "date": "2026-10-12T10:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "0b7bba8324",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Electricity grid companies commit to ambitious skills, jobs and economic growth targets",
-   "url": "https://www.newcivilengineer.com/latest/electricity-grid-companies-commit-to-ambitious-skills-jobs-and-economic-growth-targets-20-10-2026/",
-   "desc": "The companies involved in running and upgrading the UK’s electricity transmission and distribution networks have said they expect £58bn of gross value added (GVA) to the economy by 2035, after investing £200bn over the next 10 years.",
-   "date": "2026-10-20T15:12+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "ec710cef7b",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Safety-conscious drop tower improves TN bridges",
-   "url": "https://techxplore.com/news/2026-10-safety-conscious-tower-tn-bridges.html",
-   "desc": "If you are inside the John D. Tickle Engineering Building at the University of Tennessee, Knoxville, and think you hear a semitruck slamming into a highway overpass, your ears aren't deceiving you. You've just stopped by during an experiment that promises to improve Tennessee'…",
-   "date": "2026-10-20T16:50+00:00",
-   "th": [
-    "8 Viability",
-    "9 Health and safety"
    ]
   }
  ]
