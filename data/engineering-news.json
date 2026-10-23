@@ -1,5 +1,5 @@
 {
- "made": "2026-10-22T11:40+00:00",
+ "made": "2026-10-23T11:30+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,14 +18,14 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "The Race",
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Motorsport.com",
@@ -38,22 +38,22 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 4
+   "n": 5
   },
   {
    "src": "BBC Technology",
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "ESA",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "Carbon Brief",
@@ -100,16 +100,89 @@
  ],
  "stories": [
   {
-   "id": "f2de7c8c38",
+   "id": "1e56e32641",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "United Infrastructure joins industry body as sector publishes 10-year growth plan",
+   "url": "https://www.newcivilengineer.com/latest/united-infrastructure-joins-industry-body-as-sector-publishes-10-year-growth-plan-23-10-2026/",
+   "desc": "UK infrastructure delivery firm United Infrastructure has become a full member of the British Electrotechnical and Allied Manufacturers' Association (Beama), the trade association for manufacturers and suppliers of energy infrastructure technologies.",
+   "date": "2026-10-23T10:41+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "66f355526b",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Belgian firm to take over Renault/Alpine engine facility in Viry",
+   "url": "https://www.motorsport.com/wec/news/alpine-a424-could-be-on-the-2027-wec-grid-as-belgian-company-takes-over-viry/10867319/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Renault has agreed to sell its Viry-Chatillon engine facility to Belgian company Dumarey Group. According to an official statement, the Dumarey Group, which specialises in technology and development of powertrains and engineering components for mass-produced vehicles, is prepa…",
+   "date": "2026-10-23T09:37+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "a9a0851ac6",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "The Indian workers filming their work to train AI",
+   "url": "https://www.bbc.co.uk/news/articles/ckvgyml6pdm9o?at_medium=RSS&at_campaign=rss",
+   "desc": "Indian workers are being paid to film themselves at work and the footage is used to train AI.",
+   "date": "2026-10-23T08:04+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d8b743a11c",
+   "src": "The Race",
+   "level": "way in",
+   "title": "Mercedes rolls back ADUO engine debut",
+   "url": "https://www.the-race.com/formula-1/mercedes-rolls-back-aduo-engine-debut/",
+   "desc": "Mercedes’ upgraded Formula 1 engine won’t appear as initially expected at the United States Grand Prix",
+   "date": "2026-10-22T22:54+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "78e863c11a",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Drone system uses VR for warehouse inventory",
-   "url": "https://techxplore.com/news/2026-10-drone-vr-warehouse.html",
-   "desc": "Engineering students at the University of Cincinnati are developing an easy-to-use system to deploy autonomous drones in warehouses to take inventory and alert workers about leaks from containers. UC College of Engineering and Applied Science doctoral students Deepak Antony Da…",
-   "date": "2026-10-22T11:28+00:00",
+   "title": "Tiny 3D-printed color routers could enable sharper and brighter low-light photography",
+   "url": "https://techxplore.com/news/2026-10-tiny-3d-routers-enable-sharper.html",
+   "desc": "Almost every sensor in a digital photography device, from a smartphone to a digital camera, relies on color filters to separate incoming light into red, green and blue before it reaches the sensor. Substantial light is lost through the process, however, and in dim conditions, …",
+   "date": "2026-10-22T20:20+00:00",
    "th": [
-    "4 Design thinking",
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "ba1967cf98",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Why AI Can’t Replace Engineering Teams",
+   "url": "https://spectrum.ieee.org/engineering-jobs-that-ai-cant-replace",
+   "desc": "This article is crossposted from IEEE Spectrum ’s careers newsletter. Sign up now to get insider tips, expert advice, and practical strategies, written i n partnership with tech career development company Parsity and delivered to your inbox for free! If you’re an engineer, you…",
+   "date": "2026-10-22T18:02+00:00",
+   "th": [
     "6 Technical"
+   ]
+  },
+  {
+   "id": "a0dfdd7771",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "Why PMW Expo matters to race and performance car engineers",
+   "url": "https://www.racecar-engineering.com/news/why-pmw-expo-matters-to-race-and-performance-car-engineers/",
+   "desc": "Why PMW Expo in Cologne is the perfect place to meet fellow motorsport industry professionals...",
+   "date": "2026-10-22T15:25+00:00",
+   "th": [
+    "Motorsport"
    ]
   },
   {
@@ -121,19 +194,6 @@
    "desc": "The transportation sector is still responsible for around a third of greenhouse gas emissions. Shifting from private transportation—particularly vehicles with internal combustion engines—to electric public transportation offers a way to reduce emissions.",
    "date": "2026-10-22T11:20+00:00",
    "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "d5f64b9e7e",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Red Bull called Christian Horner to thank him for F1 engine project after maiden win",
-   "url": "https://www.motorsport.com/f1/news/red-bull-called-christian-horner-to-thank-him-for-f1-engine-project-after-maiden-win/10866935/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Christian Horner has revealed Red Bull shareholders called him on the back of the Red Bull Ford Powertrains engine’s maiden Formula 1 victory in Malaysia. Horner joined the Milton Keynes-based squad as its team principal when the brand acquired the Jaguar outfit ahead of the 2…",
-   "date": "2026-10-22T11:02+00:00",
-   "th": [
-    "Motorsport",
     "6 Technical"
    ]
   },
@@ -151,18 +211,6 @@
    ]
   },
   {
-   "id": "b657bbd1f7",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "The Robot I Didn’t Expect to Build",
-   "url": "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
-   "desc": "Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 . It’s designed to be the first humanoid robot that can safely and economically do useful work at scale, allowing us to bring tens of thousands of hu…",
-   "date": "2026-10-19T13:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "87c27d2245",
    "src": "ESA",
    "level": "magazine",
@@ -175,16 +223,53 @@
    ]
   },
   {
-   "id": "3164c5723d",
+   "id": "1dbcf92a63",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Lichfield & Hatherton canal restoration requires jacked culverts beneath A38 and railway",
+   "url": "https://www.newcivilengineer.com/latest/lichfield-and-hatherton-canal-restorations-requires-jacked-culverts-beneath-a38-and-railway-23-10-2026/",
+   "desc": "The restoration of two Midlands canals will require new infrastructure beneath a motorway and a railway line, as engineers work to reinstate the routes which have been altered by decades of development.",
+   "date": "2026-10-23T08:55+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d2ee93db6e",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "George Russell responds to Christian Horner's Red Bull simulator claim",
+   "url": "https://www.motorsport.com/f1/news/george-russell-responds-to-christian-horners-red-bull-simulator-claim/10867189/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Mercedes Formula 1 driver George Russell has responded to former Red Bull Racing CEO and team principal Christian Horner's claims that he, Lando Norris and Oscar Piastri used to pay to use the Milton Keynes outfit's simulators. Horner, who was dismissed from Red Bull last year…",
+   "date": "2026-10-22T22:36+00:00",
+   "th": [
+    "Motorsport",
+    "4 Design thinking"
+   ]
+  },
+  {
+   "id": "bef1345223",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Engineers use sound to identify potential catastrophic drone failures",
-   "url": "https://techxplore.com/news/2026-10-potential-catastrophic-drone-failures.html",
-   "desc": "Engineers at the University of Cincinnati are using sound to help NASA detect if a drone's motors or propellers are damaged to prevent a crash. UC College of Engineering and Applied Science doctoral student Prissha Chawla and her research partners recorded the various sounds t…",
-   "date": "2026-10-22T11:00+00:00",
+   "title": "Recoloring polyester with supercritical CO₂ could simplify fiber-to-fiber recycling",
+   "url": "https://techxplore.com/news/2026-10-recoloring-polyester-supercritical-fiber-recycling.html",
+   "desc": "Colored polyester is difficult to recycle because the dyes are hard to remove without using large quantities of chemicals, water or energy. Researchers have developed a supercritical carbon dioxide treatment that redistributes existing dyes between polyester fibers, creating u…",
+   "date": "2026-10-22T20:20+00:00",
    "th": [
-    "6 Technical",
-    "9 Health and safety"
+    "3 Wider issues"
+   ]
+  },
+  {
+   "id": "bac3b1cc89",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Why Engineers Should Brave Capitol Hill",
+   "url": "https://spectrum.ieee.org/engineers-lobbying-congress",
+   "desc": "When San Antonio–based software engineer Nikhil Jathar first went to Washington, D.C., to advocate for federal support for technology education and research funding, he was in awe of the opportunity. It was spring of 2025, not long after Jathar settled in the United States fro…",
+   "date": "2026-10-22T13:00+00:00",
+   "th": [
+    "1 Requirements",
+    "6 Technical"
    ]
   },
   {
@@ -201,43 +286,6 @@
    ]
   },
   {
-   "id": "2097974e97",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Charles Leclerc makes worrying Ferrari admission ahead of major F1 upgrade",
-   "url": "https://www.motorsport.com/f1/news/charles-leclerc-makes-worrying-ferrari-admission-ahead-of-major-f1-upgrade/10866596/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "After a mixed season for the Ferrari Formula 1 team, Charles Leclerc says their problem is the \"raw performance\" of its car, not its set-up. This comes as the outfit is expected to bring its largest upgrade of the season to the United States Grand Prix. Ferrari has often looke…",
-   "date": "2026-10-21T08:00+00:00",
-   "th": [
-    "Motorsport",
-    "2 Existing products"
-   ]
-  },
-  {
-   "id": "072358b442",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA’s CASALS Instrument Bridges Gaps in 3D Maps of Earth’s Surface",
-   "url": "https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/nasas-casals-instrument-bridges-gaps-in-3d-maps-of-earths-surface/",
-   "desc": "From orbit, today’s space-based laser instruments measure Earth’s forests and terrain one narrow line at a time. Between those lines are enormous gaps that include millions of acres of land scientists never directly measure. NASA’s CASALS instrument will blend machine learning…",
-   "date": "2026-10-21T12:17+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "f5f0086a80",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "This Hidden Device Could Free Up Gigawatts of Grid Power",
-   "url": "https://spectrum.ieee.org/variable-frequency-drives",
-   "desc": "This article was originally published by Canary Media . America’s energy supply crunch is driving a surge of federal and private investment in new electricity generation —from polluting gas turbines to cleaner developments like solar farms and geothermal plants . But gigawatts…",
-   "date": "2026-10-17T13:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "a4685d43cd",
    "src": "ESA",
    "level": "magazine",
@@ -250,13 +298,114 @@
    ]
   },
   {
-   "id": "429537805d",
+   "id": "72a0d3a8b4",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Councils report record road maintenance spend, says DfT",
+   "url": "https://www.newcivilengineer.com/latest/councils-report-record-road-maintenance-spend-says-dft-23-10-2026/",
+   "desc": "England’s local authorities have reported a record level of spending on road maintenance this year, with nearly 11,265km of carriageway resurfaced and total local road maintenance expenditure rising to about £4.9bn, according to figures published by the Department for Transpor…",
+   "date": "2026-10-23T05:30+00:00",
+   "th": []
+  },
+  {
+   "id": "2d164e8a3c",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Cadillac reveals date for F1 engine factory debut, thanks drivers for being “patient”",
+   "url": "https://www.motorsport.com/f1/news/cadillac-reveals-date-for-f1-engine-factory-debut-thanks-drivers-for-being-patient/10867013/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Cadillac has revealed its Formula 1 engine factory will open on 18 December. General Motors was approved by the FIA in 2025 as a power unit supplier from the 2029 season onwards, hence the construction of new F1 engine facilities at the manufacturer’s base in Charlotte, North …",
+   "date": "2026-10-22T16:01+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "fba22d58ba",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Wheeled, flying and six-legged robots stay on track with new learning method",
-   "url": "https://techxplore.com/news/2026-10-wheeled-flying-legged-robots-stay.html",
-   "desc": "It's important for a robot not just to learn a task optimally, but to complete it without going off the rails of reasonable expectations. Until now, roboticists could have one or the other. Aerospace engineering researchers in The Grainger College of Engineering, University of…",
-   "date": "2026-10-21T19:20+00:00",
+   "title": "Engineered porous material recovers valuable rare earth elements from industrial wastewater",
+   "url": "https://techxplore.com/news/2026-10-porous-material-recovers-valuable-rare.html",
+   "desc": "The rare earth elements that help power electric vehicles, wind turbines, medical imaging machines and other advanced technologies may be hiding in an unlikely place: industrial wastewater.",
+   "date": "2026-10-22T20:00+00:00",
+   "th": [
+    "5 Materials",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "b657bbd1f7",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "The Robot I Didn’t Expect to Build",
+   "url": "https://spectrum.ieee.org/agility-robotics-digit-5-redesign",
+   "desc": "Agility Robotics , the company I cofounded out of my robotics lab at Oregon State University in 2015, has just launched Digit 5 . It’s designed to be the first humanoid robot that can safely and economically do useful work at scale, allowing us to bring tens of thousands of hu…",
+   "date": "2026-10-19T13:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "cdfbacb80d",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "New planning method could make driverless electric taxi fleets more efficient and reliable",
+   "url": "https://techxplore.com/news/2026-10-method-driverless-electric-taxi-fleets.html",
+   "desc": "Self-driving electric taxi fleets could make transportation more efficient and sustainable, but only if vehicles can continuously make smart decisions about where to drive and when to recharge. Researchers at Chalmers University of Technology in Sweden have now developed a new…",
+   "date": "2026-10-21T14:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "3d95749c04",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "As infrastructure evolves investment discipline must keep pace",
+   "url": "https://www.newcivilengineer.com/latest/as-infrastructure-evolves-investment-discipline-must-keep-pace-23-10-2026/",
+   "desc": "Infrastructure investing was once largely associated with roads, hospitals and schools, where revenues were backed by long-term government contracts and relatively predictable cashflows.",
+   "date": "2026-10-23T05:30+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d5f64b9e7e",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Red Bull called Christian Horner to thank him for F1 engine project after maiden win",
+   "url": "https://www.motorsport.com/f1/news/red-bull-called-christian-horner-to-thank-him-for-f1-engine-project-after-maiden-win/10866935/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Christian Horner has revealed Red Bull shareholders called him on the back of the Red Bull Ford Powertrains engine’s maiden Formula 1 victory in Malaysia. Horner joined the Milton Keynes-based squad as its team principal when the brand acquired the Jaguar outfit ahead of the 2…",
+   "date": "2026-10-22T11:02+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "8d7b4def7c",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Rust-free infrastructure: Portable polymer welding method could simplify repairs",
+   "url": "https://techxplore.com/news/2026-10-rust-free-infrastructure-portable-polymer.html",
+   "desc": "Researchers from Skoltech have found a way to assemble and repair structures made from thermoplastic polymer composites—a type of glass fiber–reinforced plastic—in the field.",
+   "date": "2026-10-22T17:00+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical",
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "f5f0086a80",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "This Hidden Device Could Free Up Gigawatts of Grid Power",
+   "url": "https://spectrum.ieee.org/variable-frequency-drives",
+   "desc": "This article was originally published by Canary Media . America’s energy supply crunch is driving a surge of federal and private investment in new electricity generation —from polluting gas turbines to cleaner developments like solar farms and geothermal plants . But gigawatts…",
+   "date": "2026-10-17T13:00+00:00",
    "th": [
     "6 Technical"
    ]
@@ -274,17 +423,29 @@
    ]
   },
   {
-   "id": "f3f1d9c7d8",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "F1’s former fuel flow meter supplier sues its replacement ahead of US GP",
-   "url": "https://www.motorsport.com/f1/news/f1s-former-fuel-flow-meter-supplier-sues-its-replacement-in-texas/10866487/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Formula 1’s former fuel flow meter supplier, Sentronics Holdings Ltd, has taken its replacement to court in Texas. The company claims that the sensors now used by every car in the championship infringe its patent. The British company filed the case against German manufacturer …",
-   "date": "2026-10-20T11:35+00:00",
+   "id": "36db557476",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Ørsted delivers mega battery system near Norwich",
+   "url": "https://www.newcivilengineer.com/latest/orsted-delivers-mega-battery-system-near-norwich-22-10-2026/",
+   "desc": "Renewable energy company Ørsted has completed the construction of a large battery energy storage system (Bess) site alongside the onshore converter for the Hornsea 3 offshore wind farm near Norwich.",
+   "date": "2026-10-22T15:10+00:00",
    "th": [
-    "Motorsport",
     "6 Technical",
-    "7 Manufacturing"
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "f2de7c8c38",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Drone system uses VR for warehouse inventory",
+   "url": "https://techxplore.com/news/2026-10-drone-vr-warehouse.html",
+   "desc": "Engineering students at the University of Cincinnati are developing an easy-to-use system to deploy autonomous drones in warehouses to take inventory and alert workers about leaks from containers. UC College of Engineering and Applied Science doctoral students Deepak Antony Da…",
+   "date": "2026-10-22T11:28+00:00",
+   "th": [
+    "4 Design thinking",
+    "6 Technical"
    ]
   },
   {
@@ -301,65 +462,26 @@
    ]
   },
   {
-   "id": "5887e0b5bc",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Magnetic field tests predict blue OLED lifetimes from tiny brightness changes",
-   "url": "https://techxplore.com/news/2026-10-magnetic-field-blue-oled-lifetimes.html",
-   "desc": "Could a magnetic field be used to identify in advance which OLEDs will keep smartphone and TV screens bright the longest? A KAIST research team has developed a technique that predicts OLED lifetime by analyzing small changes in brightness caused by a magnetic field. The techni…",
-   "date": "2026-10-21T15:20+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "b04a87d701",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Christian Horner: Building Red Bull’s F1 engine was “scary as hell”",
-   "url": "https://www.motorsport.com/f1/news/christian-horner-receives-unexpected-call-from-red-bull-after-breakthrough/10866228/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Former Red Bull team principal Christian Horner has admitted that building the team’s in-house power unit from scratch was “scary as hell”, after the engine claimed its first race wins this 2026 season. This comes despite him being axed from the team a year earlier. Horner was…",
-   "date": "2026-10-19T21:13+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "0ed98d3b25",
-   "src": "IEEE Spectrum",
+   "id": "ec5b14d317",
+   "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Meet the Anthropic Engineer Keeping Its AI Agent Trustworthy",
-   "url": "https://spectrum.ieee.org/anthropic-engineer-ai-agent",
-   "desc": "If you’ve ever wondered how Claude and similar AI agents can answer complex questions in seconds and where they get the information, you’re not alone. Gurmeet Saran works to find that answer every day as an engineer at Anthropic in San Francisco, the AI research company behind…",
-   "date": "2026-10-12T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
+   "title": "BGS to remap UK Continental Shelf providing new information for offshore developers",
+   "url": "https://www.newcivilengineer.com/latest/bgs-to-remap-uk-continental-shelf-providing-new-information-for-offshore-developers-22-10-2026/",
+   "desc": "The British Geological Survey (BGS) will lead a three-year project to develop a new seabed geology datasets and reports on the UK Continental Shelf (UKCS).",
+   "date": "2026-10-22T14:52+00:00",
+   "th": []
   },
   {
-   "id": "cdfbacb80d",
+   "id": "3164c5723d",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New planning method could make driverless electric taxi fleets more efficient and reliable",
-   "url": "https://techxplore.com/news/2026-10-method-driverless-electric-taxi-fleets.html",
-   "desc": "Self-driving electric taxi fleets could make transportation more efficient and sustainable, but only if vehicles can continuously make smart decisions about where to drive and when to recharge. Researchers at Chalmers University of Technology in Sweden have now developed a new…",
-   "date": "2026-10-21T14:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "3007c93199",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Background static can carry wireless data without an actively generated radio signal",
-   "url": "https://techxplore.com/news/2026-10-background-static-wireless-generated-radio.html",
-   "desc": "Stanford researchers recently revealed how a seemingly physics-defying wireless communication technology works. The new technology, called thermal noise communication, harnesses background static that normally is the bane of radio, cellular and other wireless signals. In their…",
-   "date": "2026-10-20T19:20+00:00",
+   "title": "Engineers use sound to identify potential catastrophic drone failures",
+   "url": "https://techxplore.com/news/2026-10-potential-catastrophic-drone-failures.html",
+   "desc": "Engineers at the University of Cincinnati are using sound to help NASA detect if a drone's motors or propellers are damaged to prevent a crash. UC College of Engineering and Applied Science doctoral student Prissha Chawla and her research partners recorded the various sounds t…",
+   "date": "2026-10-22T11:00+00:00",
    "th": [
     "6 Technical",
-    "8 Viability"
+    "9 Health and safety"
    ]
   }
  ]
