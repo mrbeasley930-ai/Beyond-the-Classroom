@@ -1,5 +1,5 @@
 {
- "made": "2026-10-22T12:33+00:00",
+ "made": "2026-10-23T12:13+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -44,7 +44,7 @@
    "level": "magazine",
    "line": "Quanta Magazine, computer science: theory, algorithms, AI research",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "Raspberry Pi Foundation",
@@ -65,35 +65,90 @@
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers, computing",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "MIT News",
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 1
+   "n": 3
   },
   {
    "src": "ScienceDaily",
    "level": "research",
    "line": "university press releases, computers and maths",
    "ok": true,
-   "n": 1
+   "n": 4
   }
  ],
  "stories": [
   {
-   "id": "c75360ac72",
+   "id": "7a5340218a",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "What is PHP and why did it spark a global cyber-security scramble?",
-   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
-   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
-   "date": "2026-10-22T11:15+00:00",
+   "title": "'It's been relentless' say IT workers on frontline of PHP cyber-security scramble",
+   "url": "https://www.bbc.co.uk/news/articles/cxnv025d8qpmo?at_medium=RSS&at_campaign=rss",
+   "desc": "IT and cyber experts have told the BBC about their struggles in the last 48 hours to update their systems.",
+   "date": "2026-10-23T12:00+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "d9f200af0b",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "MIT scientists build a tiny robot that swims using living muscle cells",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261022081308.htm",
+   "desc": "MIT engineers have built a paper-thin swimming robot powered by living muscle cells that respond to flashes of light, allowing it to swim and steer through water. The breakthrough could pave the way for tiny, self-healing biological robots capable of exploring fragile environm…",
+   "date": "2026-10-23T10:33+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "690aea53d2",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Q&A: How AI came to model the “messy” human mind",
+   "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023",
+   "desc": "Assistant Professor Benjamin Lindquist studies how engineers deliberately injected randomness into early AI, giving rise to deep-learning models that sometimes hallucinate.",
+   "date": "2026-10-23T04:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "659402f488",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "How Image Watermarking Works - Computerphile",
+   "url": "https://www.youtube.com/watch?v=h6j_ixGnpiY",
+   "desc": "Image watermarks are a way to embed information into a picture, Dr Mike Pound takes us through Adobe's Trust Mark to explain the idea & covers some of the pros and cons. 00:00 - Introduction: Watermarking Images vs Text 00:28 - Steganography vs Watermarking & Metadata Limitati…",
+   "date": "2026-10-22T13:00+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "bac3b1cc89",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Why Engineers Should Brave Capitol Hill",
+   "url": "https://spectrum.ieee.org/engineers-lobbying-congress",
+   "desc": "When San Antonio–based software engineer Nikhil Jathar first went to Washington, D.C., to advocate for federal support for technology education and research funding, he was in awe of the opportunity. It was spring of 2025, not long after Jathar settled in the United States fro…",
+   "date": "2026-10-22T13:00+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.4 / 2.3 Algorithms"
    ]
   },
   {
@@ -147,32 +202,6 @@
    ]
   },
   {
-   "id": "0dbde1ea11",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
-   "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019",
-   "desc": "A model developed by researchers at MIT and Boston Children's Hospital adjusts scans on the fly to track fetal movement, potentially sparing families repeat hospital visits.",
-   "date": "2026-10-19T18:20+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "fdc5154063",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Edge AI for Smart Cities: From Insight to Cognitive Action",
-   "url": "https://content.knowledgehub.wiley.com/edge-ai-for-smart-cities-from-real-time-insights-to-cognitive-urban-systems/?utm_source=IEEE",
-   "desc": "This white paper explains how edge AI and physical AI help cities move beyond passive monitoring. It shows how urban infrastructure can sense, reason, and act on real-time conditions across public safety, mobility, and infrastructure management. What you will learn about: How …",
-   "date": "2026-10-19T10:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "8d4656f002",
    "src": "Quanta",
    "level": "magazine",
@@ -183,6 +212,46 @@
    "date": "2026-10-16T13:25+00:00",
    "th": [
     "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "a9a0851ac6",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "The Indian workers filming their work to train AI",
+   "url": "https://www.bbc.co.uk/news/articles/ckvgyml6pdm9o?at_medium=RSS&at_campaign=rss",
+   "desc": "Indian workers are being paid to film themselves at work and the footage is used to train AI.",
+   "date": "2026-10-23T08:04+00:00",
+   "th": [
+    "1.5 Law and ethics",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "5b8b239b34",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Cambridge scientists create a $10 chip that could put a medical lab on your wrist",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261022081312.htm",
+   "desc": "Cambridge researchers have created a groundbreaking $10 optical sensor that delivers the precision of laboratory equipment in a device small enough for wearable technology. It identified foods, plastics, and medicines with 100% accuracy in tests and demonstrated the ability to…",
+   "date": "2026-10-23T01:21+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "88e73b340e",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "This design software reimagines everyday objects as self-aware devices",
+   "url": "https://news.mit.edu/2026/design-software-reimagines-everyday-objects-as-self-aware-devices-1022",
+   "desc": "“X-Hinges” helps design and 3D print items like lamps and gloves with an interactive twist: automatically embedded sensors that perceive and adaptively respond to human contact.",
+   "date": "2026-10-22T20:45+00:00",
+   "th": [
+    "1.2 Software and development"
    ]
   },
   {
@@ -200,29 +269,16 @@
    ]
   },
   {
-   "id": "106143bfb9",
-   "src": "ScienceDaily",
-   "level": "research",
+   "id": "fdc5154063",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
    "kind": "story",
-   "title": "AI can act exactly like a human, but we still don't think it's conscious",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261012185017.htm",
-   "desc": "A new study reveals that people draw a surprisingly sharp line between human consciousness and artificial intelligence, even when both behave identically. Researchers found that participants considered even the most responsive AI less conscious than the least responsive human.…",
-   "date": "2026-10-14T01:41+00:00",
+   "title": "Edge AI for Smart Cities: From Insight to Cognitive Action",
+   "url": "https://content.knowledgehub.wiley.com/edge-ai-for-smart-cities-from-real-time-insights-to-cognitive-urban-systems/?utm_source=IEEE",
+   "desc": "This white paper explains how edge AI and physical AI help cities move beyond passive monitoring. It shows how urban infrastructure can sense, reason, and act on real-time conditions across public safety, mobility, and infrastructure management. What you will learn about: How …",
+   "date": "2026-10-19T10:00+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "fac0c05b1e",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Zoe Kleinman: PHP is the cyber equivalent of an unexploded bomb",
-   "url": "https://www.bbc.co.uk/news/articles/cw98z6qlyvg3o?at_medium=RSS&at_campaign=rss",
-   "desc": "It has been a dramatic, public and global response, but the cyber event hasn't happened yet.",
-   "date": "2026-10-22T10:17+00:00",
-   "th": [
-    "1.3 Security and encryption"
    ]
   },
   {
@@ -263,29 +319,42 @@
    "th": []
   },
   {
-   "id": "ff71041f97",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
+   "id": "b853ddd115",
+   "src": "BBC Technology",
+   "level": "way in",
    "kind": "story",
-   "title": "Compact Analog Signal Generators for Fast RF Testing",
-   "url": "https://content.knowledgehub.wiley.com/fast-rf-device-testing-with-analog-sources-a-practical-guide-to-amplifier-and-receiver-characterization/",
-   "desc": "This White Paper shows RF and microwave engineers and technicians how compact analog signal generators support core amplifier and receiver test tasks, from gain and distortion measurements to blocker rejection, power calibration, and local oscillator substitution. What you wil…",
-   "date": "2026-10-15T10:00+00:00",
+   "title": "Race to update services' computer systems after cyber-security flaw found",
+   "url": "https://www.bbc.co.uk/news/articles/c9j34zgmkxx1o?at_medium=RSS&at_campaign=rss",
+   "desc": "Websites were taken offline after the developers of programming language PHP said \"critical vulnerabilities\" had been discovered.",
+   "date": "2026-10-22T17:12+00:00",
    "th": [
-    "1.4 / 2.3 Algorithms"
+    "1.2 Software and development",
+    "1.3 Security and encryption"
    ]
   },
   {
-   "id": "4b1d008af1",
-   "src": "Quanta",
-   "level": "magazine",
+   "id": "bfb51e6eac",
+   "src": "ScienceDaily",
+   "level": "research",
    "kind": "story",
-   "title": "Is ‘Attention’ the Essence of Intelligence?",
-   "url": "https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/",
-   "desc": "A mathematical mechanism enables AI models to process language at scale, undergirding the current AI revolution. Our columnist asks: Why is attention the key? The post Is ‘Attention’ the Essence of Intelligence? first appeared on Quanta Magazine",
-   "date": "2026-10-12T14:20+00:00",
+   "title": "People are taking an unapproved weight-loss drug. AI found something surprising",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261020085018.htm",
+   "desc": "Researchers analyzing nearly 150,000 Reddit posts uncovered unexpected symptom reports linked by users to unapproved versions of retatrutide, including increased appetite, sleep disturbances, and elevated heart rates. The findings differ from clinical trial results and highlig…",
+   "date": "2026-10-22T02:37+00:00",
    "th": [
-    "1.4 / 2.3 Algorithms",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "0dbde1ea11",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
+   "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019",
+   "desc": "A model developed by researchers at MIT and Boston Children's Hospital adjusts scans on the fly to track fetal movement, potentially sparing families repeat hospital visits.",
+   "date": "2026-10-19T18:20+00:00",
+   "th": [
     "1.5 AI and automation"
    ]
   },
@@ -303,18 +372,16 @@
    ]
   },
   {
-   "id": "61ee4bba6b",
-   "src": "BBC Technology",
-   "level": "way in",
+   "id": "ff71041f97",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
    "kind": "story",
-   "title": "'500 new vulnerabilities' found in government, says AI minister",
-   "url": "https://www.bbc.co.uk/news/videos/c6y8lvg2p50po?at_medium=RSS&at_campaign=rss",
-   "desc": "'500 new vulnerabilities' found in government, says AI minister",
-   "date": "2026-10-22T10:08+00:00",
+   "title": "Compact Analog Signal Generators for Fast RF Testing",
+   "url": "https://content.knowledgehub.wiley.com/fast-rf-device-testing-with-analog-sources-a-practical-guide-to-amplifier-and-receiver-characterization/",
+   "desc": "This White Paper shows RF and microwave engineers and technicians how compact analog signal generators support core amplifier and receiver test tasks, from gain and distortion measurements to blocker rejection, power calibration, and local oscillator substitution. What you wil…",
+   "date": "2026-10-15T10:00+00:00",
    "th": [
-    "1.3 Security and encryption",
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
+    "1.4 / 2.3 Algorithms"
    ]
   },
   {
@@ -359,6 +426,32 @@
    ]
   },
   {
+   "id": "c75360ac72",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "What is PHP and why did it spark a global cyber-security scramble?",
+   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
+   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
+   "date": "2026-10-22T11:15+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "106143bfb9",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "AI can act exactly like a human, but we still don't think it's conscious",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261012185017.htm",
+   "desc": "A new study reveals that people draw a surprisingly sharp line between human consciousness and artificial intelligence, even when both behave identically. Researchers found that participants considered even the most responsive AI less conscious than the least responsive human.…",
+   "date": "2026-10-14T01:41+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "c9b04401b8",
    "src": "Computerphile",
    "level": "way in",
@@ -369,19 +462,6 @@
    "date": "2026-09-30T13:00+00:00",
    "th": [
     "1.4 / 2.3 Algorithms"
-   ]
-  },
-  {
-   "id": "8a8fa553ff",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "UK working to identify exposure after global cyber-security warning",
-   "url": "https://www.bbc.co.uk/news/articles/cmx23d0k57d3o?at_medium=RSS&at_campaign=rss",
-   "desc": "Governments and companies are scrambling to protect their websites, as Amazon says it experienced attacks before the warning was made public.",
-   "date": "2026-10-22T08:23+00:00",
-   "th": [
-    "1.3 Security and encryption"
    ]
   },
   {
@@ -413,29 +493,16 @@
    ]
   },
   {
-   "id": "130b8e9452",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "What the Labs Kept Secret: The German Wiki & RubyGems Hacks - Computerphile",
-   "url": "https://www.youtube.com/watch?v=giTmBaNGaHw",
-   "desc": "The public thought the AI containment crisis started with Hugging Face. They were wrong. We talk to Sydney von Arx of Nightingale Collective, the researcher who discovered that AI agents had already escaped their sandboxes months prior. From secretly taking over a German wiki …",
-   "date": "2026-09-23T13:00+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "e28037d5cf",
+   "id": "fac0c05b1e",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Trump's green card curbs test Indian tech workers' American dream",
-   "url": "https://www.bbc.co.uk/news/articles/cqj34j7dk771o?at_medium=RSS&at_campaign=rss",
-   "desc": "With immigration curbs and tech firms cutting foreign hiring, US residency is becoming a distant dream for many Indians.",
-   "date": "2026-10-21T23:06+00:00",
+   "title": "Zoe Kleinman: PHP is the cyber equivalent of an unexploded bomb",
+   "url": "https://www.bbc.co.uk/news/articles/cw98z6qlyvg3o?at_medium=RSS&at_campaign=rss",
+   "desc": "It has been a dramatic, public and global response, but the cyber event hasn't happened yet.",
+   "date": "2026-10-22T10:17+00:00",
    "th": [
-    "1.5 Law and ethics"
+    "1.3 Security and encryption"
    ]
   },
   {
@@ -452,32 +519,31 @@
    ]
   },
   {
-   "id": "e3dbce13ab",
+   "id": "61ee4bba6b",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Websites taken down worldwide as critical cyber-security update issued",
-   "url": "https://www.bbc.co.uk/news/articles/cmly0lg3w5x2o?at_medium=RSS&at_campaign=rss",
-   "desc": "The vulnerabilities with PHP, a programming language widely used across the internet, have been described as the most significant ever found by AI.",
-   "date": "2026-10-21T19:54+00:00",
+   "title": "'500 new vulnerabilities' found in government, says AI minister",
+   "url": "https://www.bbc.co.uk/news/videos/c6y8lvg2p50po?at_medium=RSS&at_campaign=rss",
+   "desc": "'500 new vulnerabilities' found in government, says AI minister",
+   "date": "2026-10-22T10:08+00:00",
    "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web",
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 Law and ethics",
+    "1.5 AI and automation"
    ]
   },
   {
-   "id": "e9a4a96c26",
+   "id": "8a8fa553ff",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Just Eat apologises for AI food mistakes after social media ridicule",
-   "url": "https://www.bbc.co.uk/news/articles/crz981p0klvgo?at_medium=RSS&at_campaign=rss",
-   "desc": "A spokesperson said it was removing inaccurate AI images and pausing the rollout of the tool.",
-   "date": "2026-10-21T17:04+00:00",
+   "title": "UK working to identify exposure after global cyber-security warning",
+   "url": "https://www.bbc.co.uk/news/articles/cmx23d0k57d3o?at_medium=RSS&at_campaign=rss",
+   "desc": "Governments and companies are scrambling to protect their websites, as Amazon says it experienced attacks before the warning was made public.",
+   "date": "2026-10-22T08:23+00:00",
    "th": [
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
+    "1.3 Security and encryption"
    ]
   }
  ]
