@@ -1,5 +1,5 @@
 {
- "made": "2026-10-22T12:07+00:00",
+ "made": "2026-10-23T11:51+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 38
+   "n": 40
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 12
+   "n": 13
   },
   {
    "src": "NASA EONET",
@@ -121,14 +121,33 @@
  ],
  "events": [
   {
+   "id": "qus6000u4bk",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.7 earthquake",
+   "place": "61 km WNW of Leni, Italy",
+   "lat": 38.72,
+   "lon": 14.15,
+   "date": "2026-10-23T10:19+00:00",
+   "mag": 5.7,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4bk",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "italy"
+  },
+  {
    "id": "eo1f32a0e3ef",
    "kind": "storm",
    "src": "NASA EONET · JTWC",
    "title": "Tropical Cyclone Agueda",
    "place": "",
-   "lat": -6.0,
-   "lon": 50.8,
-   "date": "2026-10-22T06:00+00:00",
+   "lat": -5.7,
+   "lon": 49.5,
+   "date": "2026-10-23T06:00+00:00",
    "first": "2026-10-20T06:00+00:00",
    "url": "https://www.metoc.navy.mil/jtwc/products/sh0227.tcw",
    "th": [
@@ -140,16 +159,54 @@
    "kind": "storm",
    "src": "GDACS and NASA EONET",
    "title": "Super Typhoon Champi",
-   "place": "Philippines, Guam, Northern Mariana Islands, Japan and 1 more",
-   "lat": 20.9,
-   "lon": 125.4,
-   "date": "2026-10-22T06:00+00:00",
+   "place": "Philippines, Guam, Northern Mariana Islands, Japan",
+   "lat": 22.7,
+   "lon": 123.8,
+   "date": "2026-10-23T06:00+00:00",
    "alert": "red",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001338",
-   "desc": "From 14/10/2026 to 22/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 296 km/h) CHAMPI-26 was active in NWPacific. The cyclone affects these countries: Philippines, Guam, Northern Mariana Islands, Japan, Taiwan (vulnerability M…",
+   "desc": "From 14/10/2026 to 23/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 296 km/h) CHAMPI-26 was active in NWPacific. The cyclone affects these countries: Philippines, Guam, Northern Mariana Islands, Japan (vulnerability Medium). …",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
+  },
+  {
+   "id": "qus6000u44n",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "201 km ENE of Nagqu, China",
+   "lat": 32.44,
+   "lon": 93.87,
+   "date": "2026-10-22T15:12+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u44n",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "china"
+  },
+  {
+   "id": "qus6000u43g",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 7.0 earthquake",
+   "place": "191 km ENE of Nagqu, China",
+   "lat": 32.38,
+   "lon": 93.78,
+   "date": "2026-10-22T14:33+00:00",
+   "mag": 7,
+   "depth": 18,
+   "alert": "orange",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u43g",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "china"
   },
   {
    "id": "qus6000u3yj",
@@ -157,7 +214,7 @@
    "src": "USGS",
    "title": "Magnitude 5.3 earthquake",
    "place": "Reykjanes Ridge",
-   "lat": 56.81,
+   "lat": 56.78,
    "lon": -34.17,
    "date": "2026-10-21T21:38+00:00",
    "mag": 5.3,
@@ -171,23 +228,36 @@
    "region": "reykjanes ridge"
   },
   {
-   "id": "qus6000u3wh",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.1 earthquake",
-   "place": "south of Africa",
-   "lat": -52.83,
-   "lon": 27.53,
-   "date": "2026-10-21T18:12+00:00",
-   "mag": 5.1,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3wh",
+   "id": "gd5c93f17df3",
+   "kind": "storm",
+   "src": "GDACS",
+   "title": "Tropical cyclone Vance",
+   "place": "México",
+   "lat": 10.5,
+   "lon": -101.9,
+   "date": "2026-10-21T14:51+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001341",
+   "desc": "From 21/10/2026 to 23/10/2026, a Tropical Storm (maximum wind speed of 194 km/h) VANCE-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1 (120 km/h) …",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "south of africa"
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gdea9adde66f",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Guatemala",
+   "place": "Guatemala",
+   "lat": 15.38,
+   "lon": -90.24,
+   "date": "2026-10-21T10:52+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104244",
+   "desc": "On 18/10/2026, a flood started in Guatemala, lasting until 20/10/2026 (last update). The flood caused 0 deaths and 1 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
   },
   {
    "id": "gd0118d37485",
@@ -239,25 +309,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "philippines"
-  },
-  {
-   "id": "qus6000u3t4",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.1 earthquake",
-   "place": "164 km NE of Lospalos, Timor Leste",
-   "lat": -7.56,
-   "lon": 128.14,
-   "date": "2026-10-21T07:44+00:00",
-   "mag": 5.1,
-   "depth": 123,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3t4",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "timor leste"
   },
   {
    "id": "gd7a2cf43ea2",
@@ -382,22 +433,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "vanuatu"
-  },
-  {
-   "id": "gdbe0bff7dae",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Nicaragua",
-   "place": "Nicaragua",
-   "lat": 14.03,
-   "lon": -83.38,
-   "date": "2026-10-19T06:05+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104237",
-   "desc": "On 16/10/2026, a flood started in Nicaragua, lasting until 18/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "gd2c3d3f705a",
@@ -591,25 +626,6 @@
    ]
   },
   {
-   "id": "qus6000u2hv",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "107 km NNE of Hihifo, Tonga",
-   "lat": -15.04,
-   "lon": -173.44,
-   "date": "2026-10-15T13:29+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2hv",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "tonga"
-  },
-  {
    "id": "eo136ec6fe5e",
    "kind": "ice",
    "src": "NASA EONET · NATICE",
@@ -722,7 +738,7 @@
    "date": "2026-10-12T23:20+00:00",
    "mag": 6.1,
    "depth": 11,
-   "alert": "green",
+   "alert": "yellow",
    "tsunami": false,
    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u1wn",
    "th": [
@@ -846,22 +862,6 @@
    "url": "https://irwin.doi.gov/observer/incidents/2026-CASQF-001695",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "gd67cf3459d0",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Brazil",
-   "place": "Brazil",
-   "lat": -22.12,
-   "lon": -43.21,
-   "date": "2026-10-09T06:06+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104216",
-   "desc": "On 01/10/2026, a flood started in Brazil, lasting until 18/10/2026 (last update). The flood caused 0 deaths and 279 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1018,38 +1018,87 @@
  ],
  "stories": [
   {
-   "id": "1c56cf9341",
+   "id": "e405aa53c9",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "At least four dead after storm brings flooding to southern France",
-   "url": "https://www.bbc.co.uk/news/articles/cm5ynl4v4wgwo?at_medium=RSS&at_campaign=rss",
-   "desc": "The deaths include two women found drowned in a cellar in the Bouches-du-Rhône region.",
-   "date": "2026-10-22T11:23+00:00",
+   "title": "Weather warnings in place ahead of Storm Boelo",
+   "url": "https://www.bbc.co.uk/news/articles/c83vqn2x54v1o?at_medium=RSS&at_campaign=rss",
+   "desc": "The amber Met Office alert for counties Antrim and Londonderry lasts from 21:00 BST on Saturday until 21:00 GMT on Sunday.",
+   "date": "2026-10-23T09:53+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "b7113c7bab",
-   "src": "Guardian Global Development",
+   "id": "d9c8386f8e",
+   "src": "ESA Observing the Earth",
+   "level": "magazine",
+   "title": "Earth from Space: The pink city",
+   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/Earth_from_Space_The_pink_city",
+   "desc": "Image: This image shows a detailed view of the city of Toulouse in southwest France, with its terracotta tiled rooftops lending it the nickname la ville rose, or the pink city.",
+   "date": "2026-10-23T08:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "0e9ca58267",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Country Shapes – Africa",
+   "url": "https://geographical.co.uk/quizzes/quiz-country-shapes-africa-5",
+   "desc": "How well do you know Africa’s countries? Put your geography skills to the test by identifying each country from its shape alone. Look closely at every outline and see how many you can name. Ready? Let’s begin!",
+   "date": "2026-10-23T07:00+00:00",
+   "th": []
+  },
+  {
+   "id": "a4567f47f9",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "Blockades, checkpoints and court action: fending off Brazil’s biofuel giants in the Amazon",
-   "url": "https://www.theguardian.com/global-development/2026/oct/22/quilombolas-indigenous-amazon-brazil-biofuels-palm-oil",
-   "desc": "After decades of violent displacement and land theft, the country’s quilombola communities are fighting back For most of his 39 years, Josias Dias dos Santos, known as Jota, has endured degrading cycles of displacement as a quilombola , a descendant of Black people once enslav…",
-   "date": "2026-10-22T11:00+00:00",
+   "title": "Heat killed ‘staggering’ 50,000 people in Europe’s cities this summer, scientists warn",
+   "url": "https://www.theguardian.com/environment/2026/oct/23/heat-killed-staggering-50000-people-european-cities-this-summer-experts",
+   "desc": "People succumbed to heat at highest rates in Malta, Italy and Hungary, with health issues, loneliness and poverty exacerbating toll Heat killed a record 50,000 people in European cities this summer, new research suggests, with scientists blaming climate breakdown for two in ev…",
+   "date": "2026-10-23T04:01+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "e0826a3e6a",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "El Niño Then and Now",
+   "url": "https://science.nasa.gov/earth/earth-observatory/el-nino-then-and-now/",
+   "desc": "A 35-year satellite altimetry record lets scientists hold this year's El Niño up against its strongest predecessors.",
+   "date": "2026-10-23T04:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "ed1f7b5b94",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Jackdaw decision could haunt the UK at future climate summits",
+   "url": "https://theconversation.com/jackdaw-decision-could-haunt-the-uk-at-future-climate-summits-294981",
+   "desc": "The UK can’t champion a fossil fuel phase-out while approving new gas fields.",
+   "date": "2026-10-22T15:46+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "98891ea530",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Autumn wreaths and ‘doorscaping’: why we need more life in our front gardens",
-   "url": "https://theconversation.com/autumn-wreaths-and-doorscaping-why-we-need-more-life-in-our-front-gardens-293884",
-   "desc": "Autumn wreaths are now decorating many front doors, as part of a new trend.",
-   "date": "2026-10-22T10:57+00:00",
-   "th": []
+   "id": "1a51e90606",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Have scientists finally found a way to save the banana from disaster?",
+   "url": "https://www.theguardian.com/global-development/2026/oct/22/have-scientists-finally-found-a-way-to-save-the-banana-from-disaster",
+   "desc": "With the climate crisis and diseases threatening one of the world’s most popular fruits, researchers are hoping a breakthrough in breeding techniques could give the Cavendish banana a certain future Love them or loathe them, bananas are one of the world’s most popular fruit . …",
+   "date": "2026-10-22T13:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 8A Health, human rights and intervention"
+   ]
   },
   {
    "id": "c5e2d7de13",
@@ -1060,41 +1109,6 @@
    "desc": "Artificial intelligence (AI) is developing at a rapid pace and is increasingly being used by scientists to better understand climate&#8230;",
    "date": "2026-10-22T10:45+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "53d65475ee",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Big pharma accused of ‘free-riding on nature’ as global fund attracts just $7,000",
-   "url": "https://www.theguardian.com/environment/2026/oct/22/cop17-cali-conservation-fund-pharmaceutical-freeriding-nature-aoe",
-   "desc": "The Cali Fund, set up to raise $1bn a year for biodiversity from drug companies, remains near empty Big pharmaceutical companies have been accused of “free-riding on nature”, after a landmark biodiversity fund that invites businesses to put some of their profits back into cons…",
-   "date": "2026-10-22T09:00+00:00",
-   "th": [
-    "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "5c404c540f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Skiing down Everest",
-   "url": "https://geographical.co.uk/features/skiing-down-everest",
-   "desc": "Tristan Kennedy meets ski mountaineer Jim Morrison, whose pioneering descent of Mount Everest’s north face demanded meticulous preparation and extraordinary skill.",
-   "date": "2026-10-22T08:00+00:00",
-   "th": []
-  },
-  {
-   "id": "35e42ab2e6",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Fires Char New Guinea",
-   "url": "https://science.nasa.gov/earth/earth-observatory/fires-char-new-guinea/",
-   "desc": "Emissions on both sides of the island are unusually high as human-set fires spread in a landscape parched by drought.",
-   "date": "2026-10-22T04:01+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
@@ -1111,6 +1125,18 @@
    ]
   },
   {
+   "id": "85412a258d",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "BBC presenter battles strong winds as Storm Austen hits Newquay",
+   "url": "https://www.bbc.co.uk/news/videos/cmzxlgkyl3vpo?at_medium=RSS&at_campaign=rss",
+   "desc": "BBC lead weather presenter Simon King is in Newquay as the \"full force\" of the storm arrives.",
+   "date": "2026-10-23T08:26+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
    "id": "da66ff054b",
    "src": "ESA Observing the Earth",
    "level": "magazine",
@@ -1121,37 +1147,58 @@
    "th": []
   },
   {
-   "id": "5cc165f290",
-   "src": "BBC Science & Environment",
+   "id": "5c404c540f",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Skiing down Everest",
+   "url": "https://geographical.co.uk/features/skiing-down-everest",
+   "desc": "Tristan Kennedy meets ski mountaineer Jim Morrison, whose pioneering descent of Mount Everest’s north face demanded meticulous preparation and extraordinary skill.",
+   "date": "2026-10-22T08:00+00:00",
+   "th": []
+  },
+  {
+   "id": "e6f37a12f4",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "Project aims to protect rare arctic-alpine plants",
-   "url": "https://www.bbc.co.uk/news/articles/c6ewe4zyyg0ro?at_medium=RSS&at_campaign=rss",
-   "desc": "The three year scheme is awarded £65,000 to collect seeds and plant them in the fells.",
-   "date": "2026-10-22T11:11+00:00",
+   "title": "In allowing coal expansion in the Hunter, Chris Minns is pouring fuel on the climate fire. His decision will come back to hurt us all | Jack Egan",
+   "url": "https://www.theguardian.com/australia-news/commentisfree/2026/oct/23/chris-minns-coal-expansion-laws-will-hurt-us-all-climate-mount-pleasant",
+   "desc": "The high court found NSW is responsible for emissions from burning exported coal. What message does it send when the government can step in and bypass the law? Sign up for climate and environment editor Adam Morton’s free Clear Air newsletter here As someone who lost their hom…",
+   "date": "2026-10-23T01:08+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "be1515692c",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "‘For Panama, it is life or death’: how drought is choking the canal that feeds a nation",
-   "url": "https://www.theguardian.com/global-development/2026/oct/20/panama-canal-environment-water-drought-el-nino-farming",
-   "desc": "Failed rains and a dire El Niño threaten the waterway that sustains the country, with farmers selling cattle to survive The cattle should be ambling, grazing contentedly, through Robert Delgado’s fields. Instead, the animals slump in the shade, tongues lolling, in futile attem…",
-   "date": "2026-10-20T10:00+00:00",
+   "id": "35e42ab2e6",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Fires Char New Guinea",
+   "url": "https://science.nasa.gov/earth/earth-observatory/fires-char-new-guinea/",
+   "desc": "Emissions on both sides of the island are unusually high as human-set fires spread in a landscape parched by drought.",
+   "date": "2026-10-22T04:01+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 5 The water cycle and water insecurity",
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "5f329ee44e",
+   "id": "98891ea530",
    "src": "The Conversation",
    "level": "research",
-   "title": "When climate data is transformed into visuals some people and places get overlooked",
-   "url": "https://theconversation.com/when-climate-data-is-transformed-into-visuals-some-people-and-places-get-overlooked-293489",
-   "desc": "Data visualisation can change how people see, feel and relate to climate disasters.",
-   "date": "2026-10-22T10:56+00:00",
+   "title": "Autumn wreaths and ‘doorscaping’: why we need more life in our front gardens",
+   "url": "https://theconversation.com/autumn-wreaths-and-doorscaping-why-we-need-more-life-in-our-front-gardens-293884",
+   "desc": "Autumn wreaths are now decorating many front doors, as part of a new trend.",
+   "date": "2026-10-22T10:57+00:00",
+   "th": []
+  },
+  {
+   "id": "b7113c7bab",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Blockades, checkpoints and court action: fending off Brazil’s biofuel giants in the Amazon",
+   "url": "https://www.theguardian.com/global-development/2026/oct/22/quilombolas-indigenous-amazon-brazil-biofuels-palm-oil",
+   "desc": "After decades of violent displacement and land theft, the country’s quilombola communities are fighting back For most of his 39 years, Josias Dias dos Santos, known as Jota, has endured degrading cycles of displacement as a quilombola , a descendant of Black people once enslav…",
+   "date": "2026-10-22T11:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
@@ -1169,43 +1216,6 @@
    ]
   },
   {
-   "id": "019235557f",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Whale carcass closes Maroubra and Coogee beaches in Sydney – video",
-   "url": "https://www.theguardian.com/environment/video/2026/oct/22/whale-carcass-closes-maroubra-and-coogee-beaches-in-sydney-video",
-   "desc": "Video released by Randwick city council shows a whale carcass floating in the water in a Sydney bay, causing the closure of two busy beaches. The whale's decomposed body was found on Thursday morning at Lurline Bay, a rocky cove surrounded by cliffs in Sydney’s eastern suburbs…",
-   "date": "2026-10-22T05:38+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change"
-   ]
-  },
-  {
-   "id": "34580c56c4",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Profile: Yemen",
-   "url": "https://geographical.co.uk/features/in-the-shadow-of-war-yemen-still-dares-to-dream",
-   "desc": "Once known as ‘Happy Arabia’, Yemen is a land of ancient cities and dramatic landscapes, battered by war, hunger and dwindling water supplies.",
-   "date": "2026-10-21T08:00+00:00",
-   "th": [
-    "Topic 4A Regenerating places",
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "6c0c8a7191",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Extratropical Cyclone Whips Past Iceland",
-   "url": "https://science.nasa.gov/earth/earth-observatory/extratropical-cyclone-whips-past-iceland/",
-   "desc": "The powerful low-pressure system formed over the North Atlantic out of the remnants of Hurricane Isaias.",
-   "date": "2026-10-21T04:01+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "4415c6e080",
    "src": "UN News (migration)",
    "level": "way in",
@@ -1216,6 +1226,18 @@
    "th": [
     "Topic 8A Health, human rights and intervention",
     "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "80af6eb4a3",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Lights will stay on this winter, grid operator says after concerns",
+   "url": "https://www.bbc.co.uk/news/articles/cmy56q2n1veqo?at_medium=RSS&at_campaign=rss",
+   "desc": "The assurance from the National Energy System Operator comes amid concern from its engineers about their ability to ensure adequate supply.",
+   "date": "2026-10-23T06:47+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1231,15 +1253,146 @@
    ]
   },
   {
-   "id": "db746dbf03",
+   "id": "852dbddf75",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "More than 800,000 people at risk of displacement in Somalia due to floods",
+   "url": "https://geographical.co.uk/news/more-than-800000-people-at-risk-of-displacement-in-somalia-due-to-floods",
+   "desc": "Somalia enters a rainy season forecast to bring above-average precipitation, with threats to crops, livelihoods, water sources and access to essential services New projections by the IOM and the Danish Refugee Council (DRC) estimate that more than 870,000 people could be displ…",
+   "date": "2026-10-22T08:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity",
+    "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "966ee9b9b8",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "A possible three tornados wallop Arizona, bringing golf-ball sized hail",
+   "url": "https://www.theguardian.com/us-news/2026/oct/22/arizona-storms-weather-tornado-warning",
+   "desc": "Violent storms overnight knocked over utility poles and trees and carried thunder and heavy winds through state Yet more severe weather struck Thursday in the US south-west as the Four Corners region surveyed blown-away roofs, trees knocked on to homes and power lines downed f…",
+   "date": "2026-10-22T23:15+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "6c0c8a7191",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Extratropical Cyclone Whips Past Iceland",
+   "url": "https://science.nasa.gov/earth/earth-observatory/extratropical-cyclone-whips-past-iceland/",
+   "desc": "The powerful low-pressure system formed over the North Atlantic out of the remnants of Hurricane Isaias.",
+   "date": "2026-10-21T04:01+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "5f329ee44e",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "When climate data is transformed into visuals some people and places get overlooked",
+   "url": "https://theconversation.com/when-climate-data-is-transformed-into-visuals-some-people-and-places-get-overlooked-293489",
+   "desc": "Data visualisation can change how people see, feel and relate to climate disasters.",
+   "date": "2026-10-22T10:56+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "be1515692c",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "‘For Panama, it is life or death’: how drought is choking the canal that feeds a nation",
+   "url": "https://www.theguardian.com/global-development/2026/oct/20/panama-canal-environment-water-drought-el-nino-farming",
+   "desc": "Failed rains and a dire El Niño threaten the waterway that sustains the country, with farmers selling cattle to survive The cattle should be ambling, grazing contentedly, through Robert Delgado’s fields. Instead, the animals slump in the shade, tongues lolling, in futile attem…",
+   "date": "2026-10-20T10:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "c2daf2d48c",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "UNEP: Opportunity has ‘been lost’ to meet 1.5C warming limit without ‘overshoot’",
+   "url": "https://www.carbonbrief.org/unep-opportunity-has-been-lost-to-meet-1-5c-warming-limit-without-overshoot",
+   "desc": "A temporary breach of the 1.5C global-warming limit is now “inevitable” following “decades of insufficient climate action”, says the UN&#8230;",
+   "date": "2026-10-21T05:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "f0e0768422",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "‘Efficiency has limits’: UNHCR chief warns refugee protection is buckling under cuts",
+   "url": "https://news.un.org/feed/view/en/story/2026/10/1168575",
+   "desc": "The money is running out faster than needs are growing: with 117 million men, women and children now forced from their homes, the UN refugee agency (UNHCR) has received just $3 billion of the $8.5 billion it needs this year – and its chief, Barham Salih, warns that the global …",
+   "date": "2026-10-12T12:00+00:00",
+   "th": [
+    "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "98d06ad965",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "First human case of Shamonda virus detected in France, officials say",
-   "url": "https://www.bbc.co.uk/news/articles/c6reyx1d9ge9o?at_medium=RSS&at_campaign=rss",
-   "desc": "The disease, which usually affects cattle, has been identified in a patient who died in early October.",
-   "date": "2026-10-22T11:04+00:00",
+   "title": "'Shock' of first England farmer hit by bird flu this season",
+   "url": "https://www.bbc.co.uk/news/articles/crpdg235g76no?at_medium=RSS&at_campaign=rss",
+   "desc": "The first farmer in England hit by bird flu this season tells of the \"emotional roller coaster\" of losing 32,000 hens.",
+   "date": "2026-10-23T05:10+00:00",
    "th": [
-    "Topic 8A Health, human rights and intervention"
+    "Topic 2B Coastal landscapes and change"
+   ]
+  },
+  {
+   "id": "114cdb5c99",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "EU announces new strategy for Arctic",
+   "url": "https://geographical.co.uk/news/eu-announces-new-strategy-for-arctic",
+   "desc": "New strategy sets out four priorities, including strengthening security and responding to accelerating climate change in the fastest-warming region on the planet The European Commission has revealed a new Arctic strategy, including priorities from strengthening security in the…",
+   "date": "2026-10-22T07:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "8fdd0db8fd",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Andy Burnham vows UK will hit net zero target despite Jackdaw gasfield approval",
+   "url": "https://www.theguardian.com/environment/2026/oct/22/andy-burnham-vows-uk-will-hit-net-zero-targets-despite-jackdaw-gasfield-approval",
+   "desc": "PM pledges commitment to address climate crisis, saying in Guardian article that his ‘determination is unwavering’ Andy Burnham: We will make the net-zero transition work for Britain Andy Burnham has said he will not “abandon the responsibility” of fighting the climate crisis …",
+   "date": "2026-10-22T21:34+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "a3516bf0de",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "The Human Fingerprint on Earth’s Water Cycle",
+   "url": "https://science.nasa.gov/earth/earth-observatory/the-human-fingerprint-on-earths-water-cycle/",
+   "desc": "Human activities have become intertwined with how water is distributed across the continents. A new study brings their effects into sharper focus.",
+   "date": "2026-10-20T04:01+00:00",
+   "th": []
+  },
+  {
+   "id": "0cccc1ee2b",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Hot and cold climate extremes push UK’s energy system to its limits, new report reveals",
+   "url": "https://theconversation.com/hot-and-cold-climate-extremes-push-uks-energy-system-to-its-limits-new-report-reveals-293383",
+   "desc": "The Royal Meteorological Society’s annual report highlights how weather and climate affect the UK’s energy sector. Both winter and summer extremes pose challenges.",
+   "date": "2026-10-21T13:25+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1256,98 +1409,25 @@
    ]
   },
   {
-   "id": "0cccc1ee2b",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Hot and cold climate extremes push UK’s energy system to its limits, new report reveals",
-   "url": "https://theconversation.com/hot-and-cold-climate-extremes-push-uks-energy-system-to-its-limits-new-report-reveals-293383",
-   "desc": "The Royal Meteorological Society’s annual report highlights how weather and climate affect the UK’s energy sector. Both winter and summer extremes pose challenges.",
-   "date": "2026-10-21T13:25+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "c2daf2d48c",
+   "id": "a4c59c2961",
    "src": "Carbon Brief",
    "level": "magazine",
-   "title": "UNEP: Opportunity has ‘been lost’ to meet 1.5C warming limit without ‘overshoot’",
-   "url": "https://www.carbonbrief.org/unep-opportunity-has-been-lost-to-meet-1-5c-warming-limit-without-overshoot",
-   "desc": "A temporary breach of the 1.5C global-warming limit is now “inevitable” following “decades of insufficient climate action”, says the UN&#8230;",
-   "date": "2026-10-21T05:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "b51f9d216c",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Strongmen like Trump would destroy the planet out of pure spite – and Brazil shows we’re all in peril | George Monbiot",
-   "url": "https://www.theguardian.com/commentisfree/2026/oct/22/strongmen-donald-trump-destroy-planet-brazil-flavio-bolsonaro",
-   "desc": "If Flávio Bolsonaro is elected, Brazil’s ecosystems will face collapse. The ruling class would rather burn the world than share it with the poor However grim the trajectory might seem, I’ve always believed that sense will ultimately prevail. As the great perils of dismantling …",
-   "date": "2026-10-22T05:00+00:00",
-   "th": [
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "0b8b7d3f3e",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "EU invests more than €390million for 135 new climate and environment projects",
-   "url": "https://geographical.co.uk/news/eu-invests-more-than-e390million-for-135-new-climate-and-environment-projects",
-   "desc": "Projects will cover areas including restoration of natural habitats, accelerating the clean energy transition and strengthening climate resilience The European Commission has granted more than €390million to 135 new projects across Europe under a programme aimed at environment…",
-   "date": "2026-10-21T08:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "a3516bf0de",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "The Human Fingerprint on Earth’s Water Cycle",
-   "url": "https://science.nasa.gov/earth/earth-observatory/the-human-fingerprint-on-earths-water-cycle/",
-   "desc": "Human activities have become intertwined with how water is distributed across the continents. A new study brings their effects into sharper focus.",
-   "date": "2026-10-20T04:01+00:00",
+   "title": "Q&A: Why a pivotal IPCC meeting in Ethiopia ended in ‘profound disappointment’",
+   "url": "https://www.carbonbrief.org/qa-why-a-pivotal-ipcc-meeting-in-ethiopia-ended-in-profound-disappointment",
+   "desc": "Countries have failed – for the sixth time running – to agree on the timeline for publishing the Intergovernmental Panel&#8230;",
+   "date": "2026-10-20T14:40+00:00",
    "th": []
   },
   {
-   "id": "f0e0768422",
-   "src": "UN News (migration)",
+   "id": "cd4c2d121a",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "‘Efficiency has limits’: UNHCR chief warns refugee protection is buckling under cuts",
-   "url": "https://news.un.org/feed/view/en/story/2026/10/1168575",
-   "desc": "The money is running out faster than needs are growing: with 117 million men, women and children now forced from their homes, the UN refugee agency (UNHCR) has received just $3 billion of the $8.5 billion it needs this year – and its chief, Barham Salih, warns that the global …",
-   "date": "2026-10-12T12:00+00:00",
+   "title": "Burnham to reveal plans for AI unit to tackle wildfires after scorching summer",
+   "url": "https://www.theguardian.com/world/2026/oct/22/burnham-plans-ai-unit-spot-fight-fires-faster-record-breaking-summer-heat",
+   "desc": "PM will also announce funding for specialised protective gear and the deployment of military aircraft The UK government is to create an AI Cobra unit to spot wildfires after this year’s record-breaking summer saw devastating blazes across the country. The country experienced i…",
+   "date": "2026-10-22T21:30+00:00",
    "th": [
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "60edff8937",
-   "src": "ESA Observing the Earth",
-   "level": "magazine",
-   "title": "Earth from Space: West Antarctica",
-   "url": "https://www.esa.int/ESA_Multimedia/Images/2026/10/Earth_from_Space_West_Antarctica",
-   "desc": "Image: This image over part of West Antarctica was captured by Copernicus Sentinel-3 on 30 September 2026.",
-   "date": "2026-10-16T08:00+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "3e330d4a76",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Two storms in two days as Austen and Boelo target UK",
-   "url": "https://www.bbc.co.uk/weather/articles/ckx2qpy2d13ro?at_medium=RSS&at_campaign=rss",
-   "desc": "The Met Office has named a new storm, Boelo, which is set to bring another round of stormy weather to the UK over the weekend.",
-   "date": "2026-10-22T10:34+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1360,98 +1440,6 @@
    "date": "2026-10-18T07:00+00:00",
    "th": [
     "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "83f7e0a0da",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Wild fish are a precious resource – here’s how aquaculture can bolster food security",
-   "url": "https://theconversation.com/wild-fish-are-a-precious-resource-heres-how-aquaculture-can-bolster-food-security-276701",
-   "desc": "Some farmed fish rely on wild fish for feed but aquaculture should not compromise food security of vulnerable communities.",
-   "date": "2026-10-21T09:46+00:00",
-   "th": [
-    "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "a4c59c2961",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Q&A: Why a pivotal IPCC meeting in Ethiopia ended in ‘profound disappointment’",
-   "url": "https://www.carbonbrief.org/qa-why-a-pivotal-ipcc-meeting-in-ethiopia-ended-in-profound-disappointment",
-   "desc": "Countries have failed – for the sixth time running – to agree on the timeline for publishing the Intergovernmental Panel&#8230;",
-   "date": "2026-10-20T14:40+00:00",
-   "th": []
-  },
-  {
-   "id": "4e37aa59a0",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "How bad is Jackdaw gasfield approval for the climate? – The Latest",
-   "url": "https://www.theguardian.com/news/video/2026/oct/21/how-bad-is-jackdaw-gasfield-approval-for-the-climate-the-latest",
-   "desc": "Climate campaigners have condemned the UK government’s decision to allow the drilling of the Jackdaw gasfield. Critics argue the move will put climate targets at risk, while failing to reduce energy bills and the cost of living crisis. But there could be a significant victory …",
-   "date": "2026-10-21T18:51+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "0ae4959f49",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "How small changes in weather can intensify marine heatwaves",
-   "url": "https://geographical.co.uk/news/how-small-changes-in-weather-can-intensify-marine-heatwaves",
-   "desc": "In the most extreme case, a marine heatwave could last as long as 579 days, with sea temperatures reaching up to 4.5°C above the long-term average In 2023, the northeast Atlantic experienced a record-breaking marine heatwave that impacted marine ecosystems and the economy alik…",
-   "date": "2026-10-21T08:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "75582098f8",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Autumn Paints Poland’s Bieszczady Mountains",
-   "url": "https://science.nasa.gov/earth/earth-observatory/autumn-paints-polands-bieszczady-mountains/",
-   "desc": "Fall color covers the forested slopes of Bieszczady National Park, while patches of polonina, a type of high-mountain meadow, have turned tan.",
-   "date": "2026-10-19T04:01+00:00",
-   "th": []
-  },
-  {
-   "id": "971644bf64",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Jackdaw decision 'taken outwith Scotland about Scotland's energy'",
-   "url": "https://www.bbc.co.uk/news/videos/c39wzvxxjejxo?at_medium=RSS&at_campaign=rss",
-   "desc": "Scottish Green Mark Ruskell, the SNP’s Keith Brown and Scottish Labour’s Jenny Young weigh up the Jackdaw decision.",
-   "date": "2026-10-22T07:26+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "9264a68438",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "As King Charles heads to the Caribbean, he should know that Winston Churchill admitted to imperial plunder 90 years ago | Kenneth Mohammed",
-   "url": "https://www.theguardian.com/global-development/2026/oct/17/king-charles-caribbean-winston-churchill-empire-britain-wealth",
-   "desc": "Modern politicians play on tales of empire to exaggerate what Britain left behind, but the monarch should consider a historical speech on imperial plunder For us in the Caribbean, there is something surreal about Britain’s renewed nostalgia over empire. As Britain’s monarch pr…",
-   "date": "2026-10-17T05:00+00:00",
-   "th": [
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "81e065e463",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Is the UK set to green-light a huge untapped oil field?",
-   "url": "https://www.bbc.co.uk/news/videos/cxnv0emj06v1o?at_medium=RSS&at_campaign=rss",
-   "desc": "Scotland editor James Cook visits Rosebank - the UK's largest known untapped oilfield - in the North Atlantic.",
-   "date": "2026-10-22T06:09+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
    ]
   }
  ]
