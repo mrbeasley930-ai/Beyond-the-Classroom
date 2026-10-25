@@ -2,6 +2,52 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+<script>
+/* FIRSTNAME-ONLY v1 (16 Oct 2026): the sign-in keeps the pupil's first name only.
+   A one-letter initial typed after it is kept ("Ahmed A"), so two pupils with the same first name stay apart.
+   Also rewrites saves/loads to the class store, so a remembered full name cannot recreate a surname record.
+   Beyond the Classroom (sc-*) books are left alone. */
+(function(){
+  function fn(s){
+    s=String(s==null?'':s).replace(/\s+/g,' ').trim(); if(!s) return s;
+    if(/^yu luo(\s|$)/i.test(s)) return s.slice(0,6);
+    var w=s.split(' '); if(w.length<2) return s;
+    if(w.length===2 && w[1].replace(/[^A-Za-z]/g,'').length===1) return w[0]+' '+w[1].replace(/[^A-Za-z]/g,'');
+    return w[0];
+  }
+  window.__firstNameOnly=fn;
+  var ST='vestigia-store.mrbeasley930.workers.dev';
+  function skip(b){ return /^sc-/.test(String(b||'')); }
+  function fixKey(k){ k=String(k); var p=k.split('::'); if(p.length<3||skip(p[0])) return k; return p[0]+'::'+p[1]+'::'+fn(p.slice(2).join('::')); }
+  var of=window.fetch;
+  if(of) window.fetch=function(input,init){
+    try{
+      var url=typeof input==='string'?input:(input&&input.url)||'';
+      if(url.indexOf(ST)>=0 && !/[?&]all=1/.test(url)){
+        var u=new URL(url,location.href), k=u.searchParams.get('key');
+        if(k){ var nk=fixKey(k); if(nk!==k){ u.searchParams.set('key',nk); input=(typeof input==='string')?u.toString():new Request(u.toString(),input); } }
+        if(init && typeof init.body==='string' && /post|put/i.test(init.method||'')){
+          var b=JSON.parse(init.body);
+          if(b && b.key && !skip(b.book||String(b.key).split('::')[0])){
+            b.key=fixKey(b.key);
+            if(typeof b.cand==='string') b.cand=fn(b.cand);
+            if(b.data && typeof b.data==='object' && typeof b.data.name==='string') b.data.name=fn(b.data.name);
+            init=Object.assign({},init,{body:JSON.stringify(b)});
+          }
+        }
+      }
+    }catch(e){}
+    return of.call(this,input,init);
+  };
+  var IDS=['g-cand','sg-cand','cand','gName'];
+  function tidy(t){ IDS.forEach(function(id){ var el=document.getElementById(id); if(el && el!==t && el.value && /\S\s+\S/.test(el.value)) el.value=fn(el.value); }); }
+  document.addEventListener('click',function(e){ tidy(e.target); },true);
+  document.addEventListener('keydown',function(e){ if(e.key==='Enter') tidy(null); },true);
+  document.addEventListener('submit',function(){ tidy(null); },true);
+  document.addEventListener('change',function(){ tidy(null); },true);
+})();
+</script>
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Commonplace Book</title>
 <meta name="description" content="Tom's supercurricular commonplace book for an Oxford Classics application: six heads, dated entries filed under the three UCAS questions, and the statement workbench.">
@@ -447,6 +493,10 @@ const ITEMS = [
 {s:"V16",g:"voices",short:"TED-Ed: History vs. Augustus (6 min) — argue with it",name:"Peta Greenfield and Alex Gendler, History vs. Augustus (TED-Ed)",t:"6 minutes",what:"A trial of Augustus. Its evidence is thin in places; that is the point.",
  do:"Watch. Write which charge the video does not prove, and what Tacitus (Annals 1.1–4) would add.",q:[1,2],url:"https://www.ted.com/talks/peta_greenfield_alex_gendler_history_vs_augustus",link:"Watch"},
 
+{s:"V17",g:"voices",short:"Classics for All: Odysseus on trial at the Supreme Court (recording)",name:"Classics for All: the Mock Trial of Odysseus, UK Supreme Court, 22 October 2026",t:"about 90 minutes",added:"2026-10-25",
+ what:"Every October Classics for All puts an ancient figure on trial before a real judge and KCs. This year Odysseus was charged over the loss of his ships and crew, Lord Briggs presiding. The recording should appear on the Classics for All YouTube channel; the 2024 trial of Medea is already there.",
+ do:"Watch. Then give your own verdict, with Odyssey books 9 to 12 as the evidence. Entry: the one charge the prosecution does not prove from the text.",q:[1,2],url:"https://classicsforall.org.uk/news-and-events/events/mock-trial-odysseus",link:"The trial"},
+
 /* PLACES */
 {s:"P01",g:"places",short:"BMCA autumn lecture, Tue 13 Oct 2026",name:"Birmingham and Midlands Classical Association: Dr Hannah Cornwell, The Theatre of Diplomacy in Ancient Rome",t:"Tuesday 13 October 2026, 6–7.30pm, Birmingham and Midland Institute, Margaret Street",
  what:"A university lecture in town, open to the public. Booking via Eventbrite from the Birmingham page.",
@@ -484,6 +534,13 @@ const ITEMS = [
 {s:"P12",g:"places",short:"Cambridge Classics: the recorded Oxbridge Classics Open Day",name:"Cambridge Faculty of Classics: schools page, with the recorded joint Oxbridge Classics Open Day",t:"2 hours of recordings",
  what:"Sample lectures and the admissions talks from both universities, recorded. Cambridge's four-year course also takes people without Latin or Greek; keep it in view.",
  do:"Watch the admissions session and one sample lecture. Entry: how the two universities describe the course differently.",q:[3],url:"https://www.classics.cam.ac.uk/prospective/schools",link:"Watch"},
+
+{s:"P13",g:"places",short:"CA lecture at Keele: the Teutoburg Forest, Thu 19 Nov 2026",name:"Roman Society and Classical Association joint lecture, Keele Hall: Jo Ball (Manchester) on the Teutoburg Forest, AD 9",t:"Thursday 19 November 2026, 7.30pm, Keele Hall, Staffordshire",added:"2026-10-25",
+ what:"The nearest Classical Association branch lecture this half term. How Varus lost three legions in a German forest, and what Augustus did about it. Open to the public; price not stated (branch lectures are normally free to students), so check with North Staffs CA first. A lift is needed from Birmingham.",
+ do:"Go if you can get there. Entry: what the argument was and what it rested on. If not, V01 (In Our Time on Tacitus) covers the same reign.",q:[3],url:"https://www.romansociety.org/Events/Classical-Association-Joint-Lectures",link:"Lecture listing",check:true,deadline:"2026-11-19"},
+{s:"P14",g:"places",short:"Warwick Ancient Drama Festival: Aristophanes' Clouds, Fri 29 Jan 2027",name:"Warwick Ancient Drama Festival 2027: Aristophanes' Clouds, Schools Day Friday 29 January, 11am–5.30pm",t:"a day; ask your school to book before Christmas",added:"2026-10-25",
+ what:"Warwick stages a Greek play every January. The free Schools Day has talks on Greek theatre and comedy, then a 3.30pm matinee of Clouds, the play that mocks Socrates. Ticket fees are waived for state schools and there are five £700 travel bursaries for state schools attending for the first time. A school books, not a pupil, and places go before Christmas.",
+ do:"Take the page to your Classics or English teacher and ask the school to book and to apply for a bursary. Entry: how a comic Socrates changes the way you read the one in Plato's Apology (T05).",q:[1,3],url:"https://www.theclassicslibrary.com/event/warwick-ancient-drama-festival-28-29-january-2027-aristophanes-clouds-with-700-bursaries-for-travel/",link:"Festival details and bursaries",deadline:"2027-01-29"},
 
 /* PRIZES */
 {s:"E01",g:"prizes",short:"UNIQ 2027 — apply in December–January",name:"UNIQ: the University of Oxford's free summer school for state-school Year 12s",t:"a week in Oxford in June or July 2027, free; applications mid-December to mid-January",
@@ -558,8 +615,11 @@ const DATES = [
  {d:"2026-10-13",what:"BMCA autumn lecture, Birmingham and Midland Institute, 6–7.30pm",s:"P01"},
  {d:"2026-10-14",what:"Cambridge Greek Play, Ion (to 17 October)",s:"P02"},
  {d:"2026-11-01",what:"JACT Greek Summer School 2027 details published; Fitzwilliam and Girton questions appear in the autumn",s:"E03",check:true},
+ {d:"2026-11-19",what:"CA joint lecture at Keele Hall, 7.30pm: Jo Ball on the Teutoburg Forest",s:"P13",check:true},
+ {d:"2026-12-11",what:"Last school week before Christmas: Warwick Clouds Schools Day must be booked by the school by now",s:"P14"},
  {d:"2026-12-15",what:"UNIQ 2027 applications open (2026 pattern)",s:"E01",check:true},
  {d:"2027-01-13",what:"UNIQ applications close, midday (2026 pattern). No late entries.",s:"E01",check:true},
+ {d:"2027-01-29",what:"Warwick Ancient Drama Festival Schools Day: Aristophanes' Clouds, 11am–5.30pm",s:"P14"},
  {d:"2027-02-22",what:"St John's, Oxford essay deadline (2026 date)",s:"E04",check:true},
  {d:"2027-02-27",what:"Fitzwilliam essay deadline (2026 date); ARLT recordings due",s:"E05",check:true},
  {d:"2027-03-31",what:"JACT Greek Summer School: applications and bursary forms close",s:"E03"},
@@ -582,16 +642,16 @@ const DATES = [
    To add a card: add it to ITEMS with added:"YYYY-MM-DD"; a NEW marker shows if Tom last visited before that date.
    ====================================================================== */
 const HALFTERM = {
-  label:"Autumn 1",
-  until:"2026-10-23",
-  lede:"Three things before half term. Each ends with an entry in the book.",
+  label:"Autumn 2",
+  until:"2026-12-18",
+  lede:"Three things before Christmas, two of them carried over from the Autumn 1 card. Each ends with an entry in the book.",
   items:[
-    {s:"P01",step:"Go",txt:"The BMCA lecture on Tuesday 13 October, 6pm, Margaret Street. Book today. If you cannot go, listen to In Our Time on Tacitus (V01) instead and write that up."},
-    {s:"L01",step:"Begin Greek",txt:"Start the OpenLearn Greek course. The whole alphabet, read and written, by 23 October. Bring the page of letters to the next lesson."},
-    {s:"O01",step:"Read",txt:"Read the Oxford course page and write your first entry: what the Latin stream is, and why it is what you want, in your own words. This becomes the first draft of Q1."}
+    {s:"O01",step:"Read first",txt:"Read the Oxford course page and write your first entry: what the Latin stream is, and why it is what you want, in your own words. Do this one this week. It becomes the first draft of Q1."},
+    {s:"L01",step:"Begin Greek",txt:"Start the OpenLearn Greek course. The whole alphabet, read and written, by 18 December. Bring the page of letters to a lesson."},
+    {s:"V17",step:"Watch",txt:"Watch Classics for All's mock trial of Odysseus at the Supreme Court (22 October) when the recording goes up; until then, the 2024 trial of Medea is on the same channel. Entry: your verdict, with the evidence from the poem."}
   ]
 };
-const COMPILED="2026-10-10";
+const COMPILED="2026-10-25";
 
 const SOURCES = [
  ["University of Oxford: Classics course page (2026 entry onwards)","https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/classics"],
