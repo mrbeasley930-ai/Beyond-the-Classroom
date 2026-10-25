@@ -1,5 +1,5 @@
 {
- "made": "2026-10-24T11:18+00:00",
+ "made": "2026-10-25T11:48+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 59
+   "n": 73
   },
   {
    "src": "USGS (significant, past month)",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 16
+   "n": 14
   },
   {
    "src": "GDACS",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 16
+   "n": 10
   },
   {
    "src": "Carbon Brief",
@@ -116,28 +116,47 @@
    "level": "way in",
    "line": "United Nations news on migrants and refugees",
    "ok": true,
-   "n": 3
+   "n": 2
   }
  ],
  "events": [
   {
-   "id": "qus6000u4lg",
+   "id": "qus6000u4ty",
    "kind": "quake",
    "src": "USGS",
-   "title": "Magnitude 5.3 earthquake",
-   "place": "223 km ENE of Nagqu, China",
-   "lat": 32.56,
-   "lon": 94.05,
-   "date": "2026-10-24T08:39+00:00",
-   "mag": 5.3,
+   "title": "Magnitude 5.8 earthquake",
+   "place": "209 km ENE of Nagqu, China",
+   "lat": 32.37,
+   "lon": 94.0,
+   "date": "2026-10-25T11:25+00:00",
+   "mag": 5.8,
    "depth": 10,
    "alert": "",
    "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4lg",
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4ty",
    "th": [
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "china"
+  },
+  {
+   "id": "qus6000u4tq",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "33 km ESE of Ambunti, Papua New Guinea",
+   "lat": -4.36,
+   "lon": 143.08,
+   "date": "2026-10-25T10:30+00:00",
+   "mag": 5.4,
+   "depth": 72,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4tq",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "papua new guinea"
   },
   {
    "id": "gdd2ad46273d",
@@ -147,7 +166,7 @@
    "place": "Philippines, Guam, Northern Mariana Islands, Japan",
    "lat": 22.7,
    "lon": 123.8,
-   "date": "2026-10-24T06:00+00:00",
+   "date": "2026-10-25T06:00+00:00",
    "alert": "red",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001338",
    "desc": "From 14/10/2026 to 23/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 296 km/h) CHAMPI-26 was active in NWPacific. The cyclone affects these countries: Philippines, Guam, Northern Mariana Islands, Japan (vulnerability Medium). …",
@@ -160,16 +179,92 @@
    "kind": "storm",
    "src": "GDACS and NASA EONET",
    "title": "Hurricane Vance",
-   "place": "México",
-   "lat": 10.5,
-   "lon": -101.9,
-   "date": "2026-10-24T06:00+00:00",
+   "place": "",
+   "lat": 14.3,
+   "lon": -103.4,
+   "date": "2026-10-25T06:00+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001341",
-   "desc": "From 21/10/2026 to 23/10/2026, a Tropical Storm (maximum wind speed of 194 km/h) VANCE-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1 (120 km/h) …",
+   "desc": "From 21/10/2026 to 25/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 139 km/h) VANCE-26 was active in EastPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by cate…",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
+  },
+  {
+   "id": "qus6000u4r9",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.5 earthquake",
+   "place": "Bonin Islands, Japan region",
+   "lat": 27.8,
+   "lon": 139.62,
+   "date": "2026-10-25T02:09+00:00",
+   "mag": 6.5,
+   "depth": 492,
+   "alert": "green",
+   "tsunami": true,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4r9",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
+   "id": "qus6000u4qq",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.3 earthquake",
+   "place": "44 km ESE of Miyazaki, Japan",
+   "lat": 31.82,
+   "lon": 131.87,
+   "date": "2026-10-24T23:59+00:00",
+   "mag": 5.3,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4qq",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
+   "id": "qus6000u4pa",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.3 earthquake",
+   "place": "101 km SSE of Vilyuchinsk, Russia",
+   "lat": 52.16,
+   "lon": 159.2,
+   "date": "2026-10-24T20:35+00:00",
+   "mag": 5.3,
+   "depth": 70,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4pa",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "russia"
+  },
+  {
+   "id": "qus6000u4mn",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.8 earthquake",
+   "place": "Bouvet Island region",
+   "lat": -54.03,
+   "lon": 7.01,
+   "date": "2026-10-24T15:24+00:00",
+   "mag": 5.8,
+   "depth": 12,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4mn",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "bouvet island"
   },
   {
    "id": "qus6000u4jb",
@@ -210,6 +305,44 @@
    "region": "vanuatu"
   },
   {
+   "id": "qpt26298050",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 7.0 earthquake",
+   "place": "Bonin Islands, Japan region",
+   "lat": 28,
+   "lon": 139.9,
+   "date": "2026-10-24T02:09+00:00",
+   "mag": 7,
+   "depth": 473,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/pt26298050",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
+   "id": "qpt26297050",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 7.0 earthquake",
+   "place": "Bonin Islands, Japan region",
+   "lat": 28,
+   "lon": 139.9,
+   "date": "2026-10-24T02:09+00:00",
+   "mag": 7,
+   "depth": 473,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/pt26297050",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
    "id": "eo1f32a0e3ef",
    "kind": "storm",
    "src": "NASA EONET · JTWC",
@@ -223,25 +356,6 @@
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
-  },
-  {
-   "id": "qus6000u4dc",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "50 km WNW of Malfa, Italy",
-   "lat": 38.78,
-   "lon": 14.31,
-   "date": "2026-10-23T13:55+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4dc",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "italy"
   },
   {
    "id": "qus6000u4bk",
@@ -278,25 +392,6 @@
    ]
   },
   {
-   "id": "qus6000u44n",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "201 km ENE of Nagqu, China",
-   "lat": 32.44,
-   "lon": 93.87,
-   "date": "2026-10-22T15:12+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u44n",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "china"
-  },
-  {
    "id": "qus6000u43g",
    "kind": "quake",
    "src": "USGS",
@@ -316,23 +411,52 @@
    "region": "china"
   },
   {
-   "id": "qus6000u3yj",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.3 earthquake",
-   "place": "Reykjanes Ridge",
-   "lat": 56.78,
-   "lon": -34.17,
-   "date": "2026-10-21T21:38+00:00",
-   "mag": 5.3,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3yj",
+   "id": "eo080f12e18e",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg D32",
+   "place": "",
+   "lat": -56.65,
+   "lon": -39.35,
+   "date": "2026-10-22T00:00+00:00",
+   "first": "2022-10-21T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "reykjanes ridge"
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eob4ed6d25a4",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg A76C",
+   "place": "",
+   "lat": -56.87,
+   "lon": -23.74,
+   "date": "2026-10-22T00:00+00:00",
+   "first": "2021-05-28T00:00+00:00",
+   "url": "https://usicecenter.gov/Products/AntarcIcebergs",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo07c9920b7b",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg D33B",
+   "place": "",
+   "lat": -56.74,
+   "lon": -43.32,
+   "date": "2026-10-22T00:00+00:00",
+   "first": "2023-09-08T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
   },
   {
    "id": "gd0f08801d85",
@@ -346,22 +470,6 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001342",
    "desc": "From 21/10/2026 to 22/10/2026, a Tropical Storm (maximum wind speed of 120 km/h) JOSEPHINE-26 was active in Atlantic. The cyclone affects these countries: United States, Canada, Saint Pierre and Miquelon (vulnerability Low). Estimated popul…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gdea9adde66f",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Guatemala",
-   "place": "Guatemala",
-   "lat": 15.38,
-   "lon": -90.24,
-   "date": "2026-10-21T10:52+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104244",
-   "desc": "On 18/10/2026, a flood started in Guatemala, lasting until 20/10/2026 (last update). The flood caused 0 deaths and 1 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -399,57 +507,6 @@
    ]
   },
   {
-   "id": "qus6000u3t6",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "68 km NE of Cabatuan, Philippines",
-   "lat": 13.03,
-   "lon": 125.59,
-   "date": "2026-10-21T08:37+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3t6",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "philippines"
-  },
-  {
-   "id": "gd7a2cf43ea2",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in South Korea",
-   "place": "South Korea",
-   "lat": 37.28,
-   "lon": 127.44,
-   "date": "2026-10-20T14:35+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104240",
-   "desc": "On 18/10/2026, a flood started in South Korea, lasting until 20/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd96fc12d9a6",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Thailand",
-   "place": "Thailand",
-   "lat": 7.04,
-   "lon": 99.96,
-   "date": "2026-10-20T14:35+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104241",
-   "desc": "On 18/10/2026, a flood started in Thailand, lasting until 20/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000u3jl",
    "kind": "quake",
    "src": "USGS",
@@ -467,110 +524,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "vanuatu"
-  },
-  {
-   "id": "gdb24a9ad466",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Hurricane Trudy",
-   "place": "México",
-   "lat": 19.5,
-   "lon": -108.0,
-   "date": "2026-10-20T00:00+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001337",
-   "desc": "From 13/10/2026 to 20/10/2026, a Tropical Depression (maximum wind speed of 194 km/h) TRUDY-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability Medium). Estimated population affected by category 1 (120 k…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "qus6000u3ct",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.3 earthquake",
-   "place": "116 km WNW of Höfn, Iceland",
-   "lat": 64.58,
-   "lon": -17.51,
-   "date": "2026-10-19T14:44+00:00",
-   "mag": 5.3,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u3ct",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "iceland"
-  },
-  {
-   "id": "gd2c3d3f705a",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Spain",
-   "place": "Spain",
-   "lat": 38.71,
-   "lon": 1.43,
-   "date": "2026-10-19T06:04+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104235",
-   "desc": "On 17/10/2026, a flood started in Spain, lasting until 20/10/2026 (last update). The flood caused 1 deaths and 2002 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "eo74114b1132",
-   "kind": "storm",
-   "src": "NASA EONET · JTWC",
-   "title": "Tropical Cyclone Wati",
-   "place": "",
-   "lat": -20.7,
-   "lon": -156.8,
-   "date": "2026-10-19T06:00+00:00",
-   "first": "2026-10-16T06:00+00:00",
-   "url": "https://www.metoc.navy.mil/jtwc/products/sh0127.tcw",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "qus6000u37h",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "71 km ESE of ‘Ohonua, Tonga",
-   "lat": -21.54,
-   "lon": -174.3,
-   "date": "2026-10-18T19:32+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u37h",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "tonga"
-  },
-  {
-   "id": "qus6000u34e",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "55 km NNW of Ruteng, Indonesia",
-   "lat": -8.14,
-   "lon": 120.27,
-   "date": "2026-10-18T08:00+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u34e",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "indonesia"
   },
   {
    "id": "eo8d4a03b876",
@@ -671,54 +624,6 @@
    ]
   },
   {
-   "id": "eo136ec6fe5e",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg A81",
-   "place": "",
-   "lat": -55.07,
-   "lon": -38.8,
-   "date": "2026-10-15T00:00+00:00",
-   "first": "2023-01-27T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo07c9920b7b",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D33B",
-   "place": "",
-   "lat": -56.98,
-   "lon": -46.05,
-   "date": "2026-10-15T00:00+00:00",
-   "first": "2023-09-08T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo4fb1a3286c",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D35",
-   "place": "",
-   "lat": -60.14,
-   "lon": -43.77,
-   "date": "2026-10-15T00:00+00:00",
-   "first": "2024-01-11T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "qus6000u214",
    "kind": "quake",
    "src": "USGS",
@@ -736,22 +641,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "central mid-atlantic ridge"
-  },
-  {
-   "id": "gd1156bff36a",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Costa Rica",
-   "place": "Costa Rica",
-   "lat": 10.03,
-   "lon": -84.13,
-   "date": "2026-10-13T05:55+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104227",
-   "desc": "On 09/10/2026, a flood started in Costa Rica, lasting until 20/10/2026 (last update). The flood caused 0 deaths and 27 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "qus6000u1z5",
@@ -1033,15 +922,39 @@
  ],
  "stories": [
   {
-   "id": "8c3c0d77cf",
+   "id": "9b551cbccb",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "'What was in the Clyde is basically now on the shore'",
+   "url": "https://www.bbc.co.uk/news/videos/cmg47e2znpzpo?at_medium=RSS&at_campaign=rss",
+   "desc": "BBC Scotland reports from the scene at Cardross as Storm Boelo batters the country.",
+   "date": "2026-10-25T11:42+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "70393f9d72",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Human Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-human-geography-trivia-14",
+   "desc": "How well do you understand the world we live in? Test your knowledge of cities, cultures, populations and more in our latest random Human Geography Trivia quiz!",
+   "date": "2026-10-25T10:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "65d78514c7",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "New Trump rule allows hunters to bait bears in Alaska with doughnuts, bacon and more",
-   "url": "https://www.theguardian.com/us-news/2026/oct/24/trump-administration-alaska-bear-hunting-bait",
-   "desc": "Critics decry Trump administration rule that lets hunters lure bears with human foods on federal lands in Alaska A new Trump administration rule allows hunters to bait bears on federal lands in Alaska with bacon, doughnuts, meat scraps or other human foods typically used to he…",
-   "date": "2026-10-24T11:00+00:00",
+   "title": "Storm Boelo: Travel disrupted and events cancelled as UK hit by wind and rain",
+   "url": "https://www.theguardian.com/uk-news/2026/oct/24/storm-boelo-travel-disrupted-events-cancelled-uk-hit-wind-and-rain",
+   "desc": "Fresh deluge of wet weather comes after Storm Austen brought strong winds to many regions on Friday Amber weather warnings have come into force as the worst of Storm Boelo could be set to hit parts of the UK. Storm Boelo’s winds will peak from Saturday evening, leaving areas i…",
+   "date": "2026-10-24T22:40+00:00",
    "th": [
-    "Topic 7 Superpowers"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1054,18 +967,6 @@
    "date": "2026-10-24T10:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "716b1d7708",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Trains cancelled and road warnings as Scotland prepares for Storm Boelo",
-   "url": "https://www.bbc.co.uk/news/articles/c60qk5lw1z8wo?at_medium=RSS&at_campaign=rss",
-   "desc": "Heavy rain and strong winds are expected during the second named storm to hit in two days, with gusts of up to 80mph forecast.",
-   "date": "2026-10-24T09:41+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1105,16 +1006,6 @@
    ]
   },
   {
-   "id": "0e9ca58267",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: Country Shapes – Africa",
-   "url": "https://geographical.co.uk/quizzes/quiz-country-shapes-africa-5",
-   "desc": "How well do you know Africa’s countries? Put your geography skills to the test by identifying each country from its shape alone. Look closely at every outline and see how many you can name. Ready? Let’s begin!",
-   "date": "2026-10-23T07:00+00:00",
-   "th": []
-  },
-  {
    "id": "e0826a3e6a",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1139,15 +1030,37 @@
    ]
   },
   {
-   "id": "29c8a5b72f",
+   "id": "716b1d7708",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Overnight winds hit 85mph as Scotland is hit by Storm Beolo",
+   "url": "https://www.bbc.co.uk/news/articles/c60qk5lw1z8wo?at_medium=RSS&at_campaign=rss",
+   "desc": "Heavy rain and strong winds are affecting most of the country until 21:00 on Sunday.",
+   "date": "2026-10-25T11:14+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "0e9ca58267",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Country Shapes – Africa",
+   "url": "https://geographical.co.uk/quizzes/quiz-country-shapes-africa-5",
+   "desc": "How well do you know Africa’s countries? Put your geography skills to the test by identifying each country from its shape alone. Look closely at every outline and see how many you can name. Ready? Let’s begin!",
+   "date": "2026-10-23T07:00+00:00",
+   "th": []
+  },
+  {
+   "id": "c8555b1b59",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "‘You need persistence’: the Norfolk couple who took on environmental regulators three times – and won",
-   "url": "https://www.theguardian.com/environment/2026/oct/24/norfolk-couple-who-took-on-environmental-regulators-three-times-and-won",
-   "desc": "Tim and Geli Harris have spent more than a decade fighting to protect Catfield Fen, a rare wetland in the Norfolk Broads Polluters and regulators who fail to stop pollution must quake in their boots when they receive a letter from the lawyers for Tim and Geli Harris. The coupl…",
-   "date": "2026-10-24T07:00+00:00",
+   "title": "The BoM’s temperature record keeping is under attack – again. What’s going on? | Temperature Check",
+   "url": "https://www.theguardian.com/environment/2026/oct/25/bom-temperature-record-keeping-under-attack-again",
+   "desc": "An ‘audit’ of the Bureau of Meteorology main dataset for measuring climate change claims it contains ‘widespread errors’. It doesn’t stack up Want to get this in your inbox when it publishes? Sign up for the Clear Air Australia newsletter here Australia’s climate has warmed by…",
+   "date": "2026-10-24T19:00+00:00",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1161,18 +1074,6 @@
    "th": [
     "Topic 6 The carbon cycle and energy security",
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "46853f610d",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Second storm to hit UK with up to 80mph gusts as hundreds still without power",
-   "url": "https://www.bbc.co.uk/weather/articles/cv8ez97k0wnlo?at_medium=RSS&at_campaign=rss",
-   "desc": "An amber weather warning has been issued for much of Scotland, parts of Northern Ireland and northern England, as Storm Boelo approaches.",
-   "date": "2026-10-24T06:40+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1210,16 +1111,6 @@
    "th": []
   },
   {
-   "id": "5c404c540f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Skiing down Everest",
-   "url": "https://geographical.co.uk/features/skiing-down-everest",
-   "desc": "Tristan Kennedy meets ski mountaineer Jim Morrison, whose pioneering descent of Mount Everest’s north face demanded meticulous preparation and extraordinary skill.",
-   "date": "2026-10-22T08:00+00:00",
-   "th": []
-  },
-  {
    "id": "35e42ab2e6",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1246,15 +1137,37 @@
    ]
   },
   {
-   "id": "42dd1f9626",
+   "id": "09dc2f8cff",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Flight disruption and thousands without electricity after Storm Boelo",
+   "url": "https://www.bbc.co.uk/news/articles/c84g10r00221o?at_medium=RSS&at_campaign=rss",
+   "desc": "Flights have been cancelled in Belfast and Dublin, while thousands of homes have been left without power.",
+   "date": "2026-10-25T11:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "5c404c540f",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Skiing down Everest",
+   "url": "https://geographical.co.uk/features/skiing-down-everest",
+   "desc": "Tristan Kennedy meets ski mountaineer Jim Morrison, whose pioneering descent of Mount Everest’s north face demanded meticulous preparation and extraordinary skill.",
+   "date": "2026-10-22T08:00+00:00",
+   "th": []
+  },
+  {
+   "id": "8c3c0d77cf",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "UK government to make unprecedented intervention in setting of water bills",
-   "url": "https://www.theguardian.com/business/2026/oct/23/ministers-water-companies-bills-investment",
-   "desc": "Exclusive: Angela Eagle tells utility bosses next price review ‘must focus on value for money for customers’ Ministers will make an unprecedented intervention in water bills and how companies prioritise investment, directing bosses to bring down costs and stop leaks and sewage…",
-   "date": "2026-10-23T13:51+00:00",
+   "title": "New Trump rule allows hunters to bait bears in Alaska with doughnuts, bacon and more",
+   "url": "https://www.theguardian.com/us-news/2026/oct/24/trump-administration-alaska-bear-hunting-bait",
+   "desc": "Critics decry Trump administration rule that lets hunters lure bears with human foods on federal lands in Alaska A new Trump administration rule allows hunters to bait bears on federal lands in Alaska with bacon, doughnuts, meat scraps or other human foods typically used to he…",
+   "date": "2026-10-24T11:00+00:00",
    "th": [
-    "Topic 8A Health, human rights and intervention"
+    "Topic 7 Superpowers"
    ]
   },
   {
@@ -1267,18 +1180,6 @@
    "date": "2026-10-22T11:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "67838a9cc0",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "The people on standby when a storm strikes",
-   "url": "https://www.bbc.co.uk/news/articles/c6gqwz79ylw4o?at_medium=RSS&at_campaign=rss",
-   "desc": "While most people are preparing to stay indoors as another storm approaches, others are getting ready to head straight into it.",
-   "date": "2026-10-24T05:44+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1319,6 +1220,30 @@
    ]
   },
   {
+   "id": "6c0c8a7191",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Extratropical Cyclone Whips Past Iceland",
+   "url": "https://science.nasa.gov/earth/earth-observatory/extratropical-cyclone-whips-past-iceland/",
+   "desc": "The powerful low-pressure system formed over the North Atlantic out of the remnants of Hurricane Isaias.",
+   "date": "2026-10-21T04:01+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "1b05f757c6",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "More wet and windy weather to follow stormy weekend",
+   "url": "https://www.bbc.co.uk/weather/articles/cwdd858z8ynlo?at_medium=RSS&at_campaign=rss",
+   "desc": "Following the first two named storms of the season, wet and very windy conditions are set to continue into the start of the new week.",
+   "date": "2026-10-25T10:16+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
    "id": "852dbddf75",
    "src": "Geographical",
    "level": "magazine",
@@ -1332,40 +1257,15 @@
    ]
   },
   {
-   "id": "6c0c8a7191",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Extratropical Cyclone Whips Past Iceland",
-   "url": "https://science.nasa.gov/earth/earth-observatory/extratropical-cyclone-whips-past-iceland/",
-   "desc": "The powerful low-pressure system formed over the North Atlantic out of the remnants of Hurricane Isaias.",
-   "date": "2026-10-21T04:01+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "f0e0768422",
-   "src": "UN News (migration)",
-   "level": "way in",
-   "title": "‘Efficiency has limits’: UNHCR chief warns refugee protection is buckling under cuts",
-   "url": "https://news.un.org/feed/view/en/story/2026/10/1168575",
-   "desc": "The money is running out faster than needs are growing: with 117 million men, women and children now forced from their homes, the UN refugee agency (UNHCR) has received just $3 billion of the $8.5 billion it needs this year – and its chief, Barham Salih, warns that the global …",
-   "date": "2026-10-12T12:00+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "39d1636477",
+   "id": "29c8a5b72f",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "EPA has failed to tackle cancer-linked pesticide pollution, lawsuit alleges",
-   "url": "https://www.theguardian.com/us-news/2026/oct/23/lawsuit-atrazine-pesticide-cancer-epa",
-   "desc": "Suit alleges EPA has for decades failed under the Clean Water Act to address surface-water atrazine pollution A new lawsuit asks a federal judge to order the Trump administration to address widespread pollution from the hormone-disrupting pesticide atrazine – which has regular…",
-   "date": "2026-10-23T12:00+00:00",
+   "title": "‘You need persistence’: the Norfolk couple who took on environmental regulators three times – and won",
+   "url": "https://www.theguardian.com/environment/2026/oct/24/norfolk-couple-who-took-on-environmental-regulators-three-times-and-won",
+   "desc": "Tim and Geli Harris have spent more than a decade fighting to protect Catfield Fen, a rare wetland in the Norfolk Broads Polluters and regulators who fail to stop pollution must quake in their boots when they receive a letter from the lawyers for Tim and Geli Harris. The coupl…",
+   "date": "2026-10-24T07:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity",
-    "Topic 7 Superpowers"
+    "Topic 1 Tectonic processes and hazards"
    ]
   },
   {
@@ -1403,18 +1303,6 @@
    ]
   },
   {
-   "id": "114cdb5c99",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "EU announces new strategy for Arctic",
-   "url": "https://geographical.co.uk/news/eu-announces-new-strategy-for-arctic",
-   "desc": "New strategy sets out four priorities, including strengthening security and responding to accelerating climate change in the fastest-warming region on the planet The European Commission has revealed a new Arctic strategy, including priorities from strengthening security in the…",
-   "date": "2026-10-22T07:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "a3516bf0de",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1425,13 +1313,13 @@
    "th": []
   },
   {
-   "id": "9336944c13",
-   "src": "Guardian Environment",
+   "id": "e91efc2342",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "The US west has lost nearly 300 glaciers since the 1960s. Climate crisis is drastically shrinking what’s left",
-   "url": "https://www.theguardian.com/environment/ng-interactive/2026/oct/23/glacier-loss-climate-crisis-west",
-   "desc": "At the midpoint of the last century the region had 1,450 glaciers and a new study reveals the extent of losses",
-   "date": "2026-10-23T12:00+00:00",
+   "title": "The penguins are noisy, the people fantastic - what it takes to be an Antarctic postmaster",
+   "url": "https://www.bbc.co.uk/news/articles/c6dxwklr409eo?at_medium=RSS&at_campaign=rss",
+   "desc": "George Clarke from Bristol will run the post office at Port Lockroy in Antarctica from October to March.",
+   "date": "2026-10-25T09:59+00:00",
    "th": [
     "Topic 2A Glaciated landscapes and change",
     "Topic 6 The carbon cycle and energy security"
