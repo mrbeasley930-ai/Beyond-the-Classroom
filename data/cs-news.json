@@ -1,5 +1,5 @@
 {
- "made": "2026-10-25T12:09+00:00",
+ "made": "2026-10-26T13:39+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -44,21 +44,21 @@
    "level": "magazine",
    "line": "Quanta Magazine, computer science: theory, algorithms, AI research",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Raspberry Pi Foundation",
    "level": "way in",
    "line": "the education charity behind Ada Computer Science, Bebras and Astro Pi",
    "ok": true,
-   "n": 3
+   "n": 2
   },
   {
    "src": "Ars Technica",
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 5
+   "n": 4
   },
   {
    "src": "IEEE Spectrum",
@@ -79,10 +79,35 @@
    "level": "research",
    "line": "university press releases, computers and maths",
    "ok": true,
-   "n": 3
+   "n": 4
   }
  ],
  "stories": [
+  {
+   "id": "3272e9319f",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Tiny magnetic vortices could help computers work more like your brain",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025073038.htm",
+   "desc": "Scientists have filmed tiny magnetic vortices called skyrmions melting out of an organized lattice for the first time, revealing new ways to manipulate these unusual structures. The breakthrough could help make brain-like computers a reality, potentially enabling dramatically …",
+   "date": "2026-10-26T10:06+00:00",
+   "th": []
+  },
+  {
+   "id": "226eb026b7",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Big, noisy and coming to a town near you - why the data centre backlash is growing",
+   "url": "https://www.bbc.co.uk/news/articles/cq2e9we7w2ejo?at_medium=RSS&at_campaign=rss",
+   "desc": "Data centres are the lifeblood of our digital world, but there are growing concerns about their environmental impact. The BBC explores their rise in charts.",
+   "date": "2026-10-25T23:44+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Databases and data"
+   ]
+  },
   {
    "id": "2ee31f3d9c",
    "src": "IEEE Spectrum",
@@ -94,32 +119,6 @@
    "date": "2026-10-25T12:00+00:00",
    "th": [
     "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "875bfd88d0",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "UK to invest £100m in 'world first' AI Biosecurity Lab",
-   "url": "https://www.bbc.co.uk/news/articles/cqdjv8xllvyyo?at_medium=RSS&at_campaign=rss",
-   "desc": "The chancellor will unveil AI spending aimed at shoring up the UK's defences in Wednesday's Budget.",
-   "date": "2026-10-24T00:05+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "d9f200af0b",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "MIT scientists build a tiny robot that swims using living muscle cells",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261022081308.htm",
-   "desc": "MIT engineers have built a paper-thin swimming robot powered by living muscle cells that respond to flashes of light, allowing it to swim and steer through water. The breakthrough could pave the way for tiny, self-healing biological robots capable of exploring fragile environm…",
-   "date": "2026-10-23T10:33+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -200,14 +199,27 @@
    ]
   },
   {
-   "id": "8d4656f002",
-   "src": "Quanta",
-   "level": "magazine",
+   "id": "ad9d4a8e65",
+   "src": "ScienceDaily",
+   "level": "research",
    "kind": "story",
-   "title": "He Wants AI Benchmarking To Be a Science, Not a Dark Art",
-   "url": "https://www.quantamagazine.org/he-wants-ai-benchmarking-to-be-a-science-not-a-dark-art-20261016/",
-   "desc": "Moritz Hardt, author of a new book on benchmarks, believes these “standardized tests” for artificial intelligence are fundamentally broken — but not unfixable. The post He Wants AI Benchmarking To Be a Science, Not a Dark Art first appeared on Quanta Magazine",
-   "date": "2026-10-16T13:25+00:00",
+   "title": "AI detects “invisible” signs of pancreatic cancer years before diagnosis",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
+   "desc": "A powerful new AI system could help doctors detect pancreatic cancer years before it becomes visible on conventional scans. The technology, called REDMOD, identified hidden warning signs an average of 475 days before diagnosis and was nearly twice as sensitive as experienced r…",
+   "date": "2026-10-26T09:25+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "875bfd88d0",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "UK to invest £100m in 'world first' AI Biosecurity Lab",
+   "url": "https://www.bbc.co.uk/news/articles/cqdjv8xllvyyo?at_medium=RSS&at_campaign=rss",
+   "desc": "The chancellor will unveil AI spending aimed at shoring up the UK's defences in Wednesday's Budget.",
+   "date": "2026-10-24T00:05+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -224,32 +236,6 @@
    "th": [
     "1.2 Software and development",
     "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "c75360ac72",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "What is PHP and why did it spark a global cyber-security scramble?",
-   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
-   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
-   "date": "2026-10-23T12:24+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "5b8b239b34",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "Cambridge scientists create a $10 chip that could put a medical lab on your wrist",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261022081312.htm",
-   "desc": "Cambridge researchers have created a groundbreaking $10 optical sensor that delivers the precision of laboratory equipment in a device small enough for wearable technology. It identified foods, plastics, and medicines with 100% accuracy in tests and demonstrated the ability to…",
-   "date": "2026-10-23T01:21+00:00",
-   "th": [
-    "1.1 Processors and hardware"
    ]
   },
   {
@@ -317,6 +303,32 @@
    "th": []
   },
   {
+   "id": "7536d8cf95",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Scientists overcome a hidden obstacle to more powerful quantum computers",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261024222024.htm",
+   "desc": "Scientists have discovered a way to operate multiple silicon qubits simultaneously with remarkable accuracy, overcoming a major challenge in scaling up quantum computers. Their new technique maintained accuracy of approximately 99.9% even when all five qubits were running at o…",
+   "date": "2026-10-26T01:42+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "c75360ac72",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "What is PHP and why did it spark a global cyber-security scramble?",
+   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
+   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
+   "date": "2026-10-23T12:24+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
    "id": "bac3b1cc89",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -328,33 +340,6 @@
    "th": [
     "1.2 Software and development",
     "1.4 / 2.3 Algorithms"
-   ]
-  },
-  {
-   "id": "7a5340218a",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "'It's been relentless' say IT workers on frontline of PHP cyber-security scramble",
-   "url": "https://www.bbc.co.uk/news/articles/cxnv025d8qpmo?at_medium=RSS&at_campaign=rss",
-   "desc": "IT and cyber experts have told the BBC about their struggles in the last 48 hours to update their systems.",
-   "date": "2026-10-23T12:00+00:00",
-   "th": [
-    "1.3 Security and encryption",
-    "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "bfb51e6eac",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "People are taking an unapproved weight-loss drug. AI found something surprising",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261020085018.htm",
-   "desc": "Researchers analyzing nearly 150,000 Reddit posts uncovered unexpected symptom reports linked by users to unapproved versions of retatrutide, including increased appetite, sleep disturbances, and elevated heart rates. The findings differ from clinical trial results and highlig…",
-   "date": "2026-10-22T02:37+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -412,16 +397,30 @@
    ]
   },
   {
-   "id": "394873158d",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
+   "id": "d9f200af0b",
+   "src": "ScienceDaily",
+   "level": "research",
    "kind": "story",
-   "title": "From musical fruit to walking robots: Coolest Projects India returns to Hyderabad",
-   "url": "https://www.raspberrypi.org/blog/from-musical-fruit-to-walking-robots-coolest-projects-india-returns-to-hyderabad/",
-   "desc": "Coolest Projects returned for its second year in India on Saturday 19 September, taking place in Telangana’s state capital Hyderabad once more. This year’s India event brought together 326 young technology creators who showcased 132 projects: India’s young tech creator communi…",
-   "date": "2026-10-15T14:47+00:00",
+   "title": "MIT scientists build a tiny robot that swims using living muscle cells",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261022081308.htm",
+   "desc": "MIT engineers have built a paper-thin swimming robot powered by living muscle cells that respond to flashes of light, allowing it to swim and steer through water. The breakthrough could pave the way for tiny, self-healing biological robots capable of exploring fragile environm…",
+   "date": "2026-10-23T10:33+00:00",
    "th": [
     "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "7a5340218a",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "'It's been relentless' say IT workers on frontline of PHP cyber-security scramble",
+   "url": "https://www.bbc.co.uk/news/articles/cxnv025d8qpmo?at_medium=RSS&at_campaign=rss",
+   "desc": "IT and cyber experts have told the BBC about their struggles in the last 48 hours to update their systems.",
+   "date": "2026-10-23T12:00+00:00",
+   "th": [
+    "1.3 Security and encryption",
+    "1.5 Law and ethics"
    ]
   },
   {
@@ -434,20 +433,6 @@
    "desc": "This white paper explains how edge AI and physical AI help cities move beyond passive monitoring. It shows how urban infrastructure can sense, reason, and act on real-time conditions across public safety, mobility, and infrastructure management. What you will learn about: How …",
    "date": "2026-10-19T10:00+00:00",
    "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "a9a0851ac6",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "The Indian workers filming their work to train AI",
-   "url": "https://www.bbc.co.uk/news/articles/ckvgyml6pdm9o?at_medium=RSS&at_campaign=rss",
-   "desc": "Indian workers are being paid to film themselves at work and the footage is used to train AI.",
-   "date": "2026-10-23T08:04+00:00",
-   "th": [
-    "1.5 Law and ethics",
     "1.5 AI and automation"
    ]
   },
@@ -493,6 +478,20 @@
    ]
   },
   {
+   "id": "a9a0851ac6",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "The Indian workers filming their work to train AI",
+   "url": "https://www.bbc.co.uk/news/articles/ckvgyml6pdm9o?at_medium=RSS&at_campaign=rss",
+   "desc": "Indian workers are being paid to film themselves at work and the footage is used to train AI.",
+   "date": "2026-10-23T08:04+00:00",
+   "th": [
+    "1.5 Law and ethics",
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "b853ddd115",
    "src": "BBC Technology",
    "level": "way in",
@@ -507,19 +506,6 @@
    ]
   },
   {
-   "id": "048b26c659",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Targeted ads delivered 0-click exploits to install mercenary malware",
-   "url": "https://arstechnica.com/security/2026/10/targeted-ads-delivered-0-click-exploits-to-install-mercenary-malware/",
-   "desc": "The incident is likely 1st confirmation of mercenary spyware delivered by targeted ads.",
-   "date": "2026-10-15T20:32+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
    "id": "fac0c05b1e",
    "src": "BBC Technology",
    "level": "way in",
@@ -530,21 +516,6 @@
    "date": "2026-10-22T10:17+00:00",
    "th": [
     "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "61ee4bba6b",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "'500 new vulnerabilities' found in government, says AI minister",
-   "url": "https://www.bbc.co.uk/news/videos/c6y8lvg2p50po?at_medium=RSS&at_campaign=rss",
-   "desc": "'500 new vulnerabilities' found in government, says AI minister",
-   "date": "2026-10-22T10:08+00:00",
-   "th": [
-    "1.3 Security and encryption",
-    "1.5 Law and ethics",
-    "1.5 AI and automation"
    ]
   }
  ]
