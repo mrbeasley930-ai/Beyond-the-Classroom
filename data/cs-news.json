@@ -1,5 +1,5 @@
 {
- "made": "2026-10-26T13:39+00:00",
+ "made": "2026-10-27T12:48+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -51,14 +51,14 @@
    "level": "way in",
    "line": "the education charity behind Ada Computer Science, Bebras and Astro Pi",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "Ars Technica",
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "IEEE Spectrum",
@@ -72,7 +72,7 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 3
+   "n": 4
   },
   {
    "src": "ScienceDaily",
@@ -84,15 +84,43 @@
  ],
  "stories": [
   {
-   "id": "3272e9319f",
+   "id": "d781471d05",
    "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "Tiny magnetic vortices could help computers work more like your brain",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025073038.htm",
-   "desc": "Scientists have filmed tiny magnetic vortices called skyrmions melting out of an organized lattice for the first time, revealing new ways to manipulate these unusual structures. The breakthrough could help make brain-like computers a reality, potentially enabling dramatically …",
-   "date": "2026-10-26T10:06+00:00",
-   "th": []
+   "title": "A tiny laser beam could make computer memory 1,000 times faster",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025073046.htm",
+   "desc": "Scientists at UC San Diego have developed a surprising new way to store digital information using light instead of magnets, potentially paving the way for smaller, faster, and more energy-efficient memory devices. By precisely shaping and shrinking an ultrafast laser beam, res…",
+   "date": "2026-10-27T09:22+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "f3b6de314f",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "At New York Climate Week 2026, MIT connects with a global network",
+   "url": "https://news.mit.edu/2026/at-new-york-climate-week-mit-connects-global-network-1026",
+   "desc": "A cross-section of the MIT community convened discussions on topics ranging from data centers and super pollutants to agriculture and education.",
+   "date": "2026-10-26T19:00+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "238899667d",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Reintroducing Code Classroom – now with the Blocks editor",
+   "url": "https://www.raspberrypi.org/blog/reintroducing-code-classroom-now-with-the-blocks-editor/",
+   "desc": "Code Classroom — formerly known as the Code Editor for Education — is our free, safe tool for teaching and learning computing and programming. We’re delighted to share that Code Classroom now includes our new Blocks editor, based on the open-source Scratch editor. With the Blo…",
+   "date": "2026-10-26T15:32+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
   },
   {
    "id": "226eb026b7",
@@ -119,19 +147,6 @@
    "date": "2026-10-25T12:00+00:00",
    "th": [
     "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "690aea53d2",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Q&A: How AI came to model the “messy” human mind",
-   "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023",
-   "desc": "Assistant Professor Benjamin Lindquist studies how engineers deliberately injected randomness into early AI, giving rise to deep-learning models that sometimes hallucinate.",
-   "date": "2026-10-23T04:00+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -186,6 +201,30 @@
    ]
   },
   {
+   "id": "3272e9319f",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Tiny magnetic vortices could help computers work more like your brain",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025073038.htm",
+   "desc": "Scientists have filmed tiny magnetic vortices called skyrmions melting out of an organized lattice for the first time, revealing new ways to manipulate these unusual structures. The breakthrough could help make brain-like computers a reality, potentially enabling dramatically …",
+   "date": "2026-10-26T10:06+00:00",
+   "th": []
+  },
+  {
+   "id": "690aea53d2",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Q&A: How AI came to model the “messy” human mind",
+   "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023",
+   "desc": "Assistant Professor Benjamin Lindquist studies how engineers deliberately injected randomness into early AI, giving rise to deep-learning models that sometimes hallucinate.",
+   "date": "2026-10-23T04:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "d08a006f19",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -196,19 +235,6 @@
    "date": "2026-10-21T09:58+00:00",
    "th": [
     "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "ad9d4a8e65",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "AI detects “invisible” signs of pancreatic cancer years before diagnosis",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
-   "desc": "A powerful new AI system could help doctors detect pancreatic cancer years before it becomes visible on conventional scans. The technology, called REDMOD, identified hidden warning signs an average of 475 days before diagnosis and was nearly twice as sensitive as experienced r…",
-   "date": "2026-10-26T09:25+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -236,19 +262,6 @@
    "th": [
     "1.2 Software and development",
     "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "88e73b340e",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "This design software reimagines everyday objects as self-aware devices",
-   "url": "https://news.mit.edu/2026/design-software-reimagines-everyday-objects-as-self-aware-devices-1022",
-   "desc": "“X-Hinges” helps design and 3D print items like lamps and gloves with an interactive twist: automatically embedded sensors that perceive and adaptively respond to human contact.",
-   "date": "2026-10-22T20:45+00:00",
-   "th": [
-    "1.2 Software and development"
    ]
   },
   {
@@ -292,6 +305,32 @@
    ]
   },
   {
+   "id": "ad9d4a8e65",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "AI detects “invisible” signs of pancreatic cancer years before diagnosis",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
+   "desc": "A powerful new AI system could help doctors detect pancreatic cancer years before it becomes visible on conventional scans. The technology, called REDMOD, identified hidden warning signs an average of 475 days before diagnosis and was nearly twice as sensitive as experienced r…",
+   "date": "2026-10-26T09:25+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "88e73b340e",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "This design software reimagines everyday objects as self-aware devices",
+   "url": "https://news.mit.edu/2026/design-software-reimagines-everyday-objects-as-self-aware-devices-1022",
+   "desc": "“X-Hinges” helps design and 3D print items like lamps and gloves with an interactive twist: automatically embedded sensors that perceive and adaptively respond to human contact.",
+   "date": "2026-10-22T20:45+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
    "id": "48435e9ebd",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -301,19 +340,6 @@
    "desc": "I am delighted to share the news that Blythe Masters has been appointed as the next Chair of the Raspberry Pi Foundation’s Board of Trustees. Blythe brings a wealth of experience to our governance at a time when our mission to enable all young people to realise their full pote…",
    "date": "2026-10-20T12:45+00:00",
    "th": []
-  },
-  {
-   "id": "7536d8cf95",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "Scientists overcome a hidden obstacle to more powerful quantum computers",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261024222024.htm",
-   "desc": "Scientists have discovered a way to operate multiple silicon qubits simultaneously with remarkable accuracy, overcoming a major challenge in scaling up quantum computers. Their new technique maintained accuracy of approximately 99.9% even when all five qubits were running at o…",
-   "date": "2026-10-26T01:42+00:00",
-   "th": [
-    "1.1 Processors and hardware"
-   ]
   },
   {
    "id": "c75360ac72",
@@ -340,19 +366,6 @@
    "th": [
     "1.2 Software and development",
     "1.4 / 2.3 Algorithms"
-   ]
-  },
-  {
-   "id": "0dbde1ea11",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
-   "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019",
-   "desc": "A model developed by researchers at MIT and Boston Children's Hospital adjusts scans on the fly to track fetal movement, potentially sparing families repeat hospital visits.",
-   "date": "2026-10-19T18:20+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -397,14 +410,27 @@
    ]
   },
   {
-   "id": "d9f200af0b",
+   "id": "7536d8cf95",
    "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "MIT scientists build a tiny robot that swims using living muscle cells",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261022081308.htm",
-   "desc": "MIT engineers have built a paper-thin swimming robot powered by living muscle cells that respond to flashes of light, allowing it to swim and steer through water. The breakthrough could pave the way for tiny, self-healing biological robots capable of exploring fragile environm…",
-   "date": "2026-10-23T10:33+00:00",
+   "title": "Scientists overcome a hidden obstacle to more powerful quantum computers",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261024222024.htm",
+   "desc": "Scientists have discovered a way to operate multiple silicon qubits simultaneously with remarkable accuracy, overcoming a major challenge in scaling up quantum computers. Their new technique maintained accuracy of approximately 99.9% even when all five qubits were running at o…",
+   "date": "2026-10-26T01:42+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "0dbde1ea11",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
+   "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019",
+   "desc": "A model developed by researchers at MIT and Boston Children's Hospital adjusts scans on the fly to track fetal movement, potentially sparing families repeat hospital visits.",
+   "date": "2026-10-19T18:20+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -460,21 +486,6 @@
    "date": "2026-10-19T16:04+00:00",
    "th": [
     "1.1 Processors and hardware"
-   ]
-  },
-  {
-   "id": "b140e0bf69",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "OpenAI models hacked a crypto wallet and breached more websites",
-   "url": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
-   "desc": "The actions could have resulted in criminal charges had humans been behind the keyboard.",
-   "date": "2026-10-16T20:59+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
    ]
   },
   {
