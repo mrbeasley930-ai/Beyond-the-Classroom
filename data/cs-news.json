@@ -1,5 +1,5 @@
 {
- "made": "2026-10-27T12:48+00:00",
+ "made": "2026-10-28T13:37+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -58,7 +58,7 @@
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 3
+   "n": 4
   },
   {
    "src": "IEEE Spectrum",
@@ -84,6 +84,71 @@
  ],
  "stories": [
   {
+   "id": "144a09a4a9",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "That’s a wrap! Coolest Projects 2026",
+   "url": "https://www.raspberrypi.org/blog/thats-a-wrap-coolest-projects-2026/",
+   "desc": "There are a few Coolest Projects events still to come in the Coolest Projects 2026 cycle, but we are already getting ready to kick off Coolest Projects 2027. Before we do, we’re taking a look back at some of the incredible things the young tech creators in the global Coolest P…",
+   "date": "2026-10-28T12:09+00:00",
+   "th": []
+  },
+  {
+   "id": "9e57b3c7cb",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Making machines that can listen",
+   "url": "https://news.mit.edu/2026/making-machines-that-can-listen-paris-smaragdis-1028",
+   "desc": "Professor Paris Smaragdis develops computers with superhuman hearing for applications like speech recognition, music understanding, and environmental monitoring.",
+   "date": "2026-10-28T04:00+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "9f48ad608f",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/live:bbc_world_service_west_africa?at_medium=RSS&at_campaign=rss",
+   "desc": "We hear from Ondřej Surý, the programmer whose PHP patches helped avert a cyber crisis.",
+   "date": "2026-10-27T20:30+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "71d9cb2bf3",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Code-execution flaw in UEFI firmware affects most servers on planet Earth",
+   "url": "https://arstechnica.com/security/2026/10/code-execution-flaw-in-uefi-firmware-threatens-most-servers-on-planet-earth/",
+   "desc": "Critical flaw in EDK2 allows attackers to execute code early in the boot process.",
+   "date": "2026-10-27T20:25+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "34b6951e24",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Could humanoid robots replace soldiers on the battlefield?",
+   "url": "https://theconversation.com/could-humanoid-robots-replace-soldiers-on-the-battlefield-292913",
+   "desc": "Militaries around the world are testing the newest generation of machines.",
+   "date": "2026-10-27T16:12+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "d781471d05",
    "src": "ScienceDaily",
    "level": "research",
@@ -94,46 +159,6 @@
    "date": "2026-10-27T09:22+00:00",
    "th": [
     "1.1 Processors and hardware"
-   ]
-  },
-  {
-   "id": "f3b6de314f",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "At New York Climate Week 2026, MIT connects with a global network",
-   "url": "https://news.mit.edu/2026/at-new-york-climate-week-mit-connects-global-network-1026",
-   "desc": "A cross-section of the MIT community convened discussions on topics ranging from data centers and super pollutants to agriculture and education.",
-   "date": "2026-10-26T19:00+00:00",
-   "th": [
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "238899667d",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Reintroducing Code Classroom – now with the Blocks editor",
-   "url": "https://www.raspberrypi.org/blog/reintroducing-code-classroom-now-with-the-blocks-editor/",
-   "desc": "Code Classroom — formerly known as the Code Editor for Education — is our free, safe tool for teaching and learning computing and programming. We’re delighted to share that Code Classroom now includes our new Blocks editor, based on the open-source Scratch editor. With the Blo…",
-   "date": "2026-10-26T15:32+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "226eb026b7",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Big, noisy and coming to a town near you - why the data centre backlash is growing",
-   "url": "https://www.bbc.co.uk/news/articles/cq2e9we7w2ejo?at_medium=RSS&at_campaign=rss",
-   "desc": "Data centres are the lifeblood of our digital world, but there are growing concerns about their environmental impact. The BBC explores their rise in charts.",
-   "date": "2026-10-25T23:44+00:00",
-   "th": [
-    "1.1 Processors and hardware",
-    "1.3 Databases and data"
    ]
   },
   {
@@ -164,15 +189,57 @@
    ]
   },
   {
-   "id": "8a6a1f8e6c",
-   "src": "The Conversation",
+   "id": "9a22d2d44c",
+   "src": "NCSC",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Critical security issue affecting PHP",
+   "url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php",
+   "desc": "Updated: The NCSC is encouraging UK organisations to take immediate action to mitigate a security issue affecting PHP (CVE-2026-109618 and CVE-2026-109619).",
+   "date": "2026-10-21T12:00+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
+   "id": "238899667d",
+   "src": "Raspberry Pi Foundation",
    "level": "way in",
    "kind": "story",
-   "title": "How long until wearable brain-computer interfaces become mainstream?",
-   "url": "https://theconversation.com/how-long-until-wearable-brain-computer-interfaces-become-mainstream-281806",
-   "desc": "Wearable consumer neurotechnology is here – but a lot needs to happen before availability leads to widespread adoption.",
-   "date": "2026-10-22T11:08+00:00",
-   "th": []
+   "title": "Reintroducing Code Classroom – now with the Blocks editor",
+   "url": "https://www.raspberrypi.org/blog/reintroducing-code-classroom-now-with-the-blocks-editor/",
+   "desc": "Code Classroom — formerly known as the Code Editor for Education — is our free, safe tool for teaching and learning computing and programming. We’re delighted to share that Code Classroom now includes our new Blocks editor, based on the open-source Scratch editor. With the Blo…",
+   "date": "2026-10-26T15:32+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
+   "id": "f3b6de314f",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "At New York Climate Week 2026, MIT connects with a global network",
+   "url": "https://news.mit.edu/2026/at-new-york-climate-week-mit-connects-global-network-1026",
+   "desc": "A cross-section of the MIT community convened discussions on topics ranging from data centers and super pollutants to agriculture and education.",
+   "date": "2026-10-26T19:00+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "226eb026b7",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Big, noisy and coming to a town near you - why the data centre backlash is growing",
+   "url": "https://www.bbc.co.uk/news/articles/cq2e9we7w2ejo?at_medium=RSS&at_campaign=rss",
+   "desc": "Data centres are the lifeblood of our digital world, but there are growing concerns about their environmental impact. The BBC explores their rise in charts.",
+   "date": "2026-10-25T23:44+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Databases and data"
+   ]
   },
   {
    "id": "3b4c4293f2",
@@ -188,16 +255,16 @@
    ]
   },
   {
-   "id": "9a22d2d44c",
-   "src": "NCSC",
-   "level": "magazine",
+   "id": "5601c7b526",
+   "src": "The Conversation",
+   "level": "way in",
    "kind": "story",
-   "title": "Critical security issue affecting PHP",
-   "url": "https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php",
-   "desc": "Updated: The NCSC is encouraging UK organisations to take immediate action to mitigate a security issue affecting PHP (CVE-2026-109618 and CVE-2026-109619).",
-   "date": "2026-10-21T12:00+00:00",
+   "title": "AI poses three big types of risk – here’s how worried we should be about them",
+   "url": "https://theconversation.com/ai-poses-three-big-types-of-risk-heres-how-worried-we-should-be-about-them-293848",
+   "desc": "A key threat is the loss of control by AI developers over their creations.",
+   "date": "2026-10-27T13:50+00:00",
    "th": [
-    "1.2 Software and development"
+    "1.5 AI and automation"
    ]
   },
   {
@@ -210,45 +277,6 @@
    "desc": "Scientists have filmed tiny magnetic vortices called skyrmions melting out of an organized lattice for the first time, revealing new ways to manipulate these unusual structures. The breakthrough could help make brain-like computers a reality, potentially enabling dramatically …",
    "date": "2026-10-26T10:06+00:00",
    "th": []
-  },
-  {
-   "id": "690aea53d2",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Q&A: How AI came to model the “messy” human mind",
-   "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023",
-   "desc": "Assistant Professor Benjamin Lindquist studies how engineers deliberately injected randomness into early AI, giving rise to deep-learning models that sometimes hallucinate.",
-   "date": "2026-10-23T04:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "d08a006f19",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Preparing young people for frontier technologies: Our new partnership with the UK government",
-   "url": "https://www.raspberrypi.org/blog/preparing-young-people-for-frontier-technologies-our-new-partnership-with-the-uk-government/",
-   "desc": "Around the world, governments are grappling with the same question: how do you prepare young people for careers shaped by emerging technologies? In the UK, part of the answer is TechFirst, and we’re proud to be playing a central role in it. Through the new TechFirst partnershi…",
-   "date": "2026-10-21T09:58+00:00",
-   "th": [
-    "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "875bfd88d0",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "UK to invest £100m in 'world first' AI Biosecurity Lab",
-   "url": "https://www.bbc.co.uk/news/articles/cqdjv8xllvyyo?at_medium=RSS&at_campaign=rss",
-   "desc": "The chancellor will unveil AI spending aimed at shoring up the UK's defences in Wednesday's Budget.",
-   "date": "2026-10-24T00:05+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
   },
   {
    "id": "d5cdfedcab",
@@ -279,14 +307,40 @@
    ]
   },
   {
-   "id": "a930f31e2b",
-   "src": "The Conversation",
+   "id": "d08a006f19",
+   "src": "Raspberry Pi Foundation",
    "level": "way in",
    "kind": "story",
-   "title": "Why the most dangerous AI may be the one we trust too much",
-   "url": "https://theconversation.com/why-the-most-dangerous-ai-may-be-the-one-we-trust-too-much-293887",
-   "desc": "AI doesn’t need to become superintelligent to threaten global security. It just needs to get something wrong and have humans act on it.",
-   "date": "2026-10-21T12:12+00:00",
+   "title": "Preparing young people for frontier technologies: Our new partnership with the UK government",
+   "url": "https://www.raspberrypi.org/blog/preparing-young-people-for-frontier-technologies-our-new-partnership-with-the-uk-government/",
+   "desc": "Around the world, governments are grappling with the same question: how do you prepare young people for careers shaped by emerging technologies? In the UK, part of the answer is TechFirst, and we’re proud to be playing a central role in it. Through the new TechFirst partnershi…",
+   "date": "2026-10-21T09:58+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "690aea53d2",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Q&A: How AI came to model the “messy” human mind",
+   "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023",
+   "desc": "Assistant Professor Benjamin Lindquist studies how engineers deliberately injected randomness into early AI, giving rise to deep-learning models that sometimes hallucinate.",
+   "date": "2026-10-23T04:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "875bfd88d0",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "UK to invest £100m in 'world first' AI Biosecurity Lab",
+   "url": "https://www.bbc.co.uk/news/articles/cqdjv8xllvyyo?at_medium=RSS&at_campaign=rss",
+   "desc": "The chancellor will unveil AI spending aimed at shoring up the UK's defences in Wednesday's Budget.",
+   "date": "2026-10-24T00:05+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -305,6 +359,17 @@
    ]
   },
   {
+   "id": "8a6a1f8e6c",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "How long until wearable brain-computer interfaces become mainstream?",
+   "url": "https://theconversation.com/how-long-until-wearable-brain-computer-interfaces-become-mainstream-281806",
+   "desc": "Wearable consumer neurotechnology is here – but a lot needs to happen before availability leads to widespread adoption.",
+   "date": "2026-10-22T11:08+00:00",
+   "th": []
+  },
+  {
    "id": "ad9d4a8e65",
    "src": "ScienceDaily",
    "level": "research",
@@ -315,43 +380,6 @@
    "date": "2026-10-26T09:25+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "88e73b340e",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "This design software reimagines everyday objects as self-aware devices",
-   "url": "https://news.mit.edu/2026/design-software-reimagines-everyday-objects-as-self-aware-devices-1022",
-   "desc": "“X-Hinges” helps design and 3D print items like lamps and gloves with an interactive twist: automatically embedded sensors that perceive and adaptively respond to human contact.",
-   "date": "2026-10-22T20:45+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "48435e9ebd",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The next Chair of the Board of Trustees, Blythe Masters",
-   "url": "https://www.raspberrypi.org/blog/the-next-chair-of-the-board-of-trustees-blythe-masters/",
-   "desc": "I am delighted to share the news that Blythe Masters has been appointed as the next Chair of the Raspberry Pi Foundation’s Board of Trustees. Blythe brings a wealth of experience to our governance at a time when our mission to enable all young people to realise their full pote…",
-   "date": "2026-10-20T12:45+00:00",
-   "th": []
-  },
-  {
-   "id": "c75360ac72",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "What is PHP and why did it spark a global cyber-security scramble?",
-   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
-   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
-   "date": "2026-10-23T12:24+00:00",
-   "th": [
-    "1.3 Security and encryption"
    ]
   },
   {
@@ -382,16 +410,29 @@
    ]
   },
   {
-   "id": "b9e4695abc",
-   "src": "The Conversation",
+   "id": "88e73b340e",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "This design software reimagines everyday objects as self-aware devices",
+   "url": "https://news.mit.edu/2026/design-software-reimagines-everyday-objects-as-self-aware-devices-1022",
+   "desc": "“X-Hinges” helps design and 3D print items like lamps and gloves with an interactive twist: automatically embedded sensors that perceive and adaptively respond to human contact.",
+   "date": "2026-10-22T20:45+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
+   "id": "c75360ac72",
+   "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Why Meta’s new virtual reality glasses could finally take this technology primetime",
-   "url": "https://theconversation.com/why-metas-new-virtual-reality-glasses-could-finally-take-this-technology-primetime-294126",
-   "desc": "Is Meta’s long game on virtual reality about to pay off?",
-   "date": "2026-10-21T11:48+00:00",
+   "title": "What is PHP and why did it spark a global cyber-security scramble?",
+   "url": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
+   "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response.",
+   "date": "2026-10-23T12:24+00:00",
    "th": [
-    "1.4 / 2.3 Algorithms"
+    "1.3 Security and encryption"
    ]
   },
   {
@@ -410,6 +451,19 @@
    ]
   },
   {
+   "id": "a930f31e2b",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Why the most dangerous AI may be the one we trust too much",
+   "url": "https://theconversation.com/why-the-most-dangerous-ai-may-be-the-one-we-trust-too-much-293887",
+   "desc": "AI doesn’t need to become superintelligent to threaten global security. It just needs to get something wrong and have humans act on it.",
+   "date": "2026-10-21T12:12+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "7536d8cf95",
    "src": "ScienceDaily",
    "level": "research",
@@ -420,33 +474,6 @@
    "date": "2026-10-26T01:42+00:00",
    "th": [
     "1.1 Processors and hardware"
-   ]
-  },
-  {
-   "id": "0dbde1ea11",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
-   "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019",
-   "desc": "A model developed by researchers at MIT and Boston Children's Hospital adjusts scans on the fly to track fetal movement, potentially sparing families repeat hospital visits.",
-   "date": "2026-10-19T18:20+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "7a5340218a",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "'It's been relentless' say IT workers on frontline of PHP cyber-security scramble",
-   "url": "https://www.bbc.co.uk/news/articles/cxnv025d8qpmo?at_medium=RSS&at_campaign=rss",
-   "desc": "IT and cyber experts have told the BBC about their struggles in the last 48 hours to update their systems.",
-   "date": "2026-10-23T12:00+00:00",
-   "th": [
-    "1.3 Security and encryption",
-    "1.5 Law and ethics"
    ]
   },
   {
@@ -476,16 +503,17 @@
    ]
   },
   {
-   "id": "8881ed3718",
-   "src": "The Conversation",
+   "id": "7a5340218a",
+   "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Digital natives are buying electric cars as if they were smartphones",
-   "url": "https://theconversation.com/digital-natives-are-buying-electric-cars-as-if-they-were-smartphones-291483",
-   "desc": "Car buyers increasingly see vehicles as hardware platforms to host digital functions.",
-   "date": "2026-10-19T16:04+00:00",
+   "title": "'It's been relentless' say IT workers on frontline of PHP cyber-security scramble",
+   "url": "https://www.bbc.co.uk/news/articles/cxnv025d8qpmo?at_medium=RSS&at_campaign=rss",
+   "desc": "IT and cyber experts have told the BBC about their struggles in the last 48 hours to update their systems.",
+   "date": "2026-10-23T12:00+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.3 Security and encryption",
+    "1.5 Law and ethics"
    ]
   },
   {
@@ -513,19 +541,6 @@
    "date": "2026-10-22T17:12+00:00",
    "th": [
     "1.2 Software and development",
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "fac0c05b1e",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Zoe Kleinman: PHP is the cyber equivalent of an unexploded bomb",
-   "url": "https://www.bbc.co.uk/news/articles/cw98z6qlyvg3o?at_medium=RSS&at_campaign=rss",
-   "desc": "It has been a dramatic, public and global response, but the cyber event hasn't happened yet.",
-   "date": "2026-10-22T10:17+00:00",
-   "th": [
     "1.3 Security and encryption"
    ]
   }
