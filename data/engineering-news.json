@@ -1,5 +1,5 @@
 {
- "made": "2026-10-28T12:41+00:00",
+ "made": "2026-10-29T12:50+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -38,8 +38,8 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
@@ -60,14 +60,14 @@
    "level": "magazine",
    "line": "European Space Agency · space engineering and technology",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "NASA",
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Carbon Brief",
@@ -95,56 +95,80 @@
    "level": "research",
    "line": "university press releases, materials science",
    "ok": true,
-   "n": 1
+   "n": 2
   }
  ],
  "stories": [
   {
-   "id": "220f16829a",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Australia is cracking down on e‑bikes and e‑scooters. But is that what the public actually wants?",
-   "url": "https://techxplore.com/news/2026-10-australia-ebikes-escooters.html",
-   "desc": "When was the last time you heard of a parliamentary inquiry into traffic rules for cars in Australia? They're not common.",
-   "date": "2026-10-28T12:40+00:00",
-   "th": [
-    "5 Materials"
-   ]
-  },
-  {
-   "id": "86803ce50d",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "New engineering method could help prevent buildings from collapsing after column failure",
-   "url": "https://techxplore.com/news/2026-10-method-collapsing-column-failure.html",
-   "desc": "A new engineering method could be the difference between a building surviving a failed support column and a chain reaction that causes the entire structure to collapse, according to research led by the University of Surrey.",
-   "date": "2026-10-28T11:40+00:00",
-   "th": [
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "572eeee222",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Government payouts for household renewable energy use top £1bn in six months",
-   "url": "https://www.newcivilengineer.com/latest/government-pay-outs-for-household-renewable-energy-use-top-1bn-in-six-months-28-10-2026/",
-   "desc": "The UK Government has paid out more than £1bn to subsidise the cost of renewable electricity for households since the The Renewables Obligation to Exchequer Scheme came into force in April.",
-   "date": "2026-10-28T10:41+00:00",
-   "th": [
-    "3 Wider issues"
-   ]
-  },
-  {
-   "id": "200a605ff5",
+   "id": "76dd64ea88",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Why Aston Martin and Red Bull were asked about an unlikely F1 engine partnership",
-   "url": "https://www.motorsport.com/f1/news/why-aston-martin-and-red-bull-were-asked-about-an-unlikely-f1-engine-partnership/10869014/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "One of the most remarkable moments on Sunday in Austin did not take place on the track itself, but rather in the Formula 1 paddock after the US Grand Prix. During the usual post-race media sessions, both Aston Martin and Red Bull’s representatives were asked about a subject th…",
-   "date": "2026-10-28T09:39+00:00",
+   "title": "FIA to use AI to help shape future F1 regulations in new AWS partnership",
+   "url": "https://www.motorsport.com/f1/news/fia-to-use-ai-to-help-shape-future-f1-regulations-in-new-aws-partnership/10869165/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "The Fédération Internationale de l'Automobile (FIA) will use artificial intelligence from Amazon Web Services (AWS) to help draw up the rules for Formula 1's next era of cars, after signing a new global partnership with the tech giant. Under the deal, AWS becomes the governing…",
+   "date": "2026-10-29T00:16+00:00",
    "th": [
     "Motorsport",
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "f9847c4665",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Self-adjusting drone controls could make for smoother formation flying",
+   "url": "https://techxplore.com/news/2026-10-adjusting-drone-smoother-formation-flying.html",
+   "desc": "A new method for controlling groups of drones, technically known as unmanned aerial vehicles (UAVs), could make formation flying smoother and reduce energy consumption and mechanical wear, according to research in the International Journal of Systems, Control and Communication…",
+   "date": "2026-10-28T20:40+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "81685bb652",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Researchers establish performance targets for next-generation solar aircraft batteries",
+   "url": "https://techxplore.com/news/2026-10-generation-solar-aircraft-batteries.html",
+   "desc": "A sleek, pilotless, solar-powered airplane that soars through the atmosphere to monitor climate or track wildfires was once just an idea. Now, these high-altitude specialty aircraft are advancing from early prototyping demonstrations toward potential commercial applications, s…",
+   "date": "2026-10-28T20:00+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "b069f02850",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "Elon Musk is a 'real genius', Putin says after satellite talks with SpaceX boss",
+   "url": "https://www.bbc.co.uk/news/articles/c63djl148n3eo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Russian President praised Musk and said they are in \"close\" contact.",
+   "date": "2026-10-28T19:15+00:00",
+   "th": []
+  },
+  {
+   "id": "6b410a9fdd",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA University Challenge Ignites Trajectory of Drone Entrepreneur",
+   "url": "https://www.nasa.gov/aeronautics/nasa-challenge-drone-entrepreneur/",
+   "desc": "Five years ago, Gavin Gardner was a Michigan State University engineering student researching next-generation drone technology as part of a NASA grant. Garder expected the research to be demanding – but he was surprised that navigating the financial side of the work presented …",
+   "date": "2026-10-28T18:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "659de29a97",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
+   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
+   "date": "2026-10-28T12:25+00:00",
+   "th": [
     "6 Technical"
    ]
   },
@@ -162,18 +186,6 @@
    ]
   },
   {
-   "id": "a0c3bc6eed",
-   "src": "BBC Technology",
-   "level": "way in",
-   "title": "'An annoying buzz': The search for stealthier drones",
-   "url": "https://www.bbc.co.uk/news/articles/ck1exgejq3xvo?at_medium=RSS&at_campaign=rss",
-   "desc": "As drone deliveries become more commonplace, their makers are looking for ways to make them quieter.",
-   "date": "2026-10-28T00:01+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "1698e31ea5",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -184,18 +196,6 @@
    "th": [
     "6 Technical",
     "9 Health and safety"
-   ]
-  },
-  {
-   "id": "d781471d05",
-   "src": "ScienceDaily (materials)",
-   "level": "research",
-   "title": "A tiny laser beam could make computer memory 1,000 times faster",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025073046.htm",
-   "desc": "Scientists at UC San Diego have developed a surprising new way to store digital information using light instead of magnets, potentially paving the way for smaller, faster, and more energy-efficient memory devices. By precisely shaping and shrinking an ultrafast laser beam, res…",
-   "date": "2026-10-27T09:22+00:00",
-   "th": [
-    "6 Technical"
    ]
   },
   {
@@ -224,74 +224,63 @@
    ]
   },
   {
-   "id": "87c27d2245",
-   "src": "ESA",
-   "level": "magazine",
-   "title": "Space materials lab marks 10 years of innovation",
-   "url": "https://www.esa.int/Space_in_Member_States/United_Kingdom/Space_materials_lab_marks_10_years_of_innovation",
-   "desc": "Space materials lab marks 10 years of innovation Space materials lab marks 10 years of innovation",
-   "date": "2026-10-19T09:48+00:00",
-   "th": [
-    "5 Materials"
-   ]
-  },
-  {
-   "id": "9d43c6df7a",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "The unexpected key to extending EV battery life found in 'oxygen release'",
-   "url": "https://techxplore.com/news/2026-10-unexpected-key-ev-battery-life.html",
-   "desc": "What if a battery could become more powerful as it ages? Much like wine developing a deeper flavor over time, researchers in Korea have uncovered the mechanism behind a battery material that can deliver greater usable capacity after repeated charging and discharging.",
-   "date": "2026-10-27T13:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "067c9dcc2a",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Insect-inspired flying robot bounces back after collisions",
-   "url": "https://techxplore.com/news/2026-10-insect-flying-robot-collisions.html",
-   "desc": "Flying insects, such as fruit flies, bees, dragonflies and mosquitoes, can dart through narrow spaces and survive collisions with various objects. In contrast, many flying robots fall, suffer damage or even break down when they hit nearby surfaces or objects.",
-   "date": "2026-10-28T11:40+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "0115ca9f65",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Government orders Basildon council to press ahead with delayed local plan amid threat of intervention",
-   "url": "https://www.newcivilengineer.com/latest/government-orders-basildon-council-to-press-ahead-with-delayed-local-plan-amid-threat-of-intervention-28-10-2026/",
-   "desc": "Housing minister Matthew Pennycook has instructed Basildon Borough Council to resume and complete its long-delayed local plan warning that government intervention remains a possibility if the authority attempts to halt progress.",
-   "date": "2026-10-28T10:26+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "ef2a9dc3ba",
+   "id": "200a605ff5",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Audi F1 power unit division brings back CEO role",
-   "url": "https://www.motorsport.com/f1/news/audi-f1-power-unit-division-brings-back-ceo-role/10869006/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Audi has announced Thomas Fuhr will become CEO of Audi Formula Racing GmbH, the Neuburg-based division developing its F1 power units. Fuhr will sit at the head of the Neuburg plant as an addition to the current team, which Audi says will allow chief technical director Stefan D…",
-   "date": "2026-10-28T08:54+00:00",
+   "title": "Why Aston Martin and Red Bull were asked about an unlikely F1 engine partnership",
+   "url": "https://www.motorsport.com/f1/news/why-aston-martin-and-red-bull-were-asked-about-an-unlikely-f1-engine-partnership/10869014/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "One of the most remarkable moments on Sunday in Austin did not take place on the track itself, but rather in the Formula 1 paddock after the US Grand Prix. During the usual post-race media sessions, both Aston Martin and Red Bull’s representatives were asked about a subject th…",
+   "date": "2026-10-28T09:39+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "a9a0851ac6",
+   "id": "584555ac62",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Ultrathin films that overcome 'dead layer' effect could enable energy-efficient microchips for AI",
+   "url": "https://techxplore.com/news/2026-10-ultrathin-dead-layer-effect-enable.html",
+   "desc": "Multiferroics are a promising class of materials for making computer chips and other electronic components that can operate at much lower power than today's devices. The materials have coupled electrical and magnetic properties that can be manipulated simultaneously with a rel…",
+   "date": "2026-10-28T17:40+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "42051043ab",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "These are the 4 best used electric SUVs for under $25,000, according to Edmunds",
+   "url": "https://techxplore.com/news/2026-10-electric-suvs-edmunds.html",
+   "desc": "As more EVs enter the used car market, buyers with a budget of around $25,000 can now find newer electric SUVs that offer the benefits of gas-free motoring without the eye-watering price tags attached to many new electric vehicles. The challenge, naturally, is figuring out whi…",
+   "date": "2026-10-28T18:00+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "a0c3bc6eed",
    "src": "BBC Technology",
    "level": "way in",
-   "title": "The Indian workers filming their work to train AI",
-   "url": "https://www.bbc.co.uk/news/articles/ckvgyml6pdm9o?at_medium=RSS&at_campaign=rss",
-   "desc": "Indian workers are being paid to film themselves at work and the footage is used to train AI.",
-   "date": "2026-10-23T08:04+00:00",
+   "title": "'An annoying buzz': The search for stealthier drones",
+   "url": "https://www.bbc.co.uk/news/articles/ck1exgejq3xvo?at_medium=RSS&at_campaign=rss",
+   "desc": "As drone deliveries become more commonplace, their makers are looking for ways to make them quieter.",
+   "date": "2026-10-28T00:01+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d781471d05",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "A tiny laser beam could make computer memory 1,000 times faster",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025073046.htm",
+   "desc": "Scientists at UC San Diego have developed a surprising new way to store digital information using light instead of magnets, potentially paving the way for smaller, faster, and more energy-efficient memory devices. By precisely shaping and shrinking an ultrafast laser beam, res…",
+   "date": "2026-10-27T09:22+00:00",
    "th": [
     "6 Technical"
    ]
@@ -321,39 +310,52 @@
    ]
   },
   {
-   "id": "07bb37c237",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "When diesel prices rise, every freight mile matters",
-   "url": "https://techxplore.com/news/2026-10-diesel-prices-freight-mile.html",
-   "desc": "The price on a fuel pump is easy to see. The miles embedded in everything you buy are harder to track.",
-   "date": "2026-10-27T11:40+00:00",
+   "id": "ef2a9dc3ba",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Audi F1 power unit division brings back CEO role",
+   "url": "https://www.motorsport.com/f1/news/audi-f1-power-unit-division-brings-back-ceo-role/10869006/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Audi has announced Thomas Fuhr will become CEO of Audi Formula Racing GmbH, the Neuburg-based division developing its F1 power units. Fuhr will sit at the head of the Neuburg plant as an addition to the current team, which Audi says will allow chief technical director Stefan D…",
+   "date": "2026-10-28T08:54+00:00",
    "th": [
-    "8 Viability"
+    "Motorsport",
+    "6 Technical"
    ]
   },
   {
-   "id": "392ca037f4",
+   "id": "d1c4295932",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Living cells inspire tiny channels that could help extract lithium for batteries",
-   "url": "https://techxplore.com/news/2026-10-cells-tiny-channels-lithium-batteries.html",
-   "desc": "Gathering lithium, a crucial element in batteries for smartphones, electric cars and the electrical grid, is a time-consuming and energy-intensive process, but new technology could make it much easier.",
-   "date": "2026-10-27T20:00+00:00",
+   "title": "Designing new nuclear alloys, element by element",
+   "url": "https://techxplore.com/news/2026-10-nuclear-alloys-element.html",
+   "desc": "The periodic table contains more than 100 elements. Combine them in different ways, and the possibilities quickly multiply. For researchers designing materials for advanced nuclear reactors, the abundance presents an opportunity: Could entirely new combinations of elements pro…",
+   "date": "2026-10-28T17:00+00:00",
+   "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "e00c800233",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Students research on the road with sensor-filled Ford Mustang",
+   "url": "https://techxplore.com/news/2026-10-students-road-sensor-ford-mustang.html",
+   "desc": "A tall garage gate on Northeastern University's Seattle campus rolled up to reveal the snarling headlights of a Ford Mustang Mach-E wrapped in the signature Husky red-and-white color scheme. Behind the wheel of the sleek, all-electric SUV was Xian Li, a professor of electrical…",
+   "date": "2026-10-28T13:20+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "60725c9296",
-   "src": "New Civil Engineer",
+   "id": "57d1526d44",
+   "src": "IEEE Spectrum",
    "level": "magazine",
-   "title": "NCE Podcast | Construction materials can help heal planet, says Future Build author",
-   "url": "https://www.newcivilengineer.com/latest/nce-podcast-construction-materials-can-help-heal-planet-says-future-build-author-28-10-2026/",
-   "desc": "The latest episode of the Engineers Collective is out now: listen on Spotify, Apple Podcasts, your usual platform or via the player below.",
-   "date": "2026-10-28T09:30+00:00",
+   "title": "From Chip Lab to Center Stage",
+   "url": "https://spectrum.ieee.org/preethi-ashwath-chip-designer",
+   "desc": "Many engineers are more comfortable working behind the scenes developing technology than speaking to consumers about products. But Preethi Ashwath has learned to take center stage, talking about the “hearable” and wearable devices she has had a hand in developing as an analog …",
+   "date": "2026-10-23T18:00+00:00",
    "th": [
-    "5 Materials"
+    "6 Technical"
    ]
   },
   {
@@ -370,64 +372,27 @@
    ]
   },
   {
-   "id": "57d1526d44",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "From Chip Lab to Center Stage",
-   "url": "https://spectrum.ieee.org/preethi-ashwath-chip-designer",
-   "desc": "Many engineers are more comfortable working behind the scenes developing technology than speaking to consumers about products. But Preethi Ashwath has learned to take center stage, talking about the “hearable” and wearable devices she has had a hand in developing as an analog …",
-   "date": "2026-10-23T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "8d562fa6f9",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Some US transit systems weigh whether to run trains without a human at the controls",
-   "url": "https://techxplore.com/news/2026-10-transit-human.html",
-   "desc": "Even as automated vehicles such as robotaxis grow more prevalent in the U.S., almost every mass transit system still requires a driver or operator on board. Two major cities are seeking to change that.",
-   "date": "2026-10-26T09:48+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "7466f681b8",
+   "id": "1995092114",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Origami-based construction method yields lightweight, load-bearing structures on architectural scales",
-   "url": "https://techxplore.com/news/2026-10-origami-based-method-yields-lightweight.html",
-   "desc": "MIT researchers have developed a new type of origami-based construction method that could be used to build complex structures that are cheaper and easier to assemble and use less material than those built with some conventional techniques. This scalable system simplifies the p…",
-   "date": "2026-10-27T13:40+00:00",
+   "title": "A new flexible foot pad enables this one-legged, hopping robot to go where few robots have gone before",
+   "url": "https://techxplore.com/news/2026-10-flexible-foot-pad-enables-legged.html",
+   "desc": "A team of University of Toronto Engineering researchers has developed a flexible foot pad for the \"Hopcopter\"—a one-legged, hopping robot they developed—significantly enhancing its performance on sand, ice and other difficult terrain.",
+   "date": "2026-10-28T15:40+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "d1c835e2ff",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Britain’s infrastructure pipeline has an accommodation problem",
-   "url": "https://www.newcivilengineer.com/latest/britains-infrastructure-pipeline-has-an-accommodation-problem-28-10-2026/",
-   "desc": "Britain’s infrastructure industry is rightly focused on recruiting and retaining the engineers, technicians and specialist contractors needed to deliver its project pipeline.",
-   "date": "2026-10-28T06:30+00:00",
+   "id": "220f16829a",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Australia is cracking down on e‑bikes and e‑scooters. But is that what the public actually wants?",
+   "url": "https://techxplore.com/news/2026-10-australia-ebikes-escooters.html",
+   "desc": "When was the last time you heard of a parliamentary inquiry into traffic rules for cars in Australia? They're not common.",
+   "date": "2026-10-28T12:40+00:00",
    "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "f86ad323fd",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Red Bull responds to Aston Martin F1 power unit rumours",
-   "url": "https://www.motorsport.com/f1/news/red-bull-responds-to-aston-martin-f1-power-unit-rumours/10868957/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Red Bull team principal Laurent Mekies has confirmed that the team is not in \"serious conversations\" when it comes to supplying another Formula 1 team with power units. This includes Aston Martin. The Silverstone-based team has struggled with its power unit performance all sea…",
-   "date": "2026-10-28T00:24+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
+    "5 Materials"
    ]
   },
   {
@@ -443,29 +408,15 @@
    ]
   },
   {
-   "id": "ac573f94a5",
+   "id": "86803ce50d",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Lithium removal extends perovskite solar cell lifespan to advance commercialization efforts",
-   "url": "https://techxplore.com/news/2026-10-lithium-perovskite-solar-cell-lifespan.html",
-   "desc": "The Photovoltaic Research Department of the Korea Institute of Energy Research (KIER) has developed a catalytic process that extends the lifespan of perovskite solar cells. The findings were published in Advanced Science.",
-   "date": "2026-10-26T20:40+00:00",
+   "title": "New engineering method could help prevent buildings from collapsing after column failure",
+   "url": "https://techxplore.com/news/2026-10-method-collapsing-column-failure.html",
+   "desc": "A new engineering method could be the difference between a building surviving a failed support column and a chain reaction that causes the entire structure to collapse, according to research led by the University of Surrey.",
+   "date": "2026-10-28T11:40+00:00",
    "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "ecadd703ea",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Most UK energy infrastructure leaders say grid readiness among their biggest delivery barriers",
-   "url": "https://www.newcivilengineer.com/latest/most-uk-energy-infrastructure-leaders-say-grid-readiness-among-their-biggest-delivery-barriers-27-10-2026/",
-   "desc": "59% of UK energy leaders surveyed by Jacobs have ranked grid or network readiness as one of the top three barriers to being able to deliver energy infrastructure – a higher proportion than leaders in the US, Germany, Singapore and Australia.",
-   "date": "2026-10-27T15:26+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
+    "9 Health and safety"
    ]
   },
   {
@@ -482,25 +433,13 @@
    ]
   },
   {
-   "id": "29fcdc9ec5",
+   "id": "067c9dcc2a",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Pulsed 3D printing grows creep-resistant single crystals more than a meter long for high-temperature applications",
-   "url": "https://techxplore.com/news/2026-10-pulsed-3d-resistant-crystals-meter.html",
-   "desc": "Researchers from China have developed a new 3D-printing process capable of building titanium-alloy rods more than a meter (3.3 feet) tall composed entirely of a single crystal. The new method, described in the team's recently published study in Nature, eliminates some of the c…",
-   "date": "2026-10-26T16:40+00:00",
-   "th": [
-    "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "bc6128777a",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Suicide prevention assessments become mandatory for road designs in the UK",
-   "url": "https://www.newcivilengineer.com/latest/suicide-prevention-assessments-become-mandatory-for-road-designs-in-the-uk-27-10-2026/",
-   "desc": "National Highways, in partnership with the UK Roads Leadership Group (UKRLG), has led the creation of what it believes to be Europe’s first mandatory suicide prevention assessment for some road infrastructure designs.",
-   "date": "2026-10-27T14:20+00:00",
+   "title": "Insect-inspired flying robot bounces back after collisions",
+   "url": "https://techxplore.com/news/2026-10-insect-flying-robot-collisions.html",
+   "desc": "Flying insects, such as fruit flies, bees, dragonflies and mosquitoes, can dart through narrow spaces and survive collisions with various objects. In contrast, many flying robots fall, suffer damage or even break down when they hit nearby surfaces or objects.",
+   "date": "2026-10-28T11:40+00:00",
    "th": [
     "6 Technical"
    ]
