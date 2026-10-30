@@ -1,5 +1,5 @@
 {
- "made": "2026-10-29T12:50+00:00",
+ "made": "2026-10-30T12:42+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,7 +25,7 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Motorsport.com",
@@ -38,8 +38,8 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Carbon Brief",
@@ -100,42 +100,53 @@
  ],
  "stories": [
   {
-   "id": "76dd64ea88",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "FIA to use AI to help shape future F1 regulations in new AWS partnership",
-   "url": "https://www.motorsport.com/f1/news/fia-to-use-ai-to-help-shape-future-f1-regulations-in-new-aws-partnership/10869165/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "The Fédération Internationale de l'Automobile (FIA) will use artificial intelligence from Amazon Web Services (AWS) to help draw up the rules for Formula 1's next era of cars, after signing a new global partnership with the tech giant. Under the deal, AWS becomes the governing…",
-   "date": "2026-10-29T00:16+00:00",
-   "th": [
-    "Motorsport",
-    "3 Wider issues",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "f9847c4665",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Self-adjusting drone controls could make for smoother formation flying",
-   "url": "https://techxplore.com/news/2026-10-adjusting-drone-smoother-formation-flying.html",
-   "desc": "A new method for controlling groups of drones, technically known as unmanned aerial vehicles (UAVs), could make formation flying smoother and reduce energy consumption and mechanical wear, according to research in the International Journal of Systems, Control and Communication…",
-   "date": "2026-10-28T20:40+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "81685bb652",
+   "id": "58bb4b0ec0",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Researchers establish performance targets for next-generation solar aircraft batteries",
-   "url": "https://techxplore.com/news/2026-10-generation-solar-aircraft-batteries.html",
-   "desc": "A sleek, pilotless, solar-powered airplane that soars through the atmosphere to monitor climate or track wildfires was once just an idea. Now, these high-altitude specialty aircraft are advancing from early prototyping demonstrations toward potential commercial applications, s…",
-   "date": "2026-10-28T20:00+00:00",
+   "title": "How cities can make room for robotaxis",
+   "url": "https://techxplore.com/news/2026-10-cities-room-robotaxis.html",
+   "desc": "Switzerland recently launched its first driverless taxi service in Furttal, near Zurich. As robotaxi services become a reality, researchers are increasingly focusing not just on their technical feasibility, but on how large fleets of autonomous vehicles can be integrated into …",
+   "date": "2026-10-30T11:40+00:00",
    "th": [
-    "2 Existing products",
     "6 Technical"
+   ]
+  },
+  {
+   "id": "188bd84816",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Yorkshire Water announces CEO to stand down one day after joint regulator report",
+   "url": "https://www.newcivilengineer.com/latest/yorkshire-water-announces-ceo-to-stand-down-one-day-after-joint-regulator-report-30-10-2026/",
+   "desc": "Yorkshire Water received the lowest environmental performance score available from regulators and has announced non-executive director Nicola Medalova will replace Nicola Shaw as CEO in January.",
+   "date": "2026-10-30T11:03+00:00",
+   "th": [
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "78faddf1d6",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Why F1's new regulations make the Mexican GP an even bigger challenge",
+   "url": "https://www.motorsport.com/f1/news/why-f1s-new-regulations-make-the-mexican-gp-an-even-bigger-challenge/10869622/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "At 2,286 metres above sea level, the Autodromo Hermanos Rodriguez is by far the highest-altitude venue on the Formula 1 calendar. This naturally means thinner air, which presents a unique challenge at the Mexican Grand Prix for teams and manufacturers in two ways. Firstly, the…",
+   "date": "2026-10-30T09:55+00:00",
+   "th": [
+    "Motorsport",
+    "3 Wider issues"
+   ]
+  },
+  {
+   "id": "2725204688",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Making bad weather on purpose to test camera and sensor performance",
+   "url": "https://techxplore.com/news/2026-10-bad-weather-purpose-camera-sensor.html",
+   "desc": "Many buildings and sites tied to national security rely on cameras and sensor networks to detect people and other objects nearby, but weather conditions can quickly obscure their view. To understand how these systems perform, Sandia National Laboratories researchers are delibe…",
+   "date": "2026-10-29T20:40+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
    ]
   },
   {
@@ -149,18 +160,6 @@
    "th": []
   },
   {
-   "id": "6b410a9fdd",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA University Challenge Ignites Trajectory of Drone Entrepreneur",
-   "url": "https://www.nasa.gov/aeronautics/nasa-challenge-drone-entrepreneur/",
-   "desc": "Five years ago, Gavin Gardner was a Michigan State University engineering student researching next-generation drone technology as part of a NASA grant. Garder expected the research to be demanding – but he was surprised that navigating the financial side of the work presented …",
-   "date": "2026-10-28T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "659de29a97",
    "src": "ScienceDaily (materials)",
    "level": "research",
@@ -169,19 +168,6 @@
    "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
    "date": "2026-10-28T12:25+00:00",
    "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "257fe57ca6",
-   "src": "The Race",
-   "level": "way in",
-   "title": "AI will help design future F1 cars in new FIA/AWS deal",
-   "url": "https://www.the-race.com/formula-1/ai-will-help-design-future-f1-cars-in-new-fia-aws-deal/",
-   "desc": "AI tools will play a bigger part in the development of F1's aero rules as part of a new partnership between the FIA and Amazon Web Services",
-   "date": "2026-10-28T08:06+00:00",
-   "th": [
-    "Motorsport",
     "6 Technical"
    ]
   },
@@ -224,41 +210,55 @@
    ]
   },
   {
-   "id": "200a605ff5",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Why Aston Martin and Red Bull were asked about an unlikely F1 engine partnership",
-   "url": "https://www.motorsport.com/f1/news/why-aston-martin-and-red-bull-were-asked-about-an-unlikely-f1-engine-partnership/10869014/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "One of the most remarkable moments on Sunday in Austin did not take place on the track itself, but rather in the Formula 1 paddock after the US Grand Prix. During the usual post-race media sessions, both Aston Martin and Red Bull’s representatives were asked about a subject th…",
-   "date": "2026-10-28T09:39+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "584555ac62",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Ultrathin films that overcome 'dead layer' effect could enable energy-efficient microchips for AI",
-   "url": "https://techxplore.com/news/2026-10-ultrathin-dead-layer-effect-enable.html",
-   "desc": "Multiferroics are a promising class of materials for making computer chips and other electronic components that can operate at much lower power than today's devices. The materials have coupled electrical and magnetic properties that can be manipulated simultaneously with a rel…",
-   "date": "2026-10-28T17:40+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "42051043ab",
+   "id": "cdd423a116",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "These are the 4 best used electric SUVs for under $25,000, according to Edmunds",
-   "url": "https://techxplore.com/news/2026-10-electric-suvs-edmunds.html",
-   "desc": "As more EVs enter the used car market, buyers with a budget of around $25,000 can now find newer electric SUVs that offer the benefits of gas-free motoring without the eye-watering price tags attached to many new electric vehicles. The challenge, naturally, is figuring out whi…",
-   "date": "2026-10-28T18:00+00:00",
+   "title": "Driverless 18‑wheelers are on a few highways, but widespread use is a long way down the road",
+   "url": "https://techxplore.com/news/2026-10-driverless-18wheelers-highways-widespread-road.html",
+   "desc": "Driverless trucks with artificial intelligence on board could dramatically change the landscape of freight shipping. A few companies have begun testing early models on some limited routes in Texas and California. Simulations of automated fleets show the potential benefits of t…",
+   "date": "2026-10-29T15:20+00:00",
    "th": [
-    "6 Technical",
-    "8 Viability"
+    "4 Design thinking",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "267ade402b",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "First joint regulator water sector report reveals water quality remains high but so does pollution",
+   "url": "https://www.newcivilengineer.com/latest/first-joint-regulator-water-sector-report-reveals-water-quality-remains-high-but-so-does-pollution-29-10-2026/",
+   "desc": "For the first time, the four main regulators of England and Wales’ water industry have published a single, consolidated assessment of company performance.",
+   "date": "2026-10-29T16:07+00:00",
+   "th": [
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "76dd64ea88",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "FIA to use AI to help shape future F1 regulations in new AWS partnership",
+   "url": "https://www.motorsport.com/f1/news/fia-to-use-ai-to-help-shape-future-f1-regulations-in-new-aws-partnership/10869165/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "The Fédération Internationale de l'Automobile (FIA) will use artificial intelligence from Amazon Web Services (AWS) to help draw up the rules for Formula 1's next era of cars, after signing a new global partnership with the tech giant. Under the deal, AWS becomes the governing…",
+   "date": "2026-10-29T00:16+00:00",
+   "th": [
+    "Motorsport",
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "4af156c916",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "New virtual assistant streamlines one of the most advanced microscopes",
+   "url": "https://techxplore.com/news/2026-10-virtual-advanced-microscopes.html",
+   "desc": "Some of the most important discoveries in materials science and structural biology come down to a simple question: Where, exactly, are the atoms? The arrangement of atoms determines nearly everything about how a material behaves in the real world—how strong it is, how it condu…",
+   "date": "2026-10-29T19:40+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical"
    ]
   },
   {
@@ -310,40 +310,55 @@
    ]
   },
   {
-   "id": "ef2a9dc3ba",
+   "id": "81685bb652",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Researchers establish performance targets for next-generation solar aircraft batteries",
+   "url": "https://techxplore.com/news/2026-10-generation-solar-aircraft-batteries.html",
+   "desc": "A sleek, pilotless, solar-powered airplane that soars through the atmosphere to monitor climate or track wildfires was once just an idea. Now, these high-altitude specialty aircraft are advancing from early prototyping demonstrations toward potential commercial applications, s…",
+   "date": "2026-10-28T20:00+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d7dcfb5a11",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Enersea and Carbon Haven partner on CO₂ injection using existing North Sea infrastructure",
+   "url": "https://www.newcivilengineer.com/uncategorized/enersea-and-carbon-haven-partner-on-co%e2%82%82-injection-using-existing-north-sea-infrastructure-29-10-2026/",
+   "desc": "Engineers at UK-based Enersea have partnered with Carbon Haven in the Netherlands to develop an offshore CO₂ injection solution intended to allow depleted gas platforms to be repurposed for permanent carbon storage, the companies working on the project say.",
+   "date": "2026-10-29T15:52+00:00",
+   "th": [
+    "3 Wider issues",
+    "6 Technical",
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "200a605ff5",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Audi F1 power unit division brings back CEO role",
-   "url": "https://www.motorsport.com/f1/news/audi-f1-power-unit-division-brings-back-ceo-role/10869006/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Audi has announced Thomas Fuhr will become CEO of Audi Formula Racing GmbH, the Neuburg-based division developing its F1 power units. Fuhr will sit at the head of the Neuburg plant as an addition to the current team, which Audi says will allow chief technical director Stefan D…",
-   "date": "2026-10-28T08:54+00:00",
+   "title": "Why Aston Martin and Red Bull were asked about an unlikely F1 engine partnership",
+   "url": "https://www.motorsport.com/f1/news/why-aston-martin-and-red-bull-were-asked-about-an-unlikely-f1-engine-partnership/10869014/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "One of the most remarkable moments on Sunday in Austin did not take place on the track itself, but rather in the Formula 1 paddock after the US Grand Prix. During the usual post-race media sessions, both Aston Martin and Red Bull’s representatives were asked about a subject th…",
+   "date": "2026-10-28T09:39+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "d1c4295932",
+   "id": "f1d0d83dd7",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Designing new nuclear alloys, element by element",
-   "url": "https://techxplore.com/news/2026-10-nuclear-alloys-element.html",
-   "desc": "The periodic table contains more than 100 elements. Combine them in different ways, and the possibilities quickly multiply. For researchers designing materials for advanced nuclear reactors, the abundance presents an opportunity: Could entirely new combinations of elements pro…",
-   "date": "2026-10-28T17:00+00:00",
+   "title": "Angstrom-scale water channels help membranes recover lithium and purify salt",
+   "url": "https://techxplore.com/news/2026-10-angstrom-scale-channels-membranes-recover.html",
+   "desc": "Researchers at Kobe University and their collaborators have developed a polymer membrane that allows singly charged ions to pass through rapidly while effectively blocking multiply charged ions, whether positively or negatively charged. The work is published in the journal Sci…",
+   "date": "2026-10-29T18:20+00:00",
    "th": [
     "5 Materials"
-   ]
-  },
-  {
-   "id": "e00c800233",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Students research on the road with sensor-filled Ford Mustang",
-   "url": "https://techxplore.com/news/2026-10-students-road-sensor-ford-mustang.html",
-   "desc": "A tall garage gate on Northeastern University's Seattle campus rolled up to reveal the snarling headlights of a Ford Mustang Mach-E wrapped in the signature Husky red-and-white color scheme. Behind the wheel of the sleek, all-electric SUV was Xian Li, a professor of electrical…",
-   "date": "2026-10-28T13:20+00:00",
-   "th": [
-    "6 Technical"
    ]
   },
   {
@@ -359,40 +374,52 @@
    ]
   },
   {
-   "id": "23995a7c6e",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "FIA partners with AWS to help drive future F1 regulations",
-   "url": "https://www.motorsport.com/f1/news/fia-partners-with-aws-to-help-drive-future-f1-regulations/10868911/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "The FIA has announced a wide-ranging partnership with Amazon Web Services as it aims to upgrade its digital capabilities. AWS will join as its Official AI and Cloud Computing Partner, as the governing body will use AWS's suite of AI tools to improve its capability to produce f…",
-   "date": "2026-10-28T08:00+00:00",
+   "id": "42051043ab",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "These are the 4 best used electric SUVs for under $25,000, according to Edmunds",
+   "url": "https://techxplore.com/news/2026-10-electric-suvs-edmunds.html",
+   "desc": "As more EVs enter the used car market, buyers with a budget of around $25,000 can now find newer electric SUVs that offer the benefits of gas-free motoring without the eye-watering price tags attached to many new electric vehicles. The challenge, naturally, is figuring out whi…",
+   "date": "2026-10-28T18:00+00:00",
    "th": [
-    "Motorsport",
-    "3 Wider issues"
+    "6 Technical",
+    "8 Viability"
    ]
   },
   {
-   "id": "1995092114",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "A new flexible foot pad enables this one-legged, hopping robot to go where few robots have gone before",
-   "url": "https://techxplore.com/news/2026-10-flexible-foot-pad-enables-legged.html",
-   "desc": "A team of University of Toronto Engineering researchers has developed a flexible foot pad for the \"Hopcopter\"—a one-legged, hopping robot they developed—significantly enhancing its performance on sand, ice and other difficult terrain.",
-   "date": "2026-10-28T15:40+00:00",
+   "id": "2e6ceac3d3",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "‘Computer malfunction’ likely led to second high-speed rail crash in Spain this year",
+   "url": "https://www.newcivilengineer.com/latest/computer-malfunction-likely-led-to-second-high-speed-rail-crash-in-spain-this-year-29-10-2026/",
+   "desc": "Spain saw its second high-speed rail crash this year when two trains collided south of the Spanish capital Madrid on 28 October.",
+   "date": "2026-10-29T10:51+00:00",
+   "th": []
+  },
+  {
+   "id": "ef2a9dc3ba",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Audi F1 power unit division brings back CEO role",
+   "url": "https://www.motorsport.com/f1/news/audi-f1-power-unit-division-brings-back-ceo-role/10869006/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Audi has announced Thomas Fuhr will become CEO of Audi Formula Racing GmbH, the Neuburg-based division developing its F1 power units. Fuhr will sit at the head of the Neuburg plant as an addition to the current team, which Audi says will allow chief technical director Stefan D…",
+   "date": "2026-10-28T08:54+00:00",
    "th": [
+    "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "220f16829a",
-   "src": "Tech Xplore (vehicles)",
+   "id": "50ed4b7f97",
+   "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Australia is cracking down on e‑bikes and e‑scooters. But is that what the public actually wants?",
-   "url": "https://techxplore.com/news/2026-10-australia-ebikes-escooters.html",
-   "desc": "When was the last time you heard of a parliamentary inquiry into traffic rules for cars in Australia? They're not common.",
-   "date": "2026-10-28T12:40+00:00",
+   "title": "Cracks that carry current: Liquid metal forms electrical pathways in soft materials",
+   "url": "https://techxplore.com/news/2026-10-current-liquid-metal-electrical-pathways.html",
+   "desc": "When electronics need to stretch, bend or flex, like a wearable sensor or a shape-changing robot, liquid metal often carries the electricity that makes them work.",
+   "date": "2026-10-29T15:20+00:00",
    "th": [
-    "5 Materials"
+    "5 Materials",
+    "6 Technical"
    ]
   },
   {
@@ -408,15 +435,29 @@
    ]
   },
   {
-   "id": "86803ce50d",
+   "id": "82528c5f11",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Why engineering expertise is critical to EHV projects",
+   "url": "https://www.newcivilengineer.com/latest/why-engineering-expertise-is-critical-to-ehv-projects-29-10-2026/",
+   "desc": "Data centres, battery storage and large industrial sites are increasingly connecting at extra high voltage, where a single project can rely on a dozen organisations working to one programme. That means bringing in experienced engineering support early has become critical to de…",
+   "date": "2026-10-29T10:38+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "1045a494ef",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New engineering method could help prevent buildings from collapsing after column failure",
-   "url": "https://techxplore.com/news/2026-10-method-collapsing-column-failure.html",
-   "desc": "A new engineering method could be the difference between a building surviving a failed support column and a chain reaction that causes the entire structure to collapse, according to research led by the University of Surrey.",
-   "date": "2026-10-28T11:40+00:00",
+   "title": "Reduced-data impedance analysis enables near-real-time diagnosis and control of fuel cells",
+   "url": "https://techxplore.com/news/2026-10-impedance-analysis-enables-real-diagnosis.html",
+   "desc": "Proton-exchange membrane fuel cells (PEMFCs) are a clean power-generation technology that produces no direct carbon dioxide emissions during operation. Their performance and durability depend strongly on effective water management. Monitoring internal conditions during operati…",
+   "date": "2026-10-29T14:20+00:00",
    "th": [
-    "9 Health and safety"
+    "3 Wider issues",
+    "7 Manufacturing"
    ]
   },
   {
@@ -433,13 +474,25 @@
    ]
   },
   {
-   "id": "067c9dcc2a",
+   "id": "a366bb262d",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "NCE Awards and Graduate and Apprentice Awards open for entries",
+   "url": "https://www.newcivilengineer.com/latest/nce-awards-and-graduate-and-apprentice-awards-open-for-entries-29-10-2026/",
+   "desc": "The NCE Awards and the NCE Graduate and Apprentice Awards are flagship industry honours, celebrating industry best practice, the companies leading their sectors, and the rising stars shaping the future. Open to civil engineering consultancies, contractors and associated supply…",
+   "date": "2026-10-29T10:00+00:00",
+   "th": [
+    "3 Wider issues"
+   ]
+  },
+  {
+   "id": "f9847c4665",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Insect-inspired flying robot bounces back after collisions",
-   "url": "https://techxplore.com/news/2026-10-insect-flying-robot-collisions.html",
-   "desc": "Flying insects, such as fruit flies, bees, dragonflies and mosquitoes, can dart through narrow spaces and survive collisions with various objects. In contrast, many flying robots fall, suffer damage or even break down when they hit nearby surfaces or objects.",
-   "date": "2026-10-28T11:40+00:00",
+   "title": "Self-adjusting drone controls could make for smoother formation flying",
+   "url": "https://techxplore.com/news/2026-10-adjusting-drone-smoother-formation-flying.html",
+   "desc": "A new method for controlling groups of drones, technically known as unmanned aerial vehicles (UAVs), could make formation flying smoother and reduce energy consumption and mechanical wear, according to research in the International Journal of Systems, Control and Communication…",
+   "date": "2026-10-28T20:40+00:00",
    "th": [
     "6 Technical"
    ]
