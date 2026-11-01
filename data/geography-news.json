@@ -1,5 +1,5 @@
 {
- "made": "2026-10-31T12:50+00:00",
+ "made": "2026-11-01T13:38+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 60
+   "n": 52
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 16
+   "n": 17
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 15
+   "n": 14
   },
   {
    "src": "GDACS",
@@ -126,14 +126,97 @@
    "src": "GDACS and NASA EONET",
    "title": "Super Typhoon In-fa",
    "place": "Japan, Marshall Islands",
-   "lat": 22.2,
-   "lon": 142.9,
-   "date": "2026-10-31T06:00+00:00",
+   "lat": 22.3,
+   "lon": 144.1,
+   "date": "2026-11-01T06:00+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001343",
-   "desc": "From 25/10/2026 to 31/10/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h) IN-FA-26 was active in NWPacific. The cyclone affects these countries: Japan, Marshall Islands (vulnerability High). Estimated population affected …",
+   "desc": "From 25/10/2026 to 01/11/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h) IN-FA-26 was active in NWPacific. The cyclone affects these countries: Japan, Marshall Islands (vulnerability High). Estimated population affected …",
    "th": [
     "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd51d5ac47ab",
+   "kind": "storm",
+   "src": "GDACS",
+   "title": "Tropical cyclone Four",
+   "place": "India",
+   "lat": 12.2,
+   "lon": 84.8,
+   "date": "2026-11-01T02:23+00:00",
+   "alert": "red",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001346",
+   "desc": "From 01/11/2026 to 01/11/2026, a Tropical Storm (maximum wind speed of 120 km/h) FOUR-26 was active in NorthIndian. The cyclone affects these countries: India (vulnerability High). Estimated population affected by category 1 (120 km/h) wind…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus7000tuku",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.0 earthquake",
+   "place": "58 km SSE of Shima, Japan",
+   "lat": 33.82,
+   "lon": 136.99,
+   "date": "2026-10-31T22:15+00:00",
+   "mag": 6,
+   "depth": 352,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tuku",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
+   "id": "eo342d1f5210",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg C39",
+   "place": "",
+   "lat": -65.58,
+   "lon": 55.55,
+   "date": "2026-10-30T00:00+00:00",
+   "first": "2022-04-29T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eof3e31f9f11",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg A84",
+   "place": "",
+   "lat": -69.68,
+   "lon": -90.83,
+   "date": "2026-10-30T00:00+00:00",
+   "first": "2025-01-31T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo136ec6fe5e",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg A81",
+   "place": "",
+   "lat": -55.65,
+   "lon": -36.62,
+   "date": "2026-10-30T00:00+00:00",
+   "first": "2023-01-27T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -148,6 +231,38 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001341",
    "desc": "From 21/10/2026 to 30/10/2026, a Tropical Depression (maximum wind speed of 139 km/h) VANCE-26 was active in EastPacific. The cyclone affects these countries: México (vulnerability [unknown]). Estimated population affected by category 1 (12…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gdc897cc1c5a",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Israel",
+   "place": "Israel",
+   "lat": 31.25,
+   "lon": 34.79,
+   "date": "2026-10-29T09:48+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104261",
+   "desc": "On 27/10/2026, a flood started in Israel, lasting until 29/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd4229a52e37",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Romania",
+   "place": "Romania",
+   "lat": 44.27,
+   "lon": 28.29,
+   "date": "2026-10-29T09:46+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104260",
+   "desc": "On 27/10/2026, a flood started in Romania, lasting until 29/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -169,49 +284,17 @@
    ]
   },
   {
-   "id": "gd762499d116",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Germany",
-   "place": "Germany",
-   "lat": 53.55,
-   "lon": 10.0,
-   "date": "2026-10-29T09:41+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104257",
-   "desc": "On 26/10/2026, a flood started in Germany, lasting until 27/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gdb4a498b6b0",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Central African Republic",
-   "place": "Central African Republic",
-   "lat": 4.36,
-   "lon": 18.58,
-   "date": "2026-10-29T09:39+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104256",
-   "desc": "On 25/10/2026, a flood started in Central African Republic, lasting until 27/10/2026 (last update). The flood caused 1 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "gdf950b91328",
    "kind": "flood",
    "src": "GDACS",
    "title": "Flooding in Türkiye",
    "place": "Türkiye",
-   "lat": 36.34,
-   "lon": 29.3,
+   "lat": 38.72,
+   "lon": 34.72,
    "date": "2026-10-29T09:30+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104254",
-   "desc": "On 26/10/2026, a flood started in Türkiye, lasting until 29/10/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "desc": "On 26/10/2026, a flood started in Türkiye, lasting until 31/10/2026 (last update). The flood caused 3 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -222,12 +305,12 @@
    "src": "GDACS",
    "title": "Flooding in Indonesia",
    "place": "Indonesia",
-   "lat": 4.37,
-   "lon": 97.03,
+   "lat": 2.19,
+   "lon": 99.38,
    "date": "2026-10-29T09:29+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253",
-   "desc": "On 24/10/2026, a flood started in Indonesia, lasting until 30/10/2026 (last update). The flood caused 0 deaths and 3943 displaced .",
+   "desc": "On 24/10/2026, a flood started in Indonesia, lasting until 30/10/2026 (last update). The flood caused 0 deaths and 4662 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -250,6 +333,25 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "southeast of easter island"
+  },
+  {
+   "id": "qus7000ttxn",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "114 km ENE of Barcelona, Philippines",
+   "lat": 8.47,
+   "lon": 127.43,
+   "date": "2026-10-29T07:31+00:00",
+   "mag": 5.4,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttxn",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "philippines"
   },
   {
    "id": "qus7000ttw5",
@@ -460,41 +562,6 @@
    "region": "fiji"
   },
   {
-   "id": "gd6091209e27",
-   "kind": "storm",
-   "src": "GDACS",
-   "title": "Tropical cyclone Three-C",
-   "place": "",
-   "lat": 13.0,
-   "lon": -175.9,
-   "date": "2026-10-25T15:05+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001344",
-   "desc": "From 25/10/2026 to 27/10/2026, a Tropical Depression (maximum wind speed of 65 km/h) THREE-C-26 was active in CentralPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by categor…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "qus6000u4ty",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.9 earthquake",
-   "place": "218 km ENE of Nagqu, China",
-   "lat": 32.46,
-   "lon": 94.05,
-   "date": "2026-10-25T11:25+00:00",
-   "mag": 5.9,
-   "depth": 7,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4ty",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "china"
-  },
-  {
    "id": "qus6000u4r9",
    "kind": "quake",
    "src": "USGS",
@@ -527,25 +594,6 @@
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
-  },
-  {
-   "id": "qus6000u4mn",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.9 earthquake",
-   "place": "Bouvet Island region",
-   "lat": -54.03,
-   "lon": 7.04,
-   "date": "2026-10-24T15:24+00:00",
-   "mag": 5.9,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4mn",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "bouvet island"
   },
   {
    "id": "qus6000u4jb",
@@ -618,54 +666,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "china"
-  },
-  {
-   "id": "eob4ed6d25a4",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg A76C",
-   "place": "",
-   "lat": -56.87,
-   "lon": -23.74,
-   "date": "2026-10-22T00:00+00:00",
-   "first": "2021-05-28T00:00+00:00",
-   "url": "https://usicecenter.gov/Products/AntarcIcebergs",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo080f12e18e",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D32",
-   "place": "",
-   "lat": -56.65,
-   "lon": -39.35,
-   "date": "2026-10-22T00:00+00:00",
-   "first": "2022-10-21T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo07c9920b7b",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D33B",
-   "place": "",
-   "lat": -56.74,
-   "lon": -43.32,
-   "date": "2026-10-22T00:00+00:00",
-   "first": "2023-09-08T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
   },
   {
    "id": "gd96fc12d9a6",
@@ -858,21 +858,6 @@
    "region": "panama"
   },
   {
-   "id": "eoa552cbc304",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire Buckhorn 2, Cassia, Idaho",
-   "place": "",
-   "lat": 42.34,
-   "lon": -114.1,
-   "date": "2026-10-10T14:58+00:00",
-   "first": "2026-10-10T14:58+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-IDTFD-000268",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "qus6000u1cf",
    "kind": "quake",
    "src": "USGS",
@@ -1018,39 +1003,52 @@
  ],
  "stories": [
   {
-   "id": "615a70a88d",
-   "src": "Guardian Environment",
+   "id": "5e0757f838",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Physical Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-physical-geography-trivia-38",
+   "desc": "From towering mountains to mighty rivers and natural wonders, put your knowledge of our planet to the test in our latest Physical Geography Trivia quiz!",
+   "date": "2026-11-01T10:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "ce0b0e75b4",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "‘Bunch of baloney’: calls grow for Cop summit reforms as countries on track to fail nature targets",
-   "url": "https://www.theguardian.com/environment/2026/oct/31/cop17-reforms-fails-to-deliver-targets",
-   "desc": "Cop17, focused on protecting nature and restoring ecosystems, concludes on Saturday with critics saying system allows ‘one idiot’ to stall progress Calls are growing for major reforms to UN biodiversity summits as countries fail to deliver on their promises to halt the destruc…",
-   "date": "2026-10-31T12:30+00:00",
+   "title": "Spill from vandalised home oil tank kills 13 birds",
+   "url": "https://www.bbc.co.uk/news/videos/crwyd2lyj15go?at_medium=RSS&at_campaign=rss",
+   "desc": "A number of birds are also injured after the spill from the oil tank earlier this week.",
+   "date": "2026-11-01T08:57+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "77080493f7",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP17: Key outcomes agreed at the UN biodiversity conference in Yerevan",
+   "url": "https://www.carbonbrief.org/cop17-key-outcomes-agreed-at-the-un-biodiversity-conference-in-yerevan",
+   "desc": "Countries have completed the first “global review” of their progress towards reversing nature loss by 2030 at the COP17 biodiversity&#8230;",
+   "date": "2026-10-31T13:30+00:00",
    "th": [
     "Topic 4B Diverse places"
    ]
   },
   {
-   "id": "af6278e500",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "The battle to save Greenland’s sheep farms from a multibillion-dollar mine",
-   "url": "https://geographical.co.uk/features/green-pastures-rare-earths",
-   "desc": "In southern Greenland, a bucolic farming landscape sits at the centre of a battle over rare-earth minerals – and an US$11.6billion mining company compensation claim.",
-   "date": "2026-10-31T09:00+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change"
-   ]
-  },
-  {
-   "id": "f431801dfa",
-   "src": "BBC Science & Environment",
+   "id": "26809fb0d0",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "Rewilding project aims to restore peatland",
-   "url": "https://www.bbc.co.uk/news/articles/crq8nw0q7d5ko?at_medium=RSS&at_campaign=rss",
-   "desc": "Cumbria Wildlife Trust starts work repairing damage to Skiddaw Forest's peatland.",
-   "date": "2026-10-31T06:58+00:00",
+   "title": "Trump boosted half of US coal plants with taxpayer dollars and ‘free passes to pollute’, report says",
+   "url": "https://www.theguardian.com/us-news/2026/oct/31/trump-coal-plants-taxpayer-dollars",
+   "desc": "Environmental Defense Fund analysis shows administration handed out $950m and Clean Air Act exemptions It’s a good time to be a coal plant in the US. The Trump administration has given support to almost half of the nation’s coal plants, helping them to continue operating despi…",
+   "date": "2026-10-31T13:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 7 Superpowers"
    ]
   },
   {
@@ -1115,6 +1113,31 @@
    ]
   },
   {
+   "id": "8c13f81b6e",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "The Canadian province with an empire state of mind",
+   "url": "https://geographical.co.uk/opinion/the-canadian-province-with-an-empire-state-of-mind",
+   "desc": "Across the border from New York, Quebec has forged a national identity and global city of its own New York is known as the ‘Empire State’. The Empire State Building in Manhattan embodies the modernity and ambition of 20th-century North America. Jay-Z and Alicia Keys sang Empir…",
+   "date": "2026-11-01T09:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places",
+    "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "47dd0d67eb",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "'Fascinating' rare beetle found in Wales again after 60 years",
+   "url": "https://www.bbc.co.uk/news/articles/cry8317pdp5yo?at_medium=RSS&at_campaign=rss",
+   "desc": "It was feared The Short-Necked Oil Beetle had become extinct in Wales after recent surveys",
+   "date": "2026-11-01T07:08+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
    "id": "ac25b1df6f",
    "src": "Carbon Brief",
    "level": "magazine",
@@ -1128,40 +1151,15 @@
    ]
   },
   {
-   "id": "49a908818e",
+   "id": "615a70a88d",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Healey to veto new offshore wind projects if they will not lower bills",
-   "url": "https://www.theguardian.com/environment/2026/oct/31/john-healey-chancellor-offshore-wind-projects-veto",
-   "desc": "UK chancellor’s plans add to concerns government is moving away from pro-renewables agenda John Healey has said he will veto new offshore wind projects if they will not lower bills, adding to concerns that the government is moving away from the pro-renewables agenda. Announcin…",
-   "date": "2026-10-31T11:48+00:00",
+   "title": "‘Bunch of baloney’: calls grow for Cop summit reforms as countries on track to fail nature targets",
+   "url": "https://www.theguardian.com/environment/2026/oct/31/cop17-reforms-fails-to-deliver-targets",
+   "desc": "Cop17, focused on protecting nature and restoring ecosystems, concludes on Saturday with critics saying system allows ‘one idiot’ to stall progress Calls are growing for major reforms to UN biodiversity summits as countries fail to deliver on their promises to halt the destruc…",
+   "date": "2026-10-31T12:30+00:00",
    "th": [
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "99e43580ec",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Antarctic sea ice loss is impacting a major ‘freshwater engine’",
-   "url": "https://geographical.co.uk/news/antarctic-sea-ice-loss-is-impacting-a-major-freshwater-engine",
-   "desc": "Declining ice has led to saltier and denser water that could influence atmospheric circulation and weather in the Southern Hemisphere – and even globally Melting ice in Antarctica is changing seawater and could drive major shifts in the world’s oceans, a new study published in…",
-   "date": "2026-10-31T09:00+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "3db4c6fc61",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Fears for mature Scots Pines burned by huge Highland wildfire",
-   "url": "https://www.bbc.co.uk/news/articles/cqd09pv4l3k0o?at_medium=RSS&at_campaign=rss",
-   "desc": "Experts say some older Scot pine damaged by fire could die removing an important source of seeds",
-   "date": "2026-10-30T15:12+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1224,6 +1222,30 @@
    "th": []
   },
   {
+   "id": "af6278e500",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "The battle to save Greenland’s sheep farms from a multibillion-dollar mine",
+   "url": "https://geographical.co.uk/features/green-pastures-rare-earths",
+   "desc": "In southern Greenland, a bucolic farming landscape sits at the centre of a battle over rare-earth minerals – and an US$11.6billion mining company compensation claim.",
+   "date": "2026-10-31T09:00+00:00",
+   "th": [
+    "Topic 2A Glaciated landscapes and change"
+   ]
+  },
+  {
+   "id": "9ed7117ad2",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Oil tank vandalism results in waterfowl park 'nightmare'",
+   "url": "https://www.bbc.co.uk/news/articles/c64g14ene2epo?at_medium=RSS&at_campaign=rss",
+   "desc": "The popular attraction in County Down has been forced to close while efforts continue to remove oil from the pond.",
+   "date": "2026-11-01T06:42+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
    "id": "7fd13d78b5",
    "src": "Carbon Brief",
    "level": "magazine",
@@ -1238,39 +1260,15 @@
    ]
   },
   {
-   "id": "2828cfb98f",
+   "id": "49a908818e",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Australia’s best photos of the month – October 2026",
-   "url": "https://www.theguardian.com/artanddesign/gallery/2026/oct/31/australias-best-photos-of-the-month-october-2026",
-   "desc": "Dolly Parton, tulips and outback life all feature in the best images captured across the country in October Apartments, community centres and a pink outdoor toilet: Australia’s 2026 National Architecture award winners – in pictures",
-   "date": "2026-10-30T23:00+00:00",
+   "title": "Healey to veto new offshore wind projects if they will not lower bills",
+   "url": "https://www.theguardian.com/environment/2026/oct/31/john-healey-chancellor-offshore-wind-projects-veto",
+   "desc": "UK chancellor’s plans add to concerns government is moving away from pro-renewables agenda John Healey has said he will veto new offshore wind projects if they will not lower bills, adding to concerns that the government is moving away from the pro-renewables agenda. Announcin…",
+   "date": "2026-10-31T11:48+00:00",
    "th": [
-    "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "0c9b4dc558",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "North Korean workers are ‘on sale’ to Russian companies in forced labour programme, report reveals",
-   "url": "https://geographical.co.uk/news/north-korean-workers-are-on-sale-to-russian-companies-in-forced-labour-programme-report-reveals",
-   "desc": "Investigation reveals a broker network exploiting workers to fund North Korea’s missile programme and bolster Russia’s economy A nine-month undercover investigation has revealed how Russian businesses are using North Korean workers in a state-sponsored forced labour programme,…",
-   "date": "2026-10-30T14:00+00:00",
-   "th": [
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "c017b4c42d",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Firefighters celebrate rain during Indonesia wildfires",
-   "url": "https://www.bbc.co.uk/news/videos/cm93zere04plo?at_medium=RSS&at_campaign=rss",
-   "desc": "A number of clips show firefighters celebrating in the rain.",
-   "date": "2026-10-29T18:31+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 3 Globalisation"
    ]
   },
   {
@@ -1323,6 +1321,31 @@
    ]
   },
   {
+   "id": "99e43580ec",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Antarctic sea ice loss is impacting a major ‘freshwater engine’",
+   "url": "https://geographical.co.uk/news/antarctic-sea-ice-loss-is-impacting-a-major-freshwater-engine",
+   "desc": "Declining ice has led to saltier and denser water that could influence atmospheric circulation and weather in the Southern Hemisphere – and even globally Melting ice in Antarctica is changing seawater and could drive major shifts in the world’s oceans, a new study published in…",
+   "date": "2026-10-31T09:00+00:00",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "1c81cec2d2",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Rare damselfly spotted by restored chalk river",
+   "url": "https://www.bbc.co.uk/news/articles/c617kvqjd81jo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Herts and Middlesex Trust says it is \"thrilled\" the new wetlands are helping species thrive.",
+   "date": "2026-11-01T06:19+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
    "id": "529a6faa8f",
    "src": "Carbon Brief",
    "level": "magazine",
@@ -1335,40 +1358,15 @@
    ]
   },
   {
-   "id": "ca4468038d",
+   "id": "2828cfb98f",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Twice as many plants and animals sold in wildlife trade as previously thought, says report",
-   "url": "https://www.theguardian.com/environment/2026/oct/30/twice-as-many-plants-and-animals-sold-in-wildlife-trade-as-previously-thought-says-report",
-   "desc": "More than 100,000 species are traded globally, whether illegally smuggled, sold as ornaments or in fisheries, timber and fashion industries, study finds The number of plant and animal species in use or sold in the wildlife trade is more than twice as high as previously thought…",
-   "date": "2026-10-30T18:00+00:00",
+   "title": "Australia’s best photos of the month – October 2026",
+   "url": "https://www.theguardian.com/artanddesign/gallery/2026/oct/31/australias-best-photos-of-the-month-october-2026",
+   "desc": "Dolly Parton, tulips and outback life all feature in the best images captured across the country in October Apartments, community centres and a pink outdoor toilet: Australia’s 2026 National Architecture award winners – in pictures",
+   "date": "2026-10-30T23:00+00:00",
    "th": [
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "4d781f36b6",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Experts call for climate change to be declared a global health emergency",
-   "url": "https://geographical.co.uk/news/experts-call-for-climate-change-to-be-declared-a-global-health-emergency",
-   "desc": "In 2023, heat was linked to a record 710,000 deaths worldwide, with more than 70 per cent attributable to human-caused climate change A Lancet Countdown report found that the health impacts of climate change are accelerating faster than a decade ago, with experts calling for c…",
-   "date": "2026-10-30T09:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "8e3f17899d",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Serious pollution by water industry remains high despite £5bn investment",
-   "url": "https://www.bbc.co.uk/news/articles/cw5ynxepy4gno?at_medium=RSS&at_campaign=rss",
-   "desc": "All but one of England's water companies were rated as \"poor\" or \"requiring improvement\" for environmental targets.",
-   "date": "2026-10-29T12:08+00:00",
-   "th": [
-    "Topic 3 Globalisation"
+    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1394,41 +1392,15 @@
    "th": []
   },
   {
-   "id": "88c7a9edfb",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Revealed: UK relied on £2bn of ‘questionable accounting’ to hit its climate-aid goal",
-   "url": "https://www.carbonbrief.org/revealed-uk-relied-on-2bn-of-questionable-accounting-to-hit-its-climate-aid-goal",
-   "desc": "The UK has beaten its target to provide £11.6bn of climate aid to developing countries by 2026 – but only&#8230;",
-   "date": "2026-10-28T07:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "1d7c40f64e",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "The Iran war is deepening the US energy crisis. A bad winter is ahead | Mark Wolfe",
-   "url": "https://www.theguardian.com/commentisfree/2026/oct/30/iran-war-energy-crisis-winter",
-   "desc": "Congress must act to ensure that families are able to heat their homes before the start of the season Heating oil may be the clearest warning yet of how the war in Iran is deepening the US’s energy affordability crisis. Families who heat their homes with oil are facing bills t…",
-   "date": "2026-10-30T14:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "cd682cdb15",
+   "id": "c6cc5c914c",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Building boom puts 300,000 people in the path of potential Himalayan disasters",
-   "url": "https://www.bbc.co.uk/news/articles/c574pj3zljvjo?at_medium=RSS&at_campaign=rss",
-   "desc": "The construction of tourism facilities, housing, and infrastructure has surged in parts of Nepal and India's Uttarakhand.",
-   "date": "2026-10-28T23:11+00:00",
+   "title": "Bute House protested by environmental campaigners",
+   "url": "https://www.bbc.co.uk/news/articles/c9rkypk1g7k0o?at_medium=RSS&at_campaign=rss",
+   "desc": "A Halloween-themed protest against fossil fuels has targeted the first minister's residence in Edinburgh.",
+   "date": "2026-10-31T13:41+00:00",
    "th": [
-    "Topic 3 Globalisation",
-    "Topic 4A Regenerating places"
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
