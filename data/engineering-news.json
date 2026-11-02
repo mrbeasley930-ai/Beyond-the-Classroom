@@ -1,5 +1,5 @@
 {
- "made": "2026-11-01T13:11+00:00",
+ "made": "2026-11-02T15:36+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,7 +18,7 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 2
+   "n": 0
   },
   {
    "src": "The Race",
@@ -32,28 +32,28 @@
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 4
+   "n": 1
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 5
+   "n": 4
   },
   {
    "src": "BBC Technology",
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "ESA",
@@ -95,18 +95,42 @@
    "level": "research",
    "line": "university press releases, materials science",
    "ok": true,
-   "n": 2
+   "n": 3
   }
  ],
  "stories": [
   {
-   "id": "1aab202313",
+   "id": "fc4e5b9c17",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Infrared-transparent aerogel boosts performance of subambient daytime radiative cooling materials by up to 5.2°C",
+   "url": "https://techxplore.com/news/2026-11-infrared-transparent-aerogel-boosts-subambient.html",
+   "desc": "As global warming continues, people tend to switch on fans or air conditioners during hot weather. But the more we use electrical appliances, the more energy we consume and carbon dioxide we produce. With continuous breakthroughs in electricity-free cooling, City University of…",
+   "date": "2026-11-02T15:20+00:00",
+   "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "5f7ba44a9f",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "IceCube detects ghost particles with 10 billion times the energy of solar neutrinos",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261101010533.htm",
+   "desc": "Mysterious particles called neutrinos constantly stream through our bodies, and scientists are now detecting incredibly powerful versions arriving from distant cosmic sources using a massive observatory buried in Antarctic ice. These elusive “ghost particles” could hold extrao…",
+   "date": "2026-11-02T13:42+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "9a840595c2",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "When Red Bull expects to start using its long-awaited new F1 wind tunnel",
-   "url": "https://www.motorsport.com/f1/news/when-red-bull-expects-to-start-using-its-long-awaited-new-f1-wind-tunnel/10870210/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Although Red Bull has turned its 2026 Formula 1 season around in impressive fashion, the technical team led by Pierre Wache is still dealing with several limitations behind the scenes. One of the main ones is perhaps the wind tunnel, the oldest on the entire F1 grid. Former te…",
-   "date": "2026-10-31T18:00+00:00",
+   "title": "Fernando Alonso 'beyond frustration' after engine issue in F1 Mexico GP qualifying",
+   "url": "https://www.motorsport.com/f1/news/fernando-alonso-beyond-frustration-after-engine-issue-in-f1-mexico-gp-qualifying/10870590/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Fernando Alonso stated that his “frustration is beyond imagination” after a power unit problem caused an early end to his qualifying for the Formula 1 Mexico Grand Prix. The Aston Martin driver took 18th with only one flying lap as his AMR26 ground to a halt through the stadiu…",
+   "date": "2026-11-01T13:42+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
@@ -122,31 +146,6 @@
    "date": "2026-10-31T13:00+00:00",
    "th": [
     "6 Technical"
-   ]
-  },
-  {
-   "id": "bd0ad62830",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
-   "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
-   "desc": "Researchers from The University of Texas at Arlington's Aerodynamics Research Center have published a study in the journal Communications Engineering. Their work details a laser-based technique applied to arc-jet flows that could transform how scientists measure hypersonic air…",
-   "date": "2026-10-30T17:20+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "e1ba33c7a4",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "DCO for National Grid’s Sea Link subsea cable project approved by government",
-   "url": "https://www.newcivilengineer.com/latest/dco-for-national-grids-sea-link-subsea-cable-project-approved-by-government-30-10-2026/",
-   "desc": "The development consent order (DCO) for National Grid Electricity Transmission’s (NGET’s) 2GW Sea Link subsea cable project has been approved by the Department for Energy Security and Net Zero (Desnz).",
-   "date": "2026-10-30T16:49+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
    ]
   },
   {
@@ -172,18 +171,6 @@
    "th": []
   },
   {
-   "id": "659de29a97",
-   "src": "ScienceDaily (materials)",
-   "level": "research",
-   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
-   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
-   "date": "2026-10-28T12:25+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "058610801d",
    "src": "Carbon Brief",
    "level": "magazine",
@@ -196,30 +183,27 @@
    ]
   },
   {
-   "id": "62ed1e0457",
-   "src": "Racecar Engineering",
-   "level": "magazine",
-   "title": "Dumarey to acquire former Renault engine facility",
-   "url": "https://www.racecar-engineering.com/articles/technology/dumarey-set-to-acquire-former-renault-engine-facility/",
-   "desc": "Former Renault and Alpine motorsport facility under acquisition by Belgian company...",
-   "date": "2026-10-23T12:54+00:00",
+   "id": "46b458aeeb",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Heated mirror reveals hidden 3D patterns in rising air near a wall",
+   "url": "https://techxplore.com/news/2026-11-mirror-reveals-hidden-3d-patterns.html",
+   "desc": "Heat transfer from a heated surface depends partly on the thin layer of air that warms and rises beside it. As this natural convection boundary layer develops, its flow can change from orderly patterns to turbulence, influencing heat transfer.",
+   "date": "2026-11-02T15:00+00:00",
    "th": [
-    "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "147adb733b",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Lewis Hamilton \"praying\" for Ferrari power unit after Mexico FP2 failure",
-   "url": "https://www.motorsport.com/f1/news/lewis-hamilton-praying-for-ferrari-power-unit-after-mexico-fp2-failure/10870069/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Lewis Hamilton has been left “praying” for his Ferrari power unit after it caused an early retirement in second practice for the Formula 1 Mexico Grand Prix. The seven-time world champion suddenly lost power down the start-finish straight after 28 minutes, leading to him stopp…",
-   "date": "2026-10-31T10:41+00:00",
+   "id": "659de29a97",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
+   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
+   "date": "2026-10-28T12:25+00:00",
    "th": [
-    "Motorsport",
-    "6 Technical",
-    "9 Health and safety"
+    "6 Technical"
    ]
   },
   {
@@ -236,29 +220,6 @@
    ]
   },
   {
-   "id": "a53a07dd45",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Solid-state cooling advances toward practical use, but challenges remain",
-   "url": "https://techxplore.com/news/2026-10-solid-state-cooling-advances.html",
-   "desc": "As temperatures rise, the need for cooling is growing worldwide. Conventional cooling systems consume large amounts of electricity and use refrigerants with a high global warming potential. Caloric cooling could offer a sustainable alternative by using solid-state materials in…",
-   "date": "2026-10-30T15:40+00:00",
-   "th": [
-    "3 Wider issues",
-    "5 Materials"
-   ]
-  },
-  {
-   "id": "0d62fb4f22",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Movers and shakers: Biggest construction and engineering appointments October 2026",
-   "url": "https://www.newcivilengineer.com/latest/movers-and-shakers-biggest-construction-and-engineering-appointments-october-2026-30-10-2026/",
-   "desc": "With winter drawing in, civil engineering and construction firms have made a range of appointments.",
-   "date": "2026-10-30T16:16+00:00",
-   "th": []
-  },
-  {
    "id": "58bb4b0ec0",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
@@ -271,15 +232,15 @@
    ]
   },
   {
-   "id": "a0c3bc6eed",
-   "src": "BBC Technology",
-   "level": "way in",
-   "title": "'An annoying buzz': The search for stealthier drones",
-   "url": "https://www.bbc.co.uk/news/articles/ck1exgejq3xvo?at_medium=RSS&at_campaign=rss",
-   "desc": "As drone deliveries become more commonplace, their makers are looking for ways to make them quieter.",
-   "date": "2026-10-28T00:01+00:00",
+   "id": "bd0ad62830",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
+   "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
+   "desc": "Researchers from The University of Texas at Arlington's Aerodynamics Research Center have published a study in the journal Communications Engineering. Their work details a laser-based technique applied to arc-jet flows that could transform how scientists measure hypersonic air…",
+   "date": "2026-10-30T17:20+00:00",
    "th": [
-    "6 Technical"
+    "8 Viability"
    ]
   },
   {
@@ -295,31 +256,6 @@
    ]
   },
   {
-   "id": "a0dfdd7771",
-   "src": "Racecar Engineering",
-   "level": "magazine",
-   "title": "Why PMW Expo matters to race and performance car engineers",
-   "url": "https://www.racecar-engineering.com/news/why-pmw-expo-matters-to-race-and-performance-car-engineers/",
-   "desc": "Why PMW Expo in Cologne is the perfect place to meet fellow motorsport industry professionals...",
-   "date": "2026-10-22T15:25+00:00",
-   "th": [
-    "Motorsport"
-   ]
-  },
-  {
-   "id": "e6d63b4cdb",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Lewis Hamilton makes confident Ferrari statement despite Mexican GP technical problems",
-   "url": "https://www.motorsport.com/f1/news/lewis-hamilton-makes-confident-ferrari-statement-despite-mexican-gp-technical-problems/10869895/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Lewis Hamilton believes Ferrari could realistically fight for pole position at the Mexican Grand Prix, after team-mate Charles Leclerc finished fastest in both of Friday’s practice sessions. The Briton had an issue in second practice that cost him the opportunity for a long ru…",
-   "date": "2026-10-31T00:43+00:00",
-   "th": [
-    "Motorsport",
-    "3 Wider issues"
-   ]
-  },
-  {
    "id": "2ee31f3d9c",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -327,6 +263,44 @@
    "url": "https://spectrum.ieee.org/poetry-for-engineers-of-code-and-shortleaf-pine",
    "desc": "I step into the warm moist air among the columns of the pines, their net of twigs and roots complex as any lines of code. The trees purify and anchor. Their branches balance my restlessness. Their calling is to be present, mine to develop apps. Our tasks verge toward a common …",
    "date": "2026-10-25T12:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "cdd423a116",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Driverless 18‑wheelers are on a few highways, but widespread use is a long way down the road",
+   "url": "https://techxplore.com/news/2026-10-driverless-18wheelers-highways-widespread-road.html",
+   "desc": "Driverless trucks with artificial intelligence on board could dramatically change the landscape of freight shipping. A few companies have begun testing early models on some limited routes in Texas and California. Simulations of automated fleets show the potential benefits of t…",
+   "date": "2026-10-29T15:20+00:00",
+   "th": [
+    "4 Design thinking",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "a53a07dd45",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Solid-state cooling advances toward practical use, but challenges remain",
+   "url": "https://techxplore.com/news/2026-10-solid-state-cooling-advances.html",
+   "desc": "As temperatures rise, the need for cooling is growing worldwide. Conventional cooling systems consume large amounts of electricity and use refrigerants with a high global warming potential. Caloric cooling could offer a sustainable alternative by using solid-state materials in…",
+   "date": "2026-10-30T15:40+00:00",
+   "th": [
+    "3 Wider issues",
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "57d1526d44",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "From Chip Lab to Center Stage",
+   "url": "https://spectrum.ieee.org/preethi-ashwath-chip-designer",
+   "desc": "Many engineers are more comfortable working behind the scenes developing technology than speaking to consumers about products. But Preethi Ashwath has learned to take center stage, talking about the “hearable” and wearable devices she has had a hand in developing as an analog …",
+   "date": "2026-10-23T18:00+00:00",
    "th": [
     "6 Technical"
    ]
@@ -346,56 +320,6 @@
    ]
   },
   {
-   "id": "0b663ed667",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "UK Government accused of stalling Welsh rail overhaul as budget falls short",
-   "url": "https://www.newcivilengineer.com/latest/uk-government-accused-of-stalling-welsh-rail-overhaul-as-budget-falls-short-30-10-2026/",
-   "desc": "The Welsh government has criticised the UK Government after what it said is a substantial shortfall in funding promised for rail improvements in Wales following a national commitment to invest £14bn to tackle decades of rail under‑investment.",
-   "date": "2026-10-30T16:14+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "cdd423a116",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Driverless 18‑wheelers are on a few highways, but widespread use is a long way down the road",
-   "url": "https://techxplore.com/news/2026-10-driverless-18wheelers-highways-widespread-road.html",
-   "desc": "Driverless trucks with artificial intelligence on board could dramatically change the landscape of freight shipping. A few companies have begun testing early models on some limited routes in Texas and California. Simulations of automated fleets show the potential benefits of t…",
-   "date": "2026-10-29T15:20+00:00",
-   "th": [
-    "4 Design thinking",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "30d8121722",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Red Bull reveals when its long-awaited new F1 wind tunnel will be operational",
-   "url": "https://www.motorsport.com/f1/news/red-bull-reveals-when-its-long-awaited-new-f1-wind-tunnel-will-be-operational/10869820/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Red Bull has been waiting for its new wind tunnel for a long time now, but, ahead of the Mexican Grand Prix, team principal Laurent Mekies has confirmed that it will not come online until some point during the 2027 season. This new facility in Milton Keynes will replace its cu…",
-   "date": "2026-10-30T21:28+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "57d1526d44",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "From Chip Lab to Center Stage",
-   "url": "https://spectrum.ieee.org/preethi-ashwath-chip-designer",
-   "desc": "Many engineers are more comfortable working behind the scenes developing technology than speaking to consumers about products. But Preethi Ashwath has learned to take center stage, talking about the “hearable” and wearable devices she has had a hand in developing as an analog …",
-   "date": "2026-10-23T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "8076bdfa4b",
    "src": "Tech Xplore (engineering)",
    "level": "research",
@@ -406,78 +330,6 @@
    "th": [
     "6 Technical"
    ]
-  },
-  {
-   "id": "ac4cc356fa",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Nuclear decommissioning boss lists industrial action and cyber threats as ‘top concerns’",
-   "url": "https://www.newcivilengineer.com/latest/nuclear-decommissioning-boss-lists-industrial-action-and-cyber-threats-as-top-concerns-30-10-2026/",
-   "desc": "The possibility of further strikes by workers at Sellafield and wider cybersecurity threats have been ranked as “top concerns” by Nuclear Decommissioning Authority (NDA) CEO David Peattie.",
-   "date": "2026-10-30T15:12+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "ba1967cf98",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Why AI Can’t Replace Engineering Teams",
-   "url": "https://spectrum.ieee.org/engineering-jobs-that-ai-cant-replace",
-   "desc": "This article is crossposted from IEEE Spectrum ’s careers newsletter. Sign up now to get insider tips, expert advice, and practical strategies, written i n partnership with tech career development company Parsity and delivered to your inbox for free! If you’re an engineer, you…",
-   "date": "2026-10-22T18:02+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "2725204688",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Making bad weather on purpose to test camera and sensor performance",
-   "url": "https://techxplore.com/news/2026-10-bad-weather-purpose-camera-sensor.html",
-   "desc": "Many buildings and sites tied to national security rely on cameras and sensor networks to detect people and other objects nearby, but weather conditions can quickly obscure their view. To understand how these systems perform, Sandia National Laboratories researchers are delibe…",
-   "date": "2026-10-29T20:40+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "325428249f",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Leeds Station upgrade gets financial boost",
-   "url": "https://www.newcivilengineer.com/uncategorized/leeds-station-upgrade-gets-financial-boost-30-10-2026/",
-   "desc": "The government has committed an additional £200M to upgrade Leeds railway station, bringing total funding for the project to about £303M and setting in motion what ministers describe as the largest transformation of the station in a generation.",
-   "date": "2026-10-30T14:47+00:00",
-   "th": [
-    "2 Existing products"
-   ]
-  },
-  {
-   "id": "4af156c916",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "New virtual assistant streamlines one of the most advanced microscopes",
-   "url": "https://techxplore.com/news/2026-10-virtual-advanced-microscopes.html",
-   "desc": "Some of the most important discoveries in materials science and structural biology come down to a simple question: Where, exactly, are the atoms? The arrangement of atoms determines nearly everything about how a material behaves in the real world—how strong it is, how it condu…",
-   "date": "2026-10-29T19:40+00:00",
-   "th": [
-    "5 Materials",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "e31c92e0c5",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Hendy confirms Historic Rail Estate will move from National Highways to Great British Railways",
-   "url": "https://www.newcivilengineer.com/latest/hendy-confirms-historic-rail-estate-will-move-from-national-highways-to-great-british-railways-30-10-2026/",
-   "desc": "A plan to transfer responsibility for the UK’s Historical Railways Estate (HRE) from National Highways and the Department for Transport (DfT) to Great British Railways (GBR) has won support in the House of Lords.",
-   "date": "2026-10-30T13:42+00:00",
-   "th": []
   }
  ]
 }
