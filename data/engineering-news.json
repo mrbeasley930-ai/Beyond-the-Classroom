@@ -1,5 +1,5 @@
 {
- "made": "2026-11-02T15:36+00:00",
+ "made": "2026-11-03T14:01+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -32,28 +32,28 @@
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "BBC Technology",
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "ESA",
@@ -67,14 +67,14 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Carbon Brief",
    "level": "magazine",
    "line": "energy and climate: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Tech Xplore (engineering)",
@@ -100,15 +100,66 @@
  ],
  "stories": [
   {
-   "id": "fc4e5b9c17",
+   "id": "4236ea5523",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Why Honda’s power unit lasted barely five laps in F1 Mexico GP",
+   "url": "https://www.motorsport.com/f1/news/why-hondas-power-unit-lasted-barely-five-laps-in-f1-mexico-gp/10871279/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "In its Mexico Grand Prix preview, Honda’s Shintaro Orihara had described Autodromo Hermanos Rodriguez as “a very challenging track for the power unit”, but he perhaps didn’t expect Aston Martin’s weekend to go so awry. Despite decent pace and mileage in free practice – Fernand…",
+   "date": "2026-11-03T13:34+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "db3030a4bf",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Train that hit buffers at Liverpool Street saw carriages derail and driver taken to hospital",
+   "url": "https://www.newcivilengineer.com/latest/train-that-hit-buffers-at-liverpool-street-saw-carriages-derail-and-driver-taken-to-hospital-03-11-2026/",
+   "desc": "An out-of-service London Overground train that hit the buffers at Liverpool Street station in London saw its first three carriages derail and its driver was taken to hospital, according to an update from the Rail Accident Investigation Branch (Raib).",
+   "date": "2026-11-03T12:29+00:00",
+   "th": [
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "7f8b7c16d8",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Almost half of all containers driven by trucks are empty",
+   "url": "https://techxplore.com/news/2026-11-driven-trucks.html",
+   "desc": "Almost half of all container trucks in Sweden are being driven without a load. Researchers at Chalmers University of Technology in Sweden have developed calculation models that give a detailed picture of the trips—and therefore provide guidance for more efficient container tra…",
+   "date": "2026-11-03T12:00+00:00",
+   "th": [
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "3d064038c9",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Infrared-transparent aerogel boosts performance of subambient daytime radiative cooling materials by up to 5.2°C",
-   "url": "https://techxplore.com/news/2026-11-infrared-transparent-aerogel-boosts-subambient.html",
-   "desc": "As global warming continues, people tend to switch on fans or air conditioners during hot weather. But the more we use electrical appliances, the more energy we consume and carbon dioxide we produce. With continuous breakthroughs in electricity-free cooling, City University of…",
-   "date": "2026-11-02T15:20+00:00",
+   "title": "Buoys—the communication link between the underwater and surface worlds",
+   "url": "https://techxplore.com/news/2026-11-buoys-communication-link-underwater-surface.html",
+   "desc": "Amid geopolitical turmoil, protecting critical maritime infrastructure is more important than ever. The Fraunhofer Institute for Communication, Information Processing and Ergonomics FKIE is working together with maritime security research partners to develop innovative solutio…",
+   "date": "2026-11-02T23:00+00:00",
    "th": [
-    "5 Materials"
+    "1 Requirements",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "7a17628b8e",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Invites Media to Northrop Grumman CRS-25 Station Resupply Launch",
+   "url": "https://www.nasa.gov/news-release/nasa-invites-media-to-northrop-grumman-crs-25-station-resupply-launch/",
+   "desc": "Media accreditation is open for the next launch to deliver NASA science investigations, supplies, and equipment to the International Space Station. A Northrop Grumman Cygnus XL spacecraft will launch in November to the orbital laboratory on a SpaceX Falcon 9 rocket for NASA. T…",
+   "date": "2026-11-02T17:33+00:00",
+   "th": [
+    "8 Viability"
    ]
   },
   {
@@ -119,6 +170,18 @@
    "url": "https://www.sciencedaily.com/releases/2026/11/261101010533.htm",
    "desc": "Mysterious particles called neutrinos constantly stream through our bodies, and scientists are now detecting incredibly powerful versions arriving from distant cosmic sources using a massive observatory buried in Antarctic ice. These elusive “ghost particles” could hold extrao…",
    "date": "2026-11-02T13:42+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "062f94d6c1",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "When Electric Cars Were for Women",
+   "url": "https://spectrum.ieee.org/early-electric-vehicles",
+   "desc": "At the turn of the last century, the automobile industry was still new and evolving rapidly. In 1898, there were about 50 carmakers in the United States. A decade later, that number had increased fivefold. In 1901, the companies produced 7,000 vehicles. By 1910, production had…",
+   "date": "2026-10-31T13:00+00:00",
    "th": [
     "6 Technical"
    ]
@@ -137,16 +200,14 @@
    ]
   },
   {
-   "id": "062f94d6c1",
-   "src": "IEEE Spectrum",
+   "id": "d96667e8b6",
+   "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "When Electric Cars Were for Women",
-   "url": "https://spectrum.ieee.org/early-electric-vehicles",
-   "desc": "At the turn of the last century, the automobile industry was still new and evolving rapidly. In 1898, there were about 50 carmakers in the United States. A decade later, that number had increased fivefold. In 1901, the companies produced 7,000 vehicles. By 1910, production had…",
-   "date": "2026-10-31T13:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
+   "title": "Graham opens first section of Clifton Hampden bypass to cars after 62‑hour traffic switch",
+   "url": "https://www.newcivilengineer.com/latest/graham-opens-first-section-of-clifton-hampden-bypass-to-cars-after-62%e2%80%91hour-traffic-switch-03-11-2026/",
+   "desc": "Graham has opened part of the new Clifton Hampden bypass in Oxfordshire to cars after completing the scheme’s first major traffic switch.",
+   "date": "2026-11-03T12:15+00:00",
+   "th": []
   },
   {
    "id": "89c5da10b8",
@@ -161,35 +222,13 @@
    ]
   },
   {
-   "id": "b069f02850",
-   "src": "BBC Technology",
-   "level": "way in",
-   "title": "Elon Musk is a 'real genius', Putin says after satellite talks with SpaceX boss",
-   "url": "https://www.bbc.co.uk/news/articles/c63djl148n3eo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Russian President praised Musk and said they are in \"close\" contact.",
-   "date": "2026-10-28T19:15+00:00",
-   "th": []
-  },
-  {
-   "id": "058610801d",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Chart: A record two-thirds of car sales in China are now electric vehicles",
-   "url": "https://www.carbonbrief.org/chart-a-record-two-thirds-of-car-sales-in-china-are-now-electric-vehicles",
-   "desc": "For the first time, new-energy vehicles (NEVs) made up 67% of new car sales in China in September, according to&#8230;",
-   "date": "2026-10-23T15:55+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "46b458aeeb",
+   "id": "0a35c1fccc",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Heated mirror reveals hidden 3D patterns in rising air near a wall",
-   "url": "https://techxplore.com/news/2026-11-mirror-reveals-hidden-3d-patterns.html",
-   "desc": "Heat transfer from a heated surface depends partly on the thin layer of air that warms and rises beside it. As this natural convection boundary layer develops, its flow can change from orderly patterns to turbulence, influencing heat transfer.",
-   "date": "2026-11-02T15:00+00:00",
+   "title": "Exploring sodium batteries down to the atom",
+   "url": "https://techxplore.com/news/2026-11-exploring-sodium-batteries-atom.html",
+   "desc": "Understanding how battery components work at the molecular or atomic levels can help scientists create faster-charging, more powerful, longer-lived storage devices. But the electron microscopes powerful enough to give this view also change and distort the materials in ways sci…",
+   "date": "2026-11-02T21:40+00:00",
    "th": [
     "6 Technical"
    ]
@@ -220,6 +259,18 @@
    ]
   },
   {
+   "id": "147b02c2d3",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "‘Highly likely’ AI will be used in ransomware attack on UK critical infrastructure",
+   "url": "https://www.newcivilengineer.com/latest/highly-likely-ai-will-be-used-in-ransomware-attack-on-uk-critical-infrastructure-03-11-2026/",
+   "desc": "The National Cyber Security Centre (NCSC) has warned that it is “highly likely AI malware will be used in a ransomware attack on UK critical national infrastructure (CNI)” and the head of the centre said it could happen within two years.",
+   "date": "2026-11-03T10:52+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
    "id": "58bb4b0ec0",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
@@ -232,15 +283,15 @@
    ]
   },
   {
-   "id": "bd0ad62830",
+   "id": "fc4e5b9c17",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
-   "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
-   "desc": "Researchers from The University of Texas at Arlington's Aerodynamics Research Center have published a study in the journal Communications Engineering. Their work details a laser-based technique applied to arc-jet flows that could transform how scientists measure hypersonic air…",
-   "date": "2026-10-30T17:20+00:00",
+   "title": "Infrared-transparent aerogel boosts performance of subambient daytime radiative cooling materials by up to 5.2°C",
+   "url": "https://techxplore.com/news/2026-11-infrared-transparent-aerogel-boosts-subambient.html",
+   "desc": "As global warming continues, people tend to switch on fans or air conditioners during hot weather. But the more we use electrical appliances, the more energy we consume and carbon dioxide we produce. With continuous breakthroughs in electricity-free cooling, City University of…",
+   "date": "2026-11-02T15:20+00:00",
    "th": [
-    "8 Viability"
+    "5 Materials"
    ]
   },
   {
@@ -268,16 +319,63 @@
    ]
   },
   {
-   "id": "cdd423a116",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Driverless 18‑wheelers are on a few highways, but widespread use is a long way down the road",
-   "url": "https://techxplore.com/news/2026-10-driverless-18wheelers-highways-widespread-road.html",
-   "desc": "Driverless trucks with artificial intelligence on board could dramatically change the landscape of freight shipping. A few companies have begun testing early models on some limited routes in Texas and California. Simulations of automated fleets show the potential benefits of t…",
-   "date": "2026-10-29T15:20+00:00",
+   "id": "5bcf7a509c",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Balfour Beatty completes nine-day renewal in Saxmundham to accommodate Sizewell C freight",
+   "url": "https://www.newcivilengineer.com/latest/balfour-beatty-completes-nine-day-renewal-in-saxmundham-to-accommodate-for-sizewell-c-freight-03-11-2026/",
+   "desc": "Infrastructure group Balfour Beatty completed a nine‑day programme of work to renew a key junction on the East Suffolk Line which will aim to help accommodate future freight traffic to the Sizewell C construction site.",
+   "date": "2026-11-03T10:19+00:00",
    "th": [
-    "4 Design thinking",
     "6 Technical"
+   ]
+  },
+  {
+   "id": "46b458aeeb",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Heated mirror reveals hidden 3D patterns in rising air near a wall",
+   "url": "https://techxplore.com/news/2026-11-mirror-reveals-hidden-3d-patterns.html",
+   "desc": "Heat transfer from a heated surface depends partly on the thin layer of air that warms and rises beside it. As this natural convection boundary layer develops, its flow can change from orderly patterns to turbulence, influencing heat transfer.",
+   "date": "2026-11-02T15:00+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "02158284e2",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Willmott Dixon to deliver £17.9M Phase 1 of Bury Interchange redevelopment",
+   "url": "https://www.newcivilengineer.com/latest/willmott-dixon-to-deliver-17-9m-phase-1-of-bury-interchange-redevelopment-03-11-2026/",
+   "desc": "Construction firm Willmott Dixon has been appointed by Transport for Greater Manchester (TfGM) to carry out the £17.9M first phase of Bury Interchange’s regeneration.",
+   "date": "2026-11-03T10:13+00:00",
+   "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "bd0ad62830",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
+   "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
+   "desc": "Researchers from The University of Texas at Arlington's Aerodynamics Research Center have published a study in the journal Communications Engineering. Their work details a laser-based technique applied to arc-jet flows that could transform how scientists measure hypersonic air…",
+   "date": "2026-10-30T17:20+00:00",
+   "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "9cc2b0c41c",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Rethinking what happens when homes can’t connect to the sewer",
+   "url": "https://www.newcivilengineer.com/latest/rethinking-what-happens-when-homes-cant-connect-to-the-sewer-03-11-2026/",
+   "desc": "For generations, the solution to dealing with human waste has been pretty consistent: connect homes to a sewer, transport the wastewater away and treat it elsewhere.",
+   "date": "2026-11-03T06:30+00:00",
+   "th": [
+    "3 Wider issues"
    ]
   },
   {
@@ -291,44 +389,6 @@
    "th": [
     "3 Wider issues",
     "5 Materials"
-   ]
-  },
-  {
-   "id": "57d1526d44",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "From Chip Lab to Center Stage",
-   "url": "https://spectrum.ieee.org/preethi-ashwath-chip-designer",
-   "desc": "Many engineers are more comfortable working behind the scenes developing technology than speaking to consumers about products. But Preethi Ashwath has learned to take center stage, talking about the “hearable” and wearable devices she has had a hand in developing as an analog …",
-   "date": "2026-10-23T18:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "abfc2d464e",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Armored caterpillars offer robot designers lessons in crossing slippery glass",
-   "url": "https://techxplore.com/news/2026-10-armored-caterpillars-robot-lessons-slippery.html",
-   "desc": "Animals have long been one of the primary sources of inspiration for robotics researchers. This is because they rely on sophisticated biological mechanisms and locomotion strategies that could be artificially reproduced in robots to equip them with desired capabilities.",
-   "date": "2026-10-30T14:40+00:00",
-   "th": [
-    "4 Design thinking",
-    "5 Materials",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "8076bdfa4b",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Mystery of 60-second fluctuations in power grids solved",
-   "url": "https://techxplore.com/news/2026-10-mystery-fluctuations-power-grids.html",
-   "desc": "TenneT Germany, the largest transmission system operator in Germany, has observed over several years that the frequency in the European power grid dips briefly every 60 seconds. While these deviations were not critical to grid security, they were clearly measurable and unusual…",
-   "date": "2026-10-30T13:40+00:00",
-   "th": [
-    "6 Technical"
    ]
   }
  ]
