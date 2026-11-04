@@ -1,5 +1,5 @@
 {
- "made": "2026-11-03T14:01+00:00",
+ "made": "2026-11-04T14:21+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,21 +18,21 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "The Race",
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 0
+   "n": 2
   },
   {
    "src": "Motorsport.com",
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "New Civil Engineer",
@@ -46,7 +46,7 @@
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 3
+   "n": 2
   },
   {
    "src": "BBC Technology",
@@ -95,83 +95,107 @@
    "level": "research",
    "line": "university press releases, materials science",
    "ok": true,
-   "n": 3
+   "n": 4
   }
  ],
  "stories": [
   {
-   "id": "4236ea5523",
+   "id": "7c67e411e6",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Electronics-free artificial reflex reproduces knee-jerk and enables bipedal walking",
+   "url": "https://techxplore.com/news/2026-11-electronics-free-artificial-reflex-knee.html",
+   "desc": "When a doctor taps just below your kneecap, your lower leg kicks forward automatically. This knee-jerk reflex is one example of the reflexes that play an essential role in human motor control. Now, researchers at Tohoku University have developed a reflex module for musculoskel…",
+   "date": "2026-11-04T14:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "745d2e1da3",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "New ICE President seeks custodians of outcomes",
+   "url": "https://www.newcivilengineer.com/latest/new-ice-president-seeks-custodians-of-outcomes-04-11-2026/",
+   "desc": "In her Presidential address upon becoming Institution of Civil Engineers (ICE) President, Julie Wood put a focus on the purpose of infrastructure, industrialisation of engineering and the importance of social mobility within the industry.",
+   "date": "2026-11-04T13:50+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "20adabc567",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Why Honda’s power unit lasted barely five laps in F1 Mexico GP",
-   "url": "https://www.motorsport.com/f1/news/why-hondas-power-unit-lasted-barely-five-laps-in-f1-mexico-gp/10871279/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "In its Mexico Grand Prix preview, Honda’s Shintaro Orihara had described Autodromo Hermanos Rodriguez as “a very challenging track for the power unit”, but he perhaps didn’t expect Aston Martin’s weekend to go so awry. Despite decent pace and mileage in free practice – Fernand…",
-   "date": "2026-11-03T13:34+00:00",
+   "title": "Max Verstappen needs \"a conversation\" with Red Bull engine after \"random\" engine braking issues",
+   "url": "https://www.motorsport.com/f1/news/max-verstappen-needs-a-conversation-with-red-bull-engine-after-random-engine-braking-issues/10871469/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Ahead of the race weekend at the Autodromo Hermanos Rodriguez – at 2,286 metres above sea level, by far the highest circuit on the Formula 1 calendar – the discussion in the paddock largely revolved around one subject: how much of a challenge Mexico City would pose for the 202…",
+   "date": "2026-11-04T13:46+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "db3030a4bf",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Train that hit buffers at Liverpool Street saw carriages derail and driver taken to hospital",
-   "url": "https://www.newcivilengineer.com/latest/train-that-hit-buffers-at-liverpool-street-saw-carriages-derail-and-driver-taken-to-hospital-03-11-2026/",
-   "desc": "An out-of-service London Overground train that hit the buffers at Liverpool Street station in London saw its first three carriages derail and its driver was taken to hospital, according to an update from the Rail Accident Investigation Branch (Raib).",
-   "date": "2026-11-03T12:29+00:00",
-   "th": [
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "7f8b7c16d8",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Almost half of all containers driven by trucks are empty",
-   "url": "https://techxplore.com/news/2026-11-driven-trucks.html",
-   "desc": "Almost half of all container trucks in Sweden are being driven without a load. Researchers at Chalmers University of Technology in Sweden have developed calculation models that give a detailed picture of the trips—and therefore provide guidance for more efficient container tra…",
-   "date": "2026-11-03T12:00+00:00",
-   "th": [
-    "3 Wider issues",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "3d064038c9",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Buoys—the communication link between the underwater and surface worlds",
-   "url": "https://techxplore.com/news/2026-11-buoys-communication-link-underwater-surface.html",
-   "desc": "Amid geopolitical turmoil, protecting critical maritime infrastructure is more important than ever. The Fraunhofer Institute for Communication, Information Processing and Ergonomics FKIE is working together with maritime security research partners to develop innovative solutio…",
-   "date": "2026-11-02T23:00+00:00",
-   "th": [
-    "1 Requirements",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "7a17628b8e",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Invites Media to Northrop Grumman CRS-25 Station Resupply Launch",
-   "url": "https://www.nasa.gov/news-release/nasa-invites-media-to-northrop-grumman-crs-25-station-resupply-launch/",
-   "desc": "Media accreditation is open for the next launch to deliver NASA science investigations, supplies, and equipment to the International Space Station. A Northrop Grumman Cygnus XL spacecraft will launch in November to the orbital laboratory on a SpaceX Falcon 9 rocket for NASA. T…",
-   "date": "2026-11-02T17:33+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "5f7ba44a9f",
+   "id": "8850037c50",
    "src": "ScienceDaily (materials)",
    "level": "research",
-   "title": "IceCube detects ghost particles with 10 billion times the energy of solar neutrinos",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261101010533.htm",
-   "desc": "Mysterious particles called neutrinos constantly stream through our bodies, and scientists are now detecting incredibly powerful versions arriving from distant cosmic sources using a massive observatory buried in Antarctic ice. These elusive “ghost particles” could hold extrao…",
-   "date": "2026-11-02T13:42+00:00",
+   "title": "A tiny squeeze dramatically changes the magnetism of exotic materials",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261101010541.htm",
+   "desc": "Scientists have discovered that a simple mechanical squeeze can dramatically alter the magnetic properties and electrical behavior of exotic materials called altermagnets. The surprising breakthrough could open the door to faster, more energy-efficient electronics and new tech…",
+   "date": "2026-11-04T12:37+00:00",
    "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "5a581e3ace",
+   "src": "The Race",
+   "level": "way in",
+   "title": "How Brembo tailors brakes for all 11 F1 teams",
+   "url": "https://www.the-race.com/promoted/how-brembo-tailors-brakes-for-all-11-f1-teams/",
+   "desc": "How has Brembo established itself as F1's go-to brake supplier with relationships with all 11 teams?",
+   "date": "2026-11-04T11:31+00:00",
+   "th": [
+    "Motorsport",
     "6 Technical"
+   ]
+  },
+  {
+   "id": "556bdc69b2",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "Toyota reveals two car, two team approach for 2027",
+   "url": "https://www.racecar-engineering.com/articles/off-road/toyota-reveals-two-car-two-team-approach-for-2027/",
+   "desc": "Toyota has revealed the first official images of its new Yaris and Celica WRC cars...",
+   "date": "2026-11-03T20:25+00:00",
+   "th": [
+    "Motorsport"
+   ]
+  },
+  {
+   "id": "ad941485f2",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "German auto crisis deepens as supplier cuts over 3,000 jobs",
+   "url": "https://techxplore.com/news/2026-11-german-auto-crisis-deepens-supplier.html",
+   "desc": "German auto parts supplier Schaeffler said Tuesday that it planned to cut almost 3,500 jobs and close five sites in Europe as the crisis gripping the car industry deepens.",
+   "date": "2026-11-03T19:20+00:00",
+   "th": []
+  },
+  {
+   "id": "f435ac555b",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "TB 26-10 Printed Circuit Board Assembly Chip Resistor Body Cracking",
+   "url": "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-10-printed-circuit-board-assembly-chip-resistor-body-cracking/",
+   "desc": "For more information, contact Joel W. Sills, Langley Research Center, joel.w.sills@nasa.gov. Download PDF here Chip resistors are widely used in NASA projects, yet cases of alumina substrate cracking during environmental testing are rare. Two instances of thick-film chip resis…",
+   "date": "2026-11-03T15:35+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical",
+    "7 Manufacturing"
    ]
   },
   {
@@ -187,60 +211,73 @@
    ]
   },
   {
-   "id": "9a840595c2",
+   "id": "922e38c53f",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Hypersonic projectiles turn ultra-hard diamond composite into shock-absorbing graphite",
+   "url": "https://techxplore.com/news/2026-11-hypersonic-projectiles-ultra-hard-diamond.html",
+   "desc": "\"Diamonds are forever.\" Or so the saying goes. Texas A&M University College of Engineering and Rice University researchers put that claim to the ultimate test. They forged a diamond composite, then marched it directly into the line of fire, blasting it with aluminum projectile…",
+   "date": "2026-11-04T10:40+00:00",
+   "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "b539a7071b",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Active Travel England renews WSP‑led consortium to assess walking, wheeling and cycling schemes",
+   "url": "https://www.newcivilengineer.com/latest/active-travel-england-renews-wsp%e2%80%91led-consortium-to-assess-walking-wheeling-and-cycling-schemes-04-11-2026/",
+   "desc": "Active Travel England (ATE) has reappointed a consortium led by WSP to provide independent design assurance and technical support for a further three years for its schemes.",
+   "date": "2026-11-04T12:50+00:00",
+   "th": []
+  },
+  {
+   "id": "2eabf30f76",
    "src": "Motorsport.com",
    "level": "way in",
-   "title": "Fernando Alonso 'beyond frustration' after engine issue in F1 Mexico GP qualifying",
-   "url": "https://www.motorsport.com/f1/news/fernando-alonso-beyond-frustration-after-engine-issue-in-f1-mexico-gp-qualifying/10870590/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Fernando Alonso stated that his “frustration is beyond imagination” after a power unit problem caused an early end to his qualifying for the Formula 1 Mexico Grand Prix. The Aston Martin driver took 18th with only one flying lap as his AMR26 ground to a halt through the stadiu…",
-   "date": "2026-11-01T13:42+00:00",
+   "title": "McLaren to introduce 2027 F1 front wing at Brazil GP",
+   "url": "https://www.motorsport.com/f1/news/mclaren-to-introduce-2027-f1-front-wing-at-brazil-gp/10871326/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "McLaren will introduce upgrades to its MCL40 Formula 1 car at this weekend’s Brazil Grand Prix, featuring a front wing concept which is expected to feature on its 2027 challenger. The team had surged to the front when it substantially updated the MCL40 in Hungary, with Lando N…",
+   "date": "2026-11-03T16:43+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "d96667e8b6",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Graham opens first section of Clifton Hampden bypass to cars after 62‑hour traffic switch",
-   "url": "https://www.newcivilengineer.com/latest/graham-opens-first-section-of-clifton-hampden-bypass-to-cars-after-62%e2%80%91hour-traffic-switch-03-11-2026/",
-   "desc": "Graham has opened part of the new Clifton Hampden bypass in Oxfordshire to cars after completing the scheme’s first major traffic switch.",
-   "date": "2026-11-03T12:15+00:00",
-   "th": []
-  },
-  {
-   "id": "89c5da10b8",
-   "src": "Tech Xplore (vehicles)",
+   "id": "5f7ba44a9f",
+   "src": "ScienceDaily (materials)",
    "level": "research",
-   "title": "Electric trucks: Reliable on the road and profitable as energy storage",
-   "url": "https://techxplore.com/news/2026-10-electric-trucks-reliable-road-profitable.html",
-   "desc": "Electric trucks could help freight carriers reduce energy costs and ease financial pressures: Their batteries can also serve as energy storage for the depot or the public grid. As the SPIRIT-E research project comes to a close, a consortium led by the Technical University of M…",
-   "date": "2026-10-30T12:48+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "0a35c1fccc",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Exploring sodium batteries down to the atom",
-   "url": "https://techxplore.com/news/2026-11-exploring-sodium-batteries-atom.html",
-   "desc": "Understanding how battery components work at the molecular or atomic levels can help scientists create faster-charging, more powerful, longer-lived storage devices. But the electron microscopes powerful enough to give this view also change and distort the materials in ways sci…",
-   "date": "2026-11-02T21:40+00:00",
+   "title": "IceCube detects ghost particles with 10 billion times the energy of solar neutrinos",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261101010533.htm",
+   "desc": "Mysterious particles called neutrinos constantly stream through our bodies, and scientists are now detecting incredibly powerful versions arriving from distant cosmic sources using a massive observatory buried in Antarctic ice. These elusive “ghost particles” could hold extrao…",
+   "date": "2026-11-02T13:42+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "659de29a97",
-   "src": "ScienceDaily (materials)",
+   "id": "af1957efd8",
+   "src": "The Race",
+   "level": "way in",
+   "title": "Ferrari's engine weakness hides biggest Vasseur success",
+   "url": "https://www.the-race.com/formula-1/why-ferrari-engine-weakness-hides-vasseurs-biggest-success/",
+   "desc": "Ferrari's big engine deficit is obsecuring a very real victory of Fred Vasseur's tenure",
+   "date": "2026-11-04T07:06+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "1c7e782bd3",
+   "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
-   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
-   "date": "2026-10-28T12:25+00:00",
+   "title": "Improving community readiness for evacuations with electric vehicles",
+   "url": "https://techxplore.com/news/2026-11-community-readiness-evacuations-electric-vehicles.html",
+   "desc": "When natural disasters like wildfires or flooding strike, thousands of people may be told to pack their belongings into their cars and evacuate. Emergency planners base evacuation strategies on the assumption that people are driving gas-powered cars that can be refueled at any…",
+   "date": "2026-11-03T18:20+00:00",
    "th": [
     "6 Technical"
    ]
@@ -259,40 +296,85 @@
    ]
   },
   {
-   "id": "147b02c2d3",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "‘Highly likely’ AI will be used in ransomware attack on UK critical infrastructure",
-   "url": "https://www.newcivilengineer.com/latest/highly-likely-ai-will-be-used-in-ransomware-attack-on-uk-critical-infrastructure-03-11-2026/",
-   "desc": "The National Cyber Security Centre (NCSC) has warned that it is “highly likely AI malware will be used in a ransomware attack on UK critical national infrastructure (CNI)” and the head of the centre said it could happen within two years.",
-   "date": "2026-11-03T10:52+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "58bb4b0ec0",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "How cities can make room for robotaxis",
-   "url": "https://techxplore.com/news/2026-10-cities-room-robotaxis.html",
-   "desc": "Switzerland recently launched its first driverless taxi service in Furttal, near Zurich. As robotaxi services become a reality, researchers are increasingly focusing not just on their technical feasibility, but on how large fleets of autonomous vehicles can be integrated into …",
-   "date": "2026-10-30T11:40+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "fc4e5b9c17",
+   "id": "7ec32b5fa2",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Infrared-transparent aerogel boosts performance of subambient daytime radiative cooling materials by up to 5.2°C",
-   "url": "https://techxplore.com/news/2026-11-infrared-transparent-aerogel-boosts-subambient.html",
-   "desc": "As global warming continues, people tend to switch on fans or air conditioners during hot weather. But the more we use electrical appliances, the more energy we consume and carbon dioxide we produce. With continuous breakthroughs in electricity-free cooling, City University of…",
-   "date": "2026-11-02T15:20+00:00",
+   "title": "Smartwatches could learn to read your hands",
+   "url": "https://techxplore.com/news/2026-11-smartwatches.html",
+   "desc": "Northwestern University engineers are investigating new ways to tell what the hands are doing—including peering beneath the skin to watch muscles and tendons move. The new methods don't use high-tech cameras, medical scans or advanced imaging techniques. Instead, they use a co…",
+   "date": "2026-11-03T22:40+00:00",
+   "th": []
+  },
+  {
+   "id": "ac84121bd9",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "HS2: SCS breaks through into Old Oak Common connecting station with north London line",
+   "url": "https://www.newcivilengineer.com/latest/hs2-scs-breaks-through-into-old-oak-common-connecting-station-with-north-london-line-04-11-2026/",
+   "desc": "Skanska Costain Strabag (SCS) has broken through Old Oak Common station creating the 14km tunnel that links the site to the remainder of the HS2 route.",
+   "date": "2026-11-04T11:50+00:00",
+   "th": []
+  },
+  {
+   "id": "4236ea5523",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Why Honda’s power unit lasted barely five laps in F1 Mexico GP",
+   "url": "https://www.motorsport.com/f1/news/why-hondas-power-unit-lasted-barely-five-laps-in-f1-mexico-gp/10871279/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "In its Mexico Grand Prix preview, Honda’s Shintaro Orihara had described Autodromo Hermanos Rodriguez as “a very challenging track for the power unit”, but he perhaps didn’t expect Aston Martin’s weekend to go so awry. Despite decent pace and mileage in free practice – Fernand…",
+   "date": "2026-11-03T13:34+00:00",
    "th": [
-    "5 Materials"
+    "Motorsport",
+    "6 Technical"
    ]
+  },
+  {
+   "id": "659de29a97",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
+   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
+   "date": "2026-10-28T12:25+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "7f8b7c16d8",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Almost half of all containers driven by trucks are empty",
+   "url": "https://techxplore.com/news/2026-11-driven-trucks.html",
+   "desc": "Almost half of all container trucks in Sweden are being driven without a load. Researchers at Chalmers University of Technology in Sweden have developed calculation models that give a detailed picture of the trips—and therefore provide guidance for more efficient container tra…",
+   "date": "2026-11-03T12:00+00:00",
+   "th": [
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "5f24f6b3bd",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Ultrathin solid-state battery uses tin and carbon to reduce lithium loss",
+   "url": "https://techxplore.com/news/2026-11-ultrathin-solid-state-battery-tin.html",
+   "desc": "All-solid-state batteries (ASSBs) are emerging as promising candidates for next-generation energy storage technologies because they use solid electrolytes instead of liquid electrolytes, offering potential advantages in safety and energy density. However, lithium (Li)-based AS…",
+   "date": "2026-11-03T20:20+00:00",
+   "th": [
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "7896e7a2f2",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "National Engineering Day: Can you be an engineer and wear a dress?",
+   "url": "https://www.newcivilengineer.com/latest/national-engineering-day-can-you-be-an-engineer-and-wear-a-dress-04-11-2026/",
+   "desc": "Some of the best questions come from children.",
+   "date": "2026-11-04T10:23+00:00",
+   "th": []
   },
   {
    "id": "d781471d05",
@@ -307,56 +389,8 @@
    ]
   },
   {
-   "id": "2ee31f3d9c",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Poetry for Engineers: Of Code and Shortleaf Pine",
-   "url": "https://spectrum.ieee.org/poetry-for-engineers-of-code-and-shortleaf-pine",
-   "desc": "I step into the warm moist air among the columns of the pines, their net of twigs and roots complex as any lines of code. The trees purify and anchor. Their branches balance my restlessness. Their calling is to be present, mine to develop apps. Our tasks verge toward a common …",
-   "date": "2026-10-25T12:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "5bcf7a509c",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Balfour Beatty completes nine-day renewal in Saxmundham to accommodate Sizewell C freight",
-   "url": "https://www.newcivilengineer.com/latest/balfour-beatty-completes-nine-day-renewal-in-saxmundham-to-accommodate-for-sizewell-c-freight-03-11-2026/",
-   "desc": "Infrastructure group Balfour Beatty completed a nine‑day programme of work to renew a key junction on the East Suffolk Line which will aim to help accommodate future freight traffic to the Sizewell C construction site.",
-   "date": "2026-11-03T10:19+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "46b458aeeb",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Heated mirror reveals hidden 3D patterns in rising air near a wall",
-   "url": "https://techxplore.com/news/2026-11-mirror-reveals-hidden-3d-patterns.html",
-   "desc": "Heat transfer from a heated surface depends partly on the thin layer of air that warms and rises beside it. As this natural convection boundary layer develops, its flow can change from orderly patterns to turbulence, influencing heat transfer.",
-   "date": "2026-11-02T15:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "02158284e2",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Willmott Dixon to deliver £17.9M Phase 1 of Bury Interchange redevelopment",
-   "url": "https://www.newcivilengineer.com/latest/willmott-dixon-to-deliver-17-9m-phase-1-of-bury-interchange-redevelopment-03-11-2026/",
-   "desc": "Construction firm Willmott Dixon has been appointed by Transport for Greater Manchester (TfGM) to carry out the £17.9M first phase of Bury Interchange’s regeneration.",
-   "date": "2026-11-03T10:13+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
    "id": "bd0ad62830",
-   "src": "Tech Xplore (engineering)",
+   "src": "Tech Xplore (vehicles)",
    "level": "research",
    "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
    "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
@@ -367,28 +401,51 @@
    ]
   },
   {
-   "id": "9cc2b0c41c",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Rethinking what happens when homes can’t connect to the sewer",
-   "url": "https://www.newcivilengineer.com/latest/rethinking-what-happens-when-homes-cant-connect-to-the-sewer-03-11-2026/",
-   "desc": "For generations, the solution to dealing with human waste has been pretty consistent: connect homes to a sewer, transport the wastewater away and treat it elsewhere.",
-   "date": "2026-11-03T06:30+00:00",
+   "id": "a28180f831",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "New AI-assisted method cross-checks building design documents to help detect errors",
+   "url": "https://techxplore.com/news/2026-11-ai-method-documents-errors.html",
+   "desc": "Collaboration between different stakeholders is a key part of project-based industries like construction. A variety of documents are required for effective communication, and inconsistencies between them could lead to project delays and increased costs, making early detection …",
+   "date": "2026-11-03T18:40+00:00",
    "th": [
-    "3 Wider issues"
+    "6 Technical"
    ]
   },
   {
-   "id": "a53a07dd45",
+   "id": "4c3f650833",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "University of Hertfordshire researching Grenfell ‘chimney effect’ that helped fire spread",
+   "url": "https://www.newcivilengineer.com/latest/university-of-hertfordshire-researching-grenfell-chimney-effect-that-helped-fire-spread-04-11-2026/",
+   "desc": "Researchers at the University of Hertfordshire are launching a study into the “chimney effect” that helped fire and smoke spread so rapidly during the Grenfell Tower disaster in 2017.",
+   "date": "2026-11-04T09:23+00:00",
+   "th": [
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "5259c1dddb",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Solid-state cooling advances toward practical use, but challenges remain",
-   "url": "https://techxplore.com/news/2026-10-solid-state-cooling-advances.html",
-   "desc": "As temperatures rise, the need for cooling is growing worldwide. Conventional cooling systems consume large amounts of electricity and use refrigerants with a high global warming potential. Caloric cooling could offer a sustainable alternative by using solid-state materials in…",
-   "date": "2026-10-30T15:40+00:00",
+   "title": "New VR method turns touch information into visual cues for better collaboration",
+   "url": "https://techxplore.com/news/2026-11-vr-method-visual-cues-collaboration.html",
+   "desc": "What if you could see how rough an object feels, even without touching it? A KAIST research team has developed a technique that makes the roughness of virtual objects visible through changes in the outline of a virtual hand. By allowing users without haptic devices to perceive…",
+   "date": "2026-11-03T15:40+00:00",
    "th": [
-    "3 Wider issues",
-    "5 Materials"
+    "4 Design thinking"
+   ]
+  },
+  {
+   "id": "0426f50ead",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Jacobs selected as progressive design-build contractor for £1bn California wastewater plant",
+   "url": "https://www.newcivilengineer.com/latest/jacobs-selected-as-progressive-design-build-contractor-for-1bn-california-wastewater-plant-04-11-2026/",
+   "desc": "Construction management firm Jacobs has been appointed by the San Francisco Public Utilities Commission (SFPUC) as the progressive design-build contractor for the £1.09bn ($1.47bn) Southeast Treatment Plant Nutrient Reduction Project.",
+   "date": "2026-11-04T08:40+00:00",
+   "th": [
+    "7 Manufacturing"
    ]
   }
  ]
