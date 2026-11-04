@@ -1,5 +1,5 @@
 {
- "made": "2026-11-03T14:43+00:00",
+ "made": "2026-11-04T14:55+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -51,21 +51,21 @@
    "level": "way in",
    "line": "the education charity behind Ada Computer Science, Bebras and Astro Pi",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "Ars Technica",
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers, computing",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "MIT News",
@@ -84,16 +84,53 @@
  ],
  "stories": [
   {
-   "id": "37618b9677",
+   "id": "0a18fb8308",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Seeing is no longer believing: why physical witnesses matter more in the age of AI-generated content",
+   "url": "https://theconversation.com/seeing-is-no-longer-believing-why-physical-witnesses-matter-more-in-the-age-of-ai-generated-content-295677",
+   "desc": "In an age where AI can create an image of everything and anything, verifying the truth is becoming much harder.",
+   "date": "2026-11-04T13:15+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "ea0fab7f54",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Celebrating the UK’s National Engineering Day 2026",
+   "url": "https://www.raspberrypi.org/blog/celebrating-the-uks-national-engineering-day-2026/",
+   "desc": "We’re celebrating National Engineering Day in the UK with our friends at the Royal Academy of Engineering. National Engineering Day aims to make the UK’s engineers and engineering more visible, and celebrate how they improve everyday lives and shape the world around us. Now hi…",
+   "date": "2026-11-04T09:45+00:00",
+   "th": []
+  },
+  {
+   "id": "93b118af97",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "UK meat industry hit by cyber-attack which targeted European supermarket freezers",
-   "url": "https://www.bbc.co.uk/news/articles/ckq6ndq8l6v0o?at_medium=RSS&at_campaign=rss",
-   "desc": "Supermarkets in countries including Ireland, Sweden and Belgium reported fridges being hiked in temperature on Monday.",
-   "date": "2026-11-03T13:07+00:00",
+   "title": "Graduates are managing AI - but are they learning much else?",
+   "url": "https://www.bbc.co.uk/news/articles/c820vz6wyp65o?at_medium=RSS&at_campaign=rss",
+   "desc": "Graduates are spending more time managing AI, but are they missing out on other work experience?",
+   "date": "2026-11-04T00:04+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "6e52bc4c45",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "UEFI bootkit infected fully patched Windows machines. Is Microsoft to blame?",
+   "url": "https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/",
+   "desc": "UEFI bootkit BlackX exploits Microsoft's lack of clarity around Secure Boot protections.",
+   "date": "2026-11-03T16:03+00:00",
+   "th": [
+    "1.2 Software and development"
    ]
   },
   {
@@ -124,43 +161,16 @@
    ]
   },
   {
-   "id": "4268a4c38c",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The US$6.3 billion Binance hack is the biggest heist ever – it should be a wake up call for cryptocurrency users",
-   "url": "https://theconversation.com/the-us-6-3-billion-binance-hack-is-the-biggest-heist-ever-it-should-be-a-wake-up-call-for-cryptocurrency-users-295623",
-   "desc": "Binance now says it has restored about 95% of the stolen assets using various funds.",
-   "date": "2026-11-02T16:19+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
    "id": "68c44263a0",
    "src": "IEEE Spectrum",
    "level": "magazine",
    "kind": "story",
    "title": "The PHP2Shell Vulnerability Heralds Cybersecurity Hell",
    "url": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
-   "desc": "In late October, a slew of major cybersecurity issues came to light. But none were bigger than the so-called PHP2Shell vulnerability , which put a plethora of websites, including NASA’s, Wikipedia’s, the White House’s, and all other sites that run on Wordpress or Drupal (among…",
+   "desc": "In late October, a slew of major cybersecurity issues came to light. But none were bigger than the so-called PHP2Shell vulnerability , which put a plethora of websites, including those of NASA, Wikipedia, the White House, and all other sites that run on Wordpress or Drupal (am…",
    "date": "2026-11-02T12:00+00:00",
    "th": [
     "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "ce0cce9f3b",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Anthropic VS code extension on Cursor backdoored for nearly 12 hours",
-   "url": "https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours/",
-   "desc": "It's still unknown how attackers got access to Anthropic's verified Cursor account.",
-   "date": "2026-10-30T21:09+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.5 AI and automation"
    ]
   },
   {
@@ -191,6 +201,19 @@
    ]
   },
   {
+   "id": "f17edeef83",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "When social media no longer needs people, what does the ‘social’ part mean?",
+   "url": "https://theconversation.com/when-social-media-no-longer-needs-people-what-does-the-social-part-mean-275936",
+   "desc": "The AI agents do not truly experience friendship, but their exchanges are coherent and resemble the way humans correspond.",
+   "date": "2026-11-04T12:28+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
    "id": "144a09a4a9",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -202,16 +225,30 @@
    "th": []
   },
   {
-   "id": "fde93fa8c4",
+   "id": "c5db139399",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "North Korea denies being behind record $6.3bn Binance hack",
-   "url": "https://www.bbc.co.uk/news/articles/c6rey4v53exgo?at_medium=RSS&at_campaign=rss",
-   "desc": "US government agencies and cyber analysts have blamed Pyongyang for the record-breaking heist.",
-   "date": "2026-11-03T08:33+00:00",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyt?at_medium=RSS&at_campaign=rss",
+   "desc": "When copyright strikes silence reporters, rail safety & the Lord of the Rings live show.",
+   "date": "2026-11-03T20:30+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "ce0cce9f3b",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Anthropic VS code extension on Cursor backdoored for nearly 12 hours",
+   "url": "https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours/",
+   "desc": "It's still unknown how attackers got access to Anthropic's verified Cursor account.",
+   "date": "2026-10-30T21:09+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.5 AI and automation"
    ]
   },
   {
@@ -225,47 +262,6 @@
    "date": "2026-11-02T05:35+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "fdfc4bbcf7",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Are narcissists multiplying or is the social media algorithm making them bolder? The answer in five stages",
-   "url": "https://theconversation.com/are-narcissists-multiplying-or-is-the-social-media-algorithm-making-them-bolder-the-answer-in-five-stages-287008",
-   "desc": "Someone with narcissistic traits will react strongly to content that matches their self-image.",
-   "date": "2026-10-30T11:33+00:00",
-   "th": [
-    "1.4 / 2.3 Algorithms",
-    "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "2ee31f3d9c",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Poetry for Engineers: Of Code and Shortleaf Pine",
-   "url": "https://spectrum.ieee.org/poetry-for-engineers-of-code-and-shortleaf-pine",
-   "desc": "I step into the warm moist air among the columns of the pines, their net of twigs and roots complex as any lines of code. The trees purify and anchor. Their branches balance my restlessness. Their calling is to be present, mine to develop apps. Our tasks verge toward a common …",
-   "date": "2026-10-25T12:00+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "71d9cb2bf3",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Code-execution flaw in UEFI firmware affects most servers on planet Earth",
-   "url": "https://arstechnica.com/security/2026/10/code-execution-flaw-in-uefi-firmware-threatens-most-servers-on-planet-earth/",
-   "desc": "Critical flaw in EDK2 allows attackers to execute code early in the boot process.",
-   "date": "2026-10-27T20:25+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
    ]
   },
   {
@@ -296,6 +292,19 @@
    ]
   },
   {
+   "id": "cef02ae279",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Jonathan Swift foresaw the pitfalls of AI in Gulliver’s Travels",
+   "url": "https://theconversation.com/jonathan-swift-foresaw-the-pitfalls-of-ai-in-gullivers-travels-295594",
+   "desc": "On Gulliver’s third travel he meets the Projectors who have come up with a device that is surprisingly similar to our modern large language models.",
+   "date": "2026-11-03T16:15+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "238899667d",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -309,16 +318,31 @@
    ]
   },
   {
-   "id": "bcc8812695",
+   "id": "5a2163963e",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "If hackers can take control of a supermarket freezer, how vulnerable is other tech?",
-   "url": "https://www.bbc.co.uk/news/articles/ckpqg8lve73go?at_medium=RSS&at_campaign=rss",
-   "desc": "Dozens of shops across European countries have been hit by a cyber-attack affecting their fridges.",
-   "date": "2026-11-02T18:25+00:00",
+   "title": "Binance says fake job interviews used as part of $6.3bn crypto hack",
+   "url": "https://www.bbc.co.uk/news/articles/ck5ynwz9gy67o?at_medium=RSS&at_campaign=rss",
+   "desc": "An engineer was contacted through a legitimate job-hunting platform and invited to bogus job interviews with fake company representatives, Binance says.",
+   "date": "2026-11-03T16:19+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "71d9cb2bf3",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Code-execution flaw in UEFI firmware affects most servers on planet Earth",
+   "url": "https://arstechnica.com/security/2026/10/code-execution-flaw-in-uefi-firmware-threatens-most-servers-on-planet-earth/",
+   "desc": "Critical flaw in EDK2 allows attackers to execute code early in the boot process.",
+   "date": "2026-10-27T20:25+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
    ]
   },
   {
@@ -330,19 +354,6 @@
    "url": "https://news.mit.edu/2026/mit-affiliates-named-schmidt-sciences-ai2050-fellows-1030",
    "desc": "Five MIT faculty members and two additional alumni are honored with fellowships to advance research on beneficial AI.",
    "date": "2026-10-30T20:15+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "84ea243f4a",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The UK wants ‘AI sovereignty’ to cut its reliance on foreign tech – here’s how that can be achieved",
-   "url": "https://theconversation.com/the-uk-wants-ai-sovereignty-to-cut-its-reliance-on-foreign-tech-heres-how-that-can-be-achieved-295031",
-   "desc": "Recent reports have highlighted the risks of relying on foreign suppliers.",
-   "date": "2026-10-29T12:25+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -373,14 +384,27 @@
    "th": []
   },
   {
-   "id": "bc46b33a52",
+   "id": "4268a4c38c",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The US$6.3 billion Binance hack is the biggest heist ever – it should be a wake up call for cryptocurrency users",
+   "url": "https://theconversation.com/the-us-6-3-billion-binance-hack-is-the-biggest-heist-ever-it-should-be-a-wake-up-call-for-cryptocurrency-users-295623",
+   "desc": "Binance now says it has restored about 95% of the stolen assets using various funds.",
+   "date": "2026-11-02T16:19+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "37618b9677",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Binance users withdraw $3.6bn after largest-ever crypto hack",
-   "url": "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss",
-   "desc": "The exchange froze transactions following the incident which has been linked to a North Korean group.",
-   "date": "2026-11-02T07:42+00:00",
+   "title": "UK meat industry hit by cyber-attack which targeted European supermarket freezers",
+   "url": "https://www.bbc.co.uk/news/articles/ckq6ndq8l6v0o?at_medium=RSS&at_campaign=rss",
+   "desc": "Supermarkets in countries including Ireland, Sweden and Belgium reported fridges being hiked in temperature on Monday.",
+   "date": "2026-11-03T13:07+00:00",
    "th": [
     "1.3 Security and encryption"
    ]
@@ -394,19 +418,6 @@
    "url": "https://news.mit.edu/2026/qa-hey-ai-who-should-i-vote-for-this-year-1030",
    "desc": "MIT professors Adam Berinsky and Chara Podimata discuss a new project to track how AI chatbots are responding to questions about the 2026 U.S. midterm elections.",
    "date": "2026-10-30T19:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "34b6951e24",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Could humanoid robots replace soldiers on the battlefield?",
-   "url": "https://theconversation.com/could-humanoid-robots-replace-soldiers-on-the-battlefield-292913",
-   "desc": "Militaries around the world are testing the newest generation of machines.",
-   "date": "2026-10-27T16:12+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -439,43 +450,42 @@
    ]
   },
   {
-   "id": "cc1971927f",
+   "id": "fde93fa8c4",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "These firms you've never heard of are feeding fears the AI bubble could burst",
-   "url": "https://www.bbc.co.uk/news/articles/cje36degrgv5o?at_medium=RSS&at_campaign=rss",
-   "desc": "The amount of debt held by data centres is measured in the tens of billions of pounds.",
-   "date": "2026-11-01T01:37+00:00",
+   "title": "North Korea denies being behind record $6.3bn Binance hack",
+   "url": "https://www.bbc.co.uk/news/articles/c6rey4v53exgo?at_medium=RSS&at_campaign=rss",
+   "desc": "US government agencies and cyber analysts have blamed Pyongyang for the record-breaking heist.",
+   "date": "2026-11-03T08:33+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.3 Security and encryption"
    ]
   },
   {
-   "id": "a2f2839074",
+   "id": "bcc8812695",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
-   "url": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
-   "desc": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become.",
-   "date": "2026-10-31T02:12+00:00",
+   "title": "If hackers can take control of a supermarket freezer, how vulnerable is other tech?",
+   "url": "https://www.bbc.co.uk/news/articles/ckpqg8lve73go?at_medium=RSS&at_campaign=rss",
+   "desc": "Dozens of shops across European countries have been hit by a cyber-attack affecting their fridges.",
+   "date": "2026-11-02T18:25+00:00",
    "th": [
-    "1.3 Security and encryption",
-    "1.4 / 2.3 Algorithms"
+    "1.3 Security and encryption"
    ]
   },
   {
-   "id": "d6f468599e",
+   "id": "bc46b33a52",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "US tech stocks see sharp falls as AI spending nears $1tn",
-   "url": "https://www.bbc.co.uk/news/articles/cvwy72e0n72yo?at_medium=RSS&at_campaign=rss",
-   "desc": "Shares in Intel continue to fall while the tech-heavy Nasdaq opens at its lowest level in more than two months.",
-   "date": "2026-10-30T20:34+00:00",
+   "title": "Binance users withdraw $3.6bn after largest-ever crypto hack",
+   "url": "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss",
+   "desc": "The exchange froze transactions following the incident which has been linked to a North Korean group.",
+   "date": "2026-11-02T07:42+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.3 Security and encryption"
    ]
   }
  ]
