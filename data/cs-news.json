@@ -1,5 +1,5 @@
 {
- "made": "2026-11-04T14:55+00:00",
+ "made": "2026-11-05T14:59+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -44,7 +44,7 @@
    "level": "magazine",
    "line": "Quanta Magazine, computer science: theory, algorithms, AI research",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Raspberry Pi Foundation",
@@ -58,14 +58,14 @@
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 3
+   "n": 5
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers, computing",
    "ok": true,
-   "n": 1
+   "n": 3
   },
   {
    "src": "MIT News",
@@ -79,58 +79,116 @@
    "level": "research",
    "line": "university press releases, computers and maths",
    "ok": true,
-   "n": 4
+   "n": 2
   }
  ],
  "stories": [
   {
-   "id": "0a18fb8308",
-   "src": "The Conversation",
+   "id": "b4fc5380ab",
+   "src": "Computerphile",
    "level": "way in",
-   "kind": "story",
-   "title": "Seeing is no longer believing: why physical witnesses matter more in the age of AI-generated content",
-   "url": "https://theconversation.com/seeing-is-no-longer-believing-why-physical-witnesses-matter-more-in-the-age-of-ai-generated-content-295677",
-   "desc": "In an age where AI can create an image of everything and anything, verifying the truth is becoming much harder.",
-   "date": "2026-11-04T13:15+00:00",
+   "kind": "video",
+   "title": "Mutex Explained - Computerphile",
+   "url": "https://www.youtube.com/watch?v=BmBw827GgFA",
+   "desc": "One of the most useful primitives in programming, but what is a mutual exclusion and how does it work? Matt Godbolt explains! Computerphile is supported by Jane Street. Learn more about them (and exciting career opportunities) at: https://jane-st.co/computerphile This video wa…",
+   "date": "2026-11-05T14:00+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.2 Software and development",
+    "1.3 Networks and the web"
    ]
   },
   {
-   "id": "ea0fab7f54",
+   "id": "d1c490a44c",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Why a Mathematician Is Chasing Eclipses With Algorithms and Cameras",
+   "url": "https://spectrum.ieee.org/2026-solar-eclipse",
+   "desc": "The sun hangs low over the plains of Castile and León, in the north-central region of Spain. But from a slope of the mountain Pico Trigaza , it appears that a few puffy white clouds have started to block the sun. That’s vexing. A group of researchers, some wearing cardboard ec…",
+   "date": "2026-11-05T14:00+00:00",
+   "th": [
+    "1.4 / 2.3 Algorithms"
+   ]
+  },
+  {
+   "id": "d4b5ca5169",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
    "kind": "story",
-   "title": "Celebrating the UK’s National Engineering Day 2026",
-   "url": "https://www.raspberrypi.org/blog/celebrating-the-uks-national-engineering-day-2026/",
-   "desc": "We’re celebrating National Engineering Day in the UK with our friends at the Royal Academy of Engineering. National Engineering Day aims to make the UK’s engineers and engineering more visible, and celebrate how they improve everyday lives and shape the world around us. Now hi…",
-   "date": "2026-11-04T09:45+00:00",
-   "th": []
-  },
-  {
-   "id": "93b118af97",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Graduates are managing AI - but are they learning much else?",
-   "url": "https://www.bbc.co.uk/news/articles/c820vz6wyp65o?at_medium=RSS&at_campaign=rss",
-   "desc": "Graduates are spending more time managing AI, but are they missing out on other work experience?",
-   "date": "2026-11-04T00:04+00:00",
+   "title": "Experience AI begins reaching classrooms across Latin America",
+   "url": "https://www.raspberrypi.org/blog/experience-ai-begins-reaching-classrooms-across-latin-america/",
+   "desc": "Earlier this year, we announced that we’re expanding Experience AI, our AI literacy programme, across Latin America to bring AI education to nine more countries through support from Google.org. Working with local partner organisations, we offer Experience AI training and resou…",
+   "date": "2026-11-05T09:24+00:00",
    "th": [
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "6e52bc4c45",
+   "id": "f809844337",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The Binance hack exploited familiar weaknesses – all organisations should learn from it",
+   "url": "https://theconversation.com/the-binance-hack-exploited-familiar-weaknesses-all-organisations-should-learn-from-it-295627",
+   "desc": "The hackers compromised a laptop belonging to an IT engineer, according to Binance.",
+   "date": "2026-11-05T08:24+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "16de4ca3c2",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Clearing up a robot’s fuzzy memory",
+   "url": "https://news.mit.edu/2026/clearing-up-robot-fuzzy-memory-1105",
+   "desc": "A new system identifies and corrects unreliable object descriptions stored in a robot’s memory, improving the robot’s ability to interact with its environment.",
+   "date": "2026-11-05T05:00+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "bc594cd9fb",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "UEFI bootkit infected fully patched Windows machines. Is Microsoft to blame?",
-   "url": "https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/",
-   "desc": "UEFI bootkit BlackX exploits Microsoft's lack of clarity around Secure Boot protections.",
-   "date": "2026-11-03T16:03+00:00",
+   "title": "Hackers exploited iOS and Android flaws to infect phones",
+   "url": "https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/",
+   "desc": "Researchers say group may have been Kremlin-sponsored in search of diplomatic targets.",
+   "date": "2026-11-04T22:26+00:00",
    "th": [
-    "1.2 Software and development"
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "ca70ab29b2",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "French blood storage impacted by freezer hacks as theories swirl about culprits",
+   "url": "https://www.bbc.co.uk/news/articles/c8vgxyvz6y9ro?at_medium=RSS&at_campaign=rss",
+   "desc": "The French Blood Establishment (EFS) said cold rooms storing blood were impacted by hackers.",
+   "date": "2026-11-04T16:26+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "da12f1490c",
+   "src": "Quanta",
+   "level": "magazine",
+   "kind": "story",
+   "title": "New Research Tests Whether AI Models Know Their Own Thoughts",
+   "url": "https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/",
+   "desc": "By injecting “thoughts” directly into large language models, researchers are trying to map out AI’s capacity for introspection. The post New Research Tests Whether AI Models Know Their Own Thoughts first appeared on Quanta Magazine",
+   "date": "2026-11-04T15:32+00:00",
+   "th": [
+    "1.5 AI and automation"
    ]
   },
   {
@@ -148,14 +206,28 @@
    ]
   },
   {
-   "id": "4a3b5b87c1",
-   "src": "MIT News",
+   "id": "18b68e010d",
+   "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "Jeffery Lim wants to open up cloud research",
-   "url": "https://news.mit.edu/2026/jeffery-lim-wants-to-open-up-cloud-research-1102",
-   "desc": "The Lincoln Laboratory scholar developed a hardware platform inspired by proprietary infrastructure, allowing researchers to design and evaluate their cloud technology in a realistic environment.",
-   "date": "2026-11-02T20:00+00:00",
+   "title": "A computer scientist breaks through a limit that stood since 1996",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261029072146.htm",
+   "desc": "A computer scientist has achieved a breakthrough in a nearly 25-year-old problem involving how computers calculate distances across enormous networks. The new algorithm delivers more reliable estimates for closely connected points without sacrificing speed, overcoming a longst…",
+   "date": "2026-10-30T11:08+00:00",
+   "th": [
+    "1.3 Networks and the web",
+    "1.4 / 2.3 Algorithms"
+   ]
+  },
+  {
+   "id": "0d10a26bfe",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "The Private Key Mistake! (TLS Key set to \"4\") - Computerphile",
+   "url": "https://www.youtube.com/watch?v=NDgS__J1U-M",
+   "desc": "You actually have to work quite hard to set a private key to the number 4! - Dr Tim Muller takes us through the problems with 'randomly' assigning a 120 digit number to the value '4' Computerphile is supported by Jane Street. Learn more about them (and exciting career opportun…",
+   "date": "2026-10-30T15:47+00:00",
    "th": [
     "1.3 Networks and the web"
    ]
@@ -174,94 +246,79 @@
    ]
   },
   {
-   "id": "0d10a26bfe",
-   "src": "Computerphile",
+   "id": "ea0fab7f54",
+   "src": "Raspberry Pi Foundation",
    "level": "way in",
-   "kind": "video",
-   "title": "The Private Key Mistake! (TLS Key set to \"4\") - Computerphile",
-   "url": "https://www.youtube.com/watch?v=NDgS__J1U-M",
-   "desc": "You actually have to work quite hard to set a private key to the number 4! - Dr Tim Muller takes us through the problems with 'randomly' assigning a 120 digit number to the value '4' Computerphile is supported by Jane Street. Learn more about them (and exciting career opportun…",
-   "date": "2026-10-30T15:47+00:00",
+   "kind": "story",
+   "title": "Celebrating the UK’s National Engineering Day 2026",
+   "url": "https://www.raspberrypi.org/blog/celebrating-the-uks-national-engineering-day-2026/",
+   "desc": "We’re celebrating National Engineering Day in the UK with our friends at the Royal Academy of Engineering. National Engineering Day aims to make the UK’s engineers and engineering more visible, and celebrate how they improve everyday lives and shape the world around us. Now hi…",
+   "date": "2026-11-04T09:45+00:00",
+   "th": []
+  },
+  {
+   "id": "0a18fb8308",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Seeing is no longer believing: why physical witnesses matter more in the age of AI-generated content",
+   "url": "https://theconversation.com/seeing-is-no-longer-believing-why-physical-witnesses-matter-more-in-the-age-of-ai-generated-content-295677",
+   "desc": "In an age where AI can create an image of everything and anything, verifying the truth is becoming much harder.",
+   "date": "2026-11-04T13:15+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "4a3b5b87c1",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Jeffery Lim wants to open up cloud research",
+   "url": "https://news.mit.edu/2026/jeffery-lim-wants-to-open-up-cloud-research-1102",
+   "desc": "The Lincoln Laboratory scholar developed a hardware platform inspired by proprietary infrastructure, allowing researchers to design and evaluate their cloud technology in a realistic environment.",
+   "date": "2026-11-02T20:00+00:00",
    "th": [
     "1.3 Networks and the web"
    ]
   },
   {
-   "id": "18b68e010d",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "A computer scientist breaks through a limit that stood since 1996",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261029072146.htm",
-   "desc": "A computer scientist has achieved a breakthrough in a nearly 25-year-old problem involving how computers calculate distances across enormous networks. The new algorithm delivers more reliable estimates for closely connected points without sacrificing speed, overcoming a longst…",
-   "date": "2026-10-30T11:08+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.4 / 2.3 Algorithms"
-   ]
-  },
-  {
-   "id": "f17edeef83",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "When social media no longer needs people, what does the ‘social’ part mean?",
-   "url": "https://theconversation.com/when-social-media-no-longer-needs-people-what-does-the-social-part-mean-275936",
-   "desc": "The AI agents do not truly experience friendship, but their exchanges are coherent and resemble the way humans correspond.",
-   "date": "2026-11-04T12:28+00:00",
-   "th": [
-    "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "144a09a4a9",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
-   "kind": "story",
-   "title": "That’s a wrap! Coolest Projects 2026",
-   "url": "https://www.raspberrypi.org/blog/thats-a-wrap-coolest-projects-2026/",
-   "desc": "There are a few Coolest Projects events still to come in the Coolest Projects 2026 cycle, but we are already getting ready to kick off Coolest Projects 2027. Before we do, we’re taking a look back at some of the incredible things the young tech creators in the global Coolest P…",
-   "date": "2026-10-28T12:09+00:00",
-   "th": []
-  },
-  {
-   "id": "c5db139399",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyt?at_medium=RSS&at_campaign=rss",
-   "desc": "When copyright strikes silence reporters, rail safety & the Lord of the Rings live show.",
-   "date": "2026-11-03T20:30+00:00",
-   "th": [
-    "1.5 Law and ethics"
-   ]
-  },
-  {
-   "id": "ce0cce9f3b",
+   "id": "868b661c5e",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Anthropic VS code extension on Cursor backdoored for nearly 12 hours",
-   "url": "https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours/",
-   "desc": "It's still unknown how attackers got access to Anthropic's verified Cursor account.",
-   "date": "2026-10-30T21:09+00:00",
+   "title": "Binance says hackers who stole billions in crypto spent months planning heist",
+   "url": "https://arstechnica.com/information-technology/2026/11/binance-says-hackers-who-stole-billions-in-crypto-spent-months-planning-heist/",
+   "desc": "Techniques included laptop infections, compromised internal tooling, and fake job interviews.",
+   "date": "2026-11-04T16:06+00:00",
    "th": [
-    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "93b118af97",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Graduates are managing AI - but are they learning much else?",
+   "url": "https://www.bbc.co.uk/news/articles/c820vz6wyp65o?at_medium=RSS&at_campaign=rss",
+   "desc": "Graduates are spending more time managing AI, but are they missing out on other work experience?",
+   "date": "2026-11-04T00:04+00:00",
+   "th": [
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "624e23d0cd",
-   "src": "MIT News",
+   "id": "d781471d05",
+   "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "Regina Barzilay and Jim Collins win Pritzker Prize for AI and Science Research Excellence for work in AI-enabled antibiotic discovery",
-   "url": "https://news.mit.edu/2026/regina-barzilay-jim-collins-win-pritzker-prize-ai-and-science-research-excellence-1102",
-   "desc": "The MIT professors collaborated to identify the first AI-discovered antibiotic, a scientific breakthrough that is widely recognized as a milestone in AI-driven drug discovery.",
-   "date": "2026-11-02T05:35+00:00",
+   "title": "A tiny laser beam could make computer memory 1,000 times faster",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025073046.htm",
+   "desc": "Scientists at UC San Diego have developed a surprising new way to store digital information using light instead of magnets, potentially paving the way for smaller, faster, and more energy-efficient memory devices. By precisely shaping and shrinking an ultrafast laser beam, res…",
+   "date": "2026-10-27T09:22+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.1 Processors and hardware"
    ]
   },
   {
@@ -279,16 +336,94 @@
    ]
   },
   {
-   "id": "d781471d05",
-   "src": "ScienceDaily",
+   "id": "f5d949064d",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Multiphysics Modeling for Next-Generation Electromagnetic Manufacturing Technologies",
+   "url": "https://event.on24.com/wcc/r/5546816/67D0147A8B8D057FCE11A17D61A8BB0D?utm_source=IEEE",
+   "desc": "Advances in sensing, manufacturing, computational resources, and data-driven methods are enabling new approaches to electromagnetic sensing, non-destructive evaluation, and advanced materials processing. This webinar will demonstrate how the COMSOL Multiphysics software suppor…",
+   "date": "2026-10-30T12:29+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Databases and data"
+   ]
+  },
+  {
+   "id": "144a09a4a9",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "That’s a wrap! Coolest Projects 2026",
+   "url": "https://www.raspberrypi.org/blog/thats-a-wrap-coolest-projects-2026/",
+   "desc": "There are a few Coolest Projects events still to come in the Coolest Projects 2026 cycle, but we are already getting ready to kick off Coolest Projects 2027. Before we do, we’re taking a look back at some of the incredible things the young tech creators in the global Coolest P…",
+   "date": "2026-10-28T12:09+00:00",
+   "th": []
+  },
+  {
+   "id": "f17edeef83",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "When social media no longer needs people, what does the ‘social’ part mean?",
+   "url": "https://theconversation.com/when-social-media-no-longer-needs-people-what-does-the-social-part-mean-275936",
+   "desc": "The AI agents do not truly experience friendship, but their exchanges are coherent and resemble the way humans correspond.",
+   "date": "2026-11-04T12:28+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "624e23d0cd",
+   "src": "MIT News",
    "level": "research",
    "kind": "story",
-   "title": "A tiny laser beam could make computer memory 1,000 times faster",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025073046.htm",
-   "desc": "Scientists at UC San Diego have developed a surprising new way to store digital information using light instead of magnets, potentially paving the way for smaller, faster, and more energy-efficient memory devices. By precisely shaping and shrinking an ultrafast laser beam, res…",
-   "date": "2026-10-27T09:22+00:00",
+   "title": "Regina Barzilay and Jim Collins win Pritzker Prize for AI and Science Research Excellence for work in AI-enabled antibiotic discovery",
+   "url": "https://news.mit.edu/2026/regina-barzilay-jim-collins-win-pritzker-prize-ai-and-science-research-excellence-1102",
+   "desc": "The MIT professors collaborated to identify the first AI-discovered antibiotic, a scientific breakthrough that is widely recognized as a milestone in AI-driven drug discovery.",
+   "date": "2026-11-02T05:35+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "6e52bc4c45",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "UEFI bootkit infected fully patched Windows machines. Is Microsoft to blame?",
+   "url": "https://arstechnica.com/security/2026/11/uefi-bootkit-infected-fully-patched-windows-machines-is-microsoft-to-blame/",
+   "desc": "UEFI bootkit BlackX exploits Microsoft's lack of clarity around Secure Boot protections.",
+   "date": "2026-11-03T16:03+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
+   "id": "c5db139399",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyt?at_medium=RSS&at_campaign=rss",
+   "desc": "When copyright strikes silence reporters, rail safety & the Lord of the Rings live show.",
+   "date": "2026-11-03T20:30+00:00",
+   "th": [
+    "1.5 Law and ethics"
+   ]
+  },
+  {
+   "id": "659402f488",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "How Image Watermarking Works - Computerphile",
+   "url": "https://www.youtube.com/watch?v=h6j_ixGnpiY",
+   "desc": "Image watermarks are a way to embed information into a picture, Dr Mike Pound takes us through Adobe's Trust Mark to explain the idea & covers some of the pros and cons. 00:00 - Introduction: Watermarking Images vs Text 00:28 - Steganography vs Watermarking & Metadata Limitati…",
+   "date": "2026-10-22T13:00+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
    ]
   },
   {
@@ -305,16 +440,30 @@
    ]
   },
   {
-   "id": "238899667d",
-   "src": "Raspberry Pi Foundation",
-   "level": "way in",
+   "id": "de7eef2755",
+   "src": "MIT News",
+   "level": "research",
    "kind": "story",
-   "title": "Reintroducing Code Classroom – now with the Blocks editor",
-   "url": "https://www.raspberrypi.org/blog/reintroducing-code-classroom-now-with-the-blocks-editor/",
-   "desc": "Code Classroom — formerly known as the Code Editor for Education — is our free, safe tool for teaching and learning computing and programming. We’re delighted to share that Code Classroom now includes our new Blocks editor, based on the open-source Scratch editor. With the Blo…",
-   "date": "2026-10-26T15:32+00:00",
+   "title": "MIT affiliates named 2026 Schmidt Sciences AI2050 Fellows",
+   "url": "https://news.mit.edu/2026/mit-affiliates-named-schmidt-sciences-ai2050-fellows-1030",
+   "desc": "Five MIT faculty members and two additional alumni are honored with fellowships to advance research on beneficial AI.",
+   "date": "2026-10-30T20:15+00:00",
    "th": [
-    "1.2 Software and development"
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "ce0cce9f3b",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Anthropic VS code extension on Cursor backdoored for nearly 12 hours",
+   "url": "https://arstechnica.com/security/2026/10/anthropic-vs-code-extension-on-cursor-backdoored-for-nearly-12-hours/",
+   "desc": "It's still unknown how attackers got access to Anthropic's verified Cursor account.",
+   "date": "2026-10-30T21:09+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.5 AI and automation"
    ]
   },
   {
@@ -346,57 +495,6 @@
    ]
   },
   {
-   "id": "de7eef2755",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "MIT affiliates named 2026 Schmidt Sciences AI2050 Fellows",
-   "url": "https://news.mit.edu/2026/mit-affiliates-named-schmidt-sciences-ai2050-fellows-1030",
-   "desc": "Five MIT faculty members and two additional alumni are honored with fellowships to advance research on beneficial AI.",
-   "date": "2026-10-30T20:15+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "659402f488",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "How Image Watermarking Works - Computerphile",
-   "url": "https://www.youtube.com/watch?v=h6j_ixGnpiY",
-   "desc": "Image watermarks are a way to embed information into a picture, Dr Mike Pound takes us through Adobe's Trust Mark to explain the idea & covers some of the pros and cons. 00:00 - Introduction: Watermarking Images vs Text 00:28 - Steganography vs Watermarking & Metadata Limitati…",
-   "date": "2026-10-22T13:00+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "3272e9319f",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "Tiny magnetic vortices could help computers work more like your brain",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025073038.htm",
-   "desc": "Scientists have filmed tiny magnetic vortices called skyrmions melting out of an organized lattice for the first time, revealing new ways to manipulate these unusual structures. The breakthrough could help make brain-like computers a reality, potentially enabling dramatically …",
-   "date": "2026-10-26T10:06+00:00",
-   "th": []
-  },
-  {
-   "id": "4268a4c38c",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The US$6.3 billion Binance hack is the biggest heist ever – it should be a wake up call for cryptocurrency users",
-   "url": "https://theconversation.com/the-us-6-3-billion-binance-hack-is-the-biggest-heist-ever-it-should-be-a-wake-up-call-for-cryptocurrency-users-295623",
-   "desc": "Binance now says it has restored about 95% of the stolen assets using various funds.",
-   "date": "2026-11-02T16:19+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
    "id": "37618b9677",
    "src": "BBC Technology",
    "level": "way in",
@@ -407,46 +505,6 @@
    "date": "2026-11-03T13:07+00:00",
    "th": [
     "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "226d6d5c25",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Q&A: Hey AI, who should I vote for this year?",
-   "url": "https://news.mit.edu/2026/qa-hey-ai-who-should-i-vote-for-this-year-1030",
-   "desc": "MIT professors Adam Berinsky and Chara Podimata discuss a new project to track how AI chatbots are responding to questions about the 2026 U.S. midterm elections.",
-   "date": "2026-10-30T19:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "ecd7751c51",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "Multiplayer Gaming & Flight Simulation - Computerphile",
-   "url": "https://www.youtube.com/watch?v=WqrwAFs-fq0",
-   "desc": "Using the example of a flight simulator to discuss the complexities of coding a multi-player game. What data do you send? When do you send it & how often? Dr Julian Onions talks about his experiences of working on a flight simulator. Computerphile is supported by Jane Street. …",
-   "date": "2026-10-15T13:30+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "ad9d4a8e65",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "AI detects “invisible” signs of pancreatic cancer years before diagnosis",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261024222031.htm",
-   "desc": "A powerful new AI system could help doctors detect pancreatic cancer years before it becomes visible on conventional scans. The technology, called REDMOD, identified hidden warning signs an average of 475 days before diagnosis and was nearly twice as sensitive as experienced r…",
-   "date": "2026-10-26T09:25+00:00",
-   "th": [
-    "1.5 AI and automation"
    ]
   },
   {
@@ -471,19 +529,6 @@
    "url": "https://www.bbc.co.uk/news/articles/ckpqg8lve73go?at_medium=RSS&at_campaign=rss",
    "desc": "Dozens of shops across European countries have been hit by a cyber-attack affecting their fridges.",
    "date": "2026-11-02T18:25+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "bc46b33a52",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Binance users withdraw $3.6bn after largest-ever crypto hack",
-   "url": "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss",
-   "desc": "The exchange froze transactions following the incident which has been linked to a North Korean group.",
-   "date": "2026-11-02T07:42+00:00",
    "th": [
     "1.3 Security and encryption"
    ]
