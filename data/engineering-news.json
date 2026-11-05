@@ -1,5 +1,5 @@
 {
- "made": "2026-11-04T14:21+00:00",
+ "made": "2026-11-05T14:30+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,7 +18,7 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "The Race",
@@ -46,7 +46,7 @@
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "BBC Technology",
@@ -59,7 +59,7 @@
    "src": "ESA",
    "level": "magazine",
    "line": "European Space Agency · space engineering and technology",
-   "ok": true,
+   "ok": false,
    "n": 0
   },
   {
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "Carbon Brief",
@@ -100,28 +100,65 @@
  ],
  "stories": [
   {
-   "id": "7c67e411e6",
+   "id": "8adfd869c2",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Electronics-free artificial reflex reproduces knee-jerk and enables bipedal walking",
-   "url": "https://techxplore.com/news/2026-11-electronics-free-artificial-reflex-knee.html",
-   "desc": "When a doctor taps just below your kneecap, your lower leg kicks forward automatically. This knee-jerk reflex is one example of the reflexes that play an essential role in human motor control. Now, researchers at Tohoku University have developed a reflex module for musculoskel…",
-   "date": "2026-11-04T14:20+00:00",
+   "title": "How self-powered life jackets could turn wave motion into an emergency signal",
+   "url": "https://techxplore.com/news/2026-11-powered-life-jackets-motion-emergency.html",
+   "desc": "A life jacket that powers its own distress signal could soon provide protection for people on the water thanks to a device developed by University of Wollongong (UOW) researchers and their international collaborators. The gadget generates electricity from movement, such as the…",
+   "date": "2026-11-05T14:20+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "745d2e1da3",
+   "id": "156ed6a89a",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "New ICE President seeks custodians of outcomes",
-   "url": "https://www.newcivilengineer.com/latest/new-ice-president-seeks-custodians-of-outcomes-04-11-2026/",
-   "desc": "In her Presidential address upon becoming Institution of Civil Engineers (ICE) President, Julie Wood put a focus on the purpose of infrastructure, industrialisation of engineering and the importance of social mobility within the industry.",
-   "date": "2026-11-04T13:50+00:00",
+   "title": "Still no start date for East West Rail passenger services as union dispute continues",
+   "url": "https://www.newcivilengineer.com/latest/still-no-start-date-for-east-west-rail-passenger-services-as-union-dispute-continues-05-11-2026/",
+   "desc": "East West Rail passenger services between Bicester and Bletchley/Milton Keynes will not meet their delayed commencement date of sometime this year as the train line’s dispute with trade union RMT continues.",
+   "date": "2026-11-05T13:22+00:00",
    "th": [
-    "5 Materials",
-    "6 Technical"
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "310b62e458",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Model shows factories and employees can profit from idle car batteries at work",
+   "url": "https://techxplore.com/news/2026-11-factories-employees-profit-idle-car.html",
+   "desc": "Researchers from Skoltech—a VEB.RF Group institution—have developed an optimization framework to help factories compare strategies for using onsite solar power and the electric vehicles of employees to reduce electricity costs. Evaluated in a Moscow case study, the approach ac…",
+   "date": "2026-11-05T12:20+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "32f654e7a5",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Announces X-70 Experimental Aircraft to Advance Flight Research",
+   "url": "https://www.nasa.gov/news-release/nasa-announces-x-70-experimental-aircraft-to-advance-flight-research/",
+   "desc": "On Wednesday, NASA unveiled its newest experimental aircraft, the X-70 Fractal, during the UP.Summit at the agency’s Kennedy Space Center in Florida. This high-performance, highly adaptable research platform is designed to accelerate the development and testing of advanced avi…",
+   "date": "2026-11-05T01:43+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "4c994ee7e9",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "How Hyundai is updating its Rally2 car",
+   "url": "https://www.racecar-engineering.com/articles/off-road/how-hyundai-is-updating-its-rally2-car/",
+   "desc": "Hyundai's technical director explains how it plans to get the i20 Rally2 back in the mix...",
+   "date": "2026-11-04T17:16+00:00",
+   "th": [
+    "Motorsport"
    ]
   },
   {
@@ -163,42 +200,6 @@
    ]
   },
   {
-   "id": "556bdc69b2",
-   "src": "Racecar Engineering",
-   "level": "magazine",
-   "title": "Toyota reveals two car, two team approach for 2027",
-   "url": "https://www.racecar-engineering.com/articles/off-road/toyota-reveals-two-car-two-team-approach-for-2027/",
-   "desc": "Toyota has revealed the first official images of its new Yaris and Celica WRC cars...",
-   "date": "2026-11-03T20:25+00:00",
-   "th": [
-    "Motorsport"
-   ]
-  },
-  {
-   "id": "ad941485f2",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "German auto crisis deepens as supplier cuts over 3,000 jobs",
-   "url": "https://techxplore.com/news/2026-11-german-auto-crisis-deepens-supplier.html",
-   "desc": "German auto parts supplier Schaeffler said Tuesday that it planned to cut almost 3,500 jobs and close five sites in Europe as the crisis gripping the car industry deepens.",
-   "date": "2026-11-03T19:20+00:00",
-   "th": []
-  },
-  {
-   "id": "f435ac555b",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "TB 26-10 Printed Circuit Board Assembly Chip Resistor Body Cracking",
-   "url": "https://www.nasa.gov/centers-and-facilities/nesc/tb-26-10-printed-circuit-board-assembly-chip-resistor-body-cracking/",
-   "desc": "For more information, contact Joel W. Sills, Langley Research Center, joel.w.sills@nasa.gov. Download PDF here Chip resistors are widely used in NASA projects, yet cases of alumina substrate cracking during environmental testing are rare. Two instances of thick-film chip resis…",
-   "date": "2026-11-03T15:35+00:00",
-   "th": [
-    "5 Materials",
-    "6 Technical",
-    "7 Manufacturing"
-   ]
-  },
-  {
    "id": "062f94d6c1",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -211,26 +212,66 @@
    ]
   },
   {
-   "id": "922e38c53f",
+   "id": "613a47fbaa",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Hypersonic projectiles turn ultra-hard diamond composite into shock-absorbing graphite",
-   "url": "https://techxplore.com/news/2026-11-hypersonic-projectiles-ultra-hard-diamond.html",
-   "desc": "\"Diamonds are forever.\" Or so the saying goes. Texas A&M University College of Engineering and Rice University researchers put that claim to the ultimate test. They forged a diamond composite, then marched it directly into the line of fire, blasting it with aluminum projectile…",
-   "date": "2026-11-04T10:40+00:00",
+   "title": "Underwater exoskeletons could help divers use less air and move more efficiently",
+   "url": "https://techxplore.com/news/2026-11-underwater-exoskeletons-divers-air-efficiently.html",
+   "desc": "Scuba diving places heavy demands on the human body. Divers must constantly overcome water resistance while carrying breathing equipment and other gear, and their underwater time is ultimately limited by both physical endurance and the amount of breathing gas they can carry.",
+   "date": "2026-11-04T22:20+00:00",
    "th": [
-    "5 Materials"
+    "6 Technical"
    ]
   },
   {
-   "id": "b539a7071b",
+   "id": "1e98b00c06",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Active Travel England renews WSP‑led consortium to assess walking, wheeling and cycling schemes",
-   "url": "https://www.newcivilengineer.com/latest/active-travel-england-renews-wsp%e2%80%91led-consortium-to-assess-walking-wheeling-and-cycling-schemes-04-11-2026/",
-   "desc": "Active Travel England (ATE) has reappointed a consortium led by WSP to provide independent design assurance and technical support for a further three years for its schemes.",
-   "date": "2026-11-04T12:50+00:00",
-   "th": []
+   "title": "National Grid sets out plans for construction and maintenance supplier market",
+   "url": "https://www.newcivilengineer.com/latest/national-grid-sets-out-plans-for-construction-and-maintenance-supplier-market-05-11-2026/",
+   "desc": "National Grid has published plans to establish a qualified supplier marketplace for property refurbishment, construction and maintenance works across its operational, corporate and specialist estate.",
+   "date": "2026-11-05T12:51+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "5d3dad4ed9",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Giving passengers a bit more time to board helps flights leave on time",
+   "url": "https://techxplore.com/news/2026-11-passengers-bit-board-flights.html",
+   "desc": "When Delta Air Lines adjusted the schedule for a plane's time at the gate to give passengers five more minutes to board, the change measurably reduced flight delays, according to new research from the University at Buffalo School of Management.",
+   "date": "2026-11-05T12:00+00:00",
+   "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "2e62bc2ded",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Announces Ka-Band Satellite Relay Awards for Space Communications",
+   "url": "https://www.nasa.gov/news-release/nasa-announces-ka-band-satellite-relay-awards-for-space-communications/",
+   "desc": "NASA selected three companies on Wednesday to perform work to develop Ka-band space relay capability concepts that are compatible with current missions in space, ensuring service continuity for existing spacecraft without requiring modifications to their onboard systems. Throu…",
+   "date": "2026-11-04T18:00+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "556bdc69b2",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "Toyota reveals two car, two team approach for 2027",
+   "url": "https://www.racecar-engineering.com/articles/off-road/toyota-reveals-two-car-two-team-approach-for-2027/",
+   "desc": "Toyota has revealed the first official images of its new Yaris and Celica WRC cars...",
+   "date": "2026-11-03T20:25+00:00",
+   "th": [
+    "Motorsport"
+   ]
   },
   {
    "id": "2eabf30f76",
@@ -271,48 +312,48 @@
    ]
   },
   {
-   "id": "1c7e782bd3",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Improving community readiness for evacuations with electric vehicles",
-   "url": "https://techxplore.com/news/2026-11-community-readiness-evacuations-electric-vehicles.html",
-   "desc": "When natural disasters like wildfires or flooding strike, thousands of people may be told to pack their belongings into their cars and evacuate. Emergency planners base evacuation strategies on the assumption that people are driving gas-powered cars that can be refueled at any…",
-   "date": "2026-11-03T18:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "1698e31ea5",
+   "id": "f5d949064d",
    "src": "IEEE Spectrum",
    "level": "magazine",
-   "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
-   "url": "https://spectrum.ieee.org/ai-robot-safety-cybersecurity-vicone",
-   "desc": "This article is brought to you by VicOne . A mobile robot slows for someone in a hallway. A collaborative arm eases its movement as a worker approaches. A humanoid pauses to let a person pass. Each response depends on information about the robot or its surroundings: a distance…",
-   "date": "2026-10-27T16:14+00:00",
+   "title": "Multiphysics Modeling for Next-Generation Electromagnetic Manufacturing Technologies",
+   "url": "https://event.on24.com/wcc/r/5546816/67D0147A8B8D057FCE11A17D61A8BB0D?utm_source=IEEE",
+   "desc": "Advances in sensing, manufacturing, computational resources, and data-driven methods are enabling new approaches to electromagnetic sensing, non-destructive evaluation, and advanced materials processing. This webinar will demonstrate how the COMSOL Multiphysics software suppor…",
+   "date": "2026-10-30T12:29+00:00",
    "th": [
-    "6 Technical",
-    "9 Health and safety"
+    "2 Existing products",
+    "7 Manufacturing"
    ]
   },
   {
-   "id": "7ec32b5fa2",
+   "id": "800a0f24e1",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Smartwatches could learn to read your hands",
-   "url": "https://techxplore.com/news/2026-11-smartwatches.html",
-   "desc": "Northwestern University engineers are investigating new ways to tell what the hands are doing—including peering beneath the skin to watch muscles and tendons move. The new methods don't use high-tech cameras, medical scans or advanced imaging techniques. Instead, they use a co…",
-   "date": "2026-11-03T22:40+00:00",
+   "title": "Isolator-free optical transmitter could simplify high-speed links between data centers",
+   "url": "https://techxplore.com/news/2026-11-isolator-free-optical-transmitter-high.html",
+   "desc": "The growing demand for faster data exchange between data centers calls for compact, high-speed optical transmitters. Researchers from Japan developed an integrated optical transmitter that mitigates the destabilizing effects of unwanted optical feedback, allowing stable laser …",
+   "date": "2026-11-04T22:00+00:00",
+   "th": [
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "d31ceaa8bc",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Thames Water records 100 days of drought as reservoir levels remain below average",
+   "url": "https://www.newcivilengineer.com/latest/thames-water-records-100-days-of-drought-as-reservoir-levels-remain-below-average-05-11-2026/",
+   "desc": "Thames Water says it has marked 100 days since drought was declared across London and the Thames Valley, with reservoir storage and groundwater levels remaining below average despite recent rainfall.",
+   "date": "2026-11-05T09:47+00:00",
    "th": []
   },
   {
-   "id": "ac84121bd9",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "HS2: SCS breaks through into Old Oak Common connecting station with north London line",
-   "url": "https://www.newcivilengineer.com/latest/hs2-scs-breaks-through-into-old-oak-common-connecting-station-with-north-london-line-04-11-2026/",
-   "desc": "Skanska Costain Strabag (SCS) has broken through Old Oak Common station creating the 14km tunnel that links the site to the remainder of the HS2 route.",
-   "date": "2026-11-04T11:50+00:00",
+   "id": "ad941485f2",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "German auto crisis deepens as supplier cuts over 3,000 jobs",
+   "url": "https://techxplore.com/news/2026-11-german-auto-crisis-deepens-supplier.html",
+   "desc": "German auto parts supplier Schaeffler said Tuesday that it planned to cut almost 3,500 jobs and close five sites in Europe as the crisis gripping the car industry deepens.",
+   "date": "2026-11-03T19:20+00:00",
    "th": []
   },
   {
@@ -341,40 +382,54 @@
    ]
   },
   {
-   "id": "7f8b7c16d8",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Almost half of all containers driven by trucks are empty",
-   "url": "https://techxplore.com/news/2026-11-driven-trucks.html",
-   "desc": "Almost half of all container trucks in Sweden are being driven without a load. Researchers at Chalmers University of Technology in Sweden have developed calculation models that give a detailed picture of the trips—and therefore provide guidance for more efficient container tra…",
-   "date": "2026-11-03T12:00+00:00",
+   "id": "1698e31ea5",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
+   "url": "https://spectrum.ieee.org/ai-robot-safety-cybersecurity-vicone",
+   "desc": "This article is brought to you by VicOne . A mobile robot slows for someone in a hallway. A collaborative arm eases its movement as a worker approaches. A humanoid pauses to let a person pass. Each response depends on information about the robot or its surroundings: a distance…",
+   "date": "2026-10-27T16:14+00:00",
    "th": [
-    "3 Wider issues",
-    "6 Technical"
+    "6 Technical",
+    "9 Health and safety"
    ]
   },
   {
-   "id": "5f24f6b3bd",
+   "id": "38611817bc",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Ultrathin solid-state battery uses tin and carbon to reduce lithium loss",
-   "url": "https://techxplore.com/news/2026-11-ultrathin-solid-state-battery-tin.html",
-   "desc": "All-solid-state batteries (ASSBs) are emerging as promising candidates for next-generation energy storage technologies because they use solid electrolytes instead of liquid electrolytes, offering potential advantages in safety and energy density. However, lithium (Li)-based AS…",
-   "date": "2026-11-03T20:20+00:00",
+   "title": "'Sticker-like' transfer printing could help scale up production of solid-state batteries",
+   "url": "https://techxplore.com/news/2026-11-sticker-scale-production-solid-state.html",
+   "desc": "A Korean research team has developed a transfer printing process that enables solid electrolytes, a key component of solid-state batteries, to be fabricated as very thin, uniform and defect-free layers over large areas. The technology is expected to provide a foundation for th…",
+   "date": "2026-11-04T21:20+00:00",
    "th": [
-    "3 Wider issues",
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "547ebb30dc",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "New water councils to shape billions in infrastructure investment",
+   "url": "https://www.newcivilengineer.com/latest/new-water-councils-to-shape-billions-in-infrastructure-investment-05-11-2026/",
+   "desc": "Eight new regional water councils are to be established across England, giving communities and local leaders a greater say over billions of pounds of investment in water and flood infrastructure, says the government.",
+   "date": "2026-11-05T09:13+00:00",
+   "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "7896e7a2f2",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "National Engineering Day: Can you be an engineer and wear a dress?",
-   "url": "https://www.newcivilengineer.com/latest/national-engineering-day-can-you-be-an-engineer-and-wear-a-dress-04-11-2026/",
-   "desc": "Some of the best questions come from children.",
-   "date": "2026-11-04T10:23+00:00",
-   "th": []
+   "id": "1c7e782bd3",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Improving community readiness for evacuations with electric vehicles",
+   "url": "https://techxplore.com/news/2026-11-community-readiness-evacuations-electric-vehicles.html",
+   "desc": "When natural disasters like wildfires or flooding strike, thousands of people may be told to pack their belongings into their cars and evacuate. Emergency planners base evacuation strategies on the assumption that people are driving gas-powered cars that can be refueled at any…",
+   "date": "2026-11-03T18:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
   },
   {
    "id": "d781471d05",
@@ -389,63 +444,52 @@
    ]
   },
   {
-   "id": "bd0ad62830",
-   "src": "Tech Xplore (vehicles)",
+   "id": "b967ab1e78",
+   "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Laser pulses can track extreme airflow in tests for hypersonic spacecraft",
-   "url": "https://techxplore.com/news/2026-10-laser-pulses-track-extreme-airflow.html",
-   "desc": "Researchers from The University of Texas at Arlington's Aerodynamics Research Center have published a study in the journal Communications Engineering. Their work details a laser-based technique applied to arc-jet flows that could transform how scientists measure hypersonic air…",
-   "date": "2026-10-30T17:20+00:00",
+   "title": "Digital cold strain engineering opens a new route to the programmable control of materials",
+   "url": "https://techxplore.com/news/2026-11-digital-cold-strain-route-programmable.html",
+   "desc": "Strain engineering allows researchers to alter a material's electronic and optical behavior by changing its physical structure rather than its chemical composition. The approach is well established in crystalline materials, whose ordered atomic lattices respond predictably to …",
+   "date": "2026-11-04T21:20+00:00",
    "th": [
-    "8 Viability"
+    "5 Materials",
+    "6 Technical"
    ]
   },
   {
-   "id": "a28180f831",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "New AI-assisted method cross-checks building design documents to help detect errors",
-   "url": "https://techxplore.com/news/2026-11-ai-method-documents-errors.html",
-   "desc": "Collaboration between different stakeholders is a key part of project-based industries like construction. A variety of documents are required for effective communication, and inconsistencies between them could lead to project delays and increased costs, making early detection …",
-   "date": "2026-11-03T18:40+00:00",
+   "id": "b4f1fb1c93",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Action on consenting and investment in electricity grid promised in new bill",
+   "url": "https://www.newcivilengineer.com/latest/action-on-consenting-and-investment-in-electricity-grid-promised-in-new-bill-05-11-2026/",
+   "desc": "The government has set out its plans to speed up grid upgrades in the Energy Independence Bill, which was introduced to Parliament yesterday (4 November).",
+   "date": "2026-11-05T08:48+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "4c3f650833",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "University of Hertfordshire researching Grenfell ‘chimney effect’ that helped fire spread",
-   "url": "https://www.newcivilengineer.com/latest/university-of-hertfordshire-researching-grenfell-chimney-effect-that-helped-fire-spread-04-11-2026/",
-   "desc": "Researchers at the University of Hertfordshire are launching a study into the “chimney effect” that helped fire and smoke spread so rapidly during the Grenfell Tower disaster in 2017.",
-   "date": "2026-11-04T09:23+00:00",
-   "th": [
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "5259c1dddb",
+   "id": "6c1a0786aa",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New VR method turns touch information into visual cues for better collaboration",
-   "url": "https://techxplore.com/news/2026-11-vr-method-visual-cues-collaboration.html",
-   "desc": "What if you could see how rough an object feels, even without touching it? A KAIST research team has developed a technique that makes the roughness of virtual objects visible through changes in the outline of a virtual hand. By allowing users without haptic devices to perceive…",
-   "date": "2026-11-03T15:40+00:00",
+   "title": "4D neutron scattering uncovers ion interactions that could guide solid-state battery design",
+   "url": "https://techxplore.com/news/2026-11-4d-neutron-uncovers-ion-interactions.html",
+   "desc": "Understanding how ions move through solid materials is key to advancing technologies such as batteries, fuel cells and sensors. A team of scientists led by the U.S. Department of Energy's (DOE) Argonne National Laboratory has demonstrated a cutting-edge method for gauging the …",
+   "date": "2026-11-04T14:40+00:00",
    "th": [
-    "4 Design thinking"
+    "6 Technical"
    ]
   },
   {
-   "id": "0426f50ead",
+   "id": "08888ee909",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Jacobs selected as progressive design-build contractor for £1bn California wastewater plant",
-   "url": "https://www.newcivilengineer.com/latest/jacobs-selected-as-progressive-design-build-contractor-for-1bn-california-wastewater-plant-04-11-2026/",
-   "desc": "Construction management firm Jacobs has been appointed by the San Francisco Public Utilities Commission (SFPUC) as the progressive design-build contractor for the £1.09bn ($1.47bn) Southeast Treatment Plant Nutrient Reduction Project.",
-   "date": "2026-11-04T08:40+00:00",
+   "title": "US structure losses from wildfires could nearly triple by 2060",
+   "url": "https://www.newcivilengineer.com/latest/us-structure-losses-from-wildfires-could-nearly-triple-by-2060-05-11-2026/",
+   "desc": "Wildfires could damage or destroy between 133,000 and 449,000 structures across the US between 2024 and 2060 if current trends in development and lack of adaptation continue, a peer-reviewed study has estimated.",
+   "date": "2026-11-05T08:38+00:00",
    "th": [
-    "7 Manufacturing"
+    "6 Technical"
    ]
   }
  ]
