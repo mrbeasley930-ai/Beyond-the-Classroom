@@ -1,5 +1,5 @@
 {
- "made": "2026-11-06T14:27+00:00",
+ "made": "2026-11-07T13:20+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 16
+   "n": 14
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 12
+   "n": 10
   },
   {
    "src": "GDACS",
@@ -116,10 +116,29 @@
    "level": "way in",
    "line": "United Nations news on migrants and refugees",
    "ok": true,
-   "n": 1
+   "n": 3
   }
  ],
  "events": [
+  {
+   "id": "qus7000twrq",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.5 earthquake",
+   "place": "74 km NE of Hasaki, Japan",
+   "lat": 36.19,
+   "lon": 141.44,
+   "date": "2026-11-07T11:07+00:00",
+   "mag": 5.5,
+   "depth": 32,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000twrq",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
   {
    "id": "qus7000twg9",
    "kind": "quake",
@@ -143,14 +162,14 @@
    "id": "gd5ca18b9262",
    "kind": "storm",
    "src": "GDACS",
-   "title": "Tropical cyclone Thirtyone",
+   "title": "Tropical cyclone Cempaka",
    "place": "Japan",
-   "lat": 17.9,
-   "lon": 147.5,
+   "lat": 20.0,
+   "lon": 142.8,
    "date": "2026-11-06T07:50+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001347",
-   "desc": "From 06/11/2026 to 06/11/2026, a Tropical Depression (maximum wind speed of 185 km/h) THIRTYONE-26 was active in NWPacific. The cyclone affects these countries: Japan (vulnerability Low). Estimated population affected by category 1 (120 km/…",
+   "desc": "From 06/11/2026 to 07/11/2026, a Tropical Storm (maximum wind speed of 185 km/h) CEMPAKA-26 was active in NWPacific. The cyclone affects these countries: Japan (vulnerability Low). Estimated population affected by category 1 (120 km/h) wind…",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -262,25 +281,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "mid-indian ridge"
-  },
-  {
-   "id": "qus7000tvie",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "Volcano Islands, Japan region",
-   "lat": 24.18,
-   "lon": 141.67,
-   "date": "2026-11-03T16:48+00:00",
-   "mag": 5.2,
-   "depth": 129,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tvie",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
   },
   {
    "id": "gdda572ac02a",
@@ -400,6 +400,44 @@
    ]
   },
   {
+   "id": "qus7000tupl",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.0 earthquake",
+   "place": "165 km NW of Port-Olry, Vanuatu",
+   "lat": -14.17,
+   "lon": 165.82,
+   "date": "2026-11-01T11:47+00:00",
+   "mag": 6,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tupl",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "vanuatu"
+  },
+  {
+   "id": "qus7000tun8",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "203 km NW of Port-Olry, Vanuatu",
+   "lat": -13.87,
+   "lon": 165.62,
+   "date": "2026-11-01T06:26+00:00",
+   "mag": 5.4,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tun8",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "vanuatu"
+  },
+  {
    "id": "qus7000tuku",
    "kind": "quake",
    "src": "USGS",
@@ -477,7 +515,7 @@
    "date": "2026-10-29T09:44+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104259",
-   "desc": "On 26/10/2026, a flood started in Peru, lasting until 03/11/2026 (last update). The flood caused 0 deaths and 324 displaced .",
+   "desc": "On 26/10/2026, a flood started in Peru, lasting until 06/11/2026 (last update). The flood caused 0 deaths and 324 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -488,12 +526,12 @@
    "src": "GDACS",
    "title": "Flooding in Türkiye",
    "place": "Türkiye",
-   "lat": 37.16,
-   "lon": 28.26,
+   "lat": 36.35,
+   "lon": 36.07,
    "date": "2026-10-29T09:30+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104254",
-   "desc": "On 26/10/2026, a flood started in Türkiye, lasting until 03/11/2026 (last update). The flood caused 3 deaths and 0 displaced .",
+   "desc": "On 26/10/2026, a flood started in Türkiye, lasting until 06/11/2026 (last update). The flood caused 4 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -615,35 +653,16 @@
    ]
   },
   {
-   "id": "qus6000u4jb",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.3 earthquake",
-   "place": "170 km NW of Port-Olry, Vanuatu",
-   "lat": -14.04,
-   "lon": 165.87,
-   "date": "2026-10-24T02:35+00:00",
-   "mag": 6.3,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4jb",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "vanuatu"
-  },
-  {
    "id": "qus6000u4j2",
    "kind": "quake",
    "src": "USGS",
-   "title": "Magnitude 6.9 earthquake",
-   "place": "197 km WNW of Port-Olry, Vanuatu",
-   "lat": -14.06,
-   "lon": 165.55,
+   "title": "Magnitude 6.8 earthquake",
+   "place": "203 km NW of Port-Olry, Vanuatu",
+   "lat": -13.94,
+   "lon": 165.56,
    "date": "2026-10-24T02:31+00:00",
-   "mag": 6.9,
-   "depth": 10,
+   "mag": 6.8,
+   "depth": 16,
    "alert": "green",
    "tsunami": true,
    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4j2",
@@ -741,9 +760,9 @@
    "kind": "quake",
    "src": "USGS",
    "title": "Magnitude 5.7 earthquake",
-   "place": "48 km WNW of Khuzdar, Pakistan",
+   "place": "47 km WNW of Khuzdar, Pakistan",
    "lat": 28.02,
-   "lon": 66.17,
+   "lon": 66.19,
    "date": "2026-10-17T05:06+00:00",
    "mag": 5.7,
    "depth": 10,
@@ -754,36 +773,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "pakistan"
-  },
-  {
-   "id": "eo3fae98fe3d",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire COOLEY, Mendocino, California",
-   "place": "",
-   "lat": 38.82,
-   "lon": -123.19,
-   "date": "2026-10-16T20:14+00:00",
-   "first": "2026-10-16T20:14+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-CAMEU-012265",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo3a5a6e7393",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire NORTE, Orange, California",
-   "place": "",
-   "lat": 33.48,
-   "lon": -117.63,
-   "date": "2026-10-16T14:52+00:00",
-   "first": "2026-10-16T14:52+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-CAORC-149182",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
   },
   {
    "id": "qus6000u2mq",
@@ -919,25 +908,6 @@
    "region": "panama"
   },
   {
-   "id": "qus6000u0xi",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.3 earthquake",
-   "place": "117 km NE of Norsup, Vanuatu",
-   "lat": -15.43,
-   "lon": 168.28,
-   "date": "2026-10-08T09:00+00:00",
-   "mag": 6.3,
-   "depth": 19,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u0xi",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "vanuatu"
-  },
-  {
    "id": "gd1e7d8ccfd0",
    "kind": "drought",
    "src": "GDACS",
@@ -988,28 +958,52 @@
  ],
  "stories": [
   {
-   "id": "62b9d7d17f",
+   "id": "58b959ca0c",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Australia’s coal and gas approvals are starting to stink ahead of Cop31 | Jess Harwood",
-   "url": "https://www.theguardian.com/commentisfree/picture/2026/nov/07/australias-coal-and-gas-approvals-are-starting-to-stink-ahead-of-cop31",
-   "desc": "What happened to climate injustice?",
-   "date": "2026-11-06T14:00+00:00",
+   "title": "New ‘high safety’ chemicals in plastic food packaging linked to lower birth weight, study finds",
+   "url": "https://www.theguardian.com/us-news/2026/nov/07/nontoxic-plastic-lower-birth-weight-study",
+   "desc": "Dinch, an allegedly ‘safe’ alternative, used in the EU and US also found to cause fetal development complications Exposure to a new generation of allegedly “safe” plasticizers is linked to lower birth weight and fetal development complications, which could cause serious health…",
+   "date": "2026-11-07T12:00+00:00",
+   "th": [
+    "Topic 7 Superpowers",
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "2f2777db84",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "New Forest wildfire restoration work begins",
+   "url": "https://www.bbc.co.uk/news/articles/cw98zzn7z04vo?at_medium=RSS&at_campaign=rss",
+   "desc": "Work begins to restore nature to part of the New Forest destroyed by a summer wildfire.",
+   "date": "2026-11-07T07:14+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "f2788dabae",
+   "id": "1bd5c4dc6b",
    "src": "The Conversation",
    "level": "research",
-   "title": "Don’t wash your laundry at teatime – why planning energy use can reduce your bills",
-   "url": "https://theconversation.com/dont-wash-your-laundry-at-teatime-why-planning-energy-use-can-reduce-your-bills-290445",
-   "desc": "Electricity is being priced by the time it is used, not just by how much, so timing really matters.",
-   "date": "2026-11-06T13:35+00:00",
+   "title": "The Cop31 climate summit is betting on electrification – but still needs a plan to ditch fossil fuels",
+   "url": "https://theconversation.com/the-cop31-climate-summit-is-betting-on-electrification-but-still-needs-a-plan-to-ditch-fossil-fuels-295493",
+   "desc": "Electrification alone won’t deliver a clean energy transition. Two major challenges remain.",
+   "date": "2026-11-06T17:02+00:00",
    "th": [
-    "Topic 4A Regenerating places",
     "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "a62193ec19",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "World News in Brief: Civilians killed in DR Congo, Ukrainians wrestle with return, Guterres calls out ‘normalisation’ of force",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168757",
+   "desc": "At least 30 civilians were killed overnight on Thursday in Beni Territory, North Kivu in the Democratic Republic of the Congo, according to local sources cited by the UN aid coordination office (OCHA).",
+   "date": "2026-11-06T12:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
@@ -1059,52 +1053,54 @@
    ]
   },
   {
-   "id": "88511b78f4",
-   "src": "BBC Science & Environment",
+   "id": "cc4ec5afa5",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "Over 1,000 tonnes of sewage seen at landfill site",
-   "url": "https://www.bbc.co.uk/news/articles/cmp8ggn9gpjjo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Environment Agency says it has issued the operator with a series of actions after an inspection.",
-   "date": "2026-11-05T20:01+00:00",
+   "title": "Famous New Mexico rock formation destroyed after torrential El Niño rains",
+   "url": "https://www.theguardian.com/environment/2026/nov/06/new-mexico-alien-throne-collapse-el-nino-rain",
+   "desc": "Officials expected to investigate whether super El Niño storms in US south-west damaged the Alien Throne spires Undulating, gravity-defying rock spires are one of the most magical parts of the landscape of the US south-west. But after torrential rainstorms linked to the super …",
+   "date": "2026-11-06T19:23+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "84ae1997f0",
-   "src": "UN News (migration)",
+   "id": "7ce345ff7e",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "World News in Brief: 300,000 displaced in Lebanon, Türk ‘deeply concerned’ over Novaya Gazeta closure, $50 million refugee appeal, World Cities Day",
-   "url": "https://news.un.org/feed/view/en/story/2026/10/1168713",
-   "desc": "More than 300,000 people displaced since early March remain internally displaced in Lebanon, where the humanitarian crisis is “far from over,” according to the UN’s aid coordination office (OCHA).",
-   "date": "2026-10-30T12:00+00:00",
+   "title": "How climate change worsens heatwaves, droughts, wildfires and floods",
+   "url": "https://www.bbc.co.uk/news/articles/cy4dgp1p3p1o?at_medium=RSS&at_campaign=rss",
+   "desc": "Rising global temperatures mean extreme weather events are becoming more common and more intense.",
+   "date": "2026-11-06T16:43+00:00",
    "th": [
-    "Topic 4A Regenerating places",
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "7dcaeed45b",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Most Europeans want action to tackle climate crisis but not at any cost, poll shows",
-   "url": "https://www.theguardian.com/world/2026/nov/06/europeans-want-action-climate-crisis-yougov-poll",
-   "desc": "YouGov survey finds support for tree planting and emissions taxes but opposition to air travel and fuel levies Europe live – latest updates Europeans believe human-made climate change is real, a survey has shown, with most feeling action must be taken soon – as long as they do…",
-   "date": "2026-11-06T12:27+00:00",
-   "th": [
+    "Topic 5 The water cycle and water insecurity",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "eedf35fde5",
+   "id": "f2788dabae",
    "src": "The Conversation",
    "level": "research",
-   "title": "The worse climate change gets, the harder it becomes to stop it",
-   "url": "https://theconversation.com/the-worse-climate-change-gets-the-harder-it-becomes-to-stop-it-293987",
-   "desc": "Climate breakdown could undermine the social trust, political cooperation and financial resources needed to tackle it – new research shows how this might play out.",
-   "date": "2026-11-06T00:19+00:00",
+   "title": "Don’t wash your laundry at teatime – why planning energy use can reduce your bills",
+   "url": "https://theconversation.com/dont-wash-your-laundry-at-teatime-why-planning-energy-use-can-reduce-your-bills-290445",
+   "desc": "Electricity is being priced by the time it is used, not just by how much, so timing really matters.",
+   "date": "2026-11-06T13:35+00:00",
    "th": [
+    "Topic 4A Regenerating places",
     "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "c1e6899ab6",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "‘No Escape’ for refugees on the frontlines of the climate crisis",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168752",
+   "desc": "The climate emergency is an immediate crisis for refugees, with three in four – nearly 90 million people – living in countries facing high to severe exposure to hazards such as drought, floods and extreme heat.",
+   "date": "2026-11-06T12:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
@@ -1153,39 +1149,28 @@
    "th": []
   },
   {
-   "id": "6e6fc4c66f",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Investigation into 'major fish kill' after pollution incident",
-   "url": "https://www.bbc.co.uk/news/articles/cx1l36y2d941o?at_medium=RSS&at_campaign=rss",
-   "desc": "The pollution caused the death of brown and migratory sea trout in the Inler river.",
-   "date": "2026-11-05T14:51+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity",
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "2f6f276918",
+   "id": "e9f0a0ce24",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Low pressure in US midwest brings unseasonable heat to New York and Boston",
-   "url": "https://www.theguardian.com/environment/2026/nov/06/new-york-boston-us-weather-tracker",
-   "desc": "Further south this week, severe thunderstorms affected midterms voting in Florida, Oklahoma and Colorado Despite the rapid descent into autumn in the northern hemisphere, parts of eastern North America have experienced an exceptionally late taste of summer in recent days. Temp…",
-   "date": "2026-11-06T09:54+00:00",
+   "title": "In Alaska’s capital, food comes by water, air or, most often, community sharing",
+   "url": "https://www.theguardian.com/environment/2026/nov/06/alaska-juneau-food-access",
+   "desc": "Juneau has little arable land, a short growing season and few farmers – and deep traditions of residents and the land feeding each other Forty miles north-west of Alaska’s capital, the highway just ends. At Glacier Highway’s most northern point, the pavement turns to gravel, t…",
+   "date": "2026-11-06T15:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 4B Diverse places"
    ]
   },
   {
-   "id": "493d9200eb",
+   "id": "eedf35fde5",
    "src": "The Conversation",
    "level": "research",
-   "title": "It’s a bumper year for wild mushrooms – here’s what you could find in the woods today",
-   "url": "https://theconversation.com/its-a-bumper-year-for-wild-mushrooms-heres-what-you-could-find-in-the-woods-today-290272",
-   "desc": "Some fungi are having an abundant year, but other types are struggling because of dry summer weather.",
-   "date": "2026-11-05T14:49+00:00",
-   "th": []
+   "title": "The worse climate change gets, the harder it becomes to stop it",
+   "url": "https://theconversation.com/the-worse-climate-change-gets-the-harder-it-becomes-to-stop-it-293987",
+   "desc": "Climate breakdown could undermine the social trust, political cooperation and financial resources needed to tackle it – new research shows how this might play out.",
+   "date": "2026-11-06T00:19+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
   },
   {
    "id": "959eec6b56",
@@ -1200,14 +1185,16 @@
    ]
   },
   {
-   "id": "c7ff91bbac",
+   "id": "5e8d958658",
    "src": "Geographical",
    "level": "magazine",
-   "title": "QUIZ: Country Shapes – Europe",
-   "url": "https://geographical.co.uk/quizzes/quiz-country-shapes-europe-6",
-   "desc": "Could you identify Europe’s countries from their outlines alone? Put your geography knowledge to the test and see how many shapes you recognise.",
-   "date": "2026-11-06T08:00+00:00",
-   "th": []
+   "title": "More than 3,000 tarantulas concealed in socks seized at Peru Airport",
+   "url": "https://geographical.co.uk/wildlife/more-than-3000-tarantulas-concealed-in-socks-seized-at-peru-airport",
+   "desc": "Hidden spiders – in various stages of development from eggs to adults –&#160;were discovered by customs agents before the arachnids could be smuggled to Germany Peru airport officials seized more than 3,000 tarantulas after discovering them inside dirty socks in three suitcase…",
+   "date": "2026-11-06T09:00+00:00",
+   "th": [
+    "Topic 8B Migration, identity and sovereignty"
+   ]
   },
   {
    "id": "eaaa0d3e1b",
@@ -1232,40 +1219,26 @@
    "th": []
   },
   {
-   "id": "f22a5b47ad",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Typhoons batter East Asia as El Niño makes Pacific 'burn with fever'",
-   "url": "https://www.bbc.co.uk/news/articles/cw33kgj7nkemo?at_medium=RSS&at_campaign=rss",
-   "desc": "Even for countries where typhoons are a way of life, the last few months have brought unusually wild weather.",
-   "date": "2026-11-04T23:12+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "4554740db5",
+   "id": "62b9d7d17f",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "More than 40 pilot whales die after mass stranding in New Zealand’s North Island",
-   "url": "https://www.theguardian.com/world/2026/nov/06/pilot-whales-dead-stranded-new-zealand-north-island",
-   "desc": "Rescuers were unable to save the whales after they became beached on a remote and rocky part of the country More than 40 pilot whales died after a mass stranding event on New Zealand’s remote east coast, conservation officials said on Friday, despite rescue efforts by voluntee…",
-   "date": "2026-11-06T04:45+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change"
-   ]
-  },
-  {
-   "id": "f26c4315e8",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "From doctors and teachers to lawyers, every profession has a duty to align with climate goals",
-   "url": "https://theconversation.com/from-doctors-and-teachers-to-lawyers-every-profession-has-a-duty-to-align-with-climate-goals-294914",
-   "desc": "New research outlines how climate responsibility can become part of professional practice.",
-   "date": "2026-11-05T08:25+00:00",
+   "title": "Australia’s coal and gas approvals are starting to stink ahead of Cop31 | Jess Harwood",
+   "url": "https://www.theguardian.com/commentisfree/picture/2026/nov/07/australias-coal-and-gas-approvals-are-starting-to-stink-ahead-of-cop31",
+   "desc": "What happened to climate injustice?",
+   "date": "2026-11-06T14:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
+  },
+  {
+   "id": "493d9200eb",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "It’s a bumper year for wild mushrooms – here’s what you could find in the woods today",
+   "url": "https://theconversation.com/its-a-bumper-year-for-wild-mushrooms-heres-what-you-could-find-in-the-woods-today-290272",
+   "desc": "Some fungi are having an abundant year, but other types are struggling because of dry summer weather.",
+   "date": "2026-11-05T14:49+00:00",
+   "th": []
   },
   {
    "id": "a2f1c3e1e1",
@@ -1280,17 +1253,14 @@
    ]
   },
   {
-   "id": "1a8dc663eb",
+   "id": "c7ff91bbac",
    "src": "Geographical",
    "level": "magazine",
-   "title": "CCAMLR fails to establish a new marine protected area in Antarctica for the tenth consecutive year",
-   "url": "https://geographical.co.uk/news/ccamlr-fails-to-establish-a-new-marine-protected-area-in-antarctica-for-tenth-consecutive-year",
-   "desc": "Despite strong leadership from many members, the conservation body has failed to agree on protections for the western Antarctic Peninsula A major organisation responsible for safeguarding Antarctica’s marine ecosystems has failed to agree on any proposed Marine Protected Areas…",
-   "date": "2026-11-05T11:03+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
+   "title": "QUIZ: Country Shapes – Europe",
+   "url": "https://geographical.co.uk/quizzes/quiz-country-shapes-europe-6",
+   "desc": "Could you identify Europe’s countries from their outlines alone? Put your geography knowledge to the test and see how many shapes you recognise.",
+   "date": "2026-11-06T08:00+00:00",
+   "th": []
   },
   {
    "id": "b1475e8e76",
@@ -1318,27 +1288,14 @@
    ]
   },
   {
-   "id": "42fc484141",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "William meets firefighters who tackled summer blazes",
-   "url": "https://www.bbc.co.uk/news/videos/c94g1m232pgyo?at_medium=RSS&at_campaign=rss",
-   "desc": "The prince says 2026 was the first summer he felt \"worried about the scale of the wildfires\".",
-   "date": "2026-11-04T11:35+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "3f0ddaaa4f",
+   "id": "7dcaeed45b",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "How Democrats used the midterms to turn affordability concerns into ‘green populism’",
-   "url": "https://www.theguardian.com/us-news/2026/nov/05/democrats-climate-crisis-in-midterm-election-results",
-   "desc": "From energy prices to datacenters, climate became a cost-of-living issue – and a winning one Q&A: Ask your questions about Democrats’ win in the midterms Climate-forward Democrats swept into power on Tuesday night as a blue tsunami flipped the Senate, House and several governo…",
-   "date": "2026-11-05T17:00+00:00",
+   "title": "Most Europeans want action to tackle climate crisis but not at any cost, poll shows",
+   "url": "https://www.theguardian.com/world/2026/nov/06/europeans-want-action-climate-crisis-yougov-poll",
+   "desc": "YouGov survey finds support for tree planting and emissions taxes but opposition to air travel and fuel levies Europe live – latest updates Europeans believe human-made climate change is real, a survey has shown, with most feeling action must be taken soon – as long as they do…",
+   "date": "2026-11-06T12:27+00:00",
    "th": [
-    "Topic 1 Tectonic processes and hazards",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
