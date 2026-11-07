@@ -1,5 +1,5 @@
 {
- "made": "2026-11-06T14:08+00:00",
+ "made": "2026-11-07T12:51+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,28 +25,28 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "Motorsport.com",
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 3
+   "n": 2
   },
   {
    "src": "BBC Technology",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 2
+   "n": 0
   },
   {
    "src": "Carbon Brief",
@@ -95,21 +95,44 @@
    "level": "research",
    "line": "university press releases, materials science",
    "ok": true,
-   "n": 3
+   "n": 2
   }
  ],
  "stories": [
   {
-   "id": "bd456de58b",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Germany invests further €100M in infrastructure as Ukraine approaches winter",
-   "url": "https://www.newcivilengineer.com/latest/germany-invests-further-e100m-in-infrastructure-as-ukraine-approaches-winter-06-11-2026/",
-   "desc": "With winter coming and Russian attacks on Ukraine’s civilian infrastructure intensifying, Germany’s finance ministry has added €100M (£83M) to support vital infrastructure, to the €250M (£208M) already announced this autumn.",
-   "date": "2026-11-06T13:03+00:00",
+   "id": "cf5bb35bea",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Ralf Schumacher slams Colton Herta's F1 prospects: \"He's just burning fuel\"",
+   "url": "https://www.motorsport.com/f1/news/ralf-schumacher-slams-colton-hertas-f1-prospects-hes-just-burning-fuel/10872433/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "On the face of it, Friday at Interlagos could hardly have gone any better for Colton Herta. The Cadillac test driver replaced Sergio Perez in first practice for the 2026 Sao Paulo Grand Prix, completed 24 laps and secured the final point he needed for his FIA super licence. On…",
+   "date": "2026-11-07T12:10+00:00",
    "th": [
-    "6 Technical"
+    "Motorsport",
+    "8 Viability"
    ]
+  },
+  {
+   "id": "87befbc6f6",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Tesla's Cybertruck heads for an exit after years of hype and division",
+   "url": "https://techxplore.com/news/2026-11-tesla-cybertruck-exit-years-hype.html",
+   "desc": "Tesla's Cybertruck, the hulking, stainless-steel pickup that inspired devotion and derision with its science-fiction looks, will cease production next year.",
+   "date": "2026-11-07T11:05+00:00",
+   "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "2df4bca58b",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Measuring for success: Construction app makes estimates faster, easier",
+   "url": "https://techxplore.com/news/2026-11-success-app-faster-easier.html",
+   "desc": "U.S. Navy and Marine Corps engineer officers and engineer chiefs have tough, dirty jobs in what's called horizontal construction—building and maintaining roads, airstrips, landing zones and base camps.",
+   "date": "2026-11-07T01:20+00:00",
+   "th": []
   },
   {
    "id": "6cda568e8a",
@@ -125,18 +148,6 @@
    ]
   },
   {
-   "id": "0eaf9ff414",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Target fabrication achieves new precision through additive manufacturing",
-   "url": "https://techxplore.com/news/2026-11-fabrication-precision-additive.html",
-   "desc": "What happens when additive manufacturing meets target fabrication engineering? An impossibly small, submillimeter-scale cone that can be manufactured 10 times faster than before, enabling new target configurations for experiments at Lawrence Livermore National Laboratory (LLNL…",
-   "date": "2026-11-06T11:04+00:00",
-   "th": [
-    "7 Manufacturing"
-   ]
-  },
-  {
    "id": "ec3e64150f",
    "src": "BBC Technology",
    "level": "way in",
@@ -149,32 +160,6 @@
    ]
   },
   {
-   "id": "310b62e458",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Model shows factories and employees can profit from idle car batteries at work",
-   "url": "https://techxplore.com/news/2026-11-factories-employees-profit-idle-car.html",
-   "desc": "Researchers from Skoltech—a VEB.RF Group institution—have developed an optimization framework to help factories compare strategies for using onsite solar power and the electric vehicles of employees to reduce electricity costs. Evaluated in a Moscow case study, the approach ac…",
-   "date": "2026-11-05T12:20+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "32f654e7a5",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Announces X-70 Experimental Aircraft to Advance Flight Research",
-   "url": "https://www.nasa.gov/news-release/nasa-announces-x-70-experimental-aircraft-to-advance-flight-research/",
-   "desc": "On Wednesday, NASA unveiled its newest experimental aircraft, the X-70 Fractal, during the UP.Summit at the agency’s Kennedy Space Center in Florida. This high-performance, highly adaptable research platform is designed to accelerate the development and testing of advanced avi…",
-   "date": "2026-11-05T01:43+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
    "id": "4c994ee7e9",
    "src": "Racecar Engineering",
    "level": "magazine",
@@ -184,19 +169,6 @@
    "date": "2026-11-04T17:16+00:00",
    "th": [
     "Motorsport"
-   ]
-  },
-  {
-   "id": "20adabc567",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Max Verstappen needs \"a conversation\" with Red Bull engine after \"random\" engine braking issues",
-   "url": "https://www.motorsport.com/f1/news/max-verstappen-needs-a-conversation-with-red-bull-engine-after-random-engine-braking-issues/10871469/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Ahead of the race weekend at the Autodromo Hermanos Rodriguez – at 2,286 metres above sea level, by far the highest circuit on the Formula 1 calendar – the discussion in the paddock largely revolved around one subject: how much of a challenge Mexico City would pose for the 202…",
-   "date": "2026-11-04T13:46+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
    ]
   },
   {
@@ -224,65 +196,42 @@
    ]
   },
   {
-   "id": "1bf1307eaa",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "MPs call for government to publish plan for overhauling water regulation by December",
-   "url": "https://www.newcivilengineer.com/latest/mps-call-for-government-to-publish-plan-for-overhauling-water-regulation-by-december-06-11-2026/",
-   "desc": "A parliamentary committee has urged the government to introduce strengthen water company pollution inspections and publish a plan for overhauling the sector's regulation by this December.",
-   "date": "2026-11-06T13:03+00:00",
-   "th": [
-    "3 Wider issues"
-   ]
-  },
-  {
-   "id": "25ea6cbdd2",
-   "src": "The Race",
+   "id": "1d7b600ae4",
+   "src": "Motorsport.com",
    "level": "way in",
-   "title": "Why a new Honda F1 engine problem was brutally exposed",
-   "url": "https://www.the-race.com/formula-1/honda-f1-engine-problem-aston-martin-mexico-brazil/",
-   "desc": "Honda got caught out by its Formula 1 engine’s lack of robustness in a new way in Mexico, which has already prompted countermeasures for this weekend’s race in Brazil.",
-   "date": "2026-11-05T15:20+00:00",
+   "title": "McLaren’s upgrade is \"a pleasant surprise\" – but will it stay on the car in Brazil?",
+   "url": "https://www.motorsport.com/f1/news/mclarens-upgrade-is-a-pleasant-surprise-but-will-it-stay-on-the-car-in-brazil/10872338/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "After one of the most turbulent world championship defences since Jenson Button in 2010, Lando Norris gave McLaren’s latest batch of car upgrades a cautious thumbs-up on the Friday of the Sao Paulo GP. Norris topped the first practice session, edging out Mercedes’ Kimi Antonel…",
+   "date": "2026-11-06T21:49+00:00",
    "th": [
     "Motorsport",
-    "6 Technical"
+    "2 Existing products"
    ]
   },
   {
-   "id": "cd8783e5be",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Thin, foldable films offer broadband electromagnetic shielding",
-   "url": "https://techxplore.com/news/2026-11-thin-foldable-broadband-electromagnetic-shielding.html",
-   "desc": "A research group from the Hefei Institutes of Physical Science (HFIPS) of the Chinese Academy of Sciences (CAS) has developed a method for manufacturing flexible films that can effectively shield electromagnetic waves across a broad frequency range. The films can be produced o…",
-   "date": "2026-11-05T22:00+00:00",
-   "th": [
-    "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "5d3dad4ed9",
+   "id": "310b62e458",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Giving passengers a bit more time to board helps flights leave on time",
-   "url": "https://techxplore.com/news/2026-11-passengers-bit-board-flights.html",
-   "desc": "When Delta Air Lines adjusted the schedule for a plane's time at the gate to give passengers five more minutes to board, the change measurably reduced flight delays, according to new research from the University at Buffalo School of Management.",
-   "date": "2026-11-05T12:00+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "2e62bc2ded",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Announces Ka-Band Satellite Relay Awards for Space Communications",
-   "url": "https://www.nasa.gov/news-release/nasa-announces-ka-band-satellite-relay-awards-for-space-communications/",
-   "desc": "NASA selected three companies on Wednesday to perform work to develop Ka-band space relay capability concepts that are compatible with current missions in space, ensuring service continuity for existing spacecraft without requiring modifications to their onboard systems. Throu…",
-   "date": "2026-11-04T18:00+00:00",
+   "title": "Model shows factories and employees can profit from idle car batteries at work",
+   "url": "https://techxplore.com/news/2026-11-factories-employees-profit-idle-car.html",
+   "desc": "Researchers from Skoltech—a VEB.RF Group institution—have developed an optimization framework to help factories compare strategies for using onsite solar power and the electric vehicles of employees to reduce electricity costs. Evaluated in a Moscow case study, the approach ac…",
+   "date": "2026-11-05T12:20+00:00",
    "th": [
     "6 Technical",
     "8 Viability"
+   ]
+  },
+  {
+   "id": "83d21eba15",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Harnessing atomic structure to advance next-generation memory storage",
+   "url": "https://techxplore.com/news/2026-11-harnessing-atomic-advance-generation-memory.html",
+   "desc": "The growth of artificial intelligence has increased demand for more efficient data storage. Instead of adding bulk to satiate this appetite, researchers at Washington University in St. Louis are working to increase memory capacity by manipulating materials' characteristics at …",
+   "date": "2026-11-06T16:40+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
    ]
   },
   {
@@ -323,29 +272,28 @@
    ]
   },
   {
-   "id": "e30ccd8a5d",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Jacobs appointed to support $2.1bn New Zealand road project",
-   "url": "https://www.newcivilengineer.com/latest/jacobs-appointed-to-support-2-1bn-new-zealand-road-project-06-11-2026/",
-   "desc": "Jacobs has been selected by Spanish renewable energy company Acciona to provide design and project delivery services to the Warkworth to Te Hana Ara Tūhono section of New Zealand's Northland Corridor highway program.",
-   "date": "2026-11-06T12:28+00:00",
+   "id": "5d3dad4ed9",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Giving passengers a bit more time to board helps flights leave on time",
+   "url": "https://techxplore.com/news/2026-11-passengers-bit-board-flights.html",
+   "desc": "When Delta Air Lines adjusted the schedule for a plane's time at the gate to give passengers five more minutes to board, the change measurably reduced flight delays, according to new research from the University at Buffalo School of Management.",
+   "date": "2026-11-05T12:00+00:00",
    "th": [
-    "3 Wider issues",
     "8 Viability"
    ]
   },
   {
-   "id": "8313e18585",
+   "id": "1a35b32f7c",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "3D-printed chain mail and more: New method combines thick inks and patterned light for faster, finer structures",
-   "url": "https://techxplore.com/news/2026-11-3d-chain-mail-method-combines.html",
-   "desc": "For decades, people using 3D printers have faced a tough decision: print quickly, print parts with fine features or print materials that meet performance requirements. Light-based 3D printers are fast and precise but limited in what materials they can use. Extrusion-based tech…",
-   "date": "2026-11-05T16:20+00:00",
+   "title": "Scientists give hard-to-recycle wind turbine blades a second life",
+   "url": "https://techxplore.com/news/2026-11-scientists-hard-recycle-turbine-blades.html",
+   "desc": "From intense UV radiation and extreme temperatures to wind gusts and lightning strikes, wind turbine blades are engineered to withstand some of the harshest conditions. But that durability becomes a problem at the end of their lives, because the blades are also difficult to br…",
+   "date": "2026-11-06T16:00+00:00",
    "th": [
-    "6 Technical",
-    "7 Manufacturing"
+    "3 Wider issues",
+    "6 Technical"
    ]
   },
   {
@@ -359,113 +307,40 @@
    "th": []
   },
   {
-   "id": "659de29a97",
-   "src": "ScienceDaily (materials)",
-   "level": "research",
-   "title": "Smaller EV batteries, longer range? Scientists may have found a way",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
-   "desc": "Scientists have developed a new technology that could make electric vehicle batteries smaller, lighter, and longer-lasting, potentially allowing cars to travel farther on a single charge. By borrowing precision manufacturing techniques from computer chip production, they found…",
-   "date": "2026-10-28T12:25+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "1698e31ea5",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
-   "url": "https://spectrum.ieee.org/ai-robot-safety-cybersecurity-vicone",
-   "desc": "This article is brought to you by VicOne . A mobile robot slows for someone in a hallway. A collaborative arm eases its movement as a worker approaches. A humanoid pauses to let a person pass. Each response depends on information about the robot or its surroundings: a distance…",
-   "date": "2026-10-27T16:14+00:00",
-   "th": [
-    "6 Technical",
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "41dff9db34",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Why more UK contractors are looking to Ireland for work",
-   "url": "https://www.newcivilengineer.com/archive/why-more-uk-contractors-are-looking-to-ireland-for-work-06-11-2026/",
-   "desc": "More UK contractors are tendering for Irish work. As an audit partner at Baker Tilly in Dublin, I see it in my work with construction and infrastructure clients.",
-   "date": "2026-11-06T06:30+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "8adfd869c2",
+   "id": "4d2f73c08b",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "How self-powered life jackets could turn wave motion into an emergency signal",
-   "url": "https://techxplore.com/news/2026-11-powered-life-jackets-motion-emergency.html",
-   "desc": "A life jacket that powers its own distress signal could soon provide protection for people on the water thanks to a device developed by University of Wollongong (UOW) researchers and their international collaborators. The gadget generates electricity from movement, such as the…",
-   "date": "2026-11-05T14:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "1c7e782bd3",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Improving community readiness for evacuations with electric vehicles",
-   "url": "https://techxplore.com/news/2026-11-community-readiness-evacuations-electric-vehicles.html",
-   "desc": "When natural disasters like wildfires or flooding strike, thousands of people may be told to pack their belongings into their cars and evacuate. Emergency planners base evacuation strategies on the assumption that people are driving gas-powered cars that can be refueled at any…",
-   "date": "2026-11-03T18:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "f61757ac09",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Glasgow committee backs land deals for waste-treatment centre and water vole sanctuary",
-   "url": "https://www.newcivilengineer.com/latest/glasgow-committee-backs-land-deals-for-waste-treatment-centre-and-water-vole-sanctuary-06-11-2026/",
-   "desc": "Glasgow City Council has approved steps towards a land deal that could allow Scottish Water to build a major waste-treatment facility in Daldowie alongside an exchange of land in Easterhouse for social housing and a water vole sanctuary.",
-   "date": "2026-11-06T06:30+00:00",
-   "th": [
-    "3 Wider issues"
-   ]
-  },
-  {
-   "id": "613a47fbaa",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Underwater exoskeletons could help divers use less air and move more efficiently",
-   "url": "https://techxplore.com/news/2026-11-underwater-exoskeletons-divers-air-efficiently.html",
-   "desc": "Scuba diving places heavy demands on the human body. Divers must constantly overcome water resistance while carrying breathing equipment and other gear, and their underwater time is ultimately limited by both physical endurance and the amount of breathing gas they can carry.",
-   "date": "2026-11-04T22:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "d88f5a2993",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Engineers to replace ‘structurally substandard’ Wakefield rail bridge over Christmas period",
-   "url": "https://www.newcivilengineer.com/latest/engineers-to-replace-structurally-substandard-wakefield-rail-bridge-over-christmas-period-05-11-2026/",
-   "desc": "A Wakefield railway bridge will be demolished and replaced during the Christmas shutdown, says Network Rail.",
-   "date": "2026-11-05T14:57+00:00",
+   "title": "Inspired by honeycombs, a low-cost cooling structure lasts over 100 million cycles",
+   "url": "https://techxplore.com/news/2026-11-honeycombs-cooling-million.html",
+   "desc": "As global demand for cooling continues to grow, the urgent need for sustainable refrigeration technologies is becoming increasingly evident. Conventional vapor-compression systems remain energy-intensive, while the refrigerants can contribute to the greenhouse effect. The Hong…",
+   "date": "2026-11-06T15:40+00:00",
    "th": [
     "3 Wider issues",
     "6 Technical"
    ]
   },
   {
-   "id": "800a0f24e1",
+   "id": "0eaf9ff414",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Isolator-free optical transmitter could simplify high-speed links between data centers",
-   "url": "https://techxplore.com/news/2026-11-isolator-free-optical-transmitter-high.html",
-   "desc": "The growing demand for faster data exchange between data centers calls for compact, high-speed optical transmitters. Researchers from Japan developed an integrated optical transmitter that mitigates the destabilizing effects of unwanted optical feedback, allowing stable laser …",
-   "date": "2026-11-04T22:00+00:00",
+   "title": "Target fabrication achieves new precision through additive manufacturing",
+   "url": "https://techxplore.com/news/2026-11-fabrication-precision-additive.html",
+   "desc": "What happens when additive manufacturing meets target fabrication engineering? An impossibly small, submillimeter-scale cone that can be manufactured 10 times faster than before, enabling new target configurations for experiments at Lawrence Livermore National Laboratory (LLNL…",
+   "date": "2026-11-06T11:04+00:00",
    "th": [
-    "8 Viability"
+    "7 Manufacturing"
+   ]
+  },
+  {
+   "id": "cd8783e5be",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Thin, foldable films offer broadband electromagnetic shielding",
+   "url": "https://techxplore.com/news/2026-11-thin-foldable-broadband-electromagnetic-shielding.html",
+   "desc": "A research group from the Hefei Institutes of Physical Science (HFIPS) of the Chinese Academy of Sciences (CAS) has developed a method for manufacturing flexible films that can effectively shield electromagnetic waves across a broad frequency range. The films can be produced o…",
+   "date": "2026-11-05T22:00+00:00",
+   "th": [
+    "7 Manufacturing"
    ]
   }
  ]
