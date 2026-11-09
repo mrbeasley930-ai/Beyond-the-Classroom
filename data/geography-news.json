@@ -1,5 +1,5 @@
 {
- "made": "2026-11-08T13:40+00:00",
+ "made": "2026-11-09T16:39+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 25
+   "n": 24
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 14
+   "n": 10
   },
   {
    "src": "NASA EONET",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 15
+   "n": 16
   },
   {
    "src": "Carbon Brief",
@@ -121,6 +121,181 @@
  ],
  "events": [
   {
+   "id": "qus7000tx38",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.3 earthquake",
+   "place": "80 km ENE of Lagunas, Peru",
+   "lat": -4.95,
+   "lon": -75.0,
+   "date": "2026-11-09T10:23+00:00",
+   "mag": 5.3,
+   "depth": 11,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx38",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "peru"
+  },
+  {
+   "id": "gdbbb99f0493",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Venezuela",
+   "place": "Venezuela",
+   "lat": 10.18,
+   "lon": -67.92,
+   "date": "2026-11-09T09:58+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104275",
+   "desc": "On 07/11/2026, a flood started in Venezuela, lasting until 09/11/2026 (last update). The flood caused 3 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus7000tx32",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "160 km E of Masohi, Indonesia",
+   "lat": -3.06,
+   "lon": 130.39,
+   "date": "2026-11-09T09:48+00:00",
+   "mag": 5.4,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx32",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "indonesia"
+  },
+  {
+   "id": "gd5b94c13c6c",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Israel",
+   "place": "Israel",
+   "lat": 32.33,
+   "lon": 34.86,
+   "date": "2026-11-09T07:37+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104273",
+   "desc": "On 07/11/2026, a flood started in Israel, lasting until 09/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd625c23d871",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Syria",
+   "place": "Syria",
+   "lat": 34.45,
+   "lon": 40.92,
+   "date": "2026-11-09T07:37+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104274",
+   "desc": "On 07/11/2026, a flood started in Syria, lasting until 09/11/2026 (last update). The flood caused 1 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd42a9062211",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Iraq",
+   "place": "Iraq",
+   "lat": 36.19,
+   "lon": 44.01,
+   "date": "2026-11-09T07:36+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104272",
+   "desc": "On 07/11/2026, a flood started in Iraq, lasting until 09/11/2026 (last update). The flood caused 2 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gdbc4c879ccb",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Vietnam",
+   "place": "Vietnam",
+   "lat": 22.5,
+   "lon": 104.31,
+   "date": "2026-11-09T07:36+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104271",
+   "desc": "On 06/11/2026, a flood started in Vietnam, lasting until 08/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus7000tx1f",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.7 earthquake",
+   "place": "106 km ENE of Hasaki, Japan",
+   "lat": 36.25,
+   "lon": 141.83,
+   "date": "2026-11-09T04:52+00:00",
+   "mag": 5.7,
+   "depth": 24,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx1f",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
+  },
+  {
+   "id": "qus7000tx16",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.4 earthquake",
+   "place": "30 km WSW of Lata, Solomon Islands",
+   "lat": -10.87,
+   "lon": 165.56,
+   "date": "2026-11-09T03:34+00:00",
+   "mag": 6.4,
+   "depth": 17,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx16",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "solomon islands"
+  },
+  {
+   "id": "qus7000tx0f",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.1 earthquake",
+   "place": "south of the Fiji Islands",
+   "lat": -23.68,
+   "lon": 179.21,
+   "date": "2026-11-09T00:46+00:00",
+   "mag": 5.1,
+   "depth": 535,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx0f",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "south of the fiji islands"
+  },
+  {
    "id": "qus7000twus",
    "kind": "quake",
    "src": "USGS",
@@ -178,25 +353,6 @@
    "region": "japan"
   },
   {
-   "id": "qus7000twrq",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "74 km NE of Hasaki, Japan",
-   "lat": 36.19,
-   "lon": 141.44,
-   "date": "2026-11-07T11:07+00:00",
-   "mag": 5.5,
-   "depth": 32,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000twrq",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
-  },
-  {
    "id": "gd542b238341",
    "kind": "storm",
    "src": "GDACS",
@@ -218,12 +374,12 @@
    "src": "GDACS",
    "title": "Tropical cyclone Pena",
    "place": "",
-   "lat": 11.5,
-   "lon": -155.0,
+   "lat": 11.4,
+   "lon": -159.5,
    "date": "2026-11-06T21:20+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001348",
-   "desc": "From 06/11/2026 to 08/11/2026, a Tropical Storm (maximum wind speed of 93 km/h) PENA-26 was active in CentralPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by category 1 (120…",
+   "desc": "From 06/11/2026 to 09/11/2026, a Tropical Storm (maximum wind speed of 93 km/h) PENA-26 was active in CentralPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by category 1 (120…",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -234,8 +390,8 @@
    "src": "GDACS",
    "title": "Flooding in France",
    "place": "France",
-   "lat": 41.59,
-   "lon": 9.28,
+   "lat": 49.56,
+   "lon": -1.84,
    "date": "2026-11-06T11:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104270",
@@ -269,12 +425,12 @@
    "src": "GDACS",
    "title": "Tropical cyclone Cempaka",
    "place": "Japan",
-   "lat": 22.0,
-   "lon": 137.4,
+   "lat": 24.3,
+   "lon": 135.3,
    "date": "2026-11-06T07:50+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001347",
-   "desc": "From 06/11/2026 to 08/11/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 176 km/h) CEMPAKA-26 was active in NWPacific. The cyclone affects these countries: Japan (vulnerability Low). Estimated population affected by category 1 (12…",
+   "desc": "From 06/11/2026 to 09/11/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 167 km/h) CEMPAKA-26 was active in NWPacific. The cyclone affects these countries: Japan (vulnerability Low). Estimated population affected by category 1 (12…",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -347,25 +503,6 @@
    "region": "fiji"
   },
   {
-   "id": "qus7000tw76",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.1 earthquake",
-   "place": "19 km NNW of Masumbwe, Tanzania",
-   "lat": -3.46,
-   "lon": 32.15,
-   "date": "2026-11-05T09:22+00:00",
-   "mag": 5.1,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tw76",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "tanzania"
-  },
-  {
    "id": "gda47c701093",
    "kind": "storm",
    "src": "GDACS and NASA EONET",
@@ -418,22 +555,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "mid-indian ridge"
-  },
-  {
-   "id": "gdda572ac02a",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Bulgaria",
-   "place": "Bulgaria",
-   "lat": 43.4,
-   "lon": 28.17,
-   "date": "2026-11-03T10:19+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104267",
-   "desc": "On 02/11/2026, a flood started in Bulgaria, lasting until 04/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "qus7000tv4i",
@@ -521,22 +642,6 @@
    ]
   },
   {
-   "id": "gda9be63abc6",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Indonesia",
-   "place": "Indonesia",
-   "lat": 2.19,
-   "lon": 99.38,
-   "date": "2026-10-29T09:29+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253",
-   "desc": "On 24/10/2026, a flood started in Indonesia, lasting until 04/11/2026 (last update). The flood caused 2 deaths and 5041 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus7000ttxz",
    "kind": "quake",
    "src": "USGS",
@@ -584,22 +689,6 @@
    "url": "https://irwin.doi.gov/observer/incidents/2026-MSMNF-000680",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "gd503fc195c1",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in India",
-   "place": "India",
-   "lat": 15.45,
-   "lon": 80.17,
-   "date": "2026-10-28T12:25+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104248",
-   "desc": "On 20/10/2026, a flood started in India, lasting until 04/11/2026 (last update). The flood caused 2 deaths and 400 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -709,22 +798,6 @@
    "region": "vanuatu"
   },
   {
-   "id": "gde51832af75",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Malaysia",
-   "place": "Malaysia",
-   "lat": 4.0,
-   "lon": 101.0,
-   "date": "2026-10-19T06:44+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104239",
-   "desc": "On 15/10/2026, a flood started in Malaysia, lasting until 04/11/2026 (last update). The flood caused 1 deaths and 966 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000u2y1",
    "kind": "quake",
    "src": "USGS",
@@ -820,63 +893,6 @@
    "region": "panama"
   },
   {
-   "id": "qus6000u1cf",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.0 earthquake",
-   "place": "4 km NNE of La Tronosa, Panama",
-   "lat": 7.48,
-   "lon": -80.57,
-   "date": "2026-10-10T04:14+00:00",
-   "mag": 6,
-   "depth": 10,
-   "alert": "yellow",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u1cf",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "panama"
-  },
-  {
-   "id": "qus6000u19w",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.6 earthquake",
-   "place": "13 km WSW of Río Grande, Panama",
-   "lat": 7.68,
-   "lon": -81.45,
-   "date": "2026-10-09T20:25+00:00",
-   "mag": 6.6,
-   "depth": 10,
-   "alert": "yellow",
-   "tsunami": true,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u19w",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "panama"
-  },
-  {
-   "id": "qus6000u18k",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 7.7 earthquake",
-   "place": "10 km WSW of Pitaloza Arriba, Panama",
-   "lat": 7.61,
-   "lon": -80.76,
-   "date": "2026-10-09T17:56+00:00",
-   "mag": 7.7,
-   "depth": 10,
-   "alert": "orange",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u18k",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "panama"
-  },
-  {
    "id": "gd1e7d8ccfd0",
    "kind": "drought",
    "src": "GDACS",
@@ -927,52 +943,105 @@
  ],
  "stories": [
   {
-   "id": "752bfb0c9b",
+   "id": "6c79d0ea8b",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31 must deliver climate progress that people can see is real, host says",
-   "url": "https://www.theguardian.com/environment/2026/nov/08/cop31-climate-summit-deliver-progress-real-host-says",
-   "desc": "High-stakes talks involving 190 countries begin on Monday as world grapples with El Niño supercharged by fossil fuels The Cop31 summit must produce progress, “a tangible outcome ... that people can see is real”, its host has said as scores of world leaders and representatives …",
-   "date": "2026-11-08T13:24+00:00",
+   "title": "Burnham says bravery of Brand’s victims will change the justice system to better support survivors – UK politics live",
+   "url": "https://www.theguardian.com/politics/live/2026/nov/09/polanski-greens-labour-andy-burnham-climate-crisis-ev-targets-uk-politics-latest-news",
+   "desc": "The prime minister said he wants police forces to have dedicated rape and serious sexual offence teams by the end of 2027 Downing Street has insisted that the government remains committed to the principle of the zero emission vehicle (ZEV) mandate – while not denying today’s G…",
+   "date": "2026-11-09T16:16+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "f967ad8911",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: Geography Trivia",
-   "url": "https://geographical.co.uk/quizzes/quiz-geography-trivia-53",
-   "desc": "From countries and capitals to rivers and remote landscapes, how much do you know about our planet? Put your knowledge to the test with this geography trivia quiz.",
-   "date": "2026-11-08T10:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
+   "id": "5088fcb912",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Starling numbers are declining – we’re investigating whether their spectacular murmuration displays are changing too",
+   "url": "https://theconversation.com/starling-numbers-are-declining-were-investigating-whether-their-spectacular-murmuration-displays-are-changing-too-295683",
+   "desc": "Twelve years after a study into why starlings murmurate, researchers are asking the public to help discover whether these spectacular displays are changing.",
+   "date": "2026-11-09T15:52+00:00",
+   "th": []
   },
   {
-   "id": "45b08ba047",
+   "id": "deb303c2bb",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Countryside managers prepare for climate change",
-   "url": "https://www.bbc.co.uk/news/articles/c3ewe99dzdlpo?at_medium=RSS&at_campaign=rss",
-   "desc": "North Pennines National Landscape's plan includes restoring peatland and wildfire preparedness.",
-   "date": "2026-11-08T07:16+00:00",
+   "title": "Birds return to waterfowl park after oil vandalism",
+   "url": "https://www.bbc.co.uk/news/articles/c6gqwq1x85e0o?at_medium=RSS&at_campaign=rss",
+   "desc": "The vandalism of a nearby home heating oil tank resulted in the death of 13 birds from the park.",
+   "date": "2026-11-09T14:52+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "b454e695ed",
+   "id": "d4eb737886",
    "src": "Guardian Global Development",
    "level": "way in",
-   "title": "Uyghurs facing deportation by Thailand say they will be ‘like slaves’ in China",
-   "url": "https://www.theguardian.com/global-development/2026/nov/08/uyghurs-thailand-china-forced-deportation",
-   "desc": "Activists fear Bangkok will give in to pressure from Beijing despite reports of torture and human rights abuses against the mostly muslim ethnic minority The deportation of two more Uyghurs to China from Thailand would put their lives in grave danger, activists have said, with…",
-   "date": "2026-11-08T03:00+00:00",
+   "title": "Abandoned and traumatised: child refugees at ‘violent’ breaking point in Egypt after fleeing Sudan war",
+   "url": "https://www.theguardian.com/global-development/2026/nov/09/sudan-child-war-refugees-cairo-egypt-spiral-of-despair",
+   "desc": "Three years of conflict has left hundreds of thousands of Sudanese children out of school and vulnerable to gangs and drugs Mounds of rubbish, the stench of raw sewage and, at night, roaming drug dealers and gangs. These are the streets of a forsaken neighbourhood in Cairo tha…",
+   "date": "2026-11-09T10:00+00:00",
    "th": [
-    "Topic 7 Superpowers",
     "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "d6fa39f32e",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "The future of green jobs is in our hands",
+   "url": "https://geographical.co.uk/opinion/the-future-of-green-jobs-is-in-our-hands",
+   "desc": "While AI threatens office jobs, the green transition needs people who can work with their hands. Are we doing enough to develop their skills?",
+   "date": "2026-11-09T09:00+00:00",
+   "th": []
+  },
+  {
+   "id": "15a70be7f8",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "Q&A: What is the Belém-Antalya mechanism for a ‘just transition’?",
+   "url": "https://www.carbonbrief.org/qa-what-is-the-belem-antalya-mechanism-for-a-just-transition",
+   "desc": "One of the key expected outcomes from the upcoming COP31 climate summit in Antalya, Turkey, is the launch of a&#8230;",
+   "date": "2026-11-09T08:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "33121b8cb4",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Ozone Hole Reaches Its 2026 Maximum",
+   "url": "https://science.nasa.gov/earth/earth-observatory/ozone-hole-reaches-its-2026-maximum/",
+   "desc": "The ozone hole ranked seventh largest by area in 48 years of monitoring, but it was not as deep as other large holes on record.",
+   "date": "2026-11-09T05:00+00:00",
+   "th": []
+  },
+  {
+   "id": "a62193ec19",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "World News in Brief: Civilians killed in DR Congo, Ukrainians wrestle with return, Guterres calls out ‘normalisation’ of force",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168757",
+   "desc": "At least 30 civilians were killed overnight on Thursday in Beni Territory, North Kivu in the Democratic Republic of the Congo, according to local sources cited by the UN aid coordination office (OCHA).",
+   "date": "2026-11-06T12:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "0e1c50d39b",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Deadly floods hit Iraq as thunderstorms sweep across region",
+   "url": "https://www.theguardian.com/environment/2026/nov/09/deadly-floods-iraq-thunderstorms-iran-portugal-japan-snow",
+   "desc": "Violent storms lash northern Iraq and parts of Iran, while Portugal faces strong winds and Japan braces for further snowfall Deadly flash floods hit northern Iraq on Saturday as severe thunderstorms swept across the region, including in neighbouring Iran. The city of Erbil, in…",
+   "date": "2026-11-09T10:59+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -988,15 +1057,40 @@
    ]
   },
   {
-   "id": "a62193ec19",
-   "src": "UN News (migration)",
+   "id": "4d684d8603",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "World News in Brief: Civilians killed in DR Congo, Ukrainians wrestle with return, Guterres calls out ‘normalisation’ of force",
-   "url": "https://news.un.org/feed/view/en/story/2026/11/1168757",
-   "desc": "At least 30 civilians were killed overnight on Thursday in Beni Territory, North Kivu in the Democratic Republic of the Congo, according to local sources cited by the UN aid coordination office (OCHA).",
-   "date": "2026-11-06T12:00+00:00",
+   "title": "Rising cost of living tests UK's net zero ambitions",
+   "url": "https://www.bbc.co.uk/news/videos/cm1dwd4e4ywvo?at_medium=RSS&at_campaign=rss",
+   "desc": "From floods to wildfires to heatwaves, 2026 is the year it became hard to ignore the impact of climate change on UK weather. But will soaring living costs affect the government’s commitment to tackling climate change?",
+   "date": "2026-11-09T13:42+00:00",
    "th": [
-    "Topic 8A Health, human rights and intervention"
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "dc8b2984af",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "From the streets of Lagos to the Chanel catwalk: how a creative’s thrift-shop style took her to Paris",
+   "url": "https://www.theguardian.com/global-development/2026/nov/09/fashion-lagos-chanel-model-rachel-ojuromi-nigeria-thrift-style",
+   "desc": "Rachel Ojuromi and her stylist friend Debby Fasingha recreated high-end designs in effortlessly cool videos shot around the city. Then the fashion house came calling Before Paris, there was Lagos, with its busy markets, roadside stalls and maze of disorderly streets. And then …",
+   "date": "2026-11-09T05:01+00:00",
+   "th": [
+    "Topic 4A Regenerating places",
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "df7e50b9c3",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Why Trump, Xi, and Putin can’t carve up the world like the ‘big three’ leaders of 1945",
+   "url": "https://geographical.co.uk/opinion/why-trump-xi-and-putin-cant-carve-up-the-world-like-the-big-three-leaders-of-1945",
+   "desc": "As Washington, Moscow and Beijing pursue competing spheres of influence, the international order faces a test of sovereignty and cooperation Discussions are underway for a potential meeting between Donald Trump, Xi Jinping and Vladimir Putin on the margins of the Asia-Pacific …",
+   "date": "2026-11-09T09:00+00:00",
+   "th": [
+    "Topic 7 Superpowers"
    ]
   },
   {
@@ -1024,49 +1118,29 @@
    ]
   },
   {
-   "id": "f34c68ba91",
+   "id": "c1e6899ab6",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "‘No Escape’ for refugees on the frontlines of the climate crisis",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168752",
+   "desc": "The climate emergency is an immediate crisis for refugees, with three in four – nearly 90 million people – living in countries facing high to severe exposure to hazards such as drought, floods and extreme heat.",
+   "date": "2026-11-06T12:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 8B Migration, identity and sovereignty"
+   ]
+  },
+  {
+   "id": "b64efc45ea",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "US datacenter demand spurs increased fossil fuel pipeline projects as rules are discarded",
-   "url": "https://www.theguardian.com/us-news/2026/nov/08/datacenters-fossil-fuel-pipelines-regulations",
-   "desc": "Trump administration has gutted regulations that protect lives and natural resources as pipeline build-out continues Datacenters are spurring a boom in fossil fuel pipeline projects at a time when the Trump administration is gutting rules that protect from disasters along the …",
-   "date": "2026-11-08T13:00+00:00",
+   "title": "Democrats to attend Cop31 climate talks boosted by midterms and eager to make up for Trump-era setbacks",
+   "url": "https://www.theguardian.com/environment/2026/nov/09/cop31-climate-democrats-midterms",
+   "desc": "US government will have no official presence at UN’s annual climate summit, this year’s Cop31 held in Antalya, Turkey The US will be absent from key UN climate talks that start on Monday, a further sign of Donald Trump’s scornful dismissal of the climate crisis. But Democrats’…",
+   "date": "2026-11-09T06:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "1e50498b1f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "How RGS grants are supporting a new generation of women explorers",
-   "url": "https://geographical.co.uk/news/rgs-grants-support-a-new-generation-of-women-explorers",
-   "desc": "Five women supported by RGS grants reveal the experiences, ambitions and personal connections that have shaped their journeys into exploration.",
-   "date": "2026-11-06T09:00+00:00",
-   "th": []
-  },
-  {
-   "id": "4d82e96f26",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Hundreds of seagrass shoots found in estuary",
-   "url": "https://www.bbc.co.uk/news/articles/ck1wvx3r9rgeo?at_medium=RSS&at_campaign=rss",
-   "desc": "There were fears a restoration trial may not succeed when only six seedlings had emerged in April.",
-   "date": "2026-11-08T07:06+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change"
-   ]
-  },
-  {
-   "id": "c9839c463a",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "‘Every day, someone loses a hand or a leg’: the brutal reality of India’s textile recycling industry",
-   "url": "https://www.theguardian.com/global-development/2026/nov/06/india-textile-recycling-industry-workers-factories-accidents-safety-amputations",
-   "desc": "In Panipat, 1m tons of used clothing a year are turned into products for global brands, but dangerous machinery and few safeguards mean life-changing injuries are common For three months, Suraj Kumar’s job was to feed discarded clothes into shredding machines in Panipat, an in…",
-   "date": "2026-11-06T07:00+00:00",
-   "th": [
-    "Topic 4A Regenerating places"
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 7 Superpowers"
    ]
   },
   {
@@ -1083,17 +1157,39 @@
    ]
   },
   {
-   "id": "c1e6899ab6",
-   "src": "UN News (migration)",
+   "id": "347f68cd31",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "‘No Escape’ for refugees on the frontlines of the climate crisis",
-   "url": "https://news.un.org/feed/view/en/story/2026/11/1168752",
-   "desc": "The climate emergency is an immediate crisis for refugees, with three in four – nearly 90 million people – living in countries facing high to severe exposure to hazards such as drought, floods and extreme heat.",
-   "date": "2026-11-06T12:00+00:00",
+   "title": "Scientists predict 2026 hottest year on record as climate talks begin",
+   "url": "https://www.bbc.co.uk/news/articles/c6pvgg7mdvdvo?at_medium=RSS&at_campaign=rss",
+   "desc": "Scientists are predictng this could be the hottest year on record as the COP31 climate summit opens.",
+   "date": "2026-11-09T07:30+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "b454e695ed",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Uyghurs facing deportation by Thailand say they will be ‘like slaves’ in China",
+   "url": "https://www.theguardian.com/global-development/2026/nov/08/uyghurs-thailand-china-forced-deportation",
+   "desc": "Activists fear Bangkok will give in to pressure from Beijing despite reports of torture and human rights abuses against the mostly muslim ethnic minority The deportation of two more Uyghurs to China from Thailand would put their lives in grave danger, activists have said, with…",
+   "date": "2026-11-08T03:00+00:00",
+   "th": [
+    "Topic 7 Superpowers",
     "Topic 8B Migration, identity and sovereignty"
    ]
+  },
+  {
+   "id": "28bab5bb50",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Flags of the World – Hard",
+   "url": "https://geographical.co.uk/quizzes/quiz-flags-of-the-world-hard-45",
+   "desc": "You might recognise the colours, but can you name the country? Test your knowledge of flags from around the world and see how many you can identify.",
+   "date": "2026-11-09T08:00+00:00",
+   "th": []
   },
   {
    "id": "e03bb00576",
@@ -1119,49 +1215,15 @@
    "th": []
   },
   {
-   "id": "b98e4d731b",
+   "id": "439ed6c6ed",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Who’s who at Cop31: key players at the climate talks",
-   "url": "https://www.theguardian.com/environment/2026/nov/08/cop31-key-players-climate-talks",
-   "desc": "What are the relationships and dominant interests in play, as the summit kicks off after a bitter row over its hosting? Hosting Cop was a key pledge from Australia’s prime minister, Anthony Albanese in 2021 , while in opposition, before his successful election campaign. But ar…",
-   "date": "2026-11-08T11:48+00:00",
+   "title": "Nicola Jennings on Cop31 in Turkey – cartoon",
+   "url": "https://www.theguardian.com/commentisfree/picture/2026/nov/08/nicola-jennings-on-cop31-in-turkey-cartoon",
+   "desc": "",
+   "date": "2026-11-08T17:11+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "aa5bb2a6cb",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "RGS Explore celebrates 50 years of expeditions",
-   "url": "https://geographical.co.uk/news/rgs-explore-celebrates-50-years-of-expeditions",
-   "desc": "For five decades, the RGS Explore Weekend has helped turn ambitious ideas into viable expeditions.",
-   "date": "2026-11-06T09:00+00:00",
-   "th": []
-  },
-  {
-   "id": "2f2777db84",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "New Forest wildfire restoration work begins",
-   "url": "https://www.bbc.co.uk/news/articles/cw98zzn7z04vo?at_medium=RSS&at_campaign=rss",
-   "desc": "Work begins to restore nature to part of the New Forest destroyed by a summer wildfire.",
-   "date": "2026-11-07T07:14+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "4e302aa30a",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "British healthcare worker with Ebola evacuated from DR Congo to UK",
-   "url": "https://www.theguardian.com/world/2026/nov/04/british-healthcare-worker-ebola-evacuated-drc-to-uk-document-shows",
-   "desc": "Patient is ⁠in ​stable condition and will be transferred to a specialist ‘high consequence’ infectious disease unit A British healthcare worker with Ebola is being evacuated from the Democratic Republic of the Congo to the UK for medical treatment, it has been confirmed. “A Br…",
-   "date": "2026-11-04T18:18+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
@@ -1174,6 +1236,43 @@
    "date": "2026-11-06T00:19+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "7ce345ff7e",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "How climate change worsens heatwaves, droughts, wildfires and floods",
+   "url": "https://www.bbc.co.uk/news/articles/cy4dgp1p3p1o?at_medium=RSS&at_campaign=rss",
+   "desc": "Rising global temperatures mean extreme weather events are becoming more common and more intense.",
+   "date": "2026-11-06T16:43+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "c9839c463a",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "‘Every day, someone loses a hand or a leg’: the brutal reality of India’s textile recycling industry",
+   "url": "https://www.theguardian.com/global-development/2026/nov/06/india-textile-recycling-industry-workers-factories-accidents-safety-amputations",
+   "desc": "In Panipat, 1m tons of used clothing a year are turned into products for global brands, but dangerous machinery and few safeguards mean life-changing injuries are common For three months, Suraj Kumar’s job was to feed discarded clothes into shredding machines in Panipat, an in…",
+   "date": "2026-11-06T07:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "f967ad8911",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-geography-trivia-53",
+   "desc": "From countries and capitals to rivers and remote landscapes, how much do you know about our planet? Put your knowledge to the test with this geography trivia quiz.",
+   "date": "2026-11-08T10:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1199,98 +1298,27 @@
    "th": []
   },
   {
-   "id": "16a7ddba9c",
+   "id": "34c6cb4164",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31: what is at stake at the UN climate summit and what can it achieve?",
-   "url": "https://www.theguardian.com/environment/2026/nov/08/cop31-what-is-at-stake-at-the-un-climate-summit-and-what-can-it-achieve",
-   "desc": "Delegates from more than 190 countries are gathering in Turkey for climate talks, but the US will be absent As the planet faces unprecedented human-caused global heating, heads of government are meeting for the next fortnight for the latest round of climate talks. We ask why i…",
-   "date": "2026-11-08T11:00+00:00",
+   "title": "Beef industry quietly squashes part of its own science curriculum after ranchers protest",
+   "url": "https://www.theguardian.com/environment/2026/nov/08/beef-industry-climate-impact-education",
+   "desc": "Lesson for teenagers included how cattle’s methane emissions contribute to climate crisis, but it was then scrapped A beef industry-funded effort to teach teenagers about cattle’s climate impact was quietly scrapped following backlash from some ranchers, who disputed the premi…",
+   "date": "2026-11-08T15:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "5e8d958658",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "More than 3,000 tarantulas concealed in socks seized at Peru Airport",
-   "url": "https://geographical.co.uk/wildlife/more-than-3000-tarantulas-concealed-in-socks-seized-at-peru-airport",
-   "desc": "Hidden spiders – in various stages of development from eggs to adults –&#160;were discovered by customs agents before the arachnids could be smuggled to Germany Peru airport officials seized more than 3,000 tarantulas after discovering them inside dirty socks in three suitcase…",
-   "date": "2026-11-06T09:00+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "eaaa0d3e1b",
+   "id": "4e302aa30a",
    "src": "Guardian Global Development",
    "level": "way in",
-   "title": "The Amazon’s canary in the coalmine: what a tropical fish can tell us about climate upheaval",
-   "url": "https://www.theguardian.com/global-development/2026/nov/03/the-amazons-canary-in-the-coalmine-what-a-tropical-fish-can-tell-us-about-climate-upheaval",
-   "desc": "Scientist Adalberto Luis Val’s pioneering research on the tambaqui fish is revealing the effect of climate disruption in Brazil, with global implications for biodiversity and food security As a boy in rural São Paulo, Adalberto Luis Val used to stare into the lake where his fa…",
-   "date": "2026-11-03T12:00+00:00",
+   "title": "British healthcare worker with Ebola evacuated from DR Congo to UK",
+   "url": "https://www.theguardian.com/world/2026/nov/04/british-healthcare-worker-ebola-evacuated-drc-to-uk-document-shows",
+   "desc": "Patient is ⁠in ​stable condition and will be transferred to a specialist ‘high consequence’ infectious disease unit A British healthcare worker with Ebola is being evacuated from the Democratic Republic of the Congo to the UK for medical treatment, it has been confirmed. “A Br…",
+   "date": "2026-11-04T18:18+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "493d9200eb",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "It’s a bumper year for wild mushrooms – here’s what you could find in the woods today",
-   "url": "https://theconversation.com/its-a-bumper-year-for-wild-mushrooms-heres-what-you-could-find-in-the-woods-today-290272",
-   "desc": "Some fungi are having an abundant year, but other types are struggling because of dry summer weather.",
-   "date": "2026-11-05T14:49+00:00",
-   "th": []
-  },
-  {
-   "id": "a2f1c3e1e1",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Q&A: What is the Brazil-led ‘deforestation roadmap’?",
-   "url": "https://www.carbonbrief.org/qa-what-is-the-brazil-led-deforestation-roadmap",
-   "desc": "On 3 November, the Brazilian presidency of the COP30 climate talks released its long-awaited “roadmap” on ending deforestation.&#160; Ahead of&#8230;",
-   "date": "2026-11-04T15:39+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "8e21ccbfd5",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "The Pacific’s Busy Storm Season",
-   "url": "https://science.nasa.gov/earth/earth-observatory/the-pacifics-busy-storm-season/",
-   "desc": "Super Typhoon In-fa developed an unusually large eye, and the remnants of Typhoon Champi transitioned into an extratropical storm that targeted Alaska.",
-   "date": "2026-11-03T05:01+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "34815c49b1",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Environmentalists criticise choice of Earthshot prize venue owned by fossil fuel firm",
-   "url": "https://www.theguardian.com/environment/2026/nov/08/earthshot-prize-venue-criticism-fossil-fuel-firm-reliance-industries-india-mumbai",
-   "desc": "Mumbai facility is part of Reliance Industries, owner of world’s biggest oil refinery and funder of controversial mega-zoo The Prince of Wales’s Earthshot prize will host its forthcoming annual awards ceremony at a venue owned by the billionaire Ambani family conglomerate, dra…",
-   "date": "2026-11-08T06:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "b1475e8e76",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Chinese cigarettes and Bolivian beer: the Amazonian town transformed by a rampant mining boom",
-   "url": "https://www.theguardian.com/global-development/2026/nov/02/chinese-cigarettes-and-bolivian-beer-the-amazonian-town-transformed-by-a-rampant-mining-boom",
-   "desc": "Mayaya, once-remote, has become a hub for Chinese companies. But critics accuse them of exploitation and illegal exports The pork belly hits the oil with a sizzle, and a rich aroma of soy sauce and caramelising sugar fills the kitchen. Zhang Changchun, a middle-aged man from C…",
-   "date": "2026-11-02T14:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 7 Superpowers"
+    "Topic 8A Health, human rights and intervention"
    ]
   }
  ]
