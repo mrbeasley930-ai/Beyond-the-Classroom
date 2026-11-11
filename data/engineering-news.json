@@ -1,5 +1,5 @@
 {
- "made": "2026-11-10T14:45+00:00",
+ "made": "2026-11-11T14:03+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -25,7 +25,7 @@
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "Motorsport.com",
@@ -38,8 +38,8 @@
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
@@ -53,7 +53,7 @@
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "ESA",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Carbon Brief",
@@ -100,28 +100,51 @@
  ],
  "stories": [
   {
-   "id": "7660db237b",
+   "id": "ea538b0fb2",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Architected fillers: Shape becomes a design variable for composites",
-   "url": "https://techxplore.com/news/2026-11-architected-fillers-variable-composites.html",
-   "desc": "In a recent study, researchers in materials science at Tampere University challenged conventional composite filler shapes by introducing a different approach in which each particle's 3D geometry is designed first, then printed to specification. The research enables decisions t…",
-   "date": "2026-11-09T22:20+00:00",
+   "title": "New test uses drilled hole to assess cracking resistance in airport asphalt",
+   "url": "https://techxplore.com/news/2026-11-drilled-hole-resistance-airport-asphalt.html",
+   "desc": "Although the stresses and demands on roads and airport runways are very different, the methods used to analyze the asphalt they are made from are very similar. Several dedicated methods exist to analyze road asphalt, but no standardized methods exist for airport pavements. Res…",
+   "date": "2026-11-11T13:20+00:00",
    "th": [
+    "5 Materials",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "c78728ab76",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Low water storage levels prompt call for more on-farm reservoirs",
+   "url": "https://www.newcivilengineer.com/latest/low-reservoir-water-storage-levels-prompt-call-for-more-on-farm-reservoirs-11-11-2026/",
+   "desc": "The “below average” level of water in England’s reservoirs has led to calls for farmers to be able to build more on-farm storage capacity.",
+   "date": "2026-11-11T13:19+00:00",
+   "th": []
+  },
+  {
+   "id": "992cbe1140",
+   "src": "The Race",
+   "level": "way in",
+   "title": "F1's divisive wet weather tyres to change in 2027 - what needs solving",
+   "url": "https://www.the-race.com/formula-1/f1-divisive-wet-weather-tyres-to-change-in-2027-what-we-know/",
+   "desc": "The wet weather tyres that have divided F1 driver opinion will change for 2027 - here's what we know",
+   "date": "2026-11-11T07:41+00:00",
+   "th": [
+    "Motorsport",
     "5 Materials"
    ]
   },
   {
-   "id": "1ade761a8a",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "NASA Advanced Mid-Power Electric Rocket Challenge",
-   "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/center-of-excellence-for-collaborative-innovation-coeci/nasa-advanced-mid-power-electric-rocket-challenge/",
-   "desc": "Mid-power (3-7 kW) Hall effect thruster systems have been identified by government and industry stakeholders as critical capabilities for satellite, defense, and exploration missions. Given the need for this capability, NASA is launching the Advanced Mid-Power Electric Rocket …",
-   "date": "2026-11-09T17:42+00:00",
+   "id": "87a3474e76",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "Robot vessels take on the dangerous work of mine hunting",
+   "url": "https://www.bbc.co.uk/news/articles/cj5yn24llxd6o?at_medium=RSS&at_campaign=rss",
+   "desc": "The conflict in the Gulf is an opportunity for the US to test its autonomous mine-hunting systems.",
+   "date": "2026-11-11T00:19+00:00",
    "th": [
-    "1 Requirements",
-    "8 Viability"
+    "6 Technical"
    ]
   },
   {
@@ -174,15 +197,27 @@
    ]
   },
   {
-   "id": "c1ef50bcff",
+   "id": "df89ef03fd",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Fabric molds could bring material-saving concrete beams within reach",
-   "url": "https://techxplore.com/news/2026-11-fabric-molds-material-concrete.html",
-   "desc": "Topology optimization is a computer design method that can help engineers design beams using reduced amounts of concrete and steel. But those intricate shapes produced from the tool are often too complex or expensive to pour into conventional rigid molds. The few that have bee…",
-   "date": "2026-11-09T18:00+00:00",
+   "title": "Inspired by elephant trunks, shape-shifting robots bend, grab and team up",
+   "url": "https://techxplore.com/news/2026-11-elephant-trunks-shifting-robots-team.html",
+   "desc": "Researchers at Colorado State University have developed a flexible robot that functions like an elephant's trunk to grip objects, with a goal of one day sending teams of these machines to aid in space exploration or to help with any number of other complex tasks.",
+   "date": "2026-11-11T10:00+00:00",
    "th": [
-    "5 Materials"
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "60dd96131d",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "£90M investment to strengthen surveillance of undersea cables",
+   "url": "https://www.newcivilengineer.com/latest/90m-investment-to-strengthen-surveillance-of-undersea-cables-11-11-2026/",
+   "desc": "The Royal Navy is to receive £90M for autonomous drones, sensors and artificial intelligence (AI) systems intended to improve surveillance of undersea infrastructure and activity in the North Atlantic.",
+   "date": "2026-11-11T13:11+00:00",
+   "th": [
+    "6 Technical"
    ]
   },
   {
@@ -222,15 +257,27 @@
    ]
   },
   {
-   "id": "a4c2a15871",
+   "id": "d7948fecb6",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
-   "url": "https://techxplore.com/news/2026-11-ai-simulates-behavior-substances-sand.html",
-   "desc": "Today, a scientist who wants to simulate a physical process must pick the right tool for that one job, such as a solver built for flowing water or another designed to model the way a protein folds. Each one is hand-coded around the specific equations that dictate how that proc…",
-   "date": "2026-11-09T17:20+00:00",
+   "title": "Laser technique could slash emissions from solar panel recycling",
+   "url": "https://techxplore.com/news/2026-11-laser-technique-slash-emissions-solar.html",
+   "desc": "A new, more energy-efficient method of recovering valuable metals from solar panels at the end of their lives is gearing up to make its way to market. Researchers from the University of Glasgow have developed a way to use lasers to recover almost all of the silver and silicon …",
+   "date": "2026-11-10T19:20+00:00",
    "th": [
-    "4 Design thinking",
+    "3 Wider issues",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "961a81f476",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Military ‘developing plans’ to protect UK infrastructure during future conflict",
+   "url": "https://www.newcivilengineer.com/latest/military-developing-plans-to-protect-uk-infrastructure-during-future-conflict-11-11-2026/",
+   "desc": "The UK military is “developing plans” to help protect the country’s infrastructure in a potential war, according to a minister. It comes as a Member of Parliament (MP) raised concerns about the integration of artificial intelligence (AI) into critical national infrastructure (…",
+   "date": "2026-11-11T11:39+00:00",
+   "th": [
     "6 Technical"
    ]
   },
@@ -248,15 +295,27 @@
    ]
   },
   {
-   "id": "0d59291e9c",
+   "id": "811779c420",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "New body-actuation interface for faster movement initiation while maintaining user control",
-   "url": "https://techxplore.com/news/2026-11-body-actuation-interface-faster-movement.html",
-   "desc": "Many daily and specialized activities, including rapid responses in sports, split-second actions in video games and synchronization during musical performance, require people to execute a prepared movement immediately after receiving a signal. However, even with prior preparat…",
-   "date": "2026-11-09T17:00+00:00",
+   "title": "Green hydrogen production has a bubble problem—new model reveals threshold for steep energy losses",
+   "url": "https://techxplore.com/news/2026-11-green-hydrogen-production-problem-reveals.html",
+   "desc": "A collaboration between researchers at Cornell and City University of Hong Kong has produced a new computational tool that could help overcome one surprisingly persistent obstacle to the efficient production of so-called green hydrogen: bubbles.",
+   "date": "2026-11-10T17:40+00:00",
    "th": [
-    "1 Requirements"
+    "3 Wider issues"
+   ]
+  },
+  {
+   "id": "3603ff7a3f",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Octopus Energy plans to develop clean energy projects in Asia",
+   "url": "https://www.newcivilengineer.com/latest/octopus-energy-plans-to-develop-clean-energy-projects-in-asia-11-11-2026/",
+   "desc": "British energy company Octopus Energy has launched a fund which aims to raise $600M (£550M) for renewable energy projects across Asia beginning with a proposed solar and battery investment in the Philippines.",
+   "date": "2026-11-11T09:37+00:00",
+   "th": [
+    "7 Manufacturing"
    ]
   },
   {
@@ -272,27 +331,48 @@
    ]
   },
   {
-   "id": "2df4bca58b",
+   "id": "7660db237b",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Measuring for success: Construction app makes estimates faster, easier",
-   "url": "https://techxplore.com/news/2026-11-success-app-faster-easier.html",
-   "desc": "U.S. Navy and Marine Corps engineer officers and engineer chiefs have tough, dirty jobs in what's called horizontal construction—building and maintaining roads, airstrips, landing zones and base camps.",
-   "date": "2026-11-07T01:20+00:00",
+   "title": "Architected fillers: Shape becomes a design variable for composites",
+   "url": "https://techxplore.com/news/2026-11-architected-fillers-variable-composites.html",
+   "desc": "In a recent study, researchers in materials science at Tampere University challenged conventional composite filler shapes by introducing a different approach in which each particle's 3D geometry is designed first, then printed to specification. The research enables decisions t…",
+   "date": "2026-11-09T22:20+00:00",
+   "th": [
+    "5 Materials"
+   ]
+  },
+  {
+   "id": "f2e2e63939",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "We need to connect industry and education to bridge skills gap",
+   "url": "https://www.newcivilengineer.com/latest/we-need-to-connect-industry-and-education-to-bridge-skills-gap-11-11-2026/",
+   "desc": "I didn’t enjoy school. I struggled to engage in class and couldn’t see how the things we were being taught would actually help me get a job.",
+   "date": "2026-11-11T06:30+00:00",
    "th": []
   },
   {
-   "id": "83d21eba15",
+   "id": "c1ef50bcff",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Harnessing atomic structure to advance next-generation memory storage",
-   "url": "https://techxplore.com/news/2026-11-harnessing-atomic-advance-generation-memory.html",
-   "desc": "The growth of artificial intelligence has increased demand for more efficient data storage. Instead of adding bulk to satiate this appetite, researchers at Washington University in St. Louis are working to increase memory capacity by manipulating materials' characteristics at …",
-   "date": "2026-11-06T16:40+00:00",
+   "title": "Fabric molds could bring material-saving concrete beams within reach",
+   "url": "https://techxplore.com/news/2026-11-fabric-molds-material-concrete.html",
+   "desc": "Topology optimization is a computer design method that can help engineers design beams using reduced amounts of concrete and steel. But those intricate shapes produced from the tool are often too complex or expensive to pour into conventional rigid molds. The few that have bee…",
+   "date": "2026-11-09T18:00+00:00",
    "th": [
-    "2 Existing products",
-    "6 Technical"
+    "5 Materials"
    ]
+  },
+  {
+   "id": "e384f576e2",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Sisk reaches topping out milestone on Edgbaston cricket stadium development",
+   "url": "https://www.newcivilengineer.com/latest/sisk-reaches-topping-out-milestone-on-edgbaston-cricket-stadium-development-10-11-2026/",
+   "desc": "Sisk has celebrated the topping out of a new 146-room hotel and 3,200-seat stand at Warwickshire County Cricket Club’s Edgbaston Stadium in Birmingham.",
+   "date": "2026-11-10T14:55+00:00",
+   "th": []
   }
  ]
 }
