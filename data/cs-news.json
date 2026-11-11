@@ -1,5 +1,5 @@
 {
- "made": "2026-11-10T15:16+00:00",
+ "made": "2026-11-11T14:46+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -16,7 +16,7 @@
    "level": "way in",
    "line": "BBC News technology desk: computing stories only",
    "ok": true,
-   "n": 6
+   "n": 7
   },
   {
    "src": "Computerphile",
@@ -30,7 +30,7 @@
    "level": "magazine",
    "line": "the UK's National Cyber Security Centre: warnings and advice",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "The Conversation",
@@ -84,43 +84,72 @@
  ],
  "stories": [
   {
-   "id": "4b2c2f063e",
+   "id": "279dd56193",
    "src": "IEEE Spectrum",
    "level": "magazine",
    "kind": "story",
-   "title": "Catch Electronics Shock and Drop Failures Before Hardware Is Built",
-   "url": "https://content.knowledgehub.wiley.com/shifting-reliability-left-guided-virtual-validation-for-electronics-shock-and-drop-testing/",
-   "desc": "Learn how guided virtual shock and drop analysis helps engineering teams identify reliability risks before physical testing, reduce qualification iterations, optimize packaging designs, and accelerate electronics product development. What you will learn about: Why shock failur…",
-   "date": "2026-11-10T11:00+00:00",
+   "title": "NSF’s X-Labs Program Draws Support From Charities and Investors",
+   "url": "https://spectrum.ieee.org/national-science-foundation-x-labs",
+   "desc": "When the U.S. National Science Foundation began its X-Labs program in May, the agency said the higher-risk, higher-funded awards would create new kinds of partnerships that would confront urgent scientific and technological challenges. Now, the NSF is doubling down on the idea…",
+   "date": "2026-11-11T13:00+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.2 Software and development",
+    "1.3 Networks and the web"
    ]
   },
   {
-   "id": "42ec1e7471",
+   "id": "dbd9a083a2",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The supermarket fridge hack exposes the cracks in tech vision of an ‘internet of things’",
+   "url": "https://theconversation.com/the-supermarket-fridge-hack-exposes-the-cracks-in-tech-vision-of-an-internet-of-things-296314",
+   "desc": "The attacks show that hackers are exploiting physical devices to spread new forms of disruption to daily life.",
+   "date": "2026-11-11T12:02+00:00",
+   "th": [
+    "1.3 Networks and the web",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "caefc24d92",
+   "src": "NCSC",
+   "level": "magazine",
+   "kind": "story",
+   "title": "NCSC scheme will help critical organisations test their cyber defences",
+   "url": "https://www.ncsc.gov.uk/news/ncsc-scheme-help-critical-organisations-test-their-cyber-defences",
+   "desc": "New NCSC Cyber Adversary Simulation scheme will help critical organisations strengthen their resilience through rigorous, real-world testing by trusted providers.",
+   "date": "2026-11-11T12:00+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "b0b00dc134",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security",
-   "url": "https://www.bbc.co.uk/news/articles/c64g1gzy2vdzo?at_medium=RSS&at_campaign=rss",
-   "desc": "Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.",
-   "date": "2026-11-10T09:23+00:00",
+   "title": "New Indian mega library rocked by scandal over 'AI-generated books'",
+   "url": "https://www.bbc.co.uk/news/articles/c54gne3plvrxo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Tamil Nadu government has ordered an internal audit of library collections across the state.",
+   "date": "2026-11-11T11:33+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 AI and automation"
    ]
   },
   {
-   "id": "8abde1ce00",
+   "id": "b686da6834",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Vulnerability that lets hackers SSH into Linux devices is under active exploitation",
-   "url": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
-   "desc": "\"*sshole\" poses a serious threat to Internet security.",
-   "date": "2026-11-09T19:41+00:00",
+   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
+   "url": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
+   "desc": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them.",
+   "date": "2026-11-10T21:12+00:00",
    "th": [
     "1.2 Software and development",
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 AI and automation"
    ]
   },
   {
@@ -132,19 +161,6 @@
    "url": "https://news.mit.edu/2026/ai-assisted-learning-platform-helps-robots-reason-beyond-literal-commands-1109",
    "desc": "The new approach, known as FLEX, could lead to more intuitive, interactive household and assistive robots.",
    "date": "2026-11-09T05:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "128e2f2456",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "AI won’t ever make a historically accurate film – but it could help archaeology create better stories",
-   "url": "https://theconversation.com/ai-wont-ever-make-a-historically-accurate-film-but-it-could-help-archaeology-create-better-stories-295912",
-   "desc": "The evidence we have from Troy is incomplete so it’s impossible to create complete historically accurate images from it.",
-   "date": "2026-11-06T15:12+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -190,6 +206,32 @@
    ]
   },
   {
+   "id": "4b2c2f063e",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Catch Electronics Shock and Drop Failures Before Hardware Is Built",
+   "url": "https://content.knowledgehub.wiley.com/shifting-reliability-left-guided-virtual-validation-for-electronics-shock-and-drop-testing/",
+   "desc": "Learn how guided virtual shock and drop analysis helps engineering teams identify reliability risks before physical testing, reduce qualification iterations, optimize packaging designs, and accelerate electronics product development. What you will learn about: Why shock failur…",
+   "date": "2026-11-10T11:00+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "128e2f2456",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "AI won’t ever make a historically accurate film – but it could help archaeology create better stories",
+   "url": "https://theconversation.com/ai-wont-ever-make-a-historically-accurate-film-but-it-could-help-archaeology-create-better-stories-295912",
+   "desc": "The evidence we have from Troy is incomplete so it’s impossible to create complete historically accurate images from it.",
+   "date": "2026-11-06T15:12+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "ffbe770caf",
    "src": "NCSC",
    "level": "magazine",
@@ -204,42 +246,29 @@
    ]
   },
   {
-   "id": "273d7db17a",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "kind": "story",
-   "title": "AI Agents Are Testing the Limits of Zero-Trust Security",
-   "url": "https://spectrum.ieee.org/zero-trust-agentic-ai-architecture",
-   "desc": "This article is brought to you by Queen’s University Belfast . Several teams around the globe are leveraging AI by creating a task force of agents managed by an orchestrator and creating applications to support risk assessment, client profiling, match making, and information y…",
-   "date": "2026-11-09T16:25+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "9caa9b54c5",
+   "id": "87a3474e76",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Australia considers criminal penalties for rogue AI in wake of OpenAI hack",
-   "url": "https://www.bbc.co.uk/news/articles/cmp3g37l566po?at_medium=RSS&at_campaign=rss",
-   "desc": "AI safety regulator will also be created after a rogue OpenAI agent hacked government websites.",
-   "date": "2026-11-10T05:22+00:00",
+   "title": "Robot vessels take on the dangerous work of mine hunting",
+   "url": "https://www.bbc.co.uk/news/articles/cj5yn24llxd6o?at_medium=RSS&at_campaign=rss",
+   "desc": "The conflict in the Gulf is an opportunity for the US to test its autonomous mine-hunting systems.",
+   "date": "2026-11-11T00:19+00:00",
    "th": [
-    "1.3 Security and encryption",
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "a5eef3cf57",
+   "id": "8abde1ce00",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Chainalysis says hackers stole credentials and tokens for all of its customers",
-   "url": "https://arstechnica.com/security/2026/11/chainalysis-says-hackers-stole-credentials-and-tokens-for-all-of-its-customers/",
-   "desc": "Company said a \"multifront cyberattack\" included AI agents and an on-path data snatch.",
-   "date": "2026-11-06T20:56+00:00",
+   "title": "Vulnerability that lets hackers SSH into Linux devices is under active exploitation",
+   "url": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
+   "desc": "\"*sshole\" poses a serious threat to Internet security.",
+   "date": "2026-11-09T19:41+00:00",
    "th": [
+    "1.2 Software and development",
     "1.3 Security and encryption"
    ]
   },
@@ -254,20 +283,6 @@
    "date": "2026-11-05T05:00+00:00",
    "th": [
     "1.1 Processors and hardware",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "48ade0cfac",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "AI could transform mathematics, but humans will still need to be in the loop",
-   "url": "https://theconversation.com/ai-could-transform-mathematics-but-humans-will-still-need-to-be-in-the-loop-294982",
-   "desc": "AI solutions to longstanding maths problems have sent shockwaves through the mathematics community.",
-   "date": "2026-11-06T13:22+00:00",
-   "th": [
-    "1.4 / 2.3 Algorithms",
     "1.5 AI and automation"
    ]
   },
@@ -296,43 +311,55 @@
    "th": []
   },
   {
-   "id": "50ed2adfe9",
+   "id": "273d7db17a",
    "src": "IEEE Spectrum",
    "level": "magazine",
    "kind": "story",
-   "title": "The Race to Build a “Find My” for AI Chips",
-   "url": "https://spectrum.ieee.org/find-my-ai-chip",
-   "desc": "In a bid to limit China’s AI capabilities, the United States imposed restrictions in 2022 on the export of certain advanced chips to China. But throughout the AI boom those chips have kept turning up in China anyway . On 1 October 2026, the U.S. arrested a man on charges of se…",
-   "date": "2026-11-09T13:00+00:00",
+   "title": "AI Agents Are Testing the Limits of Zero-Trust Security",
+   "url": "https://spectrum.ieee.org/zero-trust-agentic-ai-architecture",
+   "desc": "This article is brought to you by Queen’s University Belfast . Several teams around the globe are leveraging AI by creating a task force of agents managed by an orchestrator and creating applications to support risk assessment, client profiling, match making, and information y…",
+   "date": "2026-11-09T16:25+00:00",
    "th": [
-    "1.1 Processors and hardware",
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "af31ad6378",
-   "src": "BBC Technology",
+   "id": "48ade0cfac",
+   "src": "The Conversation",
    "level": "way in",
    "kind": "story",
-   "title": "Elon Musk appears to signal the end of the road for Cybertruck",
-   "url": "https://www.bbc.co.uk/news/articles/cq1j33w7d232o?at_medium=RSS&at_campaign=rss",
-   "desc": "Musk said it was to make room for production of its Cybercabs - autonomous taxis without a driver.",
-   "date": "2026-11-06T21:49+00:00",
+   "title": "AI could transform mathematics, but humans will still need to be in the loop",
+   "url": "https://theconversation.com/ai-could-transform-mathematics-but-humans-will-still-need-to-be-in-the-loop-294982",
+   "desc": "AI solutions to longstanding maths problems have sent shockwaves through the mathematics community.",
+   "date": "2026-11-06T13:22+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.4 / 2.3 Algorithms",
+    "1.5 AI and automation"
    ]
   },
   {
-   "id": "9ed3b44bda",
+   "id": "519ce40bbf",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyv?at_medium=RSS&at_campaign=rss",
+   "desc": "We investigate internet-connected device flaws worldwide, plus US election tech fallout.",
+   "date": "2026-11-10T20:30+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "a5eef3cf57",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Meet *sshole, the vulnerability that lets hackers SSH into Linux devices",
-   "url": "https://arstechnica.com/security/2026/11/vulnerability-allows-attackers-to-log-into-some-linux-devices-sans-password/",
-   "desc": "Certain configurations of Alpine are affected. Other distros may be as well.",
-   "date": "2026-11-05T23:09+00:00",
+   "title": "Chainalysis says hackers stole credentials and tokens for all of its customers",
+   "url": "https://arstechnica.com/security/2026/11/chainalysis-says-hackers-stole-credentials-and-tokens-for-all-of-its-customers/",
+   "desc": "Company said a \"multifront cyberattack\" included AI agents and an on-path data snatch.",
+   "date": "2026-11-06T20:56+00:00",
    "th": [
-    "1.2 Software and development",
     "1.3 Security and encryption"
    ]
   },
@@ -350,19 +377,6 @@
    ]
   },
   {
-   "id": "f809844337",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The Binance hack exploited familiar weaknesses – all organisations should learn from it",
-   "url": "https://theconversation.com/the-binance-hack-exploited-familiar-weaknesses-all-organisations-should-learn-from-it-295627",
-   "desc": "The hackers compromised a laptop belonging to an IT engineer, according to Binance.",
-   "date": "2026-11-05T08:24+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
    "id": "3a38aee5f2",
    "src": "Computerphile",
    "level": "way in",
@@ -377,40 +391,54 @@
    ]
   },
   {
-   "id": "d1c490a44c",
+   "id": "50ed2adfe9",
    "src": "IEEE Spectrum",
    "level": "magazine",
    "kind": "story",
-   "title": "Why a Mathematician Is Chasing Eclipses With Algorithms and Cameras",
-   "url": "https://spectrum.ieee.org/2026-solar-eclipse",
-   "desc": "The sun hangs low over the plains of Castile and León, in the north-central region of Spain. But from a slope of the mountain Pico Trigaza , it appears that a few puffy white clouds have started to block the sun. That’s vexing. A group of researchers, some wearing cardboard ec…",
-   "date": "2026-11-05T14:00+00:00",
+   "title": "The Race to Build a “Find My” for AI Chips",
+   "url": "https://spectrum.ieee.org/find-my-ai-chip",
+   "desc": "In a bid to limit China’s AI capabilities, the United States imposed restrictions in 2022 on the export of certain advanced chips to China. But throughout the AI boom those chips have kept turning up in China anyway . On 1 October 2026, the U.S. arrested a man on charges of se…",
+   "date": "2026-11-09T13:00+00:00",
    "th": [
-    "1.4 / 2.3 Algorithms"
+    "1.1 Processors and hardware",
+    "1.5 AI and automation"
    ]
   },
   {
-   "id": "8fc8e90c6b",
+   "id": "f809844337",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The Binance hack exploited familiar weaknesses – all organisations should learn from it",
+   "url": "https://theconversation.com/the-binance-hack-exploited-familiar-weaknesses-all-organisations-should-learn-from-it-295627",
+   "desc": "The hackers compromised a laptop belonging to an IT engineer, according to Binance.",
+   "date": "2026-11-05T08:24+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "adf593f419",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "AI stocks climb after trillions wiped from market values",
-   "url": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss",
-   "desc": "Investors had been selling off tech shares in part due to concerns the Democrat election victory would mean slower AI development.",
-   "date": "2026-11-06T21:06+00:00",
+   "title": "Claude chatbot maker set for $1.3tn stock market debut despite 'catastrophic' AI warning",
+   "url": "https://www.bbc.co.uk/news/articles/crpdgd723x2zo?at_medium=RSS&at_campaign=rss",
+   "desc": "The AI company behind the Claude chatbot will offer its shares at between $70 and $78, which is lower than what was expected.",
+   "date": "2026-11-10T17:56+00:00",
    "th": [
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "bc594cd9fb",
+   "id": "9ed3b44bda",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Hackers exploited iOS and Android flaws to infect phones",
-   "url": "https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/",
-   "desc": "Researchers say group may have been Kremlin-sponsored in search of diplomatic targets.",
-   "date": "2026-11-04T22:26+00:00",
+   "title": "Meet *sshole, the vulnerability that lets hackers SSH into Linux devices",
+   "url": "https://arstechnica.com/security/2026/11/vulnerability-allows-attackers-to-log-into-some-linux-devices-sans-password/",
+   "desc": "Certain configurations of Alpine are affected. Other distros may be as well.",
+   "date": "2026-11-05T23:09+00:00",
    "th": [
     "1.2 Software and development",
     "1.3 Security and encryption"
@@ -430,19 +458,6 @@
    ]
   },
   {
-   "id": "0a18fb8308",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "Seeing is no longer believing: why physical witnesses matter more in the age of AI-generated content",
-   "url": "https://theconversation.com/seeing-is-no-longer-believing-why-physical-witnesses-matter-more-in-the-age-of-ai-generated-content-295677",
-   "desc": "In an age where AI can create an image of everything and anything, verifying the truth is becoming much harder.",
-   "date": "2026-11-04T13:15+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "659402f488",
    "src": "Computerphile",
    "level": "way in",
@@ -457,42 +472,44 @@
    ]
   },
   {
-   "id": "3f5fe12d28",
+   "id": "42ec1e7471",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Why the US midterms sparked an AI stock selloff",
-   "url": "https://www.bbc.co.uk/news/articles/crlykkzwwpydo?at_medium=RSS&at_campaign=rss",
-   "desc": "Fears of more AI regulation appear to have sparked fear among investors, but concerns about the industry have been growing for some time.",
-   "date": "2026-11-06T18:32+00:00",
+   "title": "Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security",
+   "url": "https://www.bbc.co.uk/news/articles/c64g1gzy2vdzo?at_medium=RSS&at_campaign=rss",
+   "desc": "Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.",
+   "date": "2026-11-10T09:23+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.1 Processors and hardware"
    ]
   },
   {
-   "id": "868b661c5e",
+   "id": "bc594cd9fb",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Binance says hackers who stole billions in crypto spent months planning heist",
-   "url": "https://arstechnica.com/information-technology/2026/11/binance-says-hackers-who-stole-billions-in-crypto-spent-months-planning-heist/",
-   "desc": "Techniques included laptop infections, compromised internal tooling, and fake job interviews.",
-   "date": "2026-11-04T16:06+00:00",
+   "title": "Hackers exploited iOS and Android flaws to infect phones",
+   "url": "https://arstechnica.com/security/2026/11/hackers-exploited-ios-and-android-flaws-to-infect-phones/",
+   "desc": "Researchers say group may have been Kremlin-sponsored in search of diplomatic targets.",
+   "date": "2026-11-04T22:26+00:00",
    "th": [
+    "1.2 Software and development",
     "1.3 Security and encryption"
    ]
   },
   {
-   "id": "c5db139399",
+   "id": "9caa9b54c5",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyt?at_medium=RSS&at_campaign=rss",
-   "desc": "When copyright strikes silence reporters, rail safety & the Lord of the Rings live show.",
-   "date": "2026-11-03T20:30+00:00",
+   "title": "Australia considers criminal penalties for rogue AI in wake of OpenAI hack",
+   "url": "https://www.bbc.co.uk/news/articles/cmp3g37l566po?at_medium=RSS&at_campaign=rss",
+   "desc": "AI safety regulator will also be created after a rogue OpenAI agent hacked government websites.",
+   "date": "2026-11-10T05:22+00:00",
    "th": [
-    "1.5 Law and ethics"
+    "1.3 Security and encryption",
+    "1.5 AI and automation"
    ]
   }
  ]
