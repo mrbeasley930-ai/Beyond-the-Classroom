@@ -1,5 +1,5 @@
 {
- "made": "2026-11-11T14:46+00:00",
+ "made": "2026-11-12T15:38+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -72,17 +72,58 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "ScienceDaily",
    "level": "research",
    "line": "university press releases, computers and maths",
    "ok": true,
-   "n": 0
+   "n": 1
   }
  ],
  "stories": [
+  {
+   "id": "1c2a313c9f",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "Atomic Operations - Computerphile",
+   "url": "https://www.youtube.com/watch?v=BHOw09O3ZsI",
+   "desc": "Operations that complete without interruption, known as 'atomic' operations are extremely useful and allow us to go about our business unimpeded. Matt Godbolt of 'Compiler Explorer' fame explains. Computerphile is supported by Jane Street. Learn more about them (and exciting c…",
+   "date": "2026-11-12T14:59+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "b04f871e66",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Nvidia's CEO was the rock star of AI before his dramatic unravelling",
+   "url": "https://www.bbc.co.uk/news/articles/cmze750zg0jeo?at_medium=RSS&at_campaign=rss",
+   "desc": "Within days, Huang's status as a seemingly untouchable figure leading the global AI race has crumbled.",
+   "date": "2026-11-12T14:18+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "e15cdaf632",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Inside this quantum computer, memory vibrates like a guitar string",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261109205416.htm",
+   "desc": "Researchers have created a quantum computer that stores information in microscopic vibrations, potentially making quantum machines smaller, more powerful, and better at preserving information. The breakthrough successfully demonstrated advanced quantum calculations and could h…",
+   "date": "2026-11-12T02:35+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
   {
    "id": "279dd56193",
    "src": "IEEE Spectrum",
@@ -125,19 +166,6 @@
    ]
   },
   {
-   "id": "b0b00dc134",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "New Indian mega library rocked by scandal over 'AI-generated books'",
-   "url": "https://www.bbc.co.uk/news/articles/c54gne3plvrxo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Tamil Nadu government has ordered an internal audit of library collections across the state.",
-   "date": "2026-11-11T11:33+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "b686da6834",
    "src": "Ars Technica",
    "level": "magazine",
@@ -166,20 +194,6 @@
    ]
   },
   {
-   "id": "b4fc5380ab",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "Mutex Explained - Computerphile",
-   "url": "https://www.youtube.com/watch?v=BmBw827GgFA",
-   "desc": "One of the most useful primitives in programming, but what is a mutual exclusion and how does it work? Matt Godbolt explains! Computerphile is supported by Jane Street. Learn more about them (and exciting career opportunities) at: https://jane-st.co/computerphile This video wa…",
-   "date": "2026-11-05T14:00+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
    "id": "d4b5ca5169",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -201,6 +215,33 @@
    "url": "https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/",
    "desc": "By injecting “thoughts” directly into large language models, researchers are trying to map out AI’s capacity for introspection. The post New Research Tests Whether AI Models Know Their Own Thoughts first appeared on Quanta Magazine",
    "date": "2026-11-04T15:32+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "b4fc5380ab",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "Mutex Explained - Computerphile",
+   "url": "https://www.youtube.com/watch?v=BmBw827GgFA",
+   "desc": "One of the most useful primitives in programming, but what is a mutual exclusion and how does it work? Matt Godbolt explains! Computerphile is supported by Jane Street. Learn more about them (and exciting career opportunities) at: https://jane-st.co/computerphile This video wa…",
+   "date": "2026-11-05T14:00+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "b0b00dc134",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "New Indian mega library rocked by scandal over 'AI-generated books'",
+   "url": "https://www.bbc.co.uk/news/articles/c54gne3plvrxo?at_medium=RSS&at_campaign=rss",
+   "desc": "The Tamil Nadu government has ordered an internal audit of library collections across the state.",
+   "date": "2026-11-11T11:33+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -246,19 +287,6 @@
    ]
   },
   {
-   "id": "87a3474e76",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Robot vessels take on the dangerous work of mine hunting",
-   "url": "https://www.bbc.co.uk/news/articles/cj5yn24llxd6o?at_medium=RSS&at_campaign=rss",
-   "desc": "The conflict in the Gulf is an opportunity for the US to test its autonomous mine-hunting systems.",
-   "date": "2026-11-11T00:19+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "8abde1ce00",
    "src": "Ars Technica",
    "level": "magazine",
@@ -287,6 +315,17 @@
    ]
   },
   {
+   "id": "ea0fab7f54",
+   "src": "Raspberry Pi Foundation",
+   "level": "way in",
+   "kind": "story",
+   "title": "Celebrating the UK’s National Engineering Day 2026",
+   "url": "https://www.raspberrypi.org/blog/celebrating-the-uks-national-engineering-day-2026/",
+   "desc": "We’re celebrating National Engineering Day in the UK with our friends at the Royal Academy of Engineering. National Engineering Day aims to make the UK’s engineers and engineering more visible, and celebrate how they improve everyday lives and shape the world around us. Now hi…",
+   "date": "2026-11-04T09:45+00:00",
+   "th": []
+  },
+  {
    "id": "0d10a26bfe",
    "src": "Computerphile",
    "level": "way in",
@@ -300,15 +339,17 @@
    ]
   },
   {
-   "id": "ea0fab7f54",
-   "src": "Raspberry Pi Foundation",
+   "id": "87a3474e76",
+   "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Celebrating the UK’s National Engineering Day 2026",
-   "url": "https://www.raspberrypi.org/blog/celebrating-the-uks-national-engineering-day-2026/",
-   "desc": "We’re celebrating National Engineering Day in the UK with our friends at the Royal Academy of Engineering. National Engineering Day aims to make the UK’s engineers and engineering more visible, and celebrate how they improve everyday lives and shape the world around us. Now hi…",
-   "date": "2026-11-04T09:45+00:00",
-   "th": []
+   "title": "Robot vessels take on the dangerous work of mine hunting",
+   "url": "https://www.bbc.co.uk/news/articles/cj5yn24llxd6o?at_medium=RSS&at_campaign=rss",
+   "desc": "The conflict in the Gulf is an opportunity for the US to test its autonomous mine-hunting systems.",
+   "date": "2026-11-11T00:19+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
   },
   {
    "id": "273d7db17a",
@@ -335,19 +376,6 @@
    "th": [
     "1.4 / 2.3 Algorithms",
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "519ce40bbf",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyv?at_medium=RSS&at_campaign=rss",
-   "desc": "We investigate internet-connected device flaws worldwide, plus US election tech fallout.",
-   "date": "2026-11-10T20:30+00:00",
-   "th": [
-    "1.3 Networks and the web"
    ]
   },
   {
@@ -391,6 +419,19 @@
    ]
   },
   {
+   "id": "519ce40bbf",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyv?at_medium=RSS&at_campaign=rss",
+   "desc": "We investigate internet-connected device flaws worldwide, plus US election tech fallout.",
+   "date": "2026-11-10T20:30+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
    "id": "50ed2adfe9",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -418,19 +459,6 @@
    ]
   },
   {
-   "id": "adf593f419",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Claude chatbot maker set for $1.3tn stock market debut despite 'catastrophic' AI warning",
-   "url": "https://www.bbc.co.uk/news/articles/crpdgd723x2zo?at_medium=RSS&at_campaign=rss",
-   "desc": "The AI company behind the Claude chatbot will offer its shares at between $70 and $78, which is lower than what was expected.",
-   "date": "2026-11-10T17:56+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
    "id": "9ed3b44bda",
    "src": "Ars Technica",
    "level": "magazine",
@@ -445,43 +473,16 @@
    ]
   },
   {
-   "id": "624e23d0cd",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Regina Barzilay and Jim Collins win Pritzker Prize for AI and Science Research Excellence for work in AI-enabled antibiotic discovery",
-   "url": "https://news.mit.edu/2026/regina-barzilay-jim-collins-win-pritzker-prize-ai-and-science-research-excellence-1102",
-   "desc": "The MIT professors collaborated to identify the first AI-discovered antibiotic, a scientific breakthrough that is widely recognized as a milestone in AI-driven drug discovery.",
-   "date": "2026-11-02T05:35+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "659402f488",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "How Image Watermarking Works - Computerphile",
-   "url": "https://www.youtube.com/watch?v=h6j_ixGnpiY",
-   "desc": "Image watermarks are a way to embed information into a picture, Dr Mike Pound takes us through Adobe's Trust Mark to explain the idea & covers some of the pros and cons. 00:00 - Introduction: Watermarking Images vs Text 00:28 - Steganography vs Watermarking & Metadata Limitati…",
-   "date": "2026-10-22T13:00+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "42ec1e7471",
+   "id": "adf593f419",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security",
-   "url": "https://www.bbc.co.uk/news/articles/c64g1gzy2vdzo?at_medium=RSS&at_campaign=rss",
-   "desc": "Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.",
-   "date": "2026-11-10T09:23+00:00",
+   "title": "Claude chatbot maker set for $1.3tn stock market debut despite 'catastrophic' AI warning",
+   "url": "https://www.bbc.co.uk/news/articles/crpdgd723x2zo?at_medium=RSS&at_campaign=rss",
+   "desc": "The AI company behind the Claude chatbot will offer its shares at between $70 and $78, which is lower than what was expected.",
+   "date": "2026-11-10T17:56+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 AI and automation"
    ]
   },
   {
@@ -496,6 +497,19 @@
    "th": [
     "1.2 Software and development",
     "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "42ec1e7471",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security",
+   "url": "https://www.bbc.co.uk/news/articles/c64g1gzy2vdzo?at_medium=RSS&at_campaign=rss",
+   "desc": "Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.",
+   "date": "2026-11-10T09:23+00:00",
+   "th": [
+    "1.1 Processors and hardware"
    ]
   },
   {
