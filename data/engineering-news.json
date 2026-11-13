@@ -1,5 +1,5 @@
 {
- "made": "2026-11-12T15:02+00:00",
+ "made": "2026-11-13T14:28+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -32,21 +32,21 @@
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 0
+   "n": 1
   },
   {
    "src": "BBC Technology",
@@ -95,43 +95,85 @@
    "level": "research",
    "line": "university press releases, materials science",
    "ok": true,
-   "n": 1
+   "n": 2
   }
  ],
  "stories": [
   {
-   "id": "91e868c47b",
+   "id": "d5ffb12f91",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Electric fields can change how semiconductors dissipate heat",
-   "url": "https://techxplore.com/news/2026-11-electric-fields-semiconductors-dissipate.html",
-   "desc": "As electronic devices become smaller and more powerful, keeping them from overheating is an increasingly difficult engineering challenge. Now, Cornell researchers have developed a computational method, backed by the first experimental measurements of their kind, showing how an…",
-   "date": "2026-11-12T15:00+00:00",
+   "title": "Autonomous drones detect cracks in concrete bridges",
+   "url": "https://techxplore.com/news/2026-11-autonomous-drones-concrete-bridges.html",
+   "desc": "A research team at Ruhr University Bochum is developing an autonomous flying drone that detects cracks in concrete bridges. The drone is intended to make costly, labor-intensive bridge inspections more efficient, safer and more affordable. It is being developed by David Müller…",
+   "date": "2026-11-13T12:20+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "42d627b204",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "\"It's horribly painful\" - Williams drops 2026 car upgrades to benefit 2027",
+   "url": "https://www.motorsport.com/f1/news/horribly-painful-williams-2026-car-upgrades-benefit-2027/10874290/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Williams F1 team boss James Vowles says it was \"horribly painful\" for the squad to forego 2026 aero upgrades and save the resources for 2027 instead. Williams has been forced into playing the long game for some time now, but was hoping its progress behind the scenes in 2025 wo…",
+   "date": "2026-11-13T12:15+00:00",
+   "th": [
+    "Motorsport",
+    "2 Existing products"
+   ]
+  },
+  {
+   "id": "eec9abe0c4",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Engineer Overhead Lines to Withstand Ice, Wind and FreezingRain",
+   "url": "https://content.knowledgehub.wiley.com/engineering-overhead-electric-lines-for-ice-wind-and-freezing-rain/",
+   "desc": "This White Paper explains how ice, wind and vegetation load overhead distribution lines at the same time. It shows engineers how to assess the complete line and compare resilience options. What you will learn about: How freezing rain, rime ice and wet snow add weight to conduc…",
+   "date": "2026-11-13T11:00+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "c5f13dab1a",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "Heat pumps: How much heat does your home really need?",
+   "url": "https://www.bbc.co.uk/news/articles/cqy43zk3kk04o?at_medium=RSS&at_campaign=rss",
+   "desc": "Knowing how much heat your home loses is important before installing a new heating system.",
+   "date": "2026-11-13T09:29+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "4ef111deda",
+   "id": "b35133fe92",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "A breakthrough in magnetism could make AI chips use dramatically less energy",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
+   "desc": "Researchers at Brown University have overcome a major obstacle to creating ultra-low-power computer chips that could help slash the energy demands of AI. Their breakthrough eliminates a long-standing \"dead layer\" problem that causes promising materials to stop working when mad…",
+   "date": "2026-11-13T01:40+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "5849df2511",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Radio waves pave the way for better wireless EV charging",
-   "url": "https://techxplore.com/news/2026-11-radio-pave-wireless-ev.html",
-   "desc": "Imagine parking your electric vehicle (EV) and charging it without plugging in a cable. Wireless charging makes this possible, but efficient charging requires precise alignment between the vehicle's receiver coil and the charging pad. Researchers at the University of Osaka, wo…",
-   "date": "2026-11-12T14:20+00:00",
+   "title": "Aircraft simulations scale new heights with supercomputer",
+   "url": "https://techxplore.com/news/2026-11-aircraft-simulations-scale-heights-supercomputer.html",
+   "desc": "High-accuracy aerodynamic simulations are essential to designing commercial aircraft that are safer, faster and more fuel efficient. But the physics of airflow is so complex that the aerospace industry needs more computing power to capture turbulence in its most chaotic states.",
+   "date": "2026-11-12T17:20+00:00",
    "th": [
-    "6 Technical"
+    "4 Design thinking"
    ]
-  },
-  {
-   "id": "69a74f53be",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Bam appointed for next phase of ‘iconic’ Transporter Bridge restoration",
-   "url": "https://www.newcivilengineer.com/latest/bam-appointed-for-next-phase-of-iconic-transporter-bridge-restoration-12-11-2026/",
-   "desc": "Bam UK & Ireland has been appointed to undertake the next phase of investigations into the restoration of Middlesbrough’s 115-year-old Tee's Transporter Bridge.",
-   "date": "2026-11-12T11:21+00:00",
-   "th": []
   },
   {
    "id": "fac40180d9",
@@ -173,13 +215,13 @@
    ]
   },
   {
-   "id": "87a3474e76",
-   "src": "BBC Technology",
-   "level": "way in",
-   "title": "Robot vessels take on the dangerous work of mine hunting",
-   "url": "https://www.bbc.co.uk/news/articles/cj5yn24llxd6o?at_medium=RSS&at_campaign=rss",
-   "desc": "The conflict in the Gulf is an opportunity for the US to test its autonomous mine-hunting systems.",
-   "date": "2026-11-11T00:19+00:00",
+   "id": "0e9e4cc592",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "AI system can reconstruct aerodynamic shapes and predict their performance",
+   "url": "https://techxplore.com/news/2026-11-ai-reconstruct-aerodynamic.html",
+   "desc": "The efficiency of an aircraft wing or a wind turbine blade depends on how air flows around it. Finding an optimal shape involves testing numerous designs and can be a burdensome and time-consuming process. Now, researchers at Kyushu University have developed a new artificial i…",
+   "date": "2026-11-12T21:20+00:00",
    "th": [
     "6 Technical"
    ]
@@ -197,39 +239,15 @@
    ]
   },
   {
-   "id": "07aa0555a4",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Researchers map how electrode protrusions guide current paths in resistive memory",
-   "url": "https://techxplore.com/news/2026-11-electrode-protrusions-current-paths-resistive.html",
-   "desc": "Researchers at the Korea Advanced Institute of Science and Technology (KAIST) used three-dimensional imaging to map a nanoscale current pathway inside a capacitor for a resistive random-access memory (RRAM) device. They found that it connected to a tiny protrusion on the botto…",
-   "date": "2026-11-12T14:44+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "7b2cbc10db",
+   "id": "939b58e97e",
    "src": "Tech Xplore (vehicles)",
    "level": "research",
-   "title": "Sri Lanka launches pilot of Chinese flying taxi service",
-   "url": "https://techxplore.com/news/2026-11-sri-lanka-chinese-flying-taxi.html",
-   "desc": "Sri Lanka has authorized a Chinese manufacturer to begin testing a pilotless two-seater air taxi, authorities announced Wednesday at a flight demonstration in Colombo.",
-   "date": "2026-11-11T18:40+00:00",
+   "title": "Whose voices shape pollution policy? Analysis finds economic concerns receive more attention than climate and health",
+   "url": "https://techxplore.com/news/2026-11-voices-pollution-policy-analysis-economic.html",
+   "desc": "When it comes to regulating pollution from heavy-duty trucks, economic concerns may carry more weight than climate and public health benefits, according to a Northwestern University study.",
+   "date": "2026-11-12T16:00+00:00",
    "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "50032000bc",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "One in five contractors say site safety practices do not match written policies",
-   "url": "https://www.newcivilengineer.com/latest/one-in-five-contractors-say-site-safety-practices-do-not-match-written-policies-12-11-2026/",
-   "desc": "One in five construction contractors say written health and safety policies often differ from what happens on site, a now survey has found.",
-   "date": "2026-11-12T10:21+00:00",
-   "th": [
-    "9 Health and safety"
+    "3 Wider issues"
    ]
   },
   {
@@ -245,40 +263,28 @@
    ]
   },
   {
-   "id": "af3feaabc9",
+   "id": "08ed129a32",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Concrete made with industrial waste can cut emissions up to 80%, yet uptake lags",
-   "url": "https://techxplore.com/news/2026-11-concrete-industrial-emissions-uptake-lags.html",
-   "desc": "Concrete is the most widely used human-made material on Earth. Billions of tonnes are produced every year.",
-   "date": "2026-11-12T12:20+00:00",
-   "th": [
-    "3 Wider issues",
-    "5 Materials",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "55d5fa0c45",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "How high-speed ferries can reclaim their environmental credentials",
-   "url": "https://techxplore.com/news/2026-11-high-ferries-reclaim-environmental-credentials.html",
-   "desc": "Public transportation can benefit the environment, but catamarans are among the worst offenders when it comes to emissions. Batteries and underwater wings could make them considerably greener.",
-   "date": "2026-11-11T16:40+00:00",
+   "title": "Study links cement particle shape and construction costs",
+   "url": "https://techxplore.com/news/2026-11-links-cement-particle.html",
+   "desc": "Engineers at the University of Illinois Urbana-Champaign have developed a low-cost test that could help the construction industry save money. The new technique uses a $500 microscope-based framework to measure cement particle size and shape—both critical to cement and concrete…",
+   "date": "2026-11-12T17:40+00:00",
    "th": [
     "3 Wider issues"
    ]
   },
   {
-   "id": "bdbabb8fdf",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Engineers to use SPMTs to replace 160-year-old Croydon railway bridge over Christmas",
-   "url": "https://www.newcivilengineer.com/latest/engineers-to-use-spmts-to-replace-160-year-old-croydon-railway-bridge-over-christmas-12-11-2026/",
-   "desc": "Network Rail is to replace a 160-year-old railway bridge in Croydon, south London, over the Christmas and New Year period.",
-   "date": "2026-11-12T10:05+00:00",
-   "th": []
+   "id": "4ef111deda",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Radio waves pave the way for better wireless EV charging",
+   "url": "https://techxplore.com/news/2026-11-radio-pave-wireless-ev.html",
+   "desc": "Imagine parking your electric vehicle (EV) and charging it without plugging in a cable. Wireless charging makes this possible, but efficient charging requires precise alignment between the vehicle's receiver coil and the charging pad. Researchers at the University of Osaka, wo…",
+   "date": "2026-11-12T14:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
   },
   {
    "id": "556bdc69b2",
@@ -293,93 +299,41 @@
    ]
   },
   {
-   "id": "e7582eacf8",
+   "id": "91e868c47b",
    "src": "Tech Xplore (engineering)",
    "level": "research",
-   "title": "Improving the safety of timber buildings—by setting them on fire",
-   "url": "https://techxplore.com/news/2026-11-safety-timber.html",
-   "desc": "Full-scale fire tests on specially designed timber ceilings could help University of Queensland researchers pave the way for safer buildings that are less likely to collapse during a fire.",
-   "date": "2026-11-12T12:00+00:00",
+   "title": "Electric fields can change how semiconductors dissipate heat",
+   "url": "https://techxplore.com/news/2026-11-electric-fields-semiconductors-dissipate.html",
+   "desc": "As electronic devices become smaller and more powerful, keeping them from overheating is an increasingly difficult engineering challenge. Now, Cornell researchers have developed a computational method, backed by the first experimental measurements of their kind, showing how an…",
+   "date": "2026-11-12T15:00+00:00",
    "th": [
-    "5 Materials",
-    "9 Health and safety"
-   ]
-  },
-  {
-   "id": "ad1d446427",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "New methods improve 3D scene reconstruction and robot mapping",
-   "url": "https://techxplore.com/news/2026-11-methods-3d-scene-reconstruction-robot.html",
-   "desc": "A research team led by professor Zhu Hui from the Institute of Intelligent Machines at the Hefei Institutes of Physical Science of the Chinese Academy of Sciences has developed two methods to improve reconstruction fidelity, helping robots build more accurate representations o…",
-   "date": "2026-11-11T16:20+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "1f95d52e3a",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "IMechE calls for government action on industrial material reuse",
-   "url": "https://www.newcivilengineer.com/latest/imeche-calls-for-government-action-on-industrial-material-reuse-12-11-2026/",
-   "desc": "The Institution for Mechanical Engineers (IMechE) has called for the government to take action on making the reuse of materials for a circular economy more commercially viable.",
-   "date": "2026-11-12T09:33+00:00",
-   "th": [
-    "5 Materials",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "3320ceefba",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "3D-printed robotic frog swims using six artificial muscles powered by light",
-   "url": "https://techxplore.com/news/2026-11-3d-robotic-frog-artificial-muscles.html",
-   "desc": "A small robotic frog developed at Aarhus University can swim using six artificial muscles activated by light. Behind the achievement is a systematic approach that could help researchers develop muscles for the next generation of soft robots.",
-   "date": "2026-11-11T20:20+00:00",
-   "th": [
-    "6 Technical",
-    "7 Manufacturing"
-   ]
-  },
-  {
-   "id": "74c1fabb61",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Tees Valley Combined Authority seeks supplier input on £1.3bn transport programme",
-   "url": "https://www.newcivilengineer.com/archive/tees-valley-combined-authority-seeks-supplier-input-on-1-3bn-transport-programme-12-11-2026/",
-   "desc": "Tees Valley Combined Authority (TVCA) has launched preliminary market engagement to inform the procurement approach for a £1.3bn transport investment programme covering rail, highways, public transport and active travel infrastructure.",
-   "date": "2026-11-12T06:30+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "ceeefc12ae",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "AI toolbox accelerates bioreactor simulations by up to 10,000 times",
-   "url": "https://techxplore.com/news/2026-11-ai-toolbox-bioreactor-simulations.html",
-   "desc": "The control of large-scale industrial bioreactors is one of the most complex tasks in the process industry. In the often huge plants, the smallest differences in temperature, pH value or oxygen content determine the success or failure of a process.",
-   "date": "2026-11-11T16:40+00:00",
-   "th": [
-    "4 Design thinking",
     "6 Technical"
    ]
   },
   {
-   "id": "265ae38340",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Why efficiency is not ‘a nice-to-have’ in the infrastructue sector",
-   "url": "https://www.newcivilengineer.com/latest/why-efficiency-is-not-a-nice-to-have-in-the-infrastructue-sector-12-11-2026/",
-   "desc": "There is currently substantial investment flowing into the UK’s infrastructure pipeline.",
-   "date": "2026-11-12T06:30+00:00",
+   "id": "07aa0555a4",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Researchers map how electrode protrusions guide current paths in resistive memory",
+   "url": "https://techxplore.com/news/2026-11-electrode-protrusions-current-paths-resistive.html",
+   "desc": "Researchers at the Korea Advanced Institute of Science and Technology (KAIST) used three-dimensional imaging to map a nanoscale current pathway inside a capacitor for a resistive random-access memory (RRAM) device. They found that it connected to a tiny protrusion on the botto…",
+   "date": "2026-11-12T14:44+00:00",
    "th": [
     "6 Technical"
+   ]
+  },
+  {
+   "id": "af3feaabc9",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Concrete made with industrial waste can cut emissions up to 80%, yet uptake lags",
+   "url": "https://techxplore.com/news/2026-11-concrete-industrial-emissions-uptake-lags.html",
+   "desc": "Concrete is the most widely used human-made material on Earth. Billions of tonnes are produced every year.",
+   "date": "2026-11-12T12:20+00:00",
+   "th": [
+    "3 Wider issues",
+    "5 Materials",
+    "8 Viability"
    ]
   }
  ]
