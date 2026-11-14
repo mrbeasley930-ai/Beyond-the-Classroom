@@ -1,5 +1,5 @@
 {
- "made": "2026-11-13T14:28+00:00",
+ "made": "2026-11-14T13:23+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,35 +18,35 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 3
+   "n": 2
   },
   {
    "src": "The Race",
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "Motorsport.com",
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 1
+   "n": 4
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": false,
-   "n": 0
+   "ok": true,
+   "n": 6
   },
   {
    "src": "IEEE Spectrum",
    "level": "magazine",
    "line": "magazine of the Institute of Electrical and Electronics Engineers",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "BBC Technology",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "Carbon Brief",
@@ -100,42 +100,85 @@
  ],
  "stories": [
   {
-   "id": "d5ffb12f91",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Autonomous drones detect cracks in concrete bridges",
-   "url": "https://techxplore.com/news/2026-11-autonomous-drones-concrete-bridges.html",
-   "desc": "A research team at Ruhr University Bochum is developing an autonomous flying drone that detects cracks in concrete bridges. The drone is intended to make costly, labor-intensive bridge inspections more efficient, safer and more affordable. It is being developed by David Müller…",
-   "date": "2026-11-13T12:20+00:00",
+   "id": "bf0828cdad",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Mercedes technical director warns F1 teams won’t “lie down” over 2027 downforce cuts",
+   "url": "https://www.motorsport.com/f1/news/mercedes-tech-boss-warns-f1-teams-wont-lie-down-over-massive-2027-downforce-cuts/10874433/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Formula 1's transition to the new 2026 engine and chassis regulations completely reshuffled the competitive order, but the rulebook is far from finalised. As teams prepare for their second year under the new formula in 2027, the FIA is pushing to mandate another drop in downfo…",
+   "date": "2026-11-14T12:14+00:00",
    "th": [
-    "5 Materials",
+    "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "42d627b204",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "\"It's horribly painful\" - Williams drops 2026 car upgrades to benefit 2027",
-   "url": "https://www.motorsport.com/f1/news/horribly-painful-williams-2026-car-upgrades-benefit-2027/10874290/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Williams F1 team boss James Vowles says it was \"horribly painful\" for the squad to forego 2026 aero upgrades and save the resources for 2027 instead. Williams has been forced into playing the long game for some time now, but was hoping its progress behind the scenes in 2025 wo…",
-   "date": "2026-11-13T12:15+00:00",
+   "id": "977771b79f",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "US air travel resumption will 'take time' after hours-long stop",
+   "url": "https://techxplore.com/news/2026-11-air-resumption-hours.html",
+   "desc": "Flights in the United States were resuming on Saturday after being grounded for several hours due to a major communications outage, though authorities said returning to normal operations would take time.",
+   "date": "2026-11-14T11:22+00:00",
+   "th": []
+  },
+  {
+   "id": "916f45b01b",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "AI supercharges laser physics with a stunning 250x speed boost",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
+   "desc": "Researchers at Stanford, UCLA, and SLAC have developed an AI system that simulates complex laser interactions thousands of times faster than conventional methods. The breakthrough allows scientists to predict how laser pulses behave inside special crystals in just milliseconds…",
+   "date": "2026-11-13T23:41+00:00",
    "th": [
-    "Motorsport",
-    "2 Existing products"
+    "6 Technical"
    ]
   },
   {
-   "id": "eec9abe0c4",
+   "id": "9d1ff60e4d",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Hydropower study reveals energy potential in Appalachia",
+   "url": "https://techxplore.com/news/2026-11-hydropower-reveals-energy-potential-appalachia.html",
+   "desc": "Small hydropower systems could generate 22.6 megawatts of electricity in a remote part of western North Carolina, enough to power 5,000 homes in an area where the rugged, heavily forested terrain limits reliable access to energy, according to a recent study.",
+   "date": "2026-11-13T23:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "0d9fae548b",
    "src": "IEEE Spectrum",
    "level": "magazine",
-   "title": "Engineer Overhead Lines to Withstand Ice, Wind and FreezingRain",
-   "url": "https://content.knowledgehub.wiley.com/engineering-overhead-electric-lines-for-ice-wind-and-freezing-rain/",
-   "desc": "This White Paper explains how ice, wind and vegetation load overhead distribution lines at the same time. It shows engineers how to assess the complete line and compare resilience options. What you will learn about: How freezing rain, rime ice and wet snow add weight to conduc…",
-   "date": "2026-11-13T11:00+00:00",
+   "title": "How Microcredentials Help Engineers Build Trustworthy AI",
+   "url": "https://spectrum.ieee.org/microcredentials-trustworthy-ai",
+   "desc": "Engineering teams are moving at breakneck speed to integrate artificial intelligence, but they are running into a formidable new barrier: compliance issues. Translating high-level AI ethics , governance , and auditing into daily operational workflows has become one of the indu…",
+   "date": "2026-11-13T19:00+00:00",
    "th": [
-    "6 Technical",
-    "8 Viability"
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "74633a9345",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Water and sewerage sector purchase orders reached 40-year high in Q3",
+   "url": "https://www.newcivilengineer.com/latest/water-and-sewerage-orders-reached-40-year-high-in-q3-13-11-2026/",
+   "desc": "Figures published by the Office for National Statistics (ONS) show water and sewerage-related purchase orders surged 87.5% in Q3 to their highest total since 1985.",
+   "date": "2026-11-13T16:13+00:00",
+   "th": []
+  },
+  {
+   "id": "69785e1deb",
+   "src": "The Race",
+   "level": "way in",
+   "title": "Was Madrid F1 race an economic upgrade on Barcelona?",
+   "url": "https://www.the-race.com/business/how-madrid-f1-races-economic-impact-compares-to-barcelonas/",
+   "desc": "The inaugural 2026 Spanish Formula 1 Grand Prix at the Madring created €544 million in economic activity, supported 10,948 jobs, and generated €95m in tax revenue, according to its organiser",
+   "date": "2026-11-13T11:24+00:00",
+   "th": [
+    "Motorsport",
+    "2 Existing products"
    ]
   },
   {
@@ -148,31 +191,6 @@
    "date": "2026-11-13T09:29+00:00",
    "th": [
     "6 Technical"
-   ]
-  },
-  {
-   "id": "b35133fe92",
-   "src": "ScienceDaily (materials)",
-   "level": "research",
-   "title": "A breakthrough in magnetism could make AI chips use dramatically less energy",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
-   "desc": "Researchers at Brown University have overcome a major obstacle to creating ultra-low-power computer chips that could help slash the energy demands of AI. Their breakthrough eliminates a long-standing \"dead layer\" problem that causes promising materials to stop working when mad…",
-   "date": "2026-11-13T01:40+00:00",
-   "th": [
-    "2 Existing products",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "5849df2511",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Aircraft simulations scale new heights with supercomputer",
-   "url": "https://techxplore.com/news/2026-11-aircraft-simulations-scale-heights-supercomputer.html",
-   "desc": "High-accuracy aerodynamic simulations are essential to designing commercial aircraft that are safer, faster and more fuel efficient. But the physics of airflow is so complex that the aerospace industry needs more computing power to capture turbulence in its most chaotic states.",
-   "date": "2026-11-12T17:20+00:00",
-   "th": [
-    "4 Design thinking"
    ]
   },
   {
@@ -190,15 +208,78 @@
    ]
   },
   {
-   "id": "0708a0cf0f",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "Curiosity Blog, Sols 5063-5069 Rocks and Chips",
-   "url": "https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips/",
-   "desc": "Written by William Farrand, Senior Research Scientist, Space Science Institute Earth planning date: Friday, Nov. 6, 2026 This week Curiosity has been completing its drill campaign at the “Nazca” drill hole. This is an area characterized by bedrock containing disk-shaped (or in…",
-   "date": "2026-11-12T00:41+00:00",
+   "id": "fcf98b82e0",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Max Verstappen signs ambassador deal with Dutch technical group VDK",
+   "url": "https://www.motorsport.com/f1/news/max-verstappen-signs-ambassador-deal-with-dutch-technical-group-vdk/10874486/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Four-time Formula 1 champion Max Verstappen has become the new ambassador of the VDK Group, a Dutch group of installation and technical companies that is expanding across Europe. The Dutchman will play a prominent role in the company's international branding over the coming ye…",
+   "date": "2026-11-14T11:03+00:00",
+   "th": [
+    "Motorsport",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "07857f147b",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Tesla opens Cybercab sales to 'select customers'",
+   "url": "https://techxplore.com/news/2026-11-tesla-cybercab-sales-customers.html",
+   "desc": "Tesla said on Friday that some customers will be able to buy its driverless Cybercab for personal use.",
+   "date": "2026-11-14T11:22+00:00",
+   "th": [
+    "1 Requirements"
+   ]
+  },
+  {
+   "id": "b35133fe92",
+   "src": "ScienceDaily (materials)",
+   "level": "research",
+   "title": "A breakthrough in magnetism could make AI chips use dramatically less energy",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
+   "desc": "Researchers at Brown University have overcome a major obstacle to creating ultra-low-power computer chips that could help slash the energy demands of AI. Their breakthrough eliminates a long-standing \"dead layer\" problem that causes promising materials to stop working when mad…",
+   "date": "2026-11-13T01:40+00:00",
+   "th": [
+    "2 Existing products",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "b7b7dda9b0",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "New AI 'copilot' lets engineers guide structural designs as algorithms create them",
+   "url": "https://techxplore.com/news/2026-11-ai-copilot-algorithms.html",
+   "desc": "The use of algorithms to design structures has led to new parts optimized for ultralight aircraft, high-bandwidth antennas and F1 racing cars. But the best algorithmic design techniques still require lots of computation and time: Users only see the final design after it's comp…",
+   "date": "2026-11-13T17:00+00:00",
    "th": [
     "6 Technical"
+   ]
+  },
+  {
+   "id": "eec9abe0c4",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "title": "Engineer Overhead Lines to Withstand Ice, Wind and FreezingRain",
+   "url": "https://content.knowledgehub.wiley.com/engineering-overhead-electric-lines-for-ice-wind-and-freezing-rain/",
+   "desc": "This White Paper explains how ice, wind and vegetation load overhead distribution lines at the same time. It shows engineers how to assess the complete line and compare resilience options. What you will learn about: How freezing rain, rime ice and wet snow add weight to conduc…",
+   "date": "2026-11-13T11:00+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "2cac702711",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "EDF has made ‘substantial progress’ on cybersecurity, says nuclear regulator",
+   "url": "https://www.newcivilengineer.com/latest/edf-has-made-substantial-progress-on-cybersecurity-says-nuclear-regulator-13-11-2026/",
+   "desc": "The Office for Nuclear Regulation (ONR) has found that EDF has made “substantial progress” on improving its cyber security, enabling the ONR to reduce its regulatory attention level from ‘significantly enhanced’ to ‘enhanced’.",
+   "date": "2026-11-13T15:11+00:00",
+   "th": [
+    "9 Health and safety"
    ]
   },
   {
@@ -215,6 +296,104 @@
    ]
   },
   {
+   "id": "4c994ee7e9",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "How Hyundai is updating its Rally2 car",
+   "url": "https://www.racecar-engineering.com/articles/off-road/how-hyundai-is-updating-its-rally2-car/",
+   "desc": "Hyundai's technical director explains how it plans to get the i20 Rally2 back in the mix...",
+   "date": "2026-11-04T17:16+00:00",
+   "th": [
+    "Motorsport"
+   ]
+  },
+  {
+   "id": "fa96191159",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "McLaren to upgrade MCL40 car at its bogey F1 track Las Vegas",
+   "url": "https://www.motorsport.com/f1/news/mclaren-to-upgrade-mcl40-car-at-its-bogey-f1-track-las-vegas/10874307/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "McLaren will introduce upgrades to its MCL40 at Formula 1’s Las Vegas Grand Prix, with the new parts labelled as “the foundation for next year’s car”. The team launched its 2027 front wing concept in Brazil, with team principal Andrea Stella describing it as an improvement for…",
+   "date": "2026-11-14T09:09+00:00",
+   "th": [
+    "Motorsport",
+    "2 Existing products"
+   ]
+  },
+  {
+   "id": "6cf4fcec34",
+   "src": "Tech Xplore (vehicles)",
+   "level": "research",
+   "title": "Predicting human error before it leads to maritime emergencies",
+   "url": "https://techxplore.com/news/2026-11-human-error-maritime-emergencies.html",
+   "desc": "Despite advances in navigation technology, human error still accounts for most maritime accidents globally. The European Maritime Safety Agency (EMSA) reports that human factors played a role in over 80% of marine accidents from 2014 to 2022. Although investigations typically …",
+   "date": "2026-11-13T16:20+00:00",
+   "th": [
+    "1 Requirements",
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "21b418c8c3",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "High-resolution bionic eye combines color imaging with more efficient motion detection",
+   "url": "https://techxplore.com/news/2026-11-high-resolution-bionic-eye-combines.html",
+   "desc": "Researchers at The Hong Kong University of Science and Technology (HKUST) have developed a high-resolution bionic eye that integrates full-color imaging, an aberration-corrected field of view exceeding 160 degrees and event-driven motion detection.",
+   "date": "2026-11-13T15:20+00:00",
+   "th": [
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "6c7ce93b33",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "‘Forever chemical’ levels in rivers reduced but England’s waste treatment gaps exposed",
+   "url": "https://www.newcivilengineer.com/latest/forever-chemical-levels-in-rivers-reduced-but-englands-waste-treatment-gaps-exposed-13-11-2026/",
+   "desc": "Levels of two long-lasting chemicals in England’s rivers have fallen by about 30% over the past decade, an Environment Agency assessment has revealed.",
+   "date": "2026-11-13T15:03+00:00",
+   "th": [
+    "3 Wider issues"
+   ]
+  },
+  {
+   "id": "fc79e07f92",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Las Vegas GP reveals neon sign-inspired trophy design",
+   "url": "https://www.motorsport.com/f1/news/las-vegas-gp-reveals-neon-sign-inspired-trophy-design/10874361/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "The Las Vegas Grand Prix has unveiled a new trophy design for next weekend’s Formula 1 round, inspired by the city and its neon lights. The 3.6kg, 56cm-tall winners’ trophy took six months to develop and build and emulates the neon signs synonymous with the Las Vegas strip tha…",
+   "date": "2026-11-13T16:09+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "d5ffb12f91",
+   "src": "Tech Xplore (engineering)",
+   "level": "research",
+   "title": "Autonomous drones detect cracks in concrete bridges",
+   "url": "https://techxplore.com/news/2026-11-autonomous-drones-concrete-bridges.html",
+   "desc": "A research team at Ruhr University Bochum is developing an autonomous flying drone that detects cracks in concrete bridges. The drone is intended to make costly, labor-intensive bridge inspections more efficient, safer and more affordable. It is being developed by David Müller…",
+   "date": "2026-11-13T12:20+00:00",
+   "th": [
+    "5 Materials",
+    "6 Technical"
+   ]
+  },
+  {
+   "id": "965e00f42a",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Frequency of M5 closures questioned in Parliament",
+   "url": "https://www.newcivilengineer.com/latest/frequency-of-m5-closures-questioned-in-parliament-13-11-2026/",
+   "desc": "The frequency of closures on the M5 motorway has been questioned in Parliament as the Department for Transport (DfT) and National Highways has been urged to look at new measures to help traffic flow.",
+   "date": "2026-11-13T13:19+00:00",
+   "th": []
+  },
+  {
    "id": "0e9e4cc592",
    "src": "Tech Xplore (engineering)",
    "level": "research",
@@ -227,39 +406,15 @@
    ]
   },
   {
-   "id": "8850037c50",
-   "src": "ScienceDaily (materials)",
-   "level": "research",
-   "title": "A tiny squeeze dramatically changes the magnetism of exotic materials",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261101010541.htm",
-   "desc": "Scientists have discovered that a simple mechanical squeeze can dramatically alter the magnetic properties and electrical behavior of exotic materials called altermagnets. The surprising breakthrough could open the door to faster, more energy-efficient electronics and new tech…",
-   "date": "2026-11-04T12:37+00:00",
-   "th": [
-    "5 Materials"
-   ]
-  },
-  {
-   "id": "939b58e97e",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Whose voices shape pollution policy? Analysis finds economic concerns receive more attention than climate and health",
-   "url": "https://techxplore.com/news/2026-11-voices-pollution-policy-analysis-economic.html",
-   "desc": "When it comes to regulating pollution from heavy-duty trucks, economic concerns may carry more weight than climate and public health benefits, according to a Northwestern University study.",
-   "date": "2026-11-12T16:00+00:00",
-   "th": [
-    "3 Wider issues"
-   ]
-  },
-  {
-   "id": "4c994ee7e9",
-   "src": "Racecar Engineering",
+   "id": "f9a6fdf919",
+   "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "How Hyundai is updating its Rally2 car",
-   "url": "https://www.racecar-engineering.com/articles/off-road/how-hyundai-is-updating-its-rally2-car/",
-   "desc": "Hyundai's technical director explains how it plans to get the i20 Rally2 back in the mix...",
-   "date": "2026-11-04T17:16+00:00",
+   "title": "Major engineering work planned for £25M North Wales coast upgrade",
+   "url": "https://www.newcivilengineer.com/latest/major-engineering-work-planned-for-25m-north-wales-coast-upgrade-13-11-2026/",
+   "desc": "Transport for Wales (TfW) is preparing for a major rail replacement operation to conduct engineering work on the North Wales Coast line in January and February next year.",
+   "date": "2026-11-13T11:54+00:00",
    "th": [
-    "Motorsport"
+    "2 Existing products"
    ]
   },
   {
@@ -275,65 +430,15 @@
    ]
   },
   {
-   "id": "4ef111deda",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Radio waves pave the way for better wireless EV charging",
-   "url": "https://techxplore.com/news/2026-11-radio-pave-wireless-ev.html",
-   "desc": "Imagine parking your electric vehicle (EV) and charging it without plugging in a cable. Wireless charging makes this possible, but efficient charging requires precise alignment between the vehicle's receiver coil and the charging pad. Researchers at the University of Osaka, wo…",
-   "date": "2026-11-12T14:20+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "556bdc69b2",
-   "src": "Racecar Engineering",
+   "id": "a93faba1d5",
+   "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Toyota reveals two car, two team approach for 2027",
-   "url": "https://www.racecar-engineering.com/articles/off-road/toyota-reveals-two-car-two-team-approach-for-2027/",
-   "desc": "Toyota has revealed the first official images of its new Yaris and Celica WRC cars...",
-   "date": "2026-11-03T20:25+00:00",
-   "th": [
-    "Motorsport"
-   ]
-  },
-  {
-   "id": "91e868c47b",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Electric fields can change how semiconductors dissipate heat",
-   "url": "https://techxplore.com/news/2026-11-electric-fields-semiconductors-dissipate.html",
-   "desc": "As electronic devices become smaller and more powerful, keeping them from overheating is an increasingly difficult engineering challenge. Now, Cornell researchers have developed a computational method, backed by the first experimental measurements of their kind, showing how an…",
-   "date": "2026-11-12T15:00+00:00",
+   "title": "Microsoft outage: Updates as infrastructure sector manages impact on communications",
+   "url": "https://www.newcivilengineer.com/latest/microsoft-outage-updates-as-infrastructure-sector-manages-impact-on-communications-13-11-2026/",
+   "desc": "NCE is providing rolling coverage of the impact of the Outlook emails outage on UK infrastructure.",
+   "date": "2026-11-13T10:16+00:00",
    "th": [
     "6 Technical"
-   ]
-  },
-  {
-   "id": "07aa0555a4",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Researchers map how electrode protrusions guide current paths in resistive memory",
-   "url": "https://techxplore.com/news/2026-11-electrode-protrusions-current-paths-resistive.html",
-   "desc": "Researchers at the Korea Advanced Institute of Science and Technology (KAIST) used three-dimensional imaging to map a nanoscale current pathway inside a capacitor for a resistive random-access memory (RRAM) device. They found that it connected to a tiny protrusion on the botto…",
-   "date": "2026-11-12T14:44+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "af3feaabc9",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Concrete made with industrial waste can cut emissions up to 80%, yet uptake lags",
-   "url": "https://techxplore.com/news/2026-11-concrete-industrial-emissions-uptake-lags.html",
-   "desc": "Concrete is the most widely used human-made material on Earth. Billions of tonnes are produced every year.",
-   "date": "2026-11-12T12:20+00:00",
-   "th": [
-    "3 Wider issues",
-    "5 Materials",
-    "8 Viability"
    ]
   }
  ]
