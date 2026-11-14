@@ -1,5 +1,5 @@
 {
- "made": "2026-11-13T14:44+00:00",
+ "made": "2026-11-14T13:40+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 29
+   "n": 34
   },
   {
    "src": "USGS (significant, past month)",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 11
+   "n": 10
   },
   {
    "src": "GDACS",
@@ -121,6 +121,101 @@
  ],
  "events": [
   {
+   "id": "qus7000ty84",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.5 earthquake",
+   "place": "northern Mid-Atlantic Ridge",
+   "lat": 30.12,
+   "lon": -42.63,
+   "date": "2026-11-14T09:26+00:00",
+   "mag": 5.5,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty84",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "northern mid-atlantic ridge"
+  },
+  {
+   "id": "qus7000ty7d",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "State of Yap, Federated States of Micronesia",
+   "lat": 9.7,
+   "lon": 147.36,
+   "date": "2026-11-14T06:52+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty7d",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "federated states of micronesia"
+  },
+  {
+   "id": "qus7000ty6n",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "off the west coast of northern Sumatra",
+   "lat": 3.3,
+   "lon": 92.83,
+   "date": "2026-11-14T02:59+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty6n",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "off the west coast of northern sumatra"
+  },
+  {
+   "id": "qus7000ty1a",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.8 earthquake",
+   "place": "79 km WSW of Changuillo, Peru",
+   "lat": -14.99,
+   "lon": -75.88,
+   "date": "2026-11-13T16:43+00:00",
+   "mag": 5.8,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty1a",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "peru"
+  },
+  {
+   "id": "qus7000ty14",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "79 km NE of Kuqa, China",
+   "lat": 42.17,
+   "lon": 83.67,
+   "date": "2026-11-13T16:17+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty14",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "china"
+  },
+  {
    "id": "qus7000ty0s",
    "kind": "quake",
    "src": "USGS",
@@ -140,23 +235,20 @@
    "region": "west chile rise"
   },
   {
-   "id": "qus7000txx9",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.1 earthquake",
-   "place": "39 km S of Moíres, Greece",
-   "lat": 34.7,
-   "lon": 24.88,
-   "date": "2026-11-13T00:05+00:00",
-   "mag": 5.1,
-   "depth": 43,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txx9",
+   "id": "gdbe5bdae2a9",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Thailand",
+   "place": "Thailand",
+   "lat": 10.38,
+   "lon": 99.01,
+   "date": "2026-11-13T10:41+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104283",
+   "desc": "On 06/11/2026, a flood started in Thailand, lasting until 11/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "greece"
+    "Topic 5 The water cycle and water insecurity"
+   ]
   },
   {
    "id": "qus7000txwp",
@@ -178,25 +270,6 @@
    "region": "papua new guinea"
   },
   {
-   "id": "qus7000txw9",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.1 earthquake",
-   "place": "western Indian-Antarctic Ridge",
-   "lat": -51.43,
-   "lon": 139.59,
-   "date": "2026-11-12T21:09+00:00",
-   "mag": 5.1,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txw9",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "western indian-antarctic ridge"
-  },
-  {
    "id": "gd7bbb689bc6",
    "kind": "storm",
    "src": "GDACS and NASA EONET",
@@ -208,6 +281,38 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001348",
    "desc": "From 06/11/2026 to 12/11/2026, a Tropical Depression (maximum wind speed of 93 km/h) PENA-26 was active in CentralPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by category 1…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd9953548ac0",
+   "kind": "drought",
+   "src": "GDACS",
+   "title": "Drought in New Zealand",
+   "place": "New Zealand",
+   "lat": -37.47,
+   "lon": 175.18,
+   "date": "2026-11-12T08:29+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=DR&eventid=1027737",
+   "desc": "The Drought notification level is Green.",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd585ab7dae4",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Myanmar",
+   "place": "Myanmar",
+   "lat": 21.51,
+   "lon": 98.01,
+   "date": "2026-11-12T07:27+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104280",
+   "desc": "On 10/11/2026, a flood started in Myanmar, lasting until 12/11/2026 (last update). The flood caused 0 deaths and 50 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -282,25 +387,6 @@
    "region": "papua new guinea"
   },
   {
-   "id": "qus7000txc3",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "Mid-Indian Ridge",
-   "lat": -20.75,
-   "lon": 68.48,
-   "date": "2026-11-10T17:36+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txc3",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "mid-indian ridge"
-  },
-  {
    "id": "qus7000txb8",
    "kind": "quake",
    "src": "USGS",
@@ -320,23 +406,20 @@
    "region": "guatemala"
   },
   {
-   "id": "qus7000tx8s",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "19 km WSW of Lata, Solomon Islands",
-   "lat": -10.78,
-   "lon": 165.62,
-   "date": "2026-11-10T03:37+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx8s",
+   "id": "gd91570c15b4",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Argentina",
+   "place": "Argentina",
+   "lat": -31.71,
+   "lon": -60.57,
+   "date": "2026-11-10T12:57+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104277",
+   "desc": "On 08/11/2026, a flood started in Argentina, lasting until 10/11/2026 (last update). The flood caused 0 deaths and 18 displaced .",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "solomon islands"
+    "Topic 5 The water cycle and water insecurity"
+   ]
   },
   {
    "id": "qus7000tx8d",
@@ -393,22 +476,6 @@
    "region": "peru"
   },
   {
-   "id": "gdbbb99f0493",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Venezuela",
-   "place": "Venezuela",
-   "lat": 10.18,
-   "lon": -67.92,
-   "date": "2026-11-09T09:58+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104275",
-   "desc": "On 07/11/2026, a flood started in Venezuela, lasting until 09/11/2026 (last update). The flood caused 3 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus7000tx32",
    "kind": "quake",
    "src": "USGS",
@@ -428,61 +495,13 @@
    "region": "indonesia"
   },
   {
-   "id": "gd5b94c13c6c",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Israel",
-   "place": "Israel",
-   "lat": 32.33,
-   "lon": 34.86,
-   "date": "2026-11-09T07:37+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104273",
-   "desc": "On 07/11/2026, a flood started in Israel, lasting until 09/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd625c23d871",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Syria",
-   "place": "Syria",
-   "lat": 34.45,
-   "lon": 40.92,
-   "date": "2026-11-09T07:37+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104274",
-   "desc": "On 07/11/2026, a flood started in Syria, lasting until 09/11/2026 (last update). The flood caused 1 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd42a9062211",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Iraq",
-   "place": "Iraq",
-   "lat": 36.19,
-   "lon": 44.01,
-   "date": "2026-11-09T07:36+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104272",
-   "desc": "On 07/11/2026, a flood started in Iraq, lasting until 09/11/2026 (last update). The flood caused 2 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "gdbc4c879ccb",
    "kind": "flood",
    "src": "GDACS",
    "title": "Flooding in Vietnam",
    "place": "Vietnam",
-   "lat": 12.9,
-   "lon": 108.29,
+   "lat": 21.01,
+   "lon": 105.85,
    "date": "2026-11-09T07:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104271",
@@ -530,21 +549,6 @@
    "region": "solomon islands"
   },
   {
-   "id": "eo899113fe62",
-   "kind": "storm",
-   "src": "NASA EONET · JTWC",
-   "title": "Tropical Cyclone 03S",
-   "place": "",
-   "lat": -11.3,
-   "lon": 50.5,
-   "date": "2026-11-08T18:00+00:00",
-   "first": "2026-11-07T18:00+00:00",
-   "url": "https://www.metoc.navy.mil/jtwc/products/sh0327.tcw",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus7000twun",
    "kind": "quake",
    "src": "USGS",
@@ -583,32 +587,13 @@
    "region": "japan"
   },
   {
-   "id": "qus7000twrq",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "74 km NE of Hasaki, Japan",
-   "lat": 36.19,
-   "lon": 141.44,
-   "date": "2026-11-07T11:07+00:00",
-   "mag": 5.5,
-   "depth": 32,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000twrq",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
-  },
-  {
    "id": "gde0ff57b079",
    "kind": "flood",
    "src": "GDACS",
    "title": "Flooding in France",
    "place": "France",
-   "lat": 49.56,
-   "lon": -1.84,
+   "lat": 43.54,
+   "lon": 6.94,
    "date": "2026-11-06T11:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104270",
@@ -717,8 +702,8 @@
    "src": "GDACS",
    "title": "Flooding in Indonesia",
    "place": "Indonesia",
-   "lat": -0.58,
-   "lon": 100.61,
+   "lat": 4.37,
+   "lon": 97.03,
    "date": "2026-10-29T09:29+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253",
@@ -973,38 +958,50 @@
  ],
  "stories": [
   {
-   "id": "78906444b3",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Climate action discussed at youth COP meeting",
-   "url": "https://www.bbc.co.uk/news/articles/ckx28ly7y387o?at_medium=RSS&at_campaign=rss",
-   "desc": "School children gather to discuss climate issues to coincide with the COP31 conference in Turkey.",
-   "date": "2026-11-13T14:39+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "01e16ef627",
+   "id": "893f210d41",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31 live: ‘You cannot build peace on a burning planet’ - Guterres gives final climate summit speech",
-   "url": "https://www.theguardian.com/environment/live/2026/nov/13/cop31-climate-crisis-talks-turkey-latest-news-updates",
-   "desc": "Debate over climate science, transition away from fossil fuels, electrification and climate finance can begin in earnest as world leaders leave UN summit Far away from the conference centre, Norway’s supreme court has declared the state’s decision to award three permits for oi…",
-   "date": "2026-11-13T14:24+00:00",
+   "title": "Choking fires, deadly heat and devastating floods: 2026 in extreme weather",
+   "url": "https://www.theguardian.com/world/2026/nov/14/fires-heat-floods-extreme-weather-2026",
+   "desc": "People around the world have contended with unprecedented weather events and their fatal effects caused by the climate catastrophe After the world’s hottest summer since records began in 1850, the death toll from extreme weather in 2026 is already in the high tens of thousands…",
+   "date": "2026-11-14T13:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "fa67c59204",
+   "id": "468a02d594",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Legal barriers are restricting satellite monitoring of the world’s oceans, study finds",
+   "url": "https://geographical.co.uk/news/legal-barriers-are-restricting-satellite-monitoring-of-the-worlds-oceans-study-finds",
+   "desc": "Study analysed rules of almost 10,000 marine protected areas (MPAs) worldwide, finding widespread uncertainty about how satellite monitoring fits into existing laws A new study found that regulations governing marine protected areas (MPAs) may be preventing authorities from us…",
+   "date": "2026-11-14T09:00+00:00",
+   "th": []
+  },
+  {
+   "id": "11a0f2d71b",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Bluetongue virus confirmed on County Down farm",
+   "url": "https://www.bbc.co.uk/news/articles/cmr4gxvrxd9yo?at_medium=RSS&at_campaign=rss",
+   "desc": "Officials from the Department of Agriculture, Environment and Rural Affairs said the virus had been detected in three sheep.",
+   "date": "2026-11-14T06:56+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "a5115447a5",
    "src": "The Conversation",
    "level": "research",
-   "title": "Could you survive without Microsoft? Inside the costs of digital dependence",
-   "url": "https://theconversation.com/could-you-survive-without-microsoft-inside-the-costs-of-digital-dependence-296614",
-   "desc": "Digital choices have huge environmental costs but these are rarely counted up.",
-   "date": "2026-11-13T12:09+00:00",
-   "th": []
+   "title": "In a world of anti-environment backlash, Andy Burnham walks a line between popular and green",
+   "url": "https://theconversation.com/in-a-world-of-anti-environment-backlash-andy-burnham-walks-a-line-between-popular-and-green-296538",
+   "desc": "Andy Burnham’s consumer focus might cut fossil fuel use in the long-term, if policies force prices of climate friendly options down.",
+   "date": "2026-11-13T15:07+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
   },
   {
    "id": "e131aa50aa",
@@ -1016,18 +1013,6 @@
    "date": "2026-11-13T12:00+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "b02be2d7d2",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: True or False – UK Cities",
-   "url": "https://geographical.co.uk/quizzes/quiz-true-or-false-uk-cities",
-   "desc": "How well do you know the UK’s cities? From population and geography to history and famous landmarks, separate fact from fiction in this true-or-false challenge.",
-   "date": "2026-11-13T08:00+00:00",
-   "th": [
-    "Topic 4A Regenerating places"
    ]
   },
   {
@@ -1067,40 +1052,52 @@
    ]
   },
   {
-   "id": "e0c0413f02",
+   "id": "f40368461e",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Greenpeace boulders may delay building of £12bn windfarms in North Sea",
+   "url": "https://www.theguardian.com/environment/2026/nov/14/greenpeace-boulders-norfolk-vanguard-windfarms",
+   "desc": "Activists dumped rocks off Norfolk coast on site of Burnham-backed project in protest against seabed trawling The giant offshore windfarms backed by Andy Burnham this week may face unexpected stumbling blocks after Greenpeace activists unwittingly dumped about 15 tonnes of bou…",
+   "date": "2026-11-14T11:00+00:00",
+   "th": [
+    "Topic 2B Coastal landscapes and change",
+    "Topic 3 Globalisation"
+   ]
+  },
+  {
+   "id": "153b005a37",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "‘Significant deposits of oil’ found on 18 Kent beaches",
+   "url": "https://geographical.co.uk/news/significant-deposits-of-oil-found-on-18-kent-beaches",
+   "desc": "Oil pollution incident first came to light on Wednesday, with beaches currently closed temporarily to the public Eighteen beaches across Kent’s coastline have been shut temporarily after ‘significant oil deposits’ were discovered on Wednesday. Thanet Council’s Coastal Engineer…",
+   "date": "2026-11-13T09:00+00:00",
+   "th": [
+    "Topic 2B Coastal landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "b93bc81d81",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Summer heatwave put bin crews lives at risk, says council worker",
-   "url": "https://www.bbc.co.uk/news/articles/cj1dv5q21wdxo?at_medium=RSS&at_campaign=rss",
-   "desc": "Crews faced a \"perfect storm\" of challenges during the UK's record-breaking weather, it's claimed.",
-   "date": "2026-11-13T12:03+00:00",
+   "title": "What could El Niño mean for winter weather in the US and Canada?",
+   "url": "https://www.bbc.co.uk/weather/articles/c6pvg22k2w2do?at_medium=RSS&at_campaign=rss",
+   "desc": "El Niño winters typically bring more rain in the southern USA and drier, warmer conditions further north but the impacts on snowfall are complex.",
+   "date": "2026-11-13T18:50+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "5a4acef3f5",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "‘Incredibly unusual’ bird migrating from Siberia found in Cumbria – killed by cat",
-   "url": "https://www.theguardian.com/uk-news/2026/nov/13/siberian-rubythroat-bird-migrating-siberia-cumbria-killed-by-cat",
-   "desc": "Siberian rubythroat was thousands of miles off course from its route to winter in south or south-east Asia A bird that flies south from its breeding grounds in Siberia to winter in south and south-east Asia has been found thousands of miles off course in Cumbria. Regrettably, …",
-   "date": "2026-11-13T14:00+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
-   ]
-  },
-  {
-   "id": "e67209abaf",
+   "id": "fa67c59204",
    "src": "The Conversation",
    "level": "research",
-   "title": "Young turtles find refuge in both natural and artificial wetlands in UAE – new study",
-   "url": "https://theconversation.com/young-turtles-find-refuge-in-both-natural-and-artificial-wetlands-in-uae-new-study-295707",
-   "desc": "A large basin was never used for its intended recreational purposes and has since been incorporated into a marine protected area alongside coastal mangroves.",
-   "date": "2026-11-13T10:16+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change"
-   ]
+   "title": "Could you survive without Microsoft? Inside the costs of digital dependence",
+   "url": "https://theconversation.com/could-you-survive-without-microsoft-inside-the-costs-of-digital-dependence-296614",
+   "desc": "Digital choices have huge environmental costs but these are rarely counted up.",
+   "date": "2026-11-13T12:09+00:00",
+   "th": []
   },
   {
    "id": "8e5d3db342",
@@ -1112,19 +1109,6 @@
    "date": "2026-11-13T06:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "eee89207ce",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Out now: December 2026’s Geographical Magazine",
-   "url": "https://geographical.co.uk/news/out-now-december-2026s-geographical-magazine",
-   "desc": "In our latest issue, journey to Antarctica, the Amazon, the American West and more&#8230; This month’s cover story by Joanne Eede explores how a free technology platform’s success over the last decade has transformed conservation and protected wildlife in 90 countries across s…",
-   "date": "2026-11-12T09:00+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1164,40 +1148,51 @@
    ]
   },
   {
-   "id": "9963bc729c",
-   "src": "BBC Science & Environment",
+   "id": "1664f6d379",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "How many sewage spills have happened in your part of Scotland?",
-   "url": "https://www.bbc.co.uk/news/articles/c0re545l8jdo?at_medium=RSS&at_campaign=rss",
-   "desc": "More than 76,000 sewage spills were recorded at overflow sites previously unmonitored by Scottish Water, BBC Scotland News analysis has found.",
-   "date": "2026-11-13T06:31+00:00",
+   "title": "Rip out ugly clutter to help revive UK high streets, says thinktank",
+   "url": "https://www.theguardian.com/society/2026/nov/13/rip-out-clutter-to-retail-revive-high-streets-thinktank",
+   "desc": "Exclusive: Report says restricting cars and freeing up pavement space could be a cheap way to bring shoppers back The long decline of the high street is a problem that has gripped British governments for years. But what if there was a solution no one had considered before – do…",
+   "date": "2026-11-13T21:34+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 4A Regenerating places"
    ]
   },
   {
-   "id": "093a20b22b",
-   "src": "Guardian Environment",
+   "id": "b02be2d7d2",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: True or False – UK Cities",
+   "url": "https://geographical.co.uk/quizzes/quiz-true-or-false-uk-cities",
+   "desc": "How well do you know the UK’s cities? From population and geography to history and famous landmarks, separate fact from fiction in this true-or-false challenge.",
+   "date": "2026-11-13T08:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "78906444b3",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "UK’s biggest insurer hit by rise in subsidence claims after record hot summer",
-   "url": "https://www.theguardian.com/business/2026/nov/13/uk-insurer-rise-in-subsidence-claims-aviva-hastings-direct-axa",
-   "desc": "Increase reported by Aviva after Hastings Direct said claims were up 140% in August and Axa said it had been a ‘surge year’ The UK’s largest insurer has been hit by a rise in subsidence claims after an extremely hot summer left households across the country grappling with the …",
-   "date": "2026-11-13T13:37+00:00",
+   "title": "Climate action discussed at youth COP meeting",
+   "url": "https://www.bbc.co.uk/news/articles/ckx28ly7y387o?at_medium=RSS&at_campaign=rss",
+   "desc": "School children gather to discuss climate issues to coincide with the COP31 conference in Turkey.",
+   "date": "2026-11-13T14:39+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "27e10ad476",
+   "id": "e67209abaf",
    "src": "The Conversation",
    "level": "research",
-   "title": "The SS United States has been deliberately sunk – this is how marine life will colonise the world’s largest artificial reef",
-   "url": "https://theconversation.com/the-ss-united-states-has-been-deliberately-sunk-this-is-how-marine-life-will-colonise-the-worlds-largest-artificial-reef-294758",
-   "desc": "A month by month guide, by a marine ecologist and keen scuba diver.",
-   "date": "2026-11-12T17:42+00:00",
+   "title": "Young turtles find refuge in both natural and artificial wetlands in UAE – new study",
+   "url": "https://theconversation.com/young-turtles-find-refuge-in-both-natural-and-artificial-wetlands-in-uae-new-study-295707",
+   "desc": "A large basin was never used for its intended recreational purposes and has since been incorporated into a marine protected area alongside coastal mangroves.",
+   "date": "2026-11-13T10:16+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 7 Superpowers"
+    "Topic 2B Coastal landscapes and change"
    ]
   },
   {
@@ -1210,18 +1205,6 @@
    "date": "2026-11-12T13:00+00:00",
    "th": [
     "Topic 4A Regenerating places"
-   ]
-  },
-  {
-   "id": "cdd93e6125",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "The lagoon that fit the bill",
-   "url": "https://geographical.co.uk/science-environment/the-lagoon-that-fit-the-bill",
-   "desc": "A quarter of Spain’s groundwater bodies are being pumped faster than they can recover. Doñana, the country’s best-known wetland, shows who pays the price Spain does not have one water crisis but many, and most of them lie underground. Under the EU Water Framework Directive, Sp…",
-   "date": "2026-11-12T09:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1261,39 +1244,53 @@
    ]
   },
   {
-   "id": "548258716d",
+   "id": "7128e6af0f",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Send us your questions about climate crisis and politics for the next Stateside guest: Bill McKibben",
+   "url": "https://www.theguardian.com/us-news/2026/nov/13/climate-environment-questions-bill-mckibben",
+   "desc": "Kai Wright of the Guardian podcast Stateside will speak with author and environmentalist Bill McKibben – and we’d like to hear your questions Was the climate crisis one of your top political priorities during the midterm elections? We want to hear from you: what do you want po…",
+   "date": "2026-11-13T20:23+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "0eeeb36b7b",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "How conflict and El Niño are reshaping global food and oil markets",
+   "url": "https://geographical.co.uk/news/how-conflict-and-el-nino-are-reshaping-global-food-and-oil-markets",
+   "desc": "World Bank report reveals how oil prices and food supplies are shifting in a changing world A World Bank report shows how markets worldwide, from energy to food, are being hit by the early effects of El Niño and conflicts. In an adverse scenario, the report finds that oil pric…",
+   "date": "2026-11-13T08:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "e0c0413f02",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Flood victim, 95, lived in Wetherspoons until she died after her home was destroyed",
-   "url": "https://www.bbc.co.uk/news/articles/cqe8r8ngjepjo?at_medium=RSS&at_campaign=rss",
-   "desc": "Jean Powell kept asking when she could go back to her flat, which was flooded when the River Monnow burst its banks.",
-   "date": "2026-11-13T06:05+00:00",
+   "title": "Summer heatwave put bin crews lives at risk, says council worker",
+   "url": "https://www.bbc.co.uk/news/articles/cj1dv5q21wdxo?at_medium=RSS&at_campaign=rss",
+   "desc": "Crews faced a \"perfect storm\" of challenges during the UK's record-breaking weather, it's claimed.",
+   "date": "2026-11-13T12:03+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "0509ac5792",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "More than 100 companies and groups linked to fossil fuels represented at Cop31, study says",
-   "url": "https://www.theguardian.com/environment/2026/nov/13/cop31-companies-and-groups-linked-to-fossil-fuels-delegations",
-   "desc": "Delegations outnumber those of some countries most vulnerable to climate impacts, such as Nepal, which suffered glacier collapse Cop31 live – latest updates More than 100 corporations and industry groups linked to fossil fuel interests have sent delegations to the UN climate t…",
-   "date": "2026-11-13T12:13+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "5a523c1e71",
+   "id": "27e10ad476",
    "src": "The Conversation",
    "level": "research",
-   "title": "UK appoints new climate security envoy – here’s what she could change",
-   "url": "https://theconversation.com/uk-appoints-new-climate-security-envoy-heres-what-she-could-change-296525",
-   "desc": "The state of national food security will need to be a key focus.",
-   "date": "2026-11-12T15:15+00:00",
+   "title": "The SS United States has been deliberately sunk – this is how marine life will colonise the world’s largest artificial reef",
+   "url": "https://theconversation.com/the-ss-united-states-has-been-deliberately-sunk-this-is-how-marine-life-will-colonise-the-worlds-largest-artificial-reef-294758",
+   "desc": "A month by month guide, by a marine ecologist and keen scuba diver.",
+   "date": "2026-11-12T17:42+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 2B Coastal landscapes and change",
+    "Topic 7 Superpowers"
    ]
   },
   {
@@ -1310,18 +1307,6 @@
    ]
   },
   {
-   "id": "7eeaf5e65e",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "AI data centre developers turn to gas-fired power plants",
-   "url": "https://geographical.co.uk/news/ai-data-centre-developers-turn-to-gas-fired-power-plants",
-   "desc": "New report finds that some developers are constructing on-site gas-fired power as they await grid connections for AI data centres A new report by BloombergNEF (BNEF) found that some AI data centre developers, predominantly in the US, are building on-site gas-fired power as the…",
-   "date": "2026-11-12T09:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "270106a671",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1334,15 +1319,14 @@
    ]
   },
   {
-   "id": "94631243d0",
-   "src": "Guardian Environment",
+   "id": "9963bc729c",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "A super El Niño brings life and death to the California coast: ‘like nothing we’ve ever seen’",
-   "url": "https://www.theguardian.com/environment/2026/nov/13/super-el-nino-california-monterey-bay",
-   "desc": "Water temperatures are climbing the charts, high tides are swallowing the shoreline and vital parts of the food web that feed ocean diversity are disappearing On a picturesque autumn afternoon last week, the beaches of California’s Monterey Bay were teeming with life and death…",
-   "date": "2026-11-13T12:00+00:00",
+   "title": "How many sewage spills have happened in your part of Scotland?",
+   "url": "https://www.bbc.co.uk/news/articles/c0re545l8jdo?at_medium=RSS&at_campaign=rss",
+   "desc": "More than 76,000 sewage spills were recorded at overflow sites previously unmonitored by Scottish Water, BBC Scotland News analysis has found.",
+   "date": "2026-11-13T06:31+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
     "Topic 5 The water cycle and water insecurity"
    ]
   },
