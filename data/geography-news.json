@@ -1,5 +1,5 @@
 {
- "made": "2026-11-14T13:40+00:00",
+ "made": "2026-11-15T14:08+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 34
+   "n": 33
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 7
+   "n": 6
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 10
+   "n": 9
   },
   {
    "src": "GDACS",
@@ -120,6 +120,44 @@
   }
  ],
  "events": [
+  {
+   "id": "qus7000tyek",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.5 earthquake",
+   "place": "9 km E of Union, Philippines",
+   "lat": 9.76,
+   "lon": 126.2,
+   "date": "2026-11-15T13:41+00:00",
+   "mag": 5.5,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyek",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "philippines"
+  },
+  {
+   "id": "qus7000tyca",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.5 earthquake",
+   "place": "Fiji region",
+   "lat": -19.56,
+   "lon": -177.82,
+   "date": "2026-11-15T05:15+00:00",
+   "mag": 5.5,
+   "depth": 470,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyca",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "fiji"
+  },
   {
    "id": "qus7000ty84",
    "kind": "quake",
@@ -245,9 +283,57 @@
    "date": "2026-11-13T10:41+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104283",
-   "desc": "On 06/11/2026, a flood started in Thailand, lasting until 11/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "desc": "On 06/11/2026, a flood started in Thailand, lasting until 13/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "eo4fb1a3286c",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg D35",
+   "place": "",
+   "lat": -59.8,
+   "lon": -43.29,
+   "date": "2026-11-13T00:00+00:00",
+   "first": "2024-01-11T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo136ec6fe5e",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg A81",
+   "place": "",
+   "lat": -55.48,
+   "lon": -34.36,
+   "date": "2026-11-13T00:00+00:00",
+   "first": "2023-01-27T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo07c9920b7b",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg D33B",
+   "place": "",
+   "lat": -55.19,
+   "lon": -39.34,
+   "date": "2026-11-13T00:00+00:00",
+   "first": "2023-09-08T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -387,6 +473,25 @@
    "region": "papua new guinea"
   },
   {
+   "id": "qus7000txc3",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "Mid-Indian Ridge",
+   "lat": -20.75,
+   "lon": 68.48,
+   "date": "2026-11-10T17:36+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txc3",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "mid-indian ridge"
+  },
+  {
    "id": "qus7000txb8",
    "kind": "quake",
    "src": "USGS",
@@ -404,22 +509,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "guatemala"
-  },
-  {
-   "id": "gd91570c15b4",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Argentina",
-   "place": "Argentina",
-   "lat": -31.71,
-   "lon": -60.57,
-   "date": "2026-11-10T12:57+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104277",
-   "desc": "On 08/11/2026, a flood started in Argentina, lasting until 10/11/2026 (last update). The flood caused 0 deaths and 18 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "qus7000tx8d",
@@ -505,7 +594,7 @@
    "date": "2026-11-09T07:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104271",
-   "desc": "On 06/11/2026, a flood started in Vietnam, lasting until 10/11/2026 (last update). The flood caused 0 deaths and 147 displaced .",
+   "desc": "On 06/11/2026, a flood started in Vietnam, lasting until 13/11/2026 (last update). The flood caused 0 deaths and 3106 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -549,44 +638,6 @@
    "region": "solomon islands"
   },
   {
-   "id": "qus7000twun",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.8 earthquake",
-   "place": "central Mid-Atlantic Ridge",
-   "lat": 7.46,
-   "lon": -36.82,
-   "date": "2026-11-07T23:17+00:00",
-   "mag": 5.8,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000twun",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "central mid-atlantic ridge"
-  },
-  {
-   "id": "qus7000twt0",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "8 km E of Shinshiro, Japan",
-   "lat": 34.9,
-   "lon": 137.6,
-   "date": "2026-11-07T16:04+00:00",
-   "mag": 5.5,
-   "depth": 37,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000twt0",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
-  },
-  {
    "id": "gde0ff57b079",
    "kind": "flood",
    "src": "GDACS",
@@ -597,57 +648,9 @@
    "date": "2026-11-06T11:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104270",
-   "desc": "On 04/11/2026, a flood started in France, lasting until 09/11/2026 (last update). The flood caused 2 deaths and 120 displaced .",
+   "desc": "On 04/11/2026, a flood started in France, lasting until 14/11/2026 (last update). The flood caused 2 deaths and 170 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "eoda2b104ae7",
-   "kind": "ice",
-   "src": "NASA EONET · BYU_ICE",
-   "title": "Iceberg B22A",
-   "place": "",
-   "lat": -69.59,
-   "lon": 163.59,
-   "date": "2026-11-06T00:00+00:00",
-   "first": "2011-08-30T00:00+00:00",
-   "url": "http://www.scp.byu.edu/data/iceberg/ascat/b22a.ascat",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo4fb1a3286c",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D35",
-   "place": "",
-   "lat": -60.15,
-   "lon": -44.72,
-   "date": "2026-11-06T00:00+00:00",
-   "first": "2024-01-11T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo136ec6fe5e",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg A81",
-   "place": "",
-   "lat": -55.81,
-   "lon": -35.52,
-   "date": "2026-11-06T00:00+00:00",
-   "first": "2023-01-27T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -676,7 +679,7 @@
    "date": "2026-11-05T10:23+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104269",
-   "desc": "On 01/11/2026, a flood started in Democratic Republic of Congo, lasting until 03/11/2026 (last update). The flood caused 2 deaths and 0 displaced .",
+   "desc": "On 01/11/2026, a flood started in Democratic Republic of Congo, lasting until 11/11/2026 (last update). The flood caused 4 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -697,6 +700,22 @@
    ]
   },
   {
+   "id": "gd0bac56b40a",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Peru",
+   "place": "Peru",
+   "lat": -3.93,
+   "lon": -80.64,
+   "date": "2026-10-29T09:44+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104259",
+   "desc": "On 26/10/2026, a flood started in Peru, lasting until 11/11/2026 (last update). The flood caused 0 deaths and 324 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
    "id": "gda9be63abc6",
    "kind": "flood",
    "src": "GDACS",
@@ -707,7 +726,7 @@
    "date": "2026-10-29T09:29+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253",
-   "desc": "On 24/10/2026, a flood started in Indonesia, lasting until 04/11/2026 (last update). The flood caused 2 deaths and 5041 displaced .",
+   "desc": "On 24/10/2026, a flood started in Indonesia, lasting until 14/11/2026 (last update). The flood caused 2 deaths and 5596 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -780,21 +799,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "japan"
-  },
-  {
-   "id": "eo7a3f2952ff",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire Range 47B, Forrest, Mississippi",
-   "place": "",
-   "lat": 31.1,
-   "lon": -89.16,
-   "date": "2026-10-24T17:10+00:00",
-   "first": "2026-10-24T17:10+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-MSMNF-000672",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
   },
   {
    "id": "qus6000u4j2",
@@ -873,25 +877,6 @@
    "region": "pakistan"
   },
   {
-   "id": "qus6000u2mq",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.9 earthquake",
-   "place": "72 km NE of Ozernovskiy, Russia",
-   "lat": 52.02,
-   "lon": 157.13,
-   "date": "2026-10-16T03:35+00:00",
-   "mag": 6.9,
-   "depth": 135,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u2mq",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "russia"
-  },
-  {
    "id": "gd1e7d8ccfd0",
    "kind": "drought",
    "src": "GDACS",
@@ -958,26 +943,26 @@
  ],
  "stories": [
   {
-   "id": "893f210d41",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Choking fires, deadly heat and devastating floods: 2026 in extreme weather",
-   "url": "https://www.theguardian.com/world/2026/nov/14/fires-heat-floods-extreme-weather-2026",
-   "desc": "People around the world have contended with unprecedented weather events and their fatal effects caused by the climate catastrophe After the world’s hottest summer since records began in 1850, the death toll from extreme weather in 2026 is already in the high tens of thousands…",
-   "date": "2026-11-14T13:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "468a02d594",
+   "id": "ecaa93b3ee",
    "src": "Geographical",
    "level": "magazine",
-   "title": "Legal barriers are restricting satellite monitoring of the world’s oceans, study finds",
-   "url": "https://geographical.co.uk/news/legal-barriers-are-restricting-satellite-monitoring-of-the-worlds-oceans-study-finds",
-   "desc": "Study analysed rules of almost 10,000 marine protected areas (MPAs) worldwide, finding widespread uncertainty about how satellite monitoring fits into existing laws A new study found that regulations governing marine protected areas (MPAs) may be preventing authorities from us…",
-   "date": "2026-11-14T09:00+00:00",
+   "title": "QUIZ: Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-geography-trivia-54",
+   "desc": "",
+   "date": "2026-11-15T10:00+00:00",
    "th": []
+  },
+  {
+   "id": "ccc8bc82f7",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "LGBTQ+ protesters defy crackdown in Turkey to march with Cop31 activists",
+   "url": "https://www.theguardian.com/world/2026/nov/14/lgbtq-protesters-defy-crackdown-in-turkey-to-march-with-cop31-activists",
+   "desc": "Civil society campaigners form protective cordon around LGBTQ+ campaigners as they unfurl flags and placards Queer and gay protesters defied a crackdown on LGBTQ+ rights in Turkey to lead a civil society climate march on Saturday in the city hosting this year’s UN climate summ…",
+   "date": "2026-11-14T17:08+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
   },
   {
    "id": "11a0f2d71b",
@@ -1052,29 +1037,26 @@
    ]
   },
   {
-   "id": "f40368461e",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Greenpeace boulders may delay building of £12bn windfarms in North Sea",
-   "url": "https://www.theguardian.com/environment/2026/nov/14/greenpeace-boulders-norfolk-vanguard-windfarms",
-   "desc": "Activists dumped rocks off Norfolk coast on site of Burnham-backed project in protest against seabed trawling The giant offshore windfarms backed by Andy Burnham this week may face unexpected stumbling blocks after Greenpeace activists unwittingly dumped about 15 tonnes of bou…",
-   "date": "2026-11-14T11:00+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "153b005a37",
+   "id": "468a02d594",
    "src": "Geographical",
    "level": "magazine",
-   "title": "‘Significant deposits of oil’ found on 18 Kent beaches",
-   "url": "https://geographical.co.uk/news/significant-deposits-of-oil-found-on-18-kent-beaches",
-   "desc": "Oil pollution incident first came to light on Wednesday, with beaches currently closed temporarily to the public Eighteen beaches across Kent’s coastline have been shut temporarily after ‘significant oil deposits’ were discovered on Wednesday. Thanet Council’s Coastal Engineer…",
-   "date": "2026-11-13T09:00+00:00",
+   "title": "Legal barriers are restricting satellite monitoring of the world’s oceans, study finds",
+   "url": "https://geographical.co.uk/news/legal-barriers-are-restricting-satellite-monitoring-of-the-worlds-oceans-study-finds",
+   "desc": "Study analysed rules of almost 10,000 marine protected areas (MPAs) worldwide, finding widespread uncertainty about how satellite monitoring fits into existing laws A new study found that regulations governing marine protected areas (MPAs) may be preventing authorities from us…",
+   "date": "2026-11-14T09:00+00:00",
+   "th": []
+  },
+  {
+   "id": "074ed929d0",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Indigenous students retrace Lewis and Clark’s historic journey: ‘We can’t protect what we cannot see’",
+   "url": "https://www.theguardian.com/us-news/2026/nov/14/lewis-clark-indigenous-students",
+   "desc": "Two centuries after the expedition, Indigenous students are conducting a new wildlife survey along the route In 1804, when Thomas Jefferson dispatched Meriwether Lewis and William Clark and their Corps of Discovery to explore the newly acquired land west of the Mississippi, th…",
+   "date": "2026-11-14T14:00+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 3 Globalisation",
+    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1148,27 +1130,28 @@
    ]
   },
   {
-   "id": "1664f6d379",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Rip out ugly clutter to help revive UK high streets, says thinktank",
-   "url": "https://www.theguardian.com/society/2026/nov/13/rip-out-clutter-to-retail-revive-high-streets-thinktank",
-   "desc": "Exclusive: Report says restricting cars and freeing up pavement space could be a cheap way to bring shoppers back The long decline of the high street is a problem that has gripped British governments for years. But what if there was a solution no one had considered before – do…",
-   "date": "2026-11-13T21:34+00:00",
+   "id": "153b005a37",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "‘Significant deposits of oil’ found on 18 Kent beaches",
+   "url": "https://geographical.co.uk/news/significant-deposits-of-oil-found-on-18-kent-beaches",
+   "desc": "Oil pollution incident first came to light on Wednesday, with beaches currently closed temporarily to the public Eighteen beaches across Kent’s coastline have been shut temporarily after ‘significant oil deposits’ were discovered on Wednesday. Thanet Council’s Coastal Engineer…",
+   "date": "2026-11-13T09:00+00:00",
    "th": [
-    "Topic 4A Regenerating places"
+    "Topic 2B Coastal landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "b02be2d7d2",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: True or False – UK Cities",
-   "url": "https://geographical.co.uk/quizzes/quiz-true-or-false-uk-cities",
-   "desc": "How well do you know the UK’s cities? From population and geography to history and famous landmarks, separate fact from fiction in this true-or-false challenge.",
-   "date": "2026-11-13T08:00+00:00",
+   "id": "893f210d41",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Choking fires, deadly heat and devastating floods: 2026 in extreme weather",
+   "url": "https://www.theguardian.com/world/2026/nov/14/fires-heat-floods-extreme-weather-2026",
+   "desc": "People around the world have contended with unprecedented weather events and their fatal effects caused by the climate catastrophe After the world’s hottest summer since records began in 1850, the death toll from extreme weather in 2026 is already in the high tens of thousands…",
+   "date": "2026-11-14T13:00+00:00",
    "th": [
-    "Topic 4A Regenerating places"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1244,28 +1227,28 @@
    ]
   },
   {
-   "id": "7128e6af0f",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Send us your questions about climate crisis and politics for the next Stateside guest: Bill McKibben",
-   "url": "https://www.theguardian.com/us-news/2026/nov/13/climate-environment-questions-bill-mckibben",
-   "desc": "Kai Wright of the Guardian podcast Stateside will speak with author and environmentalist Bill McKibben – and we’d like to hear your questions Was the climate crisis one of your top political priorities during the midterm elections? We want to hear from you: what do you want po…",
-   "date": "2026-11-13T20:23+00:00",
+   "id": "b02be2d7d2",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: True or False – UK Cities",
+   "url": "https://geographical.co.uk/quizzes/quiz-true-or-false-uk-cities",
+   "desc": "How well do you know the UK’s cities? From population and geography to history and famous landmarks, separate fact from fiction in this true-or-false challenge.",
+   "date": "2026-11-13T08:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 4A Regenerating places"
    ]
   },
   {
-   "id": "0eeeb36b7b",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "How conflict and El Niño are reshaping global food and oil markets",
-   "url": "https://geographical.co.uk/news/how-conflict-and-el-nino-are-reshaping-global-food-and-oil-markets",
-   "desc": "World Bank report reveals how oil prices and food supplies are shifting in a changing world A World Bank report shows how markets worldwide, from energy to food, are being hit by the early effects of El Niño and conflicts. In an adverse scenario, the report finds that oil pric…",
-   "date": "2026-11-13T08:00+00:00",
+   "id": "f40368461e",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Greenpeace boulders may delay building of £12bn windfarms in North Sea",
+   "url": "https://www.theguardian.com/environment/2026/nov/14/greenpeace-boulders-norfolk-vanguard-windfarms",
+   "desc": "Activists dumped rocks off Norfolk coast on site of Burnham-backed project in protest against seabed trawling The giant offshore windfarms backed by Andy Burnham this week may face unexpected stumbling blocks after Greenpeace activists unwittingly dumped about 15 tonnes of bou…",
+   "date": "2026-11-14T11:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity",
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 2B Coastal landscapes and change",
+    "Topic 3 Globalisation"
    ]
   },
   {
@@ -1316,6 +1299,18 @@
    "date": "2026-11-10T05:00+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "7128e6af0f",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Send us your questions about climate crisis and politics for the next Stateside guest: Bill McKibben",
+   "url": "https://www.theguardian.com/us-news/2026/nov/13/climate-environment-questions-bill-mckibben",
+   "desc": "Kai Wright of the Guardian podcast Stateside will speak with author and environmentalist Bill McKibben – and we’d like to hear your questions Was the climate crisis one of your top political priorities during the midterm elections? We want to hear from you: what do you want po…",
+   "date": "2026-11-13T20:23+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
