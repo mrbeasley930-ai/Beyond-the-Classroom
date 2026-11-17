@@ -1,5 +1,5 @@
 {
- "made": "2026-11-16T16:31+00:00",
+ "made": "2026-11-17T16:31+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -16,7 +16,7 @@
    "level": "way in",
    "line": "BBC News technology desk: computing stories only",
    "ok": true,
-   "n": 4
+   "n": 7
   },
   {
    "src": "Computerphile",
@@ -58,7 +58,7 @@
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "IEEE Spectrum",
@@ -72,7 +72,7 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "ScienceDaily",
@@ -84,43 +84,56 @@
  ],
  "stories": [
   {
-   "id": "fe45ff6f09",
-   "src": "BBC Technology",
-   "level": "way in",
+   "id": "feb81c3b6c",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
    "kind": "story",
-   "title": "GTA 6 hacker pleads guilty after release from secure hospital",
-   "url": "https://www.bbc.co.uk/news/articles/cq99exy89dngo?at_medium=RSS&at_campaign=rss",
-   "desc": "21-year-old Arion Kurtaj pleaded guilty to the Rockstar Games hack and others he carried out when he was a teenager.",
-   "date": "2026-11-16T13:34+00:00",
+   "title": "These Engineers Are Cleaning Up Connected Cars’ Security Flaws",
+   "url": "https://spectrum.ieee.org/connected-cars-security",
+   "desc": "Today’s connected vehicles collect and transmit far more personal data from drivers and passengers than their predecessors, with costly consequences. The Center for Automotive Management in Germany estimates that cyberattacks have caused more than $20 billion in damage to the …",
+   "date": "2026-11-17T16:00+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.1 Processors and hardware",
+    "1.2 Software and development"
    ]
   },
   {
-   "id": "1d795f884f",
-   "src": "ScienceDaily",
+   "id": "672946f245",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "How new US chip restrictions on South East Asia will hit China",
+   "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
+   "desc": "The new rules restrict chip exports and also access to their computing power, which China relies on heavily.",
+   "date": "2026-11-17T14:25+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "1ac3744caa",
+   "src": "MIT News",
    "level": "research",
    "kind": "story",
-   "title": "AI discovers a hidden heart signal that could predict sudden death",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261112230456.htm",
-   "desc": "Scientists have uncovered a hidden warning sign in routine heart scans that could predict sudden cardiac death before it strikes. The AI-powered discovery outperformed conventional screening methods, potentially revealing thousands of people at risk of a fatal heart malfunctio…",
-   "date": "2026-11-15T01:05+00:00",
+   "title": "Learning the language of machine learning",
+   "url": "https://news.mit.edu/2026/learning-language-of-machine-learning-jacob-andreas-1117",
+   "desc": "By studying the computational foundations of language learning, Associate Professor Jacob Andreas builds intelligent systems that can communicate effectively with humans.",
+   "date": "2026-11-17T05:00+00:00",
    "th": [
     "1.5 AI and automation"
    ]
   },
   {
-   "id": "0224756e33",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
+   "id": "d2727c0a8b",
+   "src": "ScienceDaily",
+   "level": "research",
    "kind": "story",
-   "title": "Europe’s Digital Wallets May Be More Traceable Than Intended",
-   "url": "https://spectrum.ieee.org/europe-digital-id-security-cryptography",
-   "desc": "Millions of European Union citizens should soon have access to digital wallets , as member states roll out their implementations of the European Digital Identity Regulation ahead of an end-of-the-year deadline. But the digital-identity wallets, which are intended to provide a …",
-   "date": "2026-11-14T14:00+00:00",
+   "title": "Quantum computers are getting too powerful to check. Scientists have a solution",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261115085557.htm",
+   "desc": "Scientists have developed a new way to determine whether quantum simulations can be trusted, solving a growing problem as quantum computers become too powerful for conventional machines to check. Demonstrated on a 51-qubit system, the technique measures uncertainty and provide…",
+   "date": "2026-11-17T00:20+00:00",
    "th": [
-    "1.1 Processors and hardware",
-    "1.2 Software and development"
+    "1.1 Processors and hardware"
    ]
   },
   {
@@ -178,6 +191,32 @@
    ]
   },
   {
+   "id": "2f07186837",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
+   "kind": "story",
+   "title": "AI Is Giving Optical Computing Another Shot",
+   "url": "https://spectrum.ieee.org/optical-computing-ai",
+   "desc": "The idea of computing with light has been around for over 70 years, but until recently it’s remained largely in the realm of research. Over the past few years, though, optical computing has emerged as a fast-growing industry: Market valuation of companies in this sector now to…",
+   "date": "2026-11-17T14:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "470fd3e743",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "NHS data contract to stay with Palantir until 2029",
+   "url": "https://www.bbc.co.uk/news/articles/cqvg27zpm8w8o?at_medium=RSS&at_campaign=rss",
+   "desc": "Despite calls from some Labour MPs to end the arrangement with Palantir, ministers say a new contract will not be awarded until 2029.",
+   "date": "2026-11-17T12:00+00:00",
+   "th": [
+    "1.3 Databases and data"
+   ]
+  },
+  {
    "id": "aac00f5f94",
    "src": "MIT News",
    "level": "research",
@@ -191,43 +230,16 @@
    ]
   },
   {
-   "id": "501905f9bb",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Intel sued by investors after PC sales slump hits share price",
-   "url": "https://www.bbc.co.uk/news/articles/cw62p42p288do?at_medium=RSS&at_campaign=rss",
-   "desc": "A proposed class action claims the firm hid the impact of slowing PC sales from shareholders.",
-   "date": "2026-11-16T03:04+00:00",
-   "th": [
-    "1.1 Processors and hardware"
-   ]
-  },
-  {
-   "id": "916f45b01b",
+   "id": "1d795f884f",
    "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "AI supercharges laser physics with a stunning 250x speed boost",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
-   "desc": "Researchers at Stanford, UCLA, and SLAC have developed an AI system that simulates complex laser interactions thousands of times faster than conventional methods. The breakthrough allows scientists to predict how laser pulses behave inside special crystals in just milliseconds…",
-   "date": "2026-11-13T23:41+00:00",
+   "title": "AI discovers a hidden heart signal that could predict sudden death",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261112230456.htm",
+   "desc": "Scientists have uncovered a hidden warning sign in routine heart scans that could predict sudden cardiac death before it strikes. The AI-powered discovery outperformed conventional screening methods, potentially revealing thousands of people at risk of a fatal heart malfunctio…",
+   "date": "2026-11-15T01:05+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "279dd56193",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "kind": "story",
-   "title": "NSF’s X-Labs Program Draws Support From Charities and Investors",
-   "url": "https://spectrum.ieee.org/national-science-foundation-x-labs",
-   "desc": "When the U.S. National Science Foundation began its X-Labs program in May, the agency said the higher-risk, higher-funded awards would create new kinds of partnerships that would confront urgent scientific and technological challenges. Now the NSF is doubling down on the idea,…",
-   "date": "2026-11-11T13:00+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Networks and the web"
    ]
   },
   {
@@ -273,42 +285,43 @@
    ]
   },
   {
-   "id": "faff11435f",
-   "src": "BBC Technology",
-   "level": "way in",
+   "id": "0224756e33",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
    "kind": "story",
-   "title": "Microsoft outage 'stark reminder' of how much we rely on tech",
-   "url": "https://www.bbc.co.uk/news/articles/cxzd9171m51qo?at_medium=RSS&at_campaign=rss",
-   "desc": "Microsoft has apologised for the issue, which it said was due to a technical failure.",
-   "date": "2026-11-13T21:15+00:00",
+   "title": "Europe’s Digital Wallets May Be More Traceable Than Intended",
+   "url": "https://spectrum.ieee.org/europe-digital-id-security-cryptography",
+   "desc": "Millions of European Union citizens should soon have access to digital wallets , as member states roll out their implementations of the European Digital Identity Regulation ahead of an end-of-the-year deadline. But the digital-identity wallets, which are intended to provide a …",
+   "date": "2026-11-14T14:00+00:00",
    "th": [
+    "1.1 Processors and hardware",
     "1.2 Software and development"
    ]
   },
   {
-   "id": "91ae39dd31",
-   "src": "ScienceDaily",
-   "level": "research",
+   "id": "bfcaf275b2",
+   "src": "BBC Technology",
+   "level": "way in",
    "kind": "story",
-   "title": "Tiny flaws in diamonds could unlock a quantum computing revolution",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261111005855.htm",
-   "desc": "Scientists have discovered a faster way to identify diamond-based materials that could power quantum computers and sensors at room temperature. The breakthrough has already revealed promising new quantum building blocks that could help unlock computing capabilities far beyond …",
-   "date": "2026-11-13T05:26+00:00",
+   "title": "US government confirms investigation into tech firm Megaspeed",
+   "url": "https://www.bbc.co.uk/news/articles/cmn504nq5033o?at_medium=RSS&at_campaign=rss",
+   "desc": "The Singapore-based company is suspected of helping to ship high-end AI chips from tech giant Nvidia to China, violating US export rules.",
+   "date": "2026-11-17T11:17+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 Law and ethics"
    ]
   },
   {
-   "id": "4b2c2f063e",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
+   "id": "916f45b01b",
+   "src": "ScienceDaily",
+   "level": "research",
    "kind": "story",
-   "title": "Catch Electronics Shock and Drop Failures Before Hardware Is Built",
-   "url": "https://content.knowledgehub.wiley.com/shifting-reliability-left-guided-virtual-validation-for-electronics-shock-and-drop-testing/",
-   "desc": "Learn how guided virtual shock and drop analysis helps engineering teams identify reliability risks before physical testing, reduce qualification iterations, optimize packaging designs, and accelerate electronics product development. What you will learn about: Why shock failur…",
-   "date": "2026-11-10T11:00+00:00",
+   "title": "AI supercharges laser physics with a stunning 250x speed boost",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261111005913.htm",
+   "desc": "Researchers at Stanford, UCLA, and SLAC have developed an AI system that simulates complex laser interactions thousands of times faster than conventional methods. The breakthrough allows scientists to predict how laser pulses behave inside special crystals in just milliseconds…",
+   "date": "2026-11-13T23:41+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.5 AI and automation"
    ]
   },
   {
@@ -353,56 +366,44 @@
    ]
   },
   {
-   "id": "519ce40bbf",
-   "src": "BBC Technology",
-   "level": "way in",
+   "id": "279dd56193",
+   "src": "IEEE Spectrum",
+   "level": "magazine",
    "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyv?at_medium=RSS&at_campaign=rss",
-   "desc": "We investigate internet-connected device flaws worldwide, plus US election tech fallout.",
-   "date": "2026-11-10T20:30+00:00",
+   "title": "NSF’s X-Labs Program Draws Support From Charities and Investors",
+   "url": "https://spectrum.ieee.org/national-science-foundation-x-labs",
+   "desc": "When the U.S. National Science Foundation began its X-Labs program in May, the agency said the higher-risk, higher-funded awards would create new kinds of partnerships that would confront urgent scientific and technological challenges. Now the NSF is doubling down on the idea,…",
+   "date": "2026-11-11T13:00+00:00",
    "th": [
+    "1.2 Software and development",
     "1.3 Networks and the web"
    ]
   },
   {
-   "id": "b35133fe92",
+   "id": "f6d6d71d4d",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "The AI start-ups fixing India's broken roads and messy land records",
+   "url": "https://www.bbc.co.uk/news/articles/c820vnln2lzpo?at_medium=RSS&at_campaign=rss",
+   "desc": "From legal-tech to healthcare, dozens of Indian AI start-ups are solving uniquely Indian challenges.",
+   "date": "2026-11-16T23:25+00:00",
+   "th": [
+    "1.3 Databases and data",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "91ae39dd31",
    "src": "ScienceDaily",
    "level": "research",
    "kind": "story",
-   "title": "A breakthrough in magnetism could make AI chips use dramatically less energy",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261111005853.htm",
-   "desc": "Researchers at Brown University have overcome a major obstacle to creating ultra-low-power computer chips that could help slash the energy demands of AI. Their breakthrough eliminates a long-standing \"dead layer\" problem that causes promising materials to stop working when mad…",
-   "date": "2026-11-13T01:40+00:00",
+   "title": "Tiny flaws in diamonds could unlock a quantum computing revolution",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261111005855.htm",
+   "desc": "Scientists have discovered a faster way to identify diamond-based materials that could power quantum computers and sensors at room temperature. The breakthrough has already revealed promising new quantum building blocks that could help unlock computing capabilities far beyond …",
+   "date": "2026-11-13T05:26+00:00",
    "th": [
-    "1.1 Processors and hardware",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "273d7db17a",
-   "src": "IEEE Spectrum",
-   "level": "magazine",
-   "kind": "story",
-   "title": "AI Agents Are Testing the Limits of Zero-Trust Security",
-   "url": "https://spectrum.ieee.org/zero-trust-agentic-ai-architecture",
-   "desc": "This article is brought to you by Queen’s University Belfast . Several teams around the globe are leveraging AI by creating a task force of agents managed by an orchestrator and creating applications to support risk assessment, client profiling, match making, and information y…",
-   "date": "2026-11-09T16:25+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "a5eef3cf57",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Chainalysis says hackers stole credentials and tokens for all of its customers",
-   "url": "https://arstechnica.com/security/2026/11/chainalysis-says-hackers-stole-credentials-and-tokens-for-all-of-its-customers/",
-   "desc": "Company said a \"multifront cyberattack\" included AI agents and an on-path data snatch.",
-   "date": "2026-11-06T20:56+00:00",
-   "th": [
-    "1.3 Security and encryption"
+    "1.1 Processors and hardware"
    ]
   },
   {
@@ -416,6 +417,45 @@
    "date": "2026-10-28T16:23+00:00",
    "th": [
     "1.1 Processors and hardware",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "fe45ff6f09",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "GTA 6 hacker pleads guilty after release from secure hospital",
+   "url": "https://www.bbc.co.uk/news/articles/cq99exy89dngo?at_medium=RSS&at_campaign=rss",
+   "desc": "21-year-old Arion Kurtaj pleaded guilty to the Rockstar Games hack and others he carried out when he was a teenager.",
+   "date": "2026-11-16T13:34+00:00",
+   "th": [
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "501905f9bb",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Intel sued by investors after PC sales slump hits share price",
+   "url": "https://www.bbc.co.uk/news/articles/cw62p42p288do?at_medium=RSS&at_campaign=rss",
+   "desc": "A proposed class action claims the firm hid the impact of slowing PC sales from shareholders.",
+   "date": "2026-11-16T03:04+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "519ce40bbf",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech Life",
+   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyv?at_medium=RSS&at_campaign=rss",
+   "desc": "We investigate internet-connected device flaws worldwide, plus US election tech fallout.",
+   "date": "2026-11-10T20:30+00:00",
+   "th": [
     "1.3 Networks and the web"
    ]
   }
