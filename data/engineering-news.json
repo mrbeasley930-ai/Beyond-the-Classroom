@@ -1,5 +1,5 @@
 {
- "made": "2026-11-17T15:53+00:00",
+ "made": "2026-11-18T15:31+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -53,7 +53,7 @@
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 1
+   "n": 2
   },
   {
    "src": "ESA",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 0
+   "n": 2
   },
   {
    "src": "Carbon Brief",
@@ -80,15 +80,15 @@
    "src": "Tech Xplore (engineering)",
    "level": "research",
    "line": "university press releases, engineering",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "Tech Xplore (vehicles)",
    "level": "research",
    "line": "university press releases, vehicles and batteries",
-   "ok": true,
-   "n": 4
+   "ok": false,
+   "n": 0
   },
   {
    "src": "ScienceDaily (materials)",
@@ -100,40 +100,50 @@
  ],
  "stories": [
   {
-   "id": "e5710052ee",
+   "id": "02bb61c0e5",
    "src": "The Race",
    "level": "way in",
-   "title": "Mercedes plan to debut ADUO upgrade on Antonelli's car only",
-   "url": "https://www.the-race.com/formula-1/mercedes-plan-to-debut-aduo-upgrade-on-antonellis-car-only/",
-   "desc": "Mercedes is planning to introduce its long-awaited ADUO-assisted turbo on Kimi Antonelli's F1 car at the Las Vegas GP",
-   "date": "2026-11-17T15:05+00:00",
+   "title": "Ford's real role in building F1's 'best' engine",
+   "url": "https://www.the-race.com/formula-1/ford-real-role-in-building-f1-best-engine/",
+   "desc": "How much has Ford really been involved in Red Bull Powertrains' instant success? More than you might think",
+   "date": "2026-11-18T14:39+00:00",
    "th": [
     "Motorsport",
-    "2 Existing products"
+    "6 Technical"
    ]
   },
   {
-   "id": "672946f245",
-   "src": "BBC Technology",
-   "level": "way in",
-   "title": "How new US chip restrictions on South East Asia will hit China",
-   "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
-   "desc": "The new rules restrict chip exports and also access to their computing power, which China relies on heavily.",
-   "date": "2026-11-17T14:25+00:00",
+   "id": "e442ab8103",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "Entries open for NCE’s inaugural Floods & Water Awards",
+   "url": "https://www.newcivilengineer.com/latest/entries-open-for-nces-inaugural-floods-water-awards-18-11-2026/",
+   "desc": "Entries are now open for the first New Civil Engineer (NCE) Floods & Water Awards, with 21 categories covering projects, innovation and impact, and organisation and contribution.",
+   "date": "2026-11-18T14:39+00:00",
+   "th": []
+  },
+  {
+   "id": "871c704533",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "APOD: 2026 November 18 – An M-class Solar Flare",
+   "url": "https://science.nasa.gov/image-article/apod-2026-november-18-an-m-class-solar-flare/",
+   "desc": "APOD Science APOD APOD: 2026 November 18 – An… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with…",
+   "date": "2026-11-18T05:05+00:00",
    "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "74049e0d6a",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Former nuclear chief inspector ‘uncomfortable’ with letter sent to chancellor from regulator and industry CEOs",
-   "url": "https://www.newcivilengineer.com/latest/former-nuclear-chief-inspector-uncomfortable-with-letter-sent-to-chancellor-from-regulator-and-industry-ceos-17-11-2026/",
-   "desc": "A joint letter sent to chancellor John Healey on behalf of the newly formed UK Nuclear Industry CEO Forum, and signed by Office for Nuclear Regulation (ONR) chief executive and chief nuclear inspector Mike Finnerty, has made a former nuclear chief inspector “very uncomfortable”.",
-   "date": "2026-11-17T13:30+00:00",
+   "id": "ca73aba529",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "Europe plans to catch the next computer chip wave",
+   "url": "https://www.bbc.co.uk/news/articles/cqglwjd450k0o?at_medium=RSS&at_campaign=rss",
+   "desc": "Europe hopes to be a leader in a new generation of computer chips which use light to process data.",
+   "date": "2026-11-18T00:00+00:00",
    "th": [
-    "9 Health and safety"
+    "6 Technical"
    ]
   },
   {
@@ -160,32 +170,6 @@
    "th": [
     "6 Technical",
     "8 Viability"
-   ]
-  },
-  {
-   "id": "48db9a28f2",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "United Airlines says it resolved a technology issue that affected departing flights",
-   "url": "https://techxplore.com/news/2026-11-airlines-technology-issue-affected-departing.html",
-   "desc": "United Airlines said Monday that it had resolved a technology issue that delayed departing flights, just days after a malfunction in the Federal Aviation Administration's network prompted a nationwide ground stop.",
-   "date": "2026-11-17T10:20+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "d5d5547463",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Chat-based AI lets users run complex alloy calculations on their own computers",
-   "url": "https://techxplore.com/news/2026-11-chat-based-ai-users-complex.html",
-   "desc": "Computational materials science develops models and simulations that are indispensable for the development of complex materials, such as high-entropy alloys. Researchers at Empa in Thun have developed an AI framework that allows researchers to operate these complex tools via a…",
-   "date": "2026-11-17T07:00+00:00",
-   "th": [
-    "1 Requirements",
-    "5 Materials",
-    "6 Technical"
    ]
   },
   {
@@ -216,28 +200,52 @@
    ]
   },
   {
-   "id": "a01456fa5f",
+   "id": "e5710052ee",
    "src": "The Race",
    "level": "way in",
-   "title": "F1 poised to take crucial step towards V8 engines' return",
-   "url": "https://www.the-race.com/formula-1/f1-poised-to-take-crucial-step-towards-v8-engines-return/",
-   "desc": "F1's plan to move to V8 engines is set for a major step forward on Monday, with manufacturers poised to back new regulations",
-   "date": "2026-11-16T07:11+00:00",
+   "title": "Mercedes plans to debut ADUO upgrade on Antonelli's car only",
+   "url": "https://www.the-race.com/formula-1/mercedes-plan-to-debut-aduo-upgrade-on-antonellis-car-only/",
+   "desc": "Mercedes is planning to introduce its long-awaited ADUO-assisted turbo on Kimi Antonelli's F1 car at the Las Vegas GP",
+   "date": "2026-11-17T15:05+00:00",
    "th": [
     "Motorsport",
+    "2 Existing products"
+   ]
+  },
+  {
+   "id": "ff479c3154",
+   "src": "New Civil Engineer",
+   "level": "magazine",
+   "title": "RAF, VolkerFitzpatrick and Aecom replace 3km Brize Norton runway in 16 weeks as part of £180M infrastructure project",
+   "url": "https://www.newcivilengineer.com/latest/raf-volkerfitzpatrick-and-aecom-replace-3km-brize-norton-runway-in-16-weeks-as-part-of-180m-infrastructure-project-18-11-2026/",
+   "desc": "Aircraft have returned to Royal Air Force (RAF) Brize Norton, in Oxfordshire, following the replacement of its 3km runway in a 16-week construction programme.",
+   "date": "2026-11-18T13:41+00:00",
+   "th": [
     "6 Technical"
    ]
   },
   {
-   "id": "9eba550d34",
-   "src": "New Civil Engineer",
+   "id": "32110fc5e0",
+   "src": "NASA",
    "level": "magazine",
-   "title": "Costain awarded contract to build effluent pipeline as part of Hunterston B decommissioning",
-   "url": "https://www.newcivilengineer.com/latest/costain-awarded-contract-to-build-effluent-pipeline-as-part-of-hunterston-b-decommissioning-17-11-2026/",
-   "desc": "Nuclear Restoration Services (NRS) has awarded Costain a multimillion-pound contract to design and install a replacement pipeline at Hunterston B nuclear power station as part of efforts to decommission the legacy plant.",
-   "date": "2026-11-17T12:17+00:00",
+   "title": "NASA Launches Nuclear Power Systems Student Contest",
+   "url": "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest/",
+   "desc": "NASA’s Power to Explore Student Challenge kicked off Tuesday, Nov. 17. The science, engineering, technology, and mathematics (STEM) challenge invites kindergarten through 12th grade students in the United States to learn about space nuclear power systems and illustrate how the…",
+   "date": "2026-11-17T22:02+00:00",
    "th": [
-    "7 Manufacturing"
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "672946f245",
+   "src": "BBC Technology",
+   "level": "way in",
+   "title": "How new US chip restrictions on South East Asia will hit China",
+   "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
+   "desc": "The new rules restrict chip exports and also access to their computing power, which China relies on heavily.",
+   "date": "2026-11-17T14:25+00:00",
+   "th": [
+    "6 Technical"
    ]
   },
   {
@@ -265,32 +273,6 @@
    ]
   },
   {
-   "id": "b1a71769e7",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "New shipping model coordinates loaded and empty container movements to help cut costs",
-   "url": "https://techxplore.com/news/2026-11-shipping-movements.html",
-   "desc": "A mathematical approach to help shipping companies manage cargo container movements between ports is reported in the European Journal of Industrial Engineering. The approach could reduce costs and inefficiencies caused by global imbalances in container supply.",
-   "date": "2026-11-16T18:30+00:00",
-   "th": [
-    "3 Wider issues",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "1ac90da339",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Scientists propose descriptor-driven design paradigm for battery cathode materials",
-   "url": "https://techxplore.com/news/2026-11-scientists-descriptor-driven-paradigm-battery.html",
-   "desc": "Scientists from the Institute of Metal Research (IMR) of the Chinese Academy of Sciences have established a new paradigm for designing oxide cathode materials. They have moved beyond empirical trial and error toward goal-oriented design using physicochemical descriptors.",
-   "date": "2026-11-16T17:40+00:00",
-   "th": [
-    "5 Materials",
-    "6 Technical"
-   ]
-  },
-  {
    "id": "f35d4411ca",
    "src": "Motorsport.com",
    "level": "way in",
@@ -303,30 +285,27 @@
    ]
   },
   {
-   "id": "69785e1deb",
+   "id": "a01456fa5f",
    "src": "The Race",
    "level": "way in",
-   "title": "Was Madrid F1 race an economic upgrade on Barcelona?",
-   "url": "https://www.the-race.com/business/how-madrid-f1-races-economic-impact-compares-to-barcelonas/",
-   "desc": "The inaugural 2026 Spanish Formula 1 Grand Prix at the Madring created €544 million in economic activity, supported 10,948 jobs, and generated €95m in tax revenue, according to its organiser",
-   "date": "2026-11-13T11:24+00:00",
+   "title": "F1 poised to take crucial step towards V8 engines' return",
+   "url": "https://www.the-race.com/formula-1/f1-poised-to-take-crucial-step-towards-v8-engines-return/",
+   "desc": "F1's plan to move to V8 engines is set for a major step forward on Monday, with manufacturers poised to back new regulations",
+   "date": "2026-11-16T07:11+00:00",
    "th": [
     "Motorsport",
-    "2 Existing products"
+    "6 Technical"
    ]
   },
   {
-   "id": "bccae0867f",
+   "id": "1c09f70e13",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "London energy recovery facility faces £451M development cost increase following ‘significant disputes’ with Acciona",
-   "url": "https://www.newcivilengineer.com/latest/london-energy-recovery-facility-faces-451m-development-cost-increase-following-significant-disputes-with-acciona-17-11-2026/",
-   "desc": "North London Waste Authority (NLWA) is proposing to increase the contract price for its new Edmonton Energy Recovery Facility (ERF) by approximately £451M, following a series of disputes with contractor Acciona Industrial.",
-   "date": "2026-11-17T12:10+00:00",
-   "th": [
-    "3 Wider issues",
-    "6 Technical"
-   ]
+   "title": "AtkinsRéalis appointed to manage next stage of Cardiff Crossrail",
+   "url": "https://www.newcivilengineer.com/latest/atkinsrealis-appointed-to-manage-next-stage-of-cardiff-crossrail-18-11-2026/",
+   "desc": "Cardiff Council has appointed AtkinsRéalis to manage the design completion and construction of the first phase of Cardiff Crossrail, the planned tramway linking Cardiff city centre with Cardiff Bay.",
+   "date": "2026-11-18T12:01+00:00",
+   "th": []
   },
   {
    "id": "adb130866a",
@@ -354,31 +333,6 @@
    ]
   },
   {
-   "id": "01d5892149",
-   "src": "Tech Xplore (vehicles)",
-   "level": "research",
-   "title": "Hybrids make gains in US auto market amid high gasoline prices",
-   "url": "https://techxplore.com/news/2026-11-hybrids-gains-auto-high-gasoline.html",
-   "desc": "Electric vehicle growth has hit a speed bump in the United States, but hybrid autos are gaining market share thanks to the jump in fuel prices due to the Iran war.",
-   "date": "2026-11-15T14:00+00:00",
-   "th": [
-    "6 Technical",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "447f059514",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Existing seismic networks can record sonic booms from supersonic flights",
-   "url": "https://techxplore.com/news/2026-11-seismic-networks-sonic-booms-supersonic.html",
-   "desc": "Faster-than-sound commercial flight could be on its way back after more than half a century—if the industry solves one rather loud problem: regulating sonic booms. A team of Penn State researchers may have found that a big part of the answer already exists in seismic monitorin…",
-   "date": "2026-11-16T17:20+00:00",
-   "th": [
-    "8 Viability"
-   ]
-  },
-  {
    "id": "bf0828cdad",
    "src": "Motorsport.com",
    "level": "way in",
@@ -392,15 +346,15 @@
    ]
   },
   {
-   "id": "3cba7d8f4c",
+   "id": "774d272234",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Sefton Council seeks contractor for £3.5M highways and structures works",
-   "url": "https://www.newcivilengineer.com/latest/sefton-council-seeks-contractor-for-3-5m-highways-and-structures-works-17-11-2026/",
-   "desc": "Sefton Metropolitan Borough Council has published a tender notice for a highways and structures minor works contract with an estimated value of £3.5M excluding VAT (£4.2M including VAT).",
-   "date": "2026-11-17T09:16+00:00",
+   "title": "Skanska completes prototype component for Rolls-Royce small nuclear reactor",
+   "url": "https://www.newcivilengineer.com/latest/skanska-completes-prototype-component-for-rolls-royce-small-nuclear-reactor-18-11-2026/",
+   "desc": "Skanska has completed and tested a prototype concrete pedestal intended for use in Rolls-Royce's small modular reactor (SMR) power plant, as construction methods for its proposed factory-built stations are being developed.",
+   "date": "2026-11-18T11:50+00:00",
    "th": [
-    "6 Technical"
+    "4 Design thinking"
    ]
   },
   {
@@ -429,18 +383,6 @@
    ]
   },
   {
-   "id": "afd4e721f2",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "Why solar researchers are working to devise a silver reduction playbook",
-   "url": "https://techxplore.com/news/2026-11-solar-silver-reduction-playbook.html",
-   "desc": "Solar power may have become one of the world's cheapest sources of renewable electricity, but an increasingly expensive precious metal is creating a challenge for the industry.",
-   "date": "2026-11-16T15:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
    "id": "fcf98b82e0",
    "src": "Motorsport.com",
    "level": "way in",
@@ -454,16 +396,14 @@
    ]
   },
   {
-   "id": "6a001f6f02",
+   "id": "4f79a1eb68",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Scottish Borders’ Galafoot Bridge requires repair after concrete deck slab ‘in much worse condition’ than anticipated",
-   "url": "https://www.newcivilengineer.com/latest/scottish-borders-galafoot-bridge-requires-repair-after-concrete-deck-slab-in-much-worse-condition-then-anticipated-17-11-2026/",
-   "desc": "Major work to refurbish the deck of Galafoot Bridge on the A6091 in the Scottish Borders are likely to continue until late January next year after the concrete deck underneath the road surface was found to be in significantly worse condition than expected.",
-   "date": "2026-11-17T08:37+00:00",
-   "th": [
-    "5 Materials"
-   ]
+   "title": "St Pancras International targets 5,000 rail passengers an hour under expansion plans",
+   "url": "https://www.newcivilengineer.com/latest/st-pancras-international-targets-5000-rail-passengers-an-hour-under-expansion-plans-18-11-2026/",
+   "desc": "Plans to approximately double the international passenger processing capacity of St Pancras International have moved into their next design phase following the completion of initial design work.",
+   "date": "2026-11-18T09:45+00:00",
+   "th": []
   },
   {
    "id": "0d9fae548b",
@@ -478,36 +418,13 @@
    ]
   },
   {
-   "id": "da9ca4a5dc",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "What makes 'super shoes' so fast?",
-   "url": "https://techxplore.com/news/2026-11-super-fast.html",
-   "desc": "It's 3 a.m. in the Austrian Alps, and Jeremy McCulloch is alone in the dark. The 90-kilometer (56-mile) Pitztal Glacier Ultratrail race started at 11 p.m. to get runners off the exposed peaks before the valley's afternoon thunderstorms. The course climbs 17,000 feet (5,200 met…",
-   "date": "2026-11-16T14:40+00:00",
-   "th": []
-  },
-  {
-   "id": "20a1ab236b",
+   "id": "2a962c1070",
    "src": "New Civil Engineer",
    "level": "magazine",
-   "title": "Spain’s renewable sector loses €140M as grid constraints remain high, analysis find",
-   "url": "https://www.newcivilengineer.com/latest/spains-renewable-sector-loses-e140m-as-grid-constraints-remain-high-analysis-find-16-11-2026/",
-   "desc": "Spain’s renewable energy industry has lost an estimated €140M (£117M) in revenue to grid curtailment since its April 2025 blackout.",
-   "date": "2026-11-16T16:46+00:00",
-   "th": [
-    "3 Wider issues",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "2e94cba6b0",
-   "src": "Tech Xplore (engineering)",
-   "level": "research",
-   "title": "New antifogging solution keeps surfaces transparent in extreme condensation",
-   "url": "https://techxplore.com/news/2026-11-antifogging-solution-surfaces-transparent-extreme.html",
-   "desc": "Many of us know the frustration of having our eyeglasses, sports goggles or even the door of a frozen food case fog up. But as sensors and cameras become part of our everyday lives, fogging is no longer simply an annoyance; it can impair the transmission of critical visual inf…",
-   "date": "2026-11-16T14:20+00:00",
+   "title": "HS2 Coventry Road overbridge reaches halfway construction milestone",
+   "url": "https://www.newcivilengineer.com/latest/hs2-coventry-road-overbridge-reaches-halfway-construction-milestone-18-11-2026/",
+   "desc": "Construction of a new overbridge on HS2’s route near Bickenhill has reached the halfway mark, with the first section of the structure completed after 11 months of work.",
+   "date": "2026-11-18T09:10+00:00",
    "th": [
     "6 Technical"
    ]
