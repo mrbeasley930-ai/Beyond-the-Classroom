@@ -1,5 +1,5 @@
 {
- "made": "2026-11-18T16:00+00:00",
+ "made": "2026-11-19T16:07+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -58,7 +58,7 @@
    "level": "magazine",
    "line": "technology magazine: computing stories only",
    "ok": true,
-   "n": 4
+   "n": 5
   },
   {
    "src": "IEEE Spectrum",
@@ -72,7 +72,7 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 2
+   "n": 1
   },
   {
    "src": "ScienceDaily",
@@ -84,6 +84,33 @@
  ],
  "stories": [
   {
+   "id": "45584a3597",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "How to tell a cyberattack from a plain old outage",
+   "url": "https://arstechnica.com/security/2026/11/how-to-tell-a-cyberattack-from-a-plain-old-outage/",
+   "desc": "When everything goes down, don’t assume it’s a cyberattack.",
+   "date": "2026-11-19T11:13+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "0a4eeca95e",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Simon Jack: Can Anthropic's record-breaking IPO stop the AI bubble bursting?",
+   "url": "https://www.bbc.co.uk/news/articles/cj4gnpzll020o?at_medium=RSS&at_campaign=rss",
+   "desc": "Anthropic's hotly anticipated IPO is expected to put it in the top 10 most valuable US companies, but the future is uncertain.",
+   "date": "2026-11-18T21:28+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
    "id": "8b6d05080a",
    "src": "Raspberry Pi Foundation",
    "level": "way in",
@@ -94,35 +121,6 @@
    "date": "2026-11-18T15:24+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "15adef1f11",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Hacks, AI or just overdue updates - why have there been so many outages?",
-   "url": "https://www.bbc.co.uk/news/articles/c6z0kly2lll7o?at_medium=RSS&at_campaign=rss",
-   "desc": "There is no evidence these are linked, but the constant series of tech disruptions can be unnerving.",
-   "date": "2026-11-18T13:16+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "58043437b9",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Hundreds of websites deliver potent malware cocktail to unsuspecting visitors",
-   "url": "https://arstechnica.com/security/2026/11/malicious-code-delivered-through-optimizely-hits-visitors-to-hundreds-of-sites/",
-   "desc": "Malware cocktail delivers cryptocurrency theft payloads and iOS exploits, among other things.",
-   "date": "2026-11-17T22:32+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.3 Security and encryption"
    ]
   },
   {
@@ -207,30 +205,32 @@
    ]
   },
   {
-   "id": "8c77dd930e",
-   "src": "BBC Technology",
-   "level": "way in",
+   "id": "58043437b9",
+   "src": "Ars Technica",
+   "level": "magazine",
    "kind": "story",
-   "title": "British hacker who stole $11m through text message scheme jailed for six years in US",
-   "url": "https://www.bbc.co.uk/news/articles/cm87987w1qz5o?at_medium=RSS&at_campaign=rss",
-   "desc": "Tyler Buchanan, from Dundee, was a member of the notorious Scattered Spider group and began hacking when he was a teenager.",
-   "date": "2026-11-18T09:28+00:00",
+   "title": "Hundreds of websites deliver potent malware cocktail to unsuspecting visitors",
+   "url": "https://arstechnica.com/security/2026/11/malicious-code-delivered-through-optimizely-hits-visitors-to-hundreds-of-sites/",
+   "desc": "Malware cocktail delivers cryptocurrency theft payloads and iOS exploits, among other things.",
+   "date": "2026-11-17T22:32+00:00",
    "th": [
+    "1.3 Networks and the web",
     "1.3 Security and encryption"
    ]
   },
   {
-   "id": "fcdcf30ed8",
-   "src": "Ars Technica",
-   "level": "magazine",
+   "id": "15adef1f11",
+   "src": "BBC Technology",
+   "level": "way in",
    "kind": "story",
-   "title": "Windows 0-day dropped by disgruntled researcher hands hackers System rights",
-   "url": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
-   "desc": "\"SignDrop\" exploit lets local users gain all-powerful System rights.",
-   "date": "2026-11-13T16:26+00:00",
+   "title": "Hacks, AI or just overdue updates - why have there been so many outages?",
+   "url": "https://www.bbc.co.uk/news/articles/c6z0kly2lll7o?at_medium=RSS&at_campaign=rss",
+   "desc": "There is no evidence these are linked, but the constant series of tech disruptions can be unnerving.",
+   "date": "2026-11-18T13:16+00:00",
    "th": [
     "1.2 Software and development",
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 AI and automation"
    ]
   },
   {
@@ -255,19 +255,6 @@
    "url": "https://spectrum.ieee.org/optical-computing-ai",
    "desc": "The idea of computing with light has been around for over 70 years, but until recently it’s remained largely in the realm of research. Over the past few years, though, optical computing has emerged as a fast-growing industry: Market valuation of companies in this sector now to…",
    "date": "2026-11-17T14:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "aac00f5f94",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "AI-assisted learning platform helps robots reason beyond literal commands",
-   "url": "https://news.mit.edu/2026/ai-assisted-learning-platform-helps-robots-reason-beyond-literal-commands-1109",
-   "desc": "The new approach, known as FLEX, could lead to more intuitive, interactive household and assistive robots.",
-   "date": "2026-11-09T05:00+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -300,31 +287,30 @@
    ]
   },
   {
-   "id": "51e07052da",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Security flaw found in Java, world's third-largest programming language",
-   "url": "https://www.bbc.co.uk/news/articles/cke89jevqm1vo?at_medium=RSS&at_campaign=rss",
-   "desc": "The same tech start-up that discovered a PHP flaw used AI to uncover a critical software bug in one of the world's most popular computer language programs.",
-   "date": "2026-11-18T08:47+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "b686da6834",
+   "id": "fcdcf30ed8",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
-   "url": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
-   "desc": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them.",
-   "date": "2026-11-10T21:12+00:00",
+   "title": "Windows 0-day dropped by disgruntled researcher hands hackers System rights",
+   "url": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
+   "desc": "\"SignDrop\" exploit lets local users gain all-powerful System rights.",
+   "date": "2026-11-13T16:26+00:00",
    "th": [
     "1.2 Software and development",
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "8c77dd930e",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "British hacker who stole $11m through text message scheme jailed for six years in US",
+   "url": "https://www.bbc.co.uk/news/articles/cm87987w1qz5o?at_medium=RSS&at_campaign=rss",
+   "desc": "Tyler Buchanan, from Dundee, was a member of the notorious Scattered Spider group and began hacking when he was a teenager.",
+   "date": "2026-11-18T09:28+00:00",
+   "th": [
+    "1.3 Security and encryption"
    ]
   },
   {
@@ -381,30 +367,31 @@
    ]
   },
   {
-   "id": "a0e676b4b5",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Watch: Marco Rubio says recent tech outages are 'completely unrelated' to one another",
-   "url": "https://www.bbc.co.uk/news/videos/cx1l0vm87yl9o?at_medium=RSS&at_campaign=rss",
-   "desc": "Microsoft, major US banks, Apple and Air Traffic authorities have been hit over recent days by tech glitches.",
-   "date": "2026-11-18T05:10+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "8abde1ce00",
+   "id": "b686da6834",
    "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "Vulnerability that lets hackers SSH into Linux devices is under active exploitation",
-   "url": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
-   "desc": "\"*sshole\" poses a serious threat to Internet security.",
-   "date": "2026-11-09T19:41+00:00",
+   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
+   "url": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
+   "desc": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them.",
+   "date": "2026-11-10T21:12+00:00",
    "th": [
     "1.2 Software and development",
-    "1.3 Security and encryption"
+    "1.3 Security and encryption",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "51e07052da",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Security flaw found in Java, world's third-largest programming language",
+   "url": "https://www.bbc.co.uk/news/articles/cke89jevqm1vo?at_medium=RSS&at_campaign=rss",
+   "desc": "The same tech start-up that discovered a PHP flaw used AI to uncover a critical software bug in one of the world's most popular computer language programs.",
+   "date": "2026-11-18T08:47+00:00",
+   "th": [
+    "1.2 Software and development"
    ]
   },
   {
@@ -463,16 +450,30 @@
    ]
   },
   {
-   "id": "ca73aba529",
+   "id": "8abde1ce00",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Vulnerability that lets hackers SSH into Linux devices is under active exploitation",
+   "url": "https://arstechnica.com/security/2026/11/vulnerability-that-lets-hackers-ssh-into-linux-devices-is-under-active-exploitation/",
+   "desc": "\"*sshole\" poses a serious threat to Internet security.",
+   "date": "2026-11-09T19:41+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "a0e676b4b5",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Europe plans to catch the next computer chip wave",
-   "url": "https://www.bbc.co.uk/news/articles/cqglwjd450k0o?at_medium=RSS&at_campaign=rss",
-   "desc": "Europe hopes to be a leader in a new generation of computer chips which use light to process data.",
-   "date": "2026-11-18T00:00+00:00",
+   "title": "Watch: Marco Rubio says recent tech outages are 'completely unrelated' to one another",
+   "url": "https://www.bbc.co.uk/news/videos/cx1l0vm87yl9o?at_medium=RSS&at_campaign=rss",
+   "desc": "Microsoft, major US banks, Apple and Air Traffic authorities have been hit over recent days by tech glitches.",
+   "date": "2026-11-18T05:10+00:00",
    "th": [
-    "1.1 Processors and hardware"
+    "1.2 Software and development"
    ]
   },
   {
@@ -485,19 +486,6 @@
    "desc": "Video gaming is huge - it's more lucrative than the movies and music combined.",
    "date": "2026-11-17T20:30+00:00",
    "th": []
-  },
-  {
-   "id": "672946f245",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "How new US chip restrictions on South East Asia will hit China",
-   "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
-   "desc": "The new rules restrict chip exports and also access to their computing power, which China relies on heavily.",
-   "date": "2026-11-17T14:25+00:00",
-   "th": [
-    "1.1 Processors and hardware"
-   ]
   }
  ]
 }
