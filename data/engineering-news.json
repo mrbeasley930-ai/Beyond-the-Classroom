@@ -1,5 +1,5 @@
 {
- "made": "2026-11-18T15:31+00:00",
+ "made": "2026-11-19T15:38+00:00",
  "themes": [
   "1 Requirements",
   "2 Existing products",
@@ -18,28 +18,28 @@
    "level": "magazine",
    "line": "motorsport technology magazine (some articles for subscribers)",
    "ok": true,
-   "n": 1
+   "n": 3
   },
   {
    "src": "The Race",
    "level": "way in",
    "line": "motorsport news site: technical stories only",
    "ok": true,
-   "n": 3
+   "n": 1
   },
   {
    "src": "Motorsport.com",
    "level": "way in",
    "line": "Formula 1 news: technical stories only",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "New Civil Engineer",
    "level": "magazine",
    "line": "civil engineering: bridges, tunnels, rail, water",
-   "ok": true,
-   "n": 6
+   "ok": false,
+   "n": 0
   },
   {
    "src": "IEEE Spectrum",
@@ -53,7 +53,7 @@
    "level": "way in",
    "line": "BBC News technology desk: engineering stories only",
    "ok": true,
-   "n": 2
+   "n": 0
   },
   {
    "src": "ESA",
@@ -67,7 +67,7 @@
    "level": "magazine",
    "line": "NASA news releases: engineering stories only",
    "ok": true,
-   "n": 2
+   "n": 3
   },
   {
    "src": "Carbon Brief",
@@ -100,49 +100,55 @@
  ],
  "stories": [
   {
-   "id": "02bb61c0e5",
-   "src": "The Race",
+   "id": "49fa003e0b",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "Power Maxed Racing’s BTCC Audi development",
+   "url": "https://www.racecar-engineering.com/news/power-maxed-racings-btcc-audi-development/",
+   "desc": "After a devastating workshop fire in 2025, Power Maxed Racing regouped to put a new BTCC car on the grid...",
+   "date": "2026-11-19T15:01+00:00",
+   "th": [
+    "Motorsport",
+    "6 Technical",
+    "9 Health and safety"
+   ]
+  },
+  {
+   "id": "634743bc97",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Conducts Latest RS-25 Engine Test in Support of Future Artemis Missions",
+   "url": "https://www.nasa.gov/image-article/latest-rs-25-engine-test-in-support-of-future-artemis-missions/",
+   "desc": "NASA tested RS-25 engine No. 10001 on Nov. 18 on the Fred Haise Test Stand at NASA’s Stennis Space Center near Bay St. Louis, Mississippi. Test teams fired the developmental engine for the planned duration of three minutes and 20 seconds (200 seconds). While this developmental…",
+   "date": "2026-11-19T14:44+00:00",
+   "th": [
+    "6 Technical",
+    "8 Viability"
+   ]
+  },
+  {
+   "id": "7fd7be9411",
+   "src": "Motorsport.com",
    "level": "way in",
-   "title": "Ford's real role in building F1's 'best' engine",
-   "url": "https://www.the-race.com/formula-1/ford-real-role-in-building-f1-best-engine/",
-   "desc": "How much has Ford really been involved in Red Bull Powertrains' instant success? More than you might think",
-   "date": "2026-11-18T14:39+00:00",
+   "title": "Honda reveals key F1 power unit change for 2027",
+   "url": "https://www.motorsport.com/f1/news/honda-reveals-key-f1-power-unit-change-for-2027/10875520/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "Immediately after the Sao Paulo Grand Prix, Honda was still unable to fully explain Lance Stroll's DNF. The Canadian was forced to retire for the 14th time, equalling the all-time record for the most retirements in a single Formula 1 season. Ahead of the race weekend in Las Ve…",
+   "date": "2026-11-19T07:59+00:00",
    "th": [
     "Motorsport",
     "6 Technical"
    ]
   },
   {
-   "id": "e442ab8103",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Entries open for NCE’s inaugural Floods & Water Awards",
-   "url": "https://www.newcivilengineer.com/latest/entries-open-for-nces-inaugural-floods-water-awards-18-11-2026/",
-   "desc": "Entries are now open for the first New Civil Engineer (NCE) Floods & Water Awards, with 21 categories covering projects, innovation and impact, and organisation and contribution.",
-   "date": "2026-11-18T14:39+00:00",
-   "th": []
-  },
-  {
-   "id": "871c704533",
-   "src": "NASA",
-   "level": "magazine",
-   "title": "APOD: 2026 November 18 – An M-class Solar Flare",
-   "url": "https://science.nasa.gov/image-article/apod-2026-november-18-an-m-class-solar-flare/",
-   "desc": "APOD Science APOD APOD: 2026 November 18 – An… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with…",
-   "date": "2026-11-18T05:05+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "ca73aba529",
-   "src": "BBC Technology",
+   "id": "02bb61c0e5",
+   "src": "The Race",
    "level": "way in",
-   "title": "Europe plans to catch the next computer chip wave",
-   "url": "https://www.bbc.co.uk/news/articles/cqglwjd450k0o?at_medium=RSS&at_campaign=rss",
-   "desc": "Europe hopes to be a leader in a new generation of computer chips which use light to process data.",
-   "date": "2026-11-18T00:00+00:00",
+   "title": "What Ford has really contributed to Red Bull's 'best' F1 engine",
+   "url": "https://www.the-race.com/formula-1/ford-real-role-in-building-f1-best-engine/",
+   "desc": "How much has Ford really been involved in Red Bull Powertrains' instant success? More than you might think",
+   "date": "2026-11-18T14:39+00:00",
    "th": [
+    "Motorsport",
     "6 Technical"
    ]
   },
@@ -173,79 +179,40 @@
    ]
   },
   {
-   "id": "4ed22a6b31",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Lando Norris: F1 needs better rain tyres as wet Las Vegas would be \"scary\"",
-   "url": "https://www.motorsport.com/f1/news/lando-norris-f1-needs-better-rain-tyres-as-wet-las-vegas-would-be-scary/10874689/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "World champion Lando Norris hopes Formula 1 tyre supplier Pirelli will field much-improved rain tyres in 2027 as he expects the current range won't work properly at a low-downforce circuit like Las Vegas. Following partially rain-affected weekends in Malaysia and Singapore, F1…",
-   "date": "2026-11-16T17:30+00:00",
-   "th": [
-    "Motorsport",
-    "5 Materials"
-   ]
-  },
-  {
-   "id": "fac40180d9",
+   "id": "4ea26e3351",
    "src": "Racecar Engineering",
    "level": "magazine",
-   "title": "Extreme H safety: how to crash test a hydrogen racecar",
-   "url": "https://www.racecar-engineering.com/articles/off-road/extreme-h-safety-how-to-crash-test-a-hydrogen-racecar/",
-   "desc": "Key figures involved in the Extreme H car development process recall its complexities...",
-   "date": "2026-11-12T08:03+00:00",
+   "title": "Aston Martin to enter Dakar Rally with Dreadnought",
+   "url": "https://www.racecar-engineering.com/articles/off-road/aston-martin-to-enter-dakar-rally-with-dreadnought/",
+   "desc": "Aston Martin to contest 2027 Dakar Rally with Prodrive-developed Ultimate car...",
+   "date": "2026-11-17T16:00+00:00",
    "th": [
-    "Motorsport",
-    "3 Wider issues",
-    "8 Viability"
+    "Motorsport"
    ]
   },
   {
-   "id": "e5710052ee",
-   "src": "The Race",
-   "level": "way in",
-   "title": "Mercedes plans to debut ADUO upgrade on Antonelli's car only",
-   "url": "https://www.the-race.com/formula-1/mercedes-plan-to-debut-aduo-upgrade-on-antonellis-car-only/",
-   "desc": "Mercedes is planning to introduce its long-awaited ADUO-assisted turbo on Kimi Antonelli's F1 car at the Las Vegas GP",
-   "date": "2026-11-17T15:05+00:00",
-   "th": [
-    "Motorsport",
-    "2 Existing products"
-   ]
-  },
-  {
-   "id": "ff479c3154",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "RAF, VolkerFitzpatrick and Aecom replace 3km Brize Norton runway in 16 weeks as part of £180M infrastructure project",
-   "url": "https://www.newcivilengineer.com/latest/raf-volkerfitzpatrick-and-aecom-replace-3km-brize-norton-runway-in-16-weeks-as-part-of-180m-infrastructure-project-18-11-2026/",
-   "desc": "Aircraft have returned to Royal Air Force (RAF) Brize Norton, in Oxfordshire, following the replacement of its 3km runway in a 16-week construction programme.",
-   "date": "2026-11-18T13:41+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "32110fc5e0",
+   "id": "2b43fabf03",
    "src": "NASA",
    "level": "magazine",
-   "title": "NASA Launches Nuclear Power Systems Student Contest",
-   "url": "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest/",
-   "desc": "NASA’s Power to Explore Student Challenge kicked off Tuesday, Nov. 17. The science, engineering, technology, and mathematics (STEM) challenge invites kindergarten through 12th grade students in the United States to learn about space nuclear power systems and illustrate how the…",
-   "date": "2026-11-17T22:02+00:00",
+   "title": "NASA Sets Coverage for Northrop Grumman CRS-25 Launch, Prelaunch",
+   "url": "https://www.nasa.gov/news-release/nasa-sets-coverage-for-northrop-grumman-crs-25-launch-prelaunch/",
+   "desc": "NASA, Northrop Grumman, and SpaceX are targeting no earlier than 10:47 a.m. EST, Sunday, Nov. 29, for the next launch delivering science investigations, supplies, and equipment to the International Space Station. The agency also will hold a prelaunch media teleconference on Mo…",
+   "date": "2026-11-18T22:19+00:00",
    "th": [
     "8 Viability"
    ]
   },
   {
-   "id": "672946f245",
-   "src": "BBC Technology",
+   "id": "a727ef8da5",
+   "src": "Motorsport.com",
    "level": "way in",
-   "title": "How new US chip restrictions on South East Asia will hit China",
-   "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
-   "desc": "The new rules restrict chip exports and also access to their computing power, which China relies on heavily.",
-   "date": "2026-11-17T14:25+00:00",
+   "title": "LISA becomes first artist to design F1 clothing collection",
+   "url": "https://www.motorsport.com/f1/news/lisa-becomes-first-artist-to-design-f1-clothing-collection/10875419/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "LISA has become the first artist to design a Formula 1 clothing range, with her 'Pretty Fast' collection going on sale around the world today. The Thai singer, who made her name in K-pop group BLACKPINK before going solo, designed the capsule with Ceremony of Roses, a creative…",
+   "date": "2026-11-19T03:30+00:00",
    "th": [
-    "6 Technical"
+    "Motorsport",
+    "8 Viability"
    ]
   },
   {
@@ -273,39 +240,44 @@
    ]
   },
   {
-   "id": "f35d4411ca",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Mercedes technical director details the psychological toll of F1 underperformance",
-   "url": "https://www.motorsport.com/f1/news/mercedes-technical-director-details-the-brutal-psychological-toll-of-f1-underperformance/10874429/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "In Formula 1, PR-trained executives routinely frame losing seasons as \"learning opportunities\" and promise that the team will quickly bounce back. But Mercedes technical director James Allison recently stripped away that polished narrative to reveal the psychological reality o…",
-   "date": "2026-11-15T09:33+00:00",
+   "id": "fac40180d9",
+   "src": "Racecar Engineering",
+   "level": "magazine",
+   "title": "Extreme H safety: how to crash test a hydrogen racecar",
+   "url": "https://www.racecar-engineering.com/articles/off-road/extreme-h-safety-how-to-crash-test-a-hydrogen-racecar/",
+   "desc": "Key figures involved in the Extreme H car development process recall its complexities...",
+   "date": "2026-11-12T08:03+00:00",
    "th": [
-    "Motorsport"
+    "Motorsport",
+    "3 Wider issues",
+    "8 Viability"
    ]
   },
   {
-   "id": "a01456fa5f",
-   "src": "The Race",
-   "level": "way in",
-   "title": "F1 poised to take crucial step towards V8 engines' return",
-   "url": "https://www.the-race.com/formula-1/f1-poised-to-take-crucial-step-towards-v8-engines-return/",
-   "desc": "F1's plan to move to V8 engines is set for a major step forward on Monday, with manufacturers poised to back new regulations",
-   "date": "2026-11-16T07:11+00:00",
+   "id": "0e229a7956",
+   "src": "NASA",
+   "level": "magazine",
+   "title": "NASA Announces Mid-Power Electric Rocket Challenge for US Companies",
+   "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/nasa-announces-mid-power-electric-rocket-challenge-for-us-companies/",
+   "desc": "NASA launched a new competition inviting U.S. companies to produce prototypes of mid-power Hall effect thrusters – a type of electric propulsion system considered crucial for future space operations and exploration. Hall effect thrusters use an electric field to accelerate a p…",
+   "date": "2026-11-18T18:12+00:00",
    "th": [
-    "Motorsport",
+    "4 Design thinking",
     "6 Technical"
    ]
   },
   {
-   "id": "1c09f70e13",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "AtkinsRéalis appointed to manage next stage of Cardiff Crossrail",
-   "url": "https://www.newcivilengineer.com/latest/atkinsrealis-appointed-to-manage-next-stage-of-cardiff-crossrail-18-11-2026/",
-   "desc": "Cardiff Council has appointed AtkinsRéalis to manage the design completion and construction of the first phase of Cardiff Crossrail, the planned tramway linking Cardiff city centre with Cardiff Bay.",
-   "date": "2026-11-18T12:01+00:00",
-   "th": []
+   "id": "4ed22a6b31",
+   "src": "Motorsport.com",
+   "level": "way in",
+   "title": "Lando Norris: F1 needs better rain tyres as wet Las Vegas would be \"scary\"",
+   "url": "https://www.motorsport.com/f1/news/lando-norris-f1-needs-better-rain-tyres-as-wet-las-vegas-would-be-scary/10874689/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+   "desc": "World champion Lando Norris hopes Formula 1 tyre supplier Pirelli will field much-improved rain tyres in 2027 as he expects the current range won't work properly at a low-downforce circuit like Las Vegas. Following partially rain-affected weekends in Malaysia and Singapore, F1…",
+   "date": "2026-11-16T17:30+00:00",
+   "th": [
+    "Motorsport",
+    "5 Materials"
+   ]
   },
   {
    "id": "adb130866a",
@@ -330,31 +302,6 @@
    "date": "2026-11-16T11:00+00:00",
    "th": [
     "6 Technical"
-   ]
-  },
-  {
-   "id": "bf0828cdad",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Mercedes technical director warns F1 teams won’t “lie down” over 2027 downforce cuts",
-   "url": "https://www.motorsport.com/f1/news/mercedes-tech-boss-warns-f1-teams-wont-lie-down-over-massive-2027-downforce-cuts/10874433/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Formula 1's transition to the new 2026 engine and chassis regulations completely reshuffled the competitive order, but the rulebook is far from finalised. As teams prepare for their second year under the new formula in 2027, the FIA is pushing to mandate another drop in downfo…",
-   "date": "2026-11-14T12:14+00:00",
-   "th": [
-    "Motorsport",
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "774d272234",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "Skanska completes prototype component for Rolls-Royce small nuclear reactor",
-   "url": "https://www.newcivilengineer.com/latest/skanska-completes-prototype-component-for-rolls-royce-small-nuclear-reactor-18-11-2026/",
-   "desc": "Skanska has completed and tested a prototype concrete pedestal intended for use in Rolls-Royce's small modular reactor (SMR) power plant, as construction methods for its proposed factory-built stations are being developed.",
-   "date": "2026-11-18T11:50+00:00",
-   "th": [
-    "4 Design thinking"
    ]
   },
   {
@@ -383,29 +330,6 @@
    ]
   },
   {
-   "id": "fcf98b82e0",
-   "src": "Motorsport.com",
-   "level": "way in",
-   "title": "Max Verstappen signs ambassador deal with Dutch technical group VDK",
-   "url": "https://www.motorsport.com/f1/news/max-verstappen-signs-ambassador-deal-with-dutch-technical-group-vdk/10874486/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
-   "desc": "Four-time Formula 1 champion Max Verstappen has become the new ambassador of the VDK Group, a Dutch group of installation and technical companies that is expanding across Europe. The Dutchman will play a prominent role in the company's international branding over the coming ye…",
-   "date": "2026-11-14T11:03+00:00",
-   "th": [
-    "Motorsport",
-    "8 Viability"
-   ]
-  },
-  {
-   "id": "4f79a1eb68",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "St Pancras International targets 5,000 rail passengers an hour under expansion plans",
-   "url": "https://www.newcivilengineer.com/latest/st-pancras-international-targets-5000-rail-passengers-an-hour-under-expansion-plans-18-11-2026/",
-   "desc": "Plans to approximately double the international passenger processing capacity of St Pancras International have moved into their next design phase following the completion of initial design work.",
-   "date": "2026-11-18T09:45+00:00",
-   "th": []
-  },
-  {
    "id": "0d9fae548b",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -413,18 +337,6 @@
    "url": "https://spectrum.ieee.org/microcredentials-trustworthy-ai",
    "desc": "Engineering teams are moving at breakneck speed to integrate artificial intelligence, but they are running into a formidable new barrier: compliance issues. Translating high-level AI ethics , governance , and auditing into daily operational workflows has become one of the indu…",
    "date": "2026-11-13T19:00+00:00",
-   "th": [
-    "6 Technical"
-   ]
-  },
-  {
-   "id": "2a962c1070",
-   "src": "New Civil Engineer",
-   "level": "magazine",
-   "title": "HS2 Coventry Road overbridge reaches halfway construction milestone",
-   "url": "https://www.newcivilengineer.com/latest/hs2-coventry-road-overbridge-reaches-halfway-construction-milestone-18-11-2026/",
-   "desc": "Construction of a new overbridge on HS2’s route near Bickenhill has reached the halfway mark, with the first section of the structure completed after 11 months of work.",
-   "date": "2026-11-18T09:10+00:00",
    "th": [
     "6 Technical"
    ]
