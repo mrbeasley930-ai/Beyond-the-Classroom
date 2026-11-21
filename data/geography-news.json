@@ -1,5 +1,5 @@
 {
- "made": "2026-11-20T15:38+00:00",
+ "made": "2026-11-21T14:48+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 43
+   "n": 42
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 6
+   "n": 5
   },
   {
    "src": "NASA EONET",
@@ -121,13 +121,102 @@
  ],
  "events": [
   {
+   "id": "qus6000ucly",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.9 earthquake",
+   "place": "238 km SW of Yanglong, China",
+   "lat": 37.2,
+   "lon": 96.64,
+   "date": "2026-11-21T10:45+00:00",
+   "mag": 5.9,
+   "depth": 10,
+   "alert": "yellow",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucly",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "china"
+  },
+  {
+   "id": "qus6000ucij",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.8 earthquake",
+   "place": "105 km NE of Lospalos, Timor Leste",
+   "lat": -7.73,
+   "lon": 127.54,
+   "date": "2026-11-21T09:42+00:00",
+   "mag": 6.8,
+   "depth": 132,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucij",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "timor leste"
+  },
+  {
+   "id": "gde5b6632de2",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Islamic Republic of Iran",
+   "place": "Islamic Republic of Iran",
+   "lat": 36.32,
+   "lon": 51.9,
+   "date": "2026-11-21T09:27+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104291",
+   "desc": "On 16/11/2026, a flood started in Islamic Republic of Iran, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd00412eda65",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Tropical Cyclone Xavier",
+   "place": "Cook Islands",
+   "lat": -11.8,
+   "lon": -165.2,
+   "date": "2026-11-21T06:00+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
+   "desc": "From 15/11/2026 to 21/11/2026, a Tropical Storm (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands (vulnerability Medium). Estimated population affected by category 1 (120 k…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ucfm",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.7 earthquake",
+   "place": "9 km NE of Carhuamayo, Peru",
+   "lat": -10.85,
+   "lon": -75.98,
+   "date": "2026-11-21T00:09+00:00",
+   "mag": 6.7,
+   "depth": 108,
+   "alert": "green",
+   "tsunami": true,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucfm",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "peru"
+  },
+  {
    "id": "gd5eefa45170",
    "kind": "flood",
    "src": "GDACS",
    "title": "Flooding in United States",
    "place": "United States",
-   "lat": 26.01,
-   "lon": -80.15,
+   "lat": 33.99,
+   "lon": -117.76,
    "date": "2026-11-20T09:07+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104290",
@@ -170,22 +259,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "carlsberg ridge"
-  },
-  {
-   "id": "gd00412eda65",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Tropical Cyclone Xavier",
-   "place": "Cook Islands, American Samoa, Samoa",
-   "lat": -11.4,
-   "lon": -163.5,
-   "date": "2026-11-20T06:00+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
-   "desc": "From 15/11/2026 to 20/11/2026, a Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands, American Samoa, Samoa (vulnerability Medium). Estimated popul…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "qus6000uc4v",
@@ -587,44 +660,6 @@
    "region": "fiji"
   },
   {
-   "id": "qus7000ty84",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "northern Mid-Atlantic Ridge",
-   "lat": 30.12,
-   "lon": -42.63,
-   "date": "2026-11-14T09:26+00:00",
-   "mag": 5.5,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty84",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "northern mid-atlantic ridge"
-  },
-  {
-   "id": "qus7000ty1a",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.8 earthquake",
-   "place": "79 km WSW of Changuillo, Peru",
-   "lat": -14.99,
-   "lon": -75.88,
-   "date": "2026-11-13T16:43+00:00",
-   "mag": 5.8,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ty1a",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "peru"
-  },
-  {
    "id": "eob5d8e858aa",
    "kind": "wildfire",
    "src": "NASA EONET · IRWIN",
@@ -750,22 +785,6 @@
    ]
   },
   {
-   "id": "gd91570c15b4",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Argentina",
-   "place": "Argentina",
-   "lat": -27.78,
-   "lon": -67.17,
-   "date": "2026-11-10T12:57+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104277",
-   "desc": "On 08/11/2026, a flood started in Argentina, lasting until 16/11/2026 (last update). The flood caused 1 deaths and 18 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus7000tx16",
    "kind": "quake",
    "src": "USGS",
@@ -790,8 +809,8 @@
    "src": "GDACS",
    "title": "Flooding in France",
    "place": "France",
-   "lat": 43.56,
-   "lon": 3.95,
+   "lat": 50.51,
+   "lon": 1.73,
    "date": "2026-11-06T11:36+00:00",
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104270",
@@ -888,25 +907,6 @@
    "region": "vanuatu"
   },
   {
-   "id": "qus6000u43g",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 7.0 earthquake",
-   "place": "189 km ENE of Nagqu, China",
-   "lat": 32.34,
-   "lon": 93.78,
-   "date": "2026-10-22T14:33+00:00",
-   "mag": 7,
-   "depth": 18,
-   "alert": "orange",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u43g",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "china"
-  },
-  {
    "id": "gd1e7d8ccfd0",
    "kind": "drought",
    "src": "GDACS",
@@ -973,13 +973,49 @@
  ],
  "stories": [
   {
-   "id": "a596c1cec5",
+   "id": "ad9ab7d275",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "US Senate approves bill to speed up permitting reviews for energy projects and datacenters",
-   "url": "https://www.theguardian.com/us-news/2026/nov/20/senate-energy-datacenters-review-bill",
-   "desc": "Bipartisan legislation now goes to the House amid concerns by some Democrats and environmental groups The Senate approved bipartisan legislation on Thursday aimed at speeding up permitting reviews to build power plants, transmission lines and other energy infrastructure as law…",
-   "date": "2026-11-20T15:09+00:00",
+   "title": "Cop31 live: world urged to avoid one of ‘most disappointing Cops ever’ as talks stretch past deadline",
+   "url": "https://www.theguardian.com/environment/live/2026/nov/21/cop31-climate-deal-latest-news-updates",
+   "desc": "Though the climate talks officially finished on Friday, no final deal was agreed. NGOs are warning that this summit might fall disastrously short of what is needed Although not quite deserted, the halls of the Cop31 conference centre are considerably less peopled today. A few …",
+   "date": "2026-11-21T14:33+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "040c95d5f0",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
+   "url": "https://www.bbc.co.uk/news/articles/c6ly5w40eg07o?at_medium=RSS&at_campaign=rss",
+   "desc": "Countries from nearly 200 countries are in a deadlock to try and get a new global climate agreement.",
+   "date": "2026-11-21T09:52+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "df1655ff07",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Beating Ebola takes more than medicine – I saw what worked in west Africa a decade ago | Kayode Akintola",
+   "url": "https://www.theguardian.com/global-development/2026/nov/21/ebola-outbreak-congo-worst-ever",
+   "desc": "The outbreak in DR Congo is shaping up to be the worst ever, but the support of local faith leaders – and adequate funding – will be needed to bring it under control Ebola is terrifying: I know, because I lived through the world’s worst outbreak of the disease . That was in we…",
+   "date": "2026-11-21T06:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "957cbbf536",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "COP31 draft agreement drops all explicit mentions of fossil fuels",
+   "url": "https://geographical.co.uk/news/cop31-draft-agreement-drops-all-explicit-mentions-of-fossil-fuels",
+   "desc": "New draft agreement removes explicit references to transitioning away from coal, oil and gas and drops a proposed target for climate adaptation finance worth billions A new draft agreement released at the COP31 summit in Antalya has stripped all references to transitioning awa…",
+   "date": "2026-11-20T16:47+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
@@ -997,28 +1033,6 @@
    ]
   },
   {
-   "id": "af5be0afe4",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "What are heat pumps and how much do they cost?",
-   "url": "https://www.bbc.co.uk/news/articles/c8xgdv9e007o?at_medium=RSS&at_campaign=rss",
-   "desc": "The government wants more homes to have heat pumps to cut fossil fuel use and drive down energy bills.",
-   "date": "2026-11-20T10:24+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "a0c91a0d0f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: Hard Mode: Natural Processes – True or False?",
-   "url": "https://geographical.co.uk/quizzes/quiz-hard-mode-natural-processes-true-or-false",
-   "desc": "Think you know how our planet really works? Put your geography knowledge to the ultimate test with this challenging True or False quiz on natural processes and see if you have what it takes to score 8/8&#8230;",
-   "date": "2026-11-20T08:00+00:00",
-   "th": []
-  },
-  {
    "id": "ea6f6bfd95",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1028,18 +1042,6 @@
    "date": "2026-11-20T05:01+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "26c67f7aec",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Iraq university’s removal of male professors teaching women sparks weeks of protests",
-   "url": "https://www.theguardian.com/global-development/2026/nov/20/iraqi-university-ban-men-teaching-women-protests",
-   "desc": "Al-Qadisiyah University’s move a sign of the country’s slide into a Taliban-like gender segregation, say activists The removal of male professors teaching female students at a university in southern Iraq has sparked protests and been criticised by activists as a Taliban-like g…",
-   "date": "2026-11-20T05:00+00:00",
-   "th": [
-    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1068,16 +1070,51 @@
    ]
   },
   {
-   "id": "bc7ca4a145",
+   "id": "27fdab47d2",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31 live: factious climate talks enter overtime without new draft deal in sight",
-   "url": "https://www.theguardian.com/world/live/2026/nov/20/cop31-climate-crisis-talks-turkey-latest-news-updates",
-   "desc": "Fossil fuels and climate finance among deep divisions that have pushed UN summit beyond its official end Antalya 2026 is the “worst Cop ever”, civil society activists have said in a packed final press conference at the UN climate summit. Civil society organisations have a spec…",
-   "date": "2026-11-20T15:04+00:00",
+   "title": "‘Legally, they don’t exist’: the hybrid crabs puzzling biologists and fishers",
+   "url": "https://www.theguardian.com/environment/2026/nov/21/alaska-bering-sea-heatwave-snow-tanner-hybrid-crabs-fishing-quotas",
+   "desc": "A heatwave in the Bering Sea that killed 10bn snow crabs has led to a new species emerging that has no fishing quotas Somewhere out on the Bering Sea, hundreds of miles off the coast of Alaska, a group of researchers onboard the trawler Alaska Knight haul up a heap of crabs fr…",
+   "date": "2026-11-21T11:00+00:00",
+   "th": [
+    "Topic 2B Coastal landscapes and change",
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "af5be0afe4",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "What are heat pumps and how much do they cost?",
+   "url": "https://www.bbc.co.uk/news/articles/c8xgdv9e007o?at_medium=RSS&at_campaign=rss",
+   "desc": "The government wants more homes to have heat pumps to cut fossil fuel use and drive down energy bills.",
+   "date": "2026-11-20T10:24+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
+  },
+  {
+   "id": "26c67f7aec",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Iraq university’s removal of male professors teaching women sparks weeks of protests",
+   "url": "https://www.theguardian.com/global-development/2026/nov/20/iraqi-university-ban-men-teaching-women-protests",
+   "desc": "Al-Qadisiyah University’s move a sign of the country’s slide into a Taliban-like gender segregation, say activists The removal of male professors teaching female students at a university in southern Iraq has sparked protests and been criticised by activists as a Taliban-like g…",
+   "date": "2026-11-20T05:00+00:00",
+   "th": [
+    "Topic 4B Diverse places"
+   ]
+  },
+  {
+   "id": "04331fb33c",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Phenomena: Cloud iridescence – why some clouds appear rainbow-coloured",
+   "url": "https://geographical.co.uk/science-environment/phenomena-cloud-iridescence-why-some-clouds-appear-rainbow-coloured",
+   "desc": "How tiny water droplets and ice crystals produce rainbow colours in clouds.",
+   "date": "2026-11-20T16:40+00:00",
+   "th": []
   },
   {
    "id": "7b60304f76",
@@ -1092,30 +1129,6 @@
    ]
   },
   {
-   "id": "fddde9ec8f",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "More climate money for Africa? Europe says use what's already pledged",
-   "url": "https://www.bbc.co.uk/news/articles/c6074k5jjrzko?at_medium=RSS&at_campaign=rss",
-   "desc": "African countries at the UN climate summit in Turkey are demanding more funding from developed nations to help them cope with climate change.",
-   "date": "2026-11-20T05:03+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "a98091879e",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "AI models are easy to pressure into giving false climate information, report finds",
-   "url": "https://geographical.co.uk/news/ai-models-are-easy-to-pressure-into-giving-false-climate-information-report-finds",
-   "desc": "AI systems have ‘limitations as a trustworthy broker of climate information to the public’, new UNESCO-UCL report says A report on how AI provides climate change information found that it can deliver contradictory and unreliable answers, with one researcher warning that the te…",
-   "date": "2026-11-18T10:56+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "0c57e789aa",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1125,19 +1138,6 @@
    "date": "2026-11-19T05:00+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "26035da73a",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "‘Everyone struggled for this justice’: tears in court as Rohingya vindicated in Myanmar genocide ruling",
-   "url": "https://www.theguardian.com/global-development/2026/nov/19/everyone-struggled-for-this-justice-tears-in-court-as-rohingya-vindicated-in-myanmar-genocide-ruling",
-   "desc": "Relief in the immediate aftermath of a landmark ruling, but what happens next is in the hands of governments around the world There were tears in the halls of The Hague in the Netherlands and an eruption of applause in the refugee camps of Bangladesh as the scattered communiti…",
-   "date": "2026-11-19T16:15+00:00",
-   "th": [
-    "Topic 1 Tectonic processes and hazards",
-    "Topic 4B Diverse places"
    ]
   },
   {
@@ -1165,16 +1165,53 @@
    ]
   },
   {
-   "id": "8c001dfe64",
+   "id": "398adce4c4",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "These US fishers see offshore wind as a ‘godsend’. Trump wants to shut it down",
-   "url": "https://www.theguardian.com/environment/2026/nov/20/offshore-wind-farms-trump-fishers",
-   "desc": "Despite the president’s attacks, Sea Services is training New England fishers in offshore wind construction and providing them with a second income stream On a rainy September morning, the Pamela Ann, a rusty, 86ft (26-metre) scallop boat, docked in New Bedford, Massachusetts.…",
-   "date": "2026-11-20T14:00+00:00",
+   "title": "China commits to low-carbon electrification and help for others to improve",
+   "url": "https://www.theguardian.com/environment/2026/nov/21/china-commits-low-carbon-electrification-help-others-improve",
+   "desc": "Exclusive: Countries at Cop31 are being urged to commit to deriving 35% of their energy from electricity by 2035 Cop31 live – latest updates China is pushing for rapid electrification of its economy using low-carbon energy and will help other countries do the same, a senior me…",
+   "date": "2026-11-21T09:47+00:00",
    "th": [
-    "Topic 3 Globalisation",
+    "Topic 6 The carbon cycle and energy security",
     "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "fddde9ec8f",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "More climate money for Africa? Europe says use what's already pledged",
+   "url": "https://www.bbc.co.uk/news/articles/c6074k5jjrzko?at_medium=RSS&at_campaign=rss",
+   "desc": "African countries at the UN climate summit in Turkey are demanding more funding from developed nations to help them cope with climate change.",
+   "date": "2026-11-20T05:03+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "26035da73a",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "‘Everyone struggled for this justice’: tears in court as Rohingya vindicated in Myanmar genocide ruling",
+   "url": "https://www.theguardian.com/global-development/2026/nov/19/everyone-struggled-for-this-justice-tears-in-court-as-rohingya-vindicated-in-myanmar-genocide-ruling",
+   "desc": "Relief in the immediate aftermath of a landmark ruling, but what happens next is in the hands of governments around the world There were tears in the halls of The Hague in the Netherlands and an eruption of applause in the refugee camps of Bangladesh as the scattered communiti…",
+   "date": "2026-11-19T16:15+00:00",
+   "th": [
+    "Topic 1 Tectonic processes and hazards",
+    "Topic 4B Diverse places"
+   ]
+  },
+  {
+   "id": "ec28bcb84f",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "UN body launches new refugee data portal to drive solutions for millions displaced",
+   "url": "https://geographical.co.uk/news/un-body-launches-new-refugee-data-portal-to-drive-solutions-for-millions-displaced",
+   "desc": "Portal will help to offer a well-rounded view of displacement and its impacts, providing greater support for future policies and programmes The UN Refugee Agency (UNHCR) has announced today the launch of its new Refugee Data Portal, bringing together population statistics with…",
+   "date": "2026-11-20T16:15+00:00",
+   "th": [
+    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
@@ -1188,30 +1225,6 @@
    "th": []
   },
   {
-   "id": "ad3e73c028",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Oil firm fined for breaking environmental rules hundreds of times",
-   "url": "https://www.bbc.co.uk/news/articles/cmwy5de1177yo?at_medium=RSS&at_campaign=rss",
-   "desc": "Ten charges involved oil, cyanide and other pollutants entering local waterways.",
-   "date": "2026-11-19T19:58+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "92d39ebffb",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Small island nations call for coordinated action to address climate and plastic crises",
-   "url": "https://geographical.co.uk/news/small-island-nations-call-for-coordinated-action-to-address-climate-and-plastic-crises",
-   "desc": "Island leaders say small island states must not be an afterthought at COP31 or at UN plastic treaty talks next year Small island developing states (SIDS) have released a paper advocating that plastic and climate change should not be treated as separate crises. Led by Fiji and …",
-   "date": "2026-11-18T09:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "bb697c9704",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1220,18 +1233,6 @@
    "desc": "A widespread, early-season snowstorm blanketed California’s mountains in white in mid-November 2026.",
    "date": "2026-11-18T05:01+00:00",
    "th": []
-  },
-  {
-   "id": "9509352790",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Mentors, colleagues and friends: tributes paid to the ‘Eritrea 16’ who disappeared 25 years ago",
-   "url": "https://www.theguardian.com/global-development/2026/nov/19/eritrea-16-journalists-jailed-press-freedom-award-cpj-censorship-warning",
-   "desc": "Families of journalists who vanished into state prisons on ‘Black Tuesday’ in 2001 do not know whether they are even still alive When Fisseha Yirgalem stepped on to the podium and began reading from a letter written to a man who may never hear it, the room full of journalists …",
-   "date": "2026-11-19T10:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
-   ]
   },
   {
    "id": "a1115f2971",
@@ -1246,15 +1247,39 @@
    ]
   },
   {
-   "id": "41ddc4bfb4",
+   "id": "234635f653",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "How the war in Iran turned the Gulf into a climate catastrophe – video explainer",
-   "url": "https://www.theguardian.com/world/video/2026/nov/20/how-the-war-in-iran-turned-the-gulf-into-a-climate-catastrophe-video-explainer",
-   "desc": "The war between the US, Israel and Iran has turned the strait of Hormuz, one of the world’s busiest oil shipping routes, into a battlefield, but also the centre of a deepening environmental disaster. Tankers struck by missiles or sea mines are leaking oil into the Gulf, leavin…",
-   "date": "2026-11-20T12:00+00:00",
+   "title": "Cop31 talks go into overtime as debate rages over lack of fossil fuels in draft deal",
+   "url": "https://www.theguardian.com/environment/2026/nov/20/cop31-talks-overtime-fossil-fuels-vanish-from-draft-deal",
+   "desc": "African ministers say they ‘didn’t come here to beg’, with civil society groups calling it the ‘worst Cop ever’ Crucial climate talks headed into overtime on the last official day of the Cop31 UN summit as countries continued to argue over a draft deal that was silent on fossi…",
+   "date": "2026-11-20T20:04+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "9509352790",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Mentors, colleagues and friends: tributes paid to the ‘Eritrea 16’ who disappeared 25 years ago",
+   "url": "https://www.theguardian.com/global-development/2026/nov/19/eritrea-16-journalists-jailed-press-freedom-award-cpj-censorship-warning",
+   "desc": "Families of journalists who vanished into state prisons on ‘Black Tuesday’ in 2001 do not know whether they are even still alive When Fisseha Yirgalem stepped on to the podium and began reading from a letter written to a man who may never hear it, the room full of journalists …",
+   "date": "2026-11-19T10:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "343eb560cd",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Darién crossings drop 90 per cent as new migration routes appear",
+   "url": "https://geographical.co.uk/news/darien-gap-crossings-drop-90-per-cent-as-new-migration-routes-appear",
+   "desc": "Migration corridors have shifted across regions towards ‘more fragmented, multidirectional and intraregional movements’, according to IOM A new report by the International Organisation for Migration (IOM) shows migration patterns shifting across Latin America and the Caribbean…",
+   "date": "2026-11-20T16:00+00:00",
+   "th": [
+    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
@@ -1270,18 +1295,6 @@
    ]
   },
   {
-   "id": "69f65492a4",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "The ocean is outpacing land in absorbing carbon, study finds",
-   "url": "https://geographical.co.uk/science-environment/the-ocean-is-outpacing-land-in-absorbing-carbon-study-finds",
-   "desc": "World’s oceans have been the predominant carbon sink for carbon dioxide since 1990, while net uptake on land has not grown A new study shows how the planet’s carbon sinks have changed over time, with the ocean absorbing carbon dioxide from fossil fuel emissions at an increasin…",
-   "date": "2026-11-18T09:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "947da179bb",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1290,6 +1303,18 @@
    "desc": "For many astronauts, the spectacular sight of lightning stands out when looking back at Earth from the International Space Station.",
    "date": "2026-11-17T05:01+00:00",
    "th": []
+  },
+  {
+   "id": "f025997d1c",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "What to know about the US permitting bill, from datacenters to Trump’s arch",
+   "url": "https://www.theguardian.com/us-news/2026/nov/20/what-to-know-permitting-bill-energy-passed",
+   "desc": "Environmental groups are aghast, but supporters say bill might be only chance to speed up clean energy projects The US Senate has passed a bill to fast-track energy and datacenter projects by removing environmental and legal guardrails. The legislation has caused a fraught div…",
+   "date": "2026-11-20T18:26+00:00",
+   "th": [
+    "Topic 7 Superpowers"
+   ]
   },
   {
    "id": "4ca835d1be",
@@ -1301,32 +1326,6 @@
    "date": "2026-11-18T05:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "34ed9397c7",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "California’s coastal communities on alert as biggest waves in years hit state",
-   "url": "https://www.theguardian.com/us-news/2026/nov/20/california-coastal-communities-alert-big-waves-hit-state",
-   "desc": "Hazard warnings issued throughout week after powerful swells and waves of more than 9 metres recorded Multiple coastal hazard warnings were issued this week across California as successive areas of low pressure generated powerful swells and large breaking waves for coastal com…",
-   "date": "2026-11-20T09:03+00:00",
-   "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "567b904cd0",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Bows and old guns: Indigenous militias left to fight Peru’s cocaine gangs alone",
-   "url": "https://www.theguardian.com/global-development/2026/nov/17/indigenous-groups-ashaninka-amazon-peru-crime-drug-gangs",
-   "desc": "Decades after Lima armed them to fight Shining Path rebels, the Asháninka are still defending their Amazon rainforest, but now against drug traffickers – and without any help Shielding his eyes from the tropical sun, Irineo Sánchez Gómez – better known by his nom de guerre, Ki…",
-   "date": "2026-11-17T12:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity",
-    "Topic 6 The carbon cycle and energy security"
    ]
   }
  ]
