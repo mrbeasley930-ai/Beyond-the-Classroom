@@ -1,5 +1,5 @@
 {
- "made": "2026-11-20T15:48+00:00",
+ "made": "2026-11-21T14:58+00:00",
  "themes": [
   "1.1 Processors and hardware",
   "1.2 Software and development",
@@ -30,7 +30,7 @@
    "level": "magazine",
    "line": "the UK's National Cyber Security Centre: warnings and advice",
    "ok": true,
-   "n": 1
+   "n": 0
   },
   {
    "src": "The Conversation",
@@ -72,7 +72,7 @@
    "level": "research",
    "line": "Massachusetts Institute of Technology research news, computing",
    "ok": true,
-   "n": 1
+   "n": 4
   },
   {
    "src": "ScienceDaily",
@@ -83,6 +83,60 @@
   }
  ],
  "stories": [
+  {
+   "id": "ef4eeb9c86",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "A decades-old mystery about light could hold the key to faster internet",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261119194544.htm",
+   "desc": "A promising material for ultra-fast optical communications has held a secret for decades, but scientists may have finally cracked it. Researchers at KAIST and Caltech have precisely measured how barium titanate controls and absorbs light, resolving longstanding uncertainties t…",
+   "date": "2026-11-21T00:02+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "97715f31a4",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "In a year of AI solving maths problems, an Anthropic worker says he may have cracked the biggest",
+   "url": "https://www.bbc.co.uk/news/articles/c6pqr2g7w059o?at_medium=RSS&at_campaign=rss",
+   "desc": "A mathematician at Anthropic says he used an AI to prove the famed Riemann hypothesis, though verification will take some time.",
+   "date": "2026-11-20T23:08+00:00",
+   "th": [
+    "1.4 / 2.3 Algorithms",
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "c44ff83f6e",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "A tiny superconducting sandwich could help computers use less energy",
+   "url": "https://news.mit.edu/2026/tiny-superconducting-sandwich-could-help-computers-use-less-energy-1120",
+   "desc": "MIT researchers combined superconducting and magnetic layers in a tiny device offering persistent memory and signal control for more energy-efficient computing.",
+   "date": "2026-11-20T21:00+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "99727b65c2",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Researcher plants 2m canaries into the AI supply chain. A privacy disaster surfaced.",
+   "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+   "desc": "Test using prompts with unique, trackable secrets proves that data doesn't stay private.",
+   "date": "2026-11-20T20:59+00:00",
+   "th": [
+    "1.5 Law and ethics",
+    "1.5 AI and automation"
+   ]
+  },
   {
    "id": "488f394ae9",
    "src": "Quanta",
@@ -124,33 +178,6 @@
    ]
   },
   {
-   "id": "77ce998683",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "White House removes cyber-security chief after series of tech outages",
-   "url": "https://www.bbc.co.uk/news/articles/cwz0k3nn5p5mo?at_medium=RSS&at_campaign=rss",
-   "desc": "CBS is reporting he has been fired after losing the confidence of White House chief of staff Stephen Miller.",
-   "date": "2026-11-20T13:28+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "545852a959",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Man hired by Russia spied on Silicon Valley tech and defense company, feds say",
-   "url": "https://arstechnica.com/security/2026/11/man-charged-with-spying-on-silicon-valley-tech-and-defense-company-for-russia/",
-   "desc": "25-year-old accused of stalking employees at coffee shop and in an \"aggressive\" car pursuit.",
-   "date": "2026-11-19T20:29+00:00",
-   "th": [
-    "1.1 Processors and hardware"
-   ]
-  },
-  {
    "id": "4cb81a933a",
    "src": "The Conversation",
    "level": "way in",
@@ -161,32 +188,6 @@
    "date": "2026-11-19T16:52+00:00",
    "th": [
     "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "1ac3744caa",
-   "src": "MIT News",
-   "level": "research",
-   "kind": "story",
-   "title": "Learning the language of machine learning",
-   "url": "https://news.mit.edu/2026/learning-language-of-machine-learning-jacob-andreas-1117",
-   "desc": "By studying the computational foundations of language learning, Associate Professor Jacob Andreas builds intelligent systems that can communicate effectively with humans.",
-   "date": "2026-11-17T05:00+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "d2727c0a8b",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "Quantum computers are getting too powerful to check. Scientists have a solution",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261115085557.htm",
-   "desc": "Scientists have developed a new way to determine whether quantum simulations can be trusted, solving a growing problem as quantum computers become too powerful for conventional machines to check. Demonstrated on a 51-qubit system, the technique measures uncertainty and provide…",
-   "date": "2026-11-17T00:20+00:00",
-   "th": [
-    "1.1 Processors and hardware"
    ]
   },
   {
@@ -204,16 +205,53 @@
    ]
   },
   {
-   "id": "caefc24d92",
-   "src": "NCSC",
+   "id": "d2727c0a8b",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "Quantum computers are getting too powerful to check. Scientists have a solution",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261115085557.htm",
+   "desc": "Scientists have developed a new way to determine whether quantum simulations can be trusted, solving a growing problem as quantum computers become too powerful for conventional machines to check. Demonstrated on a 51-qubit system, the technique measures uncertainty and provide…",
+   "date": "2026-11-17T00:20+00:00",
+   "th": [
+    "1.1 Processors and hardware"
+   ]
+  },
+  {
+   "id": "7abcb9e67a",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Tech stock sell-off drags markets down as Anthropic shares slide",
+   "url": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss",
+   "desc": "Pressures weighed on US markets, with the S&P 500 and the Dow Jones Industrial Average pushed into correction territory.",
+   "date": "2026-11-20T22:42+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "33a61caea8",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Q&A: Enabling more human-like interactions and understanding in multimodal foundation models",
+   "url": "https://news.mit.edu/2026/qa-enabling-more-human-interactions-understanding-multimodal-foundation-models-1120",
+   "desc": "Senior Research Scientist Jim Glass discusses how his MIT-IBM Computing Research Lab collaboration connects perception and language, and addresses the shortcoming of current models.",
+   "date": "2026-11-20T21:00+00:00",
+   "th": []
+  },
+  {
+   "id": "545852a959",
+   "src": "Ars Technica",
    "level": "magazine",
    "kind": "story",
-   "title": "NCSC scheme will help critical organisations test their cyber defences",
-   "url": "https://www.ncsc.gov.uk/news/ncsc-scheme-help-critical-organisations-test-their-cyber-defences",
-   "desc": "New NCSC Cyber Adversary Simulation scheme will help critical organisations strengthen their resilience through rigorous, real-world testing by trusted providers.",
-   "date": "2026-11-11T12:00+00:00",
+   "title": "Man hired by Russia spied on Silicon Valley tech and defense company, feds say",
+   "url": "https://arstechnica.com/security/2026/11/man-charged-with-spying-on-silicon-valley-tech-and-defense-company-for-russia/",
+   "desc": "25-year-old accused of stalking employees at coffee shop and in an \"aggressive\" car pursuit.",
+   "date": "2026-11-19T20:29+00:00",
    "th": [
-    "1.3 Security and encryption"
+    "1.1 Processors and hardware"
    ]
   },
   {
@@ -243,33 +281,6 @@
    ]
   },
   {
-   "id": "5b5e77b6ee",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Should AI be judging our credit worthiness?",
-   "url": "https://www.bbc.co.uk/news/articles/c6d94pzk9vleo?at_medium=RSS&at_campaign=rss",
-   "desc": "Would AI be a good judge of whether you should get a mortgage, car loan or mobile phone contract?",
-   "date": "2026-11-20T07:32+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "45584a3597",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "How to tell a cyberattack from a plain old outage",
-   "url": "https://arstechnica.com/security/2026/11/how-to-tell-a-cyberattack-from-a-plain-old-outage/",
-   "desc": "When everything goes down, don’t assume it’s a cyberattack.",
-   "date": "2026-11-19T11:13+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Security and encryption"
-   ]
-  },
-  {
    "id": "da23be4ca8",
    "src": "The Conversation",
    "level": "way in",
@@ -278,19 +289,6 @@
    "url": "https://theconversation.com/why-ai-enabled-scientific-research-is-a-double-edged-sword-295916",
    "desc": "Academic publications and conference submissions have risen sharply; is the situation sustainable?",
    "date": "2026-11-19T16:14+00:00",
-   "th": [
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "1d795f884f",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "AI discovers a hidden heart signal that could predict sudden death",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261112230456.htm",
-   "desc": "Scientists have uncovered a hidden warning sign in routine heart scans that could predict sudden cardiac death before it strikes. The AI-powered discovery outperformed conventional screening methods, potentially revealing thousands of people at risk of a fatal heart malfunctio…",
-   "date": "2026-11-15T01:05+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -310,6 +308,61 @@
    ]
   },
   {
+   "id": "1d795f884f",
+   "src": "ScienceDaily",
+   "level": "research",
+   "kind": "story",
+   "title": "AI discovers a hidden heart signal that could predict sudden death",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261112230456.htm",
+   "desc": "Scientists have uncovered a hidden warning sign in routine heart scans that could predict sudden cardiac death before it strikes. The AI-powered discovery outperformed conventional screening methods, potentially revealing thousands of people at risk of a fatal heart malfunctio…",
+   "date": "2026-11-15T01:05+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "36fb31620a",
+   "src": "BBC Technology",
+   "level": "way in",
+   "kind": "story",
+   "title": "Trump threatens ban on US firms building AI data centres overseas",
+   "url": "https://www.bbc.co.uk/news/articles/cmde1lw9y54ko?at_medium=RSS&at_campaign=rss",
+   "desc": "The US president provided little detail on the potential policy, saying others in his team were hearing about it for the first time.",
+   "date": "2026-11-20T20:54+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Security and encryption",
+    "1.3 Databases and data"
+   ]
+  },
+  {
+   "id": "480a8b7239",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "New approach enables physically consistent AI models of chaotic systems",
+   "url": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
+   "desc": "Enforcing physics-based constraints prevents AI models from generating unreliable predictions for complex nonlinear systems in weather, climate, and turbulent flows.",
+   "date": "2026-11-20T20:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "45584a3597",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "How to tell a cyberattack from a plain old outage",
+   "url": "https://arstechnica.com/security/2026/11/how-to-tell-a-cyberattack-from-a-plain-old-outage/",
+   "desc": "When everything goes down, don’t assume it’s a cyberattack.",
+   "date": "2026-11-19T11:13+00:00",
+   "th": [
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
    "id": "feb81c3b6c",
    "src": "IEEE Spectrum",
    "level": "magazine",
@@ -321,33 +374,6 @@
    "th": [
     "1.1 Processors and hardware",
     "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "91681bf084",
-   "src": "BBC Technology",
-   "level": "way in",
-   "kind": "story",
-   "title": "Tens of thousands of UK fridges secured from hackers in secret nationwide operation",
-   "url": "https://www.bbc.co.uk/news/articles/c6eq49zyx7p4o?at_medium=RSS&at_campaign=rss",
-   "desc": "Supermarkets, warehouses, restaurants and stadiums have been scrambling to make their devices safe.",
-   "date": "2026-11-20T00:02+00:00",
-   "th": [
-    "1.3 Security and encryption"
-   ]
-  },
-  {
-   "id": "58043437b9",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Hundreds of websites deliver potent malware cocktail to unsuspecting visitors",
-   "url": "https://arstechnica.com/security/2026/11/malicious-code-delivered-through-optimizely-hits-visitors-to-hundreds-of-sites/",
-   "desc": "Malware cocktail delivers cryptocurrency theft payloads and iOS exploits, among other things.",
-   "date": "2026-11-17T22:32+00:00",
-   "th": [
-    "1.3 Networks and the web",
-    "1.3 Security and encryption"
    ]
   },
   {
@@ -365,6 +391,19 @@
    ]
   },
   {
+   "id": "0d10a26bfe",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "The Private Key Mistake! (TLS Key set to \"4\") - Computerphile",
+   "url": "https://www.youtube.com/watch?v=NDgS__J1U-M",
+   "desc": "You actually have to work quite hard to set a private key to the number 4! - Dr Tim Muller takes us through the problems with 'randomly' assigning a 120 digit number to the value '4' Computerphile is supported by Jane Street. Learn more about them (and exciting career opportun…",
+   "date": "2026-10-30T15:47+00:00",
+   "th": [
+    "1.3 Networks and the web"
+   ]
+  },
+  {
    "id": "916f45b01b",
    "src": "ScienceDaily",
    "level": "research",
@@ -378,16 +417,44 @@
    ]
   },
   {
-   "id": "0d10a26bfe",
-   "src": "Computerphile",
+   "id": "77ce998683",
+   "src": "BBC Technology",
    "level": "way in",
-   "kind": "video",
-   "title": "The Private Key Mistake! (TLS Key set to \"4\") - Computerphile",
-   "url": "https://www.youtube.com/watch?v=NDgS__J1U-M",
-   "desc": "You actually have to work quite hard to set a private key to the number 4! - Dr Tim Muller takes us through the problems with 'randomly' assigning a 120 digit number to the value '4' Computerphile is supported by Jane Street. Learn more about them (and exciting career opportun…",
-   "date": "2026-10-30T15:47+00:00",
+   "kind": "story",
+   "title": "White House removes cyber-security chief after series of tech outages",
+   "url": "https://www.bbc.co.uk/news/articles/cwz0k3nn5p5mo?at_medium=RSS&at_campaign=rss",
+   "desc": "He has been fired after losing the confidence of new White House chief of staff Stephen Miller, according to reports.",
+   "date": "2026-11-20T19:03+00:00",
    "th": [
-    "1.3 Networks and the web"
+    "1.2 Software and development",
+    "1.3 Security and encryption"
+   ]
+  },
+  {
+   "id": "1ac3744caa",
+   "src": "MIT News",
+   "level": "research",
+   "kind": "story",
+   "title": "Learning the language of machine learning",
+   "url": "https://news.mit.edu/2026/learning-language-of-machine-learning-jacob-andreas-1117",
+   "desc": "By studying the computational foundations of language learning, Associate Professor Jacob Andreas builds intelligent systems that can communicate effectively with humans.",
+   "date": "2026-11-17T05:00+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
+  },
+  {
+   "id": "58043437b9",
+   "src": "Ars Technica",
+   "level": "magazine",
+   "kind": "story",
+   "title": "Hundreds of websites deliver potent malware cocktail to unsuspecting visitors",
+   "url": "https://arstechnica.com/security/2026/11/malicious-code-delivered-through-optimizely-hits-visitors-to-hundreds-of-sites/",
+   "desc": "Malware cocktail delivers cryptocurrency theft payloads and iOS exploits, among other things.",
+   "date": "2026-11-17T22:32+00:00",
+   "th": [
+    "1.3 Networks and the web",
+    "1.3 Security and encryption"
    ]
   },
   {
@@ -404,14 +471,41 @@
    ]
   },
   {
-   "id": "e802c02986",
+   "id": "87c3e75465",
+   "src": "The Conversation",
+   "level": "way in",
+   "kind": "story",
+   "title": "The Microsoft outage is an urgent wake-up call for greater digital resilience",
+   "url": "https://theconversation.com/the-microsoft-outage-is-an-urgent-wake-up-call-for-greater-digital-resilience-296610",
+   "desc": "The infrastructure of the internet is more fragile than we’d like it to be.",
+   "date": "2026-11-13T17:15+00:00",
+   "th": [
+    "1.2 Software and development"
+   ]
+  },
+  {
+   "id": "3a38aee5f2",
+   "src": "Computerphile",
+   "level": "way in",
+   "kind": "video",
+   "title": "?PHP Problem? - Computerphile",
+   "url": "https://www.youtube.com/watch?v=cI8IquVEyVY",
+   "desc": "Two PHP Exploits hit the news last week. Dr Steve Bagley explains how dangerous they could be. Read about the chip competition on Jane Street’s blog: https://jane-st.co/ASIC-Competition-Computerphile2027 (channel sponsor) Computerphile is supported by Jane Street. Learn more a…",
+   "date": "2026-10-28T16:23+00:00",
+   "th": [
+    "1.1 Processors and hardware",
+    "1.3 Networks and the web"
+   ]
+  },
+  {
+   "id": "5b5e77b6ee",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Dutch watchdog tells people not to buy AI smart glasses",
-   "url": "https://www.bbc.co.uk/news/articles/ckq6eyrzrzy5o?at_medium=RSS&at_campaign=rss",
-   "desc": "Tests of glasses showed some misread medicine instructions or pretended to have called an ambulance",
-   "date": "2026-11-19T16:33+00:00",
+   "title": "Should AI be judging our credit worthiness?",
+   "url": "https://www.bbc.co.uk/news/articles/c6d94pzk9vleo?at_medium=RSS&at_campaign=rss",
+   "desc": "Would AI be a good judge of whether you should get a mortgage, car loan or mobile phone contract?",
+   "date": "2026-11-20T07:32+00:00",
    "th": [
     "1.5 AI and automation"
    ]
@@ -431,83 +525,30 @@
    ]
   },
   {
-   "id": "87c3e75465",
-   "src": "The Conversation",
-   "level": "way in",
-   "kind": "story",
-   "title": "The Microsoft outage is an urgent wake-up call for greater digital resilience",
-   "url": "https://theconversation.com/the-microsoft-outage-is-an-urgent-wake-up-call-for-greater-digital-resilience-296610",
-   "desc": "The infrastructure of the internet is more fragile than we’d like it to be.",
-   "date": "2026-11-13T17:15+00:00",
-   "th": [
-    "1.2 Software and development"
-   ]
-  },
-  {
-   "id": "91ae39dd31",
-   "src": "ScienceDaily",
-   "level": "research",
-   "kind": "story",
-   "title": "Tiny flaws in diamonds could unlock a quantum computing revolution",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261111005855.htm",
-   "desc": "Scientists have discovered a faster way to identify diamond-based materials that could power quantum computers and sensors at room temperature. The breakthrough has already revealed promising new quantum building blocks that could help unlock computing capabilities far beyond …",
-   "date": "2026-11-13T05:26+00:00",
-   "th": [
-    "1.1 Processors and hardware"
-   ]
-  },
-  {
-   "id": "3a38aee5f2",
-   "src": "Computerphile",
-   "level": "way in",
-   "kind": "video",
-   "title": "?PHP Problem? - Computerphile",
-   "url": "https://www.youtube.com/watch?v=cI8IquVEyVY",
-   "desc": "Two PHP Exploits hit the news last week. Dr Steve Bagley explains how dangerous they could be. Read about the chip competition on Jane Street’s blog: https://jane-st.co/ASIC-Competition-Computerphile2027 (channel sponsor) Computerphile is supported by Jane Street. Learn more a…",
-   "date": "2026-10-28T16:23+00:00",
-   "th": [
-    "1.1 Processors and hardware",
-    "1.3 Networks and the web"
-   ]
-  },
-  {
-   "id": "0a4eeca95e",
+   "id": "91681bf084",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Simon Jack: Can Anthropic's record-breaking IPO stop the AI bubble bursting?",
-   "url": "https://www.bbc.co.uk/news/articles/cj4gnpzll020o?at_medium=RSS&at_campaign=rss",
-   "desc": "Anthropic's hotly anticipated IPO is expected to put it in the top 10 most valuable US companies, but the future is uncertain.",
-   "date": "2026-11-18T21:28+00:00",
+   "title": "Tens of thousands of UK fridges secured from hackers in secret nationwide operation",
+   "url": "https://www.bbc.co.uk/news/articles/c6eq49zyx7p4o?at_medium=RSS&at_campaign=rss",
+   "desc": "Supermarkets, warehouses, restaurants and stadiums have been scrambling to make their devices safe.",
+   "date": "2026-11-20T00:02+00:00",
    "th": [
-    "1.5 AI and automation"
+    "1.3 Security and encryption"
    ]
   },
   {
-   "id": "b686da6834",
-   "src": "Ars Technica",
-   "level": "magazine",
-   "kind": "story",
-   "title": "Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
-   "url": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
-   "desc": "Researcher finds 35,000 Grok Build apps wide open to anyone who looked for them.",
-   "date": "2026-11-10T21:12+00:00",
-   "th": [
-    "1.2 Software and development",
-    "1.3 Security and encryption",
-    "1.5 AI and automation"
-   ]
-  },
-  {
-   "id": "326a30531d",
+   "id": "e802c02986",
    "src": "BBC Technology",
    "level": "way in",
    "kind": "story",
-   "title": "Tech Life",
-   "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyw?at_medium=RSS&at_campaign=rss",
-   "desc": "Video gaming is huge - it's more lucrative than the movies and music combined.",
-   "date": "2026-11-17T20:30+00:00",
-   "th": []
+   "title": "Dutch watchdog tells people not to buy AI smart glasses",
+   "url": "https://www.bbc.co.uk/news/articles/ckq6eyrzrzy5o?at_medium=RSS&at_campaign=rss",
+   "desc": "Tests of glasses showed some misread medicine instructions or pretended to have called an ambulance",
+   "date": "2026-11-19T16:33+00:00",
+   "th": [
+    "1.5 AI and automation"
+   ]
   }
  ]
 }
