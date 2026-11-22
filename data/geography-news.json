@@ -1,5 +1,5 @@
 {
- "made": "2026-11-21T14:48+00:00",
+ "made": "2026-11-22T14:44+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 42
+   "n": 43
   },
   {
    "src": "USGS (significant, past month)",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 16
+   "n": 15
   },
   {
    "src": "Carbon Brief",
@@ -116,10 +116,77 @@
    "level": "way in",
    "line": "United Nations news on migrants and refugees",
    "ok": true,
-   "n": 3
+   "n": 2
   }
  ],
  "events": [
+  {
+   "id": "gd8cbe8ed2ca",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Chile",
+   "place": "Chile",
+   "lat": -33.1,
+   "lon": -71.67,
+   "date": "2026-11-22T11:21+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104293",
+   "desc": "On 20/11/2026, a flood started in Chile, lasting until 22/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ucrb",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "224 km NE of Bitung, Indonesia",
+   "lat": 3.03,
+   "lon": 126.39,
+   "date": "2026-11-22T07:54+00:00",
+   "mag": 5.4,
+   "depth": 44,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucrb",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "indonesia"
+  },
+  {
+   "id": "gd00412eda65",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Tropical Cyclone Xavier",
+   "place": "Cook Islands, American Samoa",
+   "lat": -11.7,
+   "lon": -167.9,
+   "date": "2026-11-22T06:00+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
+   "desc": "From 15/11/2026 to 22/11/2026, a Tropical Storm (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands, American Samoa (vulnerability Medium). Estimated population affected by c…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd555e7f48aa",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Türkiye",
+   "place": "Türkiye",
+   "lat": 36.97,
+   "lon": 37.41,
+   "date": "2026-11-21T12:32+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104292",
+   "desc": "On 16/11/2026, a flood started in Türkiye, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
   {
    "id": "qus6000ucly",
    "kind": "quake",
@@ -138,6 +205,25 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "china"
+  },
+  {
+   "id": "qus6000ucky",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "112 km SSE of Tateyama, Japan",
+   "lat": 34.01,
+   "lon": 140.21,
+   "date": "2026-11-21T10:09+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucky",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
   },
   {
    "id": "qus6000ucij",
@@ -170,22 +256,6 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104291",
    "desc": "On 16/11/2026, a flood started in Islamic Republic of Iran, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd00412eda65",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Tropical Cyclone Xavier",
-   "place": "Cook Islands",
-   "lat": -11.8,
-   "lon": -165.2,
-   "date": "2026-11-21T06:00+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
-   "desc": "From 15/11/2026 to 21/11/2026, a Tropical Storm (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands (vulnerability Medium). Estimated population affected by category 1 (120 k…",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -280,6 +350,54 @@
    "region": "southeast of the loyalty islands"
   },
   {
+   "id": "eob4ed6d25a4",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg A76C",
+   "place": "",
+   "lat": -57.66,
+   "lon": -23.48,
+   "date": "2026-11-20T00:00+00:00",
+   "first": "2021-05-28T00:00+00:00",
+   "url": "https://usicecenter.gov/Products/AntarcIcebergs",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo342d1f5210",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg C39",
+   "place": "",
+   "lat": -65.32,
+   "lon": 54.0,
+   "date": "2026-11-20T00:00+00:00",
+   "first": "2022-04-29T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "eo080f12e18e",
+   "kind": "ice",
+   "src": "NASA EONET · NATICE",
+   "title": "Iceberg D32",
+   "place": "",
+   "lat": -57.08,
+   "lon": -41.04,
+   "date": "2026-11-20T00:00+00:00",
+   "first": "2022-10-21T00:00+00:00",
+   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
    "id": "qus6000uc2q",
    "kind": "quake",
    "src": "USGS",
@@ -354,8 +472,8 @@
    "kind": "quake",
    "src": "USGS",
    "title": "Magnitude 5.3 earthquake",
-   "place": "7 km N of Tsunagi, Japan",
-   "lat": 32.31,
+   "place": "4 km N of Tsunagi, Japan",
+   "lat": 32.28,
    "lon": 130.47,
    "date": "2026-11-18T17:22+00:00",
    "mag": 5.3,
@@ -517,38 +635,6 @@
    "region": "tajikistan"
   },
   {
-   "id": "gd4a3ceba261",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Spain",
-   "place": "Spain",
-   "lat": 42.34,
-   "lon": -7.86,
-   "date": "2026-11-17T07:43+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104287",
-   "desc": "On 15/11/2026, a flood started in Spain, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd71792527e5",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in South Africa",
-   "place": "South Africa",
-   "lat": -26.9,
-   "lon": 27.46,
-   "date": "2026-11-17T07:24+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104286",
-   "desc": "On 15/11/2026, a flood started in South Africa, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus7000tymu",
    "kind": "quake",
    "src": "USGS",
@@ -622,44 +708,6 @@
    "region": "japan"
   },
   {
-   "id": "qus7000tyek",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "9 km E of Union, Philippines",
-   "lat": 9.76,
-   "lon": 126.2,
-   "date": "2026-11-15T13:41+00:00",
-   "mag": 5.5,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyek",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "philippines"
-  },
-  {
-   "id": "qus7000tyca",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.5 earthquake",
-   "place": "Fiji region",
-   "lat": -19.56,
-   "lon": -177.82,
-   "date": "2026-11-15T05:15+00:00",
-   "mag": 5.5,
-   "depth": 470,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyca",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "fiji"
-  },
-  {
    "id": "eob5d8e858aa",
    "kind": "wildfire",
    "src": "NASA EONET · IRWIN",
@@ -687,70 +735,6 @@
    "url": "https://irwin.doi.gov/observer/incidents/2026-MSMNF-000720",
    "th": [
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo07c9920b7b",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg D33B",
-   "place": "",
-   "lat": -55.19,
-   "lon": -39.34,
-   "date": "2026-11-13T00:00+00:00",
-   "first": "2023-09-08T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo119519d0f3",
-   "kind": "ice",
-   "src": "NASA EONET · EO",
-   "title": "Iceberg A83",
-   "place": "",
-   "lat": -58.98,
-   "lon": -48.45,
-   "date": "2026-11-13T00:00+00:00",
-   "first": "2024-05-24T00:00+00:00",
-   "url": "https://earthobservatory.nasa.gov/images/152848/antarctic-ice-shelf-spawns-iceberg-a-83",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "eo136ec6fe5e",
-   "kind": "ice",
-   "src": "NASA EONET · NATICE",
-   "title": "Iceberg A81",
-   "place": "",
-   "lat": -55.48,
-   "lon": -34.36,
-   "date": "2026-11-13T00:00+00:00",
-   "first": "2023-01-27T00:00+00:00",
-   "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "gd5839e7660d",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Dominican Republic",
-   "place": "Dominican Republic",
-   "lat": 19.34,
-   "lon": -70.95,
-   "date": "2026-11-12T21:54+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104281",
-   "desc": "On 06/11/2026, a flood started in Dominican Republic, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 20 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -973,25 +957,35 @@
  ],
  "stories": [
   {
-   "id": "ad9ab7d275",
+   "id": "db8b49c438",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31 live: world urged to avoid one of ‘most disappointing Cops ever’ as talks stretch past deadline",
-   "url": "https://www.theguardian.com/environment/live/2026/nov/21/cop31-climate-deal-latest-news-updates",
-   "desc": "Though the climate talks officially finished on Friday, no final deal was agreed. NGOs are warning that this summit might fall disastrously short of what is needed Although not quite deserted, the halls of the Cop31 conference centre are considerably less peopled today. A few …",
-   "date": "2026-11-21T14:33+00:00",
+   "title": "Cop31 live: EU and others reject deal as longest climate summit ever faces collapse",
+   "url": "https://www.theguardian.com/environment/live/2026/nov/22/cop31-climate-crisis-talks-turkey-latest-news-updates",
+   "desc": "Countries failed to reach consensus on a key deal that did not mention fossil fuels Full report: Cop31 climate talks set to end in deep division as key deal rejected Mohamed Adow, director of Power Shift Africa, has been looking through the text and says: “This latest text is …",
+   "date": "2026-11-22T14:24+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "040c95d5f0",
+   "id": "9879635e82",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Physical Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-physical-geography-trivia-39",
+   "desc": "Think you know our planet? Put your geography knowledge to the test with this physical geography trivia quiz and discover fascinating facts about Earth’s natural wonders and processes!",
+   "date": "2026-11-22T10:00+00:00",
+   "th": []
+  },
+  {
+   "id": "0ba1f946ec",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
-   "url": "https://www.bbc.co.uk/news/articles/c6ly5w40eg07o?at_medium=RSS&at_campaign=rss",
-   "desc": "Countries from nearly 200 countries are in a deadlock to try and get a new global climate agreement.",
-   "date": "2026-11-21T09:52+00:00",
+   "title": "New draft deal aims to avert collapse of talks at COP31 climate summit",
+   "url": "https://www.bbc.co.uk/news/articles/cq7827z2841zo?at_medium=RSS&at_campaign=rss",
+   "desc": "The UN COP31 meeting in Turkey enters a second day of overtime as countries struggle to reach an agreement.",
+   "date": "2026-11-22T06:54+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
@@ -1006,18 +1000,6 @@
    "date": "2026-11-21T06:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "957cbbf536",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "COP31 draft agreement drops all explicit mentions of fossil fuels",
-   "url": "https://geographical.co.uk/news/cop31-draft-agreement-drops-all-explicit-mentions-of-fossil-fuels",
-   "desc": "New draft agreement removes explicit references to transitioning away from coal, oil and gas and drops a proposed target for climate adaptation finance worth billions A new draft agreement released at the COP31 summit in Antalya has stripped all references to transitioning awa…",
-   "date": "2026-11-20T16:47+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1070,26 +1052,37 @@
    ]
   },
   {
-   "id": "27fdab47d2",
+   "id": "0ce79e9e9d",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "‘Legally, they don’t exist’: the hybrid crabs puzzling biologists and fishers",
-   "url": "https://www.theguardian.com/environment/2026/nov/21/alaska-bering-sea-heatwave-snow-tanner-hybrid-crabs-fishing-quotas",
-   "desc": "A heatwave in the Bering Sea that killed 10bn snow crabs has led to a new species emerging that has no fishing quotas Somewhere out on the Bering Sea, hundreds of miles off the coast of Alaska, a group of researchers onboard the trawler Alaska Knight haul up a heap of crabs fr…",
-   "date": "2026-11-21T11:00+00:00",
+   "title": "Briton swims length of strait of Hormuz to highlight environmental cost of war",
+   "url": "https://www.theguardian.com/world/2026/nov/22/briton-lewis-pugh-swims-strait-of-hormuz-environment-war",
+   "desc": "UN patron Lewis Pugh saw ships ablaze and fighter jets overhead during three-day swim as Iran conflict continues A British endurance swimmer has completed a three-day swim through the strait of Hormuz to highlight the environmental cost of the Iran war. Lewis Pugh, a UN patron…",
+   "date": "2026-11-22T13:36+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "af5be0afe4",
+   "id": "957cbbf536",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "COP31 draft agreement drops all explicit mentions of fossil fuels",
+   "url": "https://geographical.co.uk/news/cop31-draft-agreement-drops-all-explicit-mentions-of-fossil-fuels",
+   "desc": "New draft agreement removes explicit references to transitioning away from coal, oil and gas and drops a proposed target for climate adaptation finance worth billions A new draft agreement released at the COP31 summit in Antalya has stripped all references to transitioning awa…",
+   "date": "2026-11-20T16:47+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "15b6572edc",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "What are heat pumps and how much do they cost?",
-   "url": "https://www.bbc.co.uk/news/articles/c8xgdv9e007o?at_medium=RSS&at_campaign=rss",
-   "desc": "The government wants more homes to have heat pumps to cut fossil fuel use and drive down energy bills.",
-   "date": "2026-11-20T10:24+00:00",
+   "title": "Will COP31 end with a new global climate deal?",
+   "url": "https://www.bbc.co.uk/news/videos/cqn0dwrewrwxo?at_medium=RSS&at_campaign=rss",
+   "desc": "BBC Climate editor Justin Rowlatt reports from the COP 31 UN climate summit in Antalya, Turkey.",
+   "date": "2026-11-21T22:44+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
@@ -1105,16 +1098,6 @@
    "th": [
     "Topic 4B Diverse places"
    ]
-  },
-  {
-   "id": "04331fb33c",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Phenomena: Cloud iridescence – why some clouds appear rainbow-coloured",
-   "url": "https://geographical.co.uk/science-environment/phenomena-cloud-iridescence-why-some-clouds-appear-rainbow-coloured",
-   "desc": "How tiny water droplets and ice crystals produce rainbow colours in clouds.",
-   "date": "2026-11-20T16:40+00:00",
-   "th": []
   },
   {
    "id": "7b60304f76",
@@ -1165,29 +1148,26 @@
    ]
   },
   {
-   "id": "398adce4c4",
+   "id": "a6ca28dfe3",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "China commits to low-carbon electrification and help for others to improve",
-   "url": "https://www.theguardian.com/environment/2026/nov/21/china-commits-low-carbon-electrification-help-others-improve",
-   "desc": "Exclusive: Countries at Cop31 are being urged to commit to deriving 35% of their energy from electricity by 2035 Cop31 live – latest updates China is pushing for rapid electrification of its economy using low-carbon energy and will help other countries do the same, a senior me…",
-   "date": "2026-11-21T09:47+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "fddde9ec8f",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "More climate money for Africa? Europe says use what's already pledged",
-   "url": "https://www.bbc.co.uk/news/articles/c6074k5jjrzko?at_medium=RSS&at_campaign=rss",
-   "desc": "African countries at the UN climate summit in Turkey are demanding more funding from developed nations to help them cope with climate change.",
-   "date": "2026-11-20T05:03+00:00",
+   "title": "‘No time for a culture war’: Victoria’s electricity supply is at risk. Can it avoid power shortages and bill shocks?",
+   "url": "https://www.theguardian.com/australia-news/2026/nov/22/victoria-election-2026-what-are-parties-promising-energy-policy",
+   "desc": "State faces electricity supply gap when Yallourn coal-fired power station closes in 2028 as experts warn neither Labor nor the Coalition has adequate plans Sign up for climate and environment editor Adam Morton’s free Clear Air newsletter here Victoria’s electricity supply wil…",
+   "date": "2026-11-22T01:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
+  },
+  {
+   "id": "04331fb33c",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Phenomena: Cloud iridescence – why some clouds appear rainbow-coloured",
+   "url": "https://geographical.co.uk/science-environment/phenomena-cloud-iridescence-why-some-clouds-appear-rainbow-coloured",
+   "desc": "How tiny water droplets and ice crystals produce rainbow colours in clouds.",
+   "date": "2026-11-20T16:40+00:00",
+   "th": []
   },
   {
    "id": "26035da73a",
@@ -1200,18 +1180,6 @@
    "th": [
     "Topic 1 Tectonic processes and hazards",
     "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "ec28bcb84f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "UN body launches new refugee data portal to drive solutions for millions displaced",
-   "url": "https://geographical.co.uk/news/un-body-launches-new-refugee-data-portal-to-drive-solutions-for-millions-displaced",
-   "desc": "Portal will help to offer a well-rounded view of displacement and its impacts, providing greater support for future policies and programmes The UN Refugee Agency (UNHCR) has announced today the launch of its new Refugee Data Portal, bringing together population statistics with…",
-   "date": "2026-11-20T16:15+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
@@ -1247,15 +1215,28 @@
    ]
   },
   {
-   "id": "234635f653",
+   "id": "27fdab47d2",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cop31 talks go into overtime as debate rages over lack of fossil fuels in draft deal",
-   "url": "https://www.theguardian.com/environment/2026/nov/20/cop31-talks-overtime-fossil-fuels-vanish-from-draft-deal",
-   "desc": "African ministers say they ‘didn’t come here to beg’, with civil society groups calling it the ‘worst Cop ever’ Crucial climate talks headed into overtime on the last official day of the Cop31 UN summit as countries continued to argue over a draft deal that was silent on fossi…",
-   "date": "2026-11-20T20:04+00:00",
+   "title": "‘Legally, they don’t exist’: the hybrid crabs puzzling biologists and fishers",
+   "url": "https://www.theguardian.com/environment/2026/nov/21/alaska-bering-sea-heatwave-snow-tanner-hybrid-crabs-fishing-quotas",
+   "desc": "A heatwave in the Bering Sea that killed 10bn snow crabs has led to a new hybrid emerging that has no fishing quotas Somewhere out on the Bering Sea, hundreds of miles off the coast of Alaska, a group of researchers onboard the trawler Alaska Knight haul up a heap of crabs fro…",
+   "date": "2026-11-21T11:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 2B Coastal landscapes and change",
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "ec28bcb84f",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "UN body launches new refugee data portal to drive solutions for millions displaced",
+   "url": "https://geographical.co.uk/news/un-body-launches-new-refugee-data-portal-to-drive-solutions-for-millions-displaced",
+   "desc": "Portal will help to offer a well-rounded view of displacement and its impacts, providing greater support for future policies and programmes The UN Refugee Agency (UNHCR) has announced today the launch of its new Refugee Data Portal, bringing together population statistics with…",
+   "date": "2026-11-20T16:15+00:00",
+   "th": [
+    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
@@ -1268,18 +1249,6 @@
    "date": "2026-11-19T10:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "343eb560cd",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Darién crossings drop 90 per cent as new migration routes appear",
-   "url": "https://geographical.co.uk/news/darien-gap-crossings-drop-90-per-cent-as-new-migration-routes-appear",
-   "desc": "Migration corridors have shifted across regions towards ‘more fragmented, multidirectional and intraregional movements’, according to IOM A new report by the International Organisation for Migration (IOM) shows migration patterns shifting across Latin America and the Caribbean…",
-   "date": "2026-11-20T16:00+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
    ]
   },
   {
