@@ -1,5 +1,5 @@
 {
- "made": "2026-11-22T14:44+00:00",
+ "made": "2026-11-23T18:30+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 43
+   "n": 42
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 5
+   "n": 4
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 11
+   "n": 10
   },
   {
    "src": "GDACS",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 15
+   "n": 14
   },
   {
    "src": "Carbon Brief",
@@ -52,7 +52,7 @@
    "level": "magazine",
    "line": "climate science and energy policy",
    "ok": true,
-   "n": 4
+   "n": 3
   },
   {
    "src": "BBC Science & Environment",
@@ -116,10 +116,150 @@
    "level": "way in",
    "line": "United Nations news on migrants and refugees",
    "ok": true,
-   "n": 2
+   "n": 3
   }
  ],
  "events": [
+  {
+   "id": "gd5fcac6e6d1",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Thailand",
+   "place": "Thailand",
+   "lat": 7.54,
+   "lon": 100.0,
+   "date": "2026-11-23T13:55+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104297",
+   "desc": "On 22/11/2026, a flood started in Thailand, lasting until 24/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "gd479a4c34ec",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Ireland",
+   "place": "Ireland",
+   "lat": 51.68,
+   "lon": -9.45,
+   "date": "2026-11-23T12:15+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104295",
+   "desc": "On 22/11/2026, a flood started in Ireland, lasting until 24/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ucxi",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.5 earthquake",
+   "place": "west of Macquarie Island",
+   "lat": -60.63,
+   "lon": 153.85,
+   "date": "2026-11-23T08:01+00:00",
+   "mag": 5.5,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucxi",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "west of macquarie island"
+  },
+  {
+   "id": "qus6000ucx6",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "181 km NE of Lospalos, Timor Leste",
+   "lat": -7.44,
+   "lon": 128.24,
+   "date": "2026-11-23T07:36+00:00",
+   "mag": 5.4,
+   "depth": 119,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucx6",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "timor leste"
+  },
+  {
+   "id": "gd6894a155e8",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Colombia",
+   "place": "Colombia",
+   "lat": 6.21,
+   "lon": -75.5,
+   "date": "2026-11-23T07:13+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104294",
+   "desc": "On 18/11/2026, a flood started in Colombia, lasting until 20/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ucvm",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.5 earthquake",
+   "place": "Vanuatu region",
+   "lat": -13.58,
+   "lon": 172.27,
+   "date": "2026-11-23T02:40+00:00",
+   "mag": 6.5,
+   "depth": 598,
+   "alert": "green",
+   "tsunami": true,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucvm",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "vanuatu"
+  },
+  {
+   "id": "gd00412eda65",
+   "kind": "storm",
+   "src": "GDACS and NASA EONET",
+   "title": "Tropical Cyclone Xavier",
+   "place": "Cook Islands",
+   "lat": -11.8,
+   "lon": -168.8,
+   "date": "2026-11-23T00:00+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
+   "desc": "From 15/11/2026 to 23/11/2026, a Tropical Depression (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands (vulnerability Medium). Estimated population affected by category 1 (…",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ucuf",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.4 earthquake",
+   "place": "9 km N of Carhuamayo, Peru",
+   "lat": -10.83,
+   "lon": -76.02,
+   "date": "2026-11-22T21:35+00:00",
+   "mag": 5.4,
+   "depth": 117,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucuf",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "peru"
+  },
   {
    "id": "gd8cbe8ed2ca",
    "kind": "flood",
@@ -156,38 +296,6 @@
    "region": "indonesia"
   },
   {
-   "id": "gd00412eda65",
-   "kind": "storm",
-   "src": "GDACS and NASA EONET",
-   "title": "Tropical Cyclone Xavier",
-   "place": "Cook Islands, American Samoa",
-   "lat": -11.7,
-   "lon": -167.9,
-   "date": "2026-11-22T06:00+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001350",
-   "desc": "From 15/11/2026 to 22/11/2026, a Tropical Storm (maximum wind speed of 241 km/h) XAVIER-26 was active in SEPacific. The cyclone affects these countries: Cook Islands, American Samoa (vulnerability Medium). Estimated population affected by c…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gd555e7f48aa",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Türkiye",
-   "place": "Türkiye",
-   "lat": 36.97,
-   "lon": 37.41,
-   "date": "2026-11-21T12:32+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104292",
-   "desc": "On 16/11/2026, a flood started in Türkiye, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000ucly",
    "kind": "quake",
    "src": "USGS",
@@ -205,25 +313,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "china"
-  },
-  {
-   "id": "qus6000ucky",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.2 earthquake",
-   "place": "112 km SSE of Tateyama, Japan",
-   "lat": 34.01,
-   "lon": 140.21,
-   "date": "2026-11-21T10:09+00:00",
-   "mag": 5.2,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucky",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
   },
   {
    "id": "qus6000ucij",
@@ -245,32 +334,16 @@
    "region": "timor leste"
   },
   {
-   "id": "gde5b6632de2",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Islamic Republic of Iran",
-   "place": "Islamic Republic of Iran",
-   "lat": 36.32,
-   "lon": 51.9,
-   "date": "2026-11-21T09:27+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104291",
-   "desc": "On 16/11/2026, a flood started in Islamic Republic of Iran, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000ucfm",
    "kind": "quake",
    "src": "USGS",
    "title": "Magnitude 6.7 earthquake",
-   "place": "9 km NE of Carhuamayo, Peru",
-   "lat": -10.85,
-   "lon": -75.98,
+   "place": "7 km ENE of Carhuamayo, Peru",
+   "lat": -10.89,
+   "lon": -75.97,
    "date": "2026-11-21T00:09+00:00",
    "mag": 6.7,
-   "depth": 108,
+   "depth": 125,
    "alert": "green",
    "tsunami": true,
    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucfm",
@@ -291,22 +364,6 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104290",
    "desc": "On 17/11/2026, a flood started in United States, lasting until 19/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gdf8c119702f",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Mexico",
-   "place": "Mexico",
-   "lat": 19.87,
-   "lon": -96.78,
-   "date": "2026-11-20T09:07+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104289",
-   "desc": "On 16/11/2026, a flood started in Mexico, lasting until 18/11/2026 (last update). The flood caused 1 deaths and 31 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -428,22 +485,6 @@
    "alert": "green",
    "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001351",
    "desc": "From 16/11/2026 to 19/11/2026, a Tropical Depression (maximum wind speed of 83 km/h) AKVAN-26 was active in NorthIndian. The cyclone affects these countries: India (vulnerability High). Estimated population affected by category 1 (120 km/h)…",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "gdb826af735e",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Kenya",
-   "place": "Kenya",
-   "lat": -3.56,
-   "lon": 38.8,
-   "date": "2026-11-19T08:02+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104288",
-   "desc": "On 13/11/2026, a flood started in Kenya, lasting until 15/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -654,60 +695,6 @@
    "region": "indonesia"
   },
   {
-   "id": "qus7000tykh",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.4 earthquake",
-   "place": "95 km WSW of Changuillo, Peru",
-   "lat": -15.03,
-   "lon": -76.03,
-   "date": "2026-11-16T16:16+00:00",
-   "mag": 5.4,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tykh",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "peru"
-  },
-  {
-   "id": "gdba0e27a7a8",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Croatia",
-   "place": "Croatia",
-   "lat": 43.93,
-   "lon": 16.1,
-   "date": "2026-11-16T05:50+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104285",
-   "desc": "On 12/11/2026, a flood started in Croatia, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 13 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "qus7000tyhr",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.4 earthquake",
-   "place": "20 km NW of Anamizu, Japan",
-   "lat": 37.37,
-   "lon": 136.74,
-   "date": "2026-11-16T04:24+00:00",
-   "mag": 5.4,
-   "depth": 274,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyhr",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
-  },
-  {
    "id": "eob5d8e858aa",
    "kind": "wildfire",
    "src": "NASA EONET · IRWIN",
@@ -819,18 +806,19 @@
    ]
   },
   {
-   "id": "eo0c57e450fc",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire Wild River, Coos, New Hampshire",
-   "place": "",
-   "lat": 44.33,
-   "lon": -71.03,
-   "date": "2026-11-02T07:58+00:00",
-   "first": "2026-11-02T07:58+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-NHWMF-000182",
+   "id": "gd644e4e845f",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Democratic Republic of Congo",
+   "place": "Democratic Republic of Congo",
+   "lat": -4.46,
+   "lon": 15.23,
+   "date": "2026-11-05T10:23+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104269",
+   "desc": "On 01/11/2026, a flood started in Democratic Republic of Congo, lasting until 11/11/2026 (last update). The flood caused 4 deaths and 0 displaced .",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -870,25 +858,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "japan"
-  },
-  {
-   "id": "qus6000u4j2",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.8 earthquake",
-   "place": "203 km NW of Port-Olry, Vanuatu",
-   "lat": -13.94,
-   "lon": 165.56,
-   "date": "2026-10-24T02:31+00:00",
-   "mag": 6.8,
-   "depth": 16,
-   "alert": "green",
-   "tsunami": true,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4j2",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "vanuatu"
   },
   {
    "id": "gd1e7d8ccfd0",
@@ -957,35 +926,151 @@
  ],
  "stories": [
   {
-   "id": "db8b49c438",
-   "src": "Guardian Environment",
+   "id": "4794d28b1d",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "The curious history of the huntaway, New Zealand’s unusually loud sheepdog",
+   "url": "https://theconversation.com/the-curious-history-of-the-huntaway-new-zealands-unusually-loud-sheepdog-296876",
+   "desc": "The Huntaway helped shape the country’s farming culture. But its origins reveal a much older story of empire, breeding and agricultural change.",
+   "date": "2026-11-23T17:29+00:00",
+   "th": []
+  },
+  {
+   "id": "2899c804fa",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Cop31 live: EU and others reject deal as longest climate summit ever faces collapse",
-   "url": "https://www.theguardian.com/environment/live/2026/nov/22/cop31-climate-crisis-talks-turkey-latest-news-updates",
-   "desc": "Countries failed to reach consensus on a key deal that did not mention fossil fuels Full report: Cop31 climate talks set to end in deep division as key deal rejected Mohamed Adow, director of Power Shift Africa, has been looking through the text and says: “This latest text is …",
-   "date": "2026-11-22T14:24+00:00",
+   "title": "What failure of COP31 reveals about a divided world",
+   "url": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+   "desc": "Interests of oil-producing countries, a US boycott and a dispute over finance may have torpedoed climate talks.",
+   "date": "2026-11-23T17:24+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "9879635e82",
+   "id": "9cf7dcf00d",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP31: Key outcomes agreed at the UN climate talks in Antalya",
+   "url": "https://www.carbonbrief.org/cop31-key-outcomes-agreed-at-the-un-climate-talks-in-antalya",
+   "desc": "The COP31 climate talks in Antalya, Turkey, have failed to reach agreement on a “pact” that lacked clear references to&#8230;",
+   "date": "2026-11-23T16:15+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "4bb4c945c2",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "California on edge as high tides and floods set to wreak havoc over Thanksgiving. Here is what to know",
+   "url": "https://www.theguardian.com/us-news/2026/nov/23/california-high-tides-floods-weather-thanksgiving",
+   "desc": "Coastal cities race to prepare for possible historic floods colliding with El Niño conditions before busy travel week It has already been a rough year for coastal Californians – who have endured flooding , extreme waves and beach erosion during the super El Niño season. Now ex…",
+   "date": "2026-11-23T15:43+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "973fcadf7d",
    "src": "Geographical",
    "level": "magazine",
-   "title": "QUIZ: Physical Geography Trivia",
-   "url": "https://geographical.co.uk/quizzes/quiz-physical-geography-trivia-39",
-   "desc": "Think you know our planet? Put your geography knowledge to the test with this physical geography trivia quiz and discover fascinating facts about Earth’s natural wonders and processes!",
-   "date": "2026-11-22T10:00+00:00",
+   "title": "Unprecedented volcanic activity discovered in Mariana Trench by robot submarine",
+   "url": "https://geographical.co.uk/news/unprecedented-volcanic-activity-discovered-in-mariana-trench-by-robot-submarine",
+   "desc": "Evidence of world’s deepest explosive volcanic eruption was discovered near the bottom of the Challenger Deep A robot submarine discovered ‘unprecedented’ volcanic activity near the bottom of the Challenger Deep, the deepest known point on Earth’s seabed. Located in the wester…",
+   "date": "2026-11-23T09:00+00:00",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ]
+  },
+  {
+   "id": "d1baf1523e",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "‘Once installed, there’s no getting rid of it’: what Falklands oil plans mean for its seals, whales and penguins",
+   "url": "https://www.theguardian.com/global-development/2026/nov/23/falkland-islands-argentina-sea-lion-oil-environment-sovereignty-wildlife-pollution",
+   "desc": "While Argentina and the UK dispute sovereignty over the islands and its vast oil reserves, environmentalists fear for one of the Atlantic’s richest ecosystems From the air, the main Falkland Islands form two large, jagged shapes against the South Atlantic. East Falkland and We…",
+   "date": "2026-11-23T06:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "3f6729e1f5",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Laser Focus at the Top of the World",
+   "url": "https://science.nasa.gov/earth/earth-observatory/laser-focus-at-the-top-of-the-world/",
+   "desc": "A next-generation geodetic instrument developed by NASA, part of a network that helps measure satellites’ orbits and the planet’s shape, has debuted in Svalbard, Norway.",
+   "date": "2026-11-23T05:01+00:00",
    "th": []
   },
   {
-   "id": "0ba1f946ec",
+   "id": "63770ee44d",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "‘I had a better life in Iran’: Afghan women forced home struggle to rebuild",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168852",
+   "desc": "For five years, Zahra cared for an elderly woman in Iran and earned enough to get by. Now back in Herat, western Afghanistan, the 28-year-old trained midwife is unemployed. She lives with her parents and siblings, apart from her six-year-old son, who lives with her ex-husband.",
+   "date": "2026-11-22T12:00+00:00",
+   "th": []
+  },
+  {
+   "id": "ab8285f6c3",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Panic buying? Gradual stockpiling makes for better ‘prepping’ without emptying supermarket shelves",
+   "url": "https://theconversation.com/panic-buying-gradual-stockpiling-makes-for-better-prepping-without-emptying-supermarket-shelves-296094",
+   "desc": "Empty shelves can raise fear. That fear changes how people shop.",
+   "date": "2026-11-23T17:29+00:00",
+   "th": []
+  },
+  {
+   "id": "53869ab9eb",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "New draft deal aims to avert collapse of talks at COP31 climate summit",
-   "url": "https://www.bbc.co.uk/news/articles/cq7827z2841zo?at_medium=RSS&at_campaign=rss",
-   "desc": "The UN COP31 meeting in Turkey enters a second day of overtime as countries struggle to reach an agreement.",
-   "date": "2026-11-22T06:54+00:00",
+   "title": "Village's concern over sewage discharge in dry river",
+   "url": "https://www.bbc.co.uk/news/articles/c60rkq78g05vo?at_medium=RSS&at_campaign=rss",
+   "desc": "Campaigners call for restrictions on sewage treatment plant discharging effluent during drought",
+   "date": "2026-11-23T15:48+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "ec8dbf931a",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "Revealed: Russia, Saudi Arabia and Australia are largest CO2 exporters of all time",
+   "url": "https://www.carbonbrief.org/revealed-russia-saudi-arabia-and-australia-are-largest-co2-exporters-of-all-time",
+   "desc": "Russia, Saudi Arabia and COP31 co-president Australia are the largest exporters of carbon dioxide (CO2) emissions in history, reveals Carbon&#8230;",
+   "date": "2026-11-17T05:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security",
+    "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "30f657ecf2",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Cranberry jam: warming winters and extreme weather threaten a traditional holiday fruit",
+   "url": "https://www.theguardian.com/us-news/2026/nov/23/cranberry-growing-climate-crisis",
+   "desc": "Scientists are racing to identify and breed new berry varieties that can thrive on an increasingly warmer planet It is harvest time in rural Wisconsin , and the Badger state’s most vibrant crop is painting the rolling countryside a brilliant, unmistakable red. For nearly three…",
+   "date": "2026-11-23T15:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "5317ad4f54",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "COP31 fails to reach deal, but latest report underscores how vital climate action remains",
+   "url": "https://geographical.co.uk/news/cop31-fails-to-reach-deal-but-latest-report-underscores-how-vital-climate-action-remains",
+   "desc": "A report prepared by the World Meteorological Organisation for COP31 reveals the stark reality of our warming planet in 2026, from sea level rise to extreme weather events Countries engaged in talks for two days longer than expected at COP31, but the UN climate summit still dr…",
+   "date": "2026-11-23T09:00+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
@@ -1000,18 +1085,6 @@
    "date": "2026-11-21T06:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "ec81632485",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "People wade through floodwater because they underestimate danger – how to avoid risk",
-   "url": "https://theconversation.com/people-wade-through-floodwater-because-they-underestimate-danger-how-to-avoid-risk-296445",
-   "desc": "Watching other people wade through a flood, or seeing a road which is regularly waterlogged, can bring a false sense of security about crossing.",
-   "date": "2026-11-20T14:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1039,52 +1112,63 @@
    ]
   },
   {
-   "id": "ec8dbf931a",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Revealed: Russia, Saudi Arabia and Australia are largest CO2 exporters of all time",
-   "url": "https://www.carbonbrief.org/revealed-russia-saudi-arabia-and-australia-are-largest-co2-exporters-of-all-time",
-   "desc": "Russia, Saudi Arabia and COP31 co-president Australia are the largest exporters of carbon dioxide (CO2) emissions in history, reveals Carbon&#8230;",
-   "date": "2026-11-17T05:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security",
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "0ce79e9e9d",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Briton swims length of strait of Hormuz to highlight environmental cost of war",
-   "url": "https://www.theguardian.com/world/2026/nov/22/briton-lewis-pugh-swims-strait-of-hormuz-environment-war",
-   "desc": "UN patron Lewis Pugh saw ships ablaze and fighter jets overhead during three-day swim as Iran conflict continues A British endurance swimmer has completed a three-day swim through the strait of Hormuz to highlight the environmental cost of the Iran war. Lewis Pugh, a UN patron…",
-   "date": "2026-11-22T13:36+00:00",
+   "id": "c9ee4921f8",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Cop31: Why the UN climate summit ended in victory for fossil fuel producing nations",
+   "url": "https://theconversation.com/cop31-why-the-un-climate-summit-ended-in-victory-for-fossil-fuel-producing-nations-296779",
+   "desc": "Negotiations broke down over whether to directly address fossil fuels, leaving the most climate-vulnerable nations deeply disappointed.",
+   "date": "2026-11-23T08:10+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "957cbbf536",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "COP31 draft agreement drops all explicit mentions of fossil fuels",
-   "url": "https://geographical.co.uk/news/cop31-draft-agreement-drops-all-explicit-mentions-of-fossil-fuels",
-   "desc": "New draft agreement removes explicit references to transitioning away from coal, oil and gas and drops a proposed target for climate adaptation finance worth billions A new draft agreement released at the COP31 summit in Antalya has stripped all references to transitioning awa…",
-   "date": "2026-11-20T16:47+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "15b6572edc",
+   "id": "ea869718bb",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Will COP31 end with a new global climate deal?",
-   "url": "https://www.bbc.co.uk/news/videos/cqn0dwrewrwxo?at_medium=RSS&at_campaign=rss",
-   "desc": "BBC Climate editor Justin Rowlatt reports from the COP 31 UN climate summit in Antalya, Turkey.",
-   "date": "2026-11-21T22:44+00:00",
+   "title": "Five takeaways from the failed climate talks COP31",
+   "url": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
+   "desc": "The COP31 summit in Antalya was the longest-running climate talks in UN history.",
+   "date": "2026-11-23T06:33+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "9785449897",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP31: How Ed Miliband answered Carbon Brief readers’ questions",
+   "url": "https://www.carbonbrief.org/cop31-how-ed-miliband-answered-carbon-brief-readers-questions",
+   "desc": "UK foreign secretary and COP veteran Ed Miliband spoke with Carbon Brief earlier today at COP31 in Antalya, Turkey, to&#8230;",
+   "date": "2026-11-12T16:55+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "c71a8c4682",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Plant-based lunches could cut Australia’s emissions by 15m tonnes, new research shows",
+   "url": "https://www.theguardian.com/environment/2026/nov/23/plant-based-lunches-could-cut-australia-emissions-by-15m-tonnes-new-research-shows",
+   "desc": "Nationwide change in lunch habits could cut more climate pollution than grounding every domestic flight Get our breaking news email , free app or daily news podcast Australians could collectively cut climate pollution by more than 15m tonnes – more than grounding every domesti…",
+   "date": "2026-11-23T13:58+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "778e63cd89",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "QUIZ: Capital Cities – Hard",
+   "url": "https://geographical.co.uk/quizzes/quiz-capital-cities-hard-22",
+   "desc": "Think you’re a capital cities expert? Put your geography knowledge to the ultimate test with this hard capital cities quiz&#8230;",
+   "date": "2026-11-23T08:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
    ]
   },
   {
@@ -1097,18 +1181,6 @@
    "date": "2026-11-20T05:00+00:00",
    "th": [
     "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "7b60304f76",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "UK’s nature healthcheck doesn’t stack up in wildlife’s favour – but volunteers are collecting plenty of crucial data",
-   "url": "https://theconversation.com/uks-nature-healthcheck-doesnt-stack-up-in-wildlifes-favour-but-volunteers-are-collecting-plenty-of-crucial-data-296083",
-   "desc": "From air pollution and invasive species to genes and ecosystems, indicators help track what drives the ups and downs happening in nature.",
-   "date": "2026-11-20T11:58+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
@@ -1136,37 +1208,37 @@
    ]
   },
   {
-   "id": "9785449897",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "COP31: How Ed Miliband answered Carbon Brief readers’ questions",
-   "url": "https://www.carbonbrief.org/cop31-how-ed-miliband-answered-carbon-brief-readers-questions",
-   "desc": "UK foreign secretary and COP veteran Ed Miliband spoke with Carbon Brief earlier today at COP31 in Antalya, Turkey, to&#8230;",
-   "date": "2026-11-12T16:55+00:00",
+   "id": "ec81632485",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "People wade through floodwater because they underestimate danger – how to avoid risk",
+   "url": "https://theconversation.com/people-wade-through-floodwater-because-they-underestimate-danger-how-to-avoid-risk-296445",
+   "desc": "Watching other people wade through a flood, or seeing a road which is regularly waterlogged, can bring a false sense of security about crossing.",
+   "date": "2026-11-20T14:00+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "a6ca28dfe3",
+   "id": "5b99461c51",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "‘No time for a culture war’: Victoria’s electricity supply is at risk. Can it avoid power shortages and bill shocks?",
-   "url": "https://www.theguardian.com/australia-news/2026/nov/22/victoria-election-2026-what-are-parties-promising-energy-policy",
-   "desc": "State faces electricity supply gap when Yallourn coal-fired power station closes in 2028 as experts warn neither Labor nor the Coalition has adequate plans Sign up for climate and environment editor Adam Morton’s free Clear Air newsletter here Victoria’s electricity supply wil…",
-   "date": "2026-11-22T01:00+00:00",
+   "title": "Failure of Cop31 prompts calls for urgent reform of UN climate summits",
+   "url": "https://www.theguardian.com/environment/2026/nov/23/failure-cop31-calls-urgent-reform-un-climate-summits",
+   "desc": "Former US vice-president Al Gore among climate leaders demanding change to consensus rule after Antalya summit The failure at Cop31 to reach a keystone agreement has exposed the need to reform how the UN’s climate summits make decisions, say international climate diplomacy exp…",
+   "date": "2026-11-23T12:21+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "04331fb33c",
+   "id": "9879635e82",
    "src": "Geographical",
    "level": "magazine",
-   "title": "Phenomena: Cloud iridescence – why some clouds appear rainbow-coloured",
-   "url": "https://geographical.co.uk/science-environment/phenomena-cloud-iridescence-why-some-clouds-appear-rainbow-coloured",
-   "desc": "How tiny water droplets and ice crystals produce rainbow colours in clouds.",
-   "date": "2026-11-20T16:40+00:00",
+   "title": "QUIZ: Physical Geography Trivia",
+   "url": "https://geographical.co.uk/quizzes/quiz-physical-geography-trivia-39",
+   "desc": "Think you know our planet? Put your geography knowledge to the test with this physical geography trivia quiz and discover fascinating facts about Earth’s natural wonders and processes!",
+   "date": "2026-11-22T10:00+00:00",
    "th": []
   },
   {
@@ -1183,16 +1255,6 @@
    ]
   },
   {
-   "id": "2600ba4801",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Weight-loss drugs could free up an area of farmland larger than Italy – new study",
-   "url": "https://theconversation.com/weight-loss-drugs-could-free-up-an-area-of-farmland-larger-than-italy-new-study-291114",
-   "desc": "Ozempic, Wegovy and other drugs could have a significant effect on the environment. But medicine shouldn’t let an unhealthy and unsustainable food system off the hook.",
-   "date": "2026-11-20T09:38+00:00",
-   "th": []
-  },
-  {
    "id": "bb697c9704",
    "src": "NASA Earth Observatory",
    "level": "magazine",
@@ -1203,40 +1265,15 @@
    "th": []
   },
   {
-   "id": "a1115f2971",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "Analysis: Climate-finance pledges fall 70% as countries meet at COP31",
-   "url": "https://www.carbonbrief.org/analysis-climate-finance-pledges-fall-70-as-countries-meet-at-cop31",
-   "desc": "The amount of public funding pledged to help developing countries tackle climate change has dropped by more than 70% in&#8230;",
-   "date": "2026-11-11T07:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "27fdab47d2",
+   "id": "77aa2a414a",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "‘Legally, they don’t exist’: the hybrid crabs puzzling biologists and fishers",
-   "url": "https://www.theguardian.com/environment/2026/nov/21/alaska-bering-sea-heatwave-snow-tanner-hybrid-crabs-fishing-quotas",
-   "desc": "A heatwave in the Bering Sea that killed 10bn snow crabs has led to a new hybrid emerging that has no fishing quotas Somewhere out on the Bering Sea, hundreds of miles off the coast of Alaska, a group of researchers onboard the trawler Alaska Knight haul up a heap of crabs fro…",
-   "date": "2026-11-21T11:00+00:00",
+   "title": "How a tiny rare frog became an ecological warning sign for Madagascar",
+   "url": "https://www.theguardian.com/environment/2026/nov/23/tiny-rare-frog-warning-sign-madagascar-illegal-gold-mining-aoe",
+   "desc": "The golden mantella is said to be found wherever gold is, making its habitat a target for illegal mining, which is destroying fragile ecosystems across the country As Albert Rakotoarisoa emerges from the forest into a clearing in Mangabe reserve in the east of Madagascar, he s…",
+   "date": "2026-11-23T11:00+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "ec28bcb84f",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "UN body launches new refugee data portal to drive solutions for millions displaced",
-   "url": "https://geographical.co.uk/news/un-body-launches-new-refugee-data-portal-to-drive-solutions-for-millions-displaced",
-   "desc": "Portal will help to offer a well-rounded view of displacement and its impacts, providing greater support for future policies and programmes The UN Refugee Agency (UNHCR) has announced today the launch of its new Refugee Data Portal, bringing together population statistics with…",
-   "date": "2026-11-20T16:15+00:00",
-   "th": [
-    "Topic 8B Migration, identity and sovereignty"
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
@@ -1247,52 +1284,6 @@
    "url": "https://www.theguardian.com/global-development/2026/nov/19/eritrea-16-journalists-jailed-press-freedom-award-cpj-censorship-warning",
    "desc": "Families of journalists who vanished into state prisons on ‘Black Tuesday’ in 2001 do not know whether they are even still alive When Fisseha Yirgalem stepped on to the podium and began reading from a letter written to a man who may never hear it, the room full of journalists …",
    "date": "2026-11-19T10:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "4cca5cb344",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Switching devices off standby can save £45 a year – practical advice on energy bills from an expert",
-   "url": "https://theconversation.com/switching-devices-off-standby-can-save-45-a-year-practical-advice-on-energy-bills-from-an-expert-296969",
-   "desc": "With energy bills going up there are some really inexpensive ways to cut out some of the cold.",
-   "date": "2026-11-19T16:35+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "947da179bb",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Tossing Fireworks from Cloud to Cloud",
-   "url": "https://science.nasa.gov/earth/earth-observatory/tossing-fireworks-from-cloud-to-cloud/",
-   "desc": "For many astronauts, the spectacular sight of lightning stands out when looking back at Earth from the International Space Station.",
-   "date": "2026-11-17T05:01+00:00",
-   "th": []
-  },
-  {
-   "id": "f025997d1c",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "What to know about the US permitting bill, from datacenters to Trump’s arch",
-   "url": "https://www.theguardian.com/us-news/2026/nov/20/what-to-know-permitting-bill-energy-passed",
-   "desc": "Environmental groups are aghast, but supporters say bill might be only chance to speed up clean energy projects The US Senate has passed a bill to fast-track energy and datacenter projects by removing environmental and legal guardrails. The legislation has caused a fraught div…",
-   "date": "2026-11-20T18:26+00:00",
-   "th": [
-    "Topic 7 Superpowers"
-   ]
-  },
-  {
-   "id": "4ca835d1be",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Children at risk as ‘weaponisation of aid’ surges in conflict zones, analysis finds",
-   "url": "https://www.theguardian.com/global-development/2026/nov/18/aid-denial-humanitarian-children-save-the-children-un",
-   "desc": "New assessment shows large increase in cases where access to humanitarian help is deliberately restricted, with most incidents in Palestine The “weaponisation” of aid is becoming normalised, with new analysis revealing that deliberate holding back of humanitarian help to child…",
-   "date": "2026-11-18T05:00+00:00",
    "th": [
     "Topic 8A Health, human rights and intervention"
    ]
