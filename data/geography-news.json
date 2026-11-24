@@ -1,5 +1,5 @@
 {
- "made": "2026-11-23T18:30+00:00",
+ "made": "2026-11-24T17:58+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 10
+   "n": 12
   },
   {
    "src": "GDACS",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 14
+   "n": 15
   },
   {
    "src": "Carbon Brief",
@@ -52,7 +52,7 @@
    "level": "magazine",
    "line": "climate science and energy policy",
    "ok": true,
-   "n": 3
+   "n": 4
   },
   {
    "src": "BBC Science & Environment",
@@ -120,6 +120,76 @@
   }
  ],
  "events": [
+  {
+   "id": "gdade49e5f58",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Portugal",
+   "place": "Portugal",
+   "lat": 39.6,
+   "lon": -8.42,
+   "date": "2026-11-24T12:04+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104298",
+   "desc": "On 20/11/2026, a flood started in Portugal, lasting until 24/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ud6h",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 6.4 earthquake",
+   "place": "Mauritius - Reunion region",
+   "lat": -17.7,
+   "lon": 65.7,
+   "date": "2026-11-24T11:06+00:00",
+   "mag": 6.4,
+   "depth": 10,
+   "alert": "green",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud6h",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "mauritius - reunion"
+  },
+  {
+   "id": "gdf1154c109a",
+   "kind": "storm",
+   "src": "GDACS",
+   "title": "Tropical cyclone",
+   "place": "",
+   "lat": -10.08,
+   "lon": 77.27,
+   "date": "2026-11-24T07:05+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001352",
+   "desc": "From 24/11/2026 to 24/11/2026, a Tropical Depression (maximum wind speed of 63 km/h) 03-20262027-27 was active in SWIndian. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by category …",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000ud3i",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.3 earthquake",
+   "place": "67 km WNW of Mangan, India",
+   "lat": 27.83,
+   "lon": 87.95,
+   "date": "2026-11-24T01:32+00:00",
+   "mag": 5.3,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3i",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "india"
+  },
   {
    "id": "gd5fcac6e6d1",
    "kind": "flood",
@@ -296,6 +366,21 @@
    "region": "indonesia"
   },
   {
+   "id": "eod7ce7b4447",
+   "kind": "wildfire",
+   "src": "NASA EONET · IRWIN",
+   "title": "Wildfire Little Ridge, Highland, Virginia",
+   "place": "",
+   "lat": 38.31,
+   "lon": -79.79,
+   "date": "2026-11-21T23:15+00:00",
+   "first": "2026-11-21T23:15+00:00",
+   "url": "https://irwin.doi.gov/observer/incidents/2026-VAVAF-260139",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
    "id": "qus6000ucly",
    "kind": "quake",
    "src": "USGS",
@@ -351,6 +436,21 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "peru"
+  },
+  {
+   "id": "eo3f5ae3a60d",
+   "kind": "wildfire",
+   "src": "NASA EONET · IRWIN",
+   "title": "Wildfire White Oak Flat, Alleghany, Virginia",
+   "place": "",
+   "lat": 37.84,
+   "lon": -79.86,
+   "date": "2026-11-20T13:16+00:00",
+   "first": "2026-11-20T13:16+00:00",
+   "url": "https://irwin.doi.gov/observer/incidents/2026-VAVAF-260136",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
   },
   {
    "id": "gd5eefa45170",
@@ -474,17 +574,16 @@
    "region": "south georgia island"
   },
   {
-   "id": "gde2e07f5787",
+   "id": "eo831048df39",
    "kind": "storm",
-   "src": "GDACS and NASA EONET",
+   "src": "NASA EONET · JTWC",
    "title": "Tropical Cyclone Akvan",
-   "place": "India",
+   "place": "",
    "lat": 17.2,
    "lon": 84.7,
    "date": "2026-11-19T18:00+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001351",
-   "desc": "From 16/11/2026 to 19/11/2026, a Tropical Depression (maximum wind speed of 83 km/h) AKVAN-26 was active in NorthIndian. The cyclone affects these countries: India (vulnerability High). Estimated population affected by category 1 (120 km/h)…",
+   "first": "2026-11-16T18:00+00:00",
+   "url": "https://www.metoc.navy.mil/jtwc/products/io0526.tcw",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
@@ -657,25 +756,6 @@
    "region": "romania"
   },
   {
-   "id": "qus7000tyw6",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.3 earthquake",
-   "place": "7 km SE of Karakenja, Tajikistan",
-   "lat": 39.19,
-   "lon": 71.59,
-   "date": "2026-11-18T00:46+00:00",
-   "mag": 5.3,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tyw6",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "tajikistan"
-  },
-  {
    "id": "qus7000tymu",
    "kind": "quake",
    "src": "USGS",
@@ -841,25 +921,6 @@
    "region": "southeast of easter island"
   },
   {
-   "id": "qus6000u4r9",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 6.5 earthquake",
-   "place": "Bonin Islands, Japan region",
-   "lat": 27.81,
-   "lon": 139.71,
-   "date": "2026-10-25T02:09+00:00",
-   "mag": 6.5,
-   "depth": 475,
-   "alert": "green",
-   "tsunami": true,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u4r9",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "japan"
-  },
-  {
    "id": "gd1e7d8ccfd0",
    "kind": "drought",
    "src": "GDACS",
@@ -926,61 +987,76 @@
  ],
  "stories": [
   {
-   "id": "4794d28b1d",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "The curious history of the huntaway, New Zealand’s unusually loud sheepdog",
-   "url": "https://theconversation.com/the-curious-history-of-the-huntaway-new-zealands-unusually-loud-sheepdog-296876",
-   "desc": "The Huntaway helped shape the country’s farming culture. But its origins reveal a much older story of empire, breeding and agricultural change.",
-   "date": "2026-11-23T17:29+00:00",
-   "th": []
-  },
-  {
-   "id": "2899c804fa",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "What failure of COP31 reveals about a divided world",
-   "url": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
-   "desc": "Interests of oil-producing countries, a US boycott and a dispute over finance may have torpedoed climate talks.",
-   "date": "2026-11-23T17:24+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "9cf7dcf00d",
+   "id": "cad1bf8bb1",
    "src": "Carbon Brief",
    "level": "magazine",
-   "title": "COP31: Key outcomes agreed at the UN climate talks in Antalya",
-   "url": "https://www.carbonbrief.org/cop31-key-outcomes-agreed-at-the-un-climate-talks-in-antalya",
-   "desc": "The COP31 climate talks in Antalya, Turkey, have failed to reach agreement on a “pact” that lacked clear references to&#8230;",
-   "date": "2026-11-23T16:15+00:00",
+   "title": "CB Live: Carbon Brief journalists discuss key COP31 outcomes",
+   "url": "https://www.carbonbrief.org/cb-live-carbon-brief-journalists-discuss-key-cop31-outcomes",
+   "desc": "Following the close of COP31 in Antalya, Turkey, Carbon Brief’s journalists answered a range of questions in a CB Live&#8230;",
+   "date": "2026-11-24T17:06+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "4bb4c945c2",
-   "src": "Guardian Environment",
+   "id": "372fd55800",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "California on edge as high tides and floods set to wreak havoc over Thanksgiving. Here is what to know",
-   "url": "https://www.theguardian.com/us-news/2026/nov/23/california-high-tides-floods-weather-thanksgiving",
-   "desc": "Coastal cities race to prepare for possible historic floods colliding with El Niño conditions before busy travel week It has already been a rough year for coastal Californians – who have endured flooding , extreme waves and beach erosion during the super El Niño season. Now ex…",
-   "date": "2026-11-23T15:43+00:00",
+   "title": "Record 5,200 heat-linked deaths estimated in England this year",
+   "url": "https://www.bbc.co.uk/news/articles/cq2e83egrez3o?at_medium=RSS&at_campaign=rss",
+   "desc": "The UK Health Security Agency says this year's number of deaths is twice that of the previous record year.",
+   "date": "2026-11-24T16:22+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
-   "id": "973fcadf7d",
+   "id": "89de79cca6",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Climate summits need radical reform – here’s how to transform global negotiations",
+   "url": "https://theconversation.com/climate-summits-need-radical-reform-heres-how-to-transform-global-negotiations-297316",
+   "desc": "The collapse of Cop31 may become a historical opportunity for global climate governance to tackle its structural problems.",
+   "date": "2026-11-24T15:59+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "6f9db94297",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Outcry grows over Labour plan to exempt most brownfield sites from nature protection rules",
+   "url": "https://www.theguardian.com/politics/2026/nov/24/outcry-uk-plans-to-exempt-brownfield-sites-nature-protection-rules",
+   "desc": "Chancellor’s decision to exempt plots up to 1.5 hectares allows developers to dodge rules aiming to reverse wildlife declines An outcry is growing over the UK chancellor’s removal of most brownfield housing plots from a legal requirement for developers to measurably enhance na…",
+   "date": "2026-11-24T14:00+00:00",
+   "th": [
+    "Topic 4A Regenerating places"
+   ]
+  },
+  {
+   "id": "aec071b9b5",
    "src": "Geographical",
    "level": "magazine",
-   "title": "Unprecedented volcanic activity discovered in Mariana Trench by robot submarine",
-   "url": "https://geographical.co.uk/news/unprecedented-volcanic-activity-discovered-in-mariana-trench-by-robot-submarine",
-   "desc": "Evidence of world’s deepest explosive volcanic eruption was discovered near the bottom of the Challenger Deep A robot submarine discovered ‘unprecedented’ volcanic activity near the bottom of the Challenger Deep, the deepest known point on Earth’s seabed. Located in the wester…",
-   "date": "2026-11-23T09:00+00:00",
+   "title": "Can we bury our way out of the climate crisis?",
+   "url": "https://geographical.co.uk/science-environment/digging-deep",
+   "desc": "Scientists say carbon storage works, but governments must step up if the technology is to reach the required scale.",
+   "date": "2026-11-24T09:00+00:00",
    "th": [
-    "Topic 1 Tectonic processes and hazards"
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "e3618abe24",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Eruption Extends Iwo Jima’s Beach",
+   "url": "https://science.nasa.gov/earth/earth-observatory/eruption-extends-iwo-jimas-beach/",
+   "desc": "A volcanic eruption just off the southeast shore of the Pacific island has reshaped the coast, but it’s unclear how long the new land will survive.",
+   "date": "2026-11-24T05:01+00:00",
+   "th": [
+    "Topic 1 Tectonic processes and hazards",
+    "Topic 2B Coastal landscapes and change"
    ]
   },
   {
@@ -996,16 +1072,6 @@
    ]
   },
   {
-   "id": "3f6729e1f5",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Laser Focus at the Top of the World",
-   "url": "https://science.nasa.gov/earth/earth-observatory/laser-focus-at-the-top-of-the-world/",
-   "desc": "A next-generation geodetic instrument developed by NASA, part of a network that helps measure satellites’ orbits and the planet’s shape, has debuted in Svalbard, Norway.",
-   "date": "2026-11-23T05:01+00:00",
-   "th": []
-  },
-  {
    "id": "63770ee44d",
    "src": "UN News (migration)",
    "level": "way in",
@@ -1016,25 +1082,94 @@
    "th": []
   },
   {
-   "id": "ab8285f6c3",
+   "id": "7855a7b6de",
+   "src": "Carbon Brief",
+   "level": "magazine",
+   "title": "COP31: Key outcomes for food, forests, oceans and nature at the UN climate talks in Antalya",
+   "url": "https://www.carbonbrief.org/cop31-key-outcomes-for-food-forests-oceans-and-nature-at-the-un-climate-talks-in-antalya",
+   "desc": "The COP31 climate talks in Antalya, Turkey, failed to agree on a “pact” that – despite making no clear reference&#8230;",
+   "date": "2026-11-24T16:33+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "43de1733ec",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "Storms targeting both US coasts threaten to snarl Thanksgiving travel for millions",
+   "url": "https://www.bbc.co.uk/weather/articles/c5742nplemnno?at_medium=RSS&at_campaign=rss",
+   "desc": "Two storms, including a major Nor'easter on the east coast, are expected to impact millions of people celebrating the holiday with family and friends.",
+   "date": "2026-11-24T11:40+00:00",
+   "th": [
+    "Topic 2B Coastal landscapes and change",
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "d00a5307c9",
    "src": "The Conversation",
    "level": "research",
-   "title": "Panic buying? Gradual stockpiling makes for better ‘prepping’ without emptying supermarket shelves",
-   "url": "https://theconversation.com/panic-buying-gradual-stockpiling-makes-for-better-prepping-without-emptying-supermarket-shelves-296094",
-   "desc": "Empty shelves can raise fear. That fear changes how people shop.",
-   "date": "2026-11-23T17:29+00:00",
+   "title": "Swimming spots won’t get official bathing water status if they’re tricky to clean under England’s new rules",
+   "url": "https://theconversation.com/swimming-spots-wont-get-official-bathing-water-status-if-theyre-tricky-to-clean-under-englands-new-rules-295821",
+   "desc": "For new bathing water applications, official status now depends partly on whether water quality can improve.",
+   "date": "2026-11-24T10:43+00:00",
    "th": []
   },
   {
-   "id": "53869ab9eb",
-   "src": "BBC Science & Environment",
+   "id": "90c76328a7",
+   "src": "Guardian Environment",
    "level": "way in",
-   "title": "Village's concern over sewage discharge in dry river",
-   "url": "https://www.bbc.co.uk/news/articles/c60rkq78g05vo?at_medium=RSS&at_campaign=rss",
-   "desc": "Campaigners call for restrictions on sewage treatment plant discharging effluent during drought",
-   "date": "2026-11-23T15:48+00:00",
+   "title": "Summer heat deaths in 2026 reached record high of 5,258 in England",
+   "url": "https://www.theguardian.com/environment/2026/nov/24/summer-heat-deaths-record-high-england",
+   "desc": "Figure for May to September is far higher than previous peak of 2,985 since records began a decade ago More than 5,200 deaths in England in 2026 were linked to summer heat, the highest provisional annual total since records began a decade ago, according to the UK Health Securi…",
+   "date": "2026-11-24T12:39+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "f20175cb23",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Who will replace Guterres at the UN?",
+   "url": "https://geographical.co.uk/news/who-will-replace-guterres-at-the-un",
+   "desc": "Guterres’ term ends on 31 December, but no successor has been chosen so far. So, who is in the running to be the UN’s secretary-general? Some describe it as a ‘world moderator’ or, as others put it, the ‘most difficult job in the world’; the UN secretary-general is a leadershi…",
+   "date": "2026-11-24T09:00+00:00",
+   "th": []
+  },
+  {
+   "id": "3f6729e1f5",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Laser Focus at the Top of the World",
+   "url": "https://science.nasa.gov/earth/earth-observatory/laser-focus-at-the-top-of-the-world/",
+   "desc": "A next-generation geodetic instrument developed by NASA, part of a network that helps measure satellites’ orbits and the planet’s shape, has debuted in Svalbard, Norway.",
+   "date": "2026-11-23T05:01+00:00",
+   "th": []
+  },
+  {
+   "id": "df1655ff07",
+   "src": "Guardian Global Development",
+   "level": "way in",
+   "title": "Beating Ebola takes more than medicine – I saw what worked in west Africa a decade ago | Kayode Akintola",
+   "url": "https://www.theguardian.com/global-development/2026/nov/21/ebola-outbreak-congo-worst-ever",
+   "desc": "The outbreak in DR Congo is shaping up to be the worst ever, but the support of local faith leaders – and adequate funding – will be needed to bring it under control Ebola is terrifying: I know, because I lived through the world’s worst outbreak of the disease . That was in we…",
+   "date": "2026-11-21T06:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
+   ]
+  },
+  {
+   "id": "b544152bff",
+   "src": "UN News (migration)",
+   "level": "way in",
+   "title": "World News in Brief: Ebola cases double in DR Congo, chemical exposure starts before birth, Türk concern over EU-Rwanda transfer plan",
+   "url": "https://news.un.org/feed/view/en/story/2026/11/1168827",
+   "desc": "The Ebola outbreak in the Democratic Republic of the Congo (DRC) has more than doubled in three months, with more than 11,000 cases and 5,400 deaths now reported in 67 health zones across eight provinces, the head of the World Health Organization (WHO) said on Tuesday.",
+   "date": "2026-11-17T12:00+00:00",
+   "th": [
+    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
@@ -1051,40 +1186,50 @@
    ]
   },
   {
-   "id": "30f657ecf2",
+   "id": "77608825e5",
+   "src": "BBC Science & Environment",
+   "level": "way in",
+   "title": "'Urgent action' needed to protect lake",
+   "url": "https://www.bbc.co.uk/news/articles/cr78271e5j91o?at_medium=RSS&at_campaign=rss",
+   "desc": "Tourism and outdated septic tanks are said to be adding to the ecological decline of Buttermere.",
+   "date": "2026-11-24T09:10+00:00",
+   "th": [
+    "Topic 3 Globalisation"
+   ]
+  },
+  {
+   "id": "4794d28b1d",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "The curious history of the huntaway, New Zealand’s unusually loud sheepdog",
+   "url": "https://theconversation.com/the-curious-history-of-the-huntaway-new-zealands-unusually-loud-sheepdog-296876",
+   "desc": "The Huntaway helped shape the country’s farming culture. But its origins reveal a much older story of empire, breeding and agricultural change.",
+   "date": "2026-11-23T17:29+00:00",
+   "th": []
+  },
+  {
+   "id": "54854de9be",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Cranberry jam: warming winters and extreme weather threaten a traditional holiday fruit",
-   "url": "https://www.theguardian.com/us-news/2026/nov/23/cranberry-growing-climate-crisis",
-   "desc": "Scientists are racing to identify and breed new berry varieties that can thrive on an increasingly warmer planet It is harvest time in rural Wisconsin , and the Badger state’s most vibrant crop is painting the rolling countryside a brilliant, unmistakable red. For nearly three…",
-   "date": "2026-11-23T15:00+00:00",
+   "title": "Their loss changed Appalachian forests for ever. Now the American chestnut is back",
+   "url": "https://www.theguardian.com/environment/2026/nov/24/american-chestnut-tree-restored-science-persistence-aoe",
+   "desc": "The trees have been functionally extinct in the US for nearly a century. But new techniques are creating plants resistant to the parasitic blight that almost wiped them out Jeff White is starstruck by a tree. The farmer and environmentalist from rural Maryland has an affinity …",
+   "date": "2026-11-24T12:00+00:00",
    "th": [
-    "Topic 4A Regenerating places",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "5317ad4f54",
+   "id": "6d89bb9835",
    "src": "Geographical",
    "level": "magazine",
-   "title": "COP31 fails to reach deal, but latest report underscores how vital climate action remains",
-   "url": "https://geographical.co.uk/news/cop31-fails-to-reach-deal-but-latest-report-underscores-how-vital-climate-action-remains",
-   "desc": "A report prepared by the World Meteorological Organisation for COP31 reveals the stark reality of our warming planet in 2026, from sea level rise to extreme weather events Countries engaged in talks for two days longer than expected at COP31, but the UN climate summit still dr…",
-   "date": "2026-11-23T09:00+00:00",
+   "title": "Evidence of Himalayan-scale supermountains found beneath Antarctica",
+   "url": "https://geographical.co.uk/news/evidence-of-himalayan-scale-supermountains-found-beneath-antarctica",
+   "desc": "New research sheds light on the history of the icy continent and how supermountains formed between 650 and 450 million years ago Evidence of ancient Himalayan-scale supermountain ranges has been found beneath Antarctica, new research by an international team of scientists has …",
+   "date": "2026-11-24T09:00+00:00",
    "th": [
+    "Topic 2A Glaciated landscapes and change",
     "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "df1655ff07",
-   "src": "Guardian Global Development",
-   "level": "way in",
-   "title": "Beating Ebola takes more than medicine – I saw what worked in west Africa a decade ago | Kayode Akintola",
-   "url": "https://www.theguardian.com/global-development/2026/nov/21/ebola-outbreak-congo-worst-ever",
-   "desc": "The outbreak in DR Congo is shaping up to be the worst ever, but the support of local faith leaders – and adequate funding – will be needed to bring it under control Ebola is terrifying: I know, because I lived through the world’s worst outbreak of the disease . That was in we…",
-   "date": "2026-11-21T06:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
    ]
   },
   {
@@ -1100,78 +1245,6 @@
    ]
   },
   {
-   "id": "b544152bff",
-   "src": "UN News (migration)",
-   "level": "way in",
-   "title": "World News in Brief: Ebola cases double in DR Congo, chemical exposure starts before birth, Türk concern over EU-Rwanda transfer plan",
-   "url": "https://news.un.org/feed/view/en/story/2026/11/1168827",
-   "desc": "The Ebola outbreak in the Democratic Republic of the Congo (DRC) has more than doubled in three months, with more than 11,000 cases and 5,400 deaths now reported in 67 health zones across eight provinces, the head of the World Health Organization (WHO) said on Tuesday.",
-   "date": "2026-11-17T12:00+00:00",
-   "th": [
-    "Topic 8A Health, human rights and intervention"
-   ]
-  },
-  {
-   "id": "c9ee4921f8",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "Cop31: Why the UN climate summit ended in victory for fossil fuel producing nations",
-   "url": "https://theconversation.com/cop31-why-the-un-climate-summit-ended-in-victory-for-fossil-fuel-producing-nations-296779",
-   "desc": "Negotiations broke down over whether to directly address fossil fuels, leaving the most climate-vulnerable nations deeply disappointed.",
-   "date": "2026-11-23T08:10+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "ea869718bb",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "Five takeaways from the failed climate talks COP31",
-   "url": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
-   "desc": "The COP31 summit in Antalya was the longest-running climate talks in UN history.",
-   "date": "2026-11-23T06:33+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "9785449897",
-   "src": "Carbon Brief",
-   "level": "magazine",
-   "title": "COP31: How Ed Miliband answered Carbon Brief readers’ questions",
-   "url": "https://www.carbonbrief.org/cop31-how-ed-miliband-answered-carbon-brief-readers-questions",
-   "desc": "UK foreign secretary and COP veteran Ed Miliband spoke with Carbon Brief earlier today at COP31 in Antalya, Turkey, to&#8230;",
-   "date": "2026-11-12T16:55+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "c71a8c4682",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Plant-based lunches could cut Australia’s emissions by 15m tonnes, new research shows",
-   "url": "https://www.theguardian.com/environment/2026/nov/23/plant-based-lunches-could-cut-australia-emissions-by-15m-tonnes-new-research-shows",
-   "desc": "Nationwide change in lunch habits could cut more climate pollution than grounding every domestic flight Get our breaking news email , free app or daily news podcast Australians could collectively cut climate pollution by more than 15m tonnes – more than grounding every domesti…",
-   "date": "2026-11-23T13:58+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "778e63cd89",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "QUIZ: Capital Cities – Hard",
-   "url": "https://geographical.co.uk/quizzes/quiz-capital-cities-hard-22",
-   "desc": "Think you’re a capital cities expert? Put your geography knowledge to the ultimate test with this hard capital cities quiz&#8230;",
-   "date": "2026-11-23T08:00+00:00",
-   "th": [
-    "Topic 4A Regenerating places"
-   ]
-  },
-  {
    "id": "26c67f7aec",
    "src": "Guardian Global Development",
    "level": "way in",
@@ -1181,18 +1254,6 @@
    "date": "2026-11-20T05:00+00:00",
    "th": [
     "Topic 4B Diverse places"
-   ]
-  },
-  {
-   "id": "0c57e789aa",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "El Niño Rains Paint the Atacama",
-   "url": "https://science.nasa.gov/earth/earth-observatory/el-nino-rains-paint-the-atacama/",
-   "desc": "Winter precipitation helped wake dormant seeds in northern Chile, carpeting the desert with what may be the region’s most extensive flowering of the satellite era.",
-   "date": "2026-11-19T05:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1208,38 +1269,62 @@
    ]
   },
   {
-   "id": "ec81632485",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "People wade through floodwater because they underestimate danger – how to avoid risk",
-   "url": "https://theconversation.com/people-wade-through-floodwater-because-they-underestimate-danger-how-to-avoid-risk-296445",
-   "desc": "Watching other people wade through a flood, or seeing a road which is regularly waterlogged, can bring a false sense of security about crossing.",
-   "date": "2026-11-20T14:00+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "5b99461c51",
-   "src": "Guardian Environment",
+   "id": "2899c804fa",
+   "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Failure of Cop31 prompts calls for urgent reform of UN climate summits",
-   "url": "https://www.theguardian.com/environment/2026/nov/23/failure-cop31-calls-urgent-reform-un-climate-summits",
-   "desc": "Former US vice-president Al Gore among climate leaders demanding change to consensus rule after Antalya summit The failure at Cop31 to reach a keystone agreement has exposed the need to reform how the UN’s climate summits make decisions, say international climate diplomacy exp…",
-   "date": "2026-11-23T12:21+00:00",
+   "title": "What failure of COP31 reveals about a divided world",
+   "url": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+   "desc": "Interests of oil-producing countries, a US boycott and a dispute over finance may have torpedoed climate talks.",
+   "date": "2026-11-23T17:24+00:00",
    "th": [
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "9879635e82",
+   "id": "ab8285f6c3",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Panic buying? Gradual stockpiling makes for better ‘prepping’ without emptying supermarket shelves",
+   "url": "https://theconversation.com/panic-buying-gradual-stockpiling-makes-for-better-prepping-without-emptying-supermarket-shelves-296094",
+   "desc": "Empty shelves can raise fear. That fear changes how people shop.",
+   "date": "2026-11-23T17:29+00:00",
+   "th": []
+  },
+  {
+   "id": "e7530cf187",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Campaigners urge Albanese government to reject ‘climate bomb’ coalmine expansion after Cop31",
+   "url": "https://www.theguardian.com/australia-news/2026/nov/24/campaigners-urge-albanese-government-to-reject-climate-bomb-coalmine-expansion-after-cop31",
+   "desc": "Hunter Valley Operations expansion in New South Wales would allow additional 430m tonnes of coal to be extracted and burned Sign up for climate and environment editor Adam Morton’s free Clear Air newsletter here Climate campaigners are urging the Albanese government to heed a …",
+   "date": "2026-11-24T07:42+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "1369f2347c",
    "src": "Geographical",
    "level": "magazine",
-   "title": "QUIZ: Physical Geography Trivia",
-   "url": "https://geographical.co.uk/quizzes/quiz-physical-geography-trivia-39",
-   "desc": "Think you know our planet? Put your geography knowledge to the test with this physical geography trivia quiz and discover fascinating facts about Earth’s natural wonders and processes!",
-   "date": "2026-11-22T10:00+00:00",
-   "th": []
+   "title": "After COP31, what will it take to turn ocean ambition into action?",
+   "url": "https://geographical.co.uk/news/after-cop31-what-will-it-take-to-turn-ocean-ambition-into-action",
+   "desc": "As COP31 falls short of expectations, a river clean-up project in the Philippines offers lessons in how to protect oceans The disappointing outcome of COP31 in Antalya has reinforced something we already knew: the future of ocean protection will not be decided only in internat…",
+   "date": "2026-11-24T09:00+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "0c57e789aa",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "El Niño Rains Paint the Atacama",
+   "url": "https://science.nasa.gov/earth/earth-observatory/el-nino-rains-paint-the-atacama/",
+   "desc": "Winter precipitation helped wake dormant seeds in northern Chile, carpeting the desert with what may be the region’s most extensive flowering of the satellite era.",
+   "date": "2026-11-19T05:00+00:00",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
   },
   {
    "id": "26035da73a",
@@ -1255,24 +1340,15 @@
    ]
   },
   {
-   "id": "bb697c9704",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Sierra Snow Season Spins Up",
-   "url": "https://science.nasa.gov/earth/earth-observatory/sierra-snow-season-spins-up/",
-   "desc": "A widespread, early-season snowstorm blanketed California’s mountains in white in mid-November 2026.",
-   "date": "2026-11-18T05:01+00:00",
-   "th": []
-  },
-  {
-   "id": "77aa2a414a",
+   "id": "af87cf6caf",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "How a tiny rare frog became an ecological warning sign for Madagascar",
-   "url": "https://www.theguardian.com/environment/2026/nov/23/tiny-rare-frog-warning-sign-madagascar-illegal-gold-mining-aoe",
-   "desc": "The golden mantella is said to be found wherever gold is, making its habitat a target for illegal mining, which is destroying fragile ecosystems across the country As Albert Rakotoarisoa emerges from the forest into a clearing in Mangabe reserve in the east of Madagascar, he s…",
-   "date": "2026-11-23T11:00+00:00",
+   "title": "A year of deadly floods and fires – and yet Cop31 still collapsed. When will our leaders grasp the scale of this crisis? | Bill McGuire",
+   "url": "https://www.theguardian.com/commentisfree/2026/nov/24/deadly-floods-fires-cop31-collapsed-climate-crisis",
+   "desc": "Fossil fuel producers are choking off progress while we reap the whirlwind of our inaction. This is what sleepwalking to disaster looks like It’s sometimes said that we are sleepwalking into climate catastrophe. But the reality is that we are walking into it with our eyes wide…",
+   "date": "2026-11-24T06:00+00:00",
    "th": [
+    "Topic 5 The water cycle and water insecurity",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
