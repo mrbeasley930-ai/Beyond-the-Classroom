@@ -1,5 +1,5 @@
 {
- "made": "2026-11-26T17:07+00:00",
+ "made": "2026-11-27T16:51+00:00",
  "themes": [
   "Topic 1 Tectonic processes and hazards",
   "Topic 2A Glaciated landscapes and change",
@@ -20,7 +20,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 36
+   "n": 32
   },
   {
    "src": "USGS (significant, past month)",
@@ -28,7 +28,7 @@
    "level": "data",
    "line": "US Geological Survey earthquake catalogue",
    "ok": true,
-   "n": 6
+   "n": 7
   },
   {
    "src": "NASA EONET",
@@ -36,7 +36,7 @@
    "level": "data",
    "line": "NASA Earth Observatory Natural Event Tracker",
    "ok": true,
-   "n": 11
+   "n": 10
   },
   {
    "src": "GDACS",
@@ -44,7 +44,7 @@
    "level": "data",
    "line": "Global Disaster Alert and Coordination System (UN and European Commission)",
    "ok": true,
-   "n": 15
+   "n": 12
   },
   {
    "src": "Carbon Brief",
@@ -121,6 +121,41 @@
  ],
  "events": [
   {
+   "id": "gd6c6e421abd",
+   "kind": "flood",
+   "src": "GDACS",
+   "title": "Flooding in Paraguay",
+   "place": "Paraguay",
+   "lat": -20.5,
+   "lon": -59.17,
+   "date": "2026-11-27T07:13+00:00",
+   "alert": "green",
+   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104302",
+   "desc": "On 21/11/2026, a flood started in Paraguay, lasting until 23/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
+   "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "qus6000udt9",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.1 earthquake",
+   "place": "107 km SSE of Auki, Solomon Islands",
+   "lat": -9.58,
+   "lon": 161.24,
+   "date": "2026-11-27T00:07+00:00",
+   "mag": 5.1,
+   "depth": 74,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udt9",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "solomon islands"
+  },
+  {
    "id": "qus6000udq5",
    "kind": "quake",
    "src": "USGS",
@@ -195,22 +230,6 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "new zealand"
-  },
-  {
-   "id": "gdc87da0232c",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Ukraine",
-   "place": "Ukraine",
-   "lat": 48.3,
-   "lon": 23.45,
-   "date": "2026-11-25T11:14+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104300",
-   "desc": "On 20/11/2026, a flood started in Ukraine, lasting until 22/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
   },
   {
    "id": "qus6000udef",
@@ -300,6 +319,25 @@
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
+  },
+  {
+   "id": "qus6000ud6z",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "93 km WSW of Puerto Madero, Mexico",
+   "lat": 14.44,
+   "lon": -93.24,
+   "date": "2026-11-24T11:51+00:00",
+   "mag": 5.2,
+   "depth": 35,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud6z",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "mexico"
   },
   {
    "id": "qus6000ud6h",
@@ -480,22 +518,6 @@
    "region": "peru"
   },
   {
-   "id": "gd8cbe8ed2ca",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Chile",
-   "place": "Chile",
-   "lat": -33.1,
-   "lon": -71.67,
-   "date": "2026-11-22T11:21+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104293",
-   "desc": "On 20/11/2026, a flood started in Chile, lasting until 22/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000ucrb",
    "kind": "quake",
    "src": "USGS",
@@ -530,22 +552,6 @@
    ]
   },
   {
-   "id": "gd555e7f48aa",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in Türkiye",
-   "place": "Türkiye",
-   "lat": 40.82,
-   "lon": 29.95,
-   "date": "2026-11-21T12:32+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104292",
-   "desc": "On 16/11/2026, a flood started in Türkiye, lasting until 18/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
    "id": "qus6000ucly",
    "kind": "quake",
    "src": "USGS",
@@ -563,6 +569,25 @@
     "Topic 1 Tectonic processes and hazards"
    ],
    "region": "china"
+  },
+  {
+   "id": "qus6000ucky",
+   "kind": "quake",
+   "src": "USGS",
+   "title": "Magnitude 5.2 earthquake",
+   "place": "112 km SSE of Tateyama, Japan",
+   "lat": 34.01,
+   "lon": 140.21,
+   "date": "2026-11-21T10:09+00:00",
+   "mag": 5.2,
+   "depth": 10,
+   "alert": "",
+   "tsunami": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucky",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ],
+   "region": "japan"
   },
   {
    "id": "qus6000ucij",
@@ -618,44 +643,6 @@
    ]
   },
   {
-   "id": "qus6000uc82",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.4 earthquake",
-   "place": "Carlsberg Ridge",
-   "lat": 9.79,
-   "lon": 57.75,
-   "date": "2026-11-20T08:44+00:00",
-   "mag": 5.4,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc82",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "carlsberg ridge"
-  },
-  {
-   "id": "qus6000uc4v",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.6 earthquake",
-   "place": "southeast of the Loyalty Islands",
-   "lat": -24.7,
-   "lon": 171.23,
-   "date": "2026-11-20T00:49+00:00",
-   "mag": 5.6,
-   "depth": 10,
-   "alert": "green",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc4v",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "southeast of the loyalty islands"
-  },
-  {
    "id": "eob4ed6d25a4",
    "kind": "ice",
    "src": "NASA EONET · NATICE",
@@ -702,25 +689,6 @@
     "Topic 2A Glaciated landscapes and change",
     "Topic 6 The carbon cycle and energy security"
    ]
-  },
-  {
-   "id": "qus6000uc2q",
-   "kind": "quake",
-   "src": "USGS",
-   "title": "Magnitude 5.3 earthquake",
-   "place": "South Georgia Island region",
-   "lat": -55.0,
-   "lon": -33.51,
-   "date": "2026-11-19T20:07+00:00",
-   "mag": 5.3,
-   "depth": 10,
-   "alert": "",
-   "tsunami": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc2q",
-   "th": [
-    "Topic 1 Tectonic processes and hazards"
-   ],
-   "region": "south georgia island"
   },
   {
    "id": "eo55c6934e90",
@@ -856,37 +824,6 @@
    "region": "solomon islands"
   },
   {
-   "id": "gde0ff57b079",
-   "kind": "flood",
-   "src": "GDACS",
-   "title": "Flooding in France",
-   "place": "France",
-   "lat": 43.12,
-   "lon": 6.13,
-   "date": "2026-11-06T11:36+00:00",
-   "alert": "green",
-   "url": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104270",
-   "desc": "On 04/11/2026, a flood started in France, lasting until 16/11/2026 (last update). The flood caused 2 deaths and 170 displaced .",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "eoe47a13c488",
-   "kind": "wildfire",
-   "src": "NASA EONET · IRWIN",
-   "title": "Wildfire FOOT CREEK, Johnson, Wyoming",
-   "place": "",
-   "lat": 44.32,
-   "lon": -106.93,
-   "date": "2026-11-05T16:11+00:00",
-   "first": "2026-11-05T16:11+00:00",
-   "url": "https://irwin.doi.gov/observer/incidents/2026-WYBHF-000401",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
    "id": "qus7000ttxz",
    "kind": "quake",
    "src": "USGS",
@@ -972,65 +909,60 @@
  ],
  "stories": [
   {
-   "id": "94d2e60bc9",
+   "id": "6871c240d5",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Hundreds of flights cancelled as severe weather disrupts Thanksgiving travel in US",
-   "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
-   "desc": "More than 80 million Americans are expected to be traveling as massive storms are forecast on the western and eastern coasts of the US.",
-   "date": "2026-11-26T15:57+00:00",
+   "title": "Severe Thanksgiving storms leave roads flooded and trees fallen",
+   "url": "https://www.bbc.co.uk/news/videos/ckvg20y511p4o?at_medium=RSS&at_campaign=rss",
+   "desc": "Hundreds of thousands of people were without power after severe weather hit both coasts of the United States during the Thanksgiving holiday.",
+   "date": "2026-11-27T16:46+00:00",
    "th": [
-    "Topic 2B Coastal landscapes and change",
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "610bfa6e61",
+   "id": "4416639a2b",
    "src": "The Conversation",
    "level": "research",
-   "title": "Indonesia’s huge peat fires burn underground – so we still don’t know just how much carbon they have released",
-   "url": "https://theconversation.com/indonesias-huge-peat-fires-burn-underground-so-we-still-dont-know-just-how-much-carbon-they-have-released-295732",
-   "desc": "These fires can emit more carbon than entire countries, but estimates remain uncertain. That’s why researchers are measuring how deeply they burn.",
-   "date": "2026-11-26T15:07+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
+   "title": "Plant-based ‘tuna’ or pea crisps? Focus groups suggest new recipes for local, sustainable protein alternatives",
+   "url": "https://theconversation.com/plant-based-tuna-or-pea-crisps-focus-groups-suggest-new-recipes-for-local-sustainable-protein-alternatives-287421",
+   "desc": "Locally sourced plant-based foods could include a tuna alternative called Toona made from wheat and pea protein, pea and onion crisps plus wheat and barley pasta.",
+   "date": "2026-11-27T16:21+00:00",
+   "th": []
   },
   {
-   "id": "36bf8fc718",
+   "id": "fb5f9bdee6",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "I helped organise the letter from Labour MPs urging Andy Burnham to reject Rosebank. This is why | Catherine Fookes",
-   "url": "https://www.theguardian.com/commentisfree/2026/nov/26/labour-mp-letter-andy-burnham-rosebank-oil-climate-crisis",
-   "desc": "Approval would be celebrated by the oil giants, but it wouldn’t help our constituents who worry about the climate crisis, and their bills Catherine Fookes is Labour MP for Monmouthshire Labour split over Rosebank oilfield exposed by letter from nearly 100 MPs This week it was …",
-   "date": "2026-11-26T15:00+00:00",
+   "title": "British Gas owner seeks urgent government talks over future of storage facility",
+   "url": "https://www.theguardian.com/business/2026/nov/27/british-gas-owner-seeks-urgent-government-talks-gas-storage-faciity-future",
+   "desc": "Centrica boss memo to 400 workers at gas plant off Yorkshire coast says utility doing all it can ‘to save your jobs’ The boss of the British Gas owner Centrica has told hundreds of staff at its largest gas storage facility that he was seeking urgent talks with Andy Burnham and…",
+   "date": "2026-11-27T15:56+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "ac012ab4f4",
+   "id": "5143ddb741",
    "src": "Geographical",
    "level": "magazine",
-   "title": "Profile: Antarctica",
-   "url": "https://geographical.co.uk/features/antarctica-the-fate-of-this-frozen-continent-will-shape-our-future",
-   "desc": "Stuart Butler reports on Antarctica’s people and ecosystems – and why what happens in the far south matters to us all.",
-   "date": "2026-11-26T09:00+00:00",
-   "th": [
-    "Topic 2A Glaciated landscapes and change",
-    "Topic 6 The carbon cycle and energy security"
-   ]
+   "title": "QUIZ: Country Spotlight – Kuwait",
+   "url": "https://geographical.co.uk/quizzes/quiz-country-spotlight-kuwait",
+   "desc": "How much do you know about Kuwait? Put your geography knowledge to the test in our latest Country Spotlight quiz and discover fascinating facts about this small Middle Eastern nation.",
+   "date": "2026-11-27T08:00+00:00",
+   "th": []
   },
   {
-   "id": "cfea6ef40c",
+   "id": "0ec96d1f0c",
    "src": "NASA Earth Observatory",
    "level": "magazine",
-   "title": "Seeking Refuge on Resolution Island",
-   "url": "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island/",
-   "desc": "New Zealanders have long envisioned the island as a predator-free zone for native birds, but swimming stoats have shown a resolve of their own.",
-   "date": "2026-11-26T05:01+00:00",
-   "th": []
+   "title": "Shivelyuch Socked In",
+   "url": "https://science.nasa.gov/earth/earth-observatory/shivelyuch-socked-in/",
+   "desc": "A cloud layer encircled the flanks of the volcano on the Kamchatka Peninsula but left its restless summit caldera in view.",
+   "date": "2026-11-27T05:01+00:00",
+   "th": [
+    "Topic 1 Tectonic processes and hazards"
+   ]
   },
   {
    "id": "c6f6a29982",
@@ -1067,65 +999,63 @@
    "th": []
   },
   {
-   "id": "27217ba350",
+   "id": "94d2e60bc9",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Musk's plan to send a million SpaceX data satellites into space approved",
-   "url": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss",
-   "desc": "The Starmind constellation aims to be the most cost and energy-efficient way to meet the growing demand for AI computing power.",
-   "date": "2026-11-26T09:27+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "6ee1daed53",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "If politicians really want to cut heating bills they need to trust in green energy – businesses already are",
-   "url": "https://theconversation.com/if-politicians-really-want-to-cut-heating-bills-they-need-to-trust-in-green-energy-businesses-already-are-297216",
-   "desc": "There’s a selfish case for moving towards green energy. It will create savings, and businesses are already acknowledging this.",
-   "date": "2026-11-26T12:17+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "66f84d71ac",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Ministers have ‘failed to make the case’ for Heathrow third runway, MPs say",
-   "url": "https://www.theguardian.com/environment/2026/nov/26/ministers-fail-to-make-case-for-heathrow-third-runway-mps-report-says",
-   "desc": "Transport committee says policy papers show expanding airport would fall short of pledges on economy and climate Ministers have “failed to make the case” for a third runway at Heathrow , according to a damning report by MPs. The Commons transport committee said on Thursday tha…",
-   "date": "2026-11-26T13:43+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "da8cf85749",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Is Svalbard still a safe haven for the world’s seeds?",
-   "url": "https://geographical.co.uk/opinion/is-svalbard-still-a-safe-haven-for-the-worlds-seeds",
-   "desc": "The Arctic once seemed the perfect place to safeguard the world’s crop diversity. But is anywhere truly secure?",
-   "date": "2026-11-25T09:00+00:00",
-   "th": [
-    "Topic 4B Diverse places",
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "cecb33e1b7",
-   "src": "NASA Earth Observatory",
-   "level": "magazine",
-   "title": "Georgia’s Pecan Belt",
-   "url": "https://science.nasa.gov/earth/earth-observatory/georgias-pecan-belt/",
-   "desc": "Since an early-1900s planting boom, orchards along the Flint River in southwest Georgia have become a center of U.S. pecan production.",
-   "date": "2026-11-25T05:00+00:00",
+   "title": "Major Thanksgiving storm brings flooding, flight delays across US",
+   "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
+   "desc": "Almost one million customers in the US had no power on Thursday evening as storms descended on both US coasts, bringing wind gusts, heavy rain and flooding.",
+   "date": "2026-11-27T05:15+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
+  },
+  {
+   "id": "496bc0e538",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Once logging stops, recovery of Vietnam’s tropical forests isn’t guaranteed",
+   "url": "https://theconversation.com/once-logging-stops-recovery-of-vietnams-tropical-forests-isnt-guaranteed-294965",
+   "desc": "Hiking up rivers and sleeping in hammocks, our team spent months in the dense jungles of central Vietnam to track forest recovery.",
+   "date": "2026-11-27T14:25+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "399bc571a6",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Play about 12-year-old ecojustice influencer wins Shakespeare’s Globe prize",
+   "url": "https://www.theguardian.com/stage/2026/nov/27/play-12-year-old-ecojustice-influencer-wins-shakespeares-globe-prize",
+   "desc": "Timothy X Atack wrote Tiny Alarms after workshops with children, who felt theirs would be the last generation of humans Tiny, a 12-year-old schoolgirl, is an ecojustice influencer, whose funny and disconcerting takes on the climate crisis go viral. She is also an alien, sent t…",
+   "date": "2026-11-27T15:30+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "ac012ab4f4",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Profile: Antarctica",
+   "url": "https://geographical.co.uk/features/antarctica-the-fate-of-this-frozen-continent-will-shape-our-future",
+   "desc": "Stuart Butler reports on Antarctica’s people and ecosystems – and why what happens in the far south matters to us all.",
+   "date": "2026-11-26T09:00+00:00",
+   "th": [
+    "Topic 2A Glaciated landscapes and change",
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "cfea6ef40c",
+   "src": "NASA Earth Observatory",
+   "level": "magazine",
+   "title": "Seeking Refuge on Resolution Island",
+   "url": "https://science.nasa.gov/earth/earth-observatory/seeking-refuge-on-resolution-island/",
+   "desc": "New Zealanders have long envisioned the island as a predator-free zone for native birds, but swimming stoats have shown a resolve of their own.",
+   "date": "2026-11-26T05:01+00:00",
+   "th": []
   },
   {
    "id": "cad1bf8bb1",
@@ -1165,62 +1095,64 @@
    ]
   },
   {
-   "id": "7ea79f2e7b",
+   "id": "e0c25974c0",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "Whitehouse calls on PM to help save lake fish",
-   "url": "https://www.bbc.co.uk/news/articles/c6808pxrzy5po?at_medium=RSS&at_campaign=rss",
-   "desc": "The comedian warns extinction beckons for Arctic charr in Windermere after thousands of years.",
-   "date": "2026-11-26T06:05+00:00",
+   "title": "Watch: Roofs torn off and streets under water as severe weather hits US",
+   "url": "https://www.bbc.co.uk/news/videos/cq808d704m22o?at_medium=RSS&at_campaign=rss",
+   "desc": "Hundreds of thousands have been affected by storms in the country as the Thanksgiving holiday weekend begins.",
+   "date": "2026-11-26T19:26+00:00",
    "th": [
-    "Topic 6 The carbon cycle and energy security"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "4eab779b94",
+   "id": "25ae95908c",
    "src": "The Conversation",
    "level": "research",
-   "title": "Climate diplomacy is stuck – these three big changes would get it moving again",
-   "url": "https://theconversation.com/climate-diplomacy-is-stuck-these-three-big-changes-would-get-it-moving-again-297555",
-   "desc": "The problem is deeper than any one failed summit.",
-   "date": "2026-11-25T16:31+00:00",
+   "title": "England and Wales are in a winter drought – which could make next summer even drier",
+   "url": "https://theconversation.com/england-and-wales-are-in-a-winter-drought-which-could-make-next-summer-even-drier-290074",
+   "desc": "There are measures that can help England and Wales prepare for drier and hotter summers.",
+   "date": "2026-11-27T11:03+00:00",
    "th": [
+    "Topic 5 The water cycle and water insecurity"
+   ]
+  },
+  {
+   "id": "bd41f92fb8",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Three studies link glyphosate to cancer, contradicting claims of Trump EPA",
+   "url": "https://www.theguardian.com/us-news/2026/nov/27/glyphosate-cancer-studies-trump-epa",
+   "desc": "Experts say NIH research raises concerns about chemical companies’ influence on US agency’s pesticide division The US government’s top medical research agency has released three new studies linking glyphosate, the world’s most widely used pesticide and an active ingredient in …",
+   "date": "2026-11-27T15:00+00:00",
+   "th": [
+    "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "da8cf85749",
+   "src": "Geographical",
+   "level": "magazine",
+   "title": "Is Svalbard still a safe haven for the world’s seeds?",
+   "url": "https://geographical.co.uk/opinion/is-svalbard-still-a-safe-haven-for-the-worlds-seeds",
+   "desc": "The Arctic once seemed the perfect place to safeguard the world’s crop diversity. But is anywhere truly secure?",
+   "date": "2026-11-25T09:00+00:00",
+   "th": [
+    "Topic 4B Diverse places",
     "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
-   "id": "273d40f978",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Faulty electrical goods returned to UK supermarkets ending up on Ghana ‘megadump’",
-   "url": "https://www.theguardian.com/environment/2026/nov/26/ghana-waste-tip-faulty-electrical-goods-uk-supermarkets-returns",
-   "desc": "Mountains of household items are burned and stripped down at the tip by workers without protection such as masks, investigation alleges Electrical goods that were returned as faulty to leading British stores including Tesco, Argos and Asda have been found dumped on a waste tip…",
-   "date": "2026-11-26T12:00+00:00",
-   "th": [
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "ff08f23c0d",
-   "src": "Geographical",
-   "level": "magazine",
-   "title": "Why are UK fuel prices so high?",
-   "url": "https://geographical.co.uk/news/why-are-uk-fuel-prices-so-high",
-   "desc": "From high taxes to exchange rates and conflict in the Middle East, discover why UK fuel prices remain at such high levels Last week, the Office for National Statistics announced UK inflation rose to 3.6 per cent, driven by high petrol and diesel prices. The average cost of pet…",
-   "date": "2026-11-25T09:00+00:00",
-   "th": []
-  },
-  {
-   "id": "e3618abe24",
+   "id": "cecb33e1b7",
    "src": "NASA Earth Observatory",
    "level": "magazine",
-   "title": "Eruption Extends Iwo Jima’s Beach",
-   "url": "https://science.nasa.gov/earth/earth-observatory/eruption-extends-iwo-jimas-beach/",
-   "desc": "A volcanic eruption just off the southeast shore of the Pacific island has reshaped the coast, but it’s unclear how long the new land will survive.",
-   "date": "2026-11-24T05:01+00:00",
+   "title": "Georgia’s Pecan Belt",
+   "url": "https://science.nasa.gov/earth/earth-observatory/georgias-pecan-belt/",
+   "desc": "Since an early-1900s planting boom, orchards along the Flint River in southwest Georgia have become a center of U.S. pecan production.",
+   "date": "2026-11-25T05:00+00:00",
    "th": [
-    "Topic 1 Tectonic processes and hazards",
-    "Topic 2B Coastal landscapes and change"
+    "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
@@ -1260,63 +1192,63 @@
    ]
   },
   {
-   "id": "dbf1f5ff40",
+   "id": "0f11655cc7",
    "src": "BBC Science & Environment",
    "level": "way in",
-   "title": "California warns of flooding as King Tides peak over Thanksgiving",
-   "url": "https://www.bbc.co.uk/news/articles/ckn806qq760po?at_medium=RSS&at_campaign=rss",
-   "desc": "Parts of the Canadian province of British Columbia may also be affected by the storms and flooding, which come as millions of people travel for the holiday.",
-   "date": "2026-11-26T01:22+00:00",
+   "title": "Second court defeat for Trump's deep-sea mining ambitions",
+   "url": "https://www.bbc.co.uk/news/articles/c6y4jyx2m172o?at_medium=RSS&at_campaign=rss",
+   "desc": "Second judge rules against Trump administration's plans to lease areas of ocean floor and survey for mining.",
+   "date": "2026-11-26T18:22+00:00",
+   "th": [
+    "Topic 7 Superpowers"
+   ]
+  },
+  {
+   "id": "610bfa6e61",
+   "src": "The Conversation",
+   "level": "research",
+   "title": "Indonesia’s huge peat fires burn underground – so we still don’t know just how much carbon they have released",
+   "url": "https://theconversation.com/indonesias-huge-peat-fires-burn-underground-so-we-still-dont-know-just-how-much-carbon-they-have-released-295732",
+   "desc": "These fires can emit more carbon than entire countries, but estimates remain uncertain. That’s why researchers are measuring how deeply they burn.",
+   "date": "2026-11-26T15:07+00:00",
+   "th": [
+    "Topic 6 The carbon cycle and energy security"
+   ]
+  },
+  {
+   "id": "1ed071b8dc",
+   "src": "Guardian Environment",
+   "level": "way in",
+   "title": "Jess Wilson’s plan for Melbourne sewage plants risks water and wetlands without bringing debt down, experts say",
+   "url": "https://www.theguardian.com/australia-news/2026/nov/28/jess-wilson-melbourne-sewage-plants-privatisation-risks-water-and-wetlands",
+   "desc": "Academic says Victorian Liberal proposal to lease treatment plants and generate profit with no compromise of services ‘a total furphy’ Victorian election 2026 guide: what you need to know Confused about who to vote for? Check the parties’ key promises and policies Get our dail…",
+   "date": "2026-11-27T14:00+00:00",
    "th": [
     "Topic 5 The water cycle and water insecurity"
    ]
   },
   {
-   "id": "9ffec8e4fb",
-   "src": "The Conversation",
-   "level": "research",
-   "title": "The efficiency paradox: why greener AI means more waste",
-   "url": "https://theconversation.com/the-efficiency-paradox-why-greener-ai-means-more-waste-297191",
-   "desc": "If AI makes firms more efficient and profitable, it encourages further investment and expansion.",
-   "date": "2026-11-25T16:29+00:00",
-   "th": [
-    "Topic 3 Globalisation"
-   ]
-  },
-  {
-   "id": "5a1a127b27",
-   "src": "Guardian Environment",
-   "level": "way in",
-   "title": "Suit alleges Louisiana land deal between SpaceX and ExxonMobil violates open meetings law",
-   "url": "https://www.theguardian.com/us-news/2026/nov/26/louisiana-spacex-exxonmobil-land-deal-lawsuit",
-   "desc": "Suit says parish board was manipulated to allow deal to go through and settlement agreement hidden from public After ending a lawsuit over ExxonMobil ’s damage to wetlands, Louisiana officials moved quickly to approve a deal giving SpaceX access to 125,000 acres (50,600 hectar…",
-   "date": "2026-11-26T12:00+00:00",
-   "th": [
-    "Topic 6 The carbon cycle and energy security"
-   ]
-  },
-  {
-   "id": "356552d029",
+   "id": "ff08f23c0d",
    "src": "Geographical",
    "level": "magazine",
-   "title": "Failure of ocean upwelling in Panama led to huge drop in fish oil exports",
-   "url": "https://geographical.co.uk/news/failure-of-ocean-upwelling-in-panama-led-to-huge-drop-in-fish-oil-exports",
-   "desc": "Fewer anchoveta – a fish species vital for Panama’s fish oil exports – were found in last year’s season, the lowest recorded in 60 years A study published in PNAS revealed the wide-reaching effects of a failed seasonal upwelling in the Gulf of Panama last year, including a dra…",
+   "title": "Why are UK fuel prices so high?",
+   "url": "https://geographical.co.uk/news/why-are-uk-fuel-prices-so-high",
+   "desc": "From high taxes to exchange rates and conflict in the Middle East, discover why UK fuel prices remain at such high levels Last week, the Office for National Statistics announced UK inflation rose to 3.6 per cent, driven by high petrol and diesel prices. The average cost of pet…",
    "date": "2026-11-25T09:00+00:00",
-   "th": [
-    "Topic 3 Globalisation",
-    "Topic 6 The carbon cycle and energy security"
-   ]
+   "th": []
   },
   {
-   "id": "3f6729e1f5",
+   "id": "e3618abe24",
    "src": "NASA Earth Observatory",
    "level": "magazine",
-   "title": "Laser Focus at the Top of the World",
-   "url": "https://science.nasa.gov/earth/earth-observatory/laser-focus-at-the-top-of-the-world/",
-   "desc": "A next-generation geodetic instrument developed by NASA, part of a network that helps measure satellites’ orbits and the planet’s shape, has debuted in Svalbard, Norway.",
-   "date": "2026-11-23T05:01+00:00",
-   "th": []
+   "title": "Eruption Extends Iwo Jima’s Beach",
+   "url": "https://science.nasa.gov/earth/earth-observatory/eruption-extends-iwo-jimas-beach/",
+   "desc": "A volcanic eruption just off the southeast shore of the Pacific island has reshaped the coast, but it’s unclear how long the new land will survive.",
+   "date": "2026-11-24T05:01+00:00",
+   "th": [
+    "Topic 1 Tectonic processes and hazards",
+    "Topic 2B Coastal landscapes and change"
+   ]
   },
   {
    "id": "d1baf1523e",
@@ -1331,27 +1263,16 @@
    ]
   },
   {
-   "id": "3ed2c70d7d",
-   "src": "BBC Science & Environment",
-   "level": "way in",
-   "title": "New York's annual Thanksgiving Parade threatened by approaching storm",
-   "url": "https://www.bbc.co.uk/weather/articles/cr894e8dd7wqo?at_medium=RSS&at_campaign=rss",
-   "desc": "Strong winds and heavy rain are expected to impact celebrations across the USA, with the risk that the famous Macy's Thanksgiving Day parade could be impacted.",
-   "date": "2026-11-25T14:41+00:00",
-   "th": [
-    "Topic 5 The water cycle and water insecurity"
-   ]
-  },
-  {
-   "id": "a319fdc375",
+   "id": "36bf8fc718",
    "src": "Guardian Environment",
    "level": "way in",
-   "title": "Record-breaking California tides cause major flooding of roads and businesses",
-   "url": "https://www.theguardian.com/us-news/2026/nov/25/california-flooding-high-tides",
-   "desc": "Beaches close as Los Angeles and La Jolla see all-time high tides and big waves batter landmark pier in Pacifica Super El Niño weather brought record-breaking high tides up and down the California coast on Wednesday, sending seawater rushing into beachside communities and floo…",
-   "date": "2026-11-25T22:56+00:00",
+   "title": "I helped organise the letter from Labour MPs urging Andy Burnham to reject Rosebank. This is why | Catherine Fookes",
+   "url": "https://www.theguardian.com/commentisfree/2026/nov/26/labour-mp-letter-andy-burnham-rosebank-oil-climate-crisis",
+   "desc": "Approval would be celebrated by the oil giants, but it wouldn’t help our constituents who worry about the climate crisis, and their bills Catherine Fookes is Labour MP for Monmouthshire Labour split over Rosebank oilfield exposed by letter from nearly 100 MPs This week it was …",
+   "date": "2026-11-26T15:00+00:00",
    "th": [
-    "Topic 5 The water cycle and water insecurity"
+    "Topic 5 The water cycle and water insecurity",
+    "Topic 6 The carbon cycle and energy security"
    ]
   },
   {
